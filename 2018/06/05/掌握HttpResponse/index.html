@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="总结一下现在自己会什么东西 什么叫微服务呀，什么是单体软件，之前项目应该就是用的单体架构 分别实现一套试试看呀">
+<meta name="description" content="title:掌握HttpResponseHTTP请求报文和HTTP响应报文  http 报文是面向文本的，报文中的每一个字段都是一些ASCII码串，各个字段的长度是不确定的。分两种，请求报文和响应报文。  请求报文//ToDo 响应报文http响应由四部分组成，分别是： 状态行、消息报头、空行、 响应正文格式:  //  []  状态行格式如下：   HTTP-Version Status-Co">
 <meta name="keywords" content="spark hadoop scala">
 <meta property="og:type" content="article">
-<meta property="og:title" content="idea">
-<meta property="og:url" content="http://yoursite.com/2018/06/04/myIdea/index.html">
+<meta property="og:title" content="白帝圣剑">
+<meta property="og:url" content="http://yoursite.com/2018/06/05/掌握HttpResponse/index.html">
 <meta property="og:site_name" content="白帝圣剑">
-<meta property="og:description" content="总结一下现在自己会什么东西 什么叫微服务呀，什么是单体软件，之前项目应该就是用的单体架构 分别实现一套试试看呀">
+<meta property="og:description" content="title:掌握HttpResponseHTTP请求报文和HTTP响应报文  http 报文是面向文本的，报文中的每一个字段都是一些ASCII码串，各个字段的长度是不确定的。分两种，请求报文和响应报文。  请求报文//ToDo 响应报文http响应由四部分组成，分别是： 状态行、消息报头、空行、 响应正文格式:  //  []  状态行格式如下：   HTTP-Version Status-Co">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-04T06:26:40.042Z">
+<meta property="og:updated_time" content="2018-06-05T02:59:31.427Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="idea">
-<meta name="twitter:description" content="总结一下现在自己会什么东西 什么叫微服务呀，什么是单体软件，之前项目应该就是用的单体架构 分别实现一套试试看呀">
+<meta name="twitter:title" content="白帝圣剑">
+<meta name="twitter:description" content="title:掌握HttpResponseHTTP请求报文和HTTP响应报文  http 报文是面向文本的，报文中的每一个字段都是一些ASCII码串，各个字段的长度是不确定的。分两种，请求报文和响应报文。  请求报文//ToDo 响应报文http响应由四部分组成，分别是： 状态行、消息报头、空行、 响应正文格式:  //  []  状态行格式如下：   HTTP-Version Status-Co">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/04/myIdea/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/05/掌握HttpResponse/"/>
 
 
 
 
 
-  <title>idea | 白帝圣剑</title>
+  <title> | 白帝圣剑</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/04/myIdea/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/05/掌握HttpResponse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">idea</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-04T14:26:40+08:00">
-                2018-06-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T10:59:31+08:00">
+                2018-06-05
               </time>
             
 
@@ -300,9 +300,31 @@
       
 
       
-        <p>总结一下现在自己会什么东西</p>
-<p>什么叫微服务呀，<br>什么是单体软件，之前项目应该就是用的单体架构</p>
-<p>分别实现一套试试看呀</p>
+        <hr>
+<h2 id="title-掌握HttpResponse"><a href="#title-掌握HttpResponse" class="headerlink" title="title:掌握HttpResponse"></a>title:掌握HttpResponse</h2><p><a href="http://www.cnblogs.com/biyeymyhjob/archive/2012/07/28/2612910.html" target="_blank" rel="noopener">HTTP请求报文和HTTP响应报文</a></p>
+<blockquote>
+<p>http 报文是面向文本的，报文中的每一个字段都是一些ASCII码串，各个字段的长度是不确定的。<br>分两种，请求报文和响应报文。</p>
+</blockquote>
+<h5 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h5><p>//ToDo</p>
+<h5 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h5><p>http响应由四部分组成，分别是： 状态行、消息报头、空行、 响应正文<br>格式:</p>
+<p><status-line> //</status-line></p>
+<p><headers></headers></p>
+<p><blank line=""><br>[<response-body>]</response-body></blank></p>
+<blockquote>
+<p>状态行格式如下：</p>
+</blockquote>
+<blockquote>
+<p>HTTP-Version Status-Code Reason-Phrase CRLF</p>
+</blockquote>
+<blockquote>
+<p>其中，HTTP-Version表示服务器HTTP协议的版本；Status-Code表示服务器发回的响应状态代码；Reason-Phrase表示状态代码的文本描述。状态代码由三位数字组成，第一个数字定义了响应的类别，且有五种可能取值。</p>
+</blockquote>
+<blockquote>
+<p>1xx：指示信息–表示请求已接收，继续处理。<br>2xx：成功–表示请求已被成功接收、理解、接受。<br>3xx：重定向–要完成请求必须进行更进一步的操作。<br>4xx：客户端错误–请求有语法错误或请求无法实现。<br>5xx：服务器端错误–服务器未能实现合法的请求。<br>常见状态代码、状态描述的说明如下。</p>
+</blockquote>
+<blockquote>
+<p>200 OK：客户端请求成功。<br>400 Bad Request：客户端请求有语法错误，不能被服务器所理解。<br>401 Unauthorized：请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用。<br>403 Forbidden：服务器收到请求，但是拒绝提供服务。<br>404 Not Found：请求资源不存在，举个例子：输入了错误的URL。<br>500 Internal Server Error：服务器发生不可预期的错误。<br>503 Server Unavailable：服务器当前不能处理客户端的请求，一段时间后可能恢复正常，举个例子：HTTP/1.1 200 OK（CRLF）。</p>
+</blockquote>
 
       
     </div>
@@ -327,8 +349,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/04/Web-Note/" rel="next" title="Web Note">
-                <i class="fa fa-chevron-left"></i> Web Note
+              <a href="/2018/06/05/Redis Learning/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -336,6 +358,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/05/scala implicit/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -387,8 +413,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -403,7 +438,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -430,6 +465,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-掌握HttpResponse"><span class="nav-number">1.</span> <span class="nav-text">title:掌握HttpResponse</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#请求报文"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">请求报文</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#响应报文"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">响应报文</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

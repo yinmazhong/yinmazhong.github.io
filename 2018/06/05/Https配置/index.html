@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考  blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts  但是更新了dns，效果很明显，速度杠杠的    2017/12/05 迅速被打脸，一点都不好使 \很奇怪，办公室机器google-chrome很卡，firefox好很多">
+<meta name="description" content="用在aliyun上申请到的https　Certificate配置到akka-http服务器上，并将应用部署到aws ec2上 certificate证书是同事发给我的，是在aliyun上申请的，绑定了公司的域名，只能运行在配置了公司域名（二级、三级、、、）的服务器上，也就是说不能本地调试，略麻烦 1-rw-rw-r--  1 xxh xxh 4083 12月  6 17:22 2140435929">
 <meta name="keywords" content="spark hadoop scala">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github访问卡、慢、不稳定">
-<meta property="og:url" content="http://yoursite.com/2018/06/01/github卡慢问题/index.html">
+<meta property="og:title" content="https　Certificate配置">
+<meta property="og:url" content="http://yoursite.com/2018/06/05/Https配置/index.html">
 <meta property="og:site_name" content="白帝圣剑">
-<meta property="og:description" content="震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考  blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts  但是更新了dns，效果很明显，速度杠杠的    2017/12/05 迅速被打脸，一点都不好使 \很奇怪，办公室机器google-chrome很卡，firefox好很多">
+<meta property="og:description" content="用在aliyun上申请到的https　Certificate配置到akka-http服务器上，并将应用部署到aws ec2上 certificate证书是同事发给我的，是在aliyun上申请的，绑定了公司的域名，只能运行在配置了公司域名（二级、三级、、、）的服务器上，也就是说不能本地调试，略麻烦 1-rw-rw-r--  1 xxh xxh 4083 12月  6 17:22 2140435929">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-01T02:17:14.348Z">
+<meta property="og:updated_time" content="2018-06-05T02:11:23.524Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="github访问卡、慢、不稳定">
-<meta name="twitter:description" content="震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考  blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts  但是更新了dns，效果很明显，速度杠杠的    2017/12/05 迅速被打脸，一点都不好使 \很奇怪，办公室机器google-chrome很卡，firefox好很多">
+<meta name="twitter:title" content="https　Certificate配置">
+<meta name="twitter:description" content="用在aliyun上申请到的https　Certificate配置到akka-http服务器上，并将应用部署到aws ec2上 certificate证书是同事发给我的，是在aliyun上申请的，绑定了公司的域名，只能运行在配置了公司域名（二级、三级、、、）的服务器上，也就是说不能本地调试，略麻烦 1-rw-rw-r--  1 xxh xxh 4083 12月  6 17:22 2140435929">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/01/github卡慢问题/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/05/Https配置/"/>
 
 
 
 
 
-  <title>github访问卡、慢、不稳定 | 白帝圣剑</title>
+  <title>https　Certificate配置 | 白帝圣剑</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/github卡慢问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/05/Https配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">github访问卡、慢、不稳定</h1>
+          <h1 class="post-title" itemprop="name headline">https　Certificate配置</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-01T10:17:14+08:00">
-                2018-06-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T10:11:24+08:00">
+                2018-06-05
               </time>
             
 
@@ -300,17 +300,20 @@
       
 
       
-        <h4 id="震惊！访问云服务器慢、连不上去、github不能访问、慢-震惊，原来是需要更新dns"><a href="#震惊！访问云服务器慢、连不上去、github不能访问、慢-震惊，原来是需要更新dns" class="headerlink" title="震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \"></a>震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \</h4><p>2017/12/04<br><a href="http://www.jianshu.com/p/a578963f10f0" target="_blank" rel="noopener">参考</a></p>
-<ul>
-<li><p>blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts</p>
-</li>
-<li><p>但是更新了dns，效果很明显，速度杠杠的</p>
-</li>
+        <p>用在aliyun上申请到的https　Certificate配置到akka-http服务器上，并将应用部署到aws ec2上</p>
+<h4 id="certificate"><a href="#certificate" class="headerlink" title="certificate"></a>certificate</h4><p>证书是同事发给我的，是在aliyun上申请的，绑定了公司的域名，只能运行在配置了公司域名（二级、三级、、、）的服务器上，也就是说不能本地调试，略麻烦</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-rw-r--  1 xxh xxh 4083 12月  6 17:22 214043592950638.zip</span><br></pre></td></tr></table></figure>
+<p>unzip 后是两个文件，一个是.key文件即私钥文件，另一个是.pem文件即证书文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-rw-rw-r--  1 xxh xxh 1675 6月  20 17:36 214043592950638.key</span><br><span class="line">-rw-rw-r--  1 xxh xxh 3892 6月  20 17:36 214043592950638.pem</span><br></pre></td></tr></table></figure></p>
+<h4 id="生成-pfx文件"><a href="#生成-pfx文件" class="headerlink" title="生成.pfx文件"></a>生成.pfx文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -export -out 214043592950638.pfx -inkey</span><br><span class="line">214043592950638.key -in 214043592950638.pem</span><br></pre></td></tr></table></figure>
+<p>这时会提示我们输入password<br>输入密码并确认后便生成了下面的.pfx文件<br><code>-rw-rw-r--  1 xxh xxh 4437 12月  7 09:28 214043592950638.pfx</code></p>
+<h4 id="pfx证书安装"><a href="#pfx证书安装" class="headerlink" title="pfx证书安装"></a>pfx证书安装</h4><p>我用的是sbt构建app的，所以把pfx文件放入resources目录中</p>
+<p>webserver编写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">object WebServer extends LogSupport&#123;</span><br><span class="line">  implicit val system = ActorSystem()</span><br><span class="line">  implicit val mat = ActorMaterializer()</span><br><span class="line">  implicit val dispatcher = system.dispatcher</span><br><span class="line">  def main(args: Array[String]): Unit = &#123;</span><br><span class="line"></span><br><span class="line">    // Manual HTTPS configuration</span><br><span class="line"></span><br><span class="line">    val password: Array[Char] = &quot;mima&quot;.toCharArray</span><br><span class="line"></span><br><span class="line">    val ks: KeyStore = KeyStore.getInstance(&quot;PKCS12&quot;)</span><br><span class="line">    val keystore: InputStream = getClass.getClassLoader.getResourceAsStream(&quot;214043592950638.pfx&quot;)</span><br><span class="line"></span><br><span class="line">    require(keystore != null, &quot;Keystore required!&quot;)</span><br><span class="line">    ks.load(keystore, password)</span><br><span class="line"></span><br><span class="line">    val keyManagerFactory: KeyManagerFactory = KeyManagerFactory.getInstance(&quot;SunX509&quot;)</span><br><span class="line">    keyManagerFactory.init(ks, password)</span><br><span class="line"></span><br><span class="line">    val tmf: TrustManagerFactory = TrustManagerFactory.getInstance(&quot;SunX509&quot;)</span><br><span class="line">    tmf.init(ks)</span><br><span class="line"></span><br><span class="line">    val sslContext: SSLContext = SSLContext.getInstance(&quot;TLS&quot;)</span><br><span class="line">    sslContext.init(keyManagerFactory.getKeyManagers, tmf.getTrustManagers, new SecureRandom)</span><br><span class="line">    val https: HttpsConnectionContext = ConnectionContext.https(sslContext)</span><br><span class="line"></span><br><span class="line">    val routes: Route =</span><br><span class="line">      path(&quot;test&quot;)&#123;</span><br><span class="line">        get &#123;</span><br><span class="line">          logger.info(&quot;response hello&quot;)</span><br><span class="line">          complete(&quot;Hello world!&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    // sets default context to HTTPS – all Http() bound servers for this ActorSystem will use HTTPS from now on</span><br><span class="line">    Http().setDefaultServerHttpContext(https)</span><br><span class="line">    Http().bindAndHandle(routes, &quot;0.0.0.0&quot;, 443, connectionContext = https)</span><br><span class="line">    logger.info(&quot;WebServer start&quot;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="test"><a href="#test" class="headerlink" title="test"></a>test</h4><p>上文提到过，必须在绑定域名的服务器上才能使用该证书，所以上传到ec2服务器上测试，记得开启443的入站端口</p>
+<p>ps:我不小心将routes 放到了Http()绑定之后，出现了空指针异常，调整routes位置后ok</p>
+<h4 id="rel"><a href="#rel" class="headerlink" title="rel"></a>rel</h4><ul>
+<li><a href="zhihu.com">知乎</a>相关问题</li>
+<li><a href="http://www.jianshu.com/p/34680d41d570" target="_blank" rel="noopener">阿里云服务器绑定https</a></li>
 </ul>
-<hr>
-<p>2017/12/05</p>
-<p>迅速被打脸，一点都不好使 \<br>很奇怪，办公室机器google-chrome很卡，firefox好很多</p>
-<hr>
 
       
     </div>
@@ -335,8 +338,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/30/Bandwagon-shadowsocks-配置使用/" rel="next" title="Bandwagon shadowsocks 配置使用">
-                <i class="fa fa-chevron-left"></i> Bandwagon shadowsocks 配置使用
+              <a href="/2018/06/04/Web-Note/" rel="next" title="Web Note">
+                <i class="fa fa-chevron-left"></i> Web Note
               </a>
             
           </div>
@@ -345,8 +348,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/02/爬虫/" rel="prev" title="爬虫">
-                爬虫 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/05/linux服务器/" rel="prev" title="linux服务器相关配置">
+                linux服务器相关配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -461,7 +464,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#震惊！访问云服务器慢、连不上去、github不能访问、慢-震惊，原来是需要更新dns"><span class="nav-number">1.</span> <span class="nav-text">震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#certificate"><span class="nav-number">1.</span> <span class="nav-text">certificate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成-pfx文件"><span class="nav-number">2.</span> <span class="nav-text">生成.pfx文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pfx证书安装"><span class="nav-number">3.</span> <span class="nav-text">pfx证书安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#test"><span class="nav-number">4.</span> <span class="nav-text">test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rel"><span class="nav-number">5.</span> <span class="nav-text">rel</span></a></li></ol></div>
             
 
           </div>
