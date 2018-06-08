@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redshift,Amazon,database," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现设计： 从一台服务器上收集数据（ftp get） 从多台服务器上收集（循环 ftp get） 定时从多台机器上按照一定规则收集（定时器）  思路1：读配置文件，去指定服务器的指定目录下载文件 1234567891011121314151617181920212223242526272">
+<meta name="keywords" content="Redshift,Amazon,database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Linux shell收集应用日志文件">
+<meta property="og:url" content="http://yoursite.com/2018/06/08/用shell收集日志文件/index.html">
+<meta property="og:site_name" content="白帝圣剑">
+<meta property="og:description" content="场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现设计： 从一台服务器上收集数据（ftp get） 从多台服务器上收集（循环 ftp get） 定时从多台机器上按照一定规则收集（定时器）  思路1：读配置文件，去指定服务器的指定目录下载文件 1234567891011121314151617181920212223242526272">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-08T02:15:36.374Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用Linux shell收集应用日志文件">
+<meta name="twitter:description" content="场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现设计： 从一台服务器上收集数据（ftp get） 从多台服务器上收集（循环 ftp get） 定时从多台机器上按照一定规则收集（定时器）  思路1：读配置文件，去指定服务器的指定目录下载文件 1234567891011121314151617181920212223242526272">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/08/用shell收集日志文件/"/>
+
+
+
+
+
+  <title>用Linux shell收集应用日志文件 | 白帝圣剑</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">白帝圣剑</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">御剑跟着我</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/08/用shell收集日志文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白帝圣剑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">用Linux shell收集应用日志文件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-08T10:15:37+08:00">
+                2018-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/database/" itemprop="url" rel="index">
+                    <span itemprop="name">database</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux-shell-脚本实现"><a href="#场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux-shell-脚本实现" class="headerlink" title="场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现"></a>场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现</h4><h4 id="设计："><a href="#设计：" class="headerlink" title="设计："></a>设计：</h4><ul>
+<li>从一台服务器上收集数据（ftp get）</li>
+<li>从多台服务器上收集（循环 ftp get）</li>
+<li>定时从多台机器上按照一定规则收集（定时器）</li>
+</ul>
+<h5 id="思路1："><a href="#思路1：" class="headerlink" title="思路1："></a>思路1：</h5><pre><code>读配置文件，去指定服务器的指定目录下载文件
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径</span><br><span class="line">basedir=$(cd $(dirname $0); pwd)</span><br><span class="line">cd $basedir</span><br><span class="line">configFile=$basedir/ftphost.conf</span><br><span class="line"></span><br><span class="line">homedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)</span><br><span class="line">ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)</span><br><span class="line"></span><br><span class="line">grep -i -E -w &quot;ftp|sftp&quot; $configFile | awk  -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &#123;</span><br><span class="line">    protocol=$1</span><br><span class="line">    ip=$2</span><br><span class="line">    port=$3</span><br><span class="line">    user=$4</span><br><span class="line">    password=$5</span><br><span class="line"></span><br><span class="line">    ftp -n&lt;&lt;FTPD</span><br><span class="line">open $ip</span><br><span class="line">user $user $password</span><br><span class="line">binary</span><br><span class="line">passive</span><br><span class="line">lcd $hdir</span><br><span class="line">prompt</span><br><span class="line">if [[ ! -d $fdir ]];then</span><br><span class="line">    mkdir $fdir</span><br><span class="line">fi</span><br><span class="line">cd $fdir</span><br><span class="line">put $2</span><br><span class="line">close</span><br><span class="line">quit</span><br><span class="line">FTPD</span><br></pre></td></tr></table></figure>
+<h6 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/bash</span><br><span class="line"></span><br><span class="line">#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径</span><br><span class="line">basedir=$(cd $(dirname $0); pwd)</span><br><span class="line">echo $basedir</span><br><span class="line">cd $basedir</span><br><span class="line">configFile=$basedir/ftphost.conf</span><br><span class="line">ftpscriptfile=$basedir/ftpscript.sh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">homedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)</span><br><span class="line">ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)</span><br><span class="line">echo &quot;homedir:  &quot;$homedir</span><br><span class="line">echo &quot;ftphomedir&quot; $ftphomedir</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo &quot;#ftp远程获取需要的文件&quot; &gt;&gt;$ftpscriptfile</span><br><span class="line">grep -i -E -w &quot;ftp|sftp&quot; $configFile | awk  -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &apos;&#123;</span><br><span class="line">    # protocol=$1</span><br><span class="line">    # ip=$2</span><br><span class="line">    # port=$3</span><br><span class="line">    # user=$4</span><br><span class="line">    # password=$5</span><br><span class="line">	print &quot;ftp -n&lt;&lt;FTPD&quot;</span><br><span class="line">    print &quot;open &quot;ip</span><br><span class="line">    print &quot;user &quot; user &quot; &quot; password</span><br><span class="line">    print &quot;binary&quot;</span><br><span class="line">    print &quot;passive&quot;</span><br><span class="line">    print &quot;cd &quot; fdir</span><br><span class="line">	&#125;&apos; &gt;&gt;$ftpscriptfile</span><br><span class="line">    echo &quot;prompt&quot;							 &gt;&gt;$ftpscriptfile</span><br><span class="line">	echo &quot;if [[ ! -d \$3 ]];then&quot;			&gt;&gt;$ftpscriptfile</span><br><span class="line">	echo &quot;	mkdir \$3&quot;						&gt;&gt;$ftpscriptfile</span><br><span class="line">	echo &quot;fi &quot;								&gt;&gt;$ftpscriptfile</span><br><span class="line">	echo &quot;cd \$3&quot;  							&gt;&gt;$ftpscriptfile</span><br><span class="line">	echo &quot;if [[ ! -d \$4 ]];then&quot;			&gt;&gt;$ftpscriptfile</span><br><span class="line">	echo &quot;	mkdir \$4&quot;						&gt;&gt;$ftpscriptfile</span><br><span class="line">	echo &quot;fi &quot;								&gt;&gt;$ftpscriptfile</span><br><span class="line">	echo &quot;cd \$4&quot;  							&gt;&gt;$ftpscriptfile</span><br><span class="line">	echo &quot;lcd \$1&quot; &gt;&gt;$ftpscriptfile</span><br><span class="line">    echo &quot;put \$2&quot; &gt;&gt;$ftpscriptfile</span><br><span class="line">    echo &quot;close&quot;  &gt;&gt;$ftpscriptfile</span><br><span class="line">    echo &quot;quit&quot;   &gt;&gt;$ftpscriptfile</span><br><span class="line">    echo &quot;FTPD&quot;   &gt;&gt;$ftpscriptfile</span><br></pre></td></tr></table></figure>
+<p>　　<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> 1 filterAndGet()</span><br><span class="line"> 2 &#123;</span><br><span class="line"> 3     srcfile=$1</span><br><span class="line"> 4     key=$2</span><br><span class="line"> 5     value=$3</span><br><span class="line"> 6     tgtfile=$4</span><br><span class="line"> 7     shift 4</span><br><span class="line"> 8     if [[ $# -gt 0 ]];then</span><br><span class="line"> 9         ids=$*</span><br><span class="line">10     else</span><br><span class="line">11         ids=0</span><br><span class="line">12     fi</span><br><span class="line">13</span><br><span class="line">14     awk -F &quot;,&quot; &apos;BEGIN &#123;</span><br><span class="line">15         split(&apos;&quot;\&quot;$ids&quot;\&quot;&apos;, indexs,&quot; &quot;)</span><br><span class="line">16     &#125;&#123;</span><br><span class="line">17         if($&apos;$key&apos;==&quot;&apos;$value&apos;&quot;) &#123;</span><br><span class="line">18             for (i=1;i&lt;=length(indexs);i++)&#123;</span><br><span class="line">19                 if(indexs[i]==9)&#123;</span><br><span class="line">20                      system(&quot;\\echo -n $(\\date -d \&quot;2000-01-01 +&quot; $indexs[i] &quot; seconds\&quot; +\&quot;%Y-%m-%d %H:%M:%S\&quot;)&quot;)</span><br><span class="line">21                      printf(&quot;.%03d,&quot;,$28)</span><br><span class="line">22                 &#125;</span><br><span class="line">23                 else</span><br><span class="line">24                     printf(&quot;%s,&quot;,$indexs[i])</span><br><span class="line">25             &#125;</span><br><span class="line">26             printf(&quot;\n&quot;);</span><br><span class="line">27         &#125;</span><br><span class="line">28     &#125;&apos; $srcfile &gt;&gt; $tgtfile</span><br><span class="line">29 &#125;</span><br><span class="line"></span><br><span class="line">filterAndGet $1 39 0 $2/a_$&#123;day&#125;.csv 9 14 15 52 2 3 5 10 11 53 54 55 56 57 58 59 88 16 6 7 8 21 35 34 23 86 17 19 20</span><br></pre></td></tr></table></figure></p>
+<h5 id="思路2："><a href="#思路2：" class="headerlink" title="思路2："></a>思路2：</h5><pre><code>配置文件中配置多个IP，循环去取文件
+</code></pre><h5 id="思路3："><a href="#思路3：" class="headerlink" title="思路3："></a>思路3：</h5><pre><code>增加文件过滤规则，定时器规则
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redshift/" rel="tag"># Redshift</a>
+          
+            <a href="/tags/Amazon/" rel="tag"># Amazon</a>
+          
+            <a href="/tags/database/" rel="tag"># database</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/08/Shell笔记/" rel="next" title="Shell笔记">
+                <i class="fa fa-chevron-left"></i> Shell笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xu</p>
+              <p class="site-description motion-element" itemprop="description">华夏第一剑</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux-shell-脚本实现"><span class="nav-number">1.</span> <span class="nav-text">场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计："><span class="nav-number">2.</span> <span class="nav-text">设计：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#思路1："><span class="nav-number">2.1.</span> <span class="nav-text">思路1：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#更新"><span class="nav-number">2.1.1.</span> <span class="nav-text">更新</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#思路2："><span class="nav-number">2.2.</span> <span class="nav-text">思路2：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#思路3："><span class="nav-number">2.3.</span> <span class="nav-text">思路3：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
