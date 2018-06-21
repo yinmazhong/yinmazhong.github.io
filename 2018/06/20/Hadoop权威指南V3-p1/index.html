@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hadoop," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一章 数据！数据！  这个世界数据存量很大，数据增长的速度很快，数据的价值很大  数据存储于分析  现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据  硬盘故障解决：数据冗余备份(RAID,HDFS) 数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的   相较于其他系统的优势    用蛮力处理整个庞大数据集或数据集的一部分">
+<meta name="keywords" content="Hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop 权威指南 3th Edition Part 1">
+<meta property="og:url" content="http://yoursite.com/2018/06/20/Hadoop权威指南V3-p1/index.html">
+<meta property="og:site_name" content="白帝圣剑">
+<meta property="og:description" content="第一章 数据！数据！  这个世界数据存量很大，数据增长的速度很快，数据的价值很大  数据存储于分析  现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据  硬盘故障解决：数据冗余备份(RAID,HDFS) 数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的   相较于其他系统的优势    用蛮力处理整个庞大数据集或数据集的一部分">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-20T06:40:43.893Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hadoop 权威指南 3th Edition Part 1">
+<meta name="twitter:description" content="第一章 数据！数据！  这个世界数据存量很大，数据增长的速度很快，数据的价值很大  数据存储于分析  现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据  硬盘故障解决：数据冗余备份(RAID,HDFS) 数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的   相较于其他系统的优势    用蛮力处理整个庞大数据集或数据集的一部分">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/20/Hadoop权威指南V3-p1/"/>
+
+
+
+
+
+  <title>Hadoop 权威指南 3th Edition Part 1 | 白帝圣剑</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">白帝圣剑</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">御剑跟着我</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/20/Hadoop权威指南V3-p1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白帝圣剑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hadoop 权威指南 3th Edition Part 1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-20T14:40:53+08:00">
+                2018-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大数据/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h3><ol>
+<li>数据！数据！</li>
+</ol>
+<p>这个世界数据存量很大，数据增长的速度很快，数据的价值很大</p>
+<ol start="2">
+<li>数据存储于分析</li>
+</ol>
+<p>现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据</p>
+<ul>
+<li>硬盘故障<br>解决：数据冗余备份(RAID,HDFS)<ul>
+<li>数据并发读取的正确性<br>MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的</li>
+</ul>
+<ol start="3">
+<li>相较于其他系统的优势</li>
+</ol>
+</li>
+</ul>
+<p>用蛮力处理整个庞大数据集或数据集的一部分</p>
+<ul>
+<li>关系型数据库管理系统</li>
+</ul>
+<ol>
+<li><p>现象：寻址速率的提升远远不及传输速率的提升</p>
+<p> B树这有在小量数据时有优势，数据量大时，更新整个B树要花大量时间</p>
+<p> RDBMS与hadoop相互补充，hadoop适合批处理，而rdbms适合点查询更新</p>
+<p> RDBMS被索引后，能够提供低延迟的查询和少量的数据更新，mapreduce适合一次写入，多次读取做数据分析<br>  RDBMS适合持续更新的数据集</p>
+<p>  Table 1-1. RDBMS compared to MapReduce</p>
+<p>  item|Traditional RDBMS |MapReduce<br>  —|—|—<br>  Data size| Gigabytes| Petabytes<br>  Access(数据存取)| Interactive and batch| Batch<br>  Updates| Read and write many times |Write once, read many times<br>  Structure| Static schema |Dynamic schema<br>  Integrity(完整性)| High |Low<br>  Scaling| Nonlinear |Linear</p>
+</li>
+<li>存储的数据不同：<br>RDBMS:结构化数据，完整的且不含冗余<br>hadoop:结构化、半结构化、非结构化数据</li>
+</ol>
+<ul>
+<li>网格计算，</li>
+</ul>
+<p>mapreduce 尽量使得数据本地化</p>
+<ul>
+<li>志愿计算：</li>
+</ul>
+<p>志愿计算为计算所花的时间远远超过工作单元数据传输时间，也就是说志愿者贡献的是CPU周期，而不是网络带宽</p>
+<ol start="4">
+<li>Hadoop发展简史</li>
+</ol>
+<p>o 好牛b哦</p>
+<ol start="5">
+<li><p>hadoop echosystem</p>
+<ul>
+<li>common　一系列组件和接口</li>
+<li>avro　序列化系统</li>
+<li>maoreduce 计算引擎</li>
+<li>HDFS　分布式文件系统</li>
+<li>hive 数据仓库，sql查询hdfs</li>
+<li>hbase 列存储数据仓库</li>
+<li>zookeeper 分布式、可用性高的协调服务</li>
+<li>sqoop:rdbms &lt;=&gt; hdfs</li>
+<li>oozie 调度作业</li>
+</ul>
+</li>
+<li><p>hadoop 发行版本</p>
+</li>
+</ol>
+<p>Table 1-2. Features supported by Hadoop release series</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>1.x</th>
+<th>0.22</th>
+<th>2.x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Secure authentication</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Old configuration names</td>
+<td>Yes</td>
+<td>Deprecated</td>
+<td>Deprecated</td>
+</tr>
+<tr>
+<td>New configuration names</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Old MapReduce API</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>New MapReduce API</td>
+<td>Yes (with somemissing libraries)</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>MapReduce 1 runtime (Classic)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>MapReduce 2 runtime (YARN)</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>HDFS federation</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>HDFS high-availability</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h3><p>气象数据处理</p>
+<h4 id="2-1-气象数据集"><a href="#2-1-气象数据集" class="headerlink" title="2.1　气象数据集"></a>2.1　气象数据集</h4><p>首先要搞清楚数据格式</p>
+<ul>
+<li>文本数据</li>
+<li>每一行是一条记录</li>
+<li>整个数据集有很多小文件组成</li>
+</ul>
+<h4 id="2-2-Unix-处理方式"><a href="#2-2-Unix-处理方式" class="headerlink" title="2.2 Unix 处理方式"></a>2.2 Unix 处理方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env bash</span><br><span class="line">for year in all/*</span><br><span class="line">do</span><br><span class="line">echo -ne `basename $year .gz`&quot;\t&quot;</span><br><span class="line">gunzip -c $year | \</span><br><span class="line">awk &apos;&#123; temp = substr($0, 88, 5) + 0;</span><br><span class="line">q = substr($0, 93, 1);</span><br><span class="line">if (temp !=9999 &amp;&amp; q ~ /[01459]/ &amp;&amp; temp &gt; max) max = temp &#125;</span><br><span class="line">END &#123; print max &#125;&apos;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>循环使用awk处理</p>
+<p>单进程处理</p>
+<h4 id="2-3-hadoop处理方式"><a href="#2-3-hadoop处理方式" class="headerlink" title="2.3 hadoop处理方式"></a>2.3 hadoop处理方式</h4><p>map:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import</span><br><span class="line">import</span><br><span class="line">import</span><br><span class="line">import</span><br><span class="line">org.apache.hadoop.io.IntWritable;</span><br><span class="line">org.apache.hadoop.io.LongWritable;</span><br><span class="line">org.apache.hadoop.io.Text;</span><br><span class="line">org.apache.hadoop.mapreduce.Mapper;</span><br><span class="line">public class MaxTemperatureMapper</span><br><span class="line">extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;</span><br><span class="line">private static final int MISSING = 9999;</span><br><span class="line">@Override</span><br><span class="line">public void map(LongWritable key, Text value, Context context)</span><br><span class="line">throws IOException, InterruptedException &#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">String line = value.toString();</span><br><span class="line">String year = line.substring(15, 19);</span><br><span class="line">int airTemperature;</span><br><span class="line">if (line.charAt(87) == &apos;+&apos;) &#123; // parseInt doesn&apos;t like leading plus signs</span><br><span class="line">airTemperature = Integer.parseInt(line.substring(88, 92));</span><br><span class="line">&#125; else &#123;</span><br><span class="line">airTemperature = Integer.parseInt(line.substring(87, 92));</span><br><span class="line">&#125;</span><br><span class="line">String quality = line.substring(92, 93);</span><br><span class="line">if (airTemperature != MISSING &amp;&amp; quality.matches(&quot;[01459]&quot;)) &#123;</span><br><span class="line">context.write(new Text(year), new IntWritable(airTemperature));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>reduce:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import org.apache.hadoop.io.IntWritable;</span><br><span class="line">import org.apache.hadoop.io.Text;</span><br><span class="line">import org.apache.hadoop.mapreduce.Reducer;</span><br><span class="line">public class MaxTemperatureReducer</span><br><span class="line">extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;</span><br><span class="line">@Override</span><br><span class="line">public void reduce(Text key, Iterable&lt;IntWritable&gt; values,</span><br><span class="line">Context context)</span><br><span class="line">throws IOException, InterruptedException &#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">int maxValue = Integer.MIN_VALUE;</span><br><span class="line">for (IntWritable value : values) &#123;</span><br><span class="line">maxValue = Math.max(maxValue, value.get());</span><br><span class="line">&#125;</span><br><span class="line">context.write(key, new IntWritable(maxValue));</span><br></pre></td></tr></table></figure></p>
+<p>main:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.hadoop.fs.Path;</span><br><span class="line">import org.apache.hadoop.io.IntWritable;</span><br><span class="line">import org.apache.hadoop.io.Text;</span><br><span class="line">import org.apache.hadoop.mapreduce.Job;</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</span><br><span class="line">public class MaxTemperature &#123;</span><br><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line">if (args.length != 2) &#123;</span><br><span class="line">System.err.println(&quot;Usage: MaxTemperature &lt;input path&gt; &lt;output path&gt;&quot;);</span><br><span class="line">System.exit(-1);</span><br><span class="line">&#125;</span><br><span class="line">Job job = new Job();</span><br><span class="line">job.setJarByClass(MaxTemperature.class);</span><br><span class="line">job.setJobName(&quot;Max temperature&quot;);</span><br><span class="line">FileInputFormat.addInputPath(job, new Path(args[0]));</span><br><span class="line">FileOutputFormat.setOutputPath(job, new Path(args[1]));</span><br><span class="line">job.setMapperClass(MaxTemperatureMapper.class);</span><br><span class="line">job.setReducerClass(MaxTemperatureReducer.class);</span><br><span class="line">job.setOutputKeyClass(Text.class);</span><br><span class="line">job.setOutputValueClass(IntWritable.class);</span><br><span class="line">System.exit(job.waitForCompletion(true) ? 0 : 1);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-4-横向扩展"><a href="#2-4-横向扩展" class="headerlink" title="2.4 横向扩展"></a>2.4 横向扩展</h4><h4 id="2-5-Hadoop-Streaming"><a href="#2-5-Hadoop-Streaming" class="headerlink" title="2.5 Hadoop Streaming"></a>2.5 Hadoop Streaming</h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/13/scala笔记/" rel="next" title="scala 笔记">
+                <i class="fa fa-chevron-left"></i> scala 笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/20/Hadoop权威指南V3-p2/" rel="prev" title="Hadoop 权威指南 3th Edition Part 2">
+                Hadoop 权威指南 3th Edition Part 2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xu</p>
+              <p class="site-description motion-element" itemprop="description">华夏第一剑</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章"><span class="nav-number">1.</span> <span class="nav-text">第一章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二章"><span class="nav-number">2.</span> <span class="nav-text">第二章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-气象数据集"><span class="nav-number">2.1.</span> <span class="nav-text">2.1　气象数据集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-Unix-处理方式"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Unix 处理方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-hadoop处理方式"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 hadoop处理方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-横向扩展"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 横向扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-Hadoop-Streaming"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Hadoop Streaming</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
