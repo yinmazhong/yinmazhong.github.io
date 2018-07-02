@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="H2,笔记,database," />
+  <meta name="keywords" content="Hadoop," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="H2工具类：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &amp;#123;  private var server: Server = null;  priv">
-<meta name="keywords" content="H2,笔记,database">
+<meta name="description" content="第三章　Hadoop 分布式文件系统数据多了单台服务器的文件系统存不下了，就要将数据分区存储在多台服务器上，就需要分布式文件系统 3.1 HDFS设计,the design of hdfs设计目标： HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集群上  超大文件 流式数据访问 商用硬件 低延迟 大量小文件 多用户写入，任意修改文件  3.2 HDFS Concepts 概念block">
+<meta name="keywords" content="Hadoop">
 <meta property="og:type" content="article">
-<meta property="og:title" content="H2数据库笔记">
-<meta property="og:url" content="http://yoursite.com/2018/06/07/H2数据库笔记/index.html">
+<meta property="og:title" content="Hadoop 权威指南 3th Edition Part 2">
+<meta property="og:url" content="http://yoursite.com/2018/06/29/Hadoop权威指南V3-p2/index.html">
 <meta property="og:site_name" content="白帝圣剑">
-<meta property="og:description" content="H2工具类：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &amp;#123;  private var server: Server = null;  priv">
+<meta property="og:description" content="第三章　Hadoop 分布式文件系统数据多了单台服务器的文件系统存不下了，就要将数据分区存储在多台服务器上，就需要分布式文件系统 3.1 HDFS设计,the design of hdfs设计目标： HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集群上  超大文件 流式数据访问 商用硬件 低延迟 大量小文件 多用户写入，任意修改文件  3.2 HDFS Concepts 概念block">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-07T14:07:51.489Z">
+<meta property="og:image" content="http://yoursite.com/images/hadoopSystem.jpg">
+<meta property="og:updated_time" content="2018-06-29T02:44:00.482Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="H2数据库笔记">
-<meta name="twitter:description" content="H2工具类：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &amp;#123;  private var server: Server = null;  priv">
+<meta name="twitter:title" content="Hadoop 权威指南 3th Edition Part 2">
+<meta name="twitter:description" content="第三章　Hadoop 分布式文件系统数据多了单台服务器的文件系统存不下了，就要将数据分区存储在多台服务器上，就需要分布式文件系统 3.1 HDFS设计,the design of hdfs设计目标： HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集群上  超大文件 流式数据访问 商用硬件 低延迟 大量小文件 多用户写入，任意修改文件  3.2 HDFS Concepts 概念block">
+<meta name="twitter:image" content="http://yoursite.com/images/hadoopSystem.jpg">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/07/H2数据库笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/29/Hadoop权威指南V3-p2/"/>
 
 
 
 
 
-  <title>H2数据库笔记 | 白帝圣剑</title>
+  <title>Hadoop 权威指南 3th Edition Part 2 | 白帝圣剑</title>
   
 
 
@@ -263,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/07/H2数据库笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/29/Hadoop权威指南V3-p2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -280,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">H2数据库笔记</h1>
+          <h1 class="post-title" itemprop="name headline">Hadoop 权威指南 3th Edition Part 2</h1>
         
 
         <div class="post-meta">
@@ -292,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-07T22:07:52+08:00">
-                2018-06-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-29T10:44:00+08:00">
+                2018-06-29
               </time>
             
 
@@ -315,8 +317,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/database/" itemprop="url" rel="index">
-                    <span itemprop="name">database</span>
+                  <a href="/categories/大数据/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
                   </a>
                 </span>
 
@@ -357,18 +359,43 @@
       
 
       
-        <p>H2工具类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">object H2Database extends LogSupport &#123;</span><br><span class="line">  private var server: Server = null;</span><br><span class="line">  private var webServer: Server = null;</span><br><span class="line"></span><br><span class="line">  def start(): Unit = &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;, &quot;&quot;, true, true)</span><br><span class="line">    &#125; catch &#123;</span><br><span class="line">      case e: Throwable =&gt;</span><br><span class="line">    &#125;</span><br><span class="line">    try &#123;</span><br><span class="line">      server = Server.createTcpServer(&quot;-tcp&quot;, &quot;-tcpAllowOthers&quot;, &quot;-tcpPort&quot;, ProConfig.h2DatabaseTcpPort.toString).start()</span><br><span class="line">      log.info(&quot;server status: &quot; + server.getStatus)</span><br><span class="line">    &#125; catch &#123;</span><br><span class="line">      case e: Throwable =&gt; log.error(e.getMessage, e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  def startWebConsole(openBrowser: Boolean = false): Unit = &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      if (webServer == null) &#123;</span><br><span class="line">        webServer = Server.createWebServer(&quot;-web&quot;, &quot;-webAllowOthers&quot;, &quot;-webPort&quot;, ProConfig.h2DatabaseWebPort.toString).start()</span><br><span class="line">      &#125;</span><br><span class="line">      log.info(&quot;webServerStatus&quot; + webServer.getStatus)</span><br><span class="line"></span><br><span class="line">      if (openBrowser) Server.openBrowser(s&quot;http://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseWebPort&#125;&quot;)</span><br><span class="line">    &#125; catch &#123;</span><br><span class="line">      case e: Throwable =&gt; log.error(e.getMessage, e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  def stop(): Unit = &#123;</span><br><span class="line">    def shutdownServer(server: Server): Unit = &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">        server match &#123;</span><br><span class="line">          case s if s != null =&gt; s.stop()</span><br><span class="line">          case _ =&gt; log.info(&quot;H2 server did not start&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; catch &#123;</span><br><span class="line">        case e: Throwable =&gt; log.error(e.getMessage, e)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    shutdownServer(server)</span><br><span class="line">    shutdownServer(webServer)</span><br><span class="line">    try&#123;</span><br><span class="line">      Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;,&quot;&quot;,true,true)</span><br><span class="line">      log.debug(&quot;serverStatus: &quot;+server.getStatus)</span><br><span class="line">    &#125;catch &#123;</span><br><span class="line">      case e:Throwable =&gt; log.error(e.getMessage,e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">object H2Test extends App &#123;</span><br><span class="line">  H2Database.start()</span><br><span class="line">  Thread.sleep(10000)</span><br><span class="line">  H2Database.stop()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　</p>
-<h4 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h4><p>开启H2数据库后可按照JDBC 正常连接</p>
-<h5 id="CSVWRITE-导出表成为-CSV-文件"><a href="#CSVWRITE-导出表成为-CSV-文件" class="headerlink" title="CSVWRITE: 导出表成为 CSV 文件"></a>CSVWRITE: 导出表成为 CSV 文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CALL CSVWRITE(&apos;/home/xxhbak/FEATURECONF.csv&apos;, &apos;SELECT * FROM FEATURECONF&apos;);</span><br></pre></td></tr></table></figure>
-<h5 id="CSVREAD-向表导入CSV文件"><a href="#CSVREAD-向表导入CSV文件" class="headerlink" title="CSVREAD:向表导入CSV文件"></a>CSVREAD:向表导入CSV文件</h5><p>使用数据库读取CSV文件 CSVREAD使用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM CSVREAD(&apos;test.csv&apos;);</span><br></pre></td></tr></table></figure></p>
-<p>Another option is to use INSERT INTO … SELECT.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE TEST AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);</span><br><span class="line">CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255))</span><br><span class="line">    AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>Please note for performance reason, CSVREAD should not be used inside a join. Instead, import the data first (possibly into a temporary table), create the required indexes if necessary, and then query this table.</p>
-</blockquote>
-<p><a href="http://topmanopensource.iteye.com/blog/1748129" target="_blank" rel="noopener">参考</a></p>
-<p>示例，亲测</p>
-<p>CALL CSVREAD(‘/home/xd/us.csv’, ‘SELECT <em> FROM us ‘);<br>insert into us (SELECT </em> FROM CSVREAD(‘/home/xd/USERCASERESULT.csv’,NULL,’UTF-8’,’|’));</p>
+        <h3 id="第三章-Hadoop-分布式文件系统"><a href="#第三章-Hadoop-分布式文件系统" class="headerlink" title="第三章　Hadoop 分布式文件系统"></a>第三章　Hadoop 分布式文件系统</h3><p>数据多了单台服务器的文件系统存不下了，就要将数据分区存储在多台服务器上，就需要分布式文件系统</p>
+<h4 id="3-1-HDFS设计-the-design-of-hdfs"><a href="#3-1-HDFS设计-the-design-of-hdfs" class="headerlink" title="3.1 HDFS设计,the design of hdfs"></a>3.1 HDFS设计,the design of hdfs</h4><p>设计目标：</p>
+<p>HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集群上</p>
+<ul>
+<li>超大文件</li>
+<li>流式数据访问</li>
+<li>商用硬件</li>
+<li>低延迟</li>
+<li>大量小文件</li>
+<li>多用户写入，任意修改文件</li>
+</ul>
+<h4 id="3-2-HDFS-Concepts-概念"><a href="#3-2-HDFS-Concepts-概念" class="headerlink" title="3.2 HDFS Concepts 概念"></a>3.2 HDFS Concepts 概念</h4><h5 id="blocks"><a href="#blocks" class="headerlink" title="blocks"></a>blocks</h5><p>类似于磁盘的块，是最小的读写单位</p>
+<p>与单一磁盘上的文件系统类似，HDFS上的文件也被划分为多个块大小的多个分块</p>
+<p>hdfs 中小于块大小的文件不会占用整个块空间</p>
+<p>fsck指令可以显示块信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fsck / -files -blocks</span><br></pre></td></tr></table></figure>
+<h5 id="namenode-amp-datanode"><a href="#namenode-amp-datanode" class="headerlink" title="namenode &amp; datanode"></a>namenode &amp; datanode</h5><p>管理者－工作者模式</p>
+<p>一个namenode,多个datanode</p>
+<ul>
+<li><p>namenode 管理文件系统的命名空间，他维护者文件系统树及整棵树内所有的文件和目录，这些信息以两个文件的方式永久保存在本地磁盘上：命名空间镜像文件和编辑日志文件</p>
+</li>
+<li><p>每个文件中各个块所在的数据节点的信息</p>
+</li>
+</ul>
+<p>client作为代理通过于namenode和datanode交互来访问整个文件系统</p>
+<p>datanode 存储、检索文件的块，并定期向namenode发送它们所存储的块的列表</p>
+<p>namenode的容错很重要，</p>
+<ul>
+<li>备份文件</li>
+<li>辅助namenode</li>
+</ul>
+<h5 id="联邦HDFS"><a href="#联邦HDFS" class="headerlink" title="联邦HDFS"></a>联邦HDFS</h5><p>namenode横向扩展</p>
+<h5 id="HDFS高可用性"><a href="#HDFS高可用性" class="headerlink" title="HDFS高可用性"></a>HDFS高可用性</h5><p>HA</p>
+<h4 id="命令行接口"><a href="#命令行接口" class="headerlink" title="命令行接口"></a>命令行接口</h4><p>hadoop fs -help</p>
+<h4 id="hadoop文件系统"><a href="#hadoop文件系统" class="headerlink" title="hadoop文件系统"></a>hadoop文件系统</h4><p>hadoop 有一个抽象的文件系统概念，hdfs只是其中的一个实现。java抽象类org.apache.hadoop.fs.FileSystem定义了一个文件系统接口，</p>
+<p>基于该抽象类的几个具体实现：<img src="/images/hadoopSystem.jpg" alt="hadoop文件系统"></p>
+<h4 id="java接口"><a href="#java接口" class="headerlink" title="java接口"></a>java接口</h4><p>FileSystem类</p>
 
       
     </div>
@@ -386,11 +413,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/H2/" rel="tag"># H2</a>
-          
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
-          
-            <a href="/tags/database/" rel="tag"># database</a>
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
           
         </div>
       
@@ -403,8 +426,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/07/FTP笔记/" rel="next" title="FTP笔记">
-                <i class="fa fa-chevron-left"></i> FTP笔记
+              <a href="/2018/06/28/人人都是产品经理-note/" rel="next" title="人人都是产品经理--note">
+                <i class="fa fa-chevron-left"></i> 人人都是产品经理--note
               </a>
             
           </div>
@@ -412,10 +435,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/07/scalaxml/" rel="prev" title="scala操作XML">
-                scala操作XML <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -547,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#JDBC"><span class="nav-number">1.</span> <span class="nav-text">JDBC</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CSVWRITE-导出表成为-CSV-文件"><span class="nav-number">1.1.</span> <span class="nav-text">CSVWRITE: 导出表成为 CSV 文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CSVREAD-向表导入CSV文件"><span class="nav-number">1.2.</span> <span class="nav-text">CSVREAD:向表导入CSV文件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-Hadoop-分布式文件系统"><span class="nav-number">1.</span> <span class="nav-text">第三章　Hadoop 分布式文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-HDFS设计-the-design-of-hdfs"><span class="nav-number">1.1.</span> <span class="nav-text">3.1 HDFS设计,the design of hdfs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-HDFS-Concepts-概念"><span class="nav-number">1.2.</span> <span class="nav-text">3.2 HDFS Concepts 概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#blocks"><span class="nav-number">1.2.1.</span> <span class="nav-text">blocks</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#namenode-amp-datanode"><span class="nav-number">1.2.2.</span> <span class="nav-text">namenode &amp; datanode</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#联邦HDFS"><span class="nav-number">1.2.3.</span> <span class="nav-text">联邦HDFS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HDFS高可用性"><span class="nav-number">1.2.4.</span> <span class="nav-text">HDFS高可用性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令行接口"><span class="nav-number">1.3.</span> <span class="nav-text">命令行接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hadoop文件系统"><span class="nav-number">1.4.</span> <span class="nav-text">hadoop文件系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java接口"><span class="nav-number">1.5.</span> <span class="nav-text">java接口</span></a></li></ol></li></ol></div>
             
 
           </div>
