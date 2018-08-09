@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="集群,环境,大数据," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="通过虚拟机搭建集群环境  虚拟机环境安装配置 下载安装VMare，官网下载vmare安装文件安装，本次在ubuntu 上安装使用，跟windows并无太大区别，秘钥靠网友（cnblogs上有） 下载centos的iso镜像文件并安装,安装ubuntu系统一直失败报错，我怀疑还是我的办公电脑的显卡比较奇葩造成的，所以直接下载centos的minimal版本安装一切正常 配置一台matrix并clon">
+<meta name="keywords" content="集群,环境,大数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发测试集群环境搭建">
+<meta property="og:url" content="http://yoursite.com/2018/08/09/集群环境相关问题记录/index.html">
+<meta property="og:site_name" content="白帝圣剑">
+<meta property="og:description" content="通过虚拟机搭建集群环境  虚拟机环境安装配置 下载安装VMare，官网下载vmare安装文件安装，本次在ubuntu 上安装使用，跟windows并无太大区别，秘钥靠网友（cnblogs上有） 下载centos的iso镜像文件并安装,安装ubuntu系统一直失败报错，我怀疑还是我的办公电脑的显卡比较奇葩造成的，所以直接下载centos的minimal版本安装一切正常 配置一台matrix并clon">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-09T10:08:55.862Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="开发测试集群环境搭建">
+<meta name="twitter:description" content="通过虚拟机搭建集群环境  虚拟机环境安装配置 下载安装VMare，官网下载vmare安装文件安装，本次在ubuntu 上安装使用，跟windows并无太大区别，秘钥靠网友（cnblogs上有） 下载centos的iso镜像文件并安装,安装ubuntu系统一直失败报错，我怀疑还是我的办公电脑的显卡比较奇葩造成的，所以直接下载centos的minimal版本安装一切正常 配置一台matrix并clon">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/09/集群环境相关问题记录/"/>
+
+
+
+
+
+  <title>开发测试集群环境搭建 | 白帝圣剑</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">白帝圣剑</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">御剑跟着我</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/集群环境相关问题记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白帝圣剑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">开发测试集群环境搭建</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T18:08:56+08:00">
+                2018-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据存储处理-环境/" itemprop="url" rel="index">
+                    <span itemprop="name">数据存储处理 - 环境</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>通过虚拟机搭建集群环境</p>
+<hr>
+<h4 id="虚拟机环境安装配置"><a href="#虚拟机环境安装配置" class="headerlink" title="虚拟机环境安装配置"></a>虚拟机环境安装配置</h4><ul>
+<li>下载安装VMare，官网下载vmare安装文件安装，本次在ubuntu 上安装使用，跟windows并无太大区别，秘钥靠网友（cnblogs上有）</li>
+<li>下载centos的iso镜像文件并安装,安装ubuntu系统一直失败报错，我怀疑还是我的办公电脑的显卡比较奇葩造成的，所以直接下载centos的minimal版本安装一切正常</li>
+<li>配置一台matrix并clone,安装好一台后，<a href="http://www.jianshu.com/p/848b06dd19aa" target="_blank" rel="noopener">安装java</a>,clone</li>
+<li><a href="http://www.jianshu.com/p/39d7000dfa47" target="_blank" rel="noopener">修改hostname</a>,/etc/hosts文件</li>
+<li><a href="http://www.cnblogs.com/freeweb/p/5145921.html" target="_blank" rel="noopener">集群服务器间免密</a><br> 搞了将近两天，<br> 最后发现原因是<br> 我给私钥的权限太大，造成验证不通过<br> （我给的777，应该是700）</li>
+</ul>
+<hr>
+<hr>
+<h4 id="zookeeper安装"><a href="#zookeeper安装" class="headerlink" title="zookeeper安装"></a>zookeeper安装</h4><p>Zookeeper 作为一个分布式的服务框架，主要用来解决分布式集群中应用系统的一致性问题，它能提供基于类似于文件系统的目录节点树方式的数据存储，但是 Zookeeper 并不是用来专门存储数据的，它的作用主要是用来维护和监控你存储的数据的状态变化。通过监控这些数据状态的变化，从而可以达到基于数据的集群管理，后面将会详细介绍 Zookeeper 能够解决的一些典型问题，这里先介绍一下，Zookeeper 的操作接口和简单使用示例。</p>
+<ul>
+<li>根据官网的指引下载zookeeper安装包，解压</li>
+<li>在集群各个机器上新建dataDir目录，并在其中新建文件myid，文件中只有一个字–id，如1</li>
+<li>cp conf目录下zoo_sample.cfg文件为zoo.cfg，并修改,zookeeper默认从这里读取配置文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"> # The number of milliseconds of each tick</span><br><span class="line">tickTime=2000</span><br><span class="line"># The number of ticks that the initial</span><br><span class="line"># synchronization phase can take</span><br><span class="line">initLimit=10</span><br><span class="line"># The number of ticks that can pass between</span><br><span class="line"># sending a request and getting an acknowledgement</span><br><span class="line">syncLimit=5</span><br><span class="line"># the directory where the snapshot is stored.</span><br><span class="line"># do not use /tmp for storage, /tmp here is just</span><br><span class="line"># example sakes.</span><br><span class="line">dataDir=/root/data/zookeeper</span><br><span class="line"># the port at which the clients will connect</span><br><span class="line">clientPort=2181</span><br><span class="line"># the maximum number of client connections.</span><br><span class="line"># increase this if you need to handle more clients</span><br><span class="line">#maxClientCnxns=60</span><br><span class="line">#</span><br><span class="line"># Be sure to read the maintenance section of the</span><br><span class="line"># administrator guide before turning on autopurge.</span><br><span class="line">#</span><br><span class="line"># http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance</span><br><span class="line">#</span><br><span class="line"># The number of snapshots to retain in dataDir</span><br><span class="line">#autopurge.snapRetainCount=3</span><br><span class="line"># Purge task interval in hours</span><br><span class="line"># Set to &quot;0&quot; to disable auto purge feature</span><br><span class="line">#autopurge.purgeInterval=1</span><br><span class="line">#logDir</span><br><span class="line">dataLogDir=/root/logs/zookeeper</span><br><span class="line">server.1=0.0.0.0:2888:3888</span><br><span class="line">server.2=ake:2888:3888</span><br><span class="line">server.3=angela:2888:3888</span><br><span class="line">server.4=houyi:2888:3888</span><br><span class="line">server.5=houzi:2888:3888</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其中dataDir为zookeeper存放数据的目录，<br>最后的集群配置：server.id=ip/hostname:该服务器跟leader服务器交换数据的端口:leader服务器挂掉重新选举leader的端口</p>
+<ul>
+<li>将在一台机器上配置好的zookeeper，连同配置文件分发到集群的各台机器上，注意配置文件中当前机器的ip/hostname要改成0.0.0.0,不然选举leader时会有异常ref<a href="https://stackoverflow.com/questions/30940981/zookeeper-error-cannot-open-channel-to-x-at-election-address" target="_blank" rel="noopener">stackoverflow</a></li>
+<li><p>各台服务器中的zookeeper的目录最好一致，在配置文件限定的时间内同时执行zkServer.sh脚本启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> /root/zookeeper/zookeeper-3.4.10/bin/zkServer.sh start</span><br><span class="line">vim /root/zookeeper/zookeeper-3.4.10/conf/zoo.cfg</span><br><span class="line">#停止服务</span><br><span class="line">/root/zookeeper/zookeeper-3.4.10/bin/zkServer.sh stop</span><br><span class="line">＃查看服务状态</span><br><span class="line">/root/zookeeper/zookeeper-3.4.10/bin/zkServer.sh status</span><br></pre></td></tr></table></figure>
+<p>默认启动脚本的目录下会生成zookeeper.out文件，日志都记录在这个文件中</p>
+<p>正常的status长这个样子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> ZooKeeper JMX enabled by default</span><br><span class="line">Using config: /root/zookeeper/zookeeper-3.4.10/bin/../conf/zoo.cfg</span><br><span class="line">Mode: follower</span><br></pre></td></tr></table></figure>
+<h5 id="ref"><a href="#ref" class="headerlink" title="ref:"></a>ref:</h5></li>
+<li><a href="https://www.ibm.com/developerworks/cn/opensource/os-cn-zookeeper/" target="_blank" rel="noopener">IBM</a></li>
+<li><a href="http://blog.csdn.net/little_prog/article/details/60956440" target="_blank" rel="noopener">CentOS 7 虚拟机搭建zookeeper集群</a></li>
+<li><a href="https://www.gitbook.com/book/holynull/zookeeper/details" target="_blank" rel="noopener">ZooKeeper深入浅出</a></li>
+</ul>
+<hr>
+<hr>
+<h4 id="KAFKA集群安装"><a href="#KAFKA集群安装" class="headerlink" title="KAFKA集群安装"></a>KAFKA集群安装</h4><ul>
+<li>kafka官网下载安装包</li>
+<li>解压，并修改配置文件中zookeeper.connect hostname等</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line"># Licensed to the Apache Software Foundation (ASF) under one or more</span><br><span class="line"># contributor license agreements.  See the NOTICE file distributed with</span><br><span class="line"># this work for additional information regarding copyright ownership.</span><br><span class="line"># The ASF licenses this file to You under the Apache License, Version 2.0</span><br><span class="line"># (the &quot;License&quot;); you may not use this file except in compliance with</span><br><span class="line"># the License.  You may obtain a copy of the License at</span><br><span class="line">#</span><br><span class="line">#    http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line">#</span><br><span class="line"># Unless required by applicable law or agreed to in writing, software</span><br><span class="line"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line"># See the License for the specific language governing permissions and</span><br><span class="line"># limitations under the License.</span><br><span class="line"></span><br><span class="line"># see kafka.server.KafkaConfig for additional details and defaults</span><br><span class="line"></span><br><span class="line">############################# Server Basics #############################</span><br><span class="line"></span><br><span class="line"># The id of the broker. This must be set to a unique integer for each broker.</span><br><span class="line">broker.id=3</span><br><span class="line"></span><br><span class="line"># Switch to enable topic deletion or not, default value is false</span><br><span class="line">#delete.topic.enable=true</span><br><span class="line"></span><br><span class="line">############################# Socket Server Settings #############################</span><br><span class="line"></span><br><span class="line"># The address the socket server listens on. It will get the value returned from</span><br><span class="line"># java.net.InetAddress.getCanonicalHostName() if not configured.</span><br><span class="line">#   FORMAT:</span><br><span class="line">#     listeners = listener_name://host_name:port</span><br><span class="line">#   EXAMPLE:</span><br><span class="line">#     listeners = PLAINTEXT://your.host.name:9092</span><br><span class="line">listeners=PLAINTEXT://houyi:9092</span><br><span class="line"></span><br><span class="line">hostname=houyi</span><br><span class="line"></span><br><span class="line">port=9092</span><br><span class="line"># Hostname and port the broker will advertise to producers and consumers. If not set,</span><br><span class="line"># it uses the value for &quot;listeners&quot; if configured.  Otherwise, it will use the value</span><br><span class="line"># returned from java.net.InetAddress.getCanonicalHostName().</span><br><span class="line">#advertised.listeners=PLAINTEXT://your.host.name:9092</span><br><span class="line"></span><br><span class="line"># Maps listener names to security protocols, the default is for them to be the same. See the config documentation for more details</span><br><span class="line">#listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL</span><br><span class="line"></span><br><span class="line"># The number of threads that the server uses for receiving requests from the network and sending responses to the network</span><br><span class="line">num.network.threads=3</span><br><span class="line"></span><br><span class="line"># The number of threads that the server uses for processing requests, which may include disk I/O</span><br><span class="line">num.io.threads=8</span><br><span class="line"></span><br><span class="line"># The send buffer (SO_SNDBUF) used by the socket server</span><br><span class="line">socket.send.buffer.bytes=102400</span><br><span class="line"></span><br><span class="line"># The receive buffer (SO_RCVBUF) used by the socket server</span><br><span class="line">socket.receive.buffer.bytes=102400</span><br><span class="line"></span><br><span class="line"># The maximum size of a request that the socket server will accept (protection against OOM)</span><br><span class="line">socket.request.max.bytes=104857600</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">############################# Log Basics #############################</span><br><span class="line"></span><br><span class="line"># A comma seperated list of directories under which to store log files</span><br><span class="line">log.dirs=/tmp/kafka-logs</span><br><span class="line"></span><br><span class="line"># The default number of log partitions per topic. More partitions allow greater</span><br><span class="line"># parallelism for consumption, but this will also result in more files across</span><br><span class="line"># the brokers.</span><br><span class="line">num.partitions=1</span><br><span class="line"></span><br><span class="line"># The number of threads per data directory to be used for log recovery at startup and flushing at shutdown.</span><br><span class="line"># This value is recommended to be increased for installations with data dirs located in RAID array.</span><br><span class="line">num.recovery.threads.per.data.dir=1</span><br><span class="line"></span><br><span class="line">############################# Internal Topic Settings  #############################</span><br><span class="line"># The replication factor for the group metadata internal topics &quot;__consumer_offsets&quot; and &quot;__transaction_state&quot;</span><br><span class="line"># For anything other than development testing, a value greater than 1 is recommended for to ensure availability such as 3.</span><br><span class="line">offsets.topic.replication.factor=1</span><br><span class="line">transaction.state.log.replication.factor=1</span><br><span class="line">transaction.state.log.min.isr=1</span><br><span class="line"></span><br><span class="line">############################# Log Flush Policy #############################</span><br><span class="line"></span><br><span class="line"># Messages are immediately written to the filesystem but by default we only fsync() to sync</span><br><span class="line"># the OS cache lazily. The following configurations control the flush of data to disk.</span><br><span class="line"># There are a few important trade-offs here:</span><br><span class="line">#    1. Durability: Unflushed data may be lost if you are not using replication.</span><br><span class="line">#    2. Latency: Very large flush intervals may lead to latency spikes when the flush does occur as there will be a lot of data to flush.</span><br><span class="line">#    3. Throughput: The flush is generally the most expensive operation, and a small flush interval may lead to exceessive seeks.</span><br><span class="line"># The settings below allow one to configure the flush policy to flush data after a period of time or</span><br><span class="line"># every N messages (or both). This can be done globally and overridden on a per-topic basis.</span><br><span class="line"></span><br><span class="line"># The number of messages to accept before forcing a flush of data to disk</span><br><span class="line">#log.flush.interval.messages=10000</span><br><span class="line"></span><br><span class="line"># The maximum amount of time a message can sit in a log before we force a flush</span><br><span class="line">#log.flush.interval.ms=1000</span><br><span class="line"></span><br><span class="line">############################# Log Retention Policy #############################</span><br><span class="line"></span><br><span class="line"># The following configurations control the disposal of log segments. The policy can</span><br><span class="line"># be set to delete segments after a period of time, or after a given size has accumulated.</span><br><span class="line"># A segment will be deleted whenever *either* of these criteria are met. Deletion always happens</span><br><span class="line"># from the end of the log.</span><br><span class="line"></span><br><span class="line"># The minimum age of a log file to be eligible for deletion due to age</span><br><span class="line">log.retention.hours=168</span><br><span class="line"></span><br><span class="line"># A size-based retention policy for logs. Segments are pruned from the log as long as the remaining</span><br><span class="line"># segments don&apos;t drop below log.retention.bytes. Functions independently of log.retention.hours.</span><br><span class="line">#log.retention.bytes=1073741824</span><br><span class="line"></span><br><span class="line"># The maximum size of a log segment file. When this size is reached a new log segment will be created.</span><br><span class="line">log.segment.bytes=1073741824</span><br><span class="line"></span><br><span class="line"># The interval at which log segments are checked to see if they can be deleted according</span><br><span class="line"># to the retention policies</span><br><span class="line">log.retention.check.interval.ms=300000</span><br><span class="line"></span><br><span class="line">############################# Zookeeper #############################</span><br><span class="line"></span><br><span class="line"># Zookeeper connection string (see zookeeper docs for details).</span><br><span class="line"># This is a comma separated host:port pairs, each corresponding to a zk</span><br><span class="line"># server. e.g. &quot;127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002&quot;.</span><br><span class="line"># You can also append an optional chroot string to the urls to specify the</span><br><span class="line"># root directory for all kafka znodes.</span><br><span class="line">zookeeper.connect=yase:2181,ake:2181,angela:2181,houyi:2181,houzi:2181</span><br><span class="line"></span><br><span class="line"># Timeout in ms for connecting to zookeeper</span><br><span class="line">zookeeper.connection.timeout.ms=6000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">############################# Group Coordinator Settings #############################</span><br><span class="line"></span><br><span class="line"># The following configuration specifies the time, in milliseconds, that the GroupCoordinator will delay the initial consumer rebalance.</span><br><span class="line"># The rebalance will be further delayed by the value of group.initial.rebalance.delay.ms as new members join the group, up to a maximum of max.poll.interval.ms.</span><br><span class="line"># The default value for this is 3 seconds.</span><br><span class="line"># We override this to 0 here as it makes for a better out-of-the-box experience for development and testing.</span><br><span class="line"># However, in production environments the default value of 3 seconds is more suitable as this will help to avoid unnecessary, and potentially expensive, rebalances during application startup.</span><br><span class="line">group.initial.rebalance.delay.ms=0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将解压后的文件分发到集群中的各个机器中，并修改相应的brokerid,保证brokerid唯一</li>
+<li>分别在集群的各台机器上执行启动脚本，并测试kafka的可用性</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-server-start.sh config/server.properties &amp;</span><br><span class="line">bin/kafka-topics.sh --create --zookeeper yase:2181,ake:2181,angela:2181,houyi:2181,houzi:2181 --replication-factor 3 --partitions 3 --topic topicTest</span><br><span class="line">bin/kafka-topics.sh --list --zookeeper yase:2181,ake:2181,angela:2181,houyi:2181,houzi:2181</span><br><span class="line">bin/kafka-console-producer.sh --broker-list yase:9092,ake:9092,angela:9092,houyi:9092,houzi:9092 --topic topicTest</span><br><span class="line">bin/kafka-console-consumer.sh --zookeeper yase:2181,ake:2181,angela:2181,houyi:2181,houzi:2181 --topic topicTest --from-beginning</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h4 id="hadoop-安装"><a href="#hadoop-安装" class="headerlink" title="hadoop 安装"></a>hadoop 安装</h4><ul>
+<li>官网下载binary文件，这里选择了比较稳定的2.7版本</li>
+<li>解压缩，配置slaves core-site.xml hdfs-site.xml 等配置文件</li>
+<li>将解压后的整个文件分发到集群的各个节点，路径于yase，也就是master节点保持一致，在yase上执行启动脚本时会按照slaves中的配置，分别远程启动slave的datanode</li>
+<li>需要注意的是core-site.xml中的临时文件目录设置时，不要加file:// ,不然格式化时会出错</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;/root/hdpspk/hadoop/tmp&lt;/value&gt;</span><br><span class="line">        &lt;description&gt;Abase for other temporary directories.&lt;/description&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;hdfs://yase:9000&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin/hdfs namenode -format</span><br><span class="line">sbin/start-all.sh</span><br></pre></td></tr></table></figure>
+<p><a href="http://nekomiao.me/2016/11/30/hadoop-install-distributed/" target="_blank" rel="noopener">ref:hadoop2.7安装</a></p>
+<hr>
+<hr>
+<h4 id="spark安装"><a href="#spark安装" class="headerlink" title="spark安装"></a>spark安装</h4><ul>
+<li>照旧，下载解压，配置，分发，master节点脚本开启服务</li>
+</ul>
+<p><a href="http://nekomiao.me/2016/12/05/spark-install-distributed/" target="_blank" rel="noopener">ref:spark22安装</a></p>
+<hr>
+<hr>
+<p>使用Amazon　EC2,ssh 连接总是会自己断开，很讨厌<br>解决办法:</p>
+<p>使用客户端工具，例如securecrt连接linux服务器，有的会出现过一段时间没有任何操作，客户端与服务器就断开了连接。造成这个的原因，主要是因为客户端与服务器之间存在路由器，防火墙以及为了本身的安全性，在超过特定的时间后就会把空闲连接断开。或者是服务器端设置了断开空闲连接。那么解决的方法有两种，一是从服务器着手，一是在客户端工具上下手。</p>
+<p>服务器端</p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/集群/" rel="tag"># 集群</a>
+          
+            <a href="/tags/环境/" rel="tag"># 环境</a>
+          
+            <a href="/tags/大数据/" rel="tag"># 大数据</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/09/说的好/" rel="next" title="说的好">
+                <i class="fa fa-chevron-left"></i> 说的好
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/09/鸡汤每天了解一下/" rel="prev" title="鸡汤每天了解一下">
+                鸡汤每天了解一下 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xu</p>
+              <p class="site-description motion-element" itemprop="description">华夏第一剑</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟机环境安装配置"><span class="nav-number">1.</span> <span class="nav-text">虚拟机环境安装配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zookeeper安装"><span class="nav-number">2.</span> <span class="nav-text">zookeeper安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ref"><span class="nav-number">2.1.</span> <span class="nav-text">ref:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KAFKA集群安装"><span class="nav-number">3.</span> <span class="nav-text">KAFKA集群安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hadoop-安装"><span class="nav-number">4.</span> <span class="nav-text">hadoop 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark安装"><span class="nav-number">5.</span> <span class="nav-text">spark安装</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

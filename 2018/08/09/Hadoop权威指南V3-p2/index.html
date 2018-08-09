@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hadoop," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第三章　Hadoop 分布式文件系统数据多了单台服务器的文件系统存不下了，就要将数据分区存储在多台服务器上，就需要分布式文件系统 3.1 HDFS设计,the design of hdfs设计目标： HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集群上  超大文件 流式数据访问 商用硬件 低延迟 大量小文件 多用户写入，任意修改文件  3.2 HDFS Concepts 概念block">
+<meta name="keywords" content="Hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop 权威指南 3th Edition Part 2">
+<meta property="og:url" content="http://yoursite.com/2018/08/09/Hadoop权威指南V3-p2/index.html">
+<meta property="og:site_name" content="白帝圣剑">
+<meta property="og:description" content="第三章　Hadoop 分布式文件系统数据多了单台服务器的文件系统存不下了，就要将数据分区存储在多台服务器上，就需要分布式文件系统 3.1 HDFS设计,the design of hdfs设计目标： HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集群上  超大文件 流式数据访问 商用硬件 低延迟 大量小文件 多用户写入，任意修改文件  3.2 HDFS Concepts 概念block">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/hadoopSystem.jpg">
+<meta property="og:updated_time" content="2018-08-09T09:34:42.683Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hadoop 权威指南 3th Edition Part 2">
+<meta name="twitter:description" content="第三章　Hadoop 分布式文件系统数据多了单台服务器的文件系统存不下了，就要将数据分区存储在多台服务器上，就需要分布式文件系统 3.1 HDFS设计,the design of hdfs设计目标： HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集群上  超大文件 流式数据访问 商用硬件 低延迟 大量小文件 多用户写入，任意修改文件  3.2 HDFS Concepts 概念block">
+<meta name="twitter:image" content="http://yoursite.com/images/hadoopSystem.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/09/Hadoop权威指南V3-p2/"/>
+
+
+
+
+
+  <title>Hadoop 权威指南 3th Edition Part 2 | 白帝圣剑</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">白帝圣剑</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">御剑跟着我</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/Hadoop权威指南V3-p2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白帝圣剑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hadoop 权威指南 3th Edition Part 2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T17:34:43+08:00">
+                2018-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据存储处理-hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">数据存储处理 - hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第三章-Hadoop-分布式文件系统"><a href="#第三章-Hadoop-分布式文件系统" class="headerlink" title="第三章　Hadoop 分布式文件系统"></a>第三章　Hadoop 分布式文件系统</h3><p>数据多了单台服务器的文件系统存不下了，就要将数据分区存储在多台服务器上，就需要分布式文件系统</p>
+<h4 id="3-1-HDFS设计-the-design-of-hdfs"><a href="#3-1-HDFS设计-the-design-of-hdfs" class="headerlink" title="3.1 HDFS设计,the design of hdfs"></a>3.1 HDFS设计,the design of hdfs</h4><p>设计目标：</p>
+<p>HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集群上</p>
+<ul>
+<li>超大文件</li>
+<li>流式数据访问</li>
+<li>商用硬件</li>
+<li>低延迟</li>
+<li>大量小文件</li>
+<li>多用户写入，任意修改文件</li>
+</ul>
+<h4 id="3-2-HDFS-Concepts-概念"><a href="#3-2-HDFS-Concepts-概念" class="headerlink" title="3.2 HDFS Concepts 概念"></a>3.2 HDFS Concepts 概念</h4><h5 id="blocks"><a href="#blocks" class="headerlink" title="blocks"></a>blocks</h5><p>类似于磁盘的块，是最小的读写单位</p>
+<p>与单一磁盘上的文件系统类似，HDFS上的文件也被划分为多个块大小的多个分块</p>
+<p>hdfs 中小于块大小的文件不会占用整个块空间</p>
+<p>fsck指令可以显示块信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fsck / -files -blocks</span><br></pre></td></tr></table></figure>
+<h5 id="namenode-amp-datanode"><a href="#namenode-amp-datanode" class="headerlink" title="namenode &amp; datanode"></a>namenode &amp; datanode</h5><p>管理者－工作者模式</p>
+<p>一个namenode,多个datanode</p>
+<ul>
+<li><p>namenode 管理文件系统的命名空间，他维护者文件系统树及整棵树内所有的文件和目录，这些信息以两个文件的方式永久保存在本地磁盘上：命名空间镜像文件和编辑日志文件</p>
+</li>
+<li><p>每个文件中各个块所在的数据节点的信息</p>
+</li>
+</ul>
+<p>client作为代理通过于namenode和datanode交互来访问整个文件系统</p>
+<p>datanode 存储、检索文件的块，并定期向namenode发送它们所存储的块的列表</p>
+<p>namenode的容错很重要，</p>
+<ul>
+<li>备份文件</li>
+<li>辅助namenode</li>
+</ul>
+<h5 id="联邦HDFS"><a href="#联邦HDFS" class="headerlink" title="联邦HDFS"></a>联邦HDFS</h5><p>namenode横向扩展</p>
+<h5 id="HDFS高可用性"><a href="#HDFS高可用性" class="headerlink" title="HDFS高可用性"></a>HDFS高可用性</h5><p>HA</p>
+<h4 id="命令行接口"><a href="#命令行接口" class="headerlink" title="命令行接口"></a>命令行接口</h4><p>hadoop fs -help</p>
+<h4 id="hadoop文件系统"><a href="#hadoop文件系统" class="headerlink" title="hadoop文件系统"></a>hadoop文件系统</h4><p>hadoop 有一个抽象的文件系统概念，hdfs只是其中的一个实现。java抽象类org.apache.hadoop.fs.FileSystem定义了一个文件系统接口，</p>
+<p>基于该抽象类的几个具体实现：<img src="/images/hadoopSystem.jpg" alt="hadoop文件系统"></p>
+<h4 id="java接口"><a href="#java接口" class="headerlink" title="java接口"></a>java接口</h4><p>FileSystem类</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/09/H2数据库笔记/" rel="next" title="H2数据库笔记">
+                <i class="fa fa-chevron-left"></i> H2数据库笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/09/Hbase使用/" rel="prev" title="Hbase使用">
+                Hbase使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xu</p>
+              <p class="site-description motion-element" itemprop="description">华夏第一剑</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-Hadoop-分布式文件系统"><span class="nav-number">1.</span> <span class="nav-text">第三章　Hadoop 分布式文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-HDFS设计-the-design-of-hdfs"><span class="nav-number">1.1.</span> <span class="nav-text">3.1 HDFS设计,the design of hdfs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-HDFS-Concepts-概念"><span class="nav-number">1.2.</span> <span class="nav-text">3.2 HDFS Concepts 概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#blocks"><span class="nav-number">1.2.1.</span> <span class="nav-text">blocks</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#namenode-amp-datanode"><span class="nav-number">1.2.2.</span> <span class="nav-text">namenode &amp; datanode</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#联邦HDFS"><span class="nav-number">1.2.3.</span> <span class="nav-text">联邦HDFS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HDFS高可用性"><span class="nav-number">1.2.4.</span> <span class="nav-text">HDFS高可用性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令行接口"><span class="nav-number">1.3.</span> <span class="nav-text">命令行接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hadoop文件系统"><span class="nav-number">1.4.</span> <span class="nav-text">hadoop文件系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java接口"><span class="nav-number">1.5.</span> <span class="nav-text">java接口</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
