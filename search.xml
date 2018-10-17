@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[kafka笔记]]></title>
+    <url>%2F2018%2F10%2F17%2Fkafka%2F</url>
+    <content type="text"><![CDATA[introduction三个主要能力 publist and subscribe 类似于管道 容错的存储数据 即时处理数据处理 两大应用场景： 构建可靠的应用与系统间Streaming data 管道 构建Streaming 程序来传输或react数据流 Kafka is generally used for two broad classes of applications: Building real-time streaming data pipelines that reliably get data between systems or applications Building real-time streaming applications that transform or react to the streams of data First a few concepts: Kafka is run as a cluster on one or more servers that can span multiple datacenters. The Kafka cluster stores streams of records in categories called topics. Each record consists of a key, a value, and a timestamp. 四个主要API producer api cunsumer api streams api connector api kafka源码 git clone gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 阶段性可执行后，结果为BUILG FAILD 搜索后有人表示：有多个scala 版本，导致这样的错误 尝试执行 1./gradlew -PscalaVersion=2.11.11 clean core:test 依然build failed 这次是1Could not find org.jacoco.agent.jar 《Apache Kafka 源码剖析》上说的源码编译步骤不好使，转参考下面的方法Getting started with contributing to Apache Kafka (Part 1): Build and run Kafka from source code棒棒哒]]></content>
+      <categories>
+        <category>kafka</category>
+      </categories>
+      <tags>
+        <tag>kafka</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[build-tool]]></title>
+    <url>%2F2018%2F10%2F16%2Fbuild-tool%2F</url>
+    <content type="text"><![CDATA[构建工具总结对比： 旧时代的Java世界，构建工具等同于两个词Ant和Maven Ant源自Make，同JUnit一样，它也是一个航班产物（参见《Ant权威指南》序）。不过，Make的基础注定了它的起点不高，所有一切都要手工打造。我还依稀记得曾几何时，每每开始一个项目都要重新复制一份Ant脚本，修修改改。Maven给了人们新的希望，目录结构的约定、依赖管理、IDE集成，那时看来，几近完美。是的，几近，还差了那么一点点。就是那么一点点，却是致命伤。 只要一个项目进行一段时间，一个必然遇到的问题就是，编写新的自动化脚本。因为每个项目都有自己的特定需求，标准做法必然是无法满足的。扩展Maven对任何新手都是一件头疼的事，我们要学会编写插件，要搞清楚生命周期，这时，突然会唤起一丝丝对于ANT的怀念，虽然它做简单事不容易，但做复杂事却也没这么困难。 如果那些日子，我们不得不忍受Ant和Maven的不完美，那现在，是时候抛弃它们了。 新时代Java构建有两个很好的候选：Gradle和Buildr。 在我看来，它们真正比Maven更强大的地方，编写自己的任务更加容易。更值得兴奋的一点是，我们终于可以抛弃冗长的XML，选择一种更优雅的程序设计语言来写代码了，这几乎意味着你可以做到想做的一切。 Buildr是Apache出品的构建工具，它以Ruby作为构建脚本。《软件开发地基》讨论软件项目应该具备一些基础构建项，就是以Buildr为基础的。有兴趣的话，可以参考一下。这里就不再赘述。顺便说一下，那篇文章里的内容，除了某些写法现在需要做一些微调，大部分内容依然是适用于大多数Java项目。 Gradle现在是整个Java社区的构建新宠，它采用Groovy作为自己的构建语言。如果你知道，Groovy是一门诞生自JVM平台的语言，这就决定了它要比其它移植到JVM上的语言能更好的适应JVM平台，它可以采用更符合Java世界的方式无缝地整合Java既有的程序库，而不必像移植语言那样削足适履。 初涉Gradle，最让人吃惊的一点莫过于它详尽的文档，涵盖了Gradle使用的方方面面，这是许多开源软件项目无法媲美，即便早在它的1.0版本尚未发布之时。当然，能做到这一点是因为它背后有一个公司在支撑：GradleWare，这意味着如果你需要商业支持，也是可以的。 Gradle 1.0尚未发布之，它就捧回2010年的Spring大奖和入围了2011年的JAX大奖。如果你还需要更多的信心，作为Java开发人员，你不可能不知道Spring，那Spring转投Gradle怀抱，应该是对Gradle最有利的支持了。 说了这么多，程序员最喜欢看到的东西还是代码。 首先，请自行下载安装Gradle，然后，按照常见的Java项目布局把代码准备好（感谢Maven为我们给予我们约定），比如： src/main/java，源代码文件目录src/main/resources，资源文件目录src/test/java，测试代码目录下面是一个简单的Gradle构建脚本，将其存放于build.gradle apply plugin: ‘java’ repositories { mavenCentral()} dependencies { compile( ‘com.google.guava:guava:13.0.1’, ‘joda-time:joda-time:2.1’ ) testCompile( ‘junit:junit:4.10’, ‘org.mockito:mockito-all:1.9.0’ )}（build.gradle） 接下来的事情就很简单了，在命令行里键入 gradle build 如果一切正常，我们应该会看到构建成功的字样，然后，到build/lib，你就看到自己构建出来的JAR文件了。当然，这只是一个简单得不能再简单的例子，如果需要了解更多，Gradle那详尽的文档便是最好的去处。 著作权归作者所有，转载需联系作者以获得授权，引用需注明出处。作者ID:s8达克斯链接:https://www.applysquare.com/topic-cn/SlxE26k3q/ gradlegradle install开发主机使用ubuntu16,按照官网文档上的manually方法安装，测试可用 kafka源码编译的时候执行 1gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 sbtmaven]]></content>
+      <categories>
+        <category>build tool</category>
+      </categories>
+      <tags>
+        <tag>build tool</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[炸鸡]]></title>
+    <url>%2F2018%2F10%2F16%2Fa%2F</url>
+    <content type="text"><![CDATA[ToDo 日志对象单例对象 脚数据和楦数据都是通过json加载的，初步看，9成都是无用的key数据，剂需优化 这些单独的服务做成微服务 setting up JVM 工厂方法 2018年 10月 08日 星期一 传统来说，主板上两个主要芯片，靠上方的叫北桥，靠下方的叫南桥。 大体上说：北桥负责与CPU通信，并且连接高速设备（内存/显卡），并且与南桥通信；南桥负责与低速设备（硬盘/USB）通信，时钟/BIOS/系统管理/旧式设备控制，并且与北桥通信。 2018年 10月 09日 星期二 09:40:08 CST 计算机硬件架构的发展 计算机科学领域的任何问题，都可以通过增加一个间接的中间层来解决 操作系统在任务调度上，经历了多道程序、分时系统与多任务系统等阶段 2018年 10月 10日 星期三 14:01:51 CST 2018年 10月 16日 星期二 14:54:35 CSTgradle]]></content>
+      <categories>
+        <category>ToDoList</category>
+      </categories>
+      <tags>
+        <tag>ToDoList</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[并发-java 编程思想]]></title>
     <url>%2F2018%2F10%2F11%2F%E5%B9%B6%E5%8F%91-java%2F</url>
     <content type="text"><![CDATA[并发并发介绍，想要真正编写一些复杂的程序钱，应该学一些专门介绍并发的书籍 并发的多面性使用并发时需要解决的问题有多个，而实现并发的方式也有多种，并且两者之间没有明显的映射关系 并发解决的问题大体上可以分为速度和设计可管理性两种 更快的执行并发通常是提高运行在单处理器上的程序性能直觉上思考在单核心上顺序运行程序应该是最高效的，因为没有上下文切换的代价 但是世界上有讨厌的 阻塞 单处理器系统中性能提高的常见实例就是事件驱动编程 操作进程进程是运行在它自己的地址空间内的自包容的程序 而java所使用的并发系统会共享诸如内存和IO这样的资源,java操作的是代码代表的进程生成的一系列线程 java 可能并没有函数式编程语言适合并发 改进代码设计基本的线程机制并发编程将程序划分为多个分离的独立运行的任务，通过多线程机制，这些独立任务中的每一个都将由执行线程来驱动。线程的调度由操作系统负责 代码 定义任务通过Runnable接口定义任务 Thread class将Runnable对象转变为工作按任务的传统方式是把它提交给一个Thread构造器 executor非常常见的情况是，单个Executor被用来穿件和管理系统所有的任务 在任何线程池中，现有线程在可能的情况下，都会被自动复用 从任务中产生返回值使用Callable接口，而不是Runnable,Callable接口返回一个泛型的Future,可以使用get()方法等待结果返回 休眠sleep 优先级优先调度优先级比较高的线程 书上的例子在我的电脑上不好使 让步如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程带哦度机制一个暗示：我的工作已经做得差不多了，可以让别的线程使用CPU了 这个暗示就是使用yield()方法来作出 不能依赖yield,实际上，yield经常被滥用 后台线程所谓后台(daemon)线程,是指在程序运行的时候在后台提供的一种通用服务的线程， 这种线程并不属于程序中不可或缺的部分后台线程退出时，会杀死进程中所有与的后台线程。]]></content>
@@ -20,17 +53,6 @@
       </categories>
       <tags>
         <tag>程序员的自我修养</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[炸鸡]]></title>
-    <url>%2F2018%2F10%2F10%2Fa%2F</url>
-    <content type="text"><![CDATA[ToDo 日志对象单例对象 脚数据和楦数据都是通过json加载的，初步看，9成都是无用的key数据，剂需优化 这些单独的服务做成微服务 setting up JVM 工厂方法 2018年 10月 08日 星期一 传统来说，主板上两个主要芯片，靠上方的叫北桥，靠下方的叫南桥。 大体上说：北桥负责与CPU通信，并且连接高速设备（内存/显卡），并且与南桥通信；南桥负责与低速设备（硬盘/USB）通信，时钟/BIOS/系统管理/旧式设备控制，并且与北桥通信。 2018年 10月 09日 星期二 09:40:08 CST 计算机硬件架构的发展 计算机科学领域的任何问题，都可以通过增加一个间接的中间层来解决 操作系统在任务调度上，经历了多道程序、分时系统与多任务系统等阶段 2018年 10月 10日 星期三 14:01:51 CST]]></content>
-      <categories>
-        <category>ToDoList</category>
-      </categories>
-      <tags>
-        <tag>ToDoList</tag>
       </tags>
   </entry>
   <entry>
@@ -65,17 +87,6 @@
       <tags>
         <tag>团队</tag>
         <tag>管理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[kafka笔记]]></title>
-    <url>%2F2018%2F09%2F20%2Fkafka%2F</url>
-    <content type="text"><![CDATA[introduction三个主要能力 publist and subscribe 类似于管道 容错的存储数据 即时处理数据处理 两大应用场景： 构建可靠的应用与系统间Streaming data 管道 构建Streaming 程序来传输或react数据流 Kafka is generally used for two broad classes of applications: Building real-time streaming data pipelines that reliably get data between systems or applications Building real-time streaming applications that transform or react to the streams of data First a few concepts: Kafka is run as a cluster on one or more servers that can span multiple datacenters. The Kafka cluster stores streams of records in categories called topics. Each record consists of a key, a value, and a timestamp. 四个主要API producer api cunsumer api streams api connector api]]></content>
-      <categories>
-        <category>kafka</category>
-      </categories>
-      <tags>
-        <tag>kafka</tag>
       </tags>
   </entry>
   <entry>
@@ -698,9 +709,9 @@
         <category>数据分析 - Numpy</category>
       </categories>
       <tags>
-        <tag>数据分析</tag>
         <tag>机器学习</tag>
         <tag>ml</tag>
+        <tag>数据分析</tag>
         <tag>Numpy</tag>
       </tags>
   </entry>
@@ -774,8 +785,8 @@
         <category>前端数据可视化</category>
       </categories>
       <tags>
-        <tag>database</tag>
         <tag>笔记</tag>
+        <tag>database</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -799,8 +810,8 @@
         <category>服务器端 - web开发</category>
       </categories>
       <tags>
-        <tag>webapp</tag>
         <tag>http</tag>
+        <tag>webapp</tag>
       </tags>
   </entry>
   <entry>
@@ -811,9 +822,9 @@
         <category>服务器端 - web开发</category>
       </categories>
       <tags>
+        <tag>webapp</tag>
         <tag>https</tag>
         <tag>Certificate配置</tag>
-        <tag>webapp</tag>
       </tags>
   </entry>
   <entry>
@@ -835,9 +846,9 @@
         <category>数据存储处理 - database</category>
       </categories>
       <tags>
+        <tag>database</tag>
         <tag>Redshift</tag>
         <tag>Amazon</tag>
-        <tag>database</tag>
       </tags>
   </entry>
   <entry>
@@ -859,9 +870,9 @@
         <category>数据存储处理 - database</category>
       </categories>
       <tags>
-        <tag>database</tag>
         <tag>H2</tag>
         <tag>笔记</tag>
+        <tag>database</tag>
       </tags>
   </entry>
   <entry>
