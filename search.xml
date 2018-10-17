@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[kafka笔记]]></title>
     <url>%2F2018%2F10%2F17%2Fkafka%2F</url>
-    <content type="text"><![CDATA[introduction三个主要能力 publist and subscribe 类似于管道 容错的存储数据 即时处理数据处理 两大应用场景： 构建可靠的应用与系统间Streaming data 管道 构建Streaming 程序来传输或react数据流 Kafka is generally used for two broad classes of applications: Building real-time streaming data pipelines that reliably get data between systems or applications Building real-time streaming applications that transform or react to the streams of data First a few concepts: Kafka is run as a cluster on one or more servers that can span multiple datacenters. The Kafka cluster stores streams of records in categories called topics. Each record consists of a key, a value, and a timestamp. 四个主要API producer api cunsumer api streams api connector api kafka源码 git clone gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 阶段性可执行后，结果为BUILG FAILD 搜索后有人表示：有多个scala 版本，导致这样的错误 尝试执行 1./gradlew -PscalaVersion=2.11.11 clean core:test 依然build failed 这次是1Could not find org.jacoco.agent.jar 《Apache Kafka 源码剖析》上说的源码编译步骤不好使，转参考下面的方法Getting started with contributing to Apache Kafka (Part 1): Build and run Kafka from source code棒棒哒]]></content>
+    <content type="text"><![CDATA[introduction三个主要能力 publist and subscribe 类似于管道 容错的存储数据 即时处理数据处理 两大应用场景： 构建可靠的应用与系统间Streaming data 管道 构建Streaming 程序来传输或react数据流 Kafka is generally used for two broad classes of applications: Building real-time streaming data pipelines that reliably get data between systems or applications Building real-time streaming applications that transform or react to the streams of data First a few concepts: Kafka is run as a cluster on one or more servers that can span multiple datacenters. The Kafka cluster stores streams of records in categories called topics. Each record consists of a key, a value, and a timestamp. 四个主要API producer api cunsumer api streams api connector api kafka源码 git clone gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 阶段性可执行后，结果为BUILG FAILD 搜索后有人表示：有多个scala 版本，导致这样的错误 尝试执行 1./gradlew -PscalaVersion=2.11.11 clean core:test 依然build failed 这次是1Could not find org.jacoco.agent.jar 《Apache Kafka 源码剖析》上说的源码编译步骤不好使，转参考下面的方法Getting started with contributing to Apache Kafka (Part 1): Build and run Kafka from source code棒棒哒 123&gt; cd kafka&gt; gradle&gt; ./gradlew jar importa kafka project run zookeeper 修改server.properties中的zk配置 run kafka cp conf/log4j.properties 到 core/src/main/resources/log4j.properties Run -&gt; Kafka 报错 没有创建日志文件的权限 原来日志文件呢中默认的日志存放位置是/ 添加配置 kafka.logs.dir=~/data/kafka-source-logs 修复 修改log4j.rootLogger=TRACE, stdout 打印出更多信息]]></content>
       <categories>
         <category>kafka</category>
       </categories>
@@ -410,8 +410,8 @@
         <category>数据分析 - python</category>
       </categories>
       <tags>
-        <tag>pandas</tag>
         <tag>python</tag>
+        <tag>pandas</tag>
         <tag>数据处理</tag>
         <tag>numpy</tag>
       </tags>
@@ -785,8 +785,8 @@
         <category>前端数据可视化</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
         <tag>database</tag>
+        <tag>笔记</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -846,9 +846,9 @@
         <category>数据存储处理 - database</category>
       </categories>
       <tags>
-        <tag>database</tag>
         <tag>Redshift</tag>
         <tag>Amazon</tag>
+        <tag>database</tag>
       </tags>
   </entry>
   <entry>
@@ -870,9 +870,9 @@
         <category>数据存储处理 - database</category>
       </categories>
       <tags>
+        <tag>database</tag>
         <tag>H2</tag>
         <tag>笔记</tag>
-        <tag>database</tag>
       </tags>
   </entry>
   <entry>
