@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="log,log4j,日志," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="华夏第一剑">
-<meta name="keywords" content="spark hadoop scala">
-<meta property="og:type" content="website">
-<meta property="og:title" content="白帝圣剑">
-<meta property="og:url" content="http://yoursite.com/page/13/index.html">
+<meta name="description" content="错误：　log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$).  错误原因：我猜是依赖自带的log4j之间冲突了 解决：　 stackoverflow  Just to get you going you have two simple approaches you can take.   First">
+<meta name="keywords" content="log,log4j,日志">
+<meta property="og:type" content="article">
+<meta property="og:title" content="log4j踢平记">
+<meta property="og:url" content="http://yoursite.com/2018/10/19/log4j踢平记/index.html">
 <meta property="og:site_name" content="白帝圣剑">
-<meta property="og:description" content="华夏第一剑">
+<meta property="og:description" content="错误：　log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$).  错误原因：我猜是依赖自带的log4j之间冲突了 解决：　 stackoverflow  Just to get you going you have two simple approaches you can take.   First">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-19T06:30:04.108Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="白帝圣剑">
-<meta name="twitter:description" content="华夏第一剑">
+<meta name="twitter:title" content="log4j踢平记">
+<meta name="twitter:description" content="错误：　log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$).  错误原因：我猜是依赖自带的log4j之间冲突了 解决：　 stackoverflow  Just to get you going you have two simple approaches you can take.   First">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/13/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/19/log4j踢平记/"/>
 
 
 
 
 
-  <title>白帝圣剑</title>
+  <title>log4j踢平记 | 白帝圣剑</title>
   
 
 
@@ -144,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -282,9 +282,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/numpy/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/19/log4j踢平记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -314,9 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/numpy/" itemprop="url">Numpy</a></h1>
+          <h1 class="post-title" itemprop="name headline">log4j踢平记</h1>
         
 
         <div class="post-meta">
@@ -328,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T17:41:39+08:00">
-                2018-08-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-19T14:30:04+08:00">
+                2018-10-19
               </time>
             
 
@@ -351,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据分析-Numpy/" itemprop="url" rel="index">
-                    <span itemprop="name">数据分析 - Numpy</span>
+                  <a href="/categories/服务器端-日志/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器端 - 日志</span>
                   </a>
                 </span>
 
@@ -369,6 +367,11 @@
           
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
           
 
           
@@ -388,23 +391,26 @@
       
 
       
-        
-          
-          
-科学运算当中最为重要的两个模块，一个是 numpy,一个是 pandas。任何关于数据分析的模块都少不了它们两个。
+        <h3 id="错误："><a href="#错误：" class="headerlink" title="错误："></a>错误：</h3><p><strong>　log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$). </strong></p>
+<p>错误原因：我猜是依赖自带的log4j之间冲突了</p>
+<p>解决：　</p>
+<p><a href="https://stackoverflow.com/questions/12532339/no-appenders-could-be-found-for-loggerlog4j" target="_blank" rel="noopener">stackoverflow</a></p>
+<blockquote>
+<p>Just to get you going you have two simple approaches you can take.</p>
+</blockquote>
+<blockquote>
+<p>First one is to just add this line to your main method:<br>BasicConfigurator.configure();<br>Second approach is to add this standard log4j.properties (taken from the above mentioned guide) file to your classpath:</p>
+<h1 id="Set-root-logger-level-to-DEBUG-and-its-only-appender-to-A1"><a href="#Set-root-logger-level-to-DEBUG-and-its-only-appender-to-A1" class="headerlink" title="Set root logger level to DEBUG and its only appender to A1."></a>Set root logger level to DEBUG and its only appender to A1.</h1><p>log4j.rootLogger=DEBUG, A1</p>
+</blockquote>
+<blockquote>
+<h1 id="A1-is-set-to-be-a-ConsoleAppender"><a href="#A1-is-set-to-be-a-ConsoleAppender" class="headerlink" title="A1 is set to be a ConsoleAppender."></a>A1 is set to be a ConsoleAppender.</h1><p>log4j.appender.A1=org.apache.log4j.ConsoleAppender</p>
+</blockquote>
+<blockquote>
+<h1 id="A1-uses-PatternLayout"><a href="#A1-uses-PatternLayout" class="headerlink" title="A1 uses PatternLayout."></a>A1 uses PatternLayout.</h1><p>log4j.appender.A1.layout=org.apache.log4j.PatternLayout<br>log4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n</p>
+</blockquote>
+<p>The first one 好使</p>
+<hr>
 
-Why
-运算速度快：numpy 和 pandas 都是采用 C 语言编写, pandas 又是基于 numpy, 是 numpy 的升级版本。
-消耗资源少：采用的是矩阵运算，会比 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/numpy/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
       
     </div>
     
@@ -419,312 +425,44 @@ Why
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/ml-sklearn/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白帝圣剑">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/ml-sklearn/" itemprop="url">scikit-learn</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T17:40:20+08:00">
-                2018-08-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习、深度学习-scikit-learn/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习、深度学习 - scikit-learn</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/log/" rel="tag"># log</a>
           
-
+            <a href="/tags/log4j/" rel="tag"># log4j</a>
           
-            
+            <a href="/tags/日志/" rel="tag"># 日志</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          
-          Scikit-learn 安装之前安装了anaconda3，其中已经打包安装好了scikit-learn
-Scikit-learn 使用
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/ml-sklearn/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/19/kafka/" rel="next" title="kafka笔记">
+                <i class="fa fa-chevron-left"></i> kafka笔记
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/linux服务器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白帝圣剑">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/linux服务器/" itemprop="url">linux服务器相关配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T17:39:09+08:00">
-                2018-08-09
-              </time>
+              <a href="/2018/10/19/a/" rel="prev" title="炸鸡">
+                炸鸡 <i class="fa fa-chevron-right"></i>
+              </a>
             
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务器端-环境/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器端 - 环境</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          本地ubuntu网络不稳定这几天　命令行执行操作各种不爽，间歇性精神病，git ssh 都会犯病没有直接搜索到什么原因导致的，安装wirshark抓包看看
-123sudo add-apt-repository ppa:wireshark-dev/stablesudo apt-get updatesu
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/linux服务器/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -734,317 +472,11 @@ Scikit-learn 使用
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/Java笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白帝圣剑">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/Java笔记/" itemprop="url">Java笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T17:38:10+08:00">
-                2018-08-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程语言-java/" itemprop="url" rel="index">
-                    <span itemprop="name">编程语言 - java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          设计模式单例模式java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍三种：
-
-懒汉式单例、
-饿汉式单例、
-登记式单例。单例模式有以下特点：
-单例类只能有一个实例。单例类必须自己创建自己的唯一实例。
-单例类必须给所有其他对象提供这一实例。
-单例模式确保某个类只有一个实例，而且自
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/Java笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/Java任务调度/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白帝圣剑">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/Java任务调度/" itemprop="url">Java任务调度</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T17:37:33+08:00">
-                2018-08-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务器端/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Java.util.Timer   在Java中有一个任务处理类java.util.Timer，非常方便于处理由时间触发的事件任务，只需建立一个继承java.util.TimerTask的子类，重载父类的run()方法实现具体的任务，然后调用Timer的public void schedule(Ti
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/Java任务调度/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
 
 
           </div>
@@ -1052,6 +484,10 @@ Scikit-learn 使用
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1072,8 +508,17 @@ Scikit-learn 使用
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1133,6 +578,22 @@ Scikit-learn 使用
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#错误："><span class="nav-number">1.</span> <span class="nav-text">错误：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Set-root-logger-level-to-DEBUG-and-its-only-appender-to-A1"><span class="nav-number"></span> <span class="nav-text">Set root logger level to DEBUG and its only appender to A1.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A1-is-set-to-be-a-ConsoleAppender"><span class="nav-number"></span> <span class="nav-text">A1 is set to be a ConsoleAppender.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A1-uses-PatternLayout"><span class="nav-number"></span> <span class="nav-text">A1 uses PatternLayout.</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1286,6 +747,10 @@ Scikit-learn 使用
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
