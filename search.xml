@@ -796,8 +796,8 @@
         <category>前端数据可视化</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
         <tag>database</tag>
+        <tag>笔记</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -857,9 +857,9 @@
         <category>数据存储处理 - database</category>
       </categories>
       <tags>
-        <tag>database</tag>
         <tag>Redshift</tag>
         <tag>Amazon</tag>
+        <tag>database</tag>
       </tags>
   </entry>
   <entry>
@@ -881,9 +881,9 @@
         <category>数据存储处理 - database</category>
       </categories>
       <tags>
+        <tag>database</tag>
         <tag>H2</tag>
         <tag>笔记</tag>
-        <tag>database</tag>
       </tags>
   </entry>
   <entry>
