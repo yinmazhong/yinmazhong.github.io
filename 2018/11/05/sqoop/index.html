@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="database,hive," />
+  <meta name="keywords" content="sqoop," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="好久没用hive了  三百多万数据，入库kafka  存储格式hive 从两个维度对表进行管理，分别是行格式（row format）和文件格式(file format) 行格式是指一行中的字段如何储存按照hive的术语，行格式有serde(serializer-deserializer)">
-<meta name="keywords" content="database,hive">
+<meta name="description" content="installsqoop install &amp;amp;&amp;amp; test 版本1.4.7的安装文档没有找到，使用1.99.7的文档装了半天 官网下载：sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz     解压 复制template配置文件并修改配置文件 123456789101112131415161718# Set Hadoop-specific environmen">
+<meta name="keywords" content="sqoop">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hive 笔记">
-<meta property="og:url" content="http://yoursite.com/2018/11/02/hive笔记/index.html">
+<meta property="og:title" content="sqoop使用">
+<meta property="og:url" content="http://yoursite.com/2018/11/05/sqoop/index.html">
 <meta property="og:site_name" content="白帝圣剑">
-<meta property="og:description" content="好久没用hive了  三百多万数据，入库kafka  存储格式hive 从两个维度对表进行管理，分别是行格式（row format）和文件格式(file format) 行格式是指一行中的字段如何储存按照hive的术语，行格式有serde(serializer-deserializer)">
+<meta property="og:description" content="installsqoop install &amp;amp;&amp;amp; test 版本1.4.7的安装文档没有找到，使用1.99.7的文档装了半天 官网下载：sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz     解压 复制template配置文件并修改配置文件 123456789101112131415161718# Set Hadoop-specific environmen">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-02T06:42:38.504Z">
+<meta property="og:updated_time" content="2018-11-05T02:55:54.641Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hive 笔记">
-<meta name="twitter:description" content="好久没用hive了  三百多万数据，入库kafka  存储格式hive 从两个维度对表进行管理，分别是行格式（row format）和文件格式(file format) 行格式是指一行中的字段如何储存按照hive的术语，行格式有serde(serializer-deserializer)">
+<meta name="twitter:title" content="sqoop使用">
+<meta name="twitter:description" content="installsqoop install &amp;amp;&amp;amp; test 版本1.4.7的安装文档没有找到，使用1.99.7的文档装了半天 官网下载：sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz     解压 复制template配置文件并修改配置文件 123456789101112131415161718# Set Hadoop-specific environmen">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/02/hive笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/05/sqoop/"/>
 
 
 
 
 
-  <title>Hive 笔记 | 白帝圣剑</title>
+  <title>sqoop使用 | 白帝圣剑</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/02/hive笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/sqoop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hive 笔记</h1>
+          <h1 class="post-title" itemprop="name headline">sqoop使用</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-02T14:42:38+08:00">
-                2018-11-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-05T10:55:54+08:00">
+                2018-11-05
               </time>
             
 
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/database/" itemprop="url" rel="index">
-                    <span itemprop="name">database</span>
+                  <a href="/categories/sqoop/" itemprop="url" rel="index">
+                    <span itemprop="name">sqoop</span>
                   </a>
                 </span>
 
@@ -391,12 +391,44 @@
       
 
       
-        <p>好久没用hive了</p>
+        <h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><p>sqoop install &amp;&amp; test</p>
+<p>版本1.4.7的安装文档没有找到，使用1.99.7的文档装了半天</p>
+<p>官网下载：sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz    </p>
+<p>解压</p>
+<p>复制template配置文件并修改配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># Set Hadoop-specific environment variables here.</span><br><span class="line"></span><br><span class="line">#Set path to where bin/hadoop is available</span><br><span class="line">#export HADOOP_COMMON_HOME=</span><br><span class="line">export HADOOP_COMMON_HOME=/home/xxh/wkspc/hadoop/hadoop-2.7.7</span><br><span class="line"></span><br><span class="line">#Set path to where hadoop-*-core.jar is available</span><br><span class="line">export HADOOP_MAPRED_HOME=/home/xxh/wkspc/hadoop/hadoop-2.7.7</span><br><span class="line"></span><br><span class="line">#set the path to where bin/hbase is available</span><br><span class="line">export HBASE_HOME=/home/xxh/wkspc/hbase/hbase-2.1.0</span><br><span class="line"></span><br><span class="line">#Set the path to where bin/hive is available</span><br><span class="line">export HIVE_HOME=/home/xxh/wkspc/hive/apache-hive-1.2.2-bin</span><br><span class="line"></span><br><span class="line">#Set the path for where zookeper config dir is</span><br><span class="line">export ZOOCFGDIR=/home/xxh/wkspc/zookeeper/zookeeper0/conf</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sqoop list-databases --connect jdbc:mysql://localhost:3306 --username root --password admin123</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://localhost:3306/mysql \</span><br><span class="line">--username root \</span><br><span class="line">--password admin123 \</span><br><span class="line">--table user \</span><br><span class="line">--target-dir /sqoop/data_1 \</span><br><span class="line">--delete-target-dir \</span><br><span class="line">--num-mappers 1 \</span><br><span class="line">--fields-terminated-by &quot;\t&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># mysql on other computer</span><br><span class="line"></span><br><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://172.17.60.59:3306/mysql \</span><br><span class="line">--username root \</span><br><span class="line">--password Admin@321 \</span><br><span class="line">--table user \</span><br><span class="line">--target-dir /sqoop/data_user_59 \</span><br><span class="line">--delete-target-dir \</span><br><span class="line">--num-mappers 1 \</span><br><span class="line">--fields-terminated-by &quot;\t&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="数据库导入"><a href="#数据库导入" class="headerlink" title="数据库导入"></a>数据库导入</h2><p>Sqoop 通mr作业从数据库中导入一个表，这个作业从表中抽取一行行记录，然后将记录写入HDFS</p>
+<p>在导入开始之前，Sqoop使用jdbc 检查表，检索出表中所有的列、列的数据类型。这些sql数据类型被映射到java数据类型</p>
+<h3 id="导入控制"><a href="#导入控制" class="headerlink" title="导入控制"></a>导入控制</h3><p>重点在保证数据一致性</p>
 <hr>
-<p>三百多万数据，入库kafka</p>
+<p>sqoop 后台实际上是运行了mr,用yarn 提交管理的</p>
+<p>调试的时候发现提交完任务长时间不能执行，很可能是资源不足，也有可能是数据库权限问题<br>先杀掉，同步本地的数据库试试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#  8088 查下　app id,然后</span><br><span class="line"></span><br><span class="line">yarn application -kill application_1540448968752_0003</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="存储格式"><a href="#存储格式" class="headerlink" title="存储格式"></a>存储格式</h3><p>hive 从两个维度对表进行管理，分别是行格式（row format）和文件格式(file format)</p>
-<p>行格式是指一行中的字段如何储存按照hive的术语，行格式有serde(serializer-deserializer)</p>
+<hr>
+<p>sqoop 同步json数据报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: org/json/JSONObject</span><br><span class="line">	at org.apache.sqoop.util.SqoopJsonUtil.getJsonStringforMap(SqoopJsonUtil.java:43)</span><br><span class="line">	at org.apache.sqoop.SqoopOptions.writeProperties(SqoopOptions.java:785)</span><br><span class="line">	at org.apache.sqoop.metastore.hsqldb.HsqldbJobStorage.createInternal(HsqldbJobStorage.java:399)</span><br><span class="line">	at org.apache.sqoop.metastore.hsqldb.HsqldbJobStorage.create(HsqldbJobStorage.java:379)</span><br><span class="line">	at org.apache.sqoop.tool.JobTool.createJob(JobTool.java:181)</span><br><span class="line">	at org.apache.sqoop.tool.JobTool.run(JobTool.java:294)</span><br><span class="line">	at org.apache.sqoop.Sqoop.run(Sqoop.java:147)</span><br><span class="line">	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:70)</span><br><span class="line">	at org.apache.sqoop.Sqoop.runSqoop(Sqoop.java:183)</span><br><span class="line">	at org.apache.sqoop.Sqoop.runTool(Sqoop.java:234)</span><br><span class="line">	at org.apache.sqoop.Sqoop.runTool(Sqoop.java:243)</span><br><span class="line">	at org.apache.sqoop.Sqoop.main(Sqoop.java:252)</span><br><span class="line">Caused by: java.lang.ClassNotFoundException: org.json.JSONObject</span><br><span class="line">	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)</span><br><span class="line">	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)</span><br><span class="line">	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)</span><br><span class="line">	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)</span><br><span class="line">	... 12 more</span><br></pre></td></tr></table></figure>
+<p>solve:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">By spending some more time reading blogs:</span><br><span class="line"></span><br><span class="line">I found solution as below:</span><br><span class="line"></span><br><span class="line">downloaded java-json.jar file from location http://www.java2s.com/Code/Jar/j/Downloadjavajsonjar.htm</span><br><span class="line"></span><br><span class="line">stored this jar file at location /usr/lib/sqoop/lib/java-json.jar</span><br></pre></td></tr></table></figure>
+<p><a href="http://community.cloudera.com/t5/Data-Ingestion-Integration/Sqoop-import-exception-java-lang-NoClassDefFoundError-org/td-p/50758" target="_blank" rel="noopener">Sqoop import exception java.lang.NoClassDefFoundError: org/json/JSONObject </a></p>
+<hr>
+<hr>
+<p>name node is in safe mode</p>
+<p>solve:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs dfsadmin -safemode leave</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://stackoverflow.com/questions/15803266/name-node-is-in-safe-mode-not-able-to-leave" target="_blank" rel="noopener">name node is in safe mode</a></p>
+<hr>
+<hr>
+<p>sqoop 任务 一直僵尸在ACCEPED状态，不动</p>
+<p>搜，跟着改了很多配置，<br>最后看到日志中有[warn] <strong><strong>error*</strong></strong>,报错某某项配置的目录可用空间超过总空间百分之九十，导致伪分布式模式下唯一一个node不能用<br>于是更改了其默认配置，并更改其yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage -&gt; 98.5<br>8088 UI上 Active nodes显示为1</p>
+<p>最终的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">#yarn-site.xml</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Site specific YARN configuration properties --&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.resource.memory-mb&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;4096&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.scheduler.minimum-allocation-mb&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;512&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.resource.cpu-vcores&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;4&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.vmem-pmem-ratio&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;2.1&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.nodemanager.local-dirs&lt;/name&gt;</span><br><span class="line">	 &lt;value&gt;/home/xxh/data/hadoop/yarnlocaldir&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">         &lt;name&gt;yarn.nodemanager.log-dirs&lt;/name&gt;</span><br><span class="line">         &lt;value&gt;/home/xxh/data/hadoop/yarnlogdir&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;98.5&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># hdfs-site.xml</span><br><span class="line">datanode的dfs.datanode.data.dir 不配置的话，会默认使用/tmp目录，我的系统装在小小的额固态上，左右基本没有空间剩余了，于是改到T级别的机械硬盘上了</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">	&lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;/home/xxh/data/hadoop/namenode-namespace&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;/home/xxh/data/hadoop/datanodespace&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>参考：<a href="https://stackoverflow.com/questions/20200636/mapreduce-jobs-get-stuck-in-accepted-state" target="_blank" rel="noopener">MapReduce jobs get stuck in Accepted state</a></p>
+<hr>
+<hr>
+<hr>
 
       
     </div>
@@ -414,7 +446,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/database-hive/" rel="tag"># database,hive</a>
+            <a href="/tags/sqoop/" rel="tag"># sqoop</a>
           
         </div>
       
@@ -427,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/02/十一/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2018/11/01/十月/" rel="next" title="十月">
+                <i class="fa fa-chevron-left"></i> 十月
               </a>
             
           </div>
@@ -437,8 +469,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/02/sqoop/" rel="prev" title="sqoop使用">
-                sqoop使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/05/kafka/" rel="prev" title="kafka笔记">
+                kafka笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -571,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#存储格式"><span class="nav-number">1.</span> <span class="nav-text">存储格式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#install"><span class="nav-number">1.</span> <span class="nav-text">install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库导入"><span class="nav-number">2.</span> <span class="nav-text">数据库导入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入控制"><span class="nav-number">2.1.</span> <span class="nav-text">导入控制</span></a></li></ol></li></ol></div>
             
 
           </div>
