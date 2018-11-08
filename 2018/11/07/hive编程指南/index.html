@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="database,hive," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="title: 十一月tags:  札记categories: 札记   十一月，加油冲出去 2018年 11月 01日 星期四 10:07:33 CST 昨天试了文档上的两个个kafka stream 的例子  2018年 11月 02日 星期五 09:52:44 CST 昨天病了，没做事 ?  数据结构  2018年 11月 05日 星期一 10:51:19 CST 个人认为专业书籍在你能看出">
-<meta name="keywords" content="spark hadoop scala">
+<meta name="description" content="《hive 编程指南》 第一章与mr接口相比，sql简单易用 第二章hive 安装 hive笔记安装 hive内部是什么 lib  其中的每个jar都实现了hive的特定功能  bin  执行各种hive服务的可执行文件  conf  配置文件 hive 命令cli变量和属性hivevar/hiveconf/system/env .hivec文件第三章 数据类型和文件格式支持关系型数据库中绝大多数">
+<meta name="keywords" content="database,hive">
 <meta property="og:type" content="article">
-<meta property="og:title" content="白帝圣剑">
-<meta property="og:url" content="http://yoursite.com/2018/11/06/十一/index.html">
+<meta property="og:title" content="Hive 编程指南 笔记">
+<meta property="og:url" content="http://yoursite.com/2018/11/07/hive编程指南/index.html">
 <meta property="og:site_name" content="白帝圣剑">
-<meta property="og:description" content="title: 十一月tags:  札记categories: 札记   十一月，加油冲出去 2018年 11月 01日 星期四 10:07:33 CST 昨天试了文档上的两个个kafka stream 的例子  2018年 11月 02日 星期五 09:52:44 CST 昨天病了，没做事 ?  数据结构  2018年 11月 05日 星期一 10:51:19 CST 个人认为专业书籍在你能看出">
+<meta property="og:description" content="《hive 编程指南》 第一章与mr接口相比，sql简单易用 第二章hive 安装 hive笔记安装 hive内部是什么 lib  其中的每个jar都实现了hive的特定功能  bin  执行各种hive服务的可执行文件  conf  配置文件 hive 命令cli变量和属性hivevar/hiveconf/system/env .hivec文件第三章 数据类型和文件格式支持关系型数据库中绝大多数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-06T06:13:54.321Z">
+<meta property="og:updated_time" content="2018-11-07T03:47:22.967Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="白帝圣剑">
-<meta name="twitter:description" content="title: 十一月tags:  札记categories: 札记   十一月，加油冲出去 2018年 11月 01日 星期四 10:07:33 CST 昨天试了文档上的两个个kafka stream 的例子  2018年 11月 02日 星期五 09:52:44 CST 昨天病了，没做事 ?  数据结构  2018年 11月 05日 星期一 10:51:19 CST 个人认为专业书籍在你能看出">
+<meta name="twitter:title" content="Hive 编程指南 笔记">
+<meta name="twitter:description" content="《hive 编程指南》 第一章与mr接口相比，sql简单易用 第二章hive 安装 hive笔记安装 hive内部是什么 lib  其中的每个jar都实现了hive的特定功能  bin  执行各种hive服务的可执行文件  conf  配置文件 hive 命令cli变量和属性hivevar/hiveconf/system/env .hivec文件第三章 数据类型和文件格式支持关系型数据库中绝大多数">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/06/十一/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/07/hive编程指南/"/>
 
 
 
 
 
-  <title> | 白帝圣剑</title>
+  <title>Hive 编程指南 笔记 | 白帝圣剑</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/十一/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/hive编程指南/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">Hive 编程指南 笔记</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T14:13:54+08:00">
-                2018-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T11:47:23+08:00">
+                2018-11-07
               </time>
             
 
@@ -336,6 +336,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/database/" itemprop="url" rel="index">
+                    <span itemprop="name">database</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -369,44 +391,46 @@
       
 
       
-        <hr>
-<p>title: 十一月<br>tags:</p>
-<ul>
-<li>札记<br>categories:</li>
-<li>札记</li>
+        <p>《hive 编程指南》</p>
+<h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p>与mr接口相比，sql简单易用</p>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><p>hive 安装</p>
+<p><a href="">hive笔记安装</a></p>
+<h2 id="hive内部是什么"><a href="#hive内部是什么" class="headerlink" title="hive内部是什么"></a>hive内部是什么</h2><ul>
+<li>lib</li>
 </ul>
-<hr>
-<p>十一月，加油冲出去</p>
-<h3 id="2018年-11月-01日-星期四-10-07-33-CST"><a href="#2018年-11月-01日-星期四-10-07-33-CST" class="headerlink" title="2018年 11月 01日 星期四 10:07:33 CST"></a>2018年 11月 01日 星期四 10:07:33 CST</h3><hr>
-<p>昨天试了文档上的两个个kafka stream 的例子</p>
-<hr>
-<h3 id="2018年-11月-02日-星期五-09-52-44-CST"><a href="#2018年-11月-02日-星期五-09-52-44-CST" class="headerlink" title="2018年 11月 02日 星期五 09:52:44 CST"></a>2018年 11月 02日 星期五 09:52:44 CST</h3><hr>
-<p>昨天病了，没做事</p>
-<p>?  数据结构</p>
-<hr>
-<h3 id="2018年-11月-05日-星期一-10-51-19-CST"><a href="#2018年-11月-05日-星期一-10-51-19-CST" class="headerlink" title="2018年 11月 05日 星期一 10:51:19 CST"></a>2018年 11月 05日 星期一 10:51:19 CST</h3><blockquote>
-<p>个人认为专业书籍在你能看出来“这翻译的是啥破玩意”之前都可以看中文版。当然某些压根就有翻译错误的除外。</p>
-</blockquote>
-<hr>
-<p>vim 中查找 用 <code>/</code> 回车会定位到第一个匹配到的字符</p>
-<p>n:下一个</p>
-<p>N:上一个</p>
-<p><a href="https://harttle.land/2016/08/08/vim-search-in-file.html" target="_blank" rel="noopener">vim 查找</a></p>
-<hr>
-<h3 id="2018年-11月-06日-星期二-10-42-27-CST"><a href="#2018年-11月-06日-星期二-10-42-27-CST" class="headerlink" title="2018年 11月 06日 星期二 10:42:27 CST"></a>2018年 11月 06日 星期二 10:42:27 CST</h3><hr>
-<p>hive 解析json 还真是够恶心，语法太死板</p>
-<hr>
-<p>hive 卡住<br>一个小时了，不动，<br>吃完饭再说</p>
-<hr>
-<hr>
-<p>hive –service hwi</p>
-<p>想要正常的启动访问，要经历</p>
-<p>下载源码 -&gt; 编译war包 -&gt; 下载各种jar</p>
-<p>最后也就那么个玩意，可以看看表结构之类的</p>
-<hr>
-<p>查看hadoop等的配置可以用 hive cli 中的set -v</p>
-<hr>
-
+<p>其中的每个jar都实现了hive的特定功能</p>
+<ul>
+<li>bin</li>
+</ul>
+<p>执行各种hive服务的可执行文件</p>
+<ul>
+<li>conf</li>
+</ul>
+<p>配置文件</p>
+<h2 id="hive-命令"><a href="#hive-命令" class="headerlink" title="hive 命令"></a>hive 命令</h2><h3 id="cli"><a href="#cli" class="headerlink" title="cli"></a>cli</h3><h3 id="变量和属性"><a href="#变量和属性" class="headerlink" title="变量和属性"></a>变量和属性</h3><p>hivevar/hiveconf/system/env</p>
+<h3 id="hivec文件"><a href="#hivec文件" class="headerlink" title=".hivec文件"></a>.hivec文件</h3><h1 id="第三章-数据类型和文件格式"><a href="#第三章-数据类型和文件格式" class="headerlink" title="第三章 数据类型和文件格式"></a>第三章 数据类型和文件格式</h1><p>支持关系型数据库中绝大多数基本数据类型，还支持三种集合数据类型</p>
+<p>要考虑这些数据类型是如何正在文本文件中表示的，还要考虑文本存储中为了解决各种性能问题以及其他问题有哪些替代方案</p>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ul>
+<li><p>string 字符串无长度限制</p>
+</li>
+<li><p>timestamp 可以使整数、浮点数、字符串</p>
+</li>
+<li><p>binary 字节数组</p>
+</li>
+</ul>
+<p>数值比较时，数据类型在 double float int tinyint smallint bigint 间自动向上转换</p>
+<p>字符串转化： cast(s as int)</p>
+<h2 id="集合数据类型"><a href="#集合数据类型" class="headerlink" title="集合数据类型"></a>集合数据类型</h2><ul>
+<li>struct</li>
+<li>map</li>
+<li>array</li>
+</ul>
+<p>缺点是不符合三大范式，第一范式都不符合</p>
+<p>数据冗余，在大数据情况下，按数据集封装的话可以通过减少寻址次数来提供查询的速度，而如果根据外键关系关联的话则需要磁盘间的寻址操作，这样会有非常高的性能消耗</p>
+<h2 id="文本文件数据编码"><a href="#文本文件数据编码" class="headerlink" title="文本文件数据编码"></a>文本文件数据编码</h2><p>文本文件在字段间、集合数据类型中的分隔符</p>
+<h2 id="读时模式"><a href="#读时模式" class="headerlink" title="读时模式"></a>读时模式</h2><p>传统数据库是写时模式(schema on write)<br>hive是读时模式(schema on read)</p>
+<p>hive在读时会尽可能的规避问题，这样的功能很强大，也会导致问题被掩盖</p>
+<h1 id="第四章-hiveql-定义"><a href="#第四章-hiveql-定义" class="headerlink" title="第四章 hiveql 定义"></a>第四章 hiveql 定义</h1>
       
     </div>
     
@@ -421,6 +445,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/database-hive/" rel="tag"># database,hive</a>
+          
+        </div>
+      
 
       
       
@@ -430,8 +460,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/05/kafka/" rel="next" title="kafka笔记">
-                <i class="fa fa-chevron-left"></i> kafka笔记
+              <a href="/2018/11/07/hive笔记/" rel="next" title="Hive 笔记">
+                <i class="fa fa-chevron-left"></i> Hive 笔记
               </a>
             
           </div>
@@ -440,8 +470,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/06/hive笔记/" rel="prev" title="Hive 笔记">
-                Hive 笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/07/datawarehouse/" rel="prev" title="数据仓库理论基础与实践">
+                数据仓库理论基础与实践 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -519,7 +549,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -574,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2018年-11月-01日-星期四-10-07-33-CST"><span class="nav-number">1.</span> <span class="nav-text">2018年 11月 01日 星期四 10:07:33 CST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018年-11月-02日-星期五-09-52-44-CST"><span class="nav-number">2.</span> <span class="nav-text">2018年 11月 02日 星期五 09:52:44 CST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018年-11月-05日-星期一-10-51-19-CST"><span class="nav-number">3.</span> <span class="nav-text">2018年 11月 05日 星期一 10:51:19 CST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018年-11月-06日-星期二-10-42-27-CST"><span class="nav-number">4.</span> <span class="nav-text">2018年 11月 06日 星期二 10:42:27 CST</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章"><span class="nav-number">1.</span> <span class="nav-text">第一章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章"><span class="nav-number">2.</span> <span class="nav-text">第二章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hive内部是什么"><span class="nav-number">2.1.</span> <span class="nav-text">hive内部是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hive-命令"><span class="nav-number">2.2.</span> <span class="nav-text">hive 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cli"><span class="nav-number">2.2.1.</span> <span class="nav-text">cli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量和属性"><span class="nav-number">2.2.2.</span> <span class="nav-text">变量和属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hivec文件"><span class="nav-number">2.2.3.</span> <span class="nav-text">.hivec文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-数据类型和文件格式"><span class="nav-number">3.</span> <span class="nav-text">第三章 数据类型和文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">3.1.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合数据类型"><span class="nav-number">3.2.</span> <span class="nav-text">集合数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本文件数据编码"><span class="nav-number">3.3.</span> <span class="nav-text">文本文件数据编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读时模式"><span class="nav-number">3.4.</span> <span class="nav-text">读时模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四章-hiveql-定义"><span class="nav-number">4.</span> <span class="nav-text">第四章 hiveql 定义</span></a></li></ol></div>
             
 
           </div>

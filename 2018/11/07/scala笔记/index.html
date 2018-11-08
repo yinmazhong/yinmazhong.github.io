@@ -83,11 +83,11 @@
 <meta name="keywords" content="scala">
 <meta property="og:type" content="article">
 <meta property="og:title" content="scala 笔记">
-<meta property="og:url" content="http://yoursite.com/2018/09/06/scala笔记/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/11/07/scala笔记/index.html">
 <meta property="og:site_name" content="白帝圣剑">
 <meta property="og:description" content="TomCat使用：Tomcat笔记  安装配置环境变量JAVA_HOME; 解压下载的tomcat压缩包；　　 netstat -an 查看端口占用情况； 修改server.xml; 双击startup.bat 启动；  scala List类的高阶方法 forall: xs forall p以列表xs和论断p为参数，如果列表所有元素满足p则返回true;  与之相对应的 exists: xs e">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-06T06:09:17.774Z">
+<meta property="og:updated_time" content="2018-11-07T01:37:10.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scala 笔记">
 <meta name="twitter:description" content="TomCat使用：Tomcat笔记  安装配置环境变量JAVA_HOME; 解压下载的tomcat压缩包；　　 netstat -an 查看端口占用情况； 修改server.xml; 双击startup.bat 启动；  scala List类的高阶方法 forall: xs forall p以列表xs和论断p为参数，如果列表所有元素满足p则返回true;  与之相对应的 exists: xs e">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/06/scala笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/07/scala笔记/"/>
 
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/06/scala笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/scala笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-06T14:09:18+08:00">
-                2018-09-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T09:37:10+08:00">
+                2018-11-07
               </time>
             
 
@@ -445,7 +445,8 @@
 <p>前者只能在定义该匿名类的时候初始化它，因为他既没有名字，也没有构造函数</p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">val t = new MyTrait &#123;</span><br><span class="line">  val t1 = ... //some expression</span><br><span class="line">  val t2 = ... //some expression</span><br><span class="line">&#125;</span><br><span class="line">is the same as</span><br><span class="line"></span><br><span class="line">val t = new AnyRef with MyTrait &#123;</span><br><span class="line">  val t1 = ... //some expression</span><br><span class="line">  val t2 = ... //some expression</span><br><span class="line">&#125;</span><br><span class="line">is the same as</span><br><span class="line"></span><br><span class="line">val t = new Object with MyTrait &#123;</span><br><span class="line">  val t1 = ... //some expression</span><br><span class="line">  val t2 = ... //some expression</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="type关键字"><a href="#type关键字" class="headerlink" title="type关键字"></a>type关键字</h4>
+<h4 id="type关键字"><a href="#type关键字" class="headerlink" title="type关键字"></a>type关键字</h4><h4 id="在scala-字符串中转义一个美元-dollar-符号"><a href="#在scala-字符串中转义一个美元-dollar-符号" class="headerlink" title="在scala 字符串中转义一个美元(dollar)$符号"></a>在scala 字符串中转义一个美元(dollar)$符号</h4><p>加倍</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; val a = s&quot;$$a&quot;</span><br><span class="line">a: String = $a</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -475,8 +476,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/05/ansible/" rel="next" title="使用ansible自动部署集群环境">
-                <i class="fa fa-chevron-left"></i> 使用ansible自动部署集群环境
+              <a href="/2018/11/05/kafka/" rel="next" title="kafka笔记">
+                <i class="fa fa-chevron-left"></i> kafka笔记
               </a>
             
           </div>
@@ -485,8 +486,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/06/scalaTry/" rel="prev" title="Scala Try">
-                Scala Try <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/07/hive笔记/" rel="prev" title="Hive 笔记">
+                Hive 笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -564,7 +565,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -619,7 +620,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#TomCat使用："><span class="nav-number">1.</span> <span class="nav-text">TomCat使用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-List类的高阶方法"><span class="nav-number">2.</span> <span class="nav-text">scala List类的高阶方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单的单元测试"><span class="nav-number">3.</span> <span class="nav-text">简单的单元测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-class-实例-gt-List-RE"><span class="nav-number">4.</span> <span class="nav-text">case class 实例 =&gt; List  RE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-class-实例-转-Map-（使用反射）RE"><span class="nav-number">5.</span> <span class="nav-text">case class 实例 转 Map （使用反射）RE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List-列表模式"><span class="nav-number">6.</span> <span class="nav-text">List 列表模式　</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入排序算法"><span class="nav-number">7.</span> <span class="nav-text">插入排序算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http-hongjiang-info-scala"><span class="nav-number">8.</span> <span class="nav-text">http://hongjiang.info/scala/</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scala-强大的集合数据操作示例"><span class="nav-number">9.</span> <span class="nav-text">Scala 强大的集合数据操作示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-sort-排序"><span class="nav-number">10.</span> <span class="nav-text">scala sort 排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-读写文件"><span class="nav-number">11.</span> <span class="nav-text">scala 读写文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-变长参数、List"><span class="nav-number">12.</span> <span class="nav-text">scala 变长参数、List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala伴生对象"><span class="nav-number">13.</span> <span class="nav-text">scala伴生对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-sbt-read-file-from-resources"><span class="nav-number">14.</span> <span class="nav-text">scala sbt read file from resources</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-反射"><span class="nav-number">15.</span> <span class="nav-text">scala 反射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-Json"><span class="nav-number">16.</span> <span class="nav-text">scala Json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-object-vs-case-class-vs-object-vs-class"><span class="nav-number">17.</span> <span class="nav-text">case object vs case class vs object vs class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new-trait"><span class="nav-number">18.</span> <span class="nav-text">new trait</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type关键字"><span class="nav-number">19.</span> <span class="nav-text">type关键字</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#TomCat使用："><span class="nav-number">1.</span> <span class="nav-text">TomCat使用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-List类的高阶方法"><span class="nav-number">2.</span> <span class="nav-text">scala List类的高阶方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单的单元测试"><span class="nav-number">3.</span> <span class="nav-text">简单的单元测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-class-实例-gt-List-RE"><span class="nav-number">4.</span> <span class="nav-text">case class 实例 =&gt; List  RE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-class-实例-转-Map-（使用反射）RE"><span class="nav-number">5.</span> <span class="nav-text">case class 实例 转 Map （使用反射）RE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List-列表模式"><span class="nav-number">6.</span> <span class="nav-text">List 列表模式　</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入排序算法"><span class="nav-number">7.</span> <span class="nav-text">插入排序算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http-hongjiang-info-scala"><span class="nav-number">8.</span> <span class="nav-text">http://hongjiang.info/scala/</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scala-强大的集合数据操作示例"><span class="nav-number">9.</span> <span class="nav-text">Scala 强大的集合数据操作示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-sort-排序"><span class="nav-number">10.</span> <span class="nav-text">scala sort 排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-读写文件"><span class="nav-number">11.</span> <span class="nav-text">scala 读写文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-变长参数、List"><span class="nav-number">12.</span> <span class="nav-text">scala 变长参数、List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala伴生对象"><span class="nav-number">13.</span> <span class="nav-text">scala伴生对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-sbt-read-file-from-resources"><span class="nav-number">14.</span> <span class="nav-text">scala sbt read file from resources</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-反射"><span class="nav-number">15.</span> <span class="nav-text">scala 反射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-Json"><span class="nav-number">16.</span> <span class="nav-text">scala Json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-object-vs-case-class-vs-object-vs-class"><span class="nav-number">17.</span> <span class="nav-text">case object vs case class vs object vs class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new-trait"><span class="nav-number">18.</span> <span class="nav-text">new trait</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type关键字"><span class="nav-number">19.</span> <span class="nav-text">type关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在scala-字符串中转义一个美元-dollar-符号"><span class="nav-number">20.</span> <span class="nav-text">在scala 字符串中转义一个美元(dollar)$符号</span></a></li></ol></div>
             
 
           </div>
