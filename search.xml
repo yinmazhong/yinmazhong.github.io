@@ -2,8 +2,8 @@
 <search>
   <entry>
     <title></title>
-    <url>%2F2018%2F11%2F08%2F%E5%8D%81%E4%B8%80%E6%9C%88%2F</url>
-    <content type="text"><![CDATA[title: 十一月 tags: 札记 categories: 札记 2018年 11月 01日 星期四 10:07:33 CST 昨天试了文档上的两个个kafka stream 的例子 2018年 11月 02日 星期五 09:52:44 CST 昨天病了，没做事 ? 数据结构 2018年 11月 05日 星期一 10:51:19 CST 个人认为专业书籍在你能看出来“这翻译的是啥破玩意”之前都可以看中文版。当然某些压根就有翻译错误的除外。 vim 中查找 用 / 回车会定位到第一个匹配到的字符 n:下一个 N:上一个 vim 查找 2018年 11月 06日 星期二 10:42:27 CST hive 解析json 还真是够恶心，语法太死板 hive 卡住一个小时了，不动，吃完饭再说 hive –service hwi 想要正常的启动访问，要经历 下载源码 -&gt; 编译war包 -&gt; 下载各种jar 最后也就那么个玩意，可以看看表结构之类的 查看hadoop等的配置可以用 hive cli 中的set -v 2018年 11月 07日 星期三 10:37:09 CST 拆解后的表的正确性验证json 解析验证：sql 没有报错的情况下，首先是没有明显的错误，但是有两种可能，错误自动处理，真正没有问题， 最好还是自己代码实现，这样可以尽可能多的控制解析过程 history 表合并 一种是通过sql做distinct另外一种是mr进行hash 验证 scala 设计模式 貌似是个大神写的，好好研究下]]></content>
+    <url>%2F2018%2F11%2F14%2F%E5%8D%81%E4%B8%80%E6%9C%88%2F</url>
+    <content type="text"><![CDATA[title: 十一月 tags: 札记 categories: 札记 2018年 11月 01日 星期四 10:07:33 CST 昨天试了文档上的两个个kafka stream 的例子 2018年 11月 02日 星期五 09:52:44 CST 昨天病了，没做事 ? 数据结构 2018年 11月 05日 星期一 10:51:19 CST 个人认为专业书籍在你能看出来“这翻译的是啥破玩意”之前都可以看中文版。当然某些压根就有翻译错误的除外。 vim 中查找 用 / 回车会定位到第一个匹配到的字符 n:下一个 N:上一个 vim 查找 2018年 11月 06日 星期二 10:42:27 CST hive 解析json 还真是够恶心，语法太死板 hive 卡住一个小时了，不动，吃完饭再说 hive –service hwi 想要正常的启动访问，要经历 下载源码 -&gt; 编译war包 -&gt; 下载各种jar 最后也就那么个玩意，可以看看表结构之类的 查看hadoop等的配置可以用 hive cli 中的set -v 2018年 11月 07日 星期三 10:37:09 CST 拆解后的表的正确性验证json 解析验证：sql 没有报错的情况下，首先是没有明显的错误，但是有两种可能，错误自动处理，真正没有问题， 最好还是自己代码实现，这样可以尽可能多的控制解析过程 history 表合并 一种是通过sql做distinct另外一种是mr进行hash 验证 scala 设计模式 貌似是个大神写的，好好研究下 ？？？//java.lang.RuntimeException: Column type is neither timestamp nor date! 自增使用时间戳会报的错误–incremental append \–check-column id \–merge-key id \–last-value 0 \–split-by id \-m 8 hive query stuck at 99% If your query is getting stuck at 99% check out following options - Data skewness, if you have skewed data it might possible 1 reducer is doing all the work Duplicates keys on both side - If you have many duplicate join keys on both side your output might explode and query might get stuck One of your table is small try to use map join or if possible SMB join which is a huge performance gain over reduce side join Go to resource manager log and see amount of data job is accessing and writing. 2018年 11月 09日 星期五 15:14:38 CST昨晚喝酒喝到太晚，醉了 2018年 11月 14日 星期三 14:06:34 CST昨天没上班，前天像是睡着了，反正这两天都不在状态 想通过计算每条数据的hash值，来判断任意两条数据是否一致 hash函数/散列函数 wiki:所有散列函数都有如下一个基本特性：如果两个散列值是不相同的（根据同一函数），那么这两个散列值的原始输入也是不相同的。这个特性是散列函数具有确定性的结果，具有这种性质的散列函数称为单向散列函数。但另一方面，散列函数的输入和输出不是唯一对应关系的，如果两个散列值相同，两个输入值很可能是相同的，但也可能不同，这种情况称为“散列碰撞（collision）”，这通常是两个不同长度的输入值，刻意计算出相同的输出值。输入一些数据计算出散列值，然后部分改变输入值，一个具有强混淆特性的散列函数会产生一个完全不同的散列值。 hash vs md5 MD5消息摘要算法（英语：MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。 murmurhash3scala 中 LinearSeqLike.scala 默认的hashCode() 使用的是murmurhash3,是一种查找hash算法： murmurhash是 Austin Appleby于2008年创立的一种非加密哈希算法，适用于基于哈希进行查找的场景。murmurhash最新版本是MurMurHash3，支持32位、64位及128位值的产生。 MurMur经常用在分布式环境中，比如Hadoop，其特点是高效快速，但是缺点是分布不是很均匀。 所以我们想要选出重复数据，还是用加密hash算法比较好 SHA-224、SHA-256、SHA-384，和SHA-512并称为SHA-2。 新的哈希函数并没有接受像SHA-1一样的公众密码社区做详细的检验，所以它们的密码安全性还不被大家广泛的信任。 虽然至今尚未出现对SHA-2有效的攻击，它的算法跟SHA-1基本上仍然相似；因此有些人开始发展其他替代的哈希算法。 哈希函数介绍]]></content>
   </entry>
   <entry>
     <title><![CDATA[数据仓库理论基础与实践]]></title>
@@ -782,9 +782,9 @@
         <category>数据分析 - Numpy</category>
       </categories>
       <tags>
-        <tag>数据分析</tag>
         <tag>机器学习</tag>
         <tag>ml</tag>
+        <tag>数据分析</tag>
         <tag>Numpy</tag>
       </tags>
   </entry>
@@ -870,8 +870,8 @@
         <category>服务器端 - web开发</category>
       </categories>
       <tags>
-        <tag>http</tag>
         <tag>webapp</tag>
+        <tag>http</tag>
       </tags>
   </entry>
   <entry>
@@ -882,9 +882,9 @@
         <category>服务器端 - web开发</category>
       </categories>
       <tags>
-        <tag>webapp</tag>
         <tag>https</tag>
         <tag>Certificate配置</tag>
+        <tag>webapp</tag>
       </tags>
   </entry>
   <entry>
