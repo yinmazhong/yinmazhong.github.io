@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="database,sql," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据   第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；\然后根据SELECT的选择列选择相应的列进行返回最终结果。  第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。">
+<meta name="keywords" content="database,sql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql笔记">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/sql笔记/index.html">
+<meta property="og:site_name" content="白帝圣剑">
+<meta property="og:description" content="sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据   第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；\然后根据SELECT的选择列选择相应的列进行返回最终结果。  第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-27T03:29:52.395Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sql笔记">
+<meta name="twitter:description" content="sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据   第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；\然后根据SELECT的选择列选择相应的列进行返回最终结果。  第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/27/sql笔记/"/>
+
+
+
+
+
+  <title>sql笔记 | 白帝圣剑</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">白帝圣剑</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">御剑跟着我</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/sql笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白帝圣剑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">sql笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T11:29:52+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据存储处理-database/" itemprop="url" rel="index">
+                    <span itemprop="name">数据存储处理 - database</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="sql优化"><a href="#sql优化" class="headerlink" title="sql优化"></a>sql优化</h4><h5 id="SQL查询的过程"><a href="#SQL查询的过程" class="headerlink" title="SQL查询的过程"></a>SQL查询的过程</h5><p><strong>理解SQL查询的过程是进行SQL优化的理论依据</strong></p>
+<hr>
+<ul>
+<li><p>第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；\<br>然后根据SELECT的选择列选择相应的列进行返回最终结果。</p>
+</li>
+<li><p>第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。</p>
+<blockquote>
+<p>笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。\<br>  可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。</p>
+</blockquote>
+</li>
+<li><p>第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，\<br>以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。</p>
+</li>
+</ul>
+<hr>
+<h5 id="ON后面的条件（ON条件）和WHERE条件的区别："><a href="#ON后面的条件（ON条件）和WHERE条件的区别：" class="headerlink" title="ON后面的条件（ON条件）和WHERE条件的区别："></a>ON后面的条件（ON条件）和WHERE条件的区别：</h5><ul>
+<li>ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。</li>
+<li>WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。<br>在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。</li>
+</ul>
+<p>从这里可以看出，将WHERE条件移入ON后面是不恰当的。\<br>推荐的做法是：<br>   <strong>ON只进行连接操作，WHERE只过滤中间表的记录。</strong></p>
+<p>关键点：<strong>表连接查询是先将 几张表 做笛卡尔积 然后在做过滤</strong></p>
+<h5 id="sql执行顺序（转侵删）"><a href="#sql执行顺序（转侵删）" class="headerlink" title="sql执行顺序（转侵删）"></a>sql执行顺序（转侵删）</h5><p>sql不同于其他编程语言，代码并不是按照编码顺序来被处理的，</p>
+<p>在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理；</p>
+<p>每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入；</p>
+<p>这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤</p>
+<h5 id="下面的各个逻辑步骤描述适用于SQL-server2000-和-2005"><a href="#下面的各个逻辑步骤描述适用于SQL-server2000-和-2005" class="headerlink" title="下面的各个逻辑步骤描述适用于SQL server2000 和 2005:"></a>下面的各个逻辑步骤描述适用于SQL server2000 和 2005:</h5><ol>
+<li>FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1;</li>
+<li>ON: 对VT1应用ON筛选，只有那些使&lt;join_condition&gt;为真的行才被插入VT2;</li>
+<li>OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。</li>
+<li>WHERE：对VT3应用WHERE筛选器。只有使&lt;where_condition&gt;为true的行才被插入VT4.</li>
+<li>GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5.</li>
+<li>CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6.</li>
+<li>HAVING：对VT6应用HAVING筛选器。只有使&lt;having_condition&gt;为true的组才会被插入VT7.</li>
+<li>SELECT：处理SELECT列表，产生VT8.</li>
+<li>DISTINCT：将重复的行从VT8中移除，产生VT9.</li>
+<li>ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10).</li>
+<li>TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。</li>
+</ol>
+<h4 id="工作中遇到复杂的sql逻辑："><a href="#工作中遇到复杂的sql逻辑：" class="headerlink" title="　工作中遇到复杂的sql逻辑："></a>　工作中遇到复杂的sql逻辑：</h4><p>复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字</p>
+<p>段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。</p>
+<p>select后是自己需要的字段<br>from后是自己需要查询的多张表或者自己子查询得出的结果集<br>where后是条件 是对from后的结果集进行筛选</p>
+<p>多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛<br>选结果集</p>
+<p>在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复<br>杂的sql语句 这可以看做是写复杂脚本的原则：</p>
+<p>由简单到复杂 逐步迭代 得出结果</p>
+<h2 id="最重要的还是在工作实践中多加总结-主动接触"><a href="#最重要的还是在工作实践中多加总结-主动接触" class="headerlink" title="最重要的还是在工作实践中多加总结 主动接触"></a>最重要的还是在工作实践中多加总结 主动接触</h2><h4 id="sql-正确性验证："><a href="#sql-正确性验证：" class="headerlink" title="sql 正确性验证："></a>sql 正确性验证：</h4><ol>
+<li>正确理解需求，跟同事，产品沟通清楚；</li>
+<li>小规模数据测试+多场景数据测试；</li>
+<li>同事间代码走查，团队评审代码；</li>
+<li>QA把关。</li>
+</ol>
+<h4 id="表设计"><a href="#表设计" class="headerlink" title="表设计"></a>表设计</h4><h5 id="Varchar字段类型长度设计"><a href="#Varchar字段类型长度设计" class="headerlink" title="Varchar字段类型长度设计:"></a>Varchar字段类型长度设计:</h5><p><a href="https://blog.csdn.net/yzsind/article/details/6835286" target="_blank" rel="noopener">关于数据库Varchar字段类型长度设计问题</a></p>
+<h5 id="规范化－数据库设计（三大范式）"><a href="#规范化－数据库设计（三大范式）" class="headerlink" title="规范化－数据库设计（三大范式）"></a>规范化－数据库设计（三大范式）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">create table xxh.sample(</span><br><span class="line">	prjnum int not null,</span><br><span class="line">	prjname varchar(200),</span><br><span class="line">	emynum int not null,</span><br><span class="line">	emyname varchar(200),</span><br><span class="line">	salcategory char(1),</span><br><span class="line">	salpackage int,</span><br><span class="line">	primary key(prjnum)</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.ibm.com/developerworks/cn/data/library/techarticles/dm-0605jiangt/index.html" target="_blank" rel="noopener">ibm数据库设计</a></p>
+<hr>
+<h4 id="sql笔记"><a href="#sql笔记" class="headerlink" title="sql笔记"></a>sql笔记</h4><h5 id="sql-union-将两个sql查询的结果合并到一起"><a href="#sql-union-将两个sql查询的结果合并到一起" class="headerlink" title="sql union: 将两个sql查询的结果合并到一起"></a><a href="http://www.cnblogs.com/yugen/archive/2010/07/25/1784802.html" target="_blank" rel="noopener">sql union: 将两个sql查询的结果合并到一起</a></h5><h5 id="group-by-amp-having"><a href="#group-by-amp-having" class="headerlink" title="group by &amp; having\"></a><a href="http://www.cnblogs.com/wang-123/archive/2012/01/05/2312676.html" target="_blank" rel="noopener">group by &amp; having</a>\</h5><p>如果只是执行一条语句，有没有GO都一样\<br>如果多条语句之间用GO分隔开就不一样了\<br>每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。\<br>例如：\<br>首先同时执行下边的语句\<br>select <em> from sysobjects where id=a\<br>select getdate()\<br>你会发现会报错，并且不会显示任何结果集\<br>而你再执行\<br>select </em> from sysobjects where id=a\<br>go\<br>select getdate()\<br>go\<br>你会发现尽管同样会报错，但结果集中包含select getdate()的结果\</p>
+<h5 id="mysql-Every-derived-table-must-have-its-own-alias"><a href="#mysql-Every-derived-table-must-have-its-own-alias" class="headerlink" title="mysql-Every derived table must have its own alias"></a><a href="https://blog.csdn.net/moxiaomomo/article/details/9303149" target="_blank" rel="noopener">mysql-Every derived table must have its own alias</a></h5><pre><code>关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\
+_mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\
+如下两条select语句可以说明这个问题：
+
+select count(*) from (select * from A where uuid=&apos;123&apos;) ;   // error\
+select count(*) from (select * from A where uuid=&apos;123&apos;) as a ;   // ok
+</code></pre><h5 id="CAST-函数"><a href="#CAST-函数" class="headerlink" title="CAST 函数"></a>CAST 函数</h5><p>CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//CAST (expression AS data_type)</span><br><span class="line">cast(minute(clttime)/5 AS int)</span><br></pre></td></tr></table></figure></p>
+<h4 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h4><p><a href="https://time.geekbang.org/column/intro/139?from=trial&amp;utm_source=website&amp;utm_medium=infoq&amp;utm_campaign=139-presell" target="_blank" rel="noopener">极客时间课程－mysql实战45讲</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/database/" rel="tag"># database</a>
+          
+            <a href="/tags/sql/" rel="tag"># sql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/27/Learningakka/" rel="next" title="Learning Akka">
+                <i class="fa fa-chevron-left"></i> Learning Akka
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xu</p>
+              <p class="site-description motion-element" itemprop="description">华夏第一剑</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#sql优化"><span class="nav-number">1.</span> <span class="nav-text">sql优化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#SQL查询的过程"><span class="nav-number">1.1.</span> <span class="nav-text">SQL查询的过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ON后面的条件（ON条件）和WHERE条件的区别："><span class="nav-number">1.2.</span> <span class="nav-text">ON后面的条件（ON条件）和WHERE条件的区别：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sql执行顺序（转侵删）"><span class="nav-number">1.3.</span> <span class="nav-text">sql执行顺序（转侵删）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#下面的各个逻辑步骤描述适用于SQL-server2000-和-2005"><span class="nav-number">1.4.</span> <span class="nav-text">下面的各个逻辑步骤描述适用于SQL server2000 和 2005:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工作中遇到复杂的sql逻辑："><span class="nav-number">2.</span> <span class="nav-text">　工作中遇到复杂的sql逻辑：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最重要的还是在工作实践中多加总结-主动接触"><span class="nav-number"></span> <span class="nav-text">最重要的还是在工作实践中多加总结 主动接触</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sql-正确性验证："><span class="nav-number">1.</span> <span class="nav-text">sql 正确性验证：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表设计"><span class="nav-number">2.</span> <span class="nav-text">表设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Varchar字段类型长度设计"><span class="nav-number">2.1.</span> <span class="nav-text">Varchar字段类型长度设计:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#规范化－数据库设计（三大范式）"><span class="nav-number">2.2.</span> <span class="nav-text">规范化－数据库设计（三大范式）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sql笔记"><span class="nav-number">3.</span> <span class="nav-text">sql笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#sql-union-将两个sql查询的结果合并到一起"><span class="nav-number">3.1.</span> <span class="nav-text">sql union: 将两个sql查询的结果合并到一起</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#group-by-amp-having"><span class="nav-number">3.2.</span> <span class="nav-text">group by &amp; having\</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mysql-Every-derived-table-must-have-its-own-alias"><span class="nav-number">3.3.</span> <span class="nav-text">mysql-Every derived table must have its own alias</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CAST-函数"><span class="nav-number">3.4.</span> <span class="nav-text">CAST 函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mysql"><span class="nav-number">4.</span> <span class="nav-text">mysql</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

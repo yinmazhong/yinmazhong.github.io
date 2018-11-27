@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Akka,actor,并发," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="程序是怎样运行的？进程和线程在当前抢占式多任务操作系统中，程序员几乎或者彻底失去了命令处理器调整程序执行次序的权利将程序中的各个可执行部分分配给指定的处理器，通常是操作系统OS的工作，这种机制称作多任务处理，而且对计算机用户透明进程是指被执行的计算机程序的一个实例在同一个进程中出现的独立控制流实体称为线程，在执行程序的过程中，每个线程都会描述程序栈和程序计数器的当前状态可以将进程视为一组OS线程以">
+<meta name="keywords" content="Akka,actor,并发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learning Akka">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/Learningakka/index.html">
+<meta property="og:site_name" content="白帝圣剑">
+<meta property="og:description" content="程序是怎样运行的？进程和线程在当前抢占式多任务操作系统中，程序员几乎或者彻底失去了命令处理器调整程序执行次序的权利将程序中的各个可执行部分分配给指定的处理器，通常是操作系统OS的工作，这种机制称作多任务处理，而且对计算机用户透明进程是指被执行的计算机程序的一个实例在同一个进程中出现的独立控制流实体称为线程，在执行程序的过程中，每个线程都会描述程序栈和程序计数器的当前状态可以将进程视为一组OS线程以">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-27T03:25:45.828Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Learning Akka">
+<meta name="twitter:description" content="程序是怎样运行的？进程和线程在当前抢占式多任务操作系统中，程序员几乎或者彻底失去了命令处理器调整程序执行次序的权利将程序中的各个可执行部分分配给指定的处理器，通常是操作系统OS的工作，这种机制称作多任务处理，而且对计算机用户透明进程是指被执行的计算机程序的一个实例在同一个进程中出现的独立控制流实体称为线程，在执行程序的过程中，每个线程都会描述程序栈和程序计数器的当前状态可以将进程视为一组OS线程以">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/27/Learningakka/"/>
+
+
+
+
+
+  <title>Learning Akka | 白帝圣剑</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">白帝圣剑</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">御剑跟着我</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/Learningakka/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白帝圣剑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Learning Akka</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T11:25:46+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务器端-并发编程/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器端 - 并发编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="程序是怎样运行的？"><a href="#程序是怎样运行的？" class="headerlink" title="程序是怎样运行的？"></a>程序是怎样运行的？</h2><h3 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h3><p>在当前抢占式多任务操作系统中，程序员几乎或者彻底失去了命令处理器调整程序执行次序的权利<br>将程序中的各个可执行部分分配给指定的处理器，通常是操作系统OS的工作，这种机制称作多任务处理，而且对计算机用户透明<br>进程是指被执行的计算机程序的一个实例<br>在同一个进程中出现的独立控制流实体称为线程，<br>在执行程序的过程中，每个线程都会描述程序栈和程序计数器的当前状态<br>可以将进程视为一组OS线程以及这些线程共享的内存和资源</p>
+<p>启动一个新的JVM实例永远只会创建一个新的进程，在JVM进程中，多个线程可以同时运行，<br>JVM使用java.lang.Thread 类代表其线程</p>
+<p>每当一个新的jvm进程开始运行时，默认情况下他都会创建多个线程。而这些线程中最重要的线程是主线程，该线程会执行scala 程序中的main方法</p>
+<p>线程池：基本思想还是一种对象池的思想，开辟一块内存空间，里面存放了众多的线程（都还生龙活虎的），池中的线程执行调度由池管理器来处理，当有线程任务时，从池中取出一个，执行完成后将线程对象归还给线程池，这样可以避免反复创建线程对象所带来的性能开销，节省了系统的资源。</p>
+<hr>
+<p><a href="http://jasonqu.github.io/akka-doc-cn/2.3.6/scala/book/chapter1/introduction.html" target="_blank" rel="noopener">akka中文文档</a></p>
+<h2 id="Actor-系统"><a href="#Actor-系统" class="headerlink" title="Actor 系统"></a>Actor 系统</h2><p>Actor 是封装状态和行为的对象，他们唯一的通讯方式是交换消息－－把消息存放在接收方的邮箱里</p>
+<ul>
+<li>akka是瑞士的一座山</li>
+<li>actor 模型是为了减少共享状态</li>
+</ul>
+<p><code>object jingtaitiaojian {
+  def main(args: Array[String]): Unit = {
+    var i, j = 0
+    (1 to 10000).foreach(_ =&gt; i = i + 1)
+    (1 to 10000).foreach(_ =&gt; Future(j = j + 1))
+    Thread.sleep(1000)
+    println(s&quot;i $i and j $j&quot;)
+  }
+}</code></p>
+<h2 id="AKKA"><a href="#AKKA" class="headerlink" title="AKKA"></a>AKKA</h2><h2 id="akka-doc"><a href="#akka-doc" class="headerlink" title="akka doc"></a>akka doc</h2><h3 id="security-announcements"><a href="#security-announcements" class="headerlink" title="security announcements"></a>security announcements</h3><h3 id="akka-remote"><a href="#akka-remote" class="headerlink" title="akka remote"></a>akka remote</h3><p>remote actor 需要先部署</p>
+<p>然后通过配置文件获得该actor的ref，从而可以正常传递消息</p>
+<p>官方github例子讲了写狗屁，浪费了老子大量时间</p>
+<h3 id="akka-cluster"><a href="#akka-cluster" class="headerlink" title="akka cluster"></a>akka cluster</h3><p>横向扩展－集群化<br>akka doc在介绍　akka-remote和akka-cluster的时候，不止一次的强调过，akka-remote这种点对点的模块一般不会单独使用，而是使用基于akka-remote的akka-cluster构建多机分布式集群</p>
+<h4 id="分布式系统基本概念"><a href="#分布式系统基本概念" class="headerlink" title="分布式系统基本概念"></a>分布式系统基本概念</h4><p>集群：遵循某种协议的多台机器构成的一个整体</p>
+<h5 id="巨型单体应用-VS-微服务"><a href="#巨型单体应用-VS-微服务" class="headerlink" title="巨型单体应用　VS 微服务"></a>巨型单体应用　VS 微服务</h5><p>Martin Fowler</p>
+<ul>
+<li><p>应用程序较小、团队也小，使用单体应用效率更高一些</p>
+</li>
+<li><p>当需要切分单体为多个微服务时，单体会帮助我们理解应该将那些部分分隔出来</p>
+</li>
+</ul>
+<p>负载较高的微服务扩展</p>
+<hr>
+<p>akka 更多的时候使用配置而不是代码来做这些部署决定，使用多个代码库　　-.-?</p>
+<p>总结：从代码开发的一开始，就应该让不同的团队使用不同的代码库，不管是单体应用还是多个独立的微服务应用</p>
+<h5 id="集群定义"><a href="#集群定义" class="headerlink" title="集群定义"></a>集群定义</h5><ul>
+<li>遵循某种协议的多台机器构成的一个整体</li>
+<li>集群需要具备的两个功能：失败发现以及使得集群中的所有成员最终能够提供一致的视图</li>
+</ul>
+<ol>
+<li>失败检测</li>
+</ol>
+<p>问题：加入集群的每台机器都用跟其他节点通信以实现失败检测的话，集群的性能不会随着集群节点数的增加而线性提高，因为每增加一个节点，需要的通信开销成本会指数增加<br>akka解决：为了降低监控其他节点健康程度的复杂度，akka中的失败检测（节点间发送心跳信息并接受回应）只会监控某个节点附近特定数据的节点</p>
+<ol start="2">
+<li>通过gossip 协议达到最终一致性</li>
+</ol>
+<p>akka负责确定集群中是否有变化，并负责将发生的任何变化传递给集群中的所有节点</p>
+<hr>
+<p>试了下官网的例子，但是文档还没有看完，慢慢看吧，现在有更有意思的事情来了。</p>
+<h3 id="Akka-Http"><a href="#Akka-Http" class="headerlink" title="Akka-Http"></a>Akka-Http</h3><p>最先接触的是spray,是typesafe推的一个scala servlet lib,<br>后来akka开发了akka-http,是spray的升级版，spray也不再维护，转而推荐使用akka-http</p>
+<p>自带服务器，写接口，方便，</p>
+<h3 id="Akka-http-加载使用静态网页-static-html-，样式-css-，js"><a href="#Akka-http-加载使用静态网页-static-html-，样式-css-，js" class="headerlink" title="Akka-http 加载使用静态网页(static html)，样式(css)，js"></a>Akka-http 加载使用静态网页(static html)，样式(css)，js</h3><p><a href="https://stackoverflow.com/questions/41179581/akka-http-load-cssjs-resources" target="_blank" rel="noopener">万能的stackoverflow</a></p>
+<h2 id="世界上的一切问题都可以在stackoverflow上找到答案，如果没找打，那就是姿势不对"><a href="#世界上的一切问题都可以在stackoverflow上找到答案，如果没找打，那就是姿势不对" class="headerlink" title="世界上的一切问题都可以在stackoverflow上找到答案，如果没找打，那就是姿势不对"></a>世界上的一切问题都可以在stackoverflow上找到答案，如果没找打，那就是姿势不对</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import akka.http.scaladsl.model.StatusCodes</span><br><span class="line"></span><br><span class="line">val staticResources =</span><br><span class="line">  (get &amp; pathPrefix(&quot;admin&quot;))&#123;</span><br><span class="line">    (pathEndOrSingleSlash &amp; redirectToTrailingSlashIfMissing(StatusCodes.TemporaryRedirect)) &#123;</span><br><span class="line">      getFromResource(&quot;admin/index.html&quot;)</span><br><span class="line">    &#125; ~ &#123;</span><br><span class="line">      getFromResourceDirectory(&quot;admin&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>就上面的代码而言，相对陌生的是<code>getFromResourceDirectory</code></p>
+<p>官方文档：</p>
+<blockquote>
+<p>Completes GET requests with the content of the given classpath resource directory.</p>
+</blockquote>
+<p>  For details refer to getFromDirectory which works the same way but obtaining the file from the filesystem instead of the applications classpath.</p>
+<p>  Note that it’s not required to wrap this directive with get as this directive will only respond to GET requests.</p>
+<blockquote>
+<p>使用给定类路径资源目录的内容完成GET请求。</p>
+</blockquote>
+<p>  有关详细信息，请参阅getFromDirectory，它的工作方式相同，但是从文件系统而不是应用程序类路径获取文件。</p>
+<p>  请注意，不需要使用get包装此指令，因为此指令仅响应GET请求。</p>
+<h4 id="打包？"><a href="#打包？" class="headerlink" title="打包？"></a>打包？</h4><p>依然使用打包工具<code>sbt-native-packager</code></p>
+<p>plugins.sbt<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-native-packager&quot; % &quot;1.2.0&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>build.sbt</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import com.typesafe.sbt.packager.MappingsHelper.&#123;contentOf, directory&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">enablePlugins(JavaServerAppPackaging)</span><br><span class="line"></span><br><span class="line">mainClass in Compile := Some(&quot;com.qinglongmu.dataplatform.WebServer&quot;)</span><br><span class="line"></span><br><span class="line">mappings in Universal ++= &#123;</span><br><span class="line">  // optional example illustrating how to copy additional directory</span><br><span class="line">  directory(&quot;scripts&quot;) ++</span><br><span class="line">    // copy configuration files to config directory</span><br><span class="line">    contentOf(&quot;src/main/resources&quot;).toMap.mapValues(&quot;config/&quot; + _)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// add &apos;config&apos; directory first in the classpath of the start script,</span><br><span class="line">// an alternative is to set the config file locations via CLI parameters</span><br><span class="line">// when starting the application</span><br><span class="line">scriptClasspath := Seq(&quot;../config/&quot;) ++ scriptClasspath.value</span><br><span class="line"></span><br><span class="line">licenses := Seq((&quot;CC0&quot;, url(&quot;http://creativecommons.org/publicdomain/zero/1.0&quot;)))</span><br></pre></td></tr></table></figure>
+<p>这样可以直接修改config目录中的静态文件</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Akka/" rel="tag"># Akka</a>
+          
+            <a href="/tags/actor/" rel="tag"># actor</a>
+          
+            <a href="/tags/并发/" rel="tag"># 并发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/27/november/" rel="next" title="十一月">
+                <i class="fa fa-chevron-left"></i> 十一月
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/27/sql笔记/" rel="prev" title="sql笔记">
+                sql笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xu</p>
+              <p class="site-description motion-element" itemprop="description">华夏第一剑</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序是怎样运行的？"><span class="nav-number">1.</span> <span class="nav-text">程序是怎样运行的？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和线程"><span class="nav-number">1.1.</span> <span class="nav-text">进程和线程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Actor-系统"><span class="nav-number">2.</span> <span class="nav-text">Actor 系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AKKA"><span class="nav-number">3.</span> <span class="nav-text">AKKA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#akka-doc"><span class="nav-number">4.</span> <span class="nav-text">akka doc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#security-announcements"><span class="nav-number">4.1.</span> <span class="nav-text">security announcements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#akka-remote"><span class="nav-number">4.2.</span> <span class="nav-text">akka remote</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#akka-cluster"><span class="nav-number">4.3.</span> <span class="nav-text">akka cluster</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式系统基本概念"><span class="nav-number">4.3.1.</span> <span class="nav-text">分布式系统基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#巨型单体应用-VS-微服务"><span class="nav-number">4.3.1.1.</span> <span class="nav-text">巨型单体应用　VS 微服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#集群定义"><span class="nav-number">4.3.1.2.</span> <span class="nav-text">集群定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Akka-Http"><span class="nav-number">4.4.</span> <span class="nav-text">Akka-Http</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Akka-http-加载使用静态网页-static-html-，样式-css-，js"><span class="nav-number">4.5.</span> <span class="nav-text">Akka-http 加载使用静态网页(static html)，样式(css)，js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#世界上的一切问题都可以在stackoverflow上找到答案，如果没找打，那就是姿势不对"><span class="nav-number">5.</span> <span class="nav-text">世界上的一切问题都可以在stackoverflow上找到答案，如果没找打，那就是姿势不对</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#打包？"><span class="nav-number">5.0.1.</span> <span class="nav-text">打包？</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
