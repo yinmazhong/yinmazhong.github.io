@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="scala," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="TomCat使用：Tomcat笔记  安装配置环境变量JAVA_HOME; 解压下载的tomcat压缩包；　　 netstat -an 查看端口占用情况； 修改server.xml; 双击startup.bat 启动；  scala List类的高阶方法 forall: xs forall p以列表xs和论断p为参数，如果列表所有元素满足p则返回true;  与之相对应的 exists: xs e">
+<meta name="keywords" content="scala">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scala 笔记">
+<meta property="og:url" content="http://yoursite.com/2018/12/04/scala笔记/index.html">
+<meta property="og:site_name" content="白帝圣剑">
+<meta property="og:description" content="TomCat使用：Tomcat笔记  安装配置环境变量JAVA_HOME; 解压下载的tomcat压缩包；　　 netstat -an 查看端口占用情况； 修改server.xml; 双击startup.bat 启动；  scala List类的高阶方法 forall: xs forall p以列表xs和论断p为参数，如果列表所有元素满足p则返回true;  与之相对应的 exists: xs e">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-04T07:22:57.252Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scala 笔记">
+<meta name="twitter:description" content="TomCat使用：Tomcat笔记  安装配置环境变量JAVA_HOME; 解压下载的tomcat压缩包；　　 netstat -an 查看端口占用情况； 修改server.xml; 双击startup.bat 启动；  scala List类的高阶方法 forall: xs forall p以列表xs和论断p为参数，如果列表所有元素满足p则返回true;  与之相对应的 exists: xs e">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/04/scala笔记/"/>
+
+
+
+
+
+  <title>scala 笔记 | 白帝圣剑</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">白帝圣剑</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">御剑跟着我</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/scala笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白帝圣剑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">scala 笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言-scala/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言 - scala</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="TomCat使用："><a href="#TomCat使用：" class="headerlink" title="TomCat使用："></a>TomCat使用：</h4><a href="/2018/12/04/Tomcat/" title="Tomcat笔记">Tomcat笔记</a>
+<ol>
+<li>安装配置环境变量JAVA_HOME;</li>
+<li>解压下载的tomcat压缩包；　　</li>
+<li>netstat -an 查看端口占用情况；</li>
+<li>修改server.xml;</li>
+<li>双击startup.bat 启动；</li>
+</ol>
+<h4 id="scala-List类的高阶方法"><a href="#scala-List类的高阶方法" class="headerlink" title="scala List类的高阶方法"></a>scala List类的高阶方法</h4><ul>
+<li><p>forall: xs forall p<br>以列表xs和论断p为参数，如果列表所有元素满足p则返回true;</p>
+</li>
+<li><p>与之相对应的 exists: xs exists p<br>xs 中只要有一个值满足p就返回true。</p>
+</li>
+<li><p>scala List类 TO String 方法 mkString(哈哈，当年这个都要记一下)</p>
+</li>
+</ul>
+<h4 id="简单的单元测试"><a href="#简单的单元测试" class="headerlink" title="简单的单元测试"></a>简单的单元测试</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">object TestGroupDao extends App&#123;</span><br><span class="line">    new GroupDao().updateGroup(GroupInfo(3456,&quot;centrum&quot;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">object MainTestGroupDao&#123;</span><br><span class="line">  def main (args: Array[String]) &#123;</span><br><span class="line">      val groupDao = new GroupDao</span><br><span class="line">    println(&quot;groupDao: &quot; + groupDao)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="case-class-实例-gt-List-RE"><a href="#case-class-实例-gt-List-RE" class="headerlink" title="case class 实例 =&gt; List  RE"></a>case class 实例 =&gt; List  RE</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">productIterator.toList</span><br><span class="line"></span><br><span class="line">scala&gt; case class aaa(i:Int,j:Int)</span><br><span class="line">defined class aaa</span><br><span class="line"></span><br><span class="line">scala&gt; val q = aaa(1,2)</span><br><span class="line">q: aaa = aaa(1,2)</span><br><span class="line"></span><br><span class="line">scala&gt; q.toList</span><br><span class="line">&lt;console&gt;:11: error: value toList is not a member of aaa</span><br><span class="line">              q.toList</span><br><span class="line">                ^</span><br><span class="line"></span><br><span class="line">scala&gt; q.toString</span><br><span class="line">res1: String = aaa(1,2)</span><br><span class="line"></span><br><span class="line">scala&gt; q.productIterator.toList</span><br><span class="line">res2: List[Any] = List(1, 2)</span><br><span class="line"></span><br><span class="line">scala&gt; q.productIterator.toList.mkString(&quot;&apos;&quot;)</span><br><span class="line">res3: String = 1&apos;2</span><br></pre></td></tr></table></figure>
+<h4 id="case-class-实例-转-Map-（使用反射）RE"><a href="#case-class-实例-转-Map-（使用反射）RE" class="headerlink" title="case class 实例 转 Map （使用反射）RE"></a>case class 实例 转 Map （使用反射）RE</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def updateUser(userInfo: UserInfo): Boolean = &#123;</span><br><span class="line">    //val userInfoFieldName = userInfo.getClass.getDeclaredFields.map(_.getName)</span><br><span class="line">    val userInfoFieldValueMap = (Map[String, Any]() /: userInfo.getClass.getDeclaredFields) &#123; (a, f) =&gt;</span><br><span class="line">      f.setAccessible(true)</span><br><span class="line">      a + (f.getName -&gt; f.get(userInfo))</span><br><span class="line">    &#125;</span><br><span class="line">    val updateUserSqlset = if(userInfo.password == &quot;&quot;) userInfoFieldValueMap.keys.map(a =&gt; &#123;if (a != &quot;password&quot;) a + &quot;=&apos;&quot; + userInfoFieldValueMap(a)&#125;).mkString(&quot;&apos;,&quot;)</span><br><span class="line">    else userInfoFieldValueMap.keys.map(a =&gt; a + &quot;=&apos;&quot; + userInfoFieldValueMap(a)).mkString(&quot;&apos;,&quot;)</span><br><span class="line">    val updateUserSqlWhere = &quot;userId = &apos;&quot; + userInfoFieldValueMap(&quot;userId&quot;) + &quot;&apos;&quot;</span><br><span class="line">    val updateUserSql =</span><br><span class="line">      s&quot;&quot;&quot;</span><br><span class="line">         |update userinfo set $updateUserSqlset where $updateUserSqlWhere</span><br><span class="line">     &quot;&quot;&quot;.stripMargin</span><br><span class="line">    Sql(updateUserSql).execute</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="List-列表模式"><a href="#List-列表模式" class="headerlink" title="List 列表模式　"></a>List 列表模式　</h4><pre><code>列表还可以使用模式匹配做拆分，这时列表模式需逐一匹配要拆分的列表表达式
+两种形式：
+ 1. List(...)   对列表所有的元素做匹配
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; val fruit = List(&quot;Apple&quot;,&quot;Orange&quot;,&quot;pears&quot;)</span><br><span class="line">fruit: List[String] = List(Apple, Orange, pears)</span><br><span class="line"></span><br><span class="line">scala&gt; val List(a,b,c) = fruit</span><br><span class="line">a: String = Apple</span><br><span class="line">b: String = Orange</span><br><span class="line">c: String = pears</span><br></pre></td></tr></table></figure>
+</code></pre><p>　　</p>
+<pre><code>2. :: 操作符 和 Nil 常量组成的模式逐位拆分列表
+       <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; val fruit = List(&quot;Apple&quot;,&quot;Orange&quot;,&quot;pears&quot;)</span><br><span class="line">fruit: List[String] = List(Apple, Orange, pears)</span><br><span class="line"></span><br><span class="line">scala&gt; val List(a,b,c) = fruit</span><br><span class="line">a: String = Apple</span><br><span class="line">b: String = Orange</span><br><span class="line">c: String = pears</span><br><span class="line"></span><br><span class="line">scala&gt; val a:: b :: rest = fruit</span><br><span class="line">a: String = Apple</span><br><span class="line">b: String = Orange</span><br><span class="line">rest: List[String] = List(pears)</span><br></pre></td></tr></table></figure>
+
+　　在不知道列表长度为多少时，最好使用后一种
+</code></pre><h4 id="插入排序算法"><a href="#插入排序算法" class="headerlink" title="插入排序算法"></a>插入排序算法</h4><pre><code>1. 陪练写法：
+
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def isort(xs: List[Int]): List[Int] =</span><br><span class="line">    if(xs.isEmpty) Nil</span><br><span class="line">    else insert(xs.head,isort(xs.tail))</span><br><span class="line"></span><br><span class="line">def insert(x: Int, xs: List[Int]): List[Int] =</span><br><span class="line">    if(xs.isEmpty || x &lt;= xs.head) x :: xs</span><br><span class="line">    else xs.head :: insert(x,xs.tail)</span><br></pre></td></tr></table></figure>
+
+2. // 使用模式匹配拆分列表的方法
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def isort(xs: List[Int]) = xs match &#123;</span><br><span class="line">    case List() =&gt; List()</span><br><span class="line">    case x :: xs1 =&gt; insert(x,isort(xs1))</span><br><span class="line">&#125;</span><br><span class="line">def insert(x: Int, xs: List[Int]) = xs match &#123;</span><br><span class="line">    case List() =&gt; List(x)</span><br><span class="line">    case y :: ys =&gt; if(x &lt;= y) x :: xs</span><br><span class="line">                    else y :: insert(x,ys)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="http-hongjiang-info-scala"><a href="#http-hongjiang-info-scala" class="headerlink" title="http://hongjiang.info/scala/"></a><a href="http://hongjiang.info/scala/" target="_blank" rel="noopener">http://hongjiang.info/scala/</a></h4><h4 id="Scala-强大的集合数据操作示例"><a href="#Scala-强大的集合数据操作示例" class="headerlink" title="Scala 强大的集合数据操作示例"></a><a href="https://blog.csdn.net/pzw_0612/article/details/45936165" target="_blank" rel="noopener">Scala 强大的集合数据操作示例</a></h4><pre><code>//todo
+</code></pre><h4 id="scala-sort-排序"><a href="#scala-sort-排序" class="headerlink" title="scala sort 排序"></a>scala sort 排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xmlFileList.map((xml.XML.loadFile(_)))</span><br><span class="line">.map(parseXML(_)).filter((_.version.compareTo(currentVersion) &gt; 0))</span><br><span class="line">.map(a =&gt; (a.version, a)).&lt;strong&gt;sortWith((a,b) =&gt; (a._1).compareTo(b._1) &lt; 0)&lt;/strong&gt;.toMap</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.iteblog.com/archives/1171" target="_blank" rel="noopener">如何排序</a></p>
+<h4 id="scala-读写文件"><a href="#scala-读写文件" class="headerlink" title="scala 读写文件"></a>scala 读写文件</h4><p>//todo</p>
+<h4 id="scala-变长参数、List"><a href="#scala-变长参数、List" class="headerlink" title="scala 变长参数、List"></a>scala 变长参数、List</h4><p>getFootInfoByUUID(l: _*)</p>
+<p>getFootInfoByUUID()是一个接受变长参数的方法<br>l中的数据通过语法 _* 转换并传入函数中</p>
+<h4 id="scala伴生对象"><a href="#scala伴生对象" class="headerlink" title="scala伴生对象"></a>scala伴生对象</h4><p>伴生对象可以调用伴生类中的方法，但是反过来不行</p>
+<h4 id="scala-sbt-read-file-from-resources"><a href="#scala-sbt-read-file-from-resources" class="headerlink" title="scala sbt read file from resources"></a>scala sbt read file from resources</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val is = getClass.getClassLoader.getResourceAsStream(&quot;remote_app.conf&quot;)</span><br><span class="line">val source = scala.io.Source.fromInputStream(is).getLines().map(_.split(&quot;\t&quot;).toList).toList</span><br><span class="line">//.foreach(as =&gt; println(as.length))</span><br><span class="line">[How to get load file under resources folder in scala sbt](https://stackoverflow.com/questions/40724082/how-to-get-load-file-under-resources-folder-in-scala-sbt)</span><br></pre></td></tr></table></figure>
+<h4 id="scala-反射"><a href="#scala-反射" class="headerlink" title="scala 反射"></a>scala 反射</h4><p>如果要用反射的话，需要额外添加依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">libraryDependencies += &quot;org.scala-lang&quot; % &quot;scala-reflect&quot; % &quot;2.11.11&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="scala-Json"><a href="#scala-Json" class="headerlink" title="scala Json"></a>scala Json</h4><p><a href="https://github.com/xdotai/play-json-extensions" target="_blank" rel="noopener">play-json-extensions</a> +22 field case class formatter and more for play-json</p>
+<p>大数据场景下case class 必备,是play-json 的升级版<br>跟spray-json也很像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package data.creation</span><br><span class="line"></span><br><span class="line">import ai.x.play.json.Jsonx</span><br><span class="line">import common.HttpClientHelper</span><br><span class="line">import data.beans.LastInfo</span><br><span class="line">import play.api.libs.json.Json</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">  * Created by xxh on 18-7-30.</span><br><span class="line">  */</span><br><span class="line">object LastInfoHelper &#123;</span><br><span class="line">  implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo]</span><br><span class="line"></span><br><span class="line">  def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123;</span><br><span class="line">    val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;)</span><br><span class="line">    val lastJsonArray = Json.parse(lastArray)</span><br><span class="line">    val lastInfo = lastJsonArray(0).as[LastInfo]</span><br><span class="line">    lastInfo</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="case-object-vs-case-class-vs-object-vs-class"><a href="#case-object-vs-case-class-vs-object-vs-class" class="headerlink" title="case object vs case class vs object vs class"></a>case object vs case class vs object vs class</h4><p>case class \ case object 都有pattern match 、序列化　、toString 、　equal、方法的好处加持<br>只是　object 还是一个单例对象，不能有构造参数，如果是一个不可变的单里对象用在模式匹配中时可用</p>
+<h4 id="new-trait"><a href="#new-trait" class="headerlink" title="new trait"></a>new trait</h4><p>不能通过new 关键字去新建一个对象，只能新建一个extends这个trait的匿名类，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">trait MyTrait&#123;</span><br><span class="line">val a = 1</span><br><span class="line">val b = 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//----------------</span><br><span class="line"></span><br><span class="line">val anonClassMixingInTrait = new Mytrait&#123;</span><br><span class="line"> def aFunctionInMyClass = &quot;111&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//is the equivalent of:</span><br><span class="line"></span><br><span class="line">class MyClass extends MyTrait&#123;</span><br><span class="line">  def aFunctionInMyClass = &quot;111&quot;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">val anonClassMixingInTrait =  new MyClass</span><br></pre></td></tr></table></figure>
+<p>区别是</p>
+<p>前者只能在定义该匿名类的时候初始化它，因为他既没有名字，也没有构造函数</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">val t = new MyTrait &#123;</span><br><span class="line">  val t1 = ... //some expression</span><br><span class="line">  val t2 = ... //some expression</span><br><span class="line">&#125;</span><br><span class="line">is the same as</span><br><span class="line"></span><br><span class="line">val t = new AnyRef with MyTrait &#123;</span><br><span class="line">  val t1 = ... //some expression</span><br><span class="line">  val t2 = ... //some expression</span><br><span class="line">&#125;</span><br><span class="line">is the same as</span><br><span class="line"></span><br><span class="line">val t = new Object with MyTrait &#123;</span><br><span class="line">  val t1 = ... //some expression</span><br><span class="line">  val t2 = ... //some expression</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="type关键字"><a href="#type关键字" class="headerlink" title="type关键字"></a>type关键字</h4><h4 id="在scala-字符串中转义一个美元-dollar-符号"><a href="#在scala-字符串中转义一个美元-dollar-符号" class="headerlink" title="在scala 字符串中转义一个美元(dollar)$符号"></a>在scala 字符串中转义一个美元(dollar)$符号</h4><p>加倍</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; val a = s&quot;$$a&quot;</span><br><span class="line">a: String = $a</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/scala/" rel="tag"># scala</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/04/spark的三个API/" rel="next" title="Spark的3个API:RDDs/DataFrames/DataSets">
+                <i class="fa fa-chevron-left"></i> Spark的3个API:RDDs/DataFrames/DataSets
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/04/shell脚本迁移gitlab/" rel="prev" title="Shell笔记">
+                Shell笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xu</p>
+              <p class="site-description motion-element" itemprop="description">华夏第一剑</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#TomCat使用："><span class="nav-number">1.</span> <span class="nav-text">TomCat使用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-List类的高阶方法"><span class="nav-number">2.</span> <span class="nav-text">scala List类的高阶方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单的单元测试"><span class="nav-number">3.</span> <span class="nav-text">简单的单元测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-class-实例-gt-List-RE"><span class="nav-number">4.</span> <span class="nav-text">case class 实例 =&gt; List  RE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-class-实例-转-Map-（使用反射）RE"><span class="nav-number">5.</span> <span class="nav-text">case class 实例 转 Map （使用反射）RE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List-列表模式"><span class="nav-number">6.</span> <span class="nav-text">List 列表模式　</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入排序算法"><span class="nav-number">7.</span> <span class="nav-text">插入排序算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http-hongjiang-info-scala"><span class="nav-number">8.</span> <span class="nav-text">http://hongjiang.info/scala/</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scala-强大的集合数据操作示例"><span class="nav-number">9.</span> <span class="nav-text">Scala 强大的集合数据操作示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-sort-排序"><span class="nav-number">10.</span> <span class="nav-text">scala sort 排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-读写文件"><span class="nav-number">11.</span> <span class="nav-text">scala 读写文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-变长参数、List"><span class="nav-number">12.</span> <span class="nav-text">scala 变长参数、List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala伴生对象"><span class="nav-number">13.</span> <span class="nav-text">scala伴生对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-sbt-read-file-from-resources"><span class="nav-number">14.</span> <span class="nav-text">scala sbt read file from resources</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-反射"><span class="nav-number">15.</span> <span class="nav-text">scala 反射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scala-Json"><span class="nav-number">16.</span> <span class="nav-text">scala Json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-object-vs-case-class-vs-object-vs-class"><span class="nav-number">17.</span> <span class="nav-text">case object vs case class vs object vs class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new-trait"><span class="nav-number">18.</span> <span class="nav-text">new trait</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type关键字"><span class="nav-number">19.</span> <span class="nav-text">type关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在scala-字符串中转义一个美元-dollar-符号"><span class="nav-number">20.</span> <span class="nav-text">在scala 字符串中转义一个美元(dollar)$符号</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

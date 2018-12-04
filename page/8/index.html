@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/爬虫/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/kafka/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -316,7 +316,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/09/爬虫/" itemprop="url">爬虫</a></h1>
+                <a class="post-title-link" href="/2018/12/04/kafka/" itemprop="url">kafka笔记</a></h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T18:07:24+08:00">
-                2018-08-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
               </time>
             
 
@@ -351,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据采集-爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">数据采集 - 爬虫</span>
+                  <a href="/categories/kafka/" itemprop="url" rel="index">
+                    <span itemprop="name">kafka</span>
                   </a>
                 </span>
 
@@ -390,166 +390,23 @@
       
         
           
-          一开始接触用python 写爬虫用的是bs4 request urllib2 这些库，简单爬取网页简直不要太简单\自己在上家写的那些找不到了，逻辑是 Python 爬虫脚本 爬取解析网页，提取有效字段，整理写入csv文件供市场部门使用
+          introduction三个主要能力
+
+publist and subscribe 类似于管道
+容错的存储数据
+即时处理数据处理
+
+两大应用场景：
+
+构建可靠的应用与系统间Streaming data　管道
+构建Streaming 程序来传输或react数据流
 
 
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/爬虫/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/用shell收集日志文件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白帝圣剑">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/用shell收集日志文件/" itemprop="url">用Linux shell收集应用日志文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T18:07:24+08:00">
-                2018-08-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据采集-日志收集/" itemprop="url" rel="index">
-                    <span itemprop="name">数据采集 - 日志收集</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现设计：
-从一台服务器上收集数据（ftp get）
-从多台服务器上收集（循环 ftp get）
-定时从多台机器上按照一定规则收集（定时器）
-
-思路1：读配置文件，去指定服务器的指定目录下
+Kafka is generall
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/用shell收集日志文件/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/kafka/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -600,7 +457,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/机器学习1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/linux服务器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -619,7 +476,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/09/机器学习1/" itemprop="url">初识机器学习</a></h1>
+                <a class="post-title-link" href="/2018/12/04/linux服务器/" itemprop="url">linux服务器相关配置</a></h1>
         
 
         <div class="post-meta">
@@ -631,8 +488,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T18:04:29+08:00">
-                2018-08-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
               </time>
             
 
@@ -654,8 +511,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习、深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习、深度学习</span>
+                  <a href="/categories/服务器端-环境/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器端 - 环境</span>
                   </a>
                 </span>
 
@@ -693,14 +550,12 @@
       
         
           
-          神经网络神经网络是一种数学模型，是存在于计算机的神经系统，由大量的神经元相连接并进行计算，在外界信息的基础上，改变内部的结构，常用来对输入和输出间复杂的关系进行建模。
-神经网络由大量的节点和之间的联系构成，负责传递信息和加工信息，神经元也可以通过训练而被强化。
-rel
-生物神经网络现代科学还不能完全
+          本地ubuntu网络不稳定这几天　命令行执行操作各种不爽，间歇性精神病，git ssh 都会犯病没有直接搜索到什么原因导致的，安装wirshark抓包看看
+123sudo add-apt-repository ppa:wireshark-dev/stablesudo apt-get updatesu
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/机器学习1/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/linux服务器/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -751,7 +606,7 @@ rel
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/日志打印规范/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/ml-sklearn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -770,7 +625,7 @@ rel
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/09/日志打印规范/" itemprop="url">日志打印规范</a></h1>
+                <a class="post-title-link" href="/2018/12/04/ml-sklearn/" itemprop="url">scikit-learn</a></h1>
         
 
         <div class="post-meta">
@@ -782,8 +637,157 @@ rel
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T18:04:13+08:00">
-                2018-08-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习、深度学习-scikit-learn/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习、深度学习 - scikit-learn</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Scikit-learn 安装之前安装了anaconda3，其中已经打包安装好了scikit-learn
+Scikit-learn 使用
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/04/ml-sklearn/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/log4j踢平记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白帝圣剑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/04/log4j踢平记/" itemprop="url">log4j踢平记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
               </time>
             
 
@@ -844,14 +848,16 @@ rel
       
         
           
-          背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过
-日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情
-未完待续…
+          错误：　log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$). 
+错误原因：我猜是依赖自带的log4j之间冲突了
+解决：　
+stackoverflow
 
-          
+Just to get you going you
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/日志打印规范/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/log4j踢平记/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -902,7 +908,7 @@ rel
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/数据结构与算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/numpy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -921,7 +927,7 @@ rel
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/09/数据结构与算法/" itemprop="url">数据结构与算法</a></h1>
+                <a class="post-title-link" href="/2018/12/04/numpy/" itemprop="url">Numpy</a></h1>
         
 
         <div class="post-meta">
@@ -933,8 +939,8 @@ rel
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T18:03:52+08:00">
-                2018-08-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
               </time>
             
 
@@ -956,8 +962,8 @@ rel
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
+                  <a href="/categories/数据分析-Numpy/" itemprop="url" rel="index">
+                    <span itemprop="name">数据分析 - Numpy</span>
                   </a>
                 </span>
 
@@ -995,13 +1001,16 @@ rel
       
         
           
-          前言数据结构研究的问题包括数据在计算机中存储、组织、传递和转换的过程及方法，这些也是构成与支撑算法的基础。我们在编写计算机程序来解决应用问题时，最终都要归结并落实到这两个问题上
-“程序 = 数据结构 + 算法”
-算法及其复杂度计算机与算法算法定义所谓算法，就是在特定计算模型下，在信息处理过程中为了解
+          
+科学运算当中最为重要的两个模块，一个是 numpy,一个是 pandas。任何关于数据分析的模块都少不了它们两个。
+
+Why
+运算速度快：numpy 和 pandas 都是采用 C 语言编写, pandas 又是基于 numpy, 是 numpy 的升级版本。
+消耗资源少：采用的是矩阵运算，会比 
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/数据结构与算法/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/numpy/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1089,7 +1098,7 @@ rel
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-count">92</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

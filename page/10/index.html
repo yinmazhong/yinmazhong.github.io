@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/在spark中使用S3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/scala implicit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -316,7 +316,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/09/在spark中使用S3/" itemprop="url">在spark中使用S3</a></h1>
+                <a class="post-title-link" href="/2018/12/04/scala implicit/" itemprop="url">scala implict</a></h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T18:01:44+08:00">
-                2018-08-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
               </time>
             
 
@@ -351,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据存储处理-spark/" itemprop="url" rel="index">
-                    <span itemprop="name">数据存储处理 - spark</span>
+                  <a href="/categories/编程语言-scala/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言 - scala</span>
                   </a>
                 </span>
 
@@ -390,12 +390,14 @@
       
         
           
-          感受：aws S3 远远没有aws官方吹嘘的那么好用，特别是对hadoop的兼容，简直让人吐血，客观原因：在emr中使用S3 都折腾了好久，现在有个半成品吧，还是花钱买的aws官方支持
-build.sbt　××hadoop-aws包与hadoop版本兼容及其敏感××12345678910111213
+          why
+应用中自己写的代码和调用的第三方函数库有着一个基本的区别：也就是你可以任意修改和扩展自己写的代码，而一般来说在没有源码的情况下很难扩展第三方函数库，只能利用函数库提供什么就是什么。
+
+在Scala中解决这个问题是使用隐含类型变换和隐时参数。它们可以使调用函数库变得更加方便，并避免一些繁琐和显
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/在spark中使用S3/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/scala implicit/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -446,7 +448,7 @@ build.sbt　××hadoop-aws包与hadoop版本兼容及其敏感××12345678910111
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/利用python数据处理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/scalaTry/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -465,7 +467,7 @@ build.sbt　××hadoop-aws包与hadoop版本兼容及其敏感××12345678910111
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/09/利用python数据处理/" itemprop="url">利用python进行数据处理</a></h1>
+                <a class="post-title-link" href="/2018/12/04/scalaTry/" itemprop="url">Scala Try</a></h1>
         
 
         <div class="post-meta">
@@ -477,8 +479,8 @@ build.sbt　××hadoop-aws包与hadoop版本兼容及其敏感××12345678910111
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T18:00:59+08:00">
-                2018-08-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
               </time>
             
 
@@ -500,8 +502,8 @@ build.sbt　××hadoop-aws包与hadoop版本兼容及其敏感××12345678910111
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据分析-python/" itemprop="url" rel="index">
-                    <span itemprop="name">数据分析 - python</span>
+                  <a href="/categories/编程语言-s-cala/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言 - s cala</span>
                   </a>
                 </span>
 
@@ -539,23 +541,12 @@ build.sbt　××hadoop-aws包与hadoop版本兼容及其敏感××12345678910111
       
         
           
-          2 引言－－大饼总结起来数据处理的日常工作分为以下几类，python 都可以轻松解决
-
-与外界进行交互
-
-读写各种格式的文件和数据库
-
-准备
-
-对数据进行清理、修整、整合、规范化。。。
-
-转化对数据集做数学和统计运算以产生新的数据集　如：根据分组变量对一个大表进行聚合
-
-建模和计算将数据跟统计模型、
+          Scala Try优雅的错误处理方式:Try
+异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/**  * Created by xxh on 18-7-17.  */object MasterT
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/利用python数据处理/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/scalaTry/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -606,7 +597,7 @@ build.sbt　××hadoop-aws包与hadoop版本兼容及其敏感××12345678910111
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/使用git/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/scalaxml/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -625,7 +616,7 @@ build.sbt　××hadoop-aws包与hadoop版本兼容及其敏感××12345678910111
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/09/使用git/" itemprop="url">git使用</a></h1>
+                <a class="post-title-link" href="/2018/12/04/scalaxml/" itemprop="url">scala操作XML</a></h1>
         
 
         <div class="post-meta">
@@ -637,312 +628,8 @@ build.sbt　××hadoop-aws包与hadoop版本兼容及其敏感××12345678910111
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T18:00:34+08:00">
-                2018-08-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工欲善其事，必先利其器/" itemprop="url" rel="index">
-                    <span itemprop="name">工欲善其事，必先利其器</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          git 不熟悉但是这种工具性的东西，就得边用边学
-
-两个项目合并方法不一定最快，能用
-project a12git checkout -b &apos;newbranch&apos;git push origin newbranch
-project b12345678910111213141516g
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/使用git/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/人人都是产品经理-note/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白帝圣剑">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/人人都是产品经理-note/" itemprop="url">人人都是产品经理--note</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T18:00:34+08:00">
-                2018-08-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/项目管理/" itemprop="url" rel="index">
-                    <span itemprop="name">项目管理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          第一章　写给新手为什么要做产品经理因为世界等我们去改变，创造好的产品，改善坏的产品
-我们到底是不是产品经理产品是什么产品是用来解决某个问题的东西，准确的说产品就是要同时解决用户的问题和公司的问题
-因为作为产品经理要在用户目标和公司的商业目标之间寻找平衡
-产品经理出现源于宝洁
-产品经理的出现是为了适应
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/人人都是产品经理-note/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/了解Docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白帝圣剑">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/了解Docker/" itemprop="url">了解Docker</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T17:56:50+08:00">
-                2018-08-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
               </time>
             
 
@@ -1003,20 +690,312 @@ project b12345678910111213141516g
       
         
           
-          
-Docker
-What is Docker?我的理解：
-在操作系统上新增的一层抽象
-解决的痛点：同一台服务器上多应用间的依赖冲突问题
-优势：很多，比如将多个应用部署在同一个云主机上，该云主机弹性扩展，这样能够节约不少成本
-目前的项目暂时用不到docker
-教程
-
-
-          
+          scala　加载并解析xml12345678910111213141516171819202122232425262728293031323334353637val loadXML = xml.XML.loadFile(AutomatedTestingWebConfig.distributeInfo
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/了解Docker/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/scalaxml/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/spark填坑记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白帝圣剑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/04/spark填坑记/" itemprop="url">spark填坑记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据存储处理-spark/" itemprop="url" rel="index">
+                    <span itemprop="name">数据存储处理 - spark</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          使用spark streaming报错ERROR DFSClient: Failed to close inode xxxxtopic太多造成的，有待进一步了解
+需要给checkpoint的目录打时间戳
+spark集群环境主机日志文件太多问题：　spark集群环境主机日志文件太多，超出了ext3文件
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/04/spark填坑记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/shell脚本迁移gitlab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白帝圣剑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/04/shell脚本迁移gitlab/" itemprop="url">Shell笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务器端-shell/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器端 - shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          背景gitlab A 上的一部分repo迁移至　gitlab B
+在下底层coder,用不了gitlab 管理员的骚操作（这活应该是管理员来干啊）
+平时建了很多repo在上面，想用脚本迁移同步过去
+实现1234567891011121314151617181920212223242526272829
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/04/shell脚本迁移gitlab/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1104,7 +1083,7 @@ What is Docker?我的理解：
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-count">92</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
