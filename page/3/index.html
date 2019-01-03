@@ -451,7 +451,7 @@ HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Hbase使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Hadoop权威指南V3-p1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -470,7 +470,7 @@ HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/04/Hbase使用/" itemprop="url">Hbase使用</a></h1>
+                <a class="post-title-link" href="/2018/12/04/Hadoop权威指南V3-p1/" itemprop="url">Hadoop 权威指南 3th Edition Part 1</a></h1>
         
 
         <div class="post-meta">
@@ -505,8 +505,8 @@ HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据存储处理-database/" itemprop="url" rel="index">
-                    <span itemprop="name">数据存储处理 - database</span>
+                  <a href="/categories/数据存储处理-hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">数据存储处理 - hadoop</span>
                   </a>
                 </span>
 
@@ -544,24 +544,21 @@ HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集
       
         
           
-          简介HBase 应用场景及特点特点：
+          第一章
+数据！数据！
 
-海量数据存储
-关系型数据库：　列数不超过30 单表行数据量一般不会超过500万vshbase:上百亿行*上百万列
+这个世界数据存量很大，数据增长的速度很快，数据的价值很大
 
+数据存储于分析
 
+现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据
 
-
-准实时查询　百毫秒
-
-面向列
-
-
-面向列的存储和权限控制，列是可以动态增加的，并且列支持独立索引。这样在查询行中少数几个字段时，能大大减少
+硬盘故障解决：数据冗余备份(RAID,HDFS)
+数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/04/Hbase使用/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/Hadoop权威指南V3-p1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -914,7 +911,7 @@ JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging d
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Java8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Hbase使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -933,7 +930,7 @@ JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging d
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/04/Java8/" itemprop="url">Java8笔记</a></h1>
+                <a class="post-title-link" href="/2018/12/04/Hbase使用/" itemprop="url">Hbase使用</a></h1>
         
 
         <div class="post-meta">
@@ -968,8 +965,8 @@ JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging d
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程语言-java/" itemprop="url" rel="index">
-                    <span itemprop="name">编程语言 - java</span>
+                  <a href="/categories/数据存储处理-database/" itemprop="url" rel="index">
+                    <span itemprop="name">数据存储处理 - database</span>
                   </a>
                 </span>
 
@@ -1007,11 +1004,24 @@ JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging d
       
         
           
-          
-          
+          简介HBase 应用场景及特点特点：
+
+海量数据存储
+关系型数据库：　列数不超过30 单表行数据量一般不会超过500万vshbase:上百亿行*上百万列
+
+
+
+
+准实时查询　百毫秒
+
+面向列
+
+
+面向列的存储和权限控制，列是可以动态增加的，并且列支持独立索引。这样在查询行中少数几个字段时，能大大减少
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/04/Java8/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/Hbase使用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
