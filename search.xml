@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[imagetest]]></title>
+    <url>%2F2019%2F05%2F27%2Fimagetest%2F</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[skills]]></title>
     <url>%2F2019%2F05%2F27%2Fskills%2F</url>
     <content type="text"><![CDATA[通过实践来复习，学习 分布式文件系统理论基础： 共享数据是分布式系统的基础，分布式文件系统是分布式系统，和分布式应用程序的基础 体系结构客户-服务器体系结构（Network File System）NFS每个文件服务器都提供其本地文件系统的一个标准化视图 基于集群的分布式文件系统服务与并行应用程序，一种著名的技术是部署文件带区划分技术，通过该技术可以将一个文件分布在多个服务器上另外一种是把文件系统作为一个整体进行分区并且简单的把不同的文件存储在不同的服务器上，而不是把单个单个文件划分到多个服务器上]]></content>
@@ -244,16 +249,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Future&Promise]]></title>
-    <url>%2F2018%2F12%2F04%2FFuture%26promise%2F</url>
-    <content type="text"><![CDATA[Future和Promisescala 并发编程的两大利器：Future、Actor 顺序代码效率低这个例子很不错 What is Future scala.concurrent 包里的 Future[T] 是一个容器类型，代表一种返回值类型为 T 的计算。 计算可能会出错，也可能会超时； 从而，当一个 future 完成时，它可能会包含异常，而不是你期望的那个值。 Future 只能写一次： 当一个 future 完成后，它就不能再被改变了。 同时，Future 只提供了读取计算值的接口，写入计算值的任务交给了 Promise， 这样，API 层面上会有一个清晰的界限。 这篇文章里，我们主要关注前者，下一章会介绍 Promise 的使用。]]></content>
+    <title><![CDATA[H2数据库笔记]]></title>
+    <url>%2F2018%2F12%2F04%2FH2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[H2工具类：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &#123; private var server: Server = null; private var webServer: Server = null; def start(): Unit = &#123; try &#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;, &quot;&quot;, true, true) &#125; catch &#123; case e: Throwable =&gt; &#125; try &#123; server = Server.createTcpServer(&quot;-tcp&quot;, &quot;-tcpAllowOthers&quot;, &quot;-tcpPort&quot;, ProConfig.h2DatabaseTcpPort.toString).start() log.info(&quot;server status: &quot; + server.getStatus) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def startWebConsole(openBrowser: Boolean = false): Unit = &#123; try &#123; if (webServer == null) &#123; webServer = Server.createWebServer(&quot;-web&quot;, &quot;-webAllowOthers&quot;, &quot;-webPort&quot;, ProConfig.h2DatabaseWebPort.toString).start() &#125; log.info(&quot;webServerStatus&quot; + webServer.getStatus) if (openBrowser) Server.openBrowser(s&quot;http://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseWebPort&#125;&quot;) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def stop(): Unit = &#123; def shutdownServer(server: Server): Unit = &#123; try &#123; server match &#123; case s if s != null =&gt; s.stop() case _ =&gt; log.info(&quot;H2 server did not start&quot;) &#125; &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; shutdownServer(server) shutdownServer(webServer) try&#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;,&quot;&quot;,true,true) log.debug(&quot;serverStatus: &quot;+server.getStatus) &#125;catch &#123; case e:Throwable =&gt; log.error(e.getMessage,e) &#125; &#125;&#125;object H2Test extends App &#123; H2Database.start() Thread.sleep(10000) H2Database.stop()&#125; JDBC开启H2数据库后可按照JDBC 正常连接 CSVWRITE: 导出表成为 CSV 文件1CALL CSVWRITE(&apos;/home/xxhbak/FEATURECONF.csv&apos;, &apos;SELECT * FROM FEATURECONF&apos;); CSVREAD:向表导入CSV文件使用数据库读取CSV文件 CSVREAD使用:1SELECT * FROM CSVREAD(&apos;test.csv&apos;); Another option is to use INSERT INTO … SELECT.123CREATE TABLE TEST AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255)) AS SELECT * FROM CSVREAD(&apos;test.csv&apos;); Please note for performance reason, CSVREAD should not be used inside a join. Instead, import the data first (possibly into a temporary table), create the required indexes if necessary, and then query this table. 参考 示例，亲测 CALL CSVREAD(‘/home/xd/us.csv’, ‘SELECT FROM us ‘);insert into us (SELECT FROM CSVREAD(‘/home/xd/USERCASERESULT.csv’,NULL,’UTF-8’,’|’));]]></content>
       <categories>
-        <category>服务器端 - 并发编程</category>
+        <category>数据存储处理 - database</category>
       </categories>
       <tags>
-        <tag>scala</tag>
-        <tag>Future</tag>
-        <tag>Promise</tag>
+        <tag>database</tag>
+        <tag>H2</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -268,27 +273,27 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hadoop 权威指南 3th Edition Part 1]]></title>
-    <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p1%2F</url>
-    <content type="text"><![CDATA[第一章 数据！数据！ 这个世界数据存量很大，数据增长的速度很快，数据的价值很大 数据存储于分析 现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据 硬盘故障解决：数据冗余备份(RAID,HDFS) 数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的 相较于其他系统的优势 用蛮力处理整个庞大数据集或数据集的一部分 关系型数据库管理系统 现象：寻址速率的提升远远不及传输速率的提升 B树这有在小量数据时有优势，数据量大时，更新整个B树要花大量时间 RDBMS与hadoop相互补充，hadoop适合批处理，而rdbms适合点查询更新 RDBMS被索引后，能够提供低延迟的查询和少量的数据更新，mapreduce适合一次写入，多次读取做数据分析 RDBMS适合持续更新的数据集 Table 1-1. RDBMS compared to MapReduce item|Traditional RDBMS |MapReduce —|—|— Data size| Gigabytes| Petabytes Access(数据存取)| Interactive and batch| Batch Updates| Read and write many times |Write once, read many times Structure| Static schema |Dynamic schema Integrity(完整性)| High |Low Scaling| Nonlinear |Linear 存储的数据不同：RDBMS:结构化数据，完整的且不含冗余hadoop:结构化、半结构化、非结构化数据 网格计算， mapreduce 尽量使得数据本地化 志愿计算： 志愿计算为计算所花的时间远远超过工作单元数据传输时间，也就是说志愿者贡献的是CPU周期，而不是网络带宽 Hadoop发展简史 o 好牛b哦 hadoop echosystem common 一系列组件和接口 avro 序列化系统 maoreduce 计算引擎 HDFS 分布式文件系统 hive 数据仓库，sql查询hdfs hbase 列存储数据仓库 zookeeper 分布式、可用性高的协调服务 sqoop:rdbms &lt;=&gt; hdfs oozie 调度作业 hadoop 发行版本 Table 1-2. Features supported by Hadoop release series Feature 1.x 0.22 2.x Secure authentication Yes No Yes Old configuration names Yes Deprecated Deprecated New configuration names No Yes Yes Old MapReduce API Yes Yes Yes New MapReduce API Yes (with somemissing libraries) Yes Yes MapReduce 1 runtime (Classic) Yes Yes No MapReduce 2 runtime (YARN) No No Yes HDFS federation No No Yes HDFS high-availability No No Yes 第二章气象数据处理 2.1 气象数据集首先要搞清楚数据格式 文本数据 每一行是一条记录 整个数据集有很多小文件组成 2.2 Unix 处理方式12345678910#!/usr/bin/env bashfor year in all/*doecho -ne `basename $year .gz`&quot;\t&quot;gunzip -c $year | \awk &apos;&#123; temp = substr($0, 88, 5) + 0;q = substr($0, 93, 1);if (temp !=9999 &amp;&amp; q ~ /[01459]/ &amp;&amp; temp &gt; max) max = temp &#125;END &#123; print max &#125;&apos;done 循环使用awk处理 单进程处理 2.3 hadoop处理方式map:1234567891011121314151617181920212223242526272829import java.io.IOException;importimportimportimportorg.apache.hadoop.io.IntWritable;org.apache.hadoop.io.LongWritable;org.apache.hadoop.io.Text;org.apache.hadoop.mapreduce.Mapper;public class MaxTemperatureMapperextends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;private static final int MISSING = 9999;@Overridepublic void map(LongWritable key, Text value, Context context)throws IOException, InterruptedException &#123;&#125;&#125;String line = value.toString();String year = line.substring(15, 19);int airTemperature;if (line.charAt(87) == &apos;+&apos;) &#123; // parseInt doesn&apos;t like leading plus signsairTemperature = Integer.parseInt(line.substring(88, 92));&#125; else &#123;airTemperature = Integer.parseInt(line.substring(87, 92));&#125;String quality = line.substring(92, 93);if (airTemperature != MISSING &amp;&amp; quality.matches(&quot;[01459]&quot;)) &#123;context.write(new Text(year), new IntWritable(airTemperature));&#125; reduce:1234567891011121314151617import java.io.IOException;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Reducer;public class MaxTemperatureReducerextends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;@Overridepublic void reduce(Text key, Iterable&lt;IntWritable&gt; values,Context context)throws IOException, InterruptedException &#123;&#125;&#125;int maxValue = Integer.MIN_VALUE;for (IntWritable value : values) &#123;maxValue = Math.max(maxValue, value.get());&#125;context.write(key, new IntWritable(maxValue)); main:123456789101112131415161718192021222324import org.apache.hadoop.fs.Path;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Job;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;public class MaxTemperature &#123;public static void main(String[] args) throws Exception &#123;if (args.length != 2) &#123;System.err.println(&quot;Usage: MaxTemperature &lt;input path&gt; &lt;output path&gt;&quot;);System.exit(-1);&#125;Job job = new Job();job.setJarByClass(MaxTemperature.class);job.setJobName(&quot;Max temperature&quot;);FileInputFormat.addInputPath(job, new Path(args[0]));FileOutputFormat.setOutputPath(job, new Path(args[1]));job.setMapperClass(MaxTemperatureMapper.class);job.setReducerClass(MaxTemperatureReducer.class);job.setOutputKeyClass(Text.class);job.setOutputValueClass(IntWritable.class);System.exit(job.waitForCompletion(true) ? 0 : 1);&#125;&#125; 2.4 横向扩展2.5 Hadoop Streaming]]></content>
+    <title><![CDATA[Future&Promise]]></title>
+    <url>%2F2018%2F12%2F04%2FFuture%26promise%2F</url>
+    <content type="text"><![CDATA[Future和Promisescala 并发编程的两大利器：Future、Actor 顺序代码效率低这个例子很不错 What is Future scala.concurrent 包里的 Future[T] 是一个容器类型，代表一种返回值类型为 T 的计算。 计算可能会出错，也可能会超时； 从而，当一个 future 完成时，它可能会包含异常，而不是你期望的那个值。 Future 只能写一次： 当一个 future 完成后，它就不能再被改变了。 同时，Future 只提供了读取计算值的接口，写入计算值的任务交给了 Promise， 这样，API 层面上会有一个清晰的界限。 这篇文章里，我们主要关注前者，下一章会介绍 Promise 的使用。]]></content>
       <categories>
-        <category>数据存储处理 - hadoop</category>
+        <category>服务器端 - 并发编程</category>
       </categories>
       <tags>
-        <tag>Hadoop</tag>
+        <tag>scala</tag>
+        <tag>Future</tag>
+        <tag>Promise</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[H2数据库笔记]]></title>
-    <url>%2F2018%2F12%2F04%2FH2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[H2工具类：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &#123; private var server: Server = null; private var webServer: Server = null; def start(): Unit = &#123; try &#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;, &quot;&quot;, true, true) &#125; catch &#123; case e: Throwable =&gt; &#125; try &#123; server = Server.createTcpServer(&quot;-tcp&quot;, &quot;-tcpAllowOthers&quot;, &quot;-tcpPort&quot;, ProConfig.h2DatabaseTcpPort.toString).start() log.info(&quot;server status: &quot; + server.getStatus) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def startWebConsole(openBrowser: Boolean = false): Unit = &#123; try &#123; if (webServer == null) &#123; webServer = Server.createWebServer(&quot;-web&quot;, &quot;-webAllowOthers&quot;, &quot;-webPort&quot;, ProConfig.h2DatabaseWebPort.toString).start() &#125; log.info(&quot;webServerStatus&quot; + webServer.getStatus) if (openBrowser) Server.openBrowser(s&quot;http://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseWebPort&#125;&quot;) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def stop(): Unit = &#123; def shutdownServer(server: Server): Unit = &#123; try &#123; server match &#123; case s if s != null =&gt; s.stop() case _ =&gt; log.info(&quot;H2 server did not start&quot;) &#125; &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; shutdownServer(server) shutdownServer(webServer) try&#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;,&quot;&quot;,true,true) log.debug(&quot;serverStatus: &quot;+server.getStatus) &#125;catch &#123; case e:Throwable =&gt; log.error(e.getMessage,e) &#125; &#125;&#125;object H2Test extends App &#123; H2Database.start() Thread.sleep(10000) H2Database.stop()&#125; JDBC开启H2数据库后可按照JDBC 正常连接 CSVWRITE: 导出表成为 CSV 文件1CALL CSVWRITE(&apos;/home/xxhbak/FEATURECONF.csv&apos;, &apos;SELECT * FROM FEATURECONF&apos;); CSVREAD:向表导入CSV文件使用数据库读取CSV文件 CSVREAD使用:1SELECT * FROM CSVREAD(&apos;test.csv&apos;); Another option is to use INSERT INTO … SELECT.123CREATE TABLE TEST AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255)) AS SELECT * FROM CSVREAD(&apos;test.csv&apos;); Please note for performance reason, CSVREAD should not be used inside a join. Instead, import the data first (possibly into a temporary table), create the required indexes if necessary, and then query this table. 参考 示例，亲测 CALL CSVREAD(‘/home/xd/us.csv’, ‘SELECT FROM us ‘);insert into us (SELECT FROM CSVREAD(‘/home/xd/USERCASERESULT.csv’,NULL,’UTF-8’,’|’));]]></content>
+    <title><![CDATA[Hbase使用]]></title>
+    <url>%2F2018%2F12%2F04%2FHbase%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[简介HBase 应用场景及特点特点： 海量数据存储 关系型数据库： 列数不超过30 单表行数据量一般不会超过500万vshbase:上百亿行*上百万列 准实时查询 百毫秒 面向列 面向列的存储和权限控制，列是可以动态增加的，并且列支持独立索引。这样在查询行中少数几个字段时，能大大减少读取的数据量 多版本 每一列的数据存储有多个Version 稀疏性：为空的列不占用存储空间，表可以设计的非常稀疏 扩展性： 底层依赖HDFS 高可靠性 高性能应用场景： 交通 金融 电商 电信 概念与定位数据模型Hbase表可以当成一个多维的Map Table一个表有多行 Row在HBase里，row是由row key和一个或多个列及其值组成。数据在被存储的时候，是按row key的字母排序存储的。因此，row key的设计是非常重要的。这样存储数据的目的就是为了让相关的行存储在相邻的位置。 Column（列）HBase的一列由列簇和列修饰符组成，他们通常由冒号（：）分隔。 Column Family(列簇)通常为了性能原因的考虑，列簇会把列和相应的值物理上联合在一起 每个列簇是一个存储属性的集合，例如它的值是否应该缓存在内存中，它的数据是如何压缩或它的row key是如何编码，以及其他。表中的每个行都有相同的列簇，但是一行也可能没有存储一个列簇里的任何数据。 Column Qualifier列修饰符被加到一个列簇，以提供对一个数据片段的索引。规定一个列簇为content，一个列修饰符可能是content:html，另外一个可能是content:pdf。尽管列簇是在创建表的时候固定了，但列修饰符是可变的，在行之间可能存在很大的不同。 Cell一个Cell是行，列簇和列修饰符的组合，并且包含一个值和时间戳，时间戳代表着值的版本。 Timestamp一个时间戳是連同值一起被写入的，是值版本的唯一标识，默认情况下，时间戳表示数据写入时RegionServer的时间，但是当你在写数据到Cell的时候，你可以指定一个不同的时间戳。 安装官网文档getstart写的通俗易懂 增加配置-&gt; conf/hbase-site.xml,以使用伪分布式1234&lt;property&gt; &lt;name&gt;hbase.cluster.distributed&lt;/name&gt; &lt;value&gt;true&lt;/value&gt;&lt;/property&gt; 增加配置 -&gt; conf/hbase-env.sh，以使用独立安装的zk 1export HBASE_MANAGES_ZK=false 过程算是比较顺畅的]]></content>
       <categories>
         <category>数据存储处理 - database</category>
       </categories>
       <tags>
-        <tag>database</tag>
-        <tag>H2</tag>
-        <tag>笔记</tag>
+        <tag>Hbase</tag>
       </tags>
   </entry>
   <entry>
@@ -314,17 +319,6 @@
       <tags>
         <tag>webapp</tag>
         <tag>http</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hbase使用]]></title>
-    <url>%2F2018%2F12%2F04%2FHbase%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[简介HBase 应用场景及特点特点： 海量数据存储 关系型数据库： 列数不超过30 单表行数据量一般不会超过500万vshbase:上百亿行*上百万列 准实时查询 百毫秒 面向列 面向列的存储和权限控制，列是可以动态增加的，并且列支持独立索引。这样在查询行中少数几个字段时，能大大减少读取的数据量 多版本 每一列的数据存储有多个Version 稀疏性：为空的列不占用存储空间，表可以设计的非常稀疏 扩展性： 底层依赖HDFS 高可靠性 高性能应用场景： 交通 金融 电商 电信 概念与定位数据模型Hbase表可以当成一个多维的Map Table一个表有多行 Row在HBase里，row是由row key和一个或多个列及其值组成。数据在被存储的时候，是按row key的字母排序存储的。因此，row key的设计是非常重要的。这样存储数据的目的就是为了让相关的行存储在相邻的位置。 Column（列）HBase的一列由列簇和列修饰符组成，他们通常由冒号（：）分隔。 Column Family(列簇)通常为了性能原因的考虑，列簇会把列和相应的值物理上联合在一起 每个列簇是一个存储属性的集合，例如它的值是否应该缓存在内存中，它的数据是如何压缩或它的row key是如何编码，以及其他。表中的每个行都有相同的列簇，但是一行也可能没有存储一个列簇里的任何数据。 Column Qualifier列修饰符被加到一个列簇，以提供对一个数据片段的索引。规定一个列簇为content，一个列修饰符可能是content:html，另外一个可能是content:pdf。尽管列簇是在创建表的时候固定了，但列修饰符是可变的，在行之间可能存在很大的不同。 Cell一个Cell是行，列簇和列修饰符的组合，并且包含一个值和时间戳，时间戳代表着值的版本。 Timestamp一个时间戳是連同值一起被写入的，是值版本的唯一标识，默认情况下，时间戳表示数据写入时RegionServer的时间，但是当你在写数据到Cell的时候，你可以指定一个不同的时间戳。 安装官网文档getstart写的通俗易懂 增加配置-&gt; conf/hbase-site.xml,以使用伪分布式1234&lt;property&gt; &lt;name&gt;hbase.cluster.distributed&lt;/name&gt; &lt;value&gt;true&lt;/value&gt;&lt;/property&gt; 增加配置 -&gt; conf/hbase-env.sh，以使用独立安装的zk 1export HBASE_MANAGES_ZK=false 过程算是比较顺畅的]]></content>
-      <categories>
-        <category>数据存储处理 - database</category>
-      </categories>
-      <tags>
-        <tag>Hbase</tag>
       </tags>
   </entry>
   <entry>
@@ -389,28 +383,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Master Json]]></title>
-    <url>%2F2018%2F12%2F04%2FMasterJson%2F</url>
-    <content type="text"><![CDATA[Json 是什么类似于XML的标记性语言，在对象序列化，交换信息领域应用广泛 JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它使得人们很容易的进行阅读和编写。同时也方便了机器进行解析和生成 json简单说就是javascript中的对象和数组，所以这两种结构就是对象和数组两种结构，通过这两种结构可以表示各种复杂的结构 对象：对象在js中表示为“{}”括起来的内容，数据结构为 {key：value,key：value,…}的键值对的结构，在面向对象的语言中，key为对象的属性，value为对应的属性值，所以很容易理解，取值方法为 对象.key 获取属性值，这个属性值的类型可以是 数字、字符串、数组、对象几种。 数组：数组在js中是中括号“[]”括起来的内容，数据结构为 [“java”,”javascript”,”vb”,…]，取值方式和所有语言中一样，使用索引获取，字段值的类型可以是 数字、字符串、数组、对象几种。 Json 使用scala常用 spray Json 依赖：12&quot;com.typesafe.akka&quot; %% &quot;akka-http-spray-json&quot; % &quot;10.0.10&quot;, &quot;io.spray&quot; % &quot;spray-json_2.11&quot; % &quot;1.3.4&quot; Json Array 12345import spray.json._ //parseJsonval kkkk = &quot;&quot;&quot; |[&#123;&quot;a&quot;: &quot;1&quot;&#125;, &#123;&quot;b&quot;: &quot;2&quot;&#125;] &quot;&quot;&quot;.stripMargin.parseJson.asInstanceOf[JsArray] 22+play-json-extensions 22+ field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125;]]></content>
-      <categories>
-        <category>服务器端 - Json</category>
-      </categories>
-      <tags>
-        <tag>Json</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[SBT增加国内镜像并生效]]></title>
-    <url>%2F2018%2F12%2F04%2FSBT%E5%A2%9E%E5%8A%A0%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%B9%B6%E7%94%9F%E6%95%88%2F</url>
-    <content type="text"><![CDATA[第五章 SBT国内源配置 前几天执行：sbt update 失败 \主要是 project/plugins.sbt里的插件下载失败 \resolved xx failed,说找不到该插件 \试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，\所以严重怀疑是本机安装SBT有问题， \sudo apt-get remove sbt \然后,按照官网安装教程重新安装sbt,1234`echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.listsudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823sudo apt-get updatesudo apt-get install sbt` 果然，之前的问题已解决了（以上基于ubuntu16操作环境，其他开发环境类似）]]></content>
-      <categories>
-        <category>项目管理 - sbt</category>
-      </categories>
-      <tags>
-        <tag>SBT</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Redis Learning]]></title>
     <url>%2F2018%2F12%2F04%2FRedis%20Learning%2F</url>
     <content type="text"><![CDATA[应用场景：redis 适用于小而热的数据 Redis应用场景 Redis作者谈Redis应用场景我们在应用redis的场景是 缓存将收到的post报文缓存下，然后批量插入redshift github上的scala版redis client官方推荐了好几款开源的scala 版客户端，都不知道选哪个比较好了，应该迅速读一遍scala 并发编程 Redis is an open source(BSD Licensed),in-memory data structure store,used as a database,cache,and message broker.It supports data structures such as strings,hashes,lists,sets,sorted sets with range queries,bitmaps,hyperloglogs and geospatial indexes with radius queries.build-in: replication Lua scripting LRU eviction transaction different levels of on-disk persistence provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster. You can run atomic operations on these types, like appending to a string; incrementing the value in a hash; pushing an element to a list; computing set intersection, union and difference; or getting the member with highest ranking in a sorted set. in-memory dataset: In order to achieve its outstanding performance, Redis works with an in-memory dataset. Depending on your use case, you can persist it either by dumping the dataset to disk every once in a while, or by appending each command to a log. Persistence can be optionally disabled, if you just need a feature-rich, networked, in-memory cache. no-blocking replication: Redis also supports trivial-to-setup master-slave asynchronous replication, with very fast non-blocking first synchronization, auto-reconnection with partial resynchronization on net split. transcation数据库事务彻底搞懂事务 6379-为何Redis选择它作为默认端口号？redis 使用服务器端／客户端架构的数据库架构通过client去连接redis服务端 我们可以通过redis-cli去连接redis数据库，这是学习测试redis最好的方法，这时redis-cli就是一个client 之前连接关系型数据库一般都是通过JDBC的方式连接的，这个redis是怎么连接上去的我暂时还没有搞清楚，官方推荐了很多类似与sdk的工具库，使用这些库可以很方便的连接redis， redis 持久化有两种方式做持久化，其一是RDB，定期备份数据库的状态；其二是AOF，记录数据库的相关命令优先使用AOF方式 使用list来存储数据，LPUSH mylist “1”// BRPOP mylist 0 取出最先放入的元素，每分钟生成一个key,同步数据只处理之前的key里面的数据做一个事务，保证该元素处理的原子性因为BRPOP 只能取出最后一个元素，所以应该使用BPOPLPUSH 散列算法(Hash Algorithm),又称哈希算法，杂凑算法，是从任意文件中创造小的数字[指纹]的方法。散列算法是一种以较短的信息来保证文件唯一性标志，这种标志与文件的每一个字节都相关，而且难以找到逆向规律。因此，当原有文件发生改变时，其标志值也会发生改变，从而告诉文件使用者当前文件已经不是你所需求的文件。 先举个例子。我们每个活在世上的人，为了能够参与各种社会活动，都需要一个用于识别自己的标志。也许你觉得名字或是身份证就足以代表你这个人，但是这种代表性非常脆弱，因为重名的人很多，身份证也可以伪造。最可靠的办法是把一个人的所有基因序列记录下来用来代表这个人，但显然，这样做并不实际。而指纹看上去是一种不错的选择，虽然一些专业组织仍然可以模拟某个人的指纹，但这种代价实在太高了。 而对于在互联网世界里传送的文件来说，如何标志一个文件的身份同样重要。比如说我们下载一个文件，文件的下载过程中会经过很多网络服务器、路由器的中转，如何保证这个文件就是我们所需要的呢？我们不可能去一一检测这个文件的每个字节，也不能简单地利用文件名、文件大小这些极容易伪装的信息，这时候，我们就需要一种指纹一样的标志来检查文件的可靠性，这种指纹就是我们现在所用的Hash算法(也叫散列算法)。 参考：Hash算法总结]]></content>
@@ -419,6 +391,17 @@
       </categories>
       <tags>
         <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Master Json]]></title>
+    <url>%2F2018%2F12%2F04%2FMasterJson%2F</url>
+    <content type="text"><![CDATA[Json 是什么类似于XML的标记性语言，在对象序列化，交换信息领域应用广泛 JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它使得人们很容易的进行阅读和编写。同时也方便了机器进行解析和生成 json简单说就是javascript中的对象和数组，所以这两种结构就是对象和数组两种结构，通过这两种结构可以表示各种复杂的结构 对象：对象在js中表示为“{}”括起来的内容，数据结构为 {key：value,key：value,…}的键值对的结构，在面向对象的语言中，key为对象的属性，value为对应的属性值，所以很容易理解，取值方法为 对象.key 获取属性值，这个属性值的类型可以是 数字、字符串、数组、对象几种。 数组：数组在js中是中括号“[]”括起来的内容，数据结构为 [“java”,”javascript”,”vb”,…]，取值方式和所有语言中一样，使用索引获取，字段值的类型可以是 数字、字符串、数组、对象几种。 Json 使用scala常用 spray Json 依赖：12&quot;com.typesafe.akka&quot; %% &quot;akka-http-spray-json&quot; % &quot;10.0.10&quot;, &quot;io.spray&quot; % &quot;spray-json_2.11&quot; % &quot;1.3.4&quot; Json Array 12345import spray.json._ //parseJsonval kkkk = &quot;&quot;&quot; |[&#123;&quot;a&quot;: &quot;1&quot;&#125;, &#123;&quot;b&quot;: &quot;2&quot;&#125;] &quot;&quot;&quot;.stripMargin.parseJson.asInstanceOf[JsArray] 22+play-json-extensions 22+ field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125;]]></content>
+      <categories>
+        <category>服务器端 - Json</category>
+      </categories>
+      <tags>
+        <tag>Json</tag>
       </tags>
   </entry>
   <entry>
@@ -434,6 +417,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[SBT增加国内镜像并生效]]></title>
+    <url>%2F2018%2F12%2F04%2FSBT%E5%A2%9E%E5%8A%A0%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%B9%B6%E7%94%9F%E6%95%88%2F</url>
+    <content type="text"><![CDATA[第五章 SBT国内源配置 前几天执行：sbt update 失败 \主要是 project/plugins.sbt里的插件下载失败 \resolved xx failed,说找不到该插件 \试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，\所以严重怀疑是本机安装SBT有问题， \sudo apt-get remove sbt \然后,按照官网安装教程重新安装sbt,1234`echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.listsudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823sudo apt-get updatesudo apt-get install sbt` 果然，之前的问题已解决了（以上基于ubuntu16操作环境，其他开发环境类似）]]></content>
+      <categories>
+        <category>项目管理 - sbt</category>
+      </categories>
+      <tags>
+        <tag>SBT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[简单线性回归]]></title>
     <url>%2F2018%2F12%2F04%2FSimpleLinearRegression%2F</url>
     <content type="text"><![CDATA[简单线性回归WHAT简单线性回归模型是用于估计一个连续预测变量和一个连续回应变量的线性关系。回归方程或者是估计回归方程 y¯=b0+b1x y¯是回应变量的估计值 b0是回归线在y轴上的截距 b1是回归线的斜率 b0和b1b1称为回归系数 Simple linear regression(wiki) HOW怎样才能得到一个简单线性回归模型，也就是求得一个方程式 既有的数值处理库python的sk-learn、scala的breeze等sk-learn 例子：123456789101112131415161718192021222324252627282930313233343536import pandas as pdfrom sklearn import linear_modelimport matplotlib.pyplot as pltdf = pd.read_csv(&apos;C:/Users/lenovo/Desktop/3VD_1.csv&apos;)&quot;&quot;&quot;# 建立线性回归模型&quot;&quot;&quot;regr = linear_model.LinearRegression()&quot;&quot;&quot;# 拟合&quot;&quot;&quot;regr.fit(df[&apos;basicsize&apos;].values.reshape(-1,1), df[&apos;footaround&apos;])a, b = regr.coef_, regr.intercept_print(a[0])feats =[&apos;footaround&apos;, &apos;footbackarcdistance54mm&apos;, &apos;footbackarcdistancemouth&apos;, &apos;footbackbodylength&apos;, &apos;footbackfacedistance&apos;, &apos;footbackgirth&apos;, &apos;footbasicwidth&apos;, &apos;footbitfingeroutsidewidth&apos;, &apos;footboatcurveheight&apos;, &apos;footbottomheartconcavity&apos;, &apos;footdegreerejection&apos;, &apos;footfifthtoeoutsidewidth&apos;, &apos;footfirstplantarjointheight&apos;, &apos;footfirsttoeinsidewidth&apos;, &apos;footforepalmconvexity&apos;, &apos;footfrontcross&apos;, &apos;footheadthickness&apos;, &apos;footheelbulgeheight&apos;, &apos;footheelheartconvexity&apos;, &apos;footheelheartwidth&apos;, &apos;footheelheight&apos;, &apos;footlandspot&apos;, &apos;footmetatarsalgirth&apos;, &apos;footmouthbackheight&apos;, &apos;footmouthlength&apos;, &apos;footmouthwidth&apos;, &apos;footpalmwidth&apos;, &apos;footpocketheelgirth&apos;, &apos;footshoelastcalculatelength&apos;, &apos;foottarsalboneheight&apos;, &apos;foottarsalgirth&apos;, &apos;footthumbinsidewidth&apos;, &apos;footwaistgirth&apos;, &apos;footwaistwidth&apos;, &apos;footwidth&apos;]para_lin = []for feat in feats: regr.fit(df[&apos;basicsize&apos;].values.reshape(-1,1), df[feat]) a, b = regr.coef_, regr.intercept_ para_lin.append((feat,a[0],b)) 使用公式 在统计学中，线性回归是利用称为线性回归方程的最小二乘函数对一个或多个自变量和因变量之间关系进行建模的一种回归分析。这种函数是一个或多个称为回归系数的模型参数的线性组合。一个带有一个自变量的线性回归方程代表一条直线。我们需要对线性回归结果进行统计分析。 通过定义和最小化一个成本函数，简单线性回归可以拟合一条直线。一般用最小二乘法（OLS)来计算系数。 线性回归的公式可以表示为 y=w0+w1x 截距 w0 斜率 w1 推导过程可参看wikipedia scala实现：12345678910111213141516def simple_linear_regression(x: Vector[Int], y: Vector[Double]) = &#123; //initial sums val n = x.length.toFloat val sum_x = x.sum val sum_y = y.sum val sum_xy = (x, y).zipped.map(_ * _).sum val sum_xx = x.map(n =&gt; n * n).sum //formula for w0 val slope = (sum_xy - (sum_x * sum_y) / n) / (sum_xx - (sum_x * sum_x) / n) //formula for w1 val intercept = sum_y / n - slope * (sum_x / n) (slope,intercept) &#125; PS:以往查询数据库都是按行查询的，但是在这里是去数据中的两个维度来分别作为自变量和因变量，以求得简单线性回归模型，所以查询数据库数据时还是按列查询比较好 不然的话就要做n个Map,像这样：123456789101112131415val is = getClass.getClassLoader.getResourceAsStream(&quot;origin-fat-last-data&quot;) val source = scala.io.Source.fromInputStream(is).getLines().map(_.split(&quot;\t&quot;).toList).toList val title = source.head val data = source.tail.filter(_.last == &quot;normal&quot;).toVector val mapData = data.map(_.zip(title).map(field=&gt; Map(field._2 -&gt; field._1)).reduce(_ ++ _)) val basicSizeVector = mapData.map(_.get(&quot;basicsize&quot;).get.toInt) val yMapDatas = mapData.map(_.filterNot(m =&gt; (&quot;shoes_size_specification&quot;,&quot;brand&quot;,&quot;shoelastbaseno&quot;,&quot;gender&quot;,&quot;headform&quot;,&quot;shoepadthicknessforefoot&quot;,&quot;shoepadthicknessheel&quot;,&quot;shoetype&quot;,&quot;footmouthgirth&quot;,&quot;footstruct&quot;).productIterator.contains(m._1))) .map(_.map(m =&gt; Map(m._1 -&gt; m._2.toDouble)).reduce(_ ++ _)) val yMapDataKeys =yMapDatas.head.map(_._1) val keyValues = yMapDataKeys.map(key =&gt; Map(key -&gt; yMapDatas.map(d=&gt; d.getOrElse(key,0.00d)))) def res = keyValues.map(kv =&gt;&#123; Map(kv.head._1 -&gt; simple_linear_regression(basicSizeVector,kv.head._2)) &#125;).reduce(_ ++ _)]]></content>
@@ -445,16 +439,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Tensorflow Model java 部署]]></title>
-    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
-    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
+    <title><![CDATA[Hadoop 权威指南 3th Edition Part 1]]></title>
+    <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p1%2F</url>
+    <content type="text"><![CDATA[第一章 数据！数据！ 这个世界数据存量很大，数据增长的速度很快，数据的价值很大 数据存储于分析 现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据 硬盘故障解决：数据冗余备份(RAID,HDFS) 数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的 相较于其他系统的优势 用蛮力处理整个庞大数据集或数据集的一部分 关系型数据库管理系统 现象：寻址速率的提升远远不及传输速率的提升 B树这有在小量数据时有优势，数据量大时，更新整个B树要花大量时间 RDBMS与hadoop相互补充，hadoop适合批处理，而rdbms适合点查询更新 RDBMS被索引后，能够提供低延迟的查询和少量的数据更新，mapreduce适合一次写入，多次读取做数据分析 RDBMS适合持续更新的数据集 Table 1-1. RDBMS compared to MapReduce item|Traditional RDBMS |MapReduce —|—|— Data size| Gigabytes| Petabytes Access(数据存取)| Interactive and batch| Batch Updates| Read and write many times |Write once, read many times Structure| Static schema |Dynamic schema Integrity(完整性)| High |Low Scaling| Nonlinear |Linear 存储的数据不同：RDBMS:结构化数据，完整的且不含冗余hadoop:结构化、半结构化、非结构化数据 网格计算， mapreduce 尽量使得数据本地化 志愿计算： 志愿计算为计算所花的时间远远超过工作单元数据传输时间，也就是说志愿者贡献的是CPU周期，而不是网络带宽 Hadoop发展简史 o 好牛b哦 hadoop echosystem common 一系列组件和接口 avro 序列化系统 maoreduce 计算引擎 HDFS 分布式文件系统 hive 数据仓库，sql查询hdfs hbase 列存储数据仓库 zookeeper 分布式、可用性高的协调服务 sqoop:rdbms &lt;=&gt; hdfs oozie 调度作业 hadoop 发行版本 Table 1-2. Features supported by Hadoop release series Feature 1.x 0.22 2.x Secure authentication Yes No Yes Old configuration names Yes Deprecated Deprecated New configuration names No Yes Yes Old MapReduce API Yes Yes Yes New MapReduce API Yes (with somemissing libraries) Yes Yes MapReduce 1 runtime (Classic) Yes Yes No MapReduce 2 runtime (YARN) No No Yes HDFS federation No No Yes HDFS high-availability No No Yes 第二章气象数据处理 2.1 气象数据集首先要搞清楚数据格式 文本数据 每一行是一条记录 整个数据集有很多小文件组成 2.2 Unix 处理方式12345678910#!/usr/bin/env bashfor year in all/*doecho -ne `basename $year .gz`&quot;\t&quot;gunzip -c $year | \awk &apos;&#123; temp = substr($0, 88, 5) + 0;q = substr($0, 93, 1);if (temp !=9999 &amp;&amp; q ~ /[01459]/ &amp;&amp; temp &gt; max) max = temp &#125;END &#123; print max &#125;&apos;done 循环使用awk处理 单进程处理 2.3 hadoop处理方式map:1234567891011121314151617181920212223242526272829import java.io.IOException;importimportimportimportorg.apache.hadoop.io.IntWritable;org.apache.hadoop.io.LongWritable;org.apache.hadoop.io.Text;org.apache.hadoop.mapreduce.Mapper;public class MaxTemperatureMapperextends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;private static final int MISSING = 9999;@Overridepublic void map(LongWritable key, Text value, Context context)throws IOException, InterruptedException &#123;&#125;&#125;String line = value.toString();String year = line.substring(15, 19);int airTemperature;if (line.charAt(87) == &apos;+&apos;) &#123; // parseInt doesn&apos;t like leading plus signsairTemperature = Integer.parseInt(line.substring(88, 92));&#125; else &#123;airTemperature = Integer.parseInt(line.substring(87, 92));&#125;String quality = line.substring(92, 93);if (airTemperature != MISSING &amp;&amp; quality.matches(&quot;[01459]&quot;)) &#123;context.write(new Text(year), new IntWritable(airTemperature));&#125; reduce:1234567891011121314151617import java.io.IOException;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Reducer;public class MaxTemperatureReducerextends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;@Overridepublic void reduce(Text key, Iterable&lt;IntWritable&gt; values,Context context)throws IOException, InterruptedException &#123;&#125;&#125;int maxValue = Integer.MIN_VALUE;for (IntWritable value : values) &#123;maxValue = Math.max(maxValue, value.get());&#125;context.write(key, new IntWritable(maxValue)); main:123456789101112131415161718192021222324import org.apache.hadoop.fs.Path;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Job;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;public class MaxTemperature &#123;public static void main(String[] args) throws Exception &#123;if (args.length != 2) &#123;System.err.println(&quot;Usage: MaxTemperature &lt;input path&gt; &lt;output path&gt;&quot;);System.exit(-1);&#125;Job job = new Job();job.setJarByClass(MaxTemperature.class);job.setJobName(&quot;Max temperature&quot;);FileInputFormat.addInputPath(job, new Path(args[0]));FileOutputFormat.setOutputPath(job, new Path(args[1]));job.setMapperClass(MaxTemperatureMapper.class);job.setReducerClass(MaxTemperatureReducer.class);job.setOutputKeyClass(Text.class);job.setOutputValueClass(IntWritable.class);System.exit(job.waitForCompletion(true) ? 0 : 1);&#125;&#125; 2.4 横向扩展2.5 Hadoop Streaming]]></content>
       <categories>
-        <category>机器学习、深度学习 - tensorflow</category>
+        <category>数据存储处理 - hadoop</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>tensorflow</tag>
+        <tag>Hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -508,14 +500,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[breeze使用]]></title>
-    <url>%2F2018%2F12%2F04%2Fbreeze%2F</url>
-    <content type="text"><![CDATA[whatBreeze is a library for numerical processing, machine learning, and natural language processing. Its primary focus is on being generic, clean, and powerful without sacrificing (much) efficiency. Breeze is the merger of the ScalaNLP and Scalala projects, because one of the original maintainers is unable to continue development. howinstall快速安装用sbt在命令行中快速安装，体验一下 推荐的sbt依赖配置]]></content>
+    <title><![CDATA[Tensorflow Model java 部署]]></title>
+    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
+    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
       <categories>
-        <category>数据分析 - scala</category>
+        <category>机器学习、深度学习 - tensorflow</category>
       </categories>
       <tags>
-        <tag>breeze</tag>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>tensorflow</tag>
       </tags>
   </entry>
   <entry>
@@ -530,6 +524,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[breeze使用]]></title>
+    <url>%2F2018%2F12%2F04%2Fbreeze%2F</url>
+    <content type="text"><![CDATA[whatBreeze is a library for numerical processing, machine learning, and natural language processing. Its primary focus is on being generic, clean, and powerful without sacrificing (much) efficiency. Breeze is the merger of the ScalaNLP and Scalala projects, because one of the original maintainers is unable to continue development. howinstall快速安装用sbt在命令行中快速安装，体验一下 推荐的sbt依赖配置]]></content>
+      <categories>
+        <category>数据分析 - scala</category>
+      </categories>
+      <tags>
+        <tag>breeze</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[build-tool]]></title>
     <url>%2F2018%2F12%2F04%2Fbuild-tool%2F</url>
     <content type="text"><![CDATA[构建工具总结对比： 旧时代的Java世界，构建工具等同于两个词Ant和Maven Ant源自Make，同JUnit一样，它也是一个航班产物（参见《Ant权威指南》序）。不过，Make的基础注定了它的起点不高，所有一切都要手工打造。我还依稀记得曾几何时，每每开始一个项目都要重新复制一份Ant脚本，修修改改。Maven给了人们新的希望，目录结构的约定、依赖管理、IDE集成，那时看来，几近完美。是的，几近，还差了那么一点点。就是那么一点点，却是致命伤。 只要一个项目进行一段时间，一个必然遇到的问题就是，编写新的自动化脚本。因为每个项目都有自己的特定需求，标准做法必然是无法满足的。扩展Maven对任何新手都是一件头疼的事，我们要学会编写插件，要搞清楚生命周期，这时，突然会唤起一丝丝对于ANT的怀念，虽然它做简单事不容易，但做复杂事却也没这么困难。 如果那些日子，我们不得不忍受Ant和Maven的不完美，那现在，是时候抛弃它们了。 新时代Java构建有两个很好的候选：Gradle和Buildr。 在我看来，它们真正比Maven更强大的地方，编写自己的任务更加容易。更值得兴奋的一点是，我们终于可以抛弃冗长的XML，选择一种更优雅的程序设计语言来写代码了，这几乎意味着你可以做到想做的一切。 Buildr是Apache出品的构建工具，它以Ruby作为构建脚本。《软件开发地基》讨论软件项目应该具备一些基础构建项，就是以Buildr为基础的。有兴趣的话，可以参考一下。这里就不再赘述。顺便说一下，那篇文章里的内容，除了某些写法现在需要做一些微调，大部分内容依然是适用于大多数Java项目。 Gradle现在是整个Java社区的构建新宠，它采用Groovy作为自己的构建语言。如果你知道，Groovy是一门诞生自JVM平台的语言，这就决定了它要比其它移植到JVM上的语言能更好的适应JVM平台，它可以采用更符合Java世界的方式无缝地整合Java既有的程序库，而不必像移植语言那样削足适履。 初涉Gradle，最让人吃惊的一点莫过于它详尽的文档，涵盖了Gradle使用的方方面面，这是许多开源软件项目无法媲美，即便早在它的1.0版本尚未发布之时。当然，能做到这一点是因为它背后有一个公司在支撑：GradleWare，这意味着如果你需要商业支持，也是可以的。 Gradle 1.0尚未发布之，它就捧回2010年的Spring大奖和入围了2011年的JAX大奖。如果你还需要更多的信心，作为Java开发人员，你不可能不知道Spring，那Spring转投Gradle怀抱，应该是对Gradle最有利的支持了。 说了这么多，程序员最喜欢看到的东西还是代码。 首先，请自行下载安装Gradle，然后，按照常见的Java项目布局把代码准备好（感谢Maven为我们给予我们约定），比如： src/main/java，源代码文件目录src/main/resources，资源文件目录src/test/java，测试代码目录下面是一个简单的Gradle构建脚本，将其存放于build.gradle apply plugin: ‘java’ repositories { mavenCentral()} dependencies { compile( ‘com.google.guava:guava:13.0.1’, ‘joda-time:joda-time:2.1’ ) testCompile( ‘junit:junit:4.10’, ‘org.mockito:mockito-all:1.9.0’ )}（build.gradle） 接下来的事情就很简单了，在命令行里键入 gradle build 如果一切正常，我们应该会看到构建成功的字样，然后，到build/lib，你就看到自己构建出来的JAR文件了。当然，这只是一个简单得不能再简单的例子，如果需要了解更多，Gradle那详尽的文档便是最好的去处。 著作权归作者所有，转载需联系作者以获得授权，引用需注明出处。作者ID:s8达克斯链接:https://www.applysquare.com/topic-cn/SlxE26k3q/ gradlegradle install开发主机使用ubuntu16,按照官网文档上的manually方法安装，测试可用 kafka源码编译的时候执行 1gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 sbtmaven]]></content>
@@ -538,6 +543,17 @@
       </categories>
       <tags>
         <tag>build tool</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据仓库理论基础与实践]]></title>
+    <url>%2F2018%2F12%2F04%2Fdatawarehouse%2F</url>
+    <content type="text"><![CDATA[理论数据仓库与联机分析处理技术 OLTP：联机事务处理 OLAP：联机分析处理 两者之间的差异使得传统的数据库技术不能同时满足两类数据的处理要求，数据仓库技术应运而生 数据仓库技术数据仓库是为了构建新的分析处理环境而出现的一种数据存储和组织技术 操作型数据 分析型数据 表示业务处理的动态情况 表示业务处理的静态情况 在存取的瞬间是正确的 代表过去的数据 可更新，由录入人员或经过专门培训的输入事务而更新 不可更新，终端用户的访问权限常常是只读的 处理细节问题 受到更多关注的是结论性的数据，是综合的，或是提炼的 操作需求事先可知，系统可按预计的工作量进行优化 操作需求事先不知道，永远不知道下一步用户要做什么 有许多事务，每个事务影响数据的一小部分 有数目不多的一些查询，每个查询可访问大量数据 面向应用，支持日常操作 面向分析，支持管理需求 用户不必理解数据库，只是输入数据 用户需要理解数据库，以从数据中得出有意义的结论 数据仓库的定义：数据仓库是一个用以更好地支持企业或组织决策分析处理的，面向主题的，集成的，不可更新的，随着时间不断变化的数据集合。数据仓库本质上和数据库一样，是长期存储在计算机内的，有组织，可共享的数据集合 数据仓库的基本特征 数据仓库的数据是面向主题的； 数据仓库的数据是集成的; 数据仓库的数据是不可更新的; 数据仓库的数据是随时间不断变化的. 主题与面向主题在逻辑意义上，它对应企业中某一宏观分析领域所涉及的分析对象 主题域应该具有以下两个特点：独立性和完备性 各个主题应用相对应的主题表 数据仓库中的数据组织数据仓库中的数据分为多个级别：早期细节级、当前细节级、轻度综合级、高度综合级 数据仓库系统的体系结构数据仓库系统架构由数据仓库的后台工具，数据仓库服务器、OLAP服务器和前台工具组成 OLAP多维数据模型多维分析操作数据仓库基础知识 关系数据库概念三大范式三大范式参考如何理解关系数据库的第一第二第三范式范式是关系数据库理论的基础，也是我们在设计数据库结构过程中索要遵循的规则和指导方法，目前有8中范式， 但是通用的是三大范式(1NF\2NF\3NF) 1NF强调列的原子性，即列不能够再分成其他几列 2NF 首先是1NF,另外表必须要有主键，而是没有包含在主键中的列必须完全依赖于主键，而不是主键的一部分 考虑一个订单明细表：【OrderDetail】（OrderID，ProductID，UnitPrice，Discount，Quantity，ProductName）。因为我们知道在一个订单中可以订购多种产品，所以单单一个 OrderID 是不足以成为主键的，主键应该是（OrderID，ProductID）。显而易见 Discount（折扣），Quantity（数量）完全依赖（取决）于主键（OderID，ProductID），而 UnitPrice，ProductName 只依赖于 ProductID。所以 OrderDetail 表不符合 2NF。不符合 2NF 的设计容易产生冗余数据。可以把【OrderDetail】表拆分为【OrderDetail】（OrderID，ProductID，Discount，Quantity）和【Product】（ProductID，UnitPrice，ProductName）来消除原订单表中UnitPrice，ProductName多次重复的情况。 第二范式（2NF）要求实体的属性完全依赖于主关键字。所谓完全依赖是指不能存在仅依赖主关键字一部分的属性，如果存在，那么这个属性和主关键字的这一部分应该分离出来形成一个新的实体，新实体与原实体之间是一对多的关系。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。简而言之，第二范式就是在第一范式的基础上属性完全依赖于主键。 3NF 在1NF的基础上，任何非主属性不依赖于其他非主属性[在2NF基础上消除传递依赖 ] 第三范式（3NF）是第二范式（2NF）的一个子集，即满足第三范式（3NF）必须满足第二范式（2NF）。 首先是 2NF，另外非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。 考虑一个订单表【Order】（OrderID，OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity）主键是（OrderID）。 其中 OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity 等非主键列都完全依赖于主键（OrderID），所以符合 2NF。不过问题是 CustomerName，CustomerAddr，CustomerCity 直接依赖的是 CustomerID（非主键列），而不是直接依赖于主键，它是通过传递才依赖于主键，所以不符合 3NF。通过拆分【Order】为【Order】（OrderID，OrderDate，CustomerID）和【Customer】（CustomerID，CustomerName，CustomerAddr，CustomerCity）从而达到 3NF。 第二范式（2NF）和第三范式（3NF）的概念很容易混淆，区分它们的关键点在于，2NF：非主键列是否完全依赖于主键，还是依赖于主键的一部分；3NF：非主键列是直接依赖于主键，还是直接依赖于非主键列。 视图视图是从一个或几个基本表或视图中导出的表.他与基本表不同,是一个虚表,数据库只存放视图的定义,而不存放视图对应的数据,这些数据还存放在原来的基本表中,从这个角度讲,视图就像是一个窗口,透过视图就可以看到数据库中自己感兴趣的数据及其变化视图一经定义,他就可以和基本表一样被查询\被删除,等等,但是视图的更新有限制 定义视图建立视图123create view &lt;视图名&gt; [(&lt;列名&gt;[,&lt;列名&gt;]...)]as &lt;子查询&gt;[with check option] 实践]]></content>
+      <categories>
+        <category>datawarehouse</category>
+      </categories>
+      <tags>
+        <tag>datawarehouse</tag>
       </tags>
   </entry>
   <entry>
@@ -553,14 +569,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数据仓库理论基础与实践]]></title>
-    <url>%2F2018%2F12%2F04%2Fdatawarehouse%2F</url>
-    <content type="text"><![CDATA[理论数据仓库与联机分析处理技术 OLTP：联机事务处理 OLAP：联机分析处理 两者之间的差异使得传统的数据库技术不能同时满足两类数据的处理要求，数据仓库技术应运而生 数据仓库技术数据仓库是为了构建新的分析处理环境而出现的一种数据存储和组织技术 操作型数据 分析型数据 表示业务处理的动态情况 表示业务处理的静态情况 在存取的瞬间是正确的 代表过去的数据 可更新，由录入人员或经过专门培训的输入事务而更新 不可更新，终端用户的访问权限常常是只读的 处理细节问题 受到更多关注的是结论性的数据，是综合的，或是提炼的 操作需求事先可知，系统可按预计的工作量进行优化 操作需求事先不知道，永远不知道下一步用户要做什么 有许多事务，每个事务影响数据的一小部分 有数目不多的一些查询，每个查询可访问大量数据 面向应用，支持日常操作 面向分析，支持管理需求 用户不必理解数据库，只是输入数据 用户需要理解数据库，以从数据中得出有意义的结论 数据仓库的定义：数据仓库是一个用以更好地支持企业或组织决策分析处理的，面向主题的，集成的，不可更新的，随着时间不断变化的数据集合。数据仓库本质上和数据库一样，是长期存储在计算机内的，有组织，可共享的数据集合 数据仓库的基本特征 数据仓库的数据是面向主题的； 数据仓库的数据是集成的; 数据仓库的数据是不可更新的; 数据仓库的数据是随时间不断变化的. 主题与面向主题在逻辑意义上，它对应企业中某一宏观分析领域所涉及的分析对象 主题域应该具有以下两个特点：独立性和完备性 各个主题应用相对应的主题表 数据仓库中的数据组织数据仓库中的数据分为多个级别：早期细节级、当前细节级、轻度综合级、高度综合级 数据仓库系统的体系结构数据仓库系统架构由数据仓库的后台工具，数据仓库服务器、OLAP服务器和前台工具组成 OLAP多维数据模型多维分析操作数据仓库基础知识 关系数据库概念三大范式三大范式参考如何理解关系数据库的第一第二第三范式范式是关系数据库理论的基础，也是我们在设计数据库结构过程中索要遵循的规则和指导方法，目前有8中范式， 但是通用的是三大范式(1NF\2NF\3NF) 1NF强调列的原子性，即列不能够再分成其他几列 2NF 首先是1NF,另外表必须要有主键，而是没有包含在主键中的列必须完全依赖于主键，而不是主键的一部分 考虑一个订单明细表：【OrderDetail】（OrderID，ProductID，UnitPrice，Discount，Quantity，ProductName）。因为我们知道在一个订单中可以订购多种产品，所以单单一个 OrderID 是不足以成为主键的，主键应该是（OrderID，ProductID）。显而易见 Discount（折扣），Quantity（数量）完全依赖（取决）于主键（OderID，ProductID），而 UnitPrice，ProductName 只依赖于 ProductID。所以 OrderDetail 表不符合 2NF。不符合 2NF 的设计容易产生冗余数据。可以把【OrderDetail】表拆分为【OrderDetail】（OrderID，ProductID，Discount，Quantity）和【Product】（ProductID，UnitPrice，ProductName）来消除原订单表中UnitPrice，ProductName多次重复的情况。 第二范式（2NF）要求实体的属性完全依赖于主关键字。所谓完全依赖是指不能存在仅依赖主关键字一部分的属性，如果存在，那么这个属性和主关键字的这一部分应该分离出来形成一个新的实体，新实体与原实体之间是一对多的关系。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。简而言之，第二范式就是在第一范式的基础上属性完全依赖于主键。 3NF 在1NF的基础上，任何非主属性不依赖于其他非主属性[在2NF基础上消除传递依赖 ] 第三范式（3NF）是第二范式（2NF）的一个子集，即满足第三范式（3NF）必须满足第二范式（2NF）。 首先是 2NF，另外非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。 考虑一个订单表【Order】（OrderID，OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity）主键是（OrderID）。 其中 OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity 等非主键列都完全依赖于主键（OrderID），所以符合 2NF。不过问题是 CustomerName，CustomerAddr，CustomerCity 直接依赖的是 CustomerID（非主键列），而不是直接依赖于主键，它是通过传递才依赖于主键，所以不符合 3NF。通过拆分【Order】为【Order】（OrderID，OrderDate，CustomerID）和【Customer】（CustomerID，CustomerName，CustomerAddr，CustomerCity）从而达到 3NF。 第二范式（2NF）和第三范式（3NF）的概念很容易混淆，区分它们的关键点在于，2NF：非主键列是否完全依赖于主键，还是依赖于主键的一部分；3NF：非主键列是直接依赖于主键，还是直接依赖于非主键列。 视图视图是从一个或几个基本表或视图中导出的表.他与基本表不同,是一个虚表,数据库只存放视图的定义,而不存放视图对应的数据,这些数据还存放在原来的基本表中,从这个角度讲,视图就像是一个窗口,透过视图就可以看到数据库中自己感兴趣的数据及其变化视图一经定义,他就可以和基本表一样被查询\被删除,等等,但是视图的更新有限制 定义视图建立视图123create view &lt;视图名&gt; [(&lt;列名&gt;[,&lt;列名&gt;]...)]as &lt;子查询&gt;[with check option] 实践]]></content>
+    <title><![CDATA[Hadoop 笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fhadoop%2F</url>
+    <content type="text"><![CDATA[Map reduce job getting stuck at map 0% reduce 0%一般是没有资源导致卡住，比如查看yarn中active node是否为0 ，内存配置不足，cpu配置之类的 但也有可能是map加载输入的时间较长导致Map reduce job getting stuck at map 0% reduce 0% ? 比较详细的mapreduce job 日志 哪里找得到Hadoop 2.6 日志文件和MapReduce的log文件研究心得]]></content>
       <categories>
-        <category>datawarehouse</category>
+        <category>mapreduce</category>
       </categories>
       <tags>
-        <tag>datawarehouse</tag>
+        <tag>mapreduce,hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -575,17 +591,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hadoop 笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fhadoop%2F</url>
-    <content type="text"><![CDATA[Map reduce job getting stuck at map 0% reduce 0%一般是没有资源导致卡住，比如查看yarn中active node是否为0 ，内存配置不足，cpu配置之类的 但也有可能是map加载输入的时间较长导致Map reduce job getting stuck at map 0% reduce 0% ? 比较详细的mapreduce job 日志 哪里找得到Hadoop 2.6 日志文件和MapReduce的log文件研究心得]]></content>
-      <categories>
-        <category>mapreduce</category>
-      </categories>
-      <tags>
-        <tag>mapreduce,hadoop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Hive 编程指南 笔记]]></title>
     <url>%2F2018%2F12%2F04%2Fhive%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%2F</url>
     <content type="text"><![CDATA[《hive 编程指南》 第一章与mr接口相比，sql简单易用 第二章hive 安装 hive笔记安装 hive内部是什么 lib 其中的每个jar都实现了hive的特定功能 bin 执行各种hive服务的可执行文件 conf 配置文件 hive 命令cli变量和属性hivevar/hiveconf/system/env .hivec文件第三章 数据类型和文件格式支持关系型数据库中绝大多数基本数据类型，还支持三种集合数据类型 要考虑这些数据类型是如何正在文本文件中表示的，还要考虑文本存储中为了解决各种性能问题以及其他问题有哪些替代方案 基本数据类型 string 字符串无长度限制 timestamp 可以使整数、浮点数、字符串 binary 字节数组 数值比较时，数据类型在 double float int tinyint smallint bigint 间自动向上转换 字符串转化： cast(s as int) 集合数据类型 struct map array 缺点是不符合三大范式，第一范式都不符合 数据冗余，在大数据情况下，按数据集封装的话可以通过减少寻址次数来提供查询的速度，而如果根据外键关系关联的话则需要磁盘间的寻址操作，这样会有非常高的性能消耗 文本文件数据编码文本文件在字段间、集合数据类型中的分隔符 读时模式传统数据库是写时模式(schema on write)hive是读时模式(schema on read) hive在读时会尽可能的规避问题，这样的功能很强大，也会导致问题被掩盖 第四章 hiveql 定义]]></content>
@@ -594,6 +599,17 @@
       </categories>
       <tags>
         <tag>database,hive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[kafka笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fkafka%2F</url>
+    <content type="text"><![CDATA[introduction三个主要能力 publist and subscribe 类似于管道 容错的存储数据 即时处理数据处理 两大应用场景： 构建可靠的应用与系统间Streaming data 管道 构建Streaming 程序来传输或react数据流 Kafka is generally used for two broad classes of applications: Building real-time streaming data pipelines that reliably get data between systems or applications Building real-time streaming applications that transform or react to the streams of data First a few concepts: Kafka is run as a cluster on one or more servers that can span multiple datacenters. The Kafka cluster stores streams of records in categories called topics. Each record consists of a key, a value, and a timestamp. 四个主要API producer api cunsumer api streams api connector api kafka源码 git clone gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 阶段性可执行后，结果为BUILG FAILD 搜索后有人表示：有多个scala 版本，导致这样的错误 尝试执行 1./gradlew -PscalaVersion=2.11.11 clean core:test 依然build failed 这次是1Could not find org.jacoco.agent.jar 《Apache Kafka 源码剖析》上说的源码编译步骤不好使，转参考下面的方法Getting started with contributing to Apache Kafka (Part 1): Build and run Kafka from source code棒棒哒 123&gt; cd kafka&gt; gradle&gt; ./gradlew jar importa kafka project run zookeeper 修改server.properties中的zk配置 run kafka cp conf/log4j.properties 到 core/src/main/resources/log4j.properties Run -&gt; Kafka 报错 没有创建日志文件的权限 原来日志文件呢中默认的日志存放位置是/ 添加配置 kafka.logs.dir=~/data/kafka-source-logs 修复 修改log4j.rootLogger=TRACE, stdout 打印出更多信息 server.propertiessocket 缓冲区 socketsocket的英文原义是“孔”或“插座”。作为4BDS UNIX的进程通信机制，取后一种意思。通常也称作”套接字”，用于描述IP地址和端口，是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。 在Internet上的主机一般运行了多个服务软件，同时提供几种服务。每种服务都打开一个Socket，并绑定到一个端口上，不同的端口对应于不同的服务。Socket正如其英文原意那样，象一个多孔插座。一台主机犹如布满各种插座的房间，每个插座有一个编号，有的插座提供220伏交流电， 有的提供110伏交流电，有的则提供有线电视节目。 客户软件将插头插到不同编号的插座，就可以得到不同的服务。 进程send数据时，实际上是先写入了socket缓冲区，接受类似，进程去read 接受缓冲区内的数据而不是直接拿到。 日志保留策略 １．一定时间之前的数据可删除２．日志存储文件所剩空间小于一定大小时可删除最早的数据 producer API 从某集群消费，然后生产到其他集群中，数据量是千万级别，但是速度很慢， 装个kafka monitor 看下 系统监控资料：《systems performance》 1234567891011121314151617181920212223# kafka start bash#!/bin/bashkafka_home=/home/xxh/wkspc/kafka/kafka_2.11-2.0.0kafka_start_sh=$kafka_home/bin/kafka-server-start.shkafkaconf0=$kafka_home/config/server.propertieskafkaconf1=$kafka_home/config/server-1.propertieskafkaconf2=$kafka_home/config/server-2.propertieskafkalog0=$kafka_home/logs/nohup.logkafkalog1=$kafka_home/logs/nohup_1.logkafkalog2=$kafka_home/logs/nohup_2.lognohup $kafka_start_sh $kafkaconf0 &gt; $kafkalog0 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf1 &gt; $kafkalog1 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf2 &gt; $kafkalog2 2&gt;&amp;1 &amp;jps# close use ./bin/kafka-server-stop.sh kafka 跑了几个例子，但是并没有讲的很清晰 还是要学一下，java8的函数式特性 不得不承认，越来越多的接口会重新用java写 挑战者： Pulsar kafka Stream]]></content>
+      <categories>
+        <category>kafka</category>
+      </categories>
+      <tags>
+        <tag>kafka</tag>
       </tags>
   </entry>
   <entry>
@@ -609,30 +625,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[log4j踢平记]]></title>
-    <url>%2F2018%2F12%2F04%2Flog4j%E8%B8%A2%E5%B9%B3%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[错误： log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$). 错误原因：我猜是依赖自带的log4j之间冲突了 解决： stackoverflow Just to get you going you have two simple approaches you can take. First one is to just add this line to your main method:BasicConfigurator.configure();Second approach is to add this standard log4j.properties (taken from the above mentioned guide) file to your classpath: Set root logger level to DEBUG and its only appender to A1.log4j.rootLogger=DEBUG, A1 A1 is set to be a ConsoleAppender.log4j.appender.A1=org.apache.log4j.ConsoleAppender A1 uses PatternLayout.log4j.appender.A1.layout=org.apache.log4j.PatternLayoutlog4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n The first one 好使]]></content>
-      <categories>
-        <category>服务器端 - 日志</category>
-      </categories>
-      <tags>
-        <tag>log</tag>
-        <tag>log4j</tag>
-        <tag>日志</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[kafka笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fkafka%2F</url>
-    <content type="text"><![CDATA[introduction三个主要能力 publist and subscribe 类似于管道 容错的存储数据 即时处理数据处理 两大应用场景： 构建可靠的应用与系统间Streaming data 管道 构建Streaming 程序来传输或react数据流 Kafka is generally used for two broad classes of applications: Building real-time streaming data pipelines that reliably get data between systems or applications Building real-time streaming applications that transform or react to the streams of data First a few concepts: Kafka is run as a cluster on one or more servers that can span multiple datacenters. The Kafka cluster stores streams of records in categories called topics. Each record consists of a key, a value, and a timestamp. 四个主要API producer api cunsumer api streams api connector api kafka源码 git clone gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 阶段性可执行后，结果为BUILG FAILD 搜索后有人表示：有多个scala 版本，导致这样的错误 尝试执行 1./gradlew -PscalaVersion=2.11.11 clean core:test 依然build failed 这次是1Could not find org.jacoco.agent.jar 《Apache Kafka 源码剖析》上说的源码编译步骤不好使，转参考下面的方法Getting started with contributing to Apache Kafka (Part 1): Build and run Kafka from source code棒棒哒 123&gt; cd kafka&gt; gradle&gt; ./gradlew jar importa kafka project run zookeeper 修改server.properties中的zk配置 run kafka cp conf/log4j.properties 到 core/src/main/resources/log4j.properties Run -&gt; Kafka 报错 没有创建日志文件的权限 原来日志文件呢中默认的日志存放位置是/ 添加配置 kafka.logs.dir=~/data/kafka-source-logs 修复 修改log4j.rootLogger=TRACE, stdout 打印出更多信息 server.propertiessocket 缓冲区 socketsocket的英文原义是“孔”或“插座”。作为4BDS UNIX的进程通信机制，取后一种意思。通常也称作”套接字”，用于描述IP地址和端口，是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。 在Internet上的主机一般运行了多个服务软件，同时提供几种服务。每种服务都打开一个Socket，并绑定到一个端口上，不同的端口对应于不同的服务。Socket正如其英文原意那样，象一个多孔插座。一台主机犹如布满各种插座的房间，每个插座有一个编号，有的插座提供220伏交流电， 有的提供110伏交流电，有的则提供有线电视节目。 客户软件将插头插到不同编号的插座，就可以得到不同的服务。 进程send数据时，实际上是先写入了socket缓冲区，接受类似，进程去read 接受缓冲区内的数据而不是直接拿到。 日志保留策略 １．一定时间之前的数据可删除２．日志存储文件所剩空间小于一定大小时可删除最早的数据 producer API 从某集群消费，然后生产到其他集群中，数据量是千万级别，但是速度很慢， 装个kafka monitor 看下 系统监控资料：《systems performance》 1234567891011121314151617181920212223# kafka start bash#!/bin/bashkafka_home=/home/xxh/wkspc/kafka/kafka_2.11-2.0.0kafka_start_sh=$kafka_home/bin/kafka-server-start.shkafkaconf0=$kafka_home/config/server.propertieskafkaconf1=$kafka_home/config/server-1.propertieskafkaconf2=$kafka_home/config/server-2.propertieskafkalog0=$kafka_home/logs/nohup.logkafkalog1=$kafka_home/logs/nohup_1.logkafkalog2=$kafka_home/logs/nohup_2.lognohup $kafka_start_sh $kafkaconf0 &gt; $kafkalog0 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf1 &gt; $kafkalog1 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf2 &gt; $kafkalog2 2&gt;&amp;1 &amp;jps# close use ./bin/kafka-server-stop.sh kafka 跑了几个例子，但是并没有讲的很清晰 还是要学一下，java8的函数式特性 不得不承认，越来越多的接口会重新用java写 挑战者： Pulsar kafka Stream]]></content>
-      <categories>
-        <category>kafka</category>
-      </categories>
-      <tags>
-        <tag>kafka</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[scikit-learn]]></title>
     <url>%2F2018%2F12%2F04%2Fml-sklearn%2F</url>
     <content type="text"><![CDATA[Scikit-learn 安装之前安装了anaconda3，其中已经打包安装好了scikit-learn Scikit-learn 使用]]></content>
@@ -643,6 +635,19 @@
         <tag>机器学习</tag>
         <tag>ml</tag>
         <tag>scikit-learn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[log4j踢平记]]></title>
+    <url>%2F2018%2F12%2F04%2Flog4j%E8%B8%A2%E5%B9%B3%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[错误： log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$). 错误原因：我猜是依赖自带的log4j之间冲突了 解决： stackoverflow Just to get you going you have two simple approaches you can take. First one is to just add this line to your main method:BasicConfigurator.configure();Second approach is to add this standard log4j.properties (taken from the above mentioned guide) file to your classpath: Set root logger level to DEBUG and its only appender to A1.log4j.rootLogger=DEBUG, A1 A1 is set to be a ConsoleAppender.log4j.appender.A1=org.apache.log4j.ConsoleAppender A1 uses PatternLayout.log4j.appender.A1.layout=org.apache.log4j.PatternLayoutlog4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n The first one 好使]]></content>
+      <categories>
+        <category>服务器端 - 日志</category>
+      </categories>
+      <tags>
+        <tag>log</tag>
+        <tag>log4j</tag>
+        <tag>日志</tag>
       </tags>
   </entry>
   <entry>
@@ -743,6 +748,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[scala 笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fscala%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[TomCat使用：Tomcat笔记 安装配置环境变量JAVA_HOME; 解压下载的tomcat压缩包； netstat -an 查看端口占用情况； 修改server.xml; 双击startup.bat 启动； scala List类的高阶方法 forall: xs forall p以列表xs和论断p为参数，如果列表所有元素满足p则返回true; 与之相对应的 exists: xs exists pxs 中只要有一个值满足p就返回true。 scala List类 TO String 方法 mkString(哈哈，当年这个都要记一下) 简单的单元测试 12345678910object TestGroupDao extends App&#123; new GroupDao().updateGroup(GroupInfo(3456,&quot;centrum&quot;))&#125;object MainTestGroupDao&#123; def main (args: Array[String]) &#123; val groupDao = new GroupDao println(&quot;groupDao: &quot; + groupDao) &#125;&#125; case class 实例 =&gt; List RE123456789101112131415161718192021productIterator.toListscala&gt; case class aaa(i:Int,j:Int)defined class aaascala&gt; val q = aaa(1,2)q: aaa = aaa(1,2)scala&gt; q.toList&lt;console&gt;:11: error: value toList is not a member of aaa q.toList ^scala&gt; q.toStringres1: String = aaa(1,2)scala&gt; q.productIterator.toListres2: List[Any] = List(1, 2)scala&gt; q.productIterator.toList.mkString(&quot;&apos;&quot;)res3: String = 1&apos;2 case class 实例 转 Map （使用反射）RE123456789101112131415def updateUser(userInfo: UserInfo): Boolean = &#123; //val userInfoFieldName = userInfo.getClass.getDeclaredFields.map(_.getName) val userInfoFieldValueMap = (Map[String, Any]() /: userInfo.getClass.getDeclaredFields) &#123; (a, f) =&gt; f.setAccessible(true) a + (f.getName -&gt; f.get(userInfo)) &#125; val updateUserSqlset = if(userInfo.password == &quot;&quot;) userInfoFieldValueMap.keys.map(a =&gt; &#123;if (a != &quot;password&quot;) a + &quot;=&apos;&quot; + userInfoFieldValueMap(a)&#125;).mkString(&quot;&apos;,&quot;) else userInfoFieldValueMap.keys.map(a =&gt; a + &quot;=&apos;&quot; + userInfoFieldValueMap(a)).mkString(&quot;&apos;,&quot;) val updateUserSqlWhere = &quot;userId = &apos;&quot; + userInfoFieldValueMap(&quot;userId&quot;) + &quot;&apos;&quot; val updateUserSql = s&quot;&quot;&quot; |update userinfo set $updateUserSqlset where $updateUserSqlWhere &quot;&quot;&quot;.stripMargin Sql(updateUserSql).execute &#125; List 列表模式 列表还可以使用模式匹配做拆分，这时列表模式需逐一匹配要拆分的列表表达式 两种形式： 1. List(...) 对列表所有的元素做匹配 1234567scala&gt; val fruit = List(&quot;Apple&quot;,&quot;Orange&quot;,&quot;pears&quot;)fruit: List[String] = List(Apple, Orange, pears)scala&gt; val List(a,b,c) = fruita: String = Appleb: String = Orangec: String = pears 2. :: 操作符 和 Nil 常量组成的模式逐位拆分列表 123456789101112scala&gt; val fruit = List(&quot;Apple&quot;,&quot;Orange&quot;,&quot;pears&quot;)fruit: List[String] = List(Apple, Orange, pears)scala&gt; val List(a,b,c) = fruita: String = Appleb: String = Orangec: String = pearsscala&gt; val a:: b :: rest = fruita: String = Appleb: String = Orangerest: List[String] = List(pears) 在不知道列表长度为多少时，最好使用后一种 插入排序算法1. 陪练写法： 1234567def isort(xs: List[Int]): List[Int] = if(xs.isEmpty) Nil else insert(xs.head,isort(xs.tail))def insert(x: Int, xs: List[Int]): List[Int] = if(xs.isEmpty || x &lt;= xs.head) x :: xs else xs.head :: insert(x,xs.tail) 2. // 使用模式匹配拆分列表的方法 123456789def isort(xs: List[Int]) = xs match &#123; case List() =&gt; List() case x :: xs1 =&gt; insert(x,isort(xs1))&#125;def insert(x: Int, xs: List[Int]) = xs match &#123; case List() =&gt; List(x) case y :: ys =&gt; if(x &lt;= y) x :: xs else y :: insert(x,ys)&#125; http://hongjiang.info/scala/Scala 强大的集合数据操作示例//todo scala sort 排序123xmlFileList.map((xml.XML.loadFile(_))).map(parseXML(_)).filter((_.version.compareTo(currentVersion) &gt; 0)).map(a =&gt; (a.version, a)).&lt;strong&gt;sortWith((a,b) =&gt; (a._1).compareTo(b._1) &lt; 0)&lt;/strong&gt;.toMap 如何排序 scala 读写文件//todo scala 变长参数、ListgetFootInfoByUUID(l: _*) getFootInfoByUUID()是一个接受变长参数的方法l中的数据通过语法 _* 转换并传入函数中 scala伴生对象伴生对象可以调用伴生类中的方法，但是反过来不行 scala sbt read file from resources1234val is = getClass.getClassLoader.getResourceAsStream(&quot;remote_app.conf&quot;)val source = scala.io.Source.fromInputStream(is).getLines().map(_.split(&quot;\t&quot;).toList).toList//.foreach(as =&gt; println(as.length))[How to get load file under resources folder in scala sbt](https://stackoverflow.com/questions/40724082/how-to-get-load-file-under-resources-folder-in-scala-sbt) scala 反射如果要用反射的话，需要额外添加依赖 1libraryDependencies += &quot;org.scala-lang&quot; % &quot;scala-reflect&quot; % &quot;2.11.11&quot; scala Jsonplay-json-extensions +22 field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125; case object vs case class vs object vs classcase class \ case object 都有pattern match 、序列化 、toString 、 equal、方法的好处加持只是 object 还是一个单例对象，不能有构造参数，如果是一个不可变的单里对象用在模式匹配中时可用 new trait不能通过new 关键字去新建一个对象，只能新建一个extends这个trait的匿名类， 123456789101112131415161718192021trait MyTrait&#123;val a = 1val b = 2&#125;//----------------val anonClassMixingInTrait = new Mytrait&#123; def aFunctionInMyClass = &quot;111&quot;&#125;//is the equivalent of:class MyClass extends MyTrait&#123; def aFunctionInMyClass = &quot;111&quot;&#125;val anonClassMixingInTrait = new MyClass 区别是 前者只能在定义该匿名类的时候初始化它，因为他既没有名字，也没有构造函数 12345678910111213141516val t = new MyTrait &#123; val t1 = ... //some expression val t2 = ... //some expression&#125;is the same asval t = new AnyRef with MyTrait &#123; val t1 = ... //some expression val t2 = ... //some expression&#125;is the same asval t = new Object with MyTrait &#123; val t1 = ... //some expression val t2 = ... //some expression&#125; type关键字在scala 字符串中转义一个美元(dollar)$符号加倍 12scala&gt; val a = s&quot;$$a&quot;a: String = $a]]></content>
+      <categories>
+        <category>编程语言 - scala</category>
+      </categories>
+      <tags>
+        <tag>scala</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Shell笔记]]></title>
     <url>%2F2018%2F12%2F04%2Fshell%E8%84%9A%E6%9C%AC%E8%BF%81%E7%A7%BBgitlab%2F</url>
     <content type="text"><![CDATA[背景gitlab A 上的一部分repo迁移至 gitlab B 在下底层coder,用不了gitlab 管理员的骚操作（这活应该是管理员来干啊） 平时建了很多repo在上面，想用脚本迁移同步过去 实现12345678910111213141516171819202122232425262728293031323334#!/bin/bash# 当前目录baseDir=$(pwd)# 父目录fatherDir=$(dirname $baseDir)#echo $fatherDir#projList=$(ls $baseDir)# 列出当前目录下的全部子目录，包括.. 父目录[Linux Shell 只列出目录的方法](https://blog.csdn.net/DLUTBruceZhang/article/details/9244897)projList=$(ls -l |grep &quot;^d&quot; |awk &apos;&#123;print $9&#125;&apos;)for p in $&#123;projList[@]&#125; do if [ $p != &quot;/home/xxh/data/mycloud&quot; ] #过滤掉父目录,if 字符串比较讲究还不少，用的时候在具体查吧 then #echo &quot;wocao&quot; newP=$fatherDir/gitlabbakmirror/$p #新建repo dir mkdir -p $newP echo $newP git clone git@aigit.epoque.cn:xianhong.xu/$p.git $newP cd $newP # 在新的gitlab上创建repo [原repo库迁移及批量创建gitlab库](https://blog.csdn.net/lets_do/article/details/78110913) # [private token 寻找方法](https://www.safaribooksonline.com/library/view/gitlab-cookbook/9781783986842/ch06s05.html) info=&quot;name=$p&amp;path=$p&amp;wiki_enabled=no&amp;public_jobs=false&amp;public=false&amp;default_branch=master&amp;private_token=WwspxLGvbxAAY_5HQBH9&quot; # 只有ip端口需要替换 curl -d $info &quot;http://172.17.60.240:8020/api/v3/projects&quot; git remote set-url origin git@172.17.60.240:xuxianhong/$p.git #更改remote url -&gt; 新的gitlab git add . # 没什么更改，不执行也行 git commit -m &apos;migrate&apos; git push origin master cd $baseDir else echo $p&quot;,no process&quot; fi done 小计脚本异常处理什么的一概没有，本身是一次性执行快速脚本，所以就不再这里花费太多时间了]]></content>
@@ -752,17 +768,6 @@
       <tags>
         <tag>笔记</tag>
         <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[scala 笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fscala%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[TomCat使用：Tomcat笔记 安装配置环境变量JAVA_HOME; 解压下载的tomcat压缩包； netstat -an 查看端口占用情况； 修改server.xml; 双击startup.bat 启动； scala List类的高阶方法 forall: xs forall p以列表xs和论断p为参数，如果列表所有元素满足p则返回true; 与之相对应的 exists: xs exists pxs 中只要有一个值满足p就返回true。 scala List类 TO String 方法 mkString(哈哈，当年这个都要记一下) 简单的单元测试 12345678910object TestGroupDao extends App&#123; new GroupDao().updateGroup(GroupInfo(3456,&quot;centrum&quot;))&#125;object MainTestGroupDao&#123; def main (args: Array[String]) &#123; val groupDao = new GroupDao println(&quot;groupDao: &quot; + groupDao) &#125;&#125; case class 实例 =&gt; List RE123456789101112131415161718192021productIterator.toListscala&gt; case class aaa(i:Int,j:Int)defined class aaascala&gt; val q = aaa(1,2)q: aaa = aaa(1,2)scala&gt; q.toList&lt;console&gt;:11: error: value toList is not a member of aaa q.toList ^scala&gt; q.toStringres1: String = aaa(1,2)scala&gt; q.productIterator.toListres2: List[Any] = List(1, 2)scala&gt; q.productIterator.toList.mkString(&quot;&apos;&quot;)res3: String = 1&apos;2 case class 实例 转 Map （使用反射）RE123456789101112131415def updateUser(userInfo: UserInfo): Boolean = &#123; //val userInfoFieldName = userInfo.getClass.getDeclaredFields.map(_.getName) val userInfoFieldValueMap = (Map[String, Any]() /: userInfo.getClass.getDeclaredFields) &#123; (a, f) =&gt; f.setAccessible(true) a + (f.getName -&gt; f.get(userInfo)) &#125; val updateUserSqlset = if(userInfo.password == &quot;&quot;) userInfoFieldValueMap.keys.map(a =&gt; &#123;if (a != &quot;password&quot;) a + &quot;=&apos;&quot; + userInfoFieldValueMap(a)&#125;).mkString(&quot;&apos;,&quot;) else userInfoFieldValueMap.keys.map(a =&gt; a + &quot;=&apos;&quot; + userInfoFieldValueMap(a)).mkString(&quot;&apos;,&quot;) val updateUserSqlWhere = &quot;userId = &apos;&quot; + userInfoFieldValueMap(&quot;userId&quot;) + &quot;&apos;&quot; val updateUserSql = s&quot;&quot;&quot; |update userinfo set $updateUserSqlset where $updateUserSqlWhere &quot;&quot;&quot;.stripMargin Sql(updateUserSql).execute &#125; List 列表模式 列表还可以使用模式匹配做拆分，这时列表模式需逐一匹配要拆分的列表表达式 两种形式： 1. List(...) 对列表所有的元素做匹配 1234567scala&gt; val fruit = List(&quot;Apple&quot;,&quot;Orange&quot;,&quot;pears&quot;)fruit: List[String] = List(Apple, Orange, pears)scala&gt; val List(a,b,c) = fruita: String = Appleb: String = Orangec: String = pears 2. :: 操作符 和 Nil 常量组成的模式逐位拆分列表 123456789101112scala&gt; val fruit = List(&quot;Apple&quot;,&quot;Orange&quot;,&quot;pears&quot;)fruit: List[String] = List(Apple, Orange, pears)scala&gt; val List(a,b,c) = fruita: String = Appleb: String = Orangec: String = pearsscala&gt; val a:: b :: rest = fruita: String = Appleb: String = Orangerest: List[String] = List(pears) 在不知道列表长度为多少时，最好使用后一种 插入排序算法1. 陪练写法： 1234567def isort(xs: List[Int]): List[Int] = if(xs.isEmpty) Nil else insert(xs.head,isort(xs.tail))def insert(x: Int, xs: List[Int]): List[Int] = if(xs.isEmpty || x &lt;= xs.head) x :: xs else xs.head :: insert(x,xs.tail) 2. // 使用模式匹配拆分列表的方法 123456789def isort(xs: List[Int]) = xs match &#123; case List() =&gt; List() case x :: xs1 =&gt; insert(x,isort(xs1))&#125;def insert(x: Int, xs: List[Int]) = xs match &#123; case List() =&gt; List(x) case y :: ys =&gt; if(x &lt;= y) x :: xs else y :: insert(x,ys)&#125; http://hongjiang.info/scala/Scala 强大的集合数据操作示例//todo scala sort 排序123xmlFileList.map((xml.XML.loadFile(_))).map(parseXML(_)).filter((_.version.compareTo(currentVersion) &gt; 0)).map(a =&gt; (a.version, a)).&lt;strong&gt;sortWith((a,b) =&gt; (a._1).compareTo(b._1) &lt; 0)&lt;/strong&gt;.toMap 如何排序 scala 读写文件//todo scala 变长参数、ListgetFootInfoByUUID(l: _*) getFootInfoByUUID()是一个接受变长参数的方法l中的数据通过语法 _* 转换并传入函数中 scala伴生对象伴生对象可以调用伴生类中的方法，但是反过来不行 scala sbt read file from resources1234val is = getClass.getClassLoader.getResourceAsStream(&quot;remote_app.conf&quot;)val source = scala.io.Source.fromInputStream(is).getLines().map(_.split(&quot;\t&quot;).toList).toList//.foreach(as =&gt; println(as.length))[How to get load file under resources folder in scala sbt](https://stackoverflow.com/questions/40724082/how-to-get-load-file-under-resources-folder-in-scala-sbt) scala 反射如果要用反射的话，需要额外添加依赖 1libraryDependencies += &quot;org.scala-lang&quot; % &quot;scala-reflect&quot; % &quot;2.11.11&quot; scala Jsonplay-json-extensions +22 field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125; case object vs case class vs object vs classcase class \ case object 都有pattern match 、序列化 、toString 、 equal、方法的好处加持只是 object 还是一个单例对象，不能有构造参数，如果是一个不可变的单里对象用在模式匹配中时可用 new trait不能通过new 关键字去新建一个对象，只能新建一个extends这个trait的匿名类， 123456789101112131415161718192021trait MyTrait&#123;val a = 1val b = 2&#125;//----------------val anonClassMixingInTrait = new Mytrait&#123; def aFunctionInMyClass = &quot;111&quot;&#125;//is the equivalent of:class MyClass extends MyTrait&#123; def aFunctionInMyClass = &quot;111&quot;&#125;val anonClassMixingInTrait = new MyClass 区别是 前者只能在定义该匿名类的时候初始化它，因为他既没有名字，也没有构造函数 12345678910111213141516val t = new MyTrait &#123; val t1 = ... //some expression val t2 = ... //some expression&#125;is the same asval t = new AnyRef with MyTrait &#123; val t1 = ... //some expression val t2 = ... //some expression&#125;is the same asval t = new Object with MyTrait &#123; val t1 = ... //some expression val t2 = ... //some expression&#125; type关键字在scala 字符串中转义一个美元(dollar)$符号加倍 12scala&gt; val a = s&quot;$$a&quot;a: String = $a]]></content>
-      <categories>
-        <category>编程语言 - scala</category>
-      </categories>
-      <tags>
-        <tag>scala</tag>
       </tags>
   </entry>
   <entry>
@@ -792,29 +797,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[sqoop使用]]></title>
-    <url>%2F2018%2F12%2F04%2Fsqoop%2F</url>
-    <content type="text"><![CDATA[installsqoop install &amp;&amp; test 版本1.4.7的安装文档没有找到，使用1.99.7的文档装了半天 官网下载：sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz 解压 复制template配置文件并修改配置文件 123456789101112131415161718# Set Hadoop-specific environment variables here.#Set path to where bin/hadoop is available#export HADOOP_COMMON_HOME=export HADOOP_COMMON_HOME=/home/xxh/wkspc/hadoop/hadoop-2.7.7#Set path to where hadoop-*-core.jar is availableexport HADOOP_MAPRED_HOME=/home/xxh/wkspc/hadoop/hadoop-2.7.7#set the path to where bin/hbase is availableexport HBASE_HOME=/home/xxh/wkspc/hbase/hbase-2.1.0#Set the path to where bin/hive is availableexport HIVE_HOME=/home/xxh/wkspc/hive/apache-hive-1.2.2-bin#Set the path for where zookeper config dir isexport ZOOCFGDIR=/home/xxh/wkspc/zookeeper/zookeeper0/conf 测试 1234567891011121314151617181920212223242526sqoop list-databases --connect jdbc:mysql://localhost:3306 --username root --password admin123sqoop import \--connect jdbc:mysql://localhost:3306/mysql \--username root \--password admin123 \--table user \--target-dir /sqoop/data_1 \--delete-target-dir \--num-mappers 1 \--fields-terminated-by &quot;\t&quot;# mysql on other computersqoop import \--connect jdbc:mysql://172.17.60.59:3306/mysql \--username root \--password Admin@321 \--table user \--target-dir /sqoop/data_user_59 \--delete-target-dir \--num-mappers 1 \--fields-terminated-by &quot;\t&quot; 数据库导入Sqoop 通mr作业从数据库中导入一个表，这个作业从表中抽取一行行记录，然后将记录写入HDFS 在导入开始之前，Sqoop使用jdbc 检查表，检索出表中所有的列、列的数据类型。这些sql数据类型被映射到java数据类型 导入控制重点在保证数据一致性 sqoop 后台实际上是运行了mr,用yarn 提交管理的 调试的时候发现提交完任务长时间不能执行，很可能是资源不足，也有可能是数据库权限问题先杀掉，同步本地的数据库试试 123# 8088 查下 app id,然后yarn application -kill application_1540448968752_0003 sqoop 同步json数据报错 12345678910111213141516171819Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: org/json/JSONObject at org.apache.sqoop.util.SqoopJsonUtil.getJsonStringforMap(SqoopJsonUtil.java:43) at org.apache.sqoop.SqoopOptions.writeProperties(SqoopOptions.java:785) at org.apache.sqoop.metastore.hsqldb.HsqldbJobStorage.createInternal(HsqldbJobStorage.java:399) at org.apache.sqoop.metastore.hsqldb.HsqldbJobStorage.create(HsqldbJobStorage.java:379) at org.apache.sqoop.tool.JobTool.createJob(JobTool.java:181) at org.apache.sqoop.tool.JobTool.run(JobTool.java:294) at org.apache.sqoop.Sqoop.run(Sqoop.java:147) at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:70) at org.apache.sqoop.Sqoop.runSqoop(Sqoop.java:183) at org.apache.sqoop.Sqoop.runTool(Sqoop.java:234) at org.apache.sqoop.Sqoop.runTool(Sqoop.java:243) at org.apache.sqoop.Sqoop.main(Sqoop.java:252)Caused by: java.lang.ClassNotFoundException: org.json.JSONObject at java.net.URLClassLoader.findClass(URLClassLoader.java:381) at java.lang.ClassLoader.loadClass(ClassLoader.java:424) at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349) at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ... 12 more solve: 1234567By spending some more time reading blogs:I found solution as below:downloaded java-json.jar file from location http://www.java2s.com/Code/Jar/j/Downloadjavajsonjar.htmstored this jar file at location /usr/lib/sqoop/lib/java-json.jar Sqoop import exception java.lang.NoClassDefFoundError: org/json/JSONObject name node is in safe mode solve:1hdfs dfsadmin -safemode leave name node is in safe mode sqoop 任务 一直僵尸在ACCEPED状态，不动 搜，跟着改了很多配置，最后看到日志中有[warn] error*,报错某某项配置的目录可用空间超过总空间百分之九十，导致伪分布式模式下唯一一个node不能用于是更改了其默认配置，并更改其yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage -&gt; 98.58088 UI上 Active nodes显示为1 最终的配置： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#yarn-site.xml&lt;configuration&gt;&lt;!-- Site specific YARN configuration properties --&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt; &lt;value&gt;mapreduce_shuffle&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.resource.memory-mb&lt;/name&gt; &lt;value&gt;4096&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.scheduler.minimum-allocation-mb&lt;/name&gt; &lt;value&gt;512&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.resource.cpu-vcores&lt;/name&gt; &lt;value&gt;4&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.vmem-pmem-ratio&lt;/name&gt; &lt;value&gt;2.1&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.local-dirs&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/yarnlocaldir&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.log-dirs&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/yarnlogdir&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage&lt;/name&gt; &lt;value&gt;98.5&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt;# hdfs-site.xmldatanode的dfs.datanode.data.dir 不配置的话，会默认使用/tmp目录，我的系统装在小小的额固态上，左右基本没有空间剩余了，于是改到T级别的机械硬盘上了&lt;configuration&gt; &lt;property&gt; &lt;name&gt;dfs.replication&lt;/name&gt; &lt;value&gt;1&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/namenode-namespace&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/datanodespace&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt; 参考：MapReduce jobs get stuck in Accepted state redshift 表 同步到 hive 一次性同步，整体迁移 123456789101112./bin/sqoop job --delete customer_order./bin/sqoop job --create customer_order \-- import \--connect jdbc:redshift://north-1.redshift.amazonaws.com.cn:59/prod \--driver com.amazon.redshift.jdbc42.Driver \--username boot_last \--table XXX.XXXX \--target-dir /hive/warehouse/XXXX/XXXX \--fields-terminated-by &apos;,&apos; \--lines-terminated-by &apos;\n&apos; \--hive-drop-import-delims \-m 1 没有顺序的数值列，所以无法切分，通过一个map任务来同步，也就是指定 -m 1? 也是不是没办法，比如讲某列进行hash,然后根据hash值来分片同步，使用sqoop同步时hash 就要自定义函数参考sqoop 同步所有列，所以指定了 table 后，不配置column的意思就是同步所有列 redshift jdbc Driver 记得添加 ，从maven上下载最新的jar,放到sqoop home的lib 中? sqoop 直接同步成hive 表]]></content>
-      <categories>
-        <category>sqoop</category>
-      </categories>
-      <tags>
-        <tag>sqoop</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[SSH深入]]></title>
-    <url>%2F2018%2F12%2F04%2Fssh%E6%B7%B1%E5%85%A5%2F</url>
-    <content type="text"><![CDATA[SSH(Secure Shell)Secure Shell（安全外壳协议，简称SSH）是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。 SSH通过在网络中创建安全隧道来实现SSH客户端与服务器之间的连接[2]。虽然任何网络服务都可以通过SSH实现安全传输，SSH最常见的用途是远程登录系统，人们通常利用SSH来传输命令行界面和远程执行命令 在设计上，SSH是Telnet和非安全shell的替代品。Telnet和Berkeley rlogin、rsh、rexec等协议采用明文传输，使用不可靠的密码，容易遭到监听、嗅探和中间人攻击[4]。SSH旨在保证非安全网络环境（例如互联网）中信息加密完整可靠。 建立连接SSH以非对称加密实现身份验证[2]。身份验证有多种途径， 其中一种方法是使用自动生成的公钥-私钥对来简单地加密网络连接，随后使用密码认证进行登录；此时密钥是自动生成 另一种方法是人工生成一对公钥和私钥，通过生成的密钥进行认证，这样就可以在不输入密码的情况下登录。任何人都可以自行生成密钥。公钥需要放在待访问的计算机之中，而对应的私钥需要由用户自行保管。认证过程基于生成出来的私钥，但整个认证过程中私钥本身不会传输到网络中。 使用 登录远程主机执行命令 SSH也支持隧道协议、端口映射和X11连接。借助SFTP或SCP协议还可以传输文件 秘钥管理在类Unix系统中，已许可登录的公钥通常保存在用户 /home 目录的 ~/.ssh/authorized_keys 文件中[9]，该文件只由SSH使用。当远程机器持有公钥，而本地持有对应私钥时，登录过程不再需要手动输入密码。另外为了额外的安全性，私钥本身也能用密码保护。私钥会保存在固定位置，也可以通过命令行参数指定（例如ssh命令的“-i”选项）。ssh-keygen是生成密钥的工具之一。SSH也支持基于密码的身份验证，此时密钥是自动生成的。若客户端和服务端从未进行过身份验证，SSH未记录服务器端所使用的密钥，那么攻击者可以模仿服务器端请求并获取密码，即中间人攻击。但是密码认证可以禁用，而且SSH客户端在发现新密钥或未知服务器时会向用户发出警告。 所以aws ec2提供的秘钥就是一对秘钥对中的私钥，ec2主机中保存有公钥，通过-i指定私钥去匹配公钥，完成登录验证，也可以将自己机器的公钥放到ec2的~/.ssh/authorized_keys 文件中，实现自己机器与ec2的免密登录，因为登录时默认会拿本地的私钥去匹配目标主机的~/.ssh/authorized_keys文件中的公钥]]></content>
-      <categories>
-        <category>服务器端 - shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-        <tag>ssh</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[sql笔记]]></title>
     <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；\然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。\ 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，\以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。\推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使&lt;join_condition&gt;为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使&lt;where_condition&gt;为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使&lt;having_condition&gt;为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样\如果多条语句之间用GO分隔开就不一样了\每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。\例如：\首先同时执行下边的语句\select from sysobjects where id=a\select getdate()\你会发现会报错，并且不会显示任何结果集\而你再执行\select from sysobjects where id=a\go\select getdate()\go\你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // ok CAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
@@ -824,6 +806,17 @@
       <tags>
         <tag>database</tag>
         <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sqoop使用]]></title>
+    <url>%2F2018%2F12%2F04%2Fsqoop%2F</url>
+    <content type="text"><![CDATA[installsqoop install &amp;&amp; test 版本1.4.7的安装文档没有找到，使用1.99.7的文档装了半天 官网下载：sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz 解压 复制template配置文件并修改配置文件 123456789101112131415161718# Set Hadoop-specific environment variables here.#Set path to where bin/hadoop is available#export HADOOP_COMMON_HOME=export HADOOP_COMMON_HOME=/home/xxh/wkspc/hadoop/hadoop-2.7.7#Set path to where hadoop-*-core.jar is availableexport HADOOP_MAPRED_HOME=/home/xxh/wkspc/hadoop/hadoop-2.7.7#set the path to where bin/hbase is availableexport HBASE_HOME=/home/xxh/wkspc/hbase/hbase-2.1.0#Set the path to where bin/hive is availableexport HIVE_HOME=/home/xxh/wkspc/hive/apache-hive-1.2.2-bin#Set the path for where zookeper config dir isexport ZOOCFGDIR=/home/xxh/wkspc/zookeeper/zookeeper0/conf 测试 1234567891011121314151617181920212223242526sqoop list-databases --connect jdbc:mysql://localhost:3306 --username root --password admin123sqoop import \--connect jdbc:mysql://localhost:3306/mysql \--username root \--password admin123 \--table user \--target-dir /sqoop/data_1 \--delete-target-dir \--num-mappers 1 \--fields-terminated-by &quot;\t&quot;# mysql on other computersqoop import \--connect jdbc:mysql://172.17.60.59:3306/mysql \--username root \--password Admin@321 \--table user \--target-dir /sqoop/data_user_59 \--delete-target-dir \--num-mappers 1 \--fields-terminated-by &quot;\t&quot; 数据库导入Sqoop 通mr作业从数据库中导入一个表，这个作业从表中抽取一行行记录，然后将记录写入HDFS 在导入开始之前，Sqoop使用jdbc 检查表，检索出表中所有的列、列的数据类型。这些sql数据类型被映射到java数据类型 导入控制重点在保证数据一致性 sqoop 后台实际上是运行了mr,用yarn 提交管理的 调试的时候发现提交完任务长时间不能执行，很可能是资源不足，也有可能是数据库权限问题先杀掉，同步本地的数据库试试 123# 8088 查下 app id,然后yarn application -kill application_1540448968752_0003 sqoop 同步json数据报错 12345678910111213141516171819Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: org/json/JSONObject at org.apache.sqoop.util.SqoopJsonUtil.getJsonStringforMap(SqoopJsonUtil.java:43) at org.apache.sqoop.SqoopOptions.writeProperties(SqoopOptions.java:785) at org.apache.sqoop.metastore.hsqldb.HsqldbJobStorage.createInternal(HsqldbJobStorage.java:399) at org.apache.sqoop.metastore.hsqldb.HsqldbJobStorage.create(HsqldbJobStorage.java:379) at org.apache.sqoop.tool.JobTool.createJob(JobTool.java:181) at org.apache.sqoop.tool.JobTool.run(JobTool.java:294) at org.apache.sqoop.Sqoop.run(Sqoop.java:147) at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:70) at org.apache.sqoop.Sqoop.runSqoop(Sqoop.java:183) at org.apache.sqoop.Sqoop.runTool(Sqoop.java:234) at org.apache.sqoop.Sqoop.runTool(Sqoop.java:243) at org.apache.sqoop.Sqoop.main(Sqoop.java:252)Caused by: java.lang.ClassNotFoundException: org.json.JSONObject at java.net.URLClassLoader.findClass(URLClassLoader.java:381) at java.lang.ClassLoader.loadClass(ClassLoader.java:424) at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349) at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ... 12 more solve: 1234567By spending some more time reading blogs:I found solution as below:downloaded java-json.jar file from location http://www.java2s.com/Code/Jar/j/Downloadjavajsonjar.htmstored this jar file at location /usr/lib/sqoop/lib/java-json.jar Sqoop import exception java.lang.NoClassDefFoundError: org/json/JSONObject name node is in safe mode solve:1hdfs dfsadmin -safemode leave name node is in safe mode sqoop 任务 一直僵尸在ACCEPED状态，不动 搜，跟着改了很多配置，最后看到日志中有[warn] error*,报错某某项配置的目录可用空间超过总空间百分之九十，导致伪分布式模式下唯一一个node不能用于是更改了其默认配置，并更改其yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage -&gt; 98.58088 UI上 Active nodes显示为1 最终的配置： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#yarn-site.xml&lt;configuration&gt;&lt;!-- Site specific YARN configuration properties --&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt; &lt;value&gt;mapreduce_shuffle&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.resource.memory-mb&lt;/name&gt; &lt;value&gt;4096&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.scheduler.minimum-allocation-mb&lt;/name&gt; &lt;value&gt;512&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.resource.cpu-vcores&lt;/name&gt; &lt;value&gt;4&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.vmem-pmem-ratio&lt;/name&gt; &lt;value&gt;2.1&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.local-dirs&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/yarnlocaldir&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.log-dirs&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/yarnlogdir&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage&lt;/name&gt; &lt;value&gt;98.5&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt;# hdfs-site.xmldatanode的dfs.datanode.data.dir 不配置的话，会默认使用/tmp目录，我的系统装在小小的额固态上，左右基本没有空间剩余了，于是改到T级别的机械硬盘上了&lt;configuration&gt; &lt;property&gt; &lt;name&gt;dfs.replication&lt;/name&gt; &lt;value&gt;1&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/namenode-namespace&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/datanodespace&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt; 参考：MapReduce jobs get stuck in Accepted state redshift 表 同步到 hive 一次性同步，整体迁移 123456789101112./bin/sqoop job --delete customer_order./bin/sqoop job --create customer_order \-- import \--connect jdbc:redshift://north-1.redshift.amazonaws.com.cn:59/prod \--driver com.amazon.redshift.jdbc42.Driver \--username boot_last \--table XXX.XXXX \--target-dir /hive/warehouse/XXXX/XXXX \--fields-terminated-by &apos;,&apos; \--lines-terminated-by &apos;\n&apos; \--hive-drop-import-delims \-m 1 没有顺序的数值列，所以无法切分，通过一个map任务来同步，也就是指定 -m 1? 也是不是没办法，比如讲某列进行hash,然后根据hash值来分片同步，使用sqoop同步时hash 就要自定义函数参考sqoop 同步所有列，所以指定了 table 后，不配置column的意思就是同步所有列 redshift jdbc Driver 记得添加 ，从maven上下载最新的jar,放到sqoop home的lib 中? sqoop 直接同步成hive 表]]></content>
+      <categories>
+        <category>sqoop</category>
+      </categories>
+      <tags>
+        <tag>sqoop</tag>
       </tags>
   </entry>
   <entry>
@@ -840,6 +833,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[SSH深入]]></title>
+    <url>%2F2018%2F12%2F04%2Fssh%E6%B7%B1%E5%85%A5%2F</url>
+    <content type="text"><![CDATA[SSH(Secure Shell)Secure Shell（安全外壳协议，简称SSH）是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。 SSH通过在网络中创建安全隧道来实现SSH客户端与服务器之间的连接[2]。虽然任何网络服务都可以通过SSH实现安全传输，SSH最常见的用途是远程登录系统，人们通常利用SSH来传输命令行界面和远程执行命令 在设计上，SSH是Telnet和非安全shell的替代品。Telnet和Berkeley rlogin、rsh、rexec等协议采用明文传输，使用不可靠的密码，容易遭到监听、嗅探和中间人攻击[4]。SSH旨在保证非安全网络环境（例如互联网）中信息加密完整可靠。 建立连接SSH以非对称加密实现身份验证[2]。身份验证有多种途径， 其中一种方法是使用自动生成的公钥-私钥对来简单地加密网络连接，随后使用密码认证进行登录；此时密钥是自动生成 另一种方法是人工生成一对公钥和私钥，通过生成的密钥进行认证，这样就可以在不输入密码的情况下登录。任何人都可以自行生成密钥。公钥需要放在待访问的计算机之中，而对应的私钥需要由用户自行保管。认证过程基于生成出来的私钥，但整个认证过程中私钥本身不会传输到网络中。 使用 登录远程主机执行命令 SSH也支持隧道协议、端口映射和X11连接。借助SFTP或SCP协议还可以传输文件 秘钥管理在类Unix系统中，已许可登录的公钥通常保存在用户 /home 目录的 ~/.ssh/authorized_keys 文件中[9]，该文件只由SSH使用。当远程机器持有公钥，而本地持有对应私钥时，登录过程不再需要手动输入密码。另外为了额外的安全性，私钥本身也能用密码保护。私钥会保存在固定位置，也可以通过命令行参数指定（例如ssh命令的“-i”选项）。ssh-keygen是生成密钥的工具之一。SSH也支持基于密码的身份验证，此时密钥是自动生成的。若客户端和服务端从未进行过身份验证，SSH未记录服务器端所使用的密钥，那么攻击者可以模仿服务器端请求并获取密码，即中间人攻击。但是密码认证可以禁用，而且SSH客户端在发现新密钥或未知服务器时会向用户发出警告。 所以aws ec2提供的秘钥就是一对秘钥对中的私钥，ec2主机中保存有公钥，通过-i指定私钥去匹配公钥，完成登录验证，也可以将自己机器的公钥放到ec2的~/.ssh/authorized_keys 文件中，实现自己机器与ec2的免密登录，因为登录时默认会拿本地的私钥去匹配目标主机的~/.ssh/authorized_keys文件中的公钥]]></content>
+      <categories>
+        <category>服务器端 - shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[了解Docker]]></title>
     <url>%2F2018%2F12%2F04%2F%E4%BA%86%E8%A7%A3Docker%2F</url>
     <content type="text"><![CDATA[Docker What is Docker?我的理解： 在操作系统上新增的一层抽象 解决的痛点：同一台服务器上多应用间的依赖冲突问题 优势：很多，比如将多个应用部署在同一个云主机上，该云主机弹性扩展，这样能够节约不少成本 目前的项目暂时用不到docker 教程]]></content>
@@ -849,6 +854,19 @@
       <tags>
         <tag>微服务</tag>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tensorflow3--mnist]]></title>
+    <url>%2F2018%2F12%2F04%2Ftensorflow3--mnist%2F</url>
+    <content type="text"><![CDATA[mnist教程Mnist是tf圈的hello world mnist_softmax.py源码soft_max回归介绍： Softmax回归模型，该模型是logistic回归模型在多分类问题上的推广，在多分类问题中，类标签 \textstyle y 可以取两个以上的值。Softmax回归模型对于诸如MNIST手写数字分类等问题是很有用的，该问题的目的是辨识10个不同的单个数字。Softmax回归是有监督的，不过后面也会介绍它与深度学习/无监督学习方法的结合。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116# Copyright 2015 The TensorFlow Authors. All Rights Reserved.## Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);# you may not use this file except in compliance with the License.# You may obtain a copy of the License at## http://www.apache.org/licenses/LICENSE-2.0## Unless required by applicable law or agreed to in writing, software# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.# See the License for the specific language governing permissions and# limitations under the License.# ==============================================================================&quot;&quot;&quot;A very simple MNIST classifier.See extensive documentation athttps://www.tensorflow.org/get_started/mnist/beginners&quot;&quot;&quot;#Python的每个新版本都会增加一些新的功能，或者对原来的功能作一些改动。Python提供了__future__模块，把下一个新版本的特性导入到当前版本，于是我们就可以在当前版本中测试一些新版本的特性。from __future__ import absolute_importfrom __future__ import divisionfrom __future__ import print_functionimport argparseimport sys#使用tf提供的input_data函数来导入数据from tensorflow.examples.tutorials.mnist import input_dataimport tensorflow as tf#函数声明FLAGS = Nonedef main(_): # Import data mnist = input_data.read_data_sets(FLAGS.data_dir) # Create the model # 占位 &quot;&quot;&quot; 这里的x和y并不是特定的值，相反，他们都只是一个占位符，可以在TensorFlow运行某一计算时根据该占位符输入具体的值。 输入图片x是一个2维的浮点数张量。这里，分配给它的shape为[None, 784]，其中784是一张展平的MNIST图片的维度。None表示其值大小不定，在这里作为第一个维度值，用以指代batch的大小，意即x的数量不定。输出类别值y_也是一个2维张量，其中每一行为一个10维的one-hot向量,用于代表对应某一MNIST图片的类别。 虽然placeholder的shape参数是可选的，但有了它，TensorFlow能够自动捕捉因数据维度不一致导致的错误。 我们现在为模型定义权重W和偏置b。可以将它们当作额外的输入量，但是TensorFlow有一个更好的处理方式：变量。 一个变量代表着TensorFlow计算图中的一个值，能够在计算过程中使用，甚至进行修改。在机器学习的应用过程中，模型参数一般用Variable来表示。 &quot;&quot;&quot; x = tf.placeholder(tf.float32, [None, 784]) W = tf.Variable(tf.zeros([784, 10])) b = tf.Variable(tf.zeros([10])) #现在我们可以实现我们的回归模型了。这只需要一行！我们把向量化后的图片x和权重矩阵W相乘，加上偏置b，然后计算每个分类的softmax概率值 y = tf.matmul(x, W) + b # Define loss and optimizer # y_ = tf.placeholder(tf.float32, [None]) y_ = tf.placeholder(tf.int64, [None]) # The raw formulation of cross-entropy, # # tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(tf.nn.softmax(y)), # reduction_indices=[1])) # # can be numerically unstable. # # So here we use tf.losses.sparse_softmax_cross_entropy on the raw # outputs of &apos;y&apos;, and then average across the batch. #可以很容易的为训练过程指定最小化误差用的损失函数，我们的损失函数是目标类别和预测类别之间的交叉熵。 cross_entropy = tf.losses.sparse_softmax_cross_entropy(labels=y_, logits=y) #我们已经定义好模型和训练用的损失函数，那么用TensorFlow进行训练就很简单了。因为TensorFlow知道整个计算图，它可以使用自动微分法找到对于各个变量的损失的梯度值。TensorFlow有大量内置的优化算法 这个例子中，我们用最速下降法让交叉熵下降，步长为0.5. train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy) #新建session sess = tf.InteractiveSession() #变量初始化 tf.global_variables_initializer().run() # Train # 循环训练1000次，每次都是取下100份数据作为输入，运行train_step for _ in range(1000): batch_xs, batch_ys = mnist.train.next_batch(100) sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;) # Test trained model # 首先让我们找出那些预测正确的标签。tf.argmax 是一个非常有用的函数，它能给出某个tensor对象在某一维上的其数据最大值所在的索引值。 由于标签向量是由0,1组成，因此最大值1所在的索引位置就是类别标签，比如tf.argmax(y,1)返回的是模型对于任一输入x预测到的标签值， 而 tf.argmax(y_,1) 代表正确的标签，我们可以用 tf.equal 来检测我们的预测是否真实标签匹配(索引位置一样表示匹配)。 这里返回一个布尔数组。为了计算我们分类的准确率，我们将布尔值转换为浮点数来代表对、错，然后取平均值。例如：[True, False, True, True]变为[1,0,1,1]，计算出平均值为0.75。 correct_prediction = tf.equal(tf.argmax(y, 1), y_) accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32)) print(sess.run( accuracy, feed_dict=&#123; x: mnist.test.images, y_: mnist.test.labels &#125;)) # SAVE THE MODEL # 保存model builder = tf.saved_model.builder.SavedModelBuilder(&quot;/tmp/mnist/model/1620&quot;) builder.add_meta_graph_and_variables( sess, [tf.saved_model.tag_constants.SERVING] ) builder.save()if __name__ == &apos;__main__&apos;: parser = argparse.ArgumentParser() parser.add_argument( &apos;--data_dir&apos;, type=str, default=&apos;/tmp/tensorflow/mnist/input_data&apos;, help=&apos;Directory for storing input data&apos;) FLAGS, unparsed = parser.parse_known_args() tf.app.run(main=main, argv=[sys.argv[0]] + unparsed) 卷积神经网络//Todo]]></content>
+      <categories>
+        <category>机器学习、深度学习 - tensorflow</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>tensorflow</tag>
       </tags>
   </entry>
   <entry>
@@ -866,16 +884,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[tensorflow3--mnist]]></title>
-    <url>%2F2018%2F12%2F04%2Ftensorflow3--mnist%2F</url>
-    <content type="text"><![CDATA[mnist教程Mnist是tf圈的hello world mnist_softmax.py源码soft_max回归介绍： Softmax回归模型，该模型是logistic回归模型在多分类问题上的推广，在多分类问题中，类标签 \textstyle y 可以取两个以上的值。Softmax回归模型对于诸如MNIST手写数字分类等问题是很有用的，该问题的目的是辨识10个不同的单个数字。Softmax回归是有监督的，不过后面也会介绍它与深度学习/无监督学习方法的结合。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116# Copyright 2015 The TensorFlow Authors. All Rights Reserved.## Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);# you may not use this file except in compliance with the License.# You may obtain a copy of the License at## http://www.apache.org/licenses/LICENSE-2.0## Unless required by applicable law or agreed to in writing, software# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.# See the License for the specific language governing permissions and# limitations under the License.# ==============================================================================&quot;&quot;&quot;A very simple MNIST classifier.See extensive documentation athttps://www.tensorflow.org/get_started/mnist/beginners&quot;&quot;&quot;#Python的每个新版本都会增加一些新的功能，或者对原来的功能作一些改动。Python提供了__future__模块，把下一个新版本的特性导入到当前版本，于是我们就可以在当前版本中测试一些新版本的特性。from __future__ import absolute_importfrom __future__ import divisionfrom __future__ import print_functionimport argparseimport sys#使用tf提供的input_data函数来导入数据from tensorflow.examples.tutorials.mnist import input_dataimport tensorflow as tf#函数声明FLAGS = Nonedef main(_): # Import data mnist = input_data.read_data_sets(FLAGS.data_dir) # Create the model # 占位 &quot;&quot;&quot; 这里的x和y并不是特定的值，相反，他们都只是一个占位符，可以在TensorFlow运行某一计算时根据该占位符输入具体的值。 输入图片x是一个2维的浮点数张量。这里，分配给它的shape为[None, 784]，其中784是一张展平的MNIST图片的维度。None表示其值大小不定，在这里作为第一个维度值，用以指代batch的大小，意即x的数量不定。输出类别值y_也是一个2维张量，其中每一行为一个10维的one-hot向量,用于代表对应某一MNIST图片的类别。 虽然placeholder的shape参数是可选的，但有了它，TensorFlow能够自动捕捉因数据维度不一致导致的错误。 我们现在为模型定义权重W和偏置b。可以将它们当作额外的输入量，但是TensorFlow有一个更好的处理方式：变量。 一个变量代表着TensorFlow计算图中的一个值，能够在计算过程中使用，甚至进行修改。在机器学习的应用过程中，模型参数一般用Variable来表示。 &quot;&quot;&quot; x = tf.placeholder(tf.float32, [None, 784]) W = tf.Variable(tf.zeros([784, 10])) b = tf.Variable(tf.zeros([10])) #现在我们可以实现我们的回归模型了。这只需要一行！我们把向量化后的图片x和权重矩阵W相乘，加上偏置b，然后计算每个分类的softmax概率值 y = tf.matmul(x, W) + b # Define loss and optimizer # y_ = tf.placeholder(tf.float32, [None]) y_ = tf.placeholder(tf.int64, [None]) # The raw formulation of cross-entropy, # # tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(tf.nn.softmax(y)), # reduction_indices=[1])) # # can be numerically unstable. # # So here we use tf.losses.sparse_softmax_cross_entropy on the raw # outputs of &apos;y&apos;, and then average across the batch. #可以很容易的为训练过程指定最小化误差用的损失函数，我们的损失函数是目标类别和预测类别之间的交叉熵。 cross_entropy = tf.losses.sparse_softmax_cross_entropy(labels=y_, logits=y) #我们已经定义好模型和训练用的损失函数，那么用TensorFlow进行训练就很简单了。因为TensorFlow知道整个计算图，它可以使用自动微分法找到对于各个变量的损失的梯度值。TensorFlow有大量内置的优化算法 这个例子中，我们用最速下降法让交叉熵下降，步长为0.5. train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy) #新建session sess = tf.InteractiveSession() #变量初始化 tf.global_variables_initializer().run() # Train # 循环训练1000次，每次都是取下100份数据作为输入，运行train_step for _ in range(1000): batch_xs, batch_ys = mnist.train.next_batch(100) sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;) # Test trained model # 首先让我们找出那些预测正确的标签。tf.argmax 是一个非常有用的函数，它能给出某个tensor对象在某一维上的其数据最大值所在的索引值。 由于标签向量是由0,1组成，因此最大值1所在的索引位置就是类别标签，比如tf.argmax(y,1)返回的是模型对于任一输入x预测到的标签值， 而 tf.argmax(y_,1) 代表正确的标签，我们可以用 tf.equal 来检测我们的预测是否真实标签匹配(索引位置一样表示匹配)。 这里返回一个布尔数组。为了计算我们分类的准确率，我们将布尔值转换为浮点数来代表对、错，然后取平均值。例如：[True, False, True, True]变为[1,0,1,1]，计算出平均值为0.75。 correct_prediction = tf.equal(tf.argmax(y, 1), y_) accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32)) print(sess.run( accuracy, feed_dict=&#123; x: mnist.test.images, y_: mnist.test.labels &#125;)) # SAVE THE MODEL # 保存model builder = tf.saved_model.builder.SavedModelBuilder(&quot;/tmp/mnist/model/1620&quot;) builder.add_meta_graph_and_variables( sess, [tf.saved_model.tag_constants.SERVING] ) builder.save()if __name__ == &apos;__main__&apos;: parser = argparse.ArgumentParser() parser.add_argument( &apos;--data_dir&apos;, type=str, default=&apos;/tmp/tensorflow/mnist/input_data&apos;, help=&apos;Directory for storing input data&apos;) FLAGS, unparsed = parser.parse_known_args() tf.app.run(main=main, argv=[sys.argv[0]] + unparsed) 卷积神经网络//Todo]]></content>
+    <title><![CDATA[关于单元测试]]></title>
+    <url>%2F2018%2F12%2F04%2F%E5%85%B3%E4%BA%8E%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[单元测试Java单元测试入门 简介介绍单元测试是先mock一些正常边界异常条件来对接口进行操作，并且期望接口返回什么内容，最后接口实现了之后再重新测试一遍。TDD：Test-Driven Development，测试驱动开发模式——旨在强调在开发功能代码之前，先编写测试代码。开发未动，测试先行。 为什么我们要进行单元测试：最后才修改一个 bug 的代价是在 bug 产生时修改它的代价的10倍。——《快速软件开发》测试任何可能的错误。单元测试不是用来证明您是对的，而是为了证明您没有错。单元测试是编写测试代码，用来检测特定的、明确的、细颗粒的功能。单元测试并不一定保证程序功能是正确的，更不保证整体业务是准备的。单元测试不仅仅用来保证当前代码的正确性，更重要的是用来保证代码修复、改进或重构之后的正确性。 单元测试 定义与特点 单元测试（unit testing）：是指对软件中的最小可测试单元进行检查和验证。 这个定义有点抽象，这里举几个单元测试的特性，大家感受一下：一般是一个函数配几个单元测试、单元测试不应该依赖外部系统、单元测试运行速度很快、单元测试不应该造成测试环境的脏数据、单元测试可以重复运行。 优点 单元测试使得我们可以放心修改、重构业务代码，而不用担心修改某处代码后带来的副作用。 单元测试可以帮助我们反思模块划分的合理性，如果一个单元测试写得逻辑非常复杂、或者说一个函数复杂到无法写单测，那就说明模块的抽象有问题。 单元测试使得系统具备更好的可维护性、具备更好的可读性；对于团队的新人来说，阅读系统代码可以从单元测试入手，一点点开始后熟悉系统的逻辑。 本文要解决的痛点 单测何时写？如果你的团队在坚持TDD的风格，那就是在编码之前写；如果没有，也不建议在全部业务代码编写完成之后再开始补单元测试。单元测试比较（最）合适的时机是：一块业务逻辑写完后，跟着写几个单元测试验证下。单测怎么写？分层单测：数据库操作层、中间件依赖层、业务逻辑层，各自的单元测试各自写，互相不要有依赖。单测运行太慢？dao层测试，使用H2进行测试，做独立的BaseH2Test、独立的test-h2-applicationContext.xml，只对dao的测试service层测试，依赖mockito框架，使用@RunWith(MockitoJUnitRunner.class)注解，就无需加载其他spring bean，具体用法对于依赖外部的中间件（例如redis、diamond、mq），在处理单测的时候要注意分开加载和测试，尤其是与dao的测试分开 作者：杜琪链接：https://www.jianshu.com/p/a8e17afd8c90來源：简书简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。 使用场景什么是单元测试，在什么场景下使用单元测试合适单元测试到底是什么]]></content>
       <categories>
-        <category>机器学习、深度学习 - tensorflow</category>
+        <category>测试</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>tensorflow</tag>
+        <tag>单元测试</tag>
       </tags>
   </entry>
   <entry>
@@ -899,17 +915,6 @@
       </categories>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[关于单元测试]]></title>
-    <url>%2F2018%2F12%2F04%2F%E5%85%B3%E4%BA%8E%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[单元测试Java单元测试入门 简介介绍单元测试是先mock一些正常边界异常条件来对接口进行操作，并且期望接口返回什么内容，最后接口实现了之后再重新测试一遍。TDD：Test-Driven Development，测试驱动开发模式——旨在强调在开发功能代码之前，先编写测试代码。开发未动，测试先行。 为什么我们要进行单元测试：最后才修改一个 bug 的代价是在 bug 产生时修改它的代价的10倍。——《快速软件开发》测试任何可能的错误。单元测试不是用来证明您是对的，而是为了证明您没有错。单元测试是编写测试代码，用来检测特定的、明确的、细颗粒的功能。单元测试并不一定保证程序功能是正确的，更不保证整体业务是准备的。单元测试不仅仅用来保证当前代码的正确性，更重要的是用来保证代码修复、改进或重构之后的正确性。 单元测试 定义与特点 单元测试（unit testing）：是指对软件中的最小可测试单元进行检查和验证。 这个定义有点抽象，这里举几个单元测试的特性，大家感受一下：一般是一个函数配几个单元测试、单元测试不应该依赖外部系统、单元测试运行速度很快、单元测试不应该造成测试环境的脏数据、单元测试可以重复运行。 优点 单元测试使得我们可以放心修改、重构业务代码，而不用担心修改某处代码后带来的副作用。 单元测试可以帮助我们反思模块划分的合理性，如果一个单元测试写得逻辑非常复杂、或者说一个函数复杂到无法写单测，那就说明模块的抽象有问题。 单元测试使得系统具备更好的可维护性、具备更好的可读性；对于团队的新人来说，阅读系统代码可以从单元测试入手，一点点开始后熟悉系统的逻辑。 本文要解决的痛点 单测何时写？如果你的团队在坚持TDD的风格，那就是在编码之前写；如果没有，也不建议在全部业务代码编写完成之后再开始补单元测试。单元测试比较（最）合适的时机是：一块业务逻辑写完后，跟着写几个单元测试验证下。单测怎么写？分层单测：数据库操作层、中间件依赖层、业务逻辑层，各自的单元测试各自写，互相不要有依赖。单测运行太慢？dao层测试，使用H2进行测试，做独立的BaseH2Test、独立的test-h2-applicationContext.xml，只对dao的测试service层测试，依赖mockito框架，使用@RunWith(MockitoJUnitRunner.class)注解，就无需加载其他spring bean，具体用法对于依赖外部的中间件（例如redis、diamond、mq），在处理单测的时候要注意分开加载和测试，尤其是与dao的测试分开 作者：杜琪链接：https://www.jianshu.com/p/a8e17afd8c90來源：简书简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。 使用场景什么是单元测试，在什么场景下使用单元测试合适单元测试到底是什么]]></content>
-      <categories>
-        <category>测试</category>
-      </categories>
-      <tags>
-        <tag>单元测试</tag>
       </tags>
   </entry>
   <entry>
@@ -940,6 +945,28 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[并发-java 编程思想]]></title>
+    <url>%2F2018%2F12%2F04%2F%E5%B9%B6%E5%8F%91-java%2F</url>
+    <content type="text"><![CDATA[并发并发介绍，想要真正编写一些复杂的程序钱，应该学一些专门介绍并发的书籍 并发的多面性使用并发时需要解决的问题有多个，而实现并发的方式也有多种，并且两者之间没有明显的映射关系 并发解决的问题大体上可以分为速度和设计可管理性两种 更快的执行并发通常是提高运行在单处理器上的程序性能直觉上思考在单核心上顺序运行程序应该是最高效的，因为没有上下文切换的代价 但是世界上有讨厌的 阻塞 单处理器系统中性能提高的常见实例就是事件驱动编程 操作进程进程是运行在它自己的地址空间内的自包容的程序 而java所使用的并发系统会共享诸如内存和IO这样的资源,java操作的是代码代表的进程生成的一系列线程 java 可能并没有函数式编程语言适合并发 改进代码设计基本的线程机制并发编程将程序划分为多个分离的独立运行的任务，通过多线程机制，这些独立任务中的每一个都将由执行线程来驱动。线程的调度由操作系统负责 代码 定义任务通过Runnable接口定义任务 Thread class将Runnable对象转变为工作按任务的传统方式是把它提交给一个Thread构造器 executor非常常见的情况是，单个Executor被用来穿件和管理系统所有的任务 在任何线程池中，现有线程在可能的情况下，都会被自动复用 从任务中产生返回值使用Callable接口，而不是Runnable,Callable接口返回一个泛型的Future,可以使用get()方法等待结果返回 休眠sleep 优先级优先调度优先级比较高的线程 书上的例子在我的电脑上不好使 让步如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程带哦度机制一个暗示：我的工作已经做得差不多了，可以让别的线程使用CPU了 这个暗示就是使用yield()方法来作出 不能依赖yield,实际上，yield经常被滥用 后台线程所谓后台(daemon)线程,是指在程序运行的时候在后台提供的一种通用服务的线程， 这种线程并不属于程序中不可或缺的部分后台线程退出时，会杀死进程中所有与的后台线程。]]></content>
+      <categories>
+        <category>并发</category>
+      </categories>
+      <tags>
+        <tag>并发，java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[微服务]]></title>
+    <url>%2F2018%2F12%2F04%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%2F</url>
+    <content type="text"><![CDATA[感悟：项目中使用了微服务架构，相对于单体的应用，整个项目被拆成另外N个小应用，分散在各个服务器上，好处是，项目中的各个部分互不影响(接口不变的情况下)，\缺点是，应用过于分散，难以管理、 所以有必要了解一下别人家的微服务架构是怎么设计的 大家都知道，基于单体（Monolith）和微服务（Microservice）架构的争论已经存在多年，正如我们对胖客户端、瘦客户端孰好孰坏的争论一样，有必然的历史演化，也有各自的优缺点。\架构师们总是在考虑，我们是要一个中心化、全能多才的单体，还是百花齐放、各自为政的微服务群体，各种基于成本、交互、部署等等的讨论应该不会停下脚步。\这里，我们不做过多的深入探讨和介绍，而本文正是这些讨论中的一个很好的例子，供大家思考。 随着系统变得越来越大，最终会达到一个临界点，作为一个单体（monolith）它变得难以管理。每一行代码的添加，都会让系统变得更加难以理解、变更和重用。\虽然微服务（microservice）试图解决这些问题，但也带来了额外的复杂性以及集成的成本。 一个经过优化的微服务架构案例 优势: 模块较小，低耦合，提高开发人员开发效率 容易理解和测试每个服务 容易定位问题和解决故障,减少了关联故障 难点： 微服务的模块间需要n多契约，文档，需要时间来维护接口和文档 devops显得很重要 API gateway :lagom]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>微服务</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[序列化与反序列化]]></title>
     <url>%2F2018%2F12%2F04%2F%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%2F</url>
     <content type="text"><![CDATA[调用服务，避免不了序列化 rest+jsonjson真是操蛋，特别是不同的语言，不同的json库间转换，很痛苦,所以需要思考还有没有其他的序列化方式 最好用的scala中的json工具： play-json-extensions +22 field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125;]]></content>
@@ -952,17 +979,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[并发-java 编程思想]]></title>
-    <url>%2F2018%2F12%2F04%2F%E5%B9%B6%E5%8F%91-java%2F</url>
-    <content type="text"><![CDATA[并发并发介绍，想要真正编写一些复杂的程序钱，应该学一些专门介绍并发的书籍 并发的多面性使用并发时需要解决的问题有多个，而实现并发的方式也有多种，并且两者之间没有明显的映射关系 并发解决的问题大体上可以分为速度和设计可管理性两种 更快的执行并发通常是提高运行在单处理器上的程序性能直觉上思考在单核心上顺序运行程序应该是最高效的，因为没有上下文切换的代价 但是世界上有讨厌的 阻塞 单处理器系统中性能提高的常见实例就是事件驱动编程 操作进程进程是运行在它自己的地址空间内的自包容的程序 而java所使用的并发系统会共享诸如内存和IO这样的资源,java操作的是代码代表的进程生成的一系列线程 java 可能并没有函数式编程语言适合并发 改进代码设计基本的线程机制并发编程将程序划分为多个分离的独立运行的任务，通过多线程机制，这些独立任务中的每一个都将由执行线程来驱动。线程的调度由操作系统负责 代码 定义任务通过Runnable接口定义任务 Thread class将Runnable对象转变为工作按任务的传统方式是把它提交给一个Thread构造器 executor非常常见的情况是，单个Executor被用来穿件和管理系统所有的任务 在任何线程池中，现有线程在可能的情况下，都会被自动复用 从任务中产生返回值使用Callable接口，而不是Runnable,Callable接口返回一个泛型的Future,可以使用get()方法等待结果返回 休眠sleep 优先级优先调度优先级比较高的线程 书上的例子在我的电脑上不好使 让步如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程带哦度机制一个暗示：我的工作已经做得差不多了，可以让别的线程使用CPU了 这个暗示就是使用yield()方法来作出 不能依赖yield,实际上，yield经常被滥用 后台线程所谓后台(daemon)线程,是指在程序运行的时候在后台提供的一种通用服务的线程， 这种线程并不属于程序中不可或缺的部分后台线程退出时，会杀死进程中所有与的后台线程。]]></content>
-      <categories>
-        <category>并发</category>
-      </categories>
-      <tags>
-        <tag>并发，java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[掌握HttpResponse]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%8E%8C%E6%8F%A1HttpResponse%2F</url>
     <content type="text"><![CDATA[HTTP请求报文和HTTP响应报文 http 报文是面向文本的，报文中的每一个字段都是一些ASCII码串，各个字段的长度是不确定的。分两种，请求报文和响应报文。 请求报文//ToDo 响应报文http响应由四部分组成，分别是： 状态行、消息报头、空行、 响应正文格式: // [] 状态行格式如下： HTTP-Version Status-Code Reason-Phrase CRLF 其中，HTTP-Version表示服务器HTTP协议的版本；Status-Code表示服务器发回的响应状态代码；Reason-Phrase表示状态代码的文本描述。状态代码由三位数字组成，第一个数字定义了响应的类别，且有五种可能取值。 1xx：指示信息–表示请求已接收，继续处理。2xx：成功–表示请求已被成功接收、理解、接受。3xx：重定向–要完成请求必须进行更进一步的操作。4xx：客户端错误–请求有语法错误或请求无法实现。5xx：服务器端错误–服务器未能实现合法的请求。常见状态代码、状态描述的说明如下。 200 OK：客户端请求成功。400 Bad Request：客户端请求有语法错误，不能被服务器所理解。401 Unauthorized：请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用。403 Forbidden：服务器收到请求，但是拒绝提供服务。404 Not Found：请求资源不存在，举个例子：输入了错误的URL。500 Internal Server Error：服务器发生不可预期的错误。503 Server Unavailable：服务器当前不能处理客户端的请求，一段时间后可能恢复正常，举个例子：HTTP/1.1 200 OK（CRLF）。]]></content>
@@ -972,17 +988,6 @@
       <tags>
         <tag>webapp</tag>
         <tag>HttpResponse</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[微服务]]></title>
-    <url>%2F2018%2F12%2F04%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%2F</url>
-    <content type="text"><![CDATA[感悟：项目中使用了微服务架构，相对于单体的应用，整个项目被拆成另外N个小应用，分散在各个服务器上，好处是，项目中的各个部分互不影响(接口不变的情况下)，\缺点是，应用过于分散，难以管理、 所以有必要了解一下别人家的微服务架构是怎么设计的 大家都知道，基于单体（Monolith）和微服务（Microservice）架构的争论已经存在多年，正如我们对胖客户端、瘦客户端孰好孰坏的争论一样，有必然的历史演化，也有各自的优缺点。\架构师们总是在考虑，我们是要一个中心化、全能多才的单体，还是百花齐放、各自为政的微服务群体，各种基于成本、交互、部署等等的讨论应该不会停下脚步。\这里，我们不做过多的深入探讨和介绍，而本文正是这些讨论中的一个很好的例子，供大家思考。 随着系统变得越来越大，最终会达到一个临界点，作为一个单体（monolith）它变得难以管理。每一行代码的添加，都会让系统变得更加难以理解、变更和重用。\虽然微服务（microservice）试图解决这些问题，但也带来了额外的复杂性以及集成的成本。 一个经过优化的微服务架构案例 优势: 模块较小，低耦合，提高开发人员开发效率 容易理解和测试每个服务 容易定位问题和解决故障,减少了关联故障 难点： 微服务的模块间需要n多契约，文档，需要时间来维护接口和文档 devops显得很重要 API gateway :lagom]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>微服务</tag>
       </tags>
   </entry>
   <entry>
@@ -1008,29 +1013,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数据分析]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%2F</url>
-    <content type="text"><![CDATA[数据分析基础线性代数微积分]]></content>
-      <categories>
-        <category>数据分析</category>
-      </categories>
-      <tags>
-        <tag>数据分析</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[日志打印规范]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E8%A7%84%E8%8C%83%2F</url>
-    <content type="text"><![CDATA[背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过 日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情 未完待续…]]></content>
-      <categories>
-        <category>服务器端 - 日志</category>
-      </categories>
-      <tags>
-        <tag>log</tag>
-        <tag>日志</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据结构与算法]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%2F</url>
     <content type="text"><![CDATA[前言数据结构研究的问题包括数据在计算机中存储、组织、传递和转换的过程及方法，这些也是构成与支撑算法的基础。我们在编写计算机程序来解决应用问题时，最终都要归结并落实到这两个问题上 “程序 = 数据结构 + 算法” 算法及其复杂度计算机与算法算法定义所谓算法，就是在特定计算模型下，在信息处理过程中为了解决某一类问题而设计的一个指令序列。比如，对于“过直线上某一点作垂直线”这一问题，绳索及奴隶就构成了一个特定的计算模型，古埃及人基于这一模型所设计的算法一.1，就是在这一计算模型下解决这一问题的一个算法。 算法性能的分析与评价三个层次 合法性，语法正确，能够执行 不同算法的效率,设计和使用适宜的数据结构 软件工程，全局考虑 如果将借助计算机解决实际问题比作书法，那么在第一层次上就相当于学习点、横、竖、撇和捺等基本笔画，而第二层次则相当于学习如何将不同的笔画按照一定的间架结构组成有意义的不同汉字。然而这还远远不够，作为一幅完整的书法作品，还需要在汉字之间形成大小、粗细、疏密、浓淡、奇正及枯润等方面的搭配与呼应，也就是要讲求章法。在利用计算机解决实际问题的过程中，同样存在这样一个更高层次的问题：倘若软件的规模大到任何个人或少数人都不足以开发出来地步，而且在其生命期内软件也需要很多人的协作才能得以维护，则需要进一步考虑一些更为全局性的问题，这些问题都属于软件工程学的范畴， 时间复杂度及其度量T(n)称作算法的时间复杂度。 每一次基本操作都可以在常数时间内完成，因此如果根据算法所需执行的基本操作次数来表示 T(n)，就可以更加客观地反映算法的效率。 空间复杂度衡量算法性能的另一个重要方面，就是算法所需使用的存储空间量，即算法空间复杂度观察结论一.1 就渐进复杂度的意义而言，在任何一个算法的任何一次运行过程中，其实际占用的存储空间都不会多于其间执行的基本操作次数。 #### 算法复杂度及其分析 O(1)⎯⎯取非极端元素O(logn)⎯⎯进制转换O(n)⎯⎯数组求和O(n^2)⎯⎯起泡排序O(2^r)⎯⎯幂函数 计算模型可解性有效可解##### 下界 递归栈与队列栈栈是存放对象的一种特殊容器，在插入与删除对象时，这种结构遵循后进先出（Last-in-first-out，LIFO）的原则入栈（Push）和退栈（Pop）。 栈 ADT java.util.Stack push()、pop()、peek()（功能等价于 top()）、getSize()以及 empty()（功能等价于 isEmpty()）。在遇到空栈时，方法 pop()和 peek()都会报意外错 ExceptionStackEmpty。 实现 JVM中的栈]]></content>
@@ -1039,6 +1021,17 @@
       </categories>
       <tags>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据分析]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%2F</url>
+    <content type="text"><![CDATA[数据分析基础线性代数微积分]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>数据分析</tag>
       </tags>
   </entry>
   <entry>
@@ -1064,6 +1057,18 @@
         <tag>webapp</tag>
         <tag>Http</tag>
         <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[日志打印规范]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E8%A7%84%E8%8C%83%2F</url>
+    <content type="text"><![CDATA[背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过 日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情 未完待续…]]></content>
+      <categories>
+        <category>服务器端 - 日志</category>
+      </categories>
+      <tags>
+        <tag>log</tag>
+        <tag>日志</tag>
       </tags>
   </entry>
   <entry>
