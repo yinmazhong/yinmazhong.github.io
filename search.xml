@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[imagetest]]></title>
-    <url>%2F2019%2F05%2F27%2Fimagetest%2F</url>
-    <content type="text"><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[skills]]></title>
+    <title><![CDATA[skills.md]]></title>
     <url>%2F2019%2F05%2F27%2Fskills%2F</url>
     <content type="text"><![CDATA[通过实践来复习，学习 分布式文件系统理论基础： 共享数据是分布式系统的基础，分布式文件系统是分布式系统，和分布式应用程序的基础 体系结构客户-服务器体系结构（Network File System）NFS每个文件服务器都提供其本地文件系统的一个标准化视图 基于集群的分布式文件系统服务与并行应用程序，一种著名的技术是部署文件带区划分技术，通过该技术可以将一个文件分布在多个服务器上另外一种是把文件系统作为一个整体进行分区并且简单的把不同的文件存储在不同的服务器上，而不是把单个单个文件划分到多个服务器上]]></content>
-      <categories>
-        <category>skills</category>
-      </categories>
       <tags>
         <tag>skills</tag>
       </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[imagetest]]></title>
+    <url>%2F2019%2F05%2F27%2Fimagetest%2F</url>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[aTemp]]></title>
@@ -213,6 +210,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
+    <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛):\ BWH1ZBPVK（6.00%）\ bandwagon官网购买vps,支持支付宝(alipay),\有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’\代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，\不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server\推荐blog \配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf:123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
+      <categories>
+        <category>工欲善其事，必先利其器</category>
+      </categories>
+      <tags>
+        <tag>Bandwagon</tag>
+        <tag>shadowsocks</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Amazon Redshift Learning]]></title>
     <url>%2F2018%2F12%2F04%2FAmazon%20Redshift%20Learning%2F</url>
     <content type="text"><![CDATA[overview 文档中有设计表、加载数据的最佳实践，从这里可以查看到redshift与其他数据库最主要的差别 它是一个企业级的关系数据库查询与管理系统 支持与多种应用程序客户端建立连接 表面上我们执行了一个简单ｑｕｅｒｙ,Redshift 在后台在多阶段中检索、比较、和计算大量的数据，最终产生结果，后台的操作对用户都是透明的 优点:高效存储和最优的查询性能 技术支撑：并行处理、列式数据存储和非常高效的具有针对性的数据压缩编码方案的组合 Amazon Redshift is based on PostgreSQL 8.0.2. postgresql vs mysql就基本的应用来讲，二者无差别，当然一定有sql方言方便的分别，记得注意]]></content>
@@ -226,15 +235,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
-    <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛):\ BWH1ZBPVK（6.00%）\ bandwagon官网购买vps,支持支付宝(alipay),\有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’\代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，\不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server\推荐blog \配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf:123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
+    <title><![CDATA[Future&Promise]]></title>
+    <url>%2F2018%2F12%2F04%2FFuture%26promise%2F</url>
+    <content type="text"><![CDATA[Future和Promisescala 并发编程的两大利器：Future、Actor 顺序代码效率低这个例子很不错 What is Future scala.concurrent 包里的 Future[T] 是一个容器类型，代表一种返回值类型为 T 的计算。 计算可能会出错，也可能会超时； 从而，当一个 future 完成时，它可能会包含异常，而不是你期望的那个值。 Future 只能写一次： 当一个 future 完成后，它就不能再被改变了。 同时，Future 只提供了读取计算值的接口，写入计算值的任务交给了 Promise， 这样，API 层面上会有一个清晰的界限。 这篇文章里，我们主要关注前者，下一章会介绍 Promise 的使用。]]></content>
       <categories>
-        <category>工欲善其事，必先利其器</category>
+        <category>服务器端 - 并发编程</category>
       </categories>
       <tags>
-        <tag>Bandwagon</tag>
-        <tag>shadowsocks</tag>
+        <tag>scala</tag>
+        <tag>Future</tag>
+        <tag>Promise</tag>
       </tags>
   </entry>
   <entry>
@@ -262,9 +272,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hadoop 权威指南 3th Edition Part 2]]></title>
-    <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p2%2F</url>
-    <content type="text"><![CDATA[第三章 Hadoop 分布式文件系统数据多了单台服务器的文件系统存不下了，就要将数据分区存储在多台服务器上，就需要分布式文件系统 3.1 HDFS设计,the design of hdfs设计目标： HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集群上 超大文件 流式数据访问 商用硬件 低延迟 大量小文件 多用户写入，任意修改文件 3.2 HDFS Concepts 概念blocks类似于磁盘的块，是最小的读写单位 与单一磁盘上的文件系统类似，HDFS上的文件也被划分为多个块大小的多个分块 hdfs 中小于块大小的文件不会占用整个块空间 fsck指令可以显示块信息 1hadoop fsck / -files -blocks namenode &amp; datanode管理者－工作者模式 一个namenode,多个datanode namenode 管理文件系统的命名空间，他维护者文件系统树及整棵树内所有的文件和目录，这些信息以两个文件的方式永久保存在本地磁盘上：命名空间镜像文件和编辑日志文件 每个文件中各个块所在的数据节点的信息 client作为代理通过于namenode和datanode交互来访问整个文件系统 datanode 存储、检索文件的块，并定期向namenode发送它们所存储的块的列表 namenode的容错很重要， 备份文件 辅助namenode 联邦HDFSnamenode横向扩展 HDFS高可用性HA 命令行接口hadoop fs -help hadoop文件系统hadoop 有一个抽象的文件系统概念，hdfs只是其中的一个实现。java抽象类org.apache.hadoop.fs.FileSystem定义了一个文件系统接口， 基于该抽象类的几个具体实现： java接口FileSystem类]]></content>
+    <title><![CDATA[Hadoop 权威指南 3th Edition Part 1]]></title>
+    <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p1%2F</url>
+    <content type="text"><![CDATA[第一章 数据！数据！ 这个世界数据存量很大，数据增长的速度很快，数据的价值很大 数据存储于分析 现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据 硬盘故障解决：数据冗余备份(RAID,HDFS) 数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的 相较于其他系统的优势 用蛮力处理整个庞大数据集或数据集的一部分 关系型数据库管理系统 现象：寻址速率的提升远远不及传输速率的提升 B树这有在小量数据时有优势，数据量大时，更新整个B树要花大量时间 RDBMS与hadoop相互补充，hadoop适合批处理，而rdbms适合点查询更新 RDBMS被索引后，能够提供低延迟的查询和少量的数据更新，mapreduce适合一次写入，多次读取做数据分析 RDBMS适合持续更新的数据集 Table 1-1. RDBMS compared to MapReduce item|Traditional RDBMS |MapReduce —|—|— Data size| Gigabytes| Petabytes Access(数据存取)| Interactive and batch| Batch Updates| Read and write many times |Write once, read many times Structure| Static schema |Dynamic schema Integrity(完整性)| High |Low Scaling| Nonlinear |Linear 存储的数据不同：RDBMS:结构化数据，完整的且不含冗余hadoop:结构化、半结构化、非结构化数据 网格计算， mapreduce 尽量使得数据本地化 志愿计算： 志愿计算为计算所花的时间远远超过工作单元数据传输时间，也就是说志愿者贡献的是CPU周期，而不是网络带宽 Hadoop发展简史 o 好牛b哦 hadoop echosystem common 一系列组件和接口 avro 序列化系统 maoreduce 计算引擎 HDFS 分布式文件系统 hive 数据仓库，sql查询hdfs hbase 列存储数据仓库 zookeeper 分布式、可用性高的协调服务 sqoop:rdbms &lt;=&gt; hdfs oozie 调度作业 hadoop 发行版本 Table 1-2. Features supported by Hadoop release series Feature 1.x 0.22 2.x Secure authentication Yes No Yes Old configuration names Yes Deprecated Deprecated New configuration names No Yes Yes Old MapReduce API Yes Yes Yes New MapReduce API Yes (with somemissing libraries) Yes Yes MapReduce 1 runtime (Classic) Yes Yes No MapReduce 2 runtime (YARN) No No Yes HDFS federation No No Yes HDFS high-availability No No Yes 第二章气象数据处理 2.1 气象数据集首先要搞清楚数据格式 文本数据 每一行是一条记录 整个数据集有很多小文件组成 2.2 Unix 处理方式12345678910#!/usr/bin/env bashfor year in all/*doecho -ne `basename $year .gz`&quot;\t&quot;gunzip -c $year | \awk &apos;&#123; temp = substr($0, 88, 5) + 0;q = substr($0, 93, 1);if (temp !=9999 &amp;&amp; q ~ /[01459]/ &amp;&amp; temp &gt; max) max = temp &#125;END &#123; print max &#125;&apos;done 循环使用awk处理 单进程处理 2.3 hadoop处理方式map:1234567891011121314151617181920212223242526272829import java.io.IOException;importimportimportimportorg.apache.hadoop.io.IntWritable;org.apache.hadoop.io.LongWritable;org.apache.hadoop.io.Text;org.apache.hadoop.mapreduce.Mapper;public class MaxTemperatureMapperextends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;private static final int MISSING = 9999;@Overridepublic void map(LongWritable key, Text value, Context context)throws IOException, InterruptedException &#123;&#125;&#125;String line = value.toString();String year = line.substring(15, 19);int airTemperature;if (line.charAt(87) == &apos;+&apos;) &#123; // parseInt doesn&apos;t like leading plus signsairTemperature = Integer.parseInt(line.substring(88, 92));&#125; else &#123;airTemperature = Integer.parseInt(line.substring(87, 92));&#125;String quality = line.substring(92, 93);if (airTemperature != MISSING &amp;&amp; quality.matches(&quot;[01459]&quot;)) &#123;context.write(new Text(year), new IntWritable(airTemperature));&#125; reduce:1234567891011121314151617import java.io.IOException;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Reducer;public class MaxTemperatureReducerextends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;@Overridepublic void reduce(Text key, Iterable&lt;IntWritable&gt; values,Context context)throws IOException, InterruptedException &#123;&#125;&#125;int maxValue = Integer.MIN_VALUE;for (IntWritable value : values) &#123;maxValue = Math.max(maxValue, value.get());&#125;context.write(key, new IntWritable(maxValue)); main:123456789101112131415161718192021222324import org.apache.hadoop.fs.Path;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Job;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;public class MaxTemperature &#123;public static void main(String[] args) throws Exception &#123;if (args.length != 2) &#123;System.err.println(&quot;Usage: MaxTemperature &lt;input path&gt; &lt;output path&gt;&quot;);System.exit(-1);&#125;Job job = new Job();job.setJarByClass(MaxTemperature.class);job.setJobName(&quot;Max temperature&quot;);FileInputFormat.addInputPath(job, new Path(args[0]));FileOutputFormat.setOutputPath(job, new Path(args[1]));job.setMapperClass(MaxTemperatureMapper.class);job.setReducerClass(MaxTemperatureReducer.class);job.setOutputKeyClass(Text.class);job.setOutputValueClass(IntWritable.class);System.exit(job.waitForCompletion(true) ? 0 : 1);&#125;&#125; 2.4 横向扩展2.5 Hadoop Streaming]]></content>
       <categories>
         <category>数据存储处理 - hadoop</category>
       </categories>
@@ -273,27 +283,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Future&Promise]]></title>
-    <url>%2F2018%2F12%2F04%2FFuture%26promise%2F</url>
-    <content type="text"><![CDATA[Future和Promisescala 并发编程的两大利器：Future、Actor 顺序代码效率低这个例子很不错 What is Future scala.concurrent 包里的 Future[T] 是一个容器类型，代表一种返回值类型为 T 的计算。 计算可能会出错，也可能会超时； 从而，当一个 future 完成时，它可能会包含异常，而不是你期望的那个值。 Future 只能写一次： 当一个 future 完成后，它就不能再被改变了。 同时，Future 只提供了读取计算值的接口，写入计算值的任务交给了 Promise， 这样，API 层面上会有一个清晰的界限。 这篇文章里，我们主要关注前者，下一章会介绍 Promise 的使用。]]></content>
+    <title><![CDATA[Hadoop 权威指南 3th Edition Part 2]]></title>
+    <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p2%2F</url>
+    <content type="text"><![CDATA[第三章 Hadoop 分布式文件系统数据多了单台服务器的文件系统存不下了，就要将数据分区存储在多台服务器上，就需要分布式文件系统 3.1 HDFS设计,the design of hdfs设计目标： HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集群上 超大文件 流式数据访问 商用硬件 低延迟 大量小文件 多用户写入，任意修改文件 3.2 HDFS Concepts 概念blocks类似于磁盘的块，是最小的读写单位 与单一磁盘上的文件系统类似，HDFS上的文件也被划分为多个块大小的多个分块 hdfs 中小于块大小的文件不会占用整个块空间 fsck指令可以显示块信息 1hadoop fsck / -files -blocks namenode &amp; datanode管理者－工作者模式 一个namenode,多个datanode namenode 管理文件系统的命名空间，他维护者文件系统树及整棵树内所有的文件和目录，这些信息以两个文件的方式永久保存在本地磁盘上：命名空间镜像文件和编辑日志文件 每个文件中各个块所在的数据节点的信息 client作为代理通过于namenode和datanode交互来访问整个文件系统 datanode 存储、检索文件的块，并定期向namenode发送它们所存储的块的列表 namenode的容错很重要， 备份文件 辅助namenode 联邦HDFSnamenode横向扩展 HDFS高可用性HA 命令行接口hadoop fs -help hadoop文件系统hadoop 有一个抽象的文件系统概念，hdfs只是其中的一个实现。java抽象类org.apache.hadoop.fs.FileSystem定义了一个文件系统接口， 基于该抽象类的几个具体实现： java接口FileSystem类]]></content>
       <categories>
-        <category>服务器端 - 并发编程</category>
+        <category>数据存储处理 - hadoop</category>
       </categories>
       <tags>
-        <tag>scala</tag>
-        <tag>Future</tag>
-        <tag>Promise</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hbase使用]]></title>
-    <url>%2F2018%2F12%2F04%2FHbase%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[简介HBase 应用场景及特点特点： 海量数据存储 关系型数据库： 列数不超过30 单表行数据量一般不会超过500万vshbase:上百亿行*上百万列 准实时查询 百毫秒 面向列 面向列的存储和权限控制，列是可以动态增加的，并且列支持独立索引。这样在查询行中少数几个字段时，能大大减少读取的数据量 多版本 每一列的数据存储有多个Version 稀疏性：为空的列不占用存储空间，表可以设计的非常稀疏 扩展性： 底层依赖HDFS 高可靠性 高性能应用场景： 交通 金融 电商 电信 概念与定位数据模型Hbase表可以当成一个多维的Map Table一个表有多行 Row在HBase里，row是由row key和一个或多个列及其值组成。数据在被存储的时候，是按row key的字母排序存储的。因此，row key的设计是非常重要的。这样存储数据的目的就是为了让相关的行存储在相邻的位置。 Column（列）HBase的一列由列簇和列修饰符组成，他们通常由冒号（：）分隔。 Column Family(列簇)通常为了性能原因的考虑，列簇会把列和相应的值物理上联合在一起 每个列簇是一个存储属性的集合，例如它的值是否应该缓存在内存中，它的数据是如何压缩或它的row key是如何编码，以及其他。表中的每个行都有相同的列簇，但是一行也可能没有存储一个列簇里的任何数据。 Column Qualifier列修饰符被加到一个列簇，以提供对一个数据片段的索引。规定一个列簇为content，一个列修饰符可能是content:html，另外一个可能是content:pdf。尽管列簇是在创建表的时候固定了，但列修饰符是可变的，在行之间可能存在很大的不同。 Cell一个Cell是行，列簇和列修饰符的组合，并且包含一个值和时间戳，时间戳代表着值的版本。 Timestamp一个时间戳是連同值一起被写入的，是值版本的唯一标识，默认情况下，时间戳表示数据写入时RegionServer的时间，但是当你在写数据到Cell的时候，你可以指定一个不同的时间戳。 安装官网文档getstart写的通俗易懂 增加配置-&gt; conf/hbase-site.xml,以使用伪分布式1234&lt;property&gt; &lt;name&gt;hbase.cluster.distributed&lt;/name&gt; &lt;value&gt;true&lt;/value&gt;&lt;/property&gt; 增加配置 -&gt; conf/hbase-env.sh，以使用独立安装的zk 1export HBASE_MANAGES_ZK=false 过程算是比较顺畅的]]></content>
-      <categories>
-        <category>数据存储处理 - database</category>
-      </categories>
-      <tags>
-        <tag>Hbase</tag>
+        <tag>Hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -307,6 +304,17 @@
         <tag>https</tag>
         <tag>Certificate配置</tag>
         <tag>webapp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hbase使用]]></title>
+    <url>%2F2018%2F12%2F04%2FHbase%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[简介HBase 应用场景及特点特点： 海量数据存储 关系型数据库： 列数不超过30 单表行数据量一般不会超过500万vshbase:上百亿行*上百万列 准实时查询 百毫秒 面向列 面向列的存储和权限控制，列是可以动态增加的，并且列支持独立索引。这样在查询行中少数几个字段时，能大大减少读取的数据量 多版本 每一列的数据存储有多个Version 稀疏性：为空的列不占用存储空间，表可以设计的非常稀疏 扩展性： 底层依赖HDFS 高可靠性 高性能应用场景： 交通 金融 电商 电信 概念与定位数据模型Hbase表可以当成一个多维的Map Table一个表有多行 Row在HBase里，row是由row key和一个或多个列及其值组成。数据在被存储的时候，是按row key的字母排序存储的。因此，row key的设计是非常重要的。这样存储数据的目的就是为了让相关的行存储在相邻的位置。 Column（列）HBase的一列由列簇和列修饰符组成，他们通常由冒号（：）分隔。 Column Family(列簇)通常为了性能原因的考虑，列簇会把列和相应的值物理上联合在一起 每个列簇是一个存储属性的集合，例如它的值是否应该缓存在内存中，它的数据是如何压缩或它的row key是如何编码，以及其他。表中的每个行都有相同的列簇，但是一行也可能没有存储一个列簇里的任何数据。 Column Qualifier列修饰符被加到一个列簇，以提供对一个数据片段的索引。规定一个列簇为content，一个列修饰符可能是content:html，另外一个可能是content:pdf。尽管列簇是在创建表的时候固定了，但列修饰符是可变的，在行之间可能存在很大的不同。 Cell一个Cell是行，列簇和列修饰符的组合，并且包含一个值和时间戳，时间戳代表着值的版本。 Timestamp一个时间戳是連同值一起被写入的，是值版本的唯一标识，默认情况下，时间戳表示数据写入时RegionServer的时间，但是当你在写数据到Cell的时候，你可以指定一个不同的时间戳。 安装官网文档getstart写的通俗易懂 增加配置-&gt; conf/hbase-site.xml,以使用伪分布式1234&lt;property&gt; &lt;name&gt;hbase.cluster.distributed&lt;/name&gt; &lt;value&gt;true&lt;/value&gt;&lt;/property&gt; 增加配置 -&gt; conf/hbase-env.sh，以使用独立安装的zk 1export HBASE_MANAGES_ZK=false 过程算是比较顺畅的]]></content>
+      <categories>
+        <category>数据存储处理 - database</category>
+      </categories>
+      <tags>
+        <tag>Hbase</tag>
       </tags>
   </entry>
   <entry>
@@ -383,6 +391,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Master Json]]></title>
+    <url>%2F2018%2F12%2F04%2FMasterJson%2F</url>
+    <content type="text"><![CDATA[Json 是什么类似于XML的标记性语言，在对象序列化，交换信息领域应用广泛 JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它使得人们很容易的进行阅读和编写。同时也方便了机器进行解析和生成 json简单说就是javascript中的对象和数组，所以这两种结构就是对象和数组两种结构，通过这两种结构可以表示各种复杂的结构 对象：对象在js中表示为“{}”括起来的内容，数据结构为 {key：value,key：value,…}的键值对的结构，在面向对象的语言中，key为对象的属性，value为对应的属性值，所以很容易理解，取值方法为 对象.key 获取属性值，这个属性值的类型可以是 数字、字符串、数组、对象几种。 数组：数组在js中是中括号“[]”括起来的内容，数据结构为 [“java”,”javascript”,”vb”,…]，取值方式和所有语言中一样，使用索引获取，字段值的类型可以是 数字、字符串、数组、对象几种。 Json 使用scala常用 spray Json 依赖：12&quot;com.typesafe.akka&quot; %% &quot;akka-http-spray-json&quot; % &quot;10.0.10&quot;, &quot;io.spray&quot; % &quot;spray-json_2.11&quot; % &quot;1.3.4&quot; Json Array 12345import spray.json._ //parseJsonval kkkk = &quot;&quot;&quot; |[&#123;&quot;a&quot;: &quot;1&quot;&#125;, &#123;&quot;b&quot;: &quot;2&quot;&#125;] &quot;&quot;&quot;.stripMargin.parseJson.asInstanceOf[JsArray] 22+play-json-extensions 22+ field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125;]]></content>
+      <categories>
+        <category>服务器端 - Json</category>
+      </categories>
+      <tags>
+        <tag>Json</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Redis Learning]]></title>
     <url>%2F2018%2F12%2F04%2FRedis%20Learning%2F</url>
     <content type="text"><![CDATA[应用场景：redis 适用于小而热的数据 Redis应用场景 Redis作者谈Redis应用场景我们在应用redis的场景是 缓存将收到的post报文缓存下，然后批量插入redshift github上的scala版redis client官方推荐了好几款开源的scala 版客户端，都不知道选哪个比较好了，应该迅速读一遍scala 并发编程 Redis is an open source(BSD Licensed),in-memory data structure store,used as a database,cache,and message broker.It supports data structures such as strings,hashes,lists,sets,sorted sets with range queries,bitmaps,hyperloglogs and geospatial indexes with radius queries.build-in: replication Lua scripting LRU eviction transaction different levels of on-disk persistence provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster. You can run atomic operations on these types, like appending to a string; incrementing the value in a hash; pushing an element to a list; computing set intersection, union and difference; or getting the member with highest ranking in a sorted set. in-memory dataset: In order to achieve its outstanding performance, Redis works with an in-memory dataset. Depending on your use case, you can persist it either by dumping the dataset to disk every once in a while, or by appending each command to a log. Persistence can be optionally disabled, if you just need a feature-rich, networked, in-memory cache. no-blocking replication: Redis also supports trivial-to-setup master-slave asynchronous replication, with very fast non-blocking first synchronization, auto-reconnection with partial resynchronization on net split. transcation数据库事务彻底搞懂事务 6379-为何Redis选择它作为默认端口号？redis 使用服务器端／客户端架构的数据库架构通过client去连接redis服务端 我们可以通过redis-cli去连接redis数据库，这是学习测试redis最好的方法，这时redis-cli就是一个client 之前连接关系型数据库一般都是通过JDBC的方式连接的，这个redis是怎么连接上去的我暂时还没有搞清楚，官方推荐了很多类似与sdk的工具库，使用这些库可以很方便的连接redis， redis 持久化有两种方式做持久化，其一是RDB，定期备份数据库的状态；其二是AOF，记录数据库的相关命令优先使用AOF方式 使用list来存储数据，LPUSH mylist “1”// BRPOP mylist 0 取出最先放入的元素，每分钟生成一个key,同步数据只处理之前的key里面的数据做一个事务，保证该元素处理的原子性因为BRPOP 只能取出最后一个元素，所以应该使用BPOPLPUSH 散列算法(Hash Algorithm),又称哈希算法，杂凑算法，是从任意文件中创造小的数字[指纹]的方法。散列算法是一种以较短的信息来保证文件唯一性标志，这种标志与文件的每一个字节都相关，而且难以找到逆向规律。因此，当原有文件发生改变时，其标志值也会发生改变，从而告诉文件使用者当前文件已经不是你所需求的文件。 先举个例子。我们每个活在世上的人，为了能够参与各种社会活动，都需要一个用于识别自己的标志。也许你觉得名字或是身份证就足以代表你这个人，但是这种代表性非常脆弱，因为重名的人很多，身份证也可以伪造。最可靠的办法是把一个人的所有基因序列记录下来用来代表这个人，但显然，这样做并不实际。而指纹看上去是一种不错的选择，虽然一些专业组织仍然可以模拟某个人的指纹，但这种代价实在太高了。 而对于在互联网世界里传送的文件来说，如何标志一个文件的身份同样重要。比如说我们下载一个文件，文件的下载过程中会经过很多网络服务器、路由器的中转，如何保证这个文件就是我们所需要的呢？我们不可能去一一检测这个文件的每个字节，也不能简单地利用文件名、文件大小这些极容易伪装的信息，这时候，我们就需要一种指纹一样的标志来检查文件的可靠性，这种指纹就是我们现在所用的Hash算法(也叫散列算法)。 参考：Hash算法总结]]></content>
@@ -394,14 +413,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Master Json]]></title>
-    <url>%2F2018%2F12%2F04%2FMasterJson%2F</url>
-    <content type="text"><![CDATA[Json 是什么类似于XML的标记性语言，在对象序列化，交换信息领域应用广泛 JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它使得人们很容易的进行阅读和编写。同时也方便了机器进行解析和生成 json简单说就是javascript中的对象和数组，所以这两种结构就是对象和数组两种结构，通过这两种结构可以表示各种复杂的结构 对象：对象在js中表示为“{}”括起来的内容，数据结构为 {key：value,key：value,…}的键值对的结构，在面向对象的语言中，key为对象的属性，value为对应的属性值，所以很容易理解，取值方法为 对象.key 获取属性值，这个属性值的类型可以是 数字、字符串、数组、对象几种。 数组：数组在js中是中括号“[]”括起来的内容，数据结构为 [“java”,”javascript”,”vb”,…]，取值方式和所有语言中一样，使用索引获取，字段值的类型可以是 数字、字符串、数组、对象几种。 Json 使用scala常用 spray Json 依赖：12&quot;com.typesafe.akka&quot; %% &quot;akka-http-spray-json&quot; % &quot;10.0.10&quot;, &quot;io.spray&quot; % &quot;spray-json_2.11&quot; % &quot;1.3.4&quot; Json Array 12345import spray.json._ //parseJsonval kkkk = &quot;&quot;&quot; |[&#123;&quot;a&quot;: &quot;1&quot;&#125;, &#123;&quot;b&quot;: &quot;2&quot;&#125;] &quot;&quot;&quot;.stripMargin.parseJson.asInstanceOf[JsArray] 22+play-json-extensions 22+ field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125;]]></content>
+    <title><![CDATA[SBT增加国内镜像并生效]]></title>
+    <url>%2F2018%2F12%2F04%2FSBT%E5%A2%9E%E5%8A%A0%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%B9%B6%E7%94%9F%E6%95%88%2F</url>
+    <content type="text"><![CDATA[第五章 SBT国内源配置 前几天执行：sbt update 失败 \主要是 project/plugins.sbt里的插件下载失败 \resolved xx failed,说找不到该插件 \试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，\所以严重怀疑是本机安装SBT有问题， \sudo apt-get remove sbt \然后,按照官网安装教程重新安装sbt,1234`echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.listsudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823sudo apt-get updatesudo apt-get install sbt` 果然，之前的问题已解决了（以上基于ubuntu16操作环境，其他开发环境类似）]]></content>
       <categories>
-        <category>服务器端 - Json</category>
+        <category>项目管理 - sbt</category>
       </categories>
       <tags>
-        <tag>Json</tag>
+        <tag>SBT</tag>
       </tags>
   </entry>
   <entry>
@@ -417,17 +436,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[SBT增加国内镜像并生效]]></title>
-    <url>%2F2018%2F12%2F04%2FSBT%E5%A2%9E%E5%8A%A0%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%B9%B6%E7%94%9F%E6%95%88%2F</url>
-    <content type="text"><![CDATA[第五章 SBT国内源配置 前几天执行：sbt update 失败 \主要是 project/plugins.sbt里的插件下载失败 \resolved xx failed,说找不到该插件 \试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，\所以严重怀疑是本机安装SBT有问题， \sudo apt-get remove sbt \然后,按照官网安装教程重新安装sbt,1234`echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.listsudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823sudo apt-get updatesudo apt-get install sbt` 果然，之前的问题已解决了（以上基于ubuntu16操作环境，其他开发环境类似）]]></content>
-      <categories>
-        <category>项目管理 - sbt</category>
-      </categories>
-      <tags>
-        <tag>SBT</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[简单线性回归]]></title>
     <url>%2F2018%2F12%2F04%2FSimpleLinearRegression%2F</url>
     <content type="text"><![CDATA[简单线性回归WHAT简单线性回归模型是用于估计一个连续预测变量和一个连续回应变量的线性关系。回归方程或者是估计回归方程 y¯=b0+b1x y¯是回应变量的估计值 b0是回归线在y轴上的截距 b1是回归线的斜率 b0和b1b1称为回归系数 Simple linear regression(wiki) HOW怎样才能得到一个简单线性回归模型，也就是求得一个方程式 既有的数值处理库python的sk-learn、scala的breeze等sk-learn 例子：123456789101112131415161718192021222324252627282930313233343536import pandas as pdfrom sklearn import linear_modelimport matplotlib.pyplot as pltdf = pd.read_csv(&apos;C:/Users/lenovo/Desktop/3VD_1.csv&apos;)&quot;&quot;&quot;# 建立线性回归模型&quot;&quot;&quot;regr = linear_model.LinearRegression()&quot;&quot;&quot;# 拟合&quot;&quot;&quot;regr.fit(df[&apos;basicsize&apos;].values.reshape(-1,1), df[&apos;footaround&apos;])a, b = regr.coef_, regr.intercept_print(a[0])feats =[&apos;footaround&apos;, &apos;footbackarcdistance54mm&apos;, &apos;footbackarcdistancemouth&apos;, &apos;footbackbodylength&apos;, &apos;footbackfacedistance&apos;, &apos;footbackgirth&apos;, &apos;footbasicwidth&apos;, &apos;footbitfingeroutsidewidth&apos;, &apos;footboatcurveheight&apos;, &apos;footbottomheartconcavity&apos;, &apos;footdegreerejection&apos;, &apos;footfifthtoeoutsidewidth&apos;, &apos;footfirstplantarjointheight&apos;, &apos;footfirsttoeinsidewidth&apos;, &apos;footforepalmconvexity&apos;, &apos;footfrontcross&apos;, &apos;footheadthickness&apos;, &apos;footheelbulgeheight&apos;, &apos;footheelheartconvexity&apos;, &apos;footheelheartwidth&apos;, &apos;footheelheight&apos;, &apos;footlandspot&apos;, &apos;footmetatarsalgirth&apos;, &apos;footmouthbackheight&apos;, &apos;footmouthlength&apos;, &apos;footmouthwidth&apos;, &apos;footpalmwidth&apos;, &apos;footpocketheelgirth&apos;, &apos;footshoelastcalculatelength&apos;, &apos;foottarsalboneheight&apos;, &apos;foottarsalgirth&apos;, &apos;footthumbinsidewidth&apos;, &apos;footwaistgirth&apos;, &apos;footwaistwidth&apos;, &apos;footwidth&apos;]para_lin = []for feat in feats: regr.fit(df[&apos;basicsize&apos;].values.reshape(-1,1), df[feat]) a, b = regr.coef_, regr.intercept_ para_lin.append((feat,a[0],b)) 使用公式 在统计学中，线性回归是利用称为线性回归方程的最小二乘函数对一个或多个自变量和因变量之间关系进行建模的一种回归分析。这种函数是一个或多个称为回归系数的模型参数的线性组合。一个带有一个自变量的线性回归方程代表一条直线。我们需要对线性回归结果进行统计分析。 通过定义和最小化一个成本函数，简单线性回归可以拟合一条直线。一般用最小二乘法（OLS)来计算系数。 线性回归的公式可以表示为 y=w0+w1x 截距 w0 斜率 w1 推导过程可参看wikipedia scala实现：12345678910111213141516def simple_linear_regression(x: Vector[Int], y: Vector[Double]) = &#123; //initial sums val n = x.length.toFloat val sum_x = x.sum val sum_y = y.sum val sum_xy = (x, y).zipped.map(_ * _).sum val sum_xx = x.map(n =&gt; n * n).sum //formula for w0 val slope = (sum_xy - (sum_x * sum_y) / n) / (sum_xx - (sum_x * sum_x) / n) //formula for w1 val intercept = sum_y / n - slope * (sum_x / n) (slope,intercept) &#125; PS:以往查询数据库都是按行查询的，但是在这里是去数据中的两个维度来分别作为自变量和因变量，以求得简单线性回归模型，所以查询数据库数据时还是按列查询比较好 不然的话就要做n个Map,像这样：123456789101112131415val is = getClass.getClassLoader.getResourceAsStream(&quot;origin-fat-last-data&quot;) val source = scala.io.Source.fromInputStream(is).getLines().map(_.split(&quot;\t&quot;).toList).toList val title = source.head val data = source.tail.filter(_.last == &quot;normal&quot;).toVector val mapData = data.map(_.zip(title).map(field=&gt; Map(field._2 -&gt; field._1)).reduce(_ ++ _)) val basicSizeVector = mapData.map(_.get(&quot;basicsize&quot;).get.toInt) val yMapDatas = mapData.map(_.filterNot(m =&gt; (&quot;shoes_size_specification&quot;,&quot;brand&quot;,&quot;shoelastbaseno&quot;,&quot;gender&quot;,&quot;headform&quot;,&quot;shoepadthicknessforefoot&quot;,&quot;shoepadthicknessheel&quot;,&quot;shoetype&quot;,&quot;footmouthgirth&quot;,&quot;footstruct&quot;).productIterator.contains(m._1))) .map(_.map(m =&gt; Map(m._1 -&gt; m._2.toDouble)).reduce(_ ++ _)) val yMapDataKeys =yMapDatas.head.map(_._1) val keyValues = yMapDataKeys.map(key =&gt; Map(key -&gt; yMapDatas.map(d=&gt; d.getOrElse(key,0.00d)))) def res = keyValues.map(kv =&gt;&#123; Map(kv.head._1 -&gt; simple_linear_regression(basicSizeVector,kv.head._2)) &#125;).reduce(_ ++ _)]]></content>
@@ -436,17 +444,6 @@
       </categories>
       <tags>
         <tag>数据分析</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hadoop 权威指南 3th Edition Part 1]]></title>
-    <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p1%2F</url>
-    <content type="text"><![CDATA[第一章 数据！数据！ 这个世界数据存量很大，数据增长的速度很快，数据的价值很大 数据存储于分析 现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据 硬盘故障解决：数据冗余备份(RAID,HDFS) 数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的 相较于其他系统的优势 用蛮力处理整个庞大数据集或数据集的一部分 关系型数据库管理系统 现象：寻址速率的提升远远不及传输速率的提升 B树这有在小量数据时有优势，数据量大时，更新整个B树要花大量时间 RDBMS与hadoop相互补充，hadoop适合批处理，而rdbms适合点查询更新 RDBMS被索引后，能够提供低延迟的查询和少量的数据更新，mapreduce适合一次写入，多次读取做数据分析 RDBMS适合持续更新的数据集 Table 1-1. RDBMS compared to MapReduce item|Traditional RDBMS |MapReduce —|—|— Data size| Gigabytes| Petabytes Access(数据存取)| Interactive and batch| Batch Updates| Read and write many times |Write once, read many times Structure| Static schema |Dynamic schema Integrity(完整性)| High |Low Scaling| Nonlinear |Linear 存储的数据不同：RDBMS:结构化数据，完整的且不含冗余hadoop:结构化、半结构化、非结构化数据 网格计算， mapreduce 尽量使得数据本地化 志愿计算： 志愿计算为计算所花的时间远远超过工作单元数据传输时间，也就是说志愿者贡献的是CPU周期，而不是网络带宽 Hadoop发展简史 o 好牛b哦 hadoop echosystem common 一系列组件和接口 avro 序列化系统 maoreduce 计算引擎 HDFS 分布式文件系统 hive 数据仓库，sql查询hdfs hbase 列存储数据仓库 zookeeper 分布式、可用性高的协调服务 sqoop:rdbms &lt;=&gt; hdfs oozie 调度作业 hadoop 发行版本 Table 1-2. Features supported by Hadoop release series Feature 1.x 0.22 2.x Secure authentication Yes No Yes Old configuration names Yes Deprecated Deprecated New configuration names No Yes Yes Old MapReduce API Yes Yes Yes New MapReduce API Yes (with somemissing libraries) Yes Yes MapReduce 1 runtime (Classic) Yes Yes No MapReduce 2 runtime (YARN) No No Yes HDFS federation No No Yes HDFS high-availability No No Yes 第二章气象数据处理 2.1 气象数据集首先要搞清楚数据格式 文本数据 每一行是一条记录 整个数据集有很多小文件组成 2.2 Unix 处理方式12345678910#!/usr/bin/env bashfor year in all/*doecho -ne `basename $year .gz`&quot;\t&quot;gunzip -c $year | \awk &apos;&#123; temp = substr($0, 88, 5) + 0;q = substr($0, 93, 1);if (temp !=9999 &amp;&amp; q ~ /[01459]/ &amp;&amp; temp &gt; max) max = temp &#125;END &#123; print max &#125;&apos;done 循环使用awk处理 单进程处理 2.3 hadoop处理方式map:1234567891011121314151617181920212223242526272829import java.io.IOException;importimportimportimportorg.apache.hadoop.io.IntWritable;org.apache.hadoop.io.LongWritable;org.apache.hadoop.io.Text;org.apache.hadoop.mapreduce.Mapper;public class MaxTemperatureMapperextends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;private static final int MISSING = 9999;@Overridepublic void map(LongWritable key, Text value, Context context)throws IOException, InterruptedException &#123;&#125;&#125;String line = value.toString();String year = line.substring(15, 19);int airTemperature;if (line.charAt(87) == &apos;+&apos;) &#123; // parseInt doesn&apos;t like leading plus signsairTemperature = Integer.parseInt(line.substring(88, 92));&#125; else &#123;airTemperature = Integer.parseInt(line.substring(87, 92));&#125;String quality = line.substring(92, 93);if (airTemperature != MISSING &amp;&amp; quality.matches(&quot;[01459]&quot;)) &#123;context.write(new Text(year), new IntWritable(airTemperature));&#125; reduce:1234567891011121314151617import java.io.IOException;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Reducer;public class MaxTemperatureReducerextends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;@Overridepublic void reduce(Text key, Iterable&lt;IntWritable&gt; values,Context context)throws IOException, InterruptedException &#123;&#125;&#125;int maxValue = Integer.MIN_VALUE;for (IntWritable value : values) &#123;maxValue = Math.max(maxValue, value.get());&#125;context.write(key, new IntWritable(maxValue)); main:123456789101112131415161718192021222324import org.apache.hadoop.fs.Path;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Job;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;public class MaxTemperature &#123;public static void main(String[] args) throws Exception &#123;if (args.length != 2) &#123;System.err.println(&quot;Usage: MaxTemperature &lt;input path&gt; &lt;output path&gt;&quot;);System.exit(-1);&#125;Job job = new Job();job.setJarByClass(MaxTemperature.class);job.setJobName(&quot;Max temperature&quot;);FileInputFormat.addInputPath(job, new Path(args[0]));FileOutputFormat.setOutputPath(job, new Path(args[1]));job.setMapperClass(MaxTemperatureMapper.class);job.setReducerClass(MaxTemperatureReducer.class);job.setOutputKeyClass(Text.class);job.setOutputValueClass(IntWritable.class);System.exit(job.waitForCompletion(true) ? 0 : 1);&#125;&#125; 2.4 横向扩展2.5 Hadoop Streaming]]></content>
-      <categories>
-        <category>数据存储处理 - hadoop</category>
-      </categories>
-      <tags>
-        <tag>Hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -464,6 +461,19 @@
   </entry>
   <entry>
     <title><![CDATA[Tensorflow Model java 部署]]></title>
+    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
+    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
+      <categories>
+        <category>机器学习、深度学习 - tensorflow</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tensorflow Model java 部署]]></title>
     <url>%2F2018%2F12%2F04%2FTensorflow5--seq2seq%2F</url>
     <content type="text"><![CDATA[IntroductionSeq2Seq模型在机器翻译、语音识别、文本摘要等领域取得了巨大的成功 以神经机器翻译(NMT)为例介绍 使用最新的 decoder / attention wrapper API，TensorFlow 1.2 data iterator 在构建模型时加入了我们最成功的经验 为构建最强大的 NMT 模型，我们提供了许多 tips 和 tricks，并复制了Google的 NMT系统 Basic神经机器翻译的相关背景 | Background on Neural Machine Translation 传统的 phrase-based 翻译系统的工作原理是把源句子分成几块，然后一个短语一个短语的翻译，但是翻译结果的流畅度较差，并且不符合人类的翻译方式， 我们人类会读取完整的句子，理解它的意思，然后进行翻译。NMT 模型正是在模仿这个机制！ NMT模型使用encoder读取源句子，然后编码得到一个“有意义”的 vector，即一串能代表源句子意思的数字。然后 decoder 将这个 vector 解码得到翻译，就想图1展示的那样。这就是所谓的 encoder-decoder 结构 本教程将以单向的多层（multi-layer） RNN 为例，其使用 LSTM 作为 RNN 单元 Traning - How to build our first NMT system实战 - 训练一个 NMT 模型 Hands-on - Let’s train an NMT model12345678910111213python -m nmt.nmt \ --src=vi --tgt=en \ --vocab_prefix=/home/xxh/data/nmt_data_2/vocab \ --train_prefix=/home/xxh/data/nmt_data_2/train \ --dev_prefix=/home/xxh/data/nmt_data_2/tst2012 \ --test_prefix=/home/xxh/data/nmt_data_2/tst2013 \ --out_dir=/home/xxh/data/nmt_model \ --num_train_steps=12000 \ --steps_per_stats=100 \ --num_layers=2 \ --num_units=128 \ --dropout=0.2 \ --metrics=bleu python -m nmt.nmt \ –src=vi –tgt=en \ –vocab_prefix=/home/xxh/data/my_nmt_data/train \ –train_prefix=/home/xxh/data/my_nmt_data/train \ –dev_prefix=/home/xxh/data/my_nmt_data/tst2012 \ –test_prefix=/home/xxh/data/my_nmt_data/tst2012 \ –out_dir=/home/xxh/data/my_nmt_model \ –num_train_steps=12000 \ –steps_per_stats=100 \ –num_layers=2 \ –num_units=128 \ –dropout=0.2 \ –metrics=bleu 12 python -m nmt.nmt \ –out_dir=/home/xxh/data/nmt_model \ –inference_input_file=/home/xxh/data/nmt_data_2/my.vi \ –inference_output_file=/home/xxh/data/nmt_attention_model/output_infer`]]></content>
       <categories>
@@ -474,18 +484,6 @@
         <tag>ml</tag>
         <tag>tensorflow</tag>
         <tag>seq2seq</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Tomcat笔记]]></title>
-    <url>%2F2018%2F12%2F04%2FTomcat%2F</url>
-    <content type="text"><![CDATA[TOMCAT目录结构Tomcat 作为一个Web服务器软件，监听指定的端口，处理相应的网络请求；支持Servlt; |—bin Tomcat：存放启动和关闭tomcat脚本； |—conf Tomcat：存放不同的配置文件（server.xml和web.xml）； |—doc：存放Tomcat文档； |—lib/japser/common：存放Tomcat运行需要的库文件（JARS）； |—logs：存放Tomcat执行时的LOG文件； |—src：存放Tomcat的源代码； |—webapps：Tomcat的主要Web发布目录（包括应用程序示例）； |—work：存放jsp编译后产生的class文件； web.xml12345678910111213141516171819202122232425&lt;?xml version=&quot;1.0&quot;?&gt;&lt;!DOCTYPE web-app PUBLIC &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot; &quot;http://java.sun.com/dtd/web-app_2_4.dtd&quot;&gt;&lt;web-app&gt; &lt;welcome-file-list&gt; &lt;welcome-file&gt;index.html&lt;/welcome-file&gt; &lt;/welcome-file-list&gt; &lt;listener&gt; &lt;listener-class&gt;spray.servlet.Initializer&lt;/listener-class&gt; &lt;/listener&gt; &lt;servlet&gt; &lt;servlet-name&gt;SprayConnectorServlet&lt;/servlet-name&gt; &lt;servlet-class&gt;spray.servlet.Servlet30ConnectorServlet&lt;/servlet-class&gt; &lt;async-supported&gt;true&lt;/async-supported&gt; &lt;/servlet&gt; &lt;servlet-mapping&gt; &lt;servlet-name&gt;SprayConnectorServlet&lt;/servlet-name&gt; &lt;url-pattern&gt;/autotest/*&lt;/url-pattern&gt; &lt;/servlet-mapping&gt;&lt;/web-app&gt; servlet所有 servlet 都会直接或间接通过实现 javax.servlet.Servlet 接口的辅助类来实现该接口。Servlet 还可以使用容器提供的 API 公开容器服务。例如，servlet 可以从容器获得数据库连接来访问关系数据库。Servlet 通常用于实现 Web 应用程序逻辑。Servlet 可以获取和处理数据，然后将数据传递给 JSP 进行显示（例如，动态生成用户界面）。Servlet 还可用于频繁地处理通过基于 Web 形式提交的数据。 webApp的组成一个Web应用程序基本上由以下项目组成： 静态资源（静态资源(HTML，CSS，图片，声音等)） servlet jsp 自定义类 工具类 部署描述文件（web.xml等) 、设置信息 Web应用程序目录结构必须符合规范。例如，如果一个应用程序的环境路径（Context path）是/HelloServlet，则所有的资源项目必须以/HelloServlet为根目录依规定结构摆放。基本上根目录中的资源可以直接下载，若index.html位于/HelloServlet下，则可以直接以/HelloServlet/index.html来取得。 Web应用程序存在一个特殊的/WEB-INF子目录，此目录中存在的资源不会被列入应用程序根目录中可直接访问的项。即，客户端（如Browser）不可以直接请求/WEB-INF中的资源(直接在网址上指明访问/WEB-INF)，否则就是404 Not Found的错误结果。/WEB-INF中的资源项目有着一定的名称与结构。 （1）/WEB-INF/web.xml 是部署描述文件 （2）/WEB-INF/classes 用来放置应用程序用到的自定义类(.class)，必须包括包(package)结构。 （3）/WEB-INF/lib 用来放置应用程序用到的JAR文件。 Web应用程序用到的JAR文件，其中可以放置Servlet、JSP、自定义类、工具类、部署描述文件等，应用程序的类载入器可以从JAR中载入对应的资源。 可以在JAR文件中的/META-INF/resources目录中放置静态资源或JSP等，例如若在/META-INF中放个index.html，若请求的URL中包括/HelloServlet/index.html,但实际上/HelloServlet根目录下不存在index.html，则会使用JAR中的/META-INF/resources/index.html。 如果要用到某个类，则Web应用程序会到/WEB-INF/classes中试着载入类，若无，再试着从/WEB-INF/lib的JAR文件中寻找类文件(若还没有找到，则会到容器实现本身存放类或JAR的目录中寻找，但位置视不同实现厂商而有所不同，以Tomcat为例，搜索的路径是Tomcat的安装目录下的lib目录)。 客户端不能直接请求/WEB-INF中的资源，但可以通过程序的控制，让程序来取得/WEB-INF中的资源，如使用ServletContext的getResource()与getResourceAsStream()，或是通过RequestDispatcher请求调派。 Web app 默认主页的设置：访问URL如：localhost:8080/FirstServlet/ &lt;welcome-file-list&gt; &lt;welcome-file&gt;index.html&lt;/welcome-file&gt; &lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt; &lt;/welcome-file-list&gt; 如果找不到以上的文件，则会尝试至JAR的/META-INF/resources中寻找已放置的资源页面。 整个Web应用可以被封装为一个WAR文件，如FirstServlet.war，以便于部署至Web容器。]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>Tomcat</tag>
       </tags>
   </entry>
   <entry>
@@ -500,16 +498,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Tensorflow Model java 部署]]></title>
-    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
-    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
+    <title><![CDATA[Tomcat笔记]]></title>
+    <url>%2F2018%2F12%2F04%2FTomcat%2F</url>
+    <content type="text"><![CDATA[TOMCAT目录结构Tomcat 作为一个Web服务器软件，监听指定的端口，处理相应的网络请求；支持Servlt; |—bin Tomcat：存放启动和关闭tomcat脚本； |—conf Tomcat：存放不同的配置文件（server.xml和web.xml）； |—doc：存放Tomcat文档； |—lib/japser/common：存放Tomcat运行需要的库文件（JARS）； |—logs：存放Tomcat执行时的LOG文件； |—src：存放Tomcat的源代码； |—webapps：Tomcat的主要Web发布目录（包括应用程序示例）； |—work：存放jsp编译后产生的class文件； web.xml12345678910111213141516171819202122232425&lt;?xml version=&quot;1.0&quot;?&gt;&lt;!DOCTYPE web-app PUBLIC &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot; &quot;http://java.sun.com/dtd/web-app_2_4.dtd&quot;&gt;&lt;web-app&gt; &lt;welcome-file-list&gt; &lt;welcome-file&gt;index.html&lt;/welcome-file&gt; &lt;/welcome-file-list&gt; &lt;listener&gt; &lt;listener-class&gt;spray.servlet.Initializer&lt;/listener-class&gt; &lt;/listener&gt; &lt;servlet&gt; &lt;servlet-name&gt;SprayConnectorServlet&lt;/servlet-name&gt; &lt;servlet-class&gt;spray.servlet.Servlet30ConnectorServlet&lt;/servlet-class&gt; &lt;async-supported&gt;true&lt;/async-supported&gt; &lt;/servlet&gt; &lt;servlet-mapping&gt; &lt;servlet-name&gt;SprayConnectorServlet&lt;/servlet-name&gt; &lt;url-pattern&gt;/autotest/*&lt;/url-pattern&gt; &lt;/servlet-mapping&gt;&lt;/web-app&gt; servlet所有 servlet 都会直接或间接通过实现 javax.servlet.Servlet 接口的辅助类来实现该接口。Servlet 还可以使用容器提供的 API 公开容器服务。例如，servlet 可以从容器获得数据库连接来访问关系数据库。Servlet 通常用于实现 Web 应用程序逻辑。Servlet 可以获取和处理数据，然后将数据传递给 JSP 进行显示（例如，动态生成用户界面）。Servlet 还可用于频繁地处理通过基于 Web 形式提交的数据。 webApp的组成一个Web应用程序基本上由以下项目组成： 静态资源（静态资源(HTML，CSS，图片，声音等)） servlet jsp 自定义类 工具类 部署描述文件（web.xml等) 、设置信息 Web应用程序目录结构必须符合规范。例如，如果一个应用程序的环境路径（Context path）是/HelloServlet，则所有的资源项目必须以/HelloServlet为根目录依规定结构摆放。基本上根目录中的资源可以直接下载，若index.html位于/HelloServlet下，则可以直接以/HelloServlet/index.html来取得。 Web应用程序存在一个特殊的/WEB-INF子目录，此目录中存在的资源不会被列入应用程序根目录中可直接访问的项。即，客户端（如Browser）不可以直接请求/WEB-INF中的资源(直接在网址上指明访问/WEB-INF)，否则就是404 Not Found的错误结果。/WEB-INF中的资源项目有着一定的名称与结构。 （1）/WEB-INF/web.xml 是部署描述文件 （2）/WEB-INF/classes 用来放置应用程序用到的自定义类(.class)，必须包括包(package)结构。 （3）/WEB-INF/lib 用来放置应用程序用到的JAR文件。 Web应用程序用到的JAR文件，其中可以放置Servlet、JSP、自定义类、工具类、部署描述文件等，应用程序的类载入器可以从JAR中载入对应的资源。 可以在JAR文件中的/META-INF/resources目录中放置静态资源或JSP等，例如若在/META-INF中放个index.html，若请求的URL中包括/HelloServlet/index.html,但实际上/HelloServlet根目录下不存在index.html，则会使用JAR中的/META-INF/resources/index.html。 如果要用到某个类，则Web应用程序会到/WEB-INF/classes中试着载入类，若无，再试着从/WEB-INF/lib的JAR文件中寻找类文件(若还没有找到，则会到容器实现本身存放类或JAR的目录中寻找，但位置视不同实现厂商而有所不同，以Tomcat为例，搜索的路径是Tomcat的安装目录下的lib目录)。 客户端不能直接请求/WEB-INF中的资源，但可以通过程序的控制，让程序来取得/WEB-INF中的资源，如使用ServletContext的getResource()与getResourceAsStream()，或是通过RequestDispatcher请求调派。 Web app 默认主页的设置：访问URL如：localhost:8080/FirstServlet/ &lt;welcome-file-list&gt; &lt;welcome-file&gt;index.html&lt;/welcome-file&gt; &lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt; &lt;/welcome-file-list&gt; 如果找不到以上的文件，则会尝试至JAR的/META-INF/resources中寻找已放置的资源页面。 整个Web应用可以被封装为一个WAR文件，如FirstServlet.war，以便于部署至Web容器。]]></content>
       <categories>
-        <category>机器学习、深度学习 - tensorflow</category>
+        <category>服务器端</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>tensorflow</tag>
+        <tag>笔记</tag>
+        <tag>Tomcat</tag>
       </tags>
   </entry>
   <entry>
@@ -580,17 +577,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[github访问卡、慢、不稳定]]></title>
-    <url>%2F2018%2F12%2F04%2Fgithub%E5%8D%A1%E6%85%A2%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考 blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts 但是更新了dns，效果很明显，速度杠杠的 2017/12/05 迅速被打脸，一点都不好使 \很奇怪，办公室机器google-chrome很卡，firefox好很多]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Hive 编程指南 笔记]]></title>
     <url>%2F2018%2F12%2F04%2Fhive%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%2F</url>
     <content type="text"><![CDATA[《hive 编程指南》 第一章与mr接口相比，sql简单易用 第二章hive 安装 hive笔记安装 hive内部是什么 lib 其中的每个jar都实现了hive的特定功能 bin 执行各种hive服务的可执行文件 conf 配置文件 hive 命令cli变量和属性hivevar/hiveconf/system/env .hivec文件第三章 数据类型和文件格式支持关系型数据库中绝大多数基本数据类型，还支持三种集合数据类型 要考虑这些数据类型是如何正在文本文件中表示的，还要考虑文本存储中为了解决各种性能问题以及其他问题有哪些替代方案 基本数据类型 string 字符串无长度限制 timestamp 可以使整数、浮点数、字符串 binary 字节数组 数值比较时，数据类型在 double float int tinyint smallint bigint 间自动向上转换 字符串转化： cast(s as int) 集合数据类型 struct map array 缺点是不符合三大范式，第一范式都不符合 数据冗余，在大数据情况下，按数据集封装的话可以通过减少寻址次数来提供查询的速度，而如果根据外键关系关联的话则需要磁盘间的寻址操作，这样会有非常高的性能消耗 文本文件数据编码文本文件在字段间、集合数据类型中的分隔符 读时模式传统数据库是写时模式(schema on write)hive是读时模式(schema on read) hive在读时会尽可能的规避问题，这样的功能很强大，也会导致问题被掩盖 第四章 hiveql 定义]]></content>
@@ -625,19 +611,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[scikit-learn]]></title>
-    <url>%2F2018%2F12%2F04%2Fml-sklearn%2F</url>
-    <content type="text"><![CDATA[Scikit-learn 安装之前安装了anaconda3，其中已经打包安装好了scikit-learn Scikit-learn 使用]]></content>
-      <categories>
-        <category>机器学习、深度学习 - scikit-learn</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>scikit-learn</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[log4j踢平记]]></title>
     <url>%2F2018%2F12%2F04%2Flog4j%E8%B8%A2%E5%B9%B3%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[错误： log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$). 错误原因：我猜是依赖自带的log4j之间冲突了 解决： stackoverflow Just to get you going you have two simple approaches you can take. First one is to just add this line to your main method:BasicConfigurator.configure();Second approach is to add this standard log4j.properties (taken from the above mentioned guide) file to your classpath: Set root logger level to DEBUG and its only appender to A1.log4j.rootLogger=DEBUG, A1 A1 is set to be a ConsoleAppender.log4j.appender.A1=org.apache.log4j.ConsoleAppender A1 uses PatternLayout.log4j.appender.A1.layout=org.apache.log4j.PatternLayoutlog4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n The first one 好使]]></content>
@@ -648,6 +621,19 @@
         <tag>log</tag>
         <tag>log4j</tag>
         <tag>日志</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[scikit-learn]]></title>
+    <url>%2F2018%2F12%2F04%2Fml-sklearn%2F</url>
+    <content type="text"><![CDATA[Scikit-learn 安装之前安装了anaconda3，其中已经打包安装好了scikit-learn Scikit-learn 使用]]></content>
+      <categories>
+        <category>机器学习、深度学习 - scikit-learn</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>scikit-learn</tag>
       </tags>
   </entry>
   <entry>
@@ -697,6 +683,17 @@
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[github访问卡、慢、不稳定]]></title>
+    <url>%2F2018%2F12%2F04%2Fgithub%E5%8D%A1%E6%85%A2%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考 blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts 但是更新了dns，效果很明显，速度杠杠的 2017/12/05 迅速被打脸，一点都不好使 \很奇怪，办公室机器google-chrome很卡，firefox好很多]]></content>
+      <categories>
+        <category>工欲善其事，必先利其器</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -820,9 +817,21 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[tensorflow2--基本用法]]></title>
-    <url>%2F2018%2F12%2F04%2Ftensorflow2--%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[Tensorflow 基本使用Tf使用要点 使用图(graph)表示计算任务 在会话(session)－上下文(context)中执行图 使用tensor表示数据 通过变量(Variable)维护状态 使用feed和fetch可以为任意的操作（arbitrary operation）赋值或者从中获取数据 综述TensorFlow 是一个编程系统, 使用图来表示计算任务. 图中的节点被称之为 op (operation 的缩写). 一个 op 获得 0 个或多个 Tensor, 执行计算, 产生 0 个或多个 Tensor. 每个 Tensor 是一个类型化的多维数组. 例如, 你可以将一小组图像集表示为一个四维浮点数数组, 这四个维度分别是 [batch, height, width, channels]. 一个 TensorFlow 图描述了计算的过程. 为了进行计算, 图必须在 会话 里被启动. 会话 将图的 op 分发到诸如 CPU 或 GPU 之类的 设备 上, 同时提供执行 op 的方法. 这些方法执行后, 将产生的 tensor 返回. 在 Python 语言中, 返回的 tensor 是 numpy ndarray 对象; 在 C 和 C++ 语言中, 返回的 tensor 是 tensorflow::Tensor 实例. 计算图TensorFlow 程序通常被组织成一个构建阶段和一个执行阶段. 在构建阶段, op 的执行步骤 被描述成一个图. 在执行阶段, 使用会话执行执行图中的 op. 例如, 通常在构建阶段创建一个图来表示和训练神经网络, 然后在执行阶段反复执行图中的训练 op. TensorFlow 支持 C, C++, Python 编程语言. 目前, TensorFlow 的 Python 库更加易用, 它提供了大量的辅助函数来简化构建图的工作, 这些函数尚未被 C 和 C++ 库支持. 三种语言的会话库 (session libraries) 是一致的. 构建图构建图的第一步, 是创建源 op (source op). 源 op 不需要任何输入, 例如 常量 (Constant). 源 op 的输出被传递给其它 op 做运算. Python 库中, op 构造器的返回值代表被构造出的 op 的输出, 这些返回值可以传递给其它 op 构造器作为输入. TensorFlow Python 库有一个默认图 (default graph), op 构造器可以为其增加节点. 这个默认图对 许多程序来说已经足够用了. 阅读 Graph 类 文档 来了解如何管理多个图. 不再摘抄了，发现没有多余的字符中文文档 在一个会话中启动图交互式使用]]></content>
+    <title><![CDATA[SSH深入]]></title>
+    <url>%2F2018%2F12%2F04%2Fssh%E6%B7%B1%E5%85%A5%2F</url>
+    <content type="text"><![CDATA[SSH(Secure Shell)Secure Shell（安全外壳协议，简称SSH）是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。 SSH通过在网络中创建安全隧道来实现SSH客户端与服务器之间的连接[2]。虽然任何网络服务都可以通过SSH实现安全传输，SSH最常见的用途是远程登录系统，人们通常利用SSH来传输命令行界面和远程执行命令 在设计上，SSH是Telnet和非安全shell的替代品。Telnet和Berkeley rlogin、rsh、rexec等协议采用明文传输，使用不可靠的密码，容易遭到监听、嗅探和中间人攻击[4]。SSH旨在保证非安全网络环境（例如互联网）中信息加密完整可靠。 建立连接SSH以非对称加密实现身份验证[2]。身份验证有多种途径， 其中一种方法是使用自动生成的公钥-私钥对来简单地加密网络连接，随后使用密码认证进行登录；此时密钥是自动生成 另一种方法是人工生成一对公钥和私钥，通过生成的密钥进行认证，这样就可以在不输入密码的情况下登录。任何人都可以自行生成密钥。公钥需要放在待访问的计算机之中，而对应的私钥需要由用户自行保管。认证过程基于生成出来的私钥，但整个认证过程中私钥本身不会传输到网络中。 使用 登录远程主机执行命令 SSH也支持隧道协议、端口映射和X11连接。借助SFTP或SCP协议还可以传输文件 秘钥管理在类Unix系统中，已许可登录的公钥通常保存在用户 /home 目录的 ~/.ssh/authorized_keys 文件中[9]，该文件只由SSH使用。当远程机器持有公钥，而本地持有对应私钥时，登录过程不再需要手动输入密码。另外为了额外的安全性，私钥本身也能用密码保护。私钥会保存在固定位置，也可以通过命令行参数指定（例如ssh命令的“-i”选项）。ssh-keygen是生成密钥的工具之一。SSH也支持基于密码的身份验证，此时密钥是自动生成的。若客户端和服务端从未进行过身份验证，SSH未记录服务器端所使用的密钥，那么攻击者可以模仿服务器端请求并获取密码，即中间人攻击。但是密码认证可以禁用，而且SSH客户端在发现新密钥或未知服务器时会向用户发出警告。 所以aws ec2提供的秘钥就是一对秘钥对中的私钥，ec2主机中保存有公钥，通过-i指定私钥去匹配公钥，完成登录验证，也可以将自己机器的公钥放到ec2的~/.ssh/authorized_keys 文件中，实现自己机器与ec2的免密登录，因为登录时默认会拿本地的私钥去匹配目标主机的~/.ssh/authorized_keys文件中的公钥]]></content>
+      <categories>
+        <category>服务器端 - shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tensorflow3--mnist]]></title>
+    <url>%2F2018%2F12%2F04%2Ftensorflow3--mnist%2F</url>
+    <content type="text"><![CDATA[mnist教程Mnist是tf圈的hello world mnist_softmax.py源码soft_max回归介绍： Softmax回归模型，该模型是logistic回归模型在多分类问题上的推广，在多分类问题中，类标签 \textstyle y 可以取两个以上的值。Softmax回归模型对于诸如MNIST手写数字分类等问题是很有用的，该问题的目的是辨识10个不同的单个数字。Softmax回归是有监督的，不过后面也会介绍它与深度学习/无监督学习方法的结合。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116# Copyright 2015 The TensorFlow Authors. All Rights Reserved.## Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);# you may not use this file except in compliance with the License.# You may obtain a copy of the License at## http://www.apache.org/licenses/LICENSE-2.0## Unless required by applicable law or agreed to in writing, software# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.# See the License for the specific language governing permissions and# limitations under the License.# ==============================================================================&quot;&quot;&quot;A very simple MNIST classifier.See extensive documentation athttps://www.tensorflow.org/get_started/mnist/beginners&quot;&quot;&quot;#Python的每个新版本都会增加一些新的功能，或者对原来的功能作一些改动。Python提供了__future__模块，把下一个新版本的特性导入到当前版本，于是我们就可以在当前版本中测试一些新版本的特性。from __future__ import absolute_importfrom __future__ import divisionfrom __future__ import print_functionimport argparseimport sys#使用tf提供的input_data函数来导入数据from tensorflow.examples.tutorials.mnist import input_dataimport tensorflow as tf#函数声明FLAGS = Nonedef main(_): # Import data mnist = input_data.read_data_sets(FLAGS.data_dir) # Create the model # 占位 &quot;&quot;&quot; 这里的x和y并不是特定的值，相反，他们都只是一个占位符，可以在TensorFlow运行某一计算时根据该占位符输入具体的值。 输入图片x是一个2维的浮点数张量。这里，分配给它的shape为[None, 784]，其中784是一张展平的MNIST图片的维度。None表示其值大小不定，在这里作为第一个维度值，用以指代batch的大小，意即x的数量不定。输出类别值y_也是一个2维张量，其中每一行为一个10维的one-hot向量,用于代表对应某一MNIST图片的类别。 虽然placeholder的shape参数是可选的，但有了它，TensorFlow能够自动捕捉因数据维度不一致导致的错误。 我们现在为模型定义权重W和偏置b。可以将它们当作额外的输入量，但是TensorFlow有一个更好的处理方式：变量。 一个变量代表着TensorFlow计算图中的一个值，能够在计算过程中使用，甚至进行修改。在机器学习的应用过程中，模型参数一般用Variable来表示。 &quot;&quot;&quot; x = tf.placeholder(tf.float32, [None, 784]) W = tf.Variable(tf.zeros([784, 10])) b = tf.Variable(tf.zeros([10])) #现在我们可以实现我们的回归模型了。这只需要一行！我们把向量化后的图片x和权重矩阵W相乘，加上偏置b，然后计算每个分类的softmax概率值 y = tf.matmul(x, W) + b # Define loss and optimizer # y_ = tf.placeholder(tf.float32, [None]) y_ = tf.placeholder(tf.int64, [None]) # The raw formulation of cross-entropy, # # tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(tf.nn.softmax(y)), # reduction_indices=[1])) # # can be numerically unstable. # # So here we use tf.losses.sparse_softmax_cross_entropy on the raw # outputs of &apos;y&apos;, and then average across the batch. #可以很容易的为训练过程指定最小化误差用的损失函数，我们的损失函数是目标类别和预测类别之间的交叉熵。 cross_entropy = tf.losses.sparse_softmax_cross_entropy(labels=y_, logits=y) #我们已经定义好模型和训练用的损失函数，那么用TensorFlow进行训练就很简单了。因为TensorFlow知道整个计算图，它可以使用自动微分法找到对于各个变量的损失的梯度值。TensorFlow有大量内置的优化算法 这个例子中，我们用最速下降法让交叉熵下降，步长为0.5. train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy) #新建session sess = tf.InteractiveSession() #变量初始化 tf.global_variables_initializer().run() # Train # 循环训练1000次，每次都是取下100份数据作为输入，运行train_step for _ in range(1000): batch_xs, batch_ys = mnist.train.next_batch(100) sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;) # Test trained model # 首先让我们找出那些预测正确的标签。tf.argmax 是一个非常有用的函数，它能给出某个tensor对象在某一维上的其数据最大值所在的索引值。 由于标签向量是由0,1组成，因此最大值1所在的索引位置就是类别标签，比如tf.argmax(y,1)返回的是模型对于任一输入x预测到的标签值， 而 tf.argmax(y_,1) 代表正确的标签，我们可以用 tf.equal 来检测我们的预测是否真实标签匹配(索引位置一样表示匹配)。 这里返回一个布尔数组。为了计算我们分类的准确率，我们将布尔值转换为浮点数来代表对、错，然后取平均值。例如：[True, False, True, True]变为[1,0,1,1]，计算出平均值为0.75。 correct_prediction = tf.equal(tf.argmax(y, 1), y_) accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32)) print(sess.run( accuracy, feed_dict=&#123; x: mnist.test.images, y_: mnist.test.labels &#125;)) # SAVE THE MODEL # 保存model builder = tf.saved_model.builder.SavedModelBuilder(&quot;/tmp/mnist/model/1620&quot;) builder.add_meta_graph_and_variables( sess, [tf.saved_model.tag_constants.SERVING] ) builder.save()if __name__ == &apos;__main__&apos;: parser = argparse.ArgumentParser() parser.add_argument( &apos;--data_dir&apos;, type=str, default=&apos;/tmp/tensorflow/mnist/input_data&apos;, help=&apos;Directory for storing input data&apos;) FLAGS, unparsed = parser.parse_known_args() tf.app.run(main=main, argv=[sys.argv[0]] + unparsed) 卷积神经网络//Todo]]></content>
       <categories>
         <category>机器学习、深度学习 - tensorflow</category>
       </categories>
@@ -833,15 +842,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[SSH深入]]></title>
-    <url>%2F2018%2F12%2F04%2Fssh%E6%B7%B1%E5%85%A5%2F</url>
-    <content type="text"><![CDATA[SSH(Secure Shell)Secure Shell（安全外壳协议，简称SSH）是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。 SSH通过在网络中创建安全隧道来实现SSH客户端与服务器之间的连接[2]。虽然任何网络服务都可以通过SSH实现安全传输，SSH最常见的用途是远程登录系统，人们通常利用SSH来传输命令行界面和远程执行命令 在设计上，SSH是Telnet和非安全shell的替代品。Telnet和Berkeley rlogin、rsh、rexec等协议采用明文传输，使用不可靠的密码，容易遭到监听、嗅探和中间人攻击[4]。SSH旨在保证非安全网络环境（例如互联网）中信息加密完整可靠。 建立连接SSH以非对称加密实现身份验证[2]。身份验证有多种途径， 其中一种方法是使用自动生成的公钥-私钥对来简单地加密网络连接，随后使用密码认证进行登录；此时密钥是自动生成 另一种方法是人工生成一对公钥和私钥，通过生成的密钥进行认证，这样就可以在不输入密码的情况下登录。任何人都可以自行生成密钥。公钥需要放在待访问的计算机之中，而对应的私钥需要由用户自行保管。认证过程基于生成出来的私钥，但整个认证过程中私钥本身不会传输到网络中。 使用 登录远程主机执行命令 SSH也支持隧道协议、端口映射和X11连接。借助SFTP或SCP协议还可以传输文件 秘钥管理在类Unix系统中，已许可登录的公钥通常保存在用户 /home 目录的 ~/.ssh/authorized_keys 文件中[9]，该文件只由SSH使用。当远程机器持有公钥，而本地持有对应私钥时，登录过程不再需要手动输入密码。另外为了额外的安全性，私钥本身也能用密码保护。私钥会保存在固定位置，也可以通过命令行参数指定（例如ssh命令的“-i”选项）。ssh-keygen是生成密钥的工具之一。SSH也支持基于密码的身份验证，此时密钥是自动生成的。若客户端和服务端从未进行过身份验证，SSH未记录服务器端所使用的密钥，那么攻击者可以模仿服务器端请求并获取密码，即中间人攻击。但是密码认证可以禁用，而且SSH客户端在发现新密钥或未知服务器时会向用户发出警告。 所以aws ec2提供的秘钥就是一对秘钥对中的私钥，ec2主机中保存有公钥，通过-i指定私钥去匹配公钥，完成登录验证，也可以将自己机器的公钥放到ec2的~/.ssh/authorized_keys 文件中，实现自己机器与ec2的免密登录，因为登录时默认会拿本地的私钥去匹配目标主机的~/.ssh/authorized_keys文件中的公钥]]></content>
+    <title><![CDATA[tensorflow2--基本用法]]></title>
+    <url>%2F2018%2F12%2F04%2Ftensorflow2--%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[Tensorflow 基本使用Tf使用要点 使用图(graph)表示计算任务 在会话(session)－上下文(context)中执行图 使用tensor表示数据 通过变量(Variable)维护状态 使用feed和fetch可以为任意的操作（arbitrary operation）赋值或者从中获取数据 综述TensorFlow 是一个编程系统, 使用图来表示计算任务. 图中的节点被称之为 op (operation 的缩写). 一个 op 获得 0 个或多个 Tensor, 执行计算, 产生 0 个或多个 Tensor. 每个 Tensor 是一个类型化的多维数组. 例如, 你可以将一小组图像集表示为一个四维浮点数数组, 这四个维度分别是 [batch, height, width, channels]. 一个 TensorFlow 图描述了计算的过程. 为了进行计算, 图必须在 会话 里被启动. 会话 将图的 op 分发到诸如 CPU 或 GPU 之类的 设备 上, 同时提供执行 op 的方法. 这些方法执行后, 将产生的 tensor 返回. 在 Python 语言中, 返回的 tensor 是 numpy ndarray 对象; 在 C 和 C++ 语言中, 返回的 tensor 是 tensorflow::Tensor 实例. 计算图TensorFlow 程序通常被组织成一个构建阶段和一个执行阶段. 在构建阶段, op 的执行步骤 被描述成一个图. 在执行阶段, 使用会话执行执行图中的 op. 例如, 通常在构建阶段创建一个图来表示和训练神经网络, 然后在执行阶段反复执行图中的训练 op. TensorFlow 支持 C, C++, Python 编程语言. 目前, TensorFlow 的 Python 库更加易用, 它提供了大量的辅助函数来简化构建图的工作, 这些函数尚未被 C 和 C++ 库支持. 三种语言的会话库 (session libraries) 是一致的. 构建图构建图的第一步, 是创建源 op (source op). 源 op 不需要任何输入, 例如 常量 (Constant). 源 op 的输出被传递给其它 op 做运算. Python 库中, op 构造器的返回值代表被构造出的 op 的输出, 这些返回值可以传递给其它 op 构造器作为输入. TensorFlow Python 库有一个默认图 (default graph), op 构造器可以为其增加节点. 这个默认图对 许多程序来说已经足够用了. 阅读 Graph 类 文档 来了解如何管理多个图. 不再摘抄了，发现没有多余的字符中文文档 在一个会话中启动图交互式使用]]></content>
       <categories>
-        <category>服务器端 - shell</category>
+        <category>机器学习、深度学习 - tensorflow</category>
       </categories>
       <tags>
-        <tag>shell</tag>
-        <tag>ssh</tag>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>tensorflow</tag>
       </tags>
   </entry>
   <entry>
@@ -857,16 +867,26 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[tensorflow3--mnist]]></title>
-    <url>%2F2018%2F12%2F04%2Ftensorflow3--mnist%2F</url>
-    <content type="text"><![CDATA[mnist教程Mnist是tf圈的hello world mnist_softmax.py源码soft_max回归介绍： Softmax回归模型，该模型是logistic回归模型在多分类问题上的推广，在多分类问题中，类标签 \textstyle y 可以取两个以上的值。Softmax回归模型对于诸如MNIST手写数字分类等问题是很有用的，该问题的目的是辨识10个不同的单个数字。Softmax回归是有监督的，不过后面也会介绍它与深度学习/无监督学习方法的结合。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116# Copyright 2015 The TensorFlow Authors. All Rights Reserved.## Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);# you may not use this file except in compliance with the License.# You may obtain a copy of the License at## http://www.apache.org/licenses/LICENSE-2.0## Unless required by applicable law or agreed to in writing, software# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.# See the License for the specific language governing permissions and# limitations under the License.# ==============================================================================&quot;&quot;&quot;A very simple MNIST classifier.See extensive documentation athttps://www.tensorflow.org/get_started/mnist/beginners&quot;&quot;&quot;#Python的每个新版本都会增加一些新的功能，或者对原来的功能作一些改动。Python提供了__future__模块，把下一个新版本的特性导入到当前版本，于是我们就可以在当前版本中测试一些新版本的特性。from __future__ import absolute_importfrom __future__ import divisionfrom __future__ import print_functionimport argparseimport sys#使用tf提供的input_data函数来导入数据from tensorflow.examples.tutorials.mnist import input_dataimport tensorflow as tf#函数声明FLAGS = Nonedef main(_): # Import data mnist = input_data.read_data_sets(FLAGS.data_dir) # Create the model # 占位 &quot;&quot;&quot; 这里的x和y并不是特定的值，相反，他们都只是一个占位符，可以在TensorFlow运行某一计算时根据该占位符输入具体的值。 输入图片x是一个2维的浮点数张量。这里，分配给它的shape为[None, 784]，其中784是一张展平的MNIST图片的维度。None表示其值大小不定，在这里作为第一个维度值，用以指代batch的大小，意即x的数量不定。输出类别值y_也是一个2维张量，其中每一行为一个10维的one-hot向量,用于代表对应某一MNIST图片的类别。 虽然placeholder的shape参数是可选的，但有了它，TensorFlow能够自动捕捉因数据维度不一致导致的错误。 我们现在为模型定义权重W和偏置b。可以将它们当作额外的输入量，但是TensorFlow有一个更好的处理方式：变量。 一个变量代表着TensorFlow计算图中的一个值，能够在计算过程中使用，甚至进行修改。在机器学习的应用过程中，模型参数一般用Variable来表示。 &quot;&quot;&quot; x = tf.placeholder(tf.float32, [None, 784]) W = tf.Variable(tf.zeros([784, 10])) b = tf.Variable(tf.zeros([10])) #现在我们可以实现我们的回归模型了。这只需要一行！我们把向量化后的图片x和权重矩阵W相乘，加上偏置b，然后计算每个分类的softmax概率值 y = tf.matmul(x, W) + b # Define loss and optimizer # y_ = tf.placeholder(tf.float32, [None]) y_ = tf.placeholder(tf.int64, [None]) # The raw formulation of cross-entropy, # # tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(tf.nn.softmax(y)), # reduction_indices=[1])) # # can be numerically unstable. # # So here we use tf.losses.sparse_softmax_cross_entropy on the raw # outputs of &apos;y&apos;, and then average across the batch. #可以很容易的为训练过程指定最小化误差用的损失函数，我们的损失函数是目标类别和预测类别之间的交叉熵。 cross_entropy = tf.losses.sparse_softmax_cross_entropy(labels=y_, logits=y) #我们已经定义好模型和训练用的损失函数，那么用TensorFlow进行训练就很简单了。因为TensorFlow知道整个计算图，它可以使用自动微分法找到对于各个变量的损失的梯度值。TensorFlow有大量内置的优化算法 这个例子中，我们用最速下降法让交叉熵下降，步长为0.5. train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy) #新建session sess = tf.InteractiveSession() #变量初始化 tf.global_variables_initializer().run() # Train # 循环训练1000次，每次都是取下100份数据作为输入，运行train_step for _ in range(1000): batch_xs, batch_ys = mnist.train.next_batch(100) sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;) # Test trained model # 首先让我们找出那些预测正确的标签。tf.argmax 是一个非常有用的函数，它能给出某个tensor对象在某一维上的其数据最大值所在的索引值。 由于标签向量是由0,1组成，因此最大值1所在的索引位置就是类别标签，比如tf.argmax(y,1)返回的是模型对于任一输入x预测到的标签值， 而 tf.argmax(y_,1) 代表正确的标签，我们可以用 tf.equal 来检测我们的预测是否真实标签匹配(索引位置一样表示匹配)。 这里返回一个布尔数组。为了计算我们分类的准确率，我们将布尔值转换为浮点数来代表对、错，然后取平均值。例如：[True, False, True, True]变为[1,0,1,1]，计算出平均值为0.75。 correct_prediction = tf.equal(tf.argmax(y, 1), y_) accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32)) print(sess.run( accuracy, feed_dict=&#123; x: mnist.test.images, y_: mnist.test.labels &#125;)) # SAVE THE MODEL # 保存model builder = tf.saved_model.builder.SavedModelBuilder(&quot;/tmp/mnist/model/1620&quot;) builder.add_meta_graph_and_variables( sess, [tf.saved_model.tag_constants.SERVING] ) builder.save()if __name__ == &apos;__main__&apos;: parser = argparse.ArgumentParser() parser.add_argument( &apos;--data_dir&apos;, type=str, default=&apos;/tmp/tensorflow/mnist/input_data&apos;, help=&apos;Directory for storing input data&apos;) FLAGS, unparsed = parser.parse_known_args() tf.app.run(main=main, argv=[sys.argv[0]] + unparsed) 卷积神经网络//Todo]]></content>
+    <title><![CDATA[人人都是产品经理--note]]></title>
+    <url>%2F2018%2F12%2F04%2F%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86-note%2F</url>
+    <content type="text"><![CDATA[第一章 写给新手为什么要做产品经理因为世界等我们去改变，创造好的产品，改善坏的产品 我们到底是不是产品经理产品是什么产品是用来解决某个问题的东西，准确的说产品就是要同时解决用户的问题和公司的问题 因为作为产品经理要在用户目标和公司的商业目标之间寻找平衡 产品经理出现源于宝洁 产品经理的出现是为了适应公司发展的需要。随着企业越来越大,产品越来越多,越来越复杂,原来按职能划分部门的组织结构已经无法适应,所以出现了产品管理的矩阵型组织,而此时产品经理的主要职责是规划产品的生命周期 他们真的是在招产品经理吗它更多地侧重产品本身“从无到有”、“从有到优”的过程,更多地涉及了“产品规划、数据分析、用户研究、需求分析、功能设计、项目管理、敏捷方法”等内容,而不是如传统的产品经理那样,去做已经有了产品之后需要做的诸如管理产品、推广和营销产品的事情 产品经理概念进化 行业形态不同:成熟行业VS.新兴行业。 而互联网、软件行业是新兴行业,新兴市场,三天一小变,五天一大变,产品本身在不断取得突破,用户看什么都是新的,所以产品需要推陈出新,尽力先入为主,占领用户,主导用户习惯,这就导致了产品工作的重头戏在前期,从无到有,从有到优,偏重研发类创新。因此,互联网、软件行业的产品经理更重视产品功能本身的规划,需要“对市场发展趋势有敏锐的洞察力和创新意识及良好的分析、研判能力”,要能不断改进产品,要“深入了解业务,挖掘用户的多种需求,不断推出有竞争力的产品”,“制定所负责产品线的发展蓝图和实施路线图”。 实物VS虚拟物 - 生命周期不同：几年VS几个月 软件和互联网产品更推崇敏捷开发，虽然互联网、软件的项目更加不可控,但项目过程本身看起来并没有传统行业那么复杂,更接近“艺术”而不是“技术”,要依靠丰富的经验,于是产品经理也经常兼顾项目管理,这样自己可以在项目完成度和产品质量之间做平衡,对产品无疑也是一件好事。所以我们在招聘广告中看到公司要求产品经理“发起产品研发项目”,“组织资源实施产品,对其效益负责”。 赢利模式不同,单一卖产品赚钱VS多元赢利。 用户心态不同:花钱买VS.免费用。 互联网、软件产品更重视用户体验,相应的,出现了很多产品经理会涉及的工作内容,如交互设计、视觉设计、文案设计等 非典型产品经理有时高科技企业会采取类似的做法,让产品经理专心处理产品在工程和技术方面的问题,而把大部分营销决定交给另外的职能单位来负责。在这种情况下,产品经理可能会变成产品技术/应用方面的专家,他最主要的工作就是支援、协助销售人员,至于了解市场和从市场了解产品利益等工作,则另有他人代劳 不管整天只是写文档、做Demo,还是成了没钱没权的项目经理;或是求完销售求工程师,最后只能欺负客服,到处不招人待见……前辈们似乎也认可——人人都是产品经理,非典型成了多数,也就变成典型。 一线员工眼中的管理管理的能力,其实就是“在资源不足的情况下把事情做成”的能力,这里的资源在产品经理的工作中通常表现为以下几种形式。 第一,信息不足以决策。时间有限,能力有限,每次决策前不可能掌握所有信息,做决定时总是很头疼,我估计是“拍脑袋”拍得太多的原因。 第二,时间不足以安排周密的计划。总是接到3个月、1个月,甚至1个礼拜完成某项目的命令,每次都让我们张大嘴巴说不出话来,应承下来后如何计划?不过一次又一次的实践表明,办法总比困难多。 第三,人员不足以支持工作强度和难度。不但时间不足,人员也不足,就算数量足,能力够不够?能力够了,团队士气高不高?哪个公司不加班,又有多少公司有加班工资?但还得完成任务,难不难?难! 第四,资金不足以自由调配。俗话说钱要花在刀刃上,买机器要钱,招人要钱,产品推广要钱,而花这些钱的前提是公司还得赚钱,每一分钱都恨不得掰成两半用。 我真的想做,怎么入行用户会去想怎么用这个产品,才能带给自己更大的好处,产生更大的效用;而产品经理则习惯于绕过表象,从背后看问题的本质,思考怎么设计这个产品才能更好地平衡用户目标与商业目标 找到自己的位置几个可能的入行切入点你是做开发的,那就经常要参与需求评审,不妨比别人多用点功,每次都预先了解需求,多多思考,然后在评审会上对需求提出自己的合理建议,时间长了大家都会觉得你很有想法,做产品也许不错。关于职位,可以从“需求分析师”切入,这有些像系统分析的工作,比如业务逻辑、流程图,都是你已经很熟悉的,可以在这个过程中慢慢培养商业的感觉,重点体会某个产品功能是为了满足商业上的什么需求而做的。 一个产品经理的-1到3岁]]></content>
       <categories>
-        <category>机器学习、深度学习 - tensorflow</category>
+        <category>项目管理</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>tensorflow</tag>
+        <tag>需求分析</tag>
+        <tag>产品</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[git使用]]></title>
+    <url>%2F2018%2F12%2F04%2F%E4%BD%BF%E7%94%A8git%2F</url>
+    <content type="text"><![CDATA[git 不熟悉但是这种工具性的东西，就得边用边学 两个项目合并方法不一定最快，能用 project a12git checkout -b &apos;newbranch&apos;git push origin newbranch project b12345678910111213141516git init//copy .gitignoregit add .git commit -m &apos;b&apos;git remote add origin git@***.gitgit pull origin sparks3git statusgit add .git commit -m &apos;sfs&apos;git push origin master]]></content>
+      <categories>
+        <category>工欲善其事，必先利其器</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -892,29 +912,6 @@
       </categories>
       <tags>
         <tag>单元测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[人人都是产品经理--note]]></title>
-    <url>%2F2018%2F12%2F04%2F%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86-note%2F</url>
-    <content type="text"><![CDATA[第一章 写给新手为什么要做产品经理因为世界等我们去改变，创造好的产品，改善坏的产品 我们到底是不是产品经理产品是什么产品是用来解决某个问题的东西，准确的说产品就是要同时解决用户的问题和公司的问题 因为作为产品经理要在用户目标和公司的商业目标之间寻找平衡 产品经理出现源于宝洁 产品经理的出现是为了适应公司发展的需要。随着企业越来越大,产品越来越多,越来越复杂,原来按职能划分部门的组织结构已经无法适应,所以出现了产品管理的矩阵型组织,而此时产品经理的主要职责是规划产品的生命周期 他们真的是在招产品经理吗它更多地侧重产品本身“从无到有”、“从有到优”的过程,更多地涉及了“产品规划、数据分析、用户研究、需求分析、功能设计、项目管理、敏捷方法”等内容,而不是如传统的产品经理那样,去做已经有了产品之后需要做的诸如管理产品、推广和营销产品的事情 产品经理概念进化 行业形态不同:成熟行业VS.新兴行业。 而互联网、软件行业是新兴行业,新兴市场,三天一小变,五天一大变,产品本身在不断取得突破,用户看什么都是新的,所以产品需要推陈出新,尽力先入为主,占领用户,主导用户习惯,这就导致了产品工作的重头戏在前期,从无到有,从有到优,偏重研发类创新。因此,互联网、软件行业的产品经理更重视产品功能本身的规划,需要“对市场发展趋势有敏锐的洞察力和创新意识及良好的分析、研判能力”,要能不断改进产品,要“深入了解业务,挖掘用户的多种需求,不断推出有竞争力的产品”,“制定所负责产品线的发展蓝图和实施路线图”。 实物VS虚拟物 - 生命周期不同：几年VS几个月 软件和互联网产品更推崇敏捷开发，虽然互联网、软件的项目更加不可控,但项目过程本身看起来并没有传统行业那么复杂,更接近“艺术”而不是“技术”,要依靠丰富的经验,于是产品经理也经常兼顾项目管理,这样自己可以在项目完成度和产品质量之间做平衡,对产品无疑也是一件好事。所以我们在招聘广告中看到公司要求产品经理“发起产品研发项目”,“组织资源实施产品,对其效益负责”。 赢利模式不同,单一卖产品赚钱VS多元赢利。 用户心态不同:花钱买VS.免费用。 互联网、软件产品更重视用户体验,相应的,出现了很多产品经理会涉及的工作内容,如交互设计、视觉设计、文案设计等 非典型产品经理有时高科技企业会采取类似的做法,让产品经理专心处理产品在工程和技术方面的问题,而把大部分营销决定交给另外的职能单位来负责。在这种情况下,产品经理可能会变成产品技术/应用方面的专家,他最主要的工作就是支援、协助销售人员,至于了解市场和从市场了解产品利益等工作,则另有他人代劳 不管整天只是写文档、做Demo,还是成了没钱没权的项目经理;或是求完销售求工程师,最后只能欺负客服,到处不招人待见……前辈们似乎也认可——人人都是产品经理,非典型成了多数,也就变成典型。 一线员工眼中的管理管理的能力,其实就是“在资源不足的情况下把事情做成”的能力,这里的资源在产品经理的工作中通常表现为以下几种形式。 第一,信息不足以决策。时间有限,能力有限,每次决策前不可能掌握所有信息,做决定时总是很头疼,我估计是“拍脑袋”拍得太多的原因。 第二,时间不足以安排周密的计划。总是接到3个月、1个月,甚至1个礼拜完成某项目的命令,每次都让我们张大嘴巴说不出话来,应承下来后如何计划?不过一次又一次的实践表明,办法总比困难多。 第三,人员不足以支持工作强度和难度。不但时间不足,人员也不足,就算数量足,能力够不够?能力够了,团队士气高不高?哪个公司不加班,又有多少公司有加班工资?但还得完成任务,难不难?难! 第四,资金不足以自由调配。俗话说钱要花在刀刃上,买机器要钱,招人要钱,产品推广要钱,而花这些钱的前提是公司还得赚钱,每一分钱都恨不得掰成两半用。 我真的想做,怎么入行用户会去想怎么用这个产品,才能带给自己更大的好处,产生更大的效用;而产品经理则习惯于绕过表象,从背后看问题的本质,思考怎么设计这个产品才能更好地平衡用户目标与商业目标 找到自己的位置几个可能的入行切入点你是做开发的,那就经常要参与需求评审,不妨比别人多用点功,每次都预先了解需求,多多思考,然后在评审会上对需求提出自己的合理建议,时间长了大家都会觉得你很有想法,做产品也许不错。关于职位,可以从“需求分析师”切入,这有些像系统分析的工作,比如业务逻辑、流程图,都是你已经很熟悉的,可以在这个过程中慢慢培养商业的感觉,重点体会某个产品功能是为了满足商业上的什么需求而做的。 一个产品经理的-1到3岁]]></content>
-      <categories>
-        <category>项目管理</category>
-      </categories>
-      <tags>
-        <tag>需求分析</tag>
-        <tag>产品</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[git使用]]></title>
-    <url>%2F2018%2F12%2F04%2F%E4%BD%BF%E7%94%A8git%2F</url>
-    <content type="text"><![CDATA[git 不熟悉但是这种工具性的东西，就得边用边学 两个项目合并方法不一定最快，能用 project a12git checkout -b &apos;newbranch&apos;git push origin newbranch project b12345678910111213141516git init//copy .gitignoregit add .git commit -m &apos;b&apos;git remote add origin git@***.gitgit pull origin sparks3git statusgit add .git commit -m &apos;sfs&apos;git push origin master]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -945,28 +942,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[并发-java 编程思想]]></title>
-    <url>%2F2018%2F12%2F04%2F%E5%B9%B6%E5%8F%91-java%2F</url>
-    <content type="text"><![CDATA[并发并发介绍，想要真正编写一些复杂的程序钱，应该学一些专门介绍并发的书籍 并发的多面性使用并发时需要解决的问题有多个，而实现并发的方式也有多种，并且两者之间没有明显的映射关系 并发解决的问题大体上可以分为速度和设计可管理性两种 更快的执行并发通常是提高运行在单处理器上的程序性能直觉上思考在单核心上顺序运行程序应该是最高效的，因为没有上下文切换的代价 但是世界上有讨厌的 阻塞 单处理器系统中性能提高的常见实例就是事件驱动编程 操作进程进程是运行在它自己的地址空间内的自包容的程序 而java所使用的并发系统会共享诸如内存和IO这样的资源,java操作的是代码代表的进程生成的一系列线程 java 可能并没有函数式编程语言适合并发 改进代码设计基本的线程机制并发编程将程序划分为多个分离的独立运行的任务，通过多线程机制，这些独立任务中的每一个都将由执行线程来驱动。线程的调度由操作系统负责 代码 定义任务通过Runnable接口定义任务 Thread class将Runnable对象转变为工作按任务的传统方式是把它提交给一个Thread构造器 executor非常常见的情况是，单个Executor被用来穿件和管理系统所有的任务 在任何线程池中，现有线程在可能的情况下，都会被自动复用 从任务中产生返回值使用Callable接口，而不是Runnable,Callable接口返回一个泛型的Future,可以使用get()方法等待结果返回 休眠sleep 优先级优先调度优先级比较高的线程 书上的例子在我的电脑上不好使 让步如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程带哦度机制一个暗示：我的工作已经做得差不多了，可以让别的线程使用CPU了 这个暗示就是使用yield()方法来作出 不能依赖yield,实际上，yield经常被滥用 后台线程所谓后台(daemon)线程,是指在程序运行的时候在后台提供的一种通用服务的线程， 这种线程并不属于程序中不可或缺的部分后台线程退出时，会杀死进程中所有与的后台线程。]]></content>
-      <categories>
-        <category>并发</category>
-      </categories>
-      <tags>
-        <tag>并发，java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[微服务]]></title>
-    <url>%2F2018%2F12%2F04%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%2F</url>
-    <content type="text"><![CDATA[感悟：项目中使用了微服务架构，相对于单体的应用，整个项目被拆成另外N个小应用，分散在各个服务器上，好处是，项目中的各个部分互不影响(接口不变的情况下)，\缺点是，应用过于分散，难以管理、 所以有必要了解一下别人家的微服务架构是怎么设计的 大家都知道，基于单体（Monolith）和微服务（Microservice）架构的争论已经存在多年，正如我们对胖客户端、瘦客户端孰好孰坏的争论一样，有必然的历史演化，也有各自的优缺点。\架构师们总是在考虑，我们是要一个中心化、全能多才的单体，还是百花齐放、各自为政的微服务群体，各种基于成本、交互、部署等等的讨论应该不会停下脚步。\这里，我们不做过多的深入探讨和介绍，而本文正是这些讨论中的一个很好的例子，供大家思考。 随着系统变得越来越大，最终会达到一个临界点，作为一个单体（monolith）它变得难以管理。每一行代码的添加，都会让系统变得更加难以理解、变更和重用。\虽然微服务（microservice）试图解决这些问题，但也带来了额外的复杂性以及集成的成本。 一个经过优化的微服务架构案例 优势: 模块较小，低耦合，提高开发人员开发效率 容易理解和测试每个服务 容易定位问题和解决故障,减少了关联故障 难点： 微服务的模块间需要n多契约，文档，需要时间来维护接口和文档 devops显得很重要 API gateway :lagom]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>微服务</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[序列化与反序列化]]></title>
     <url>%2F2018%2F12%2F04%2F%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%2F</url>
     <content type="text"><![CDATA[调用服务，避免不了序列化 rest+jsonjson真是操蛋，特别是不同的语言，不同的json库间转换，很痛苦,所以需要思考还有没有其他的序列化方式 最好用的scala中的json工具： play-json-extensions +22 field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125;]]></content>
@@ -976,6 +951,17 @@
       <tags>
         <tag>序列化</tag>
         <tag>json</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[并发-java 编程思想]]></title>
+    <url>%2F2018%2F12%2F04%2F%E5%B9%B6%E5%8F%91-java%2F</url>
+    <content type="text"><![CDATA[并发并发介绍，想要真正编写一些复杂的程序钱，应该学一些专门介绍并发的书籍 并发的多面性使用并发时需要解决的问题有多个，而实现并发的方式也有多种，并且两者之间没有明显的映射关系 并发解决的问题大体上可以分为速度和设计可管理性两种 更快的执行并发通常是提高运行在单处理器上的程序性能直觉上思考在单核心上顺序运行程序应该是最高效的，因为没有上下文切换的代价 但是世界上有讨厌的 阻塞 单处理器系统中性能提高的常见实例就是事件驱动编程 操作进程进程是运行在它自己的地址空间内的自包容的程序 而java所使用的并发系统会共享诸如内存和IO这样的资源,java操作的是代码代表的进程生成的一系列线程 java 可能并没有函数式编程语言适合并发 改进代码设计基本的线程机制并发编程将程序划分为多个分离的独立运行的任务，通过多线程机制，这些独立任务中的每一个都将由执行线程来驱动。线程的调度由操作系统负责 代码 定义任务通过Runnable接口定义任务 Thread class将Runnable对象转变为工作按任务的传统方式是把它提交给一个Thread构造器 executor非常常见的情况是，单个Executor被用来穿件和管理系统所有的任务 在任何线程池中，现有线程在可能的情况下，都会被自动复用 从任务中产生返回值使用Callable接口，而不是Runnable,Callable接口返回一个泛型的Future,可以使用get()方法等待结果返回 休眠sleep 优先级优先调度优先级比较高的线程 书上的例子在我的电脑上不好使 让步如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程带哦度机制一个暗示：我的工作已经做得差不多了，可以让别的线程使用CPU了 这个暗示就是使用yield()方法来作出 不能依赖yield,实际上，yield经常被滥用 后台线程所谓后台(daemon)线程,是指在程序运行的时候在后台提供的一种通用服务的线程， 这种线程并不属于程序中不可或缺的部分后台线程退出时，会杀死进程中所有与的后台线程。]]></content>
+      <categories>
+        <category>并发</category>
+      </categories>
+      <tags>
+        <tag>并发，java</tag>
       </tags>
   </entry>
   <entry>
@@ -991,14 +977,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[攒技能]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%94%92%E6%8A%80%E8%83%BD%2F</url>
-    <content type="text"><![CDATA[抬头看天 低头走路分类 项目管理编程语言数据结构服务器端前端数据可视化数据存储处理分布式计算数据分析机器学习、深度学习工欲善其事，必先利其器误入歧途书签数据采集瞎说]]></content>
+    <title><![CDATA[微服务]]></title>
+    <url>%2F2018%2F12%2F04%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%2F</url>
+    <content type="text"><![CDATA[感悟：项目中使用了微服务架构，相对于单体的应用，整个项目被拆成另外N个小应用，分散在各个服务器上，好处是，项目中的各个部分互不影响(接口不变的情况下)，\缺点是，应用过于分散，难以管理、 所以有必要了解一下别人家的微服务架构是怎么设计的 大家都知道，基于单体（Monolith）和微服务（Microservice）架构的争论已经存在多年，正如我们对胖客户端、瘦客户端孰好孰坏的争论一样，有必然的历史演化，也有各自的优缺点。\架构师们总是在考虑，我们是要一个中心化、全能多才的单体，还是百花齐放、各自为政的微服务群体，各种基于成本、交互、部署等等的讨论应该不会停下脚步。\这里，我们不做过多的深入探讨和介绍，而本文正是这些讨论中的一个很好的例子，供大家思考。 随着系统变得越来越大，最终会达到一个临界点，作为一个单体（monolith）它变得难以管理。每一行代码的添加，都会让系统变得更加难以理解、变更和重用。\虽然微服务（microservice）试图解决这些问题，但也带来了额外的复杂性以及集成的成本。 一个经过优化的微服务架构案例 优势: 模块较小，低耦合，提高开发人员开发效率 容易理解和测试每个服务 容易定位问题和解决故障,减少了关联故障 难点： 微服务的模块间需要n多契约，文档，需要时间来维护接口和文档 devops显得很重要 API gateway :lagom]]></content>
       <categories>
-        <category>书签</category>
+        <category>服务器端</category>
       </categories>
       <tags>
-        <tag>技能树</tag>
+        <tag>微服务</tag>
       </tags>
   </entry>
   <entry>
@@ -1013,6 +999,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[数据分析]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%2F</url>
+    <content type="text"><![CDATA[数据分析基础线性代数微积分]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数据结构与算法]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%2F</url>
     <content type="text"><![CDATA[前言数据结构研究的问题包括数据在计算机中存储、组织、传递和转换的过程及方法，这些也是构成与支撑算法的基础。我们在编写计算机程序来解决应用问题时，最终都要归结并落实到这两个问题上 “程序 = 数据结构 + 算法” 算法及其复杂度计算机与算法算法定义所谓算法，就是在特定计算模型下，在信息处理过程中为了解决某一类问题而设计的一个指令序列。比如，对于“过直线上某一点作垂直线”这一问题，绳索及奴隶就构成了一个特定的计算模型，古埃及人基于这一模型所设计的算法一.1，就是在这一计算模型下解决这一问题的一个算法。 算法性能的分析与评价三个层次 合法性，语法正确，能够执行 不同算法的效率,设计和使用适宜的数据结构 软件工程，全局考虑 如果将借助计算机解决实际问题比作书法，那么在第一层次上就相当于学习点、横、竖、撇和捺等基本笔画，而第二层次则相当于学习如何将不同的笔画按照一定的间架结构组成有意义的不同汉字。然而这还远远不够，作为一幅完整的书法作品，还需要在汉字之间形成大小、粗细、疏密、浓淡、奇正及枯润等方面的搭配与呼应，也就是要讲求章法。在利用计算机解决实际问题的过程中，同样存在这样一个更高层次的问题：倘若软件的规模大到任何个人或少数人都不足以开发出来地步，而且在其生命期内软件也需要很多人的协作才能得以维护，则需要进一步考虑一些更为全局性的问题，这些问题都属于软件工程学的范畴， 时间复杂度及其度量T(n)称作算法的时间复杂度。 每一次基本操作都可以在常数时间内完成，因此如果根据算法所需执行的基本操作次数来表示 T(n)，就可以更加客观地反映算法的效率。 空间复杂度衡量算法性能的另一个重要方面，就是算法所需使用的存储空间量，即算法空间复杂度观察结论一.1 就渐进复杂度的意义而言，在任何一个算法的任何一次运行过程中，其实际占用的存储空间都不会多于其间执行的基本操作次数。 #### 算法复杂度及其分析 O(1)⎯⎯取非极端元素O(logn)⎯⎯进制转换O(n)⎯⎯数组求和O(n^2)⎯⎯起泡排序O(2^r)⎯⎯幂函数 计算模型可解性有效可解##### 下界 递归栈与队列栈栈是存放对象的一种特殊容器，在插入与删除对象时，这种结构遵循后进先出（Last-in-first-out，LIFO）的原则入栈（Push）和退栈（Pop）。 栈 ADT java.util.Stack push()、pop()、peek()（功能等价于 top()）、getSize()以及 empty()（功能等价于 isEmpty()）。在遇到空栈时，方法 pop()和 peek()都会报意外错 ExceptionStackEmpty。 实现 JVM中的栈]]></content>
@@ -1024,14 +1021,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数据分析]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%2F</url>
-    <content type="text"><![CDATA[数据分析基础线性代数微积分]]></content>
+    <title><![CDATA[日志打印规范]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E8%A7%84%E8%8C%83%2F</url>
+    <content type="text"><![CDATA[背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过 日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情 未完待续…]]></content>
       <categories>
-        <category>数据分析</category>
+        <category>服务器端 - 日志</category>
       </categories>
       <tags>
-        <tag>数据分析</tag>
+        <tag>log</tag>
+        <tag>日志</tag>
       </tags>
   </entry>
   <entry>
@@ -1057,18 +1055,6 @@
         <tag>webapp</tag>
         <tag>Http</tag>
         <tag>爬虫</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[日志打印规范]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E8%A7%84%E8%8C%83%2F</url>
-    <content type="text"><![CDATA[背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过 日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情 未完待续…]]></content>
-      <categories>
-        <category>服务器端 - 日志</category>
-      </categories>
-      <tags>
-        <tag>log</tag>
-        <tag>日志</tag>
       </tags>
   </entry>
   <entry>
@@ -1152,6 +1138,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[攒技能]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%94%92%E6%8A%80%E8%83%BD%2F</url>
+    <content type="text"><![CDATA[抬头看天 低头走路分类 项目管理编程语言数据结构服务器端前端数据可视化数据存储处理分布式计算数据分析机器学习、深度学习工欲善其事，必先利其器误入歧途书签数据采集瞎说]]></content>
+      <categories>
+        <category>书签</category>
+      </categories>
+      <tags>
+        <tag>技能树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[FTP笔记]]></title>
     <url>%2F2018%2F12%2F04%2FFTP%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[FTP作为文件传输的应用，需要保证数据的完整性，即使用TCP可靠传输协议 FTP传输都是通过明文方式，包括用户名和密码；如需传输的安全性，可采用SFTP FTP使用客户服务器方式，大致工作流程如下： 客户端通过TCP三次握手与服务器的21端口建立控制连接 服务器对客户端进行身份验证，授予客户端相应的操作权限 客户端请求数据传输建立数据连接 数据传输完成后断开数据连接 退出FTP服务器断开控制连接 FTP客户端与服务器之间需要建立两个TCP连接，控制连接和数据连接。控制连接，用于传输控制信息，其在整个会话期间保持连接； 数据连接用于传输数据，在客户端发起数据传输请求后建立数据连接，在结束传输后断开连接，不必一直存在。 使用两个连接的好处是使协议更加简单和容易实现，且在传输的过程中，便于利用控制连接中断等操作 java: 参考1,参考21234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859package ftp;import org.apache.commons.net.ftp.FTPClient;import org.apache.commons.net.ftp.FTPReply;import java.io.FileInputStream;import java.io.FileNotFoundException;import java.io.IOException;import java.io.InputStream;/** * Created by on 2016/9/22. */public class FtpUtil &#123; public static boolean uploadFile(String url, int port, String userName, String password, String path, String fileName, InputStream input) &#123; boolean success = false; FTPClient ftpClient = new FTPClient(); int reply; try &#123; ftpClient.connect(url, port); ftpClient.login(userName, password); reply = ftpClient.getReplyCode(); if (!FTPReply.isPositiveCompletion(reply)) &#123; ftpClient.disconnect(); return success; &#125; ftpClient.changeWorkingDirectory(path); ftpClient.setBufferSize(1024); ftpClient.setControlEncoding(&quot;utf-8&quot;); ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE); ftpClient.storeFile(fileName, input); input.close(); ftpClient.logout(); success = true; &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; finally &#123; if (ftpClient.isConnected())&#123; try &#123; ftpClient.disconnect(); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; &#125; &#125; return success; &#125; public static void main(String args[])&#123; try &#123; FileInputStream in = new FileInputStream(&quot;D:/FtpUtil.java&quot;); boolean flag = uploadFile(&quot;127.0.01&quot;,21,&quot;root&quot;,&quot;root123&quot;,&quot;D:/&quot;,&quot;FileUtil.java.java&quot;,in); System.out.println(&quot;flag: &quot; + flag); &#125; catch (FileNotFoundException e) &#123; e.printStackTrace(); &#125; &#125;&#125; scala:123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232233234235236237238239240241242243244245246247248249250251252253254255256257258259260261262263264265266267268269270271272273274275276277278279280281282283284285286287288289290291292293294package webapp.utils.ftpimport org.apache.commons.net.ftp.&#123;FTP, FTPReply, FTPClient&#125;import org.apache.commons.net.PrintCommandListenerimport java.io._import scala.util.&#123;Failure, Success, Try&#125;import scala.Someclass FtpFileSystemAccessor(server: String, port: String, user: String, password: String) extends FtpAccessor &#123; def using(f: AnyRef =&gt; Unit): Unit = &#123; getConnection match &#123; case Some(ftp: FTPClient) =&gt; try &#123; f(ftp) &#125; catch &#123; case e: IOException =&gt; log.error(s&quot;Could not connect to server due to $&#123;e.getMessage&#125;&quot;, e) case e: Throwable =&gt; log.error(e.getMessage, e) &#125; finally &#123; close(ftp) &#125; case _ =&gt; throw new Exception(&quot;Ftp type error&quot;) &#125; &#125; protected def getConnection: Some[AnyRef] = &#123; val ftp = new FTPClient() if (port == &quot;&quot;) &#123; ftp.connect(server) &#125; else &#123; ftp.connect(server, port.toInt) &#125; val reply = ftp.getReplyCode ftp.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out))) //打开调试信息 if (!FTPReply.isPositiveCompletion(reply)) &#123; throw new Exception(&quot;Ftp server refused connection&quot;) &#125; if (!ftp.login(user, password)) &#123; ftp.logout() throw new Exception(&quot;FTP server refused login.&quot;) &#125; Some(ftp) &#125; protected def close(ftp: AnyRef): Unit = &#123; ftp match &#123; case ftp: FTPClient =&gt; if (ftp.isConnected) &#123; Try(ftp.noop()) Try(ftp.logout()) Try(ftp.disconnect()) &#125; case _ =&gt; throw new Exception(&quot;Ftp type error&quot;) &#125; &#125; def makeDir(remote: String): String = &#123; var checkedRemotePath: String = null using &#123; case ftp: FTPClient =&gt; checkedRemotePath = makeDir(ftp, remote) case _ =&gt; &#125; checkedRemotePath &#125; private def makeDir(ftp: FTPClient, remote: String): String = &#123; def remotePathVerified(path: String): String = path.take(1) match &#123; case &quot;.&quot; =&gt; remotePathVerified(path.drop(1)) case &quot;/&quot; =&gt; path.drop(1) case _ =&gt; path &#125; val checkedRemotePath = remotePathVerified(remote) checkedRemotePath.split(&apos;/&apos;).init.foldLeft(&quot;.&quot;)((dir, a) =&gt; &#123; ftp.makeDirectory(dir + &quot;/&quot; + a) dir + &quot;/&quot; + a &#125;) checkedRemotePath &#125; def makeDirectoryRecursive(pathname: String): Boolean = &#123; def directoryHelperFTP(ftpClient: FTPClient, dir: File, res: List[String] = Nil): List[String] = &#123; val path = dir.getPath.replace(&quot;\\&quot;, &quot;/&quot;) Try(ftpClient.getStatus(path)) match &#123; case Success(_) =&gt; res case Failure(_) =&gt; directoryHelperFTP(ftpClient, dir.getParentFile, path :: res) &#125; &#125; var isSuccess:Boolean = false using &#123; case ftp: FTPClient =&gt; isSuccess = directoryHelperFTP(ftp, new File(pathname)).forall(dir =&gt; ftp.makeDirectory(pathname)) case _ =&gt; &#125; isSuccess &#125; override def deleteDirectory(remote: String): Int = &#123; var isDeleteDirectorySuccess: Int = 0 using &#123; case ftp: FTPClient =&gt; ftp.setFileType(FTP.BINARY_FILE_TYPE) val remoteWithoutPoint: String = remote.take(1) match &#123; case &quot;.&quot; =&gt; remote.drop(1) case _ =&gt; remote &#125; isDeleteDirectorySuccess = deleteDirectory(ftp, remoteWithoutPoint) case _ =&gt; &#125; isDeleteDirectorySuccess &#125; private def deleteDirectory(ftp: FTPClient, remoteWithoutPoint: String): Int = &#123; ftp.listFiles(s&quot;./$remoteWithoutPoint&quot;).foreach(f =&gt; &#123; if (f.isDirectory) &#123; val filePath = s&quot;$remoteWithoutPoint/$&#123;f.getName&#125;&quot; deleteDirectory(ftp, filePath) ftp.rmd(s&quot;./$filePath&quot;) ftp.changeWorkingDirectory(s&quot;./$filePath/$&#123;f.getName&#125;&quot;) &#125; else if (f.isFile) &#123; ftp.deleteFile(s&quot;./$remoteWithoutPoint/$&#123;f.getName&#125;&quot;) &#125; &#125;) ftp.rmd(s&quot;./$remoteWithoutPoint&quot;) &#125; override def delete(pathname: String): Unit = &#123; using &#123; case ftp: FTPClient =&gt; ftp.deleteFile(pathname) case _ =&gt; &#125; &#125; def isExists(file: String, filter: String =&gt; Boolean = f =&gt; true): Boolean = &#123; var rtnValue: Boolean = false using &#123; case ftp: FTPClient =&gt; var index = file.lastIndexOf(&apos;/&apos;) if (index &lt; 0) index = file.lastIndexOf(&apos;\\&apos;) val parentPath = file.substring(0, index) val fileName = file.substring(index + 1, file.length) val result = ftp.listNames(parentPath) val files = result.filter(filter) println(result.mkString(&quot;,&quot;)) val fileNames = files.toList.map(x =&gt; x.split(&quot; &quot;).last) rtnValue = fileNames.contains(fileName) case _ =&gt; &#125; rtnValue &#125; override def download(src: String, dst: String, timeout: Int): Unit = &#123; using &#123; case ftp: FTPClient =&gt; ftp.setFileType(FTP.BINARY_FILE_TYPE) ftp.enterLocalPassiveMode() ftp.setBufferSize(1024 * 1024) ftp.setDataTimeout(timeout) //设置数据连接超时,在非正常断链情况下可抛出超时异常,避免长时间阻塞 download(ftp, src, dst) case _ =&gt; &#125; &#125; private def download(ftp: FTPClient, src: String, dst: String): Boolean = &#123; ftp.setFileType(FTP.BINARY_FILE_TYPE) var index = src.lastIndexOf(&apos;/&apos;) if (index == -1) index = src.lastIndexOf(&apos;\\&apos;) val fileName = src.substring(index + 1, src.length) val localFile = new File(dst + &quot;/&quot; + fileName) val localStream = new FileOutputStream(localFile) val isDownloadSuccessful = ftp.retrieveFile(src, localStream) localStream.close() ftp.noop() // check that control connection is working OK ftp.logout() isDownloadSuccessful &#125; /** * 递归遍历和下载指定目录下面指定后缀名的文件 * relativePath 相对路径，用来记录在ftp内当前目录的相对路径。在调用时该参数设置�?&quot;，后面递归调用时会设置为非空值�? * srcDir 需要遍历的目录 * baseDstDir 目标目录，必须是绝对路径 * ext 文件的扩展名 */ override def downloadByExt(srcDir: String, baseDstDir: String, ext: String): Unit = &#123; using &#123; case ftp: FTPClient =&gt; downloadByExt(ftp, &quot;&quot;, srcDir, baseDstDir, ext) case _ =&gt; &#125; &#125; private def downloadByExt(ftp: FTPClient, relativePath: String, srcDir: String, baseDstDir: String, ext: String): Unit = &#123; val array = srcDir.split(&quot;/&quot;).toList array.foreach(x =&gt; if (x != &quot;&quot;) ftp.changeWorkingDirectory(x)) ftp.listFiles.foreach(f =&gt; &#123; if (f.isFile) &#123; if (f.getName.endsWith(ext)) &#123; val dst = baseDstDir + &quot;/&quot; + relativePath val src = f.getName val file = new File(dst + &quot;/&quot; + f.getName) if (!file.exists) &#123; if (!file.getParentFile.exists) file.getParentFile.mkdirs download(ftp, src, dst) &#125; &#125; &#125; else if (f.isDirectory) &#123; val relativeDir = if (relativePath == &quot;&quot;) f.getName else relativePath + &quot;/&quot; + f.getName downloadByExt(ftp, relativeDir, f.getName, baseDstDir, ext) &#125; &#125;) ftp.changeToParentDirectory() &#125; override def upload(localStream: InputStream, remote: String): Boolean = &#123; var result = false using &#123; case ftp: FTPClient =&gt; ftp.setFileType(FTP.BINARY_FILE_TYPE) val remotePath = makeDir(remote) result = ftp.storeFile(s&quot;./$remotePath&quot;, localStream) localStream.close() case _ =&gt; &#125; result &#125; override def upload(local: String, remote: String): Boolean = &#123; val input = new FileInputStream(local) upload(input, remote) &#125; def list(parentPath: String, filter: String =&gt; Boolean = f =&gt; true): Array[String] = &#123; var result: Array[String] = Array.empty using &#123; case ftp: FTPClient =&gt; result = ftp.listFiles(parentPath).map(_.getName).filter(filter) case _ =&gt; &#125; result &#125; def listFiles(parentPath: String): Array[String] = &#123; var result: Array[String] = Array.empty using &#123; case ftp: FTPClient =&gt; val files = ftp.listFiles(parentPath).filter(_.isFile) result = files.map(_.getName) case _ =&gt; &#125; result &#125; def listDirectories(parentPath: String): Array[String] = &#123; var result: Array[String] = Array.empty using &#123; case ftp: FTPClient =&gt; val files = ftp.listDirectories(parentPath) result = files.map(_.getName) case _ =&gt; &#125; result &#125; def rename(src:String, dst:String):Boolean = &#123; var result: Boolean = true using &#123; case ftp: FTPClient =&gt; ftp.rename(src,dst) result = true case _ =&gt; &#125; result &#125;&#125;object FtpFileSystemAccessor &#123; def apply(ftpInfo: FtpServerConfiguration): FtpFileSystemAccessor = new FtpFileSystemAccessor(ftpInfo.ip, ftpInfo.port, ftpInfo.user, ftpInfo.password)&#125;]]></content>
@@ -1212,6 +1209,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[说的好]]></title>
+    <url>%2F2018%2F12%2F04%2F%E8%AF%B4%E7%9A%84%E5%A5%BD%2F</url>
+    <content type="text"><![CDATA[说的好初级程序员升级指南转侵删作者：暗灭链接：https://www.zhihu.com/question/33578621/answer/451931102来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 先不说高级。就只说初级程序员经常容易犯的错误，把这些错误改正了，你离中级就不远了。初级程序员经常犯的错误集锦 命名不规范 日志不规范 拒绝写接口和假数据 不写单元测试 盲目集成 逻辑不清 不做方案 不关注性能 害怕重构 做出来就好，不考虑优雅的方案 不考虑未来需求的变化 遇到问题的时候不会试错 不会写伪代码 不做数据量的预估 提交代码不规范 不喜欢打Tag 不遵守发布流程 不知道Bug修复的优先级 总喜欢手动修改线上代码 不做数据备份 不做自测 不尽力模仿真实数据，测试数据很随意 不抽取公共代码 不认真听需求讲解 不看验收标准 不主动推进项目进度 遇到难题不主动反馈 一 命名不规范 命名很随意，当时写代码特别High，什么奇奇怪怪的命名都有的：xiaonaigou,xxxx,j1,jl,llst. 完全意识不到命名规范的价值和意义。 二 日志不规范日志？那是什么鬼东西，能吃么？ 曾经有一个从文思海辉出来的小伙伴，三年后端工程师经验，出了问题不知道怎么解决。 只好重启。 找我来协助，问他， 怎么错了？ 不知道。 日志呢？ 没有。 晕，那怎么解决问题，神仙也搞不定啊。 后来才知道，他们解决问题都是本地改代码然后直接部署，重新访问看错误消失没，没有消失就继续在本地改源码。 三 拒绝写接口和假数据一个菜鸡不可怕，可怕的是菜鸡遇到菜鸡。曾经有一个项目中的两个菜鸡，一个前端一个后端，他们很欢快的调接口，根本不写文档 ，两个人效率特别高。 直到有一天，发现项目可能做不完了，需要另外两个前端菜鸡协助一下。 新来的两个菜鸡要获取后端的数据，不知道接口的Url地址，不知道Get还是Post，不知道发送的参数和返回值。就这样写！ 我压根没想到可以这么写代码，两个菜鸡很开心！拍手称快：通了，通了，通了！ 我说你们通什么呢？他们说接口终于通了！原来他们两个参考之间的页面，硬生生的一次一次不停的尝试，就这样把接口猜出来了！ 这就是编程的乐趣吗？还有不写假数据。曾经有一个马姓小哥，对赵姓小哥信誓旦旦的说：3天，给我3天时间 ，我把真数据给你。 于是赵姓小哥信以为真。就这样，3天又3天，3天又3天，3天又3天，3天又3天，3天又3天。 整整一个半月，赵姓小哥都没有拿到全部的数据！ 四 不写单元测试 确切来说，是不按TDD的方式开发。在现在IDE这么强大的情况下，先写单元测试的习惯，不仅仅是代码的严谨性，也是效率的代名词啊。 可是很多菜鸡理解不了单元测试的价值，没关系，等到代码重构，需求变更的时候，就哭都哭不出来了！ 好的单元测试，你的逻辑必然会清楚。 五 先集成，再测试，再放弃。很多时候，菜鸡在引入第三方的库，框架，接口或者是服务的时候，最喜欢的事情就是直接和自己原有的代码集成在一起。结果 是什么呢？突然间不能用了，跑不起来了，不知道问题出在哪了，根本分不清倒底是第三方的问题还是自己的问题。好的方法是什么？先跑通官方提供的Demo，再想办法一点一点加上自己的业务。 六 理不清楚逻辑，边做边猜前端在这里的问题特别多，做支付，不清楚支付的流程，分不清楚定义，总以为前端就是接口处理好数据展示好拉倒。很多菜鸡都会有这种习惯，这样不好，先把逻辑处理好，弄清楚流程，再去动手才好。 七 不做方案不做方案代表什么含义呢？就是完全凭直觉行走啊。跟闭上眼逛窑子一样。写代码的好习惯应该是先在脑袋里把所有的需求细节过一遍，实现细节拿出来。上个月就有一个张姓小菜鸡，做一个匿名评论的功能。基本上没有什么经验，脑子也不好使，给出的方式是什么你们猜得到么？用户刷新一次就往用户表里插入一条数据，密码默认昵称随机。不多说了都是泪，我见过太多让人目瞪狗呆的方案了，看着满屏的代码，你怎么帮他调错调优，最好的方式就是全部重写。做方案的好处太多了。 八 不关注性能不关注性能也是新人很容易犯的错。什么是性能呢。对后端来说就是TPS和响应时间，对前端来说就是响应时间。很多新人程序员的习惯就是把东西做出来，然后再优化。最后就是东西做出来了，优化留给别人了。对性能的关注也是晋升中级程序员最关键的技能点。在写代码的时候，有经验的工程师已经知道了这个方法这个函数这个功能点的性能怎么样，瓶颈在哪里。 九 害怕重构“程序员最大的勇气就是看自己三个月之前写的代码。”其实重构并不应该是在几个月之后重构，最好的方式是实时重构。写一天代码，70%的时间都放到重构上都不过份。而新人呢，磕磕跘跘的完成一个功能，就跟多米诺骨牌做成的大黄蜂一样，你敢动一下他的代码试试？他会跟你拼命。你让他自己动一行代码试试？不重构在某种程度上也意味着你的代码实现无法重塑。 十 做出来就好，不考虑优雅的方案有个词叫做最佳实践，其实编码规范和最佳实践，是编程功底的重要体现。优雅方案可以认为是最佳实践的升级版，它和上面说到的不断的重构是相辅相成的。不好的方案是什么呢？硬编码居多，没有可扩展性，用很丑陋的方式完成了功能。上次他们去做了一个关于试听课的方案，一个人能试听多少节课，正常的逻辑应该是在用户的表里加一个字段来表示。需求是写着邀请几个人，可以试听多少节课，所以他们判断试听多少节课就直接在通过邀请人的表里查询去做。完全没考虑到以后如果我变换了试听课的判断条件怎么办？实际上这是应该拆解成两部分，一个是试听课的产生条件，这是一个独立的模块，加一个是试听课的确认。像这种例子太多了，也和不做方案，不考虑扩展性有关系。就是接下来要说的。 十一 不考虑未来需求的变化工程师的水准，其实可以分成以下几个阶段（马丹我找不到之前在哪个答案里写过了）： 面向功能编程 面向性能编程 面向未来编程工程师拿到需求的第一件事，应该聚集在以下几个问题：第一 哪些需求是我之前完成过的第二 哪些需求是有可能变化的第三 有几种方案，分别支持什么样的需求变化但是差一点的程序员就考虑不到那么远，一个是对业务不熟悉，判断不出来哪些需求可能会产生变化，一个是对可选的方案掌握的不多，根本就没有什么可选的余地，还有就是没有这种思维习惯，分不清楚哪些是现在要完成的，哪些是未来可能会支持或者是变动的。十二 遇到问题的时候不会试错这也是新手常见的问题。很多时候新人会遇到问题，解决不了，去找一个有经验的工程师，这个有经验的工程师呢，大概也未曾遇到这种情况，但是他解决问题的思路清楚啊。一会儿试试这个，一会儿删删那段代码，很快就跑通了。解决问题是一个很见功底的技术点，而且是有很多方法论的，之前总结过一些，简单列举过来： 寻找正确的代码 理清楚正确的执行顺序 重现错误 最小化错误产生的场景 修改代码到一个已知的错误类型等等等。解决问题就是一个分析推理的过程，而在这里呢，背后的功底就是你知道很多哪些是肯定不会错的小公理，然后再挨个去定位可能产生错误的环节，分解流程是最基础的工作。十三 不会写伪代码 伪代码是什么呢？就是自然语言啊。其实编程只有 三种逻辑控制块，顺序，循环，判断所以你只要用自然语言来描述出来，先做什么，再做什么，什么时候循环，什么时候判断，代码写出来的问题就不大。这是一个先写伪代码再写细节的过程。你不要上来就开始平铺写代码（我之前讲过优雅代码之道，有兴趣的可以加群听一下，重点讲了怎么写出来优雅代码）。平铺代码是最菜的方式，好的代码是有结构的，有不同的抽像层级。第一步，干嘛。第二步，干嘛。第三步，干嘛。先把这个列清楚，这是伪代码的第一级。然后变成注释，这是第二级。删掉注释变成函数名，这是第三级。所以说，好的程序员写代码是不需要注释的，不是说让你把注释删掉，而是让你完成这三步升华的过程。写的好的代码，命名规范，你看到的真的是一首诗， 是一种编程语言，是在用语言来描述一件功能的完成，这种编程艺术的工业感很爽快，你看那些不爽的代码，简直了。。]]></content>
+      <categories>
+        <category>瞎说</category>
+      </categories>
+      <tags>
+        <tag>摘抄</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[开发测试集群环境搭建]]></title>
     <url>%2F2018%2F12%2F04%2F%E9%9B%86%E7%BE%A4%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[通过虚拟机搭建集群环境 虚拟机环境安装配置 下载安装VMare，官网下载vmare安装文件安装，本次在ubuntu 上安装使用，跟windows并无太大区别，秘钥靠网友（cnblogs上有） 下载centos的iso镜像文件并安装,安装ubuntu系统一直失败报错，我怀疑还是我的办公电脑的显卡比较奇葩造成的，所以直接下载centos的minimal版本安装一切正常 配置一台matrix并clone,安装好一台后，安装java,clone 修改hostname,/etc/hosts文件 集群服务器间免密 搞了将近两天， 最后发现原因是 我给私钥的权限太大，造成验证不通过 （我给的777，应该是700） zookeeper安装Zookeeper 作为一个分布式的服务框架，主要用来解决分布式集群中应用系统的一致性问题，它能提供基于类似于文件系统的目录节点树方式的数据存储，但是 Zookeeper 并不是用来专门存储数据的，它的作用主要是用来维护和监控你存储的数据的状态变化。通过监控这些数据状态的变化，从而可以达到基于数据的集群管理，后面将会详细介绍 Zookeeper 能够解决的一些典型问题，这里先介绍一下，Zookeeper 的操作接口和简单使用示例。 根据官网的指引下载zookeeper安装包，解压 在集群各个机器上新建dataDir目录，并在其中新建文件myid，文件中只有一个字–id，如1 cp conf目录下zoo_sample.cfg文件为zoo.cfg，并修改,zookeeper默认从这里读取配置文件1234567891011121314151617181920212223242526272829303132333435 # The number of milliseconds of each ticktickTime=2000# The number of ticks that the initial# synchronization phase can takeinitLimit=10# The number of ticks that can pass between# sending a request and getting an acknowledgementsyncLimit=5# the directory where the snapshot is stored.# do not use /tmp for storage, /tmp here is just# example sakes.dataDir=/root/data/zookeeper# the port at which the clients will connectclientPort=2181# the maximum number of client connections.# increase this if you need to handle more clients#maxClientCnxns=60## Be sure to read the maintenance section of the# administrator guide before turning on autopurge.## http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance## The number of snapshots to retain in dataDir#autopurge.snapRetainCount=3# Purge task interval in hours# Set to &quot;0&quot; to disable auto purge feature#autopurge.purgeInterval=1#logDirdataLogDir=/root/logs/zookeeperserver.1=0.0.0.0:2888:3888server.2=ake:2888:3888server.3=angela:2888:3888server.4=houyi:2888:3888server.5=houzi:2888:3888 其中dataDir为zookeeper存放数据的目录，最后的集群配置：server.id=ip/hostname:该服务器跟leader服务器交换数据的端口:leader服务器挂掉重新选举leader的端口 将在一台机器上配置好的zookeeper，连同配置文件分发到集群的各台机器上，注意配置文件中当前机器的ip/hostname要改成0.0.0.0,不然选举leader时会有异常refstackoverflow 各台服务器中的zookeeper的目录最好一致，在配置文件限定的时间内同时执行zkServer.sh脚本启动服务 123456 /root/zookeeper/zookeeper-3.4.10/bin/zkServer.sh startvim /root/zookeeper/zookeeper-3.4.10/conf/zoo.cfg#停止服务/root/zookeeper/zookeeper-3.4.10/bin/zkServer.sh stop＃查看服务状态/root/zookeeper/zookeeper-3.4.10/bin/zkServer.sh status 默认启动脚本的目录下会生成zookeeper.out文件，日志都记录在这个文件中 正常的status长这个样子 123 ZooKeeper JMX enabled by defaultUsing config: /root/zookeeper/zookeeper-3.4.10/bin/../conf/zoo.cfgMode: follower ref: IBM CentOS 7 虚拟机搭建zookeeper集群 ZooKeeper深入浅出 KAFKA集群安装 kafka官网下载安装包 解压，并修改配置文件中zookeeper.connect hostname等 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142# Licensed to the Apache Software Foundation (ASF) under one or more# contributor license agreements. See the NOTICE file distributed with# this work for additional information regarding copyright ownership.# The ASF licenses this file to You under the Apache License, Version 2.0# (the &quot;License&quot;); you may not use this file except in compliance with# the License. You may obtain a copy of the License at## http://www.apache.org/licenses/LICENSE-2.0## Unless required by applicable law or agreed to in writing, software# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.# See the License for the specific language governing permissions and# limitations under the License.# see kafka.server.KafkaConfig for additional details and defaults############################# Server Basics ############################## The id of the broker. This must be set to a unique integer for each broker.broker.id=3# Switch to enable topic deletion or not, default value is false#delete.topic.enable=true############################# Socket Server Settings ############################## The address the socket server listens on. It will get the value returned from# java.net.InetAddress.getCanonicalHostName() if not configured.# FORMAT:# listeners = listener_name://host_name:port# EXAMPLE:# listeners = PLAINTEXT://your.host.name:9092listeners=PLAINTEXT://houyi:9092hostname=houyiport=9092# Hostname and port the broker will advertise to producers and consumers. If not set,# it uses the value for &quot;listeners&quot; if configured. Otherwise, it will use the value# returned from java.net.InetAddress.getCanonicalHostName().#advertised.listeners=PLAINTEXT://your.host.name:9092# Maps listener names to security protocols, the default is for them to be the same. See the config documentation for more details#listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL# The number of threads that the server uses for receiving requests from the network and sending responses to the networknum.network.threads=3# The number of threads that the server uses for processing requests, which may include disk I/Onum.io.threads=8# The send buffer (SO_SNDBUF) used by the socket serversocket.send.buffer.bytes=102400# The receive buffer (SO_RCVBUF) used by the socket serversocket.receive.buffer.bytes=102400# The maximum size of a request that the socket server will accept (protection against OOM)socket.request.max.bytes=104857600############################# Log Basics ############################## A comma seperated list of directories under which to store log fileslog.dirs=/tmp/kafka-logs# The default number of log partitions per topic. More partitions allow greater# parallelism for consumption, but this will also result in more files across# the brokers.num.partitions=1# The number of threads per data directory to be used for log recovery at startup and flushing at shutdown.# This value is recommended to be increased for installations with data dirs located in RAID array.num.recovery.threads.per.data.dir=1############################# Internal Topic Settings ############################## The replication factor for the group metadata internal topics &quot;__consumer_offsets&quot; and &quot;__transaction_state&quot;# For anything other than development testing, a value greater than 1 is recommended for to ensure availability such as 3.offsets.topic.replication.factor=1transaction.state.log.replication.factor=1transaction.state.log.min.isr=1############################# Log Flush Policy ############################## Messages are immediately written to the filesystem but by default we only fsync() to sync# the OS cache lazily. The following configurations control the flush of data to disk.# There are a few important trade-offs here:# 1. Durability: Unflushed data may be lost if you are not using replication.# 2. Latency: Very large flush intervals may lead to latency spikes when the flush does occur as there will be a lot of data to flush.# 3. Throughput: The flush is generally the most expensive operation, and a small flush interval may lead to exceessive seeks.# The settings below allow one to configure the flush policy to flush data after a period of time or# every N messages (or both). This can be done globally and overridden on a per-topic basis.# The number of messages to accept before forcing a flush of data to disk#log.flush.interval.messages=10000# The maximum amount of time a message can sit in a log before we force a flush#log.flush.interval.ms=1000############################# Log Retention Policy ############################## The following configurations control the disposal of log segments. The policy can# be set to delete segments after a period of time, or after a given size has accumulated.# A segment will be deleted whenever *either* of these criteria are met. Deletion always happens# from the end of the log.# The minimum age of a log file to be eligible for deletion due to agelog.retention.hours=168# A size-based retention policy for logs. Segments are pruned from the log as long as the remaining# segments don&apos;t drop below log.retention.bytes. Functions independently of log.retention.hours.#log.retention.bytes=1073741824# The maximum size of a log segment file. When this size is reached a new log segment will be created.log.segment.bytes=1073741824# The interval at which log segments are checked to see if they can be deleted according# to the retention policieslog.retention.check.interval.ms=300000############################# Zookeeper ############################## Zookeeper connection string (see zookeeper docs for details).# This is a comma separated host:port pairs, each corresponding to a zk# server. e.g. &quot;127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002&quot;.# You can also append an optional chroot string to the urls to specify the# root directory for all kafka znodes.zookeeper.connect=yase:2181,ake:2181,angela:2181,houyi:2181,houzi:2181# Timeout in ms for connecting to zookeeperzookeeper.connection.timeout.ms=6000############################# Group Coordinator Settings ############################## The following configuration specifies the time, in milliseconds, that the GroupCoordinator will delay the initial consumer rebalance.# The rebalance will be further delayed by the value of group.initial.rebalance.delay.ms as new members join the group, up to a maximum of max.poll.interval.ms.# The default value for this is 3 seconds.# We override this to 0 here as it makes for a better out-of-the-box experience for development and testing.# However, in production environments the default value of 3 seconds is more suitable as this will help to avoid unnecessary, and potentially expensive, rebalances during application startup.group.initial.rebalance.delay.ms=0 将解压后的文件分发到集群中的各个机器中，并修改相应的brokerid,保证brokerid唯一 分别在集群的各台机器上执行启动脚本，并测试kafka的可用性 12345bin/kafka-server-start.sh config/server.properties &amp;bin/kafka-topics.sh --create --zookeeper yase:2181,ake:2181,angela:2181,houyi:2181,houzi:2181 --replication-factor 3 --partitions 3 --topic topicTestbin/kafka-topics.sh --list --zookeeper yase:2181,ake:2181,angela:2181,houyi:2181,houzi:2181bin/kafka-console-producer.sh --broker-list yase:9092,ake:9092,angela:9092,houyi:9092,houzi:9092 --topic topicTestbin/kafka-console-consumer.sh --zookeeper yase:2181,ake:2181,angela:2181,houyi:2181,houzi:2181 --topic topicTest --from-beginning hadoop 安装 官网下载binary文件，这里选择了比较稳定的2.7版本 解压缩，配置slaves core-site.xml hdfs-site.xml 等配置文件 将解压后的整个文件分发到集群的各个节点，路径于yase，也就是master节点保持一致，在yase上执行启动脚本时会按照slaves中的配置，分别远程启动slave的datanode 需要注意的是core-site.xml中的临时文件目录设置时，不要加file:// ,不然格式化时会出错 1234567891011&lt;configuration&gt; &lt;property&gt; &lt;name&gt;hadoop.tmp.dir&lt;/name&gt; &lt;value&gt;/root/hdpspk/hadoop/tmp&lt;/value&gt; &lt;description&gt;Abase for other temporary directories.&lt;/description&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;fs.defaultFS&lt;/name&gt; &lt;value&gt;hdfs://yase:9000&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt; 12bin/hdfs namenode -formatsbin/start-all.sh ref:hadoop2.7安装 spark安装 照旧，下载解压，配置，分发，master节点脚本开启服务 ref:spark22安装 使用Amazon EC2,ssh 连接总是会自己断开，很讨厌解决办法: 使用客户端工具，例如securecrt连接linux服务器，有的会出现过一段时间没有任何操作，客户端与服务器就断开了连接。造成这个的原因，主要是因为客户端与服务器之间存在路由器，防火墙以及为了本身的安全性，在超过特定的时间后就会把空闲连接断开。或者是服务器端设置了断开空闲连接。那么解决的方法有两种，一是从服务器着手，一是在客户端工具上下手。 服务器端]]></content>
@@ -1222,17 +1230,6 @@
         <tag>集群</tag>
         <tag>环境</tag>
         <tag>大数据</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[说的好]]></title>
-    <url>%2F2018%2F12%2F04%2F%E8%AF%B4%E7%9A%84%E5%A5%BD%2F</url>
-    <content type="text"><![CDATA[说的好初级程序员升级指南转侵删作者：暗灭链接：https://www.zhihu.com/question/33578621/answer/451931102来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 先不说高级。就只说初级程序员经常容易犯的错误，把这些错误改正了，你离中级就不远了。初级程序员经常犯的错误集锦 命名不规范 日志不规范 拒绝写接口和假数据 不写单元测试 盲目集成 逻辑不清 不做方案 不关注性能 害怕重构 做出来就好，不考虑优雅的方案 不考虑未来需求的变化 遇到问题的时候不会试错 不会写伪代码 不做数据量的预估 提交代码不规范 不喜欢打Tag 不遵守发布流程 不知道Bug修复的优先级 总喜欢手动修改线上代码 不做数据备份 不做自测 不尽力模仿真实数据，测试数据很随意 不抽取公共代码 不认真听需求讲解 不看验收标准 不主动推进项目进度 遇到难题不主动反馈 一 命名不规范 命名很随意，当时写代码特别High，什么奇奇怪怪的命名都有的：xiaonaigou,xxxx,j1,jl,llst. 完全意识不到命名规范的价值和意义。 二 日志不规范日志？那是什么鬼东西，能吃么？ 曾经有一个从文思海辉出来的小伙伴，三年后端工程师经验，出了问题不知道怎么解决。 只好重启。 找我来协助，问他， 怎么错了？ 不知道。 日志呢？ 没有。 晕，那怎么解决问题，神仙也搞不定啊。 后来才知道，他们解决问题都是本地改代码然后直接部署，重新访问看错误消失没，没有消失就继续在本地改源码。 三 拒绝写接口和假数据一个菜鸡不可怕，可怕的是菜鸡遇到菜鸡。曾经有一个项目中的两个菜鸡，一个前端一个后端，他们很欢快的调接口，根本不写文档 ，两个人效率特别高。 直到有一天，发现项目可能做不完了，需要另外两个前端菜鸡协助一下。 新来的两个菜鸡要获取后端的数据，不知道接口的Url地址，不知道Get还是Post，不知道发送的参数和返回值。就这样写！ 我压根没想到可以这么写代码，两个菜鸡很开心！拍手称快：通了，通了，通了！ 我说你们通什么呢？他们说接口终于通了！原来他们两个参考之间的页面，硬生生的一次一次不停的尝试，就这样把接口猜出来了！ 这就是编程的乐趣吗？还有不写假数据。曾经有一个马姓小哥，对赵姓小哥信誓旦旦的说：3天，给我3天时间 ，我把真数据给你。 于是赵姓小哥信以为真。就这样，3天又3天，3天又3天，3天又3天，3天又3天，3天又3天。 整整一个半月，赵姓小哥都没有拿到全部的数据！ 四 不写单元测试 确切来说，是不按TDD的方式开发。在现在IDE这么强大的情况下，先写单元测试的习惯，不仅仅是代码的严谨性，也是效率的代名词啊。 可是很多菜鸡理解不了单元测试的价值，没关系，等到代码重构，需求变更的时候，就哭都哭不出来了！ 好的单元测试，你的逻辑必然会清楚。 五 先集成，再测试，再放弃。很多时候，菜鸡在引入第三方的库，框架，接口或者是服务的时候，最喜欢的事情就是直接和自己原有的代码集成在一起。结果 是什么呢？突然间不能用了，跑不起来了，不知道问题出在哪了，根本分不清倒底是第三方的问题还是自己的问题。好的方法是什么？先跑通官方提供的Demo，再想办法一点一点加上自己的业务。 六 理不清楚逻辑，边做边猜前端在这里的问题特别多，做支付，不清楚支付的流程，分不清楚定义，总以为前端就是接口处理好数据展示好拉倒。很多菜鸡都会有这种习惯，这样不好，先把逻辑处理好，弄清楚流程，再去动手才好。 七 不做方案不做方案代表什么含义呢？就是完全凭直觉行走啊。跟闭上眼逛窑子一样。写代码的好习惯应该是先在脑袋里把所有的需求细节过一遍，实现细节拿出来。上个月就有一个张姓小菜鸡，做一个匿名评论的功能。基本上没有什么经验，脑子也不好使，给出的方式是什么你们猜得到么？用户刷新一次就往用户表里插入一条数据，密码默认昵称随机。不多说了都是泪，我见过太多让人目瞪狗呆的方案了，看着满屏的代码，你怎么帮他调错调优，最好的方式就是全部重写。做方案的好处太多了。 八 不关注性能不关注性能也是新人很容易犯的错。什么是性能呢。对后端来说就是TPS和响应时间，对前端来说就是响应时间。很多新人程序员的习惯就是把东西做出来，然后再优化。最后就是东西做出来了，优化留给别人了。对性能的关注也是晋升中级程序员最关键的技能点。在写代码的时候，有经验的工程师已经知道了这个方法这个函数这个功能点的性能怎么样，瓶颈在哪里。 九 害怕重构“程序员最大的勇气就是看自己三个月之前写的代码。”其实重构并不应该是在几个月之后重构，最好的方式是实时重构。写一天代码，70%的时间都放到重构上都不过份。而新人呢，磕磕跘跘的完成一个功能，就跟多米诺骨牌做成的大黄蜂一样，你敢动一下他的代码试试？他会跟你拼命。你让他自己动一行代码试试？不重构在某种程度上也意味着你的代码实现无法重塑。 十 做出来就好，不考虑优雅的方案有个词叫做最佳实践，其实编码规范和最佳实践，是编程功底的重要体现。优雅方案可以认为是最佳实践的升级版，它和上面说到的不断的重构是相辅相成的。不好的方案是什么呢？硬编码居多，没有可扩展性，用很丑陋的方式完成了功能。上次他们去做了一个关于试听课的方案，一个人能试听多少节课，正常的逻辑应该是在用户的表里加一个字段来表示。需求是写着邀请几个人，可以试听多少节课，所以他们判断试听多少节课就直接在通过邀请人的表里查询去做。完全没考虑到以后如果我变换了试听课的判断条件怎么办？实际上这是应该拆解成两部分，一个是试听课的产生条件，这是一个独立的模块，加一个是试听课的确认。像这种例子太多了，也和不做方案，不考虑扩展性有关系。就是接下来要说的。 十一 不考虑未来需求的变化工程师的水准，其实可以分成以下几个阶段（马丹我找不到之前在哪个答案里写过了）： 面向功能编程 面向性能编程 面向未来编程工程师拿到需求的第一件事，应该聚集在以下几个问题：第一 哪些需求是我之前完成过的第二 哪些需求是有可能变化的第三 有几种方案，分别支持什么样的需求变化但是差一点的程序员就考虑不到那么远，一个是对业务不熟悉，判断不出来哪些需求可能会产生变化，一个是对可选的方案掌握的不多，根本就没有什么可选的余地，还有就是没有这种思维习惯，分不清楚哪些是现在要完成的，哪些是未来可能会支持或者是变动的。十二 遇到问题的时候不会试错这也是新手常见的问题。很多时候新人会遇到问题，解决不了，去找一个有经验的工程师，这个有经验的工程师呢，大概也未曾遇到这种情况，但是他解决问题的思路清楚啊。一会儿试试这个，一会儿删删那段代码，很快就跑通了。解决问题是一个很见功底的技术点，而且是有很多方法论的，之前总结过一些，简单列举过来： 寻找正确的代码 理清楚正确的执行顺序 重现错误 最小化错误产生的场景 修改代码到一个已知的错误类型等等等。解决问题就是一个分析推理的过程，而在这里呢，背后的功底就是你知道很多哪些是肯定不会错的小公理，然后再挨个去定位可能产生错误的环节，分解流程是最基础的工作。十三 不会写伪代码 伪代码是什么呢？就是自然语言啊。其实编程只有 三种逻辑控制块，顺序，循环，判断所以你只要用自然语言来描述出来，先做什么，再做什么，什么时候循环，什么时候判断，代码写出来的问题就不大。这是一个先写伪代码再写细节的过程。你不要上来就开始平铺写代码（我之前讲过优雅代码之道，有兴趣的可以加群听一下，重点讲了怎么写出来优雅代码）。平铺代码是最菜的方式，好的代码是有结构的，有不同的抽像层级。第一步，干嘛。第二步，干嘛。第三步，干嘛。先把这个列清楚，这是伪代码的第一级。然后变成注释，这是第二级。删掉注释变成函数名，这是第三级。所以说，好的程序员写代码是不需要注释的，不是说让你把注释删掉，而是让你完成这三步升华的过程。写的好的代码，命名规范，你看到的真的是一首诗， 是一种编程语言，是在用语言来描述一件功能的完成，这种编程艺术的工业感很爽快，你看那些不爽的代码，简直了。。]]></content>
-      <categories>
-        <category>瞎说</category>
-      </categories>
-      <tags>
-        <tag>摘抄</tag>
       </tags>
   </entry>
   <entry>

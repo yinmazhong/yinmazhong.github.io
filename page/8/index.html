@@ -449,7 +449,7 @@ json简单说就是javascript中的对象和数组，所以
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Shell笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Redis Learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -468,7 +468,7 @@ json简单说就是javascript中的对象和数组，所以
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/04/Shell笔记/" itemprop="url">Shell笔记</a></h1>
+                <a class="post-title-link" href="/2018/12/04/Redis Learning/" itemprop="url">Redis Learning</a></h1>
         
 
         <div class="post-meta">
@@ -503,8 +503,8 @@ json简单说就是javascript中的对象和数组，所以
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务器端-shell/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器端 - shell</span>
+                  <a href="/categories/数据存储处理-database/" itemprop="url" rel="index">
+                    <span itemprop="name">数据存储处理 - database</span>
                   </a>
                 </span>
 
@@ -542,15 +542,16 @@ json简单说就是javascript中的对象和数组，所以
       
         
           
-          awk将数据put到hdfs,然后用hive组织的过程中，发现数据混乱，从某行开始全是NULL
-将一行数据copy到idea中,按照逗号分割后，发现只有223(理论上是226)，用awk的NF处理文件，每行也是 226列
-—&gt;
-于是，使用awk 的 $17 打印开始乱的列，果然找到问题，
-用n
+          应用场景：redis 适用于小而热的数据
+
+Redis应用场景
+Redis作者谈Redis应用场景我们在应用redis的场景是　缓存将收到的post报文缓存下，然后批量插入redshift
+
+github上的scala版redis　client官方推荐了好几款开源的scala 版客户端，都不知道选哪
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/04/Shell笔记/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/Redis Learning/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -750,6 +751,158 @@ json简单说就是javascript中的对象和数组，所以
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Shell笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白帝圣剑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/04/Shell笔记/" itemprop="url">Shell笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务器端-shell/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器端 - shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          awk将数据put到hdfs,然后用hive组织的过程中，发现数据混乱，从某行开始全是NULL
+将一行数据copy到idea中,按照逗号分割后，发现只有223(理论上是226)，用awk的NF处理文件，每行也是 226列
+—&gt;
+于是，使用awk 的 $17 打印开始乱的列，果然找到问题，
+用n
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/04/Shell笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/SimpleLinearRegression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -892,164 +1045,6 @@ Simple linear regression(wik
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Hadoop权威指南V3-p1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白帝圣剑">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/04/Hadoop权威指南V3-p1/" itemprop="url">Hadoop 权威指南 3th Edition Part 1</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
-                2018-12-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据存储处理-hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">数据存储处理 - hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          第一章
-数据！数据！
-
-这个世界数据存量很大，数据增长的速度很快，数据的价值很大
-
-数据存储于分析
-
-现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据
-
-硬盘故障解决：数据冗余备份(RAID,HDFS)
-数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/04/Hadoop权威指南V3-p1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1111,7 +1106,7 @@ Simple linear regression(wik
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
