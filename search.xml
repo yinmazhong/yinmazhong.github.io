@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[skills]]></title>
+    <url>%2F2019%2F05%2F27%2Fskills%2F</url>
+    <content type="text"><![CDATA[通过实践来复习，学习 分布式文件系统理论基础： 共享数据是分布式系统的基础，分布式文件系统是分布式系统，和分布式应用程序的基础 体系结构客户-服务器体系结构（Network File System）NFS每个文件服务器都提供其本地文件系统的一个标准化视图 基于集群的分布式文件系统服务与并行应用程序，一种著名的技术是部署文件带区划分技术，通过该技术可以将一个文件分布在多个服务器上另外一种是把文件系统作为一个整体进行分区并且简单的把不同的文件存储在不同的服务器上，而不是把单个单个文件划分到多个服务器上]]></content>
+      <categories>
+        <category>skills</category>
+      </categories>
+      <tags>
+        <tag>skills</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[aTemp]]></title>
+    <url>%2F2019%2F05%2F27%2FaTemp%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>temp</category>
+      </categories>
+      <tags>
+        <tag>temp file</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[操作系统]]></title>
     <url>%2F2019%2F05%2F08%2Fos%2F</url>
     <content type="text"><![CDATA[2019年 05月 08日 星期三 09:53:05 CST计算机是怎么启动的]]></content>
