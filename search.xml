@@ -233,17 +233,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[DIY Cluster]]></title>
-    <url>%2F2018%2F12%2F04%2FDIY-cluster%2F</url>
-    <content type="text"><![CDATA[需求单机应用分布式执行 akka cluster单台机器也可用dispatcher提高机器利用率,这是后话，先按照要求做出一个集群来 desc不同于actor点对点的交互，而是有独特的 akka cluster机制 集群定义： 维基百科上的定义是 “计算机集群由一系列间接或直接连接的计算机组成,这些计算机共同完成工作,从很多角度上来说,可以将这些计算机看作是单个系统。具体到本章中对于集群的定义,我们可以认为一个集群就是一组 机器(也可能是虚拟机),我们将这些机器称作节点(node)或是成员(member),同一个组中的所有节点遵循某个协议。 巨型单体服务vs微服务Martin Fowler的观点： 1. 当团队较小，开发的应用程序也比较小的时候，建议使用单体应用，随着应用程序变大，团队内的开发人员变多时，可以试着查分单体为微服务。 2. 当查分单体应用时，如果没有在开发单体时的经验，很可能把错误的部分拆分出去 一旦有了些在生产环境中运行系统的经验和数据,要把哪个部分分离出来才能够在 新增功能时带来性能和团队开发速度的好处就会比较清楚了。开始部署微服务之后,我 们就可以用一种非平衡的方式对负载更高的服务进行扩展,给应用程序中使用更多的部 分分配更大的服务器集群。 集群定义集群就是一组可以相互通信的服务器必须的两个条件： 失败发现 以及使得集群中的所有成员最终能够提供一致的视图(什么意思) 失败检测节点基于能否获得其他节点的响应来确定节点是否可用 akka中，每个节点仅仅检测附近的节点，以节省网络开销，提高效率 通过gossip协议达到最终一致思考一下失败检测的处理,集群中的每个节点和它的邻居节点互相交换已知的状态。接着,这些邻居节点再将已知的状态传递给它们的“邻居”,以此往复,直到某个节点的已知状态传递给了集群中的所有成员。节点会仔细计算并得到集群中其他成员的状态 CAPC一致性 A可用性 p分区容错性 CAP理论的妥协分布式系统只能选择满足其中两个 使用Akka Cluster 构建系统Akka Cluster 基于 Akka Remoting,解决了实际应用中的高可用性等问题 场景比较简单，可以直接使用Akka Remoting 来构建系统的alpha版本官网上提供了akka-samples-remote-scala的例子，先学习一下 通读第一遍 看了下look up 的例子，真是不错，看来以后研究开源框架，还是要直接上官网看文档 原始人：ssh太原始了，慎重 研究了devops工具，听人劝，使用ansible更可贵的是ansible包含了对aws的支持]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>cluster</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
     <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛): BWH1ZBPVK（6.00%） bandwagon官网购买vps,支持支付宝(alipay),有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server推荐blog 配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务 1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf: 123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
@@ -253,6 +242,17 @@
       <tags>
         <tag>Bandwagon</tag>
         <tag>shadowsocks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[DIY Cluster]]></title>
+    <url>%2F2018%2F12%2F04%2FDIY-cluster%2F</url>
+    <content type="text"><![CDATA[需求单机应用分布式执行 akka cluster单台机器也可用dispatcher提高机器利用率,这是后话，先按照要求做出一个集群来 desc不同于actor点对点的交互，而是有独特的 akka cluster机制 集群定义： 维基百科上的定义是 “计算机集群由一系列间接或直接连接的计算机组成,这些计算机共同完成工作,从很多角度上来说,可以将这些计算机看作是单个系统。具体到本章中对于集群的定义,我们可以认为一个集群就是一组 机器(也可能是虚拟机),我们将这些机器称作节点(node)或是成员(member),同一个组中的所有节点遵循某个协议。 巨型单体服务vs微服务Martin Fowler的观点： 1. 当团队较小，开发的应用程序也比较小的时候，建议使用单体应用，随着应用程序变大，团队内的开发人员变多时，可以试着查分单体为微服务。 2. 当查分单体应用时，如果没有在开发单体时的经验，很可能把错误的部分拆分出去 一旦有了些在生产环境中运行系统的经验和数据,要把哪个部分分离出来才能够在 新增功能时带来性能和团队开发速度的好处就会比较清楚了。开始部署微服务之后,我 们就可以用一种非平衡的方式对负载更高的服务进行扩展,给应用程序中使用更多的部 分分配更大的服务器集群。 集群定义集群就是一组可以相互通信的服务器必须的两个条件： 失败发现 以及使得集群中的所有成员最终能够提供一致的视图(什么意思) 失败检测节点基于能否获得其他节点的响应来确定节点是否可用 akka中，每个节点仅仅检测附近的节点，以节省网络开销，提高效率 通过gossip协议达到最终一致思考一下失败检测的处理,集群中的每个节点和它的邻居节点互相交换已知的状态。接着,这些邻居节点再将已知的状态传递给它们的“邻居”,以此往复,直到某个节点的已知状态传递给了集群中的所有成员。节点会仔细计算并得到集群中其他成员的状态 CAPC一致性 A可用性 p分区容错性 CAP理论的妥协分布式系统只能选择满足其中两个 使用Akka Cluster 构建系统Akka Cluster 基于 Akka Remoting,解决了实际应用中的高可用性等问题 场景比较简单，可以直接使用Akka Remoting 来构建系统的alpha版本官网上提供了akka-samples-remote-scala的例子，先学习一下 通读第一遍 看了下look up 的例子，真是不错，看来以后研究开源框架，还是要直接上官网看文档 原始人：ssh太原始了，慎重 研究了devops工具，听人劝，使用ansible更可贵的是ansible包含了对aws的支持]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>cluster</tag>
       </tags>
   </entry>
   <entry>
@@ -364,18 +364,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Java任务调度]]></title>
-    <url>%2F2018%2F12%2F04%2FJava%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%2F</url>
-    <content type="text"><![CDATA[Java.util.Timer 在Java中有一个任务处理类java.util.Timer，非常方便于处理由时间触发的事件任务，只需建立一个继承java.util.TimerTask的子类，重载父类的run()方法实现具体的任务，然后调用Timer的public void schedule(TimerTask task, long delay, long period)方法实现任务的调度。 但是这种方法只能实现简单的任务调度，不能满足任务调度时间比较复杂的需求。比如希望系统在每周的工作日的8：00时向系统用户给出一个提示，这种方法实现起来就困难了，还有更为复杂的任务调度时间要求。 12345678910111213141516171819202122232425262728293031package scheduler;import java.util.Timer;import java.util.TimerTask;/** * Created by xhh on 2017/2/4. */public class TimerTest extends TimerTask &#123; private String jobName = &quot;&quot;; public TimerTest(String jobName) &#123; super(); this.jobName = jobName; &#125; @Override public void run() &#123; System.out.println(&quot;executing: &quot; + jobName); &#125; public static void main(String[] args)&#123; Timer timer = new Timer(); long delay1 = 1 * 1000; long period1 = 1000; timer.schedule(new TimerTest(&quot;job1&quot;),delay1,period1); long delay2 = 2 * 1000; long period2 = 2000; timer.schedule(new TimerTest(&quot;job2&quot;),delay2,period2); &#125;&#125; Timer源码解析 Quartz OpenSymphony 的Quartz提供了一个比较完美的任务调度解决方案。 Quartz 是个开源的作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。 Quartz有两个基本的概念：作业和调度器。作业是能够调度的可执行任务，触发器提供了对作业的调度。 1、作业 2、调度器]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>任务调度</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[JavaScript笔记]]></title>
     <url>%2F2018%2F12%2F04%2FJavaScript%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[cookie基础： W3C http://www.cnblogs.com/Darren_code/archive/2011/11/24/Cookie.html（写的比较罗嗦） 代码干货 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253// delete cookie 通过设置有效期实现function delete_cookie( name, path, domain ) &#123; if( get_cookie( name ) ) &#123; document.cookie = name + &quot;=&quot; + ((path) ? &quot;;path=&quot;+path:&quot;&quot;)+ ((domain)?&quot;;domain=&quot;+domain:&quot;&quot;) + &quot;;expires=Thu, 01 Jan 1970 00:00:01 GMT&quot;; &#125;&#125;//ORfunction delete_cookie( name ) &#123; document.cookie = name + &apos;=; expires=Thu, 01 Jan 1970 00:00:01 GMT;&apos;;&#125;//Anotherfunction createCookie(name,value,days) &#123; if (days) &#123; var date = new Date(); date.setTime(date.getTime()+(days*24*60*60*1000)); var expires = &quot;; expires=&quot;+date.toGMTString(); &#125; else var expires = &quot;&quot;; document.cookie = name+&quot;=&quot;+value+expires+&quot;; path=/&quot;;&#125;function readCookie(name) &#123; var nameEQ = name + &quot;=&quot;; var ca = document.cookie.split(&apos;;&apos;); for(var i=0;i &lt; ca.length;i++) &#123; var c = ca[i]; while (c.charAt(0)==&apos; &apos;) c = c.substring(1,c.length); if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length); &#125; return null;&#125;function eraseCookie(name) &#123; createCookie(name,&quot;&quot;,-1);&#125;I use this// what I have usedfunction removeItem(sKey, sPath, sDomain) &#123; document.cookie = encodeURIComponent(sKey) + &quot;=; expires=Thu, 01 Jan 1970 00:00:00 GMT&quot; + (sDomain ? &quot;; domain=&quot; + sDomain : &quot;&quot;) + (sPath ? &quot;; path=&quot; + sPath : &quot;&quot;);&#125;removeItem(&quot;cookieName&quot;); HTMLDOM（w3c文档对象模型）:定义了访问和操作 HTML文档 的标准方法，DOM将 HTML文档 表达为树结构 HTML DOM Node Tree HTML DOM 定义了所有 HTML 元素的对象和属性，以及访问它们的方法。 JS Window浏览器对象模型 (BOM) 使 JavaScript 有能力与浏览器“对话”。浏览器对象模型 (BOM) 浏览器对象模型（Browser Object Model）尚无正式标准。 由于现代浏览器已经（几乎）实现了 JavaScript 交互性方面的相同方法和属性，因此常被认为是 BOM 的方法和属性。 所有浏览器都支持window对象。它表示浏览器窗口 JS函数参数设置默认值scala 在定义函数时可以直接给参数设置默认值，如：def afunc(a = 1,b=2){} 但是js却不能这么定义，如果 function simue(a=1,b=2){} 会提示缺少对象。 js函数中有个存储参数的数组 arguments,所有函数获得的参数都会被编译器挨个保存到这个数组中。 于是我们可以用另一种变通的方法实现， 1234function simue()&#123;var a = arguments[0] ? arguments[0]:1;var b = arguments[1] ? arguments[1] : 2;&#125; JS实现文件上传单文件上传 AjaxUpload.js123456789101112131415161718192021function uploadFile() &#123; new AjaxUpload($(&quot;#importFile&quot;), &#123; action: url, type: &quot;POST&quot;, data: &#123;&quot;userId&quot;: userId&#125;, autoSubmit: true, responseType: &quot;json&quot;, name: &apos;file&apos;, onSubmit: function (file, ext) &#123; if (!(ext &amp;&amp; /^(rar|zip|pdf|pdfx|txt|csv|xls|xlsx|doc|docx|RAR|ZIP|PDF|PDFX|TXT|CSV|XLS|XLSX|DOC|DOCX)$/.test(ext))) &#123; pNotifyAutoCloseCenter(&quot;fail&quot;, &quot;您上传的文档格式不对，请重新选择！&quot;, &quot;error&quot;); return false; &#125; console.log(&quot;onsubmit&quot;); &#125;, onComplete: function (file, response) &#123; pNotifyAutoCloseCenter(&quot;info&quot;, &quot;数据上传&quot; + response.status + &quot;！&quot;, &quot;info&quot;); console.log(&quot;upload file complete, savePath: &quot; + response.savePath); &#125; &#125;);&#125; 多文件上传 支持多文件上传 WebUploader (produced by baidu)官方文档 http://fex.baidu.com/webuploader/getting-started.html]]></content>
@@ -386,6 +374,18 @@
         <tag>database</tag>
         <tag>笔记</tag>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java任务调度]]></title>
+    <url>%2F2018%2F12%2F04%2FJava%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[Java.util.Timer 在Java中有一个任务处理类java.util.Timer，非常方便于处理由时间触发的事件任务，只需建立一个继承java.util.TimerTask的子类，重载父类的run()方法实现具体的任务，然后调用Timer的public void schedule(TimerTask task, long delay, long period)方法实现任务的调度。 但是这种方法只能实现简单的任务调度，不能满足任务调度时间比较复杂的需求。比如希望系统在每周的工作日的8：00时向系统用户给出一个提示，这种方法实现起来就困难了，还有更为复杂的任务调度时间要求。 12345678910111213141516171819202122232425262728293031package scheduler;import java.util.Timer;import java.util.TimerTask;/** * Created by xhh on 2017/2/4. */public class TimerTest extends TimerTask &#123; private String jobName = &quot;&quot;; public TimerTest(String jobName) &#123; super(); this.jobName = jobName; &#125; @Override public void run() &#123; System.out.println(&quot;executing: &quot; + jobName); &#125; public static void main(String[] args)&#123; Timer timer = new Timer(); long delay1 = 1 * 1000; long period1 = 1000; timer.schedule(new TimerTest(&quot;job1&quot;),delay1,period1); long delay2 = 2 * 1000; long period2 = 2000; timer.schedule(new TimerTest(&quot;job2&quot;),delay2,period2); &#125;&#125; Timer源码解析 Quartz OpenSymphony 的Quartz提供了一个比较完美的任务调度解决方案。 Quartz 是个开源的作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。 Quartz有两个基本的概念：作业和调度器。作业是能够调度的可执行任务，触发器提供了对作业的调度。 1、作业 2、调度器]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>任务调度</tag>
       </tags>
   </entry>
   <entry>
@@ -471,19 +471,6 @@
   </entry>
   <entry>
     <title><![CDATA[Tensorflow Model java 部署]]></title>
-    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
-    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
-      <categories>
-        <category>机器学习、深度学习 - tensorflow</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>tensorflow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Tensorflow Model java 部署]]></title>
     <url>%2F2018%2F12%2F04%2FTensorflow5--seq2seq%2F</url>
     <content type="text"><![CDATA[IntroductionSeq2Seq模型在机器翻译、语音识别、文本摘要等领域取得了巨大的成功 以神经机器翻译(NMT)为例介绍 使用最新的 decoder / attention wrapper API，TensorFlow 1.2 data iterator 在构建模型时加入了我们最成功的经验 为构建最强大的 NMT 模型，我们提供了许多 tips 和 tricks，并复制了Google的 NMT系统 Basic神经机器翻译的相关背景 | Background on Neural Machine Translation 传统的 phrase-based 翻译系统的工作原理是把源句子分成几块，然后一个短语一个短语的翻译，但是翻译结果的流畅度较差，并且不符合人类的翻译方式， 我们人类会读取完整的句子，理解它的意思，然后进行翻译。NMT 模型正是在模仿这个机制！ NMT模型使用encoder读取源句子，然后编码得到一个“有意义”的 vector，即一串能代表源句子意思的数字。然后 decoder 将这个 vector 解码得到翻译，就想图1展示的那样。这就是所谓的 encoder-decoder 结构 本教程将以单向的多层（multi-layer） RNN 为例，其使用 LSTM 作为 RNN 单元 Traning - How to build our first NMT system实战 - 训练一个 NMT 模型 Hands-on - Let’s train an NMT model12345678910111213python -m nmt.nmt \ --src=vi --tgt=en \ --vocab_prefix=/home/xxh/data/nmt_data_2/vocab \ --train_prefix=/home/xxh/data/nmt_data_2/train \ --dev_prefix=/home/xxh/data/nmt_data_2/tst2012 \ --test_prefix=/home/xxh/data/nmt_data_2/tst2013 \ --out_dir=/home/xxh/data/nmt_model \ --num_train_steps=12000 \ --steps_per_stats=100 \ --num_layers=2 \ --num_units=128 \ --dropout=0.2 \ --metrics=bleu python -m nmt.nmt –src=vi –tgt=en –vocab_prefix=/home/xxh/data/my_nmt_data/train –train_prefix=/home/xxh/data/my_nmt_data/train –dev_prefix=/home/xxh/data/my_nmt_data/tst2012 –test_prefix=/home/xxh/data/my_nmt_data/tst2012 –out_dir=/home/xxh/data/my_nmt_model –num_train_steps=12000 –steps_per_stats=100 –num_layers=2 –num_units=128 –dropout=0.2 –metrics=bleu 12 python -m nmt.nmt –out_dir=/home/xxh/data/nmt_model –inference_input_file=/home/xxh/data/nmt_data_2/my.vi –inference_output_file=/home/xxh/data/nmt_attention_model/output_infer]]></content>
       <categories>
@@ -494,6 +481,19 @@
         <tag>ml</tag>
         <tag>tensorflow</tag>
         <tag>seq2seq</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tensorflow Model java 部署]]></title>
+    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
+    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
+      <categories>
+        <category>机器学习、深度学习 - tensorflow</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>tensorflow</tag>
       </tags>
   </entry>
   <entry>
