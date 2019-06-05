@@ -407,7 +407,8 @@
 <p>apply plugin: ‘java’</p>
 <p>repositories {<br>    mavenCentral()<br>}</p>
 <p>dependencies {<br>  compile(<br>    ‘com.google.guava:guava:13.0.1’,<br>    ‘joda-time:joda-time:2.1’<br>  )</p>
-<p>  testCompile(<br>    ‘junit:junit:4.10’,<br>    ‘org.mockito:mockito-all:1.9.0’<br>  )<br>}<br>（build.gradle）</p>
+<p>  testCompile(<br>    ‘junit:junit:4.10’,<br>    ‘org.mockito:mockito-all:1.9.0’<br>  )<br>}
+（build.gradle）</p>
 <p>接下来的事情就很简单了，在命令行里键入</p>
 <p>  gradle build</p>
 <p>如果一切正常，我们应该会看到构建成功的字样，然后，到build/lib，你就看到自己构建出来的JAR文件了。当然，这只是一个简单得不能再简单的例子，如果需要了解更多，Gradle那详尽的文档便是最好的去处。</p>
@@ -417,10 +418,12 @@
 <hr>
 <p>kafka源码编译的时候执行　</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle build</span><br></pre></td></tr></table></figure>
+
 <hr>
 <p>超时报错</p>
 <p>debug:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">gradle build --debug</span><br></pre></td></tr></table></figure>
+
 <p>打印出比较详细的信息，也清晰的显示出问题所在</p>
 <p>问题：<br>安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网<br>解决方法：删除配置文件中的代理信息</p>
 <h3 id="sbt"><a href="#sbt" class="headerlink" title="sbt"></a>sbt</h3><h3 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h3>
@@ -453,8 +456,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/04/github卡慢问题/" rel="next" title="github访问卡、慢、不稳定">
-                <i class="fa fa-chevron-left"></i> github访问卡、慢、不稳定
+              <a href="/2018/12/04/datawarehouse/" rel="next" title="数据仓库理论基础与实践">
+                <i class="fa fa-chevron-left"></i> 数据仓库理论基础与实践
               </a>
             
           </div>
@@ -463,8 +466,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/04/ffmpeg/" rel="prev" title="ffmpeg">
-                ffmpeg <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/04/breeze/" rel="prev" title="breeze使用">
+                breeze使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

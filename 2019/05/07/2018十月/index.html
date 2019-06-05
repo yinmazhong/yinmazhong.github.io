@@ -473,6 +473,7 @@
 <p>sbt有些依赖拉不到</p>
 <p>在build.sbt 中添加相应的源</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resolvers += &quot;cdh&quot; at &quot;https://repository.cloudera.com/artifactory/libs-release-local/&quot;</span><br></pre></td></tr></table></figure>
+
 <p><a href="https://www.scala-sbt.org/1.0/docs/Resolvers.html" target="_blank" rel="noopener">Resolvers</a></p>
 <hr>
 <p>貌似　cdh 只能用cdh 提供的依赖，不能用原生的依赖</p>
@@ -483,9 +484,10 @@
 <p>port in user / address in use</p>
 <p>solve:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">//占用与否确认</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">netstat -ln |grep ****(4000)</span><br><span class="line"></span><br><span class="line">// 找到process ID</span><br><span class="line"></span><br><span class="line">lsof -i:****(4000)</span><br><span class="line"></span><br><span class="line">kill -9 ID</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">cdh 获取配置文件xml</span><br><span class="line"></span><br><span class="line">首页 -&gt;  某种服务　-&gt; 页面左上角action -&gt; Download Client configuration</span><br><span class="line"></span><br><span class="line">是个zip包　解压就行了</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">hadoop api 需要的依赖在官网一直没找到，查了下教程类的文章上也少有提到</span><br><span class="line"></span><br><span class="line">难道这是“显然”的，不用介绍？</span><br><span class="line"></span><br><span class="line">实战类的文章上提到应是这三个</span><br><span class="line"></span><br><span class="line">hadoop-common</span><br><span class="line">hadoop-hdfs</span><br><span class="line">hadoop-client</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">总是觉得没见到官宣，会惴惴不安，以后会不会改变</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">2018年 10月 24日 星期三 09:08:33 CST</span><br><span class="line"></span><br><span class="line">jps 展示的进程SparkSubmit 杀不掉</span><br><span class="line"></span><br><span class="line">ps　-ef |grep spark 出来的进程杀死后，SparkSubmit 进程消失，</span><br><span class="line"></span><br><span class="line">why?</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[这个洋人说可以直接将jps出来的进程杀死](https://stackoverflow.com/questions/29990153/submit-kill-spark-application-program-programmatically-from-another-applicatio)</span><br><span class="line"></span><br><span class="line">下次试下</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">二手　think pad e540　cpu 信息</span><br><span class="line">[cpu信息解读](https://blog.csdn.net/sycflash/article/details/6643492)</span><br></pre></td></tr></table></figure>
+
 <p>cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c</p>
-<pre><code>8  Intel(R) Core(TM) i7-4702MQ CPU @ 2.20GHz
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>8  Intel(R) Core(TM) i7-4702MQ CPU @ 2.20GHz</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>memory:</p>
 <p>sudo dmidecode -t memory</p>
 <h1 id="dmidecode-3-1"><a href="#dmidecode-3-1" class="headerlink" title="dmidecode 3.1"></a>dmidecode 3.1</h1><p>Getting SMBIOS data from sysfs.<br>SMBIOS 2.7 present.</p>
@@ -493,13 +495,16 @@
 <p>Handle 0x0006, DMI type 17, 34 bytes<br>Memory Device<br>    Array Handle: 0x0005<br>    Error Information Handle: Not Provided<br>    Total Width: 64 bits<br>    Data Width: 64 bits<br>    Size: 8192 MB<br>    Form Factor: SODIMM<br>    Set: None<br>    Locator: ChannelA-DIMM0<br>    Bank Locator: BANK 0<br>    Type: DDR3<br>    Type Detail: Synchronous<br>    Speed: 1600 MT/s<br>    Manufacturer: Hynix/Hyundai<br>    Serial Number: 08C66216<br>    Asset Tag: None<br>    Part Number: HMT41GS6AFR8A-PB<br>    Rank: Unknown<br>    Configured Clock Speed: 1600 MT/s</p>
 <p>Handle 0x0007, DMI type 17, 34 bytes<br>Memory Device<br>    Array Handle: 0x0005<br>    Error Information Handle: Not Provided<br>    Total Width: Unknown<br>    Data Width: Unknown<br>    Size: No Module Installed<br>    Form Factor: DIMM<br>    Set: None<br>    Locator: ChannelB-DIMM0<br>    Bank Locator: BANK 2<br>    Type: Unknown<br>    Type Detail: None<br>    Speed: Unknown<br>    Manufacturer: Not Specified<br>    Serial Number: Not Specified<br>    Asset Tag: None<br>    Part Number: Not Specified<br>    Rank: Unknown<br>    Configured Clock Speed: Unknown</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">淘宝入手8g　1.35v 内存，因为cpu是低电压的</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">hive1.2.2 安装</span><br><span class="line"></span><br><span class="line">按照官网文档安装，下载解压，配置HIVE_HOME、PATH</span><br><span class="line"></span><br><span class="line">在设置好了HADOOP_HOME的情况下可以运行了</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">运行hiveserver2的时候很卡，很慢，kill 之</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">好用的top:htop</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">2018年 10月 25日 星期四 09:46:38 CST</span><br><span class="line"></span><br><span class="line">sqoop 本地环境　hive 环境　</span><br><span class="line"></span><br><span class="line">内存条来后</span><br><span class="line"></span><br><span class="line">8g变成4g，醉了，又买了一根，这根先用着，用完退了</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">重启电脑后发现之前设置的ulimit 没用了</span><br><span class="line"></span><br><span class="line">找到终极解决办法：</span><br></pre></td></tr></table></figure>
+
 <h1 id="vim-etc-security-limits-conf-加入以下配置，重启即可生效"><a href="#vim-etc-security-limits-conf-加入以下配置，重启即可生效" class="headerlink" title="vim /etc/security/limits.conf  //加入以下配置，重启即可生效"></a>vim /etc/security/limits.conf  //加入以下配置，重启即可生效</h1><ul>
 <li>soft nofile 65535 </li>
 <li>hard nofile 65535</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">[ulimit 设置](http://coolnull.com/2796.html)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">hadoop 伪分布式　中　hdfs 最好配置好</span><br></pre></td></tr></table></figure>
+
 <p>dfs.namenode.name.dir    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">该属性默认位置在/tmp目录下，重启后目录消失，需要重新　hdfs namenode -format ,造成namenode 数据全部丢失，并且启动namenode 失败</span><br><span class="line"></span><br><span class="line">--- </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">mysql 密码重置</span><br></pre></td></tr></table></figure>
+
 <p>sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</p>
 <p>在[mysqld]下添加　skip-grant-tables</p>
 <p>service mysql restart</p>
@@ -507,23 +512,41 @@
 <p>use mysql<br>update mysql.user set authentication_string=password(‘admin123’) where user=’root’ and Host = ‘localhost’;<br>update user set plugin=”mysql_native_password” where User=’root’;  # THIS LINE<br>flush privileges;<br>exit;</p>
 <p>最后删掉添加的免密登录配置，重启mysql,重新用刚设置的密码登录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[重置密码](https://blog.csdn.net/yelllowcong/article/details/79641313)</span><br><span class="line">[ERROR 1524 (HY000): Plugin &apos;auth_socket&apos; is not loaded](https://stackoverflow.com/questions/37879448/mysql-fails-on-mysql-error-1524-hy000-plugin-auth-socket-is-not-loaded)</span><br><span class="line"></span><br><span class="line">allow extenal in</span><br></pre></td></tr></table></figure>
-<p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root‘@’%’ IDENTIFIED BY ‘Admin@321’ WITH GRANT OPTION;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">授权完毕后还是不能访问</span><br><span class="line"></span><br><span class="line">检查防火墙</span><br><span class="line"></span><br><span class="line">检查　bind_address</span><br><span class="line"></span><br><span class="line">[Grand 后操作](https://blog.csdn.net/Plus_RE/article/details/79649427)</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">sqoop install &amp;&amp; test</span><br></pre></td></tr></table></figure></p>
+
+<p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root’@’%’ IDENTIFIED BY ‘Admin@321’ WITH GRANT OPTION;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">授权完毕后还是不能访问</span><br><span class="line"></span><br><span class="line">检查防火墙</span><br><span class="line"></span><br><span class="line">检查　bind_address</span><br><span class="line"></span><br><span class="line">[Grand 后操作](https://blog.csdn.net/Plus_RE/article/details/79649427)</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">sqoop install &amp;&amp; test</span><br></pre></td></tr></table></figure>
+
 <p>sqoop list-databases –connect jdbc:mysql://localhost:3306 –username root –password admin123</p>
-<p>$ sqoop import \<br>–connect jdbc:mysql://localhost:3306/mysql \<br>–username root \<br>–password admin123 \<br>–table user \<br>–target-dir /sqoop/data \<br>–delete-target-dir \<br>–num-mappers 1 \<br>–fields-terminated-by “\t”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">github 上找到了能用的　sublime text 3 liscens</span><br></pre></td></tr></table></figure></p>
+<p>$ sqoop import <br>–connect jdbc:mysql://localhost:3306/mysql <br>–username root <br>–password admin123 <br>–table user <br>–target-dir /sqoop/data <br>–delete-target-dir <br>–num-mappers 1 <br>–fields-terminated-by “\t”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">github 上找到了能用的　sublime text 3 liscens</span><br></pre></td></tr></table></figure>
+
 <p>—– BEGIN LICENSE —–<br>sgbteam<br>Single User License<br>EA7E-1153259<br>8891CBB9 F1513E4F 1A3405C1 A865D53F<br>115F202E 7B91AB2D 0D2A40ED 352B269B<br>76E84F0B CD69BFC7 59F2DFEF E267328F<br>215652A3 E88F9D8F 4C38E3BA 5B2DAAE4<br>969624E7 DC9CD4D5 717FB40C 1B9738CF<br>20B3C4F1 E917B5B3 87C38D9C ACCE7DD8<br>5F7EF854 86B9743C FADC04AA FB0DA5C0<br>F913BE58 42FEA319 F954EFDD AE881E0B<br>—— END LICENSE ——</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">讨厌的提示应该不会有了吧，之前每次ctrl+c都会弹两个框</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">2018年 10月 29日 星期一 15:23:31 CST</span><br><span class="line"></span><br><span class="line">shell</span><br></pre></td></tr></table></figure>
-<p>nohup　重定向</p>
-<p>还有　/dev/null　这个无底洞　，一直在用，但是不熟悉什么意思<br><code>`</code></p>
-<hr>
-<hr>
-<p>2018年 10月 30日 星期二 16:31:13 CST</p>
-<p>找最权威的依赖信息，去官网，比如github主页</p>
-<hr>
-<p>2018年 10月 31日 星期三 13:51:25 CST</p>
-<p>? vim 插入时间</p>
-<p>? samza</p>
-<hr>
 
+<p>nohup　重定向</p>
+<p>还有　/dev/null　这个无底洞　，一直在用，但是不熟悉什么意思</p>
+<pre><code>
+---
+
+---
+
+2018年 10月 30日 星期二 16:31:13 CST
+
+找最权威的依赖信息，去官网，比如github主页
+
+
+---
+
+2018年 10月 31日 星期三 13:51:25 CST
+
+? vim 插入时间
+
+? samza
+
+
+
+
+---</code></pre>
       
     </div>
     

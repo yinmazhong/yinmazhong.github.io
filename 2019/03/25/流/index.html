@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="白帝圣剑">
 <meta property="og:description" content="流：何为流如何理解编程语言中「流」（stream）的概念如何形象的理解计算机中“流”的概念？  流是由生产者生产并由一个或多个消费者消费的元素的序列   这种生产者——消费者模型也被称为source/sink模型或发布者——订阅者（publisher-subscriber ）模型。 在本章中，将其称为发布者订阅者模型。 有几种流处理机制，其中pull模型和push模型是最常见的。在push模型中，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/流/.流_images/5917a07a.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/流/.流_images/2a95e069.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/25/流/.%E6%B5%81_images/5917a07a.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/25/流/.%E6%B5%81_images/2a95e069.png">
 <meta property="og:updated_time" content="2019-03-25T09:44:17.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="流">
 <meta name="twitter:description" content="流：何为流如何理解编程语言中「流」（stream）的概念如何形象的理解计算机中“流”的概念？  流是由生产者生产并由一个或多个消费者消费的元素的序列   这种生产者——消费者模型也被称为source/sink模型或发布者——订阅者（publisher-subscriber ）模型。 在本章中，将其称为发布者订阅者模型。 有几种流处理机制，其中pull模型和push模型是最常见的。在push模型中，">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/25/流/.流_images/5917a07a.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/25/流/.%E6%B5%81_images/5917a07a.png">
 
 
 
@@ -415,11 +415,12 @@
 <p>订阅者（subscriber）从发布者那里订阅并接收元素。 发布者向订阅者发送订阅令牌（subscription token）。 使用订阅令牌，订阅者从发布者哪里请求多个元素。 当元素准备就绪时，发布者向订阅者发送多个或更少的元素。 订阅者可以请求更多的元素。 发布者可能有多个来自订阅者的元素待处理请求。</p>
 <p>订阅（subscription）表示订阅者订阅的一个发布者的令牌。 当订阅请求成功时，发布者将其传递给订阅者。 订阅者使用订阅令牌与发布者进行交互，例如请求更多的元素或取消订阅。</p>
 <p>下图显示了发布者和订阅者之间的典型交互顺序。 订阅令牌未显示在图表中。 该图没有显示错误和取消事件。</p>
-<p><img src=".流_images/5917a07a.png" alt></p>
+<p><img src=".%E6%B5%81_images/5917a07a.png" alt></p>
 <p>处理者（processor）充当订阅者和发布者的处理阶段。 Processor接口继承了Publisher和Subscriber接口。 它用于转换发布者——订阅者管道中的元素。 Processor&lt;T,R&gt;订阅类型T的数据元素，接收并转换为类型R的数据，并发布变换后的数据。 下图显示了处理者在发布者——订阅和管道中作为转换器的作用。 可以拥有多个处理者。</p>
-<p><img src=".流_images/2a95e069.png" alt></p>
+<p><img src=".%E6%B5%81_images/2a95e069.png" alt></p>
 <h4 id="JDK-9-中响应式流的API"><a href="#JDK-9-中响应式流的API" class="headerlink" title="JDK 9 中响应式流的API"></a>JDK 9 中响应式流的API</h4><p>JDK 9提供了Publisher接口的简单实现，可以将其用于简单的用例或扩展以满足自己的需求。 <a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="noopener">RxJava</a>是响应式流的Java实现之一。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import java.util.concurrent.CompletableFuture;</span><br><span class="line">import java.util.concurrent.ExecutionException;</span><br><span class="line">import java.util.concurrent.SubmissionPublisher;</span><br><span class="line">import java.util.stream.LongStream;</span><br><span class="line"></span><br><span class="line">public class ReactiveStreamsTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line">        CompletableFuture&lt;Void&gt; subTask = null;</span><br><span class="line">        try (SubmissionPublisher&lt;Long&gt; pub = new SubmissionPublisher&lt;&gt;()) &#123;</span><br><span class="line">            System.out.println(&quot;Subscriber Buffer SizeL&quot; + pub.getMaxBufferCapacity());</span><br><span class="line">            subTask = pub.consume(System.out::println);</span><br><span class="line"></span><br><span class="line">            LongStream.range(1L, 2566L).forEach( l -&gt; pub.submit(l));</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (subTask != null)&#123;</span><br><span class="line">            try&#123;</span><br><span class="line">                subTask.get();</span><br><span class="line">            &#125;catch (InterruptedException | ExecutionException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="akka-streams"><a href="#akka-streams" class="headerlink" title="akka-streams"></a>akka-streams</h2><h2 id="kafka"><a href="#kafka" class="headerlink" title="kafka"></a>kafka</h2><p>消息中间件</p>
 <h2 id="流处理引擎"><a href="#流处理引擎" class="headerlink" title="流处理引擎"></a>流处理引擎</h2><h3 id="kafka-streams"><a href="#kafka-streams" class="headerlink" title="kafka streams"></a>kafka streams</h3><h3 id="spark-Streaming"><a href="#spark-Streaming" class="headerlink" title="spark Streaming"></a>spark Streaming</h3><h3 id="flink"><a href="#flink" class="headerlink" title="flink"></a>flink</h3>
       

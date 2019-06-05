@@ -426,6 +426,7 @@
 <p>超时报错</p>
 <p>debug:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">gradle build --debug</span><br></pre></td></tr></table></figure>
+
 <p>打印出比较详细的信息，也清晰的显示出问题所在</p>
 <p>问题：<br>安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网<br>解决方法：删除配置文件中的代理信息</p>
 <hr>
@@ -433,12 +434,16 @@
 <p>搜索后有人表示：有多个scala 版本，导致这样的错误</p>
 <p>尝试执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew -PscalaVersion=2.11.11 clean core:test</span><br></pre></td></tr></table></figure>
+
 <p>依然build　failed</p>
-<p>这次是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could not find org.jacoco.agent.jar</span><br></pre></td></tr></table></figure></p>
+<p>这次是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could not find org.jacoco.agent.jar</span><br></pre></td></tr></table></figure>
+
 <hr>
 <p>《Apache Kafka 源码剖析》上说的源码编译步骤不好使，转参考下面的方法<br><a href="https://manasvigupta.github.io/getting-started-with-contributing-to-apache-kafka-part1-build-and-run-kafka-from-source-code/" target="_blank" rel="noopener">Getting started with contributing to Apache Kafka (Part 1): Build and run Kafka from source code</a><br>棒棒哒</p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; cd kafka</span><br><span class="line">&gt; gradle</span><br><span class="line">&gt; ./gradlew jar</span><br></pre></td></tr></table></figure>
+
 <p>importa kafka project</p>
 <hr>
 <p>run zookeeper</p>
@@ -468,6 +473,7 @@
 <hr>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># kafka start bash</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">kafka_home=/home/xxh/wkspc/kafka/kafka_2.11-2.0.0</span><br><span class="line">kafka_start_sh=$kafka_home/bin/kafka-server-start.sh</span><br><span class="line">kafkaconf0=$kafka_home/config/server.properties</span><br><span class="line">kafkaconf1=$kafka_home/config/server-1.properties</span><br><span class="line">kafkaconf2=$kafka_home/config/server-2.properties</span><br><span class="line">kafkalog0=$kafka_home/logs/nohup.log</span><br><span class="line">kafkalog1=$kafka_home/logs/nohup_1.log</span><br><span class="line">kafkalog2=$kafka_home/logs/nohup_2.log</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nohup $kafka_start_sh $kafkaconf0  &gt; $kafkalog0 2&gt;&amp;1 &amp;</span><br><span class="line">nohup $kafka_start_sh $kafkaconf1  &gt; $kafkalog1 2&gt;&amp;1 &amp;</span><br><span class="line">nohup $kafka_start_sh $kafkaconf2  &gt; $kafkalog2 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">jps</span><br><span class="line"></span><br><span class="line"># close use </span><br><span class="line">./bin/kafka-server-stop.sh</span><br></pre></td></tr></table></figure>
+
 <hr>
 <h3 id="kafka-跑了几个例子，但是并没有讲的很清晰"><a href="#kafka-跑了几个例子，但是并没有讲的很清晰" class="headerlink" title="kafka 跑了几个例子，但是并没有讲的很清晰"></a>kafka 跑了几个例子，但是并没有讲的很清晰</h3><hr>
 <p> 还是要学一下，java8的函数式特性<br> 不得不承认，越来越多的接口会重新用java写</p>
@@ -504,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/04/hive编程指南/" rel="next" title="Hive 编程指南 笔记">
-                <i class="fa fa-chevron-left"></i> Hive 编程指南 笔记
+              <a href="/2018/12/04/linux服务器/" rel="next" title="linux服务器相关配置">
+                <i class="fa fa-chevron-left"></i> linux服务器相关配置
               </a>
             
           </div>
@@ -514,8 +520,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/04/hadoop/" rel="prev" title="Hadoop 笔记">
-                Hadoop 笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/04/hive编程指南/" rel="prev" title="Hive 编程指南 笔记">
+                Hive 编程指南 笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

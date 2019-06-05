@@ -407,12 +407,13 @@ ii  zenity         3.18.1.1-1ub amd64        Display graphical dialog boxes fr</
 </li>
 <li><p>双系统－ubuntu连不上网<br>办公室电脑安装了双系统，自带win10,自行安装ubuntu,<br>有次重启电脑后，应该是去登录了win10，<br>重新登录ubuntu发现连接不上网络，windows 一切正常，<br>试了N种方法均无效，<br>最后找到问题是　<em>网卡驱动问题</em><br>应该是win 系统更新了网卡驱动，而ubuntu 系统无法识别，<br>解决办法：卸载新版本的网卡驱动，安装旧版本的网卡驱动</p>
 <figure class="highlight plain"><figcaption><span>/home/xxh/package/r8168-8.044.02</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh autorun.sh</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <p>可悲的是，每次重启都要重重重重新执行该脚本，还好只是执行下一个脚本<br>没时间，也没兴趣去查深层次的原因了，暂时先这样啊，主要是一般不会关机</p>
 <p>因各种原因，出于提高开发效率的考虑，将开发环境迁移到Ubuntu操作系统上来，果然碰到了高睿之前遇到的Ubuntu系统与PC自带显卡驱动不兼容问题，睿总帮忙解决，感谢</p>
 <ul>
-<li>显卡驱动问题 使用的联想扬天电脑有点奇葩，与安装的UBUNTU16兼容性不好，\<br><a href="https://gist.github.com/dangbiao1991/7825db1d17df9231f4101f034ecd5a2b" target="_blank" rel="noopener">ray给出了经验,安装最新的英伟达显卡驱动</a></li>
+<li>显卡驱动问题 使用的联想扬天电脑有点奇葩，与安装的UBUNTU16兼容性不好，<br><a href="https://gist.github.com/dangbiao1991/7825db1d17df9231f4101f034ecd5a2b" target="_blank" rel="noopener">ray给出了经验,安装最新的英伟达显卡驱动</a></li>
 <li>安装JAVA - <a href="http://topspeedsnail.com/ubuntu16-install-java-jdk/" target="_blank" rel="noopener">安装了官方版java</a>.</li>
 <li>连接EC2 - 使用terminal直接连接ec2(sudo ssh -i ~/aws/xuxianhong.pem <a href="mailto:ec2-user@ec2-52-197-178-250.ap-northeast-1.compute.amazonaws.com" target="_blank" rel="noopener">ec2-user@ec2-52-197-178-250.ap-northeast-1.compute.amazonaws.com</a>) 其中公钥是ec2 description写明了的，用户名是ec2-user.</li>
 </ul>
@@ -447,8 +448,8 @@ ii  zenity         3.18.1.1-1ub amd64        Display graphical dialog boxes fr</
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/04/breeze/" rel="next" title="breeze使用">
-                <i class="fa fa-chevron-left"></i> breeze使用
+              <a href="/2018/12/04/ansible/" rel="next" title="使用ansible自动部署集群环境">
+                <i class="fa fa-chevron-left"></i> 使用ansible自动部署集群环境
               </a>
             
           </div>

@@ -416,9 +416,48 @@
 <p> RDBMS与hadoop相互补充，hadoop适合批处理，而rdbms适合点查询更新</p>
 <p> RDBMS被索引后，能够提供低延迟的查询和少量的数据更新，mapreduce适合一次写入，多次读取做数据分析<br>  RDBMS适合持续更新的数据集</p>
 <p>  Table 1-1. RDBMS compared to MapReduce</p>
-<p>  item|Traditional RDBMS |MapReduce<br>  —|—|—<br>  Data size| Gigabytes| Petabytes<br>  Access(数据存取)| Interactive and batch| Batch<br>  Updates| Read and write many times |Write once, read many times<br>  Structure| Static schema |Dynamic schema<br>  Integrity(完整性)| High |Low<br>  Scaling| Nonlinear |Linear</p>
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>Traditional RDBMS</th>
+<th>MapReduce</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Data size</td>
+<td>Gigabytes</td>
+<td>Petabytes</td>
+</tr>
+<tr>
+<td>Access(数据存取)</td>
+<td>Interactive and batch</td>
+<td>Batch</td>
+</tr>
+<tr>
+<td>Updates</td>
+<td>Read and write many times</td>
+<td>Write once, read many times</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>Static schema</td>
+<td>Dynamic schema</td>
+</tr>
+<tr>
+<td>Integrity(完整性)</td>
+<td>High</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Scaling</td>
+<td>Nonlinear</td>
+<td>Linear</td>
+</tr>
+</tbody></table>
 </li>
-<li>存储的数据不同：<br>RDBMS:结构化数据，完整的且不含冗余<br>hadoop:结构化、半结构化、非结构化数据</li>
+<li><p>存储的数据不同：<br>RDBMS:结构化数据，完整的且不含冗余<br>hadoop:结构化、半结构化、非结构化数据</p>
+</li>
 </ol>
 <ul>
 <li>网格计算，</li>
@@ -459,8 +498,7 @@
 <th>2.x</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>Secure authentication</td>
 <td>Yes</td>
 <td>No</td>
@@ -514,8 +552,7 @@
 <td>No</td>
 <td>Yes</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h3><p>气象数据处理</p>
 <h4 id="2-1-气象数据集"><a href="#2-1-气象数据集" class="headerlink" title="2.1　气象数据集"></a>2.1　气象数据集</h4><p>首先要搞清楚数据格式</p>
 <ul>
@@ -524,11 +561,18 @@
 <li>整个数据集有很多小文件组成</li>
 </ul>
 <h4 id="2-2-Unix-处理方式"><a href="#2-2-Unix-处理方式" class="headerlink" title="2.2 Unix 处理方式"></a>2.2 Unix 处理方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env bash</span><br><span class="line">for year in all/*</span><br><span class="line">do</span><br><span class="line">echo -ne `basename $year .gz`&quot;\t&quot;</span><br><span class="line">gunzip -c $year | \</span><br><span class="line">awk &apos;&#123; temp = substr($0, 88, 5) + 0;</span><br><span class="line">q = substr($0, 93, 1);</span><br><span class="line">if (temp !=9999 &amp;&amp; q ~ /[01459]/ &amp;&amp; temp &gt; max) max = temp &#125;</span><br><span class="line">END &#123; print max &#125;&apos;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
 <p>循环使用awk处理</p>
 <p>单进程处理</p>
-<h4 id="2-3-hadoop处理方式"><a href="#2-3-hadoop处理方式" class="headerlink" title="2.3 hadoop处理方式"></a>2.3 hadoop处理方式</h4><p>map:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import</span><br><span class="line">import</span><br><span class="line">import</span><br><span class="line">import</span><br><span class="line">org.apache.hadoop.io.IntWritable;</span><br><span class="line">org.apache.hadoop.io.LongWritable;</span><br><span class="line">org.apache.hadoop.io.Text;</span><br><span class="line">org.apache.hadoop.mapreduce.Mapper;</span><br><span class="line">public class MaxTemperatureMapper</span><br><span class="line">extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;</span><br><span class="line">private static final int MISSING = 9999;</span><br><span class="line">@Override</span><br><span class="line">public void map(LongWritable key, Text value, Context context)</span><br><span class="line">throws IOException, InterruptedException &#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">String line = value.toString();</span><br><span class="line">String year = line.substring(15, 19);</span><br><span class="line">int airTemperature;</span><br><span class="line">if (line.charAt(87) == &apos;+&apos;) &#123; // parseInt doesn&apos;t like leading plus signs</span><br><span class="line">airTemperature = Integer.parseInt(line.substring(88, 92));</span><br><span class="line">&#125; else &#123;</span><br><span class="line">airTemperature = Integer.parseInt(line.substring(87, 92));</span><br><span class="line">&#125;</span><br><span class="line">String quality = line.substring(92, 93);</span><br><span class="line">if (airTemperature != MISSING &amp;&amp; quality.matches(&quot;[01459]&quot;)) &#123;</span><br><span class="line">context.write(new Text(year), new IntWritable(airTemperature));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>reduce:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import org.apache.hadoop.io.IntWritable;</span><br><span class="line">import org.apache.hadoop.io.Text;</span><br><span class="line">import org.apache.hadoop.mapreduce.Reducer;</span><br><span class="line">public class MaxTemperatureReducer</span><br><span class="line">extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;</span><br><span class="line">@Override</span><br><span class="line">public void reduce(Text key, Iterable&lt;IntWritable&gt; values,</span><br><span class="line">Context context)</span><br><span class="line">throws IOException, InterruptedException &#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">int maxValue = Integer.MIN_VALUE;</span><br><span class="line">for (IntWritable value : values) &#123;</span><br><span class="line">maxValue = Math.max(maxValue, value.get());</span><br><span class="line">&#125;</span><br><span class="line">context.write(key, new IntWritable(maxValue));</span><br></pre></td></tr></table></figure></p>
-<p>main:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.hadoop.fs.Path;</span><br><span class="line">import org.apache.hadoop.io.IntWritable;</span><br><span class="line">import org.apache.hadoop.io.Text;</span><br><span class="line">import org.apache.hadoop.mapreduce.Job;</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</span><br><span class="line">public class MaxTemperature &#123;</span><br><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line">if (args.length != 2) &#123;</span><br><span class="line">System.err.println(&quot;Usage: MaxTemperature &lt;input path&gt; &lt;output path&gt;&quot;);</span><br><span class="line">System.exit(-1);</span><br><span class="line">&#125;</span><br><span class="line">Job job = new Job();</span><br><span class="line">job.setJarByClass(MaxTemperature.class);</span><br><span class="line">job.setJobName(&quot;Max temperature&quot;);</span><br><span class="line">FileInputFormat.addInputPath(job, new Path(args[0]));</span><br><span class="line">FileOutputFormat.setOutputPath(job, new Path(args[1]));</span><br><span class="line">job.setMapperClass(MaxTemperatureMapper.class);</span><br><span class="line">job.setReducerClass(MaxTemperatureReducer.class);</span><br><span class="line">job.setOutputKeyClass(Text.class);</span><br><span class="line">job.setOutputValueClass(IntWritable.class);</span><br><span class="line">System.exit(job.waitForCompletion(true) ? 0 : 1);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-3-hadoop处理方式"><a href="#2-3-hadoop处理方式" class="headerlink" title="2.3 hadoop处理方式"></a>2.3 hadoop处理方式</h4><p>map:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import</span><br><span class="line">import</span><br><span class="line">import</span><br><span class="line">import</span><br><span class="line">org.apache.hadoop.io.IntWritable;</span><br><span class="line">org.apache.hadoop.io.LongWritable;</span><br><span class="line">org.apache.hadoop.io.Text;</span><br><span class="line">org.apache.hadoop.mapreduce.Mapper;</span><br><span class="line">public class MaxTemperatureMapper</span><br><span class="line">extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;</span><br><span class="line">private static final int MISSING = 9999;</span><br><span class="line">@Override</span><br><span class="line">public void map(LongWritable key, Text value, Context context)</span><br><span class="line">throws IOException, InterruptedException &#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">String line = value.toString();</span><br><span class="line">String year = line.substring(15, 19);</span><br><span class="line">int airTemperature;</span><br><span class="line">if (line.charAt(87) == &apos;+&apos;) &#123; // parseInt doesn&apos;t like leading plus signs</span><br><span class="line">airTemperature = Integer.parseInt(line.substring(88, 92));</span><br><span class="line">&#125; else &#123;</span><br><span class="line">airTemperature = Integer.parseInt(line.substring(87, 92));</span><br><span class="line">&#125;</span><br><span class="line">String quality = line.substring(92, 93);</span><br><span class="line">if (airTemperature != MISSING &amp;&amp; quality.matches(&quot;[01459]&quot;)) &#123;</span><br><span class="line">context.write(new Text(year), new IntWritable(airTemperature));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>reduce:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import org.apache.hadoop.io.IntWritable;</span><br><span class="line">import org.apache.hadoop.io.Text;</span><br><span class="line">import org.apache.hadoop.mapreduce.Reducer;</span><br><span class="line">public class MaxTemperatureReducer</span><br><span class="line">extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;</span><br><span class="line">@Override</span><br><span class="line">public void reduce(Text key, Iterable&lt;IntWritable&gt; values,</span><br><span class="line">Context context)</span><br><span class="line">throws IOException, InterruptedException &#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">int maxValue = Integer.MIN_VALUE;</span><br><span class="line">for (IntWritable value : values) &#123;</span><br><span class="line">maxValue = Math.max(maxValue, value.get());</span><br><span class="line">&#125;</span><br><span class="line">context.write(key, new IntWritable(maxValue));</span><br></pre></td></tr></table></figure>
+
+<p>main:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.hadoop.fs.Path;</span><br><span class="line">import org.apache.hadoop.io.IntWritable;</span><br><span class="line">import org.apache.hadoop.io.Text;</span><br><span class="line">import org.apache.hadoop.mapreduce.Job;</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</span><br><span class="line">public class MaxTemperature &#123;</span><br><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line">if (args.length != 2) &#123;</span><br><span class="line">System.err.println(&quot;Usage: MaxTemperature &lt;input path&gt; &lt;output path&gt;&quot;);</span><br><span class="line">System.exit(-1);</span><br><span class="line">&#125;</span><br><span class="line">Job job = new Job();</span><br><span class="line">job.setJarByClass(MaxTemperature.class);</span><br><span class="line">job.setJobName(&quot;Max temperature&quot;);</span><br><span class="line">FileInputFormat.addInputPath(job, new Path(args[0]));</span><br><span class="line">FileOutputFormat.setOutputPath(job, new Path(args[1]));</span><br><span class="line">job.setMapperClass(MaxTemperatureMapper.class);</span><br><span class="line">job.setReducerClass(MaxTemperatureReducer.class);</span><br><span class="line">job.setOutputKeyClass(Text.class);</span><br><span class="line">job.setOutputValueClass(IntWritable.class);</span><br><span class="line">System.exit(job.waitForCompletion(true) ? 0 : 1);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="2-4-横向扩展"><a href="#2-4-横向扩展" class="headerlink" title="2.4 横向扩展"></a>2.4 横向扩展</h4><h4 id="2-5-Hadoop-Streaming"><a href="#2-5-Hadoop-Streaming" class="headerlink" title="2.5 Hadoop Streaming"></a>2.5 Hadoop Streaming</h4>
       
     </div>
@@ -559,8 +603,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/04/Https配置/" rel="next" title="https　Certificate配置">
-                <i class="fa fa-chevron-left"></i> https　Certificate配置
+              <a href="/2018/12/04/Hadoop权威指南V3-p2/" rel="next" title="Hadoop 权威指南 3th Edition Part 2">
+                <i class="fa fa-chevron-left"></i> Hadoop 权威指南 3th Edition Part 2
               </a>
             
           </div>
@@ -569,8 +613,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/04/Hadoop权威指南V3-p2/" rel="prev" title="Hadoop 权威指南 3th Edition Part 2">
-                Hadoop 权威指南 3th Edition Part 2 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/04/H2数据库笔记/" rel="prev" title="H2数据库笔记">
+                H2数据库笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

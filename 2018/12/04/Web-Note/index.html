@@ -1027,7 +1027,8 @@
 <li>while + 递归。<h3 id="Java-中的排序工具"><a href="#Java-中的排序工具" class="headerlink" title="Java 中的排序工具"></a>Java 中的排序工具</h3></li>
 </ul>
 </li>
-<li><a href="https://blog.csdn.net/u011410529/article/details/56668545?locationnum=6&amp;fps=1" target="_blank" rel="noopener">《Arrays.sort和Collections.sort实现原理解析》</a><ul>
+<li><p><a href="https://blog.csdn.net/u011410529/article/details/56668545?locationnum=6&fps=1" target="_blank" rel="noopener">《Arrays.sort和Collections.sort实现原理解析》</a></p>
+<ul>
 <li>Collections.sort算法调用的是合并排序。</li>
 <li>Arrays.sort() 采用了2种排序算法 – 基本类型数据使用快速排序法，对象数组使用归并排序。</li>
 </ul>
@@ -1075,7 +1076,8 @@
 </li>
 <li><p><a href="http://www.ruanyifeng.com/blog/2011/08/bayesian_inference_part_one.html" target="_blank" rel="noopener">《贝叶斯推断及其互联网应用1》</a></p>
 </li>
-<li><a href="http://www.ruanyifeng.com/blog/2011/08/bayesian_inference_part_two.html" target="_blank" rel="noopener">《贝叶斯推断及其互联网应用2》</a></li>
+<li><p><a href="http://www.ruanyifeng.com/blog/2011/08/bayesian_inference_part_two.html" target="_blank" rel="noopener">《贝叶斯推断及其互联网应用2》</a></p>
+</li>
 </ul>
 <h2 id="推荐算法"><a href="#推荐算法" class="headerlink" title="推荐算法"></a>推荐算法</h2><ul>
 <li><a href="http://www.infoq.com/cn/articles/recommendation-algorithm-overview-part01" target="_blank" rel="noopener">《推荐算法综述》</a></li>
@@ -1101,9 +1103,12 @@
 <li><a href="https://blog.csdn.net/u012440687/article/details/52116108" target="_blank" rel="noopener">《数据库事务ACID特性》</a></li>
 </ul>
 <h3 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h3><ul>
-<li>未提交读：一个事务可以读取另一个未提交的数据，容易出现脏读的情况。</li>
-<li>读提交：一个事务等另外一个事务提交之后才可以读取数据，但会出现不可重复读的情况（多次读取的数据不一致），读取过程中出现UPDATE操作，会多。（大多数数据库默认级别是RC，比如SQL Server，Oracle），读取的时候不可以修改。</li>
-<li>可重复读： 同一个事务里确保每次读取的时候，获得的是同样的数据，但不保障原始数据被其他事务更新（幻读），Mysql InnoDB 就是这个级别。</li>
+<li><p>未提交读：一个事务可以读取另一个未提交的数据，容易出现脏读的情况。</p>
+</li>
+<li><p>读提交：一个事务等另外一个事务提交之后才可以读取数据，但会出现不可重复读的情况（多次读取的数据不一致），读取过程中出现UPDATE操作，会多。（大多数数据库默认级别是RC，比如SQL Server，Oracle），读取的时候不可以修改。</p>
+</li>
+<li><p>可重复读： 同一个事务里确保每次读取的时候，获得的是同样的数据，但不保障原始数据被其他事务更新（幻读），Mysql InnoDB 就是这个级别。</p>
+</li>
 <li><p>序列化：所有事物串行处理（牺牲了效率）</p>
 </li>
 <li><p><a href="https://blog.csdn.net/qq_33290787/article/details/51924963" target="_blank" rel="noopener">《理解事务的4种隔离级别》</a></p>
@@ -1230,7 +1235,8 @@
 <li><a href="https://www.cnblogs.com/liang1101/p/6475555.html" target="_blank" rel="noopener">《ReadWriteLock场景应用》</a></li>
 </ul>
 <h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><ul>
-<li><a href="https://blog.csdn.net/yunfenglw/article/details/45950305" target="_blank" rel="noopener">《“死锁”四个必要条件的合理解释》</a><ul>
+<li><p><a href="https://blog.csdn.net/yunfenglw/article/details/45950305" target="_blank" rel="noopener">《“死锁”四个必要条件的合理解释》</a></p>
+<ul>
 <li>互斥、持有、不可剥夺、环形等待。</li>
 </ul>
 </li>
@@ -1304,7 +1310,8 @@
 <li>单例模式：全局只有一个实例，如 java.lang.Runtime#getRuntime()。</li>
 </ul>
 </li>
-<li>行为模式：<ul>
+<li><p>行为模式：</p>
+<ul>
 <li>责任链模式：通过把请求从一个对象传递到链条中下一个对象的方式，直到请求被处理完毕，以实现对象间的解耦。如 javax.servlet.Filter#doFilter()。</li>
 <li>命令模式：将操作封装到对象内，以便存储，传递和返回，如：java.lang.Runnable。</li>
 <li>解释器模式：定义了一个语言的语法，然后解析相应语法的语句，如，java.text.Format，java.text.Normalizer。</li>
@@ -1319,7 +1326,8 @@
 </li>
 <li><p><a href="https://www.cnblogs.com/hwaggLee/p/4510687.html" target="_blank" rel="noopener">《Spring-涉及到的设计模式汇总》</a></p>
 </li>
-<li><a href="https://blog.csdn.net/u012387062/article/details/54719114" target="_blank" rel="noopener">《Mybatis使用的设计模式》</a></li>
+<li><p><a href="https://blog.csdn.net/u012387062/article/details/54719114" target="_blank" rel="noopener">《Mybatis使用的设计模式》</a></p>
+</li>
 </ul>
 <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><ul>
 <li><a href="https://blog.csdn.net/YECrazy/article/details/79481964" target="_blank" rel="noopener">《单例模式的三种实现 以及各自的优缺点》</a></li>
@@ -1496,7 +1504,8 @@
 <li><a href="https://www.jianshu.com/p/27060fd61f72" target="_blank" rel="noopener">《全链路压测经验》</a></li>
 </ul>
 <h3 id="A-B-、灰度、蓝绿测试"><a href="#A-B-、灰度、蓝绿测试" class="headerlink" title="A/B 、灰度、蓝绿测试"></a>A/B 、灰度、蓝绿测试</h3><ul>
-<li><a href="https://testerhome.com/topics/11165" target="_blank" rel="noopener">《技术干货 | AB 测试和灰度发布探索及实践》</a></li>
+<li><p><a href="https://testerhome.com/topics/11165" target="_blank" rel="noopener">《技术干货 | AB 测试和灰度发布探索及实践》</a></p>
+</li>
 <li><p><a href="http://blog.51cto.com/purplegrape/1403123" target="_blank" rel="noopener">《nginx 根据IP 进行灰度发布》</a></p>
 </li>
 <li><p><a href="https://www.v2ex.com/t/344341" target="_blank" rel="noopener">《蓝绿部署、A/B 测试以及灰度发布》</a></p>
@@ -1556,8 +1565,10 @@
 <li><a href="http://httpd.apache.org/" target="_blank" rel="noopener">官方网站</a></li>
 </ul>
 <h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><h4 id="架构原理"><a href="#架构原理" class="headerlink" title="架构原理"></a>架构原理</h4><ul>
-<li><a href="https://www.cnblogs.com/hggen/p/6264475.html" target="_blank" rel="noopener">《TOMCAT原理详解及请求过程》</a></li>
-<li><a href="https://www.cnblogs.com/crazylqy/p/4706223.html" target="_blank" rel="noopener">《Tomcat服务器原理详解》</a></li>
+<li><p><a href="https://www.cnblogs.com/hggen/p/6264475.html" target="_blank" rel="noopener">《TOMCAT原理详解及请求过程》</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/crazylqy/p/4706223.html" target="_blank" rel="noopener">《Tomcat服务器原理详解》</a></p>
+</li>
 <li><p><a href="https://www.ibm.com/developerworks/cn/java/j-lo-tomcat1/" target="_blank" rel="noopener">《Tomcat 系统架构与设计模式,第 1 部分: 工作原理》</a></p>
 </li>
 <li><p><a href="https://blog.csdn.net/xlgen157387/article/details/79006434" target="_blank" rel="noopener">《四张图带你了解Tomcat系统架构》</a></p>
@@ -1577,7 +1588,8 @@
 </li>
 <li><p><a href="http://blog.chinaunix.net/uid-20662363-id-3012760.html" target="_blank" rel="noopener">《tomcat http协议与ajp协议》</a></p>
 </li>
-<li><a href="http://dmouse.iteye.com/blog/1354527" target="_blank" rel="noopener">《AJP与HTTP比较和分析》</a><ul>
+<li><p><a href="http://dmouse.iteye.com/blog/1354527" target="_blank" rel="noopener">《AJP与HTTP比较和分析》</a></p>
+<ul>
 <li>AJP 协议（8009端口）用于降低和前端Server（如Apache，而且需要支持AJP协议）的连接数(前端)，通过长连接提高性能。</li>
 <li>并发高时，AJP协议优于HTTP协议。</li>
 </ul>
@@ -1632,13 +1644,16 @@
 <li><a href="https://github.com/squid-cache/squid" target="_blank" rel="noopener">squid</a> - squid cache</li>
 </ul>
 <h3 id="Memcached"><a href="#Memcached" class="headerlink" title="Memcached"></a>Memcached</h3><ul>
-<li><a href="http://www.runoob.com/Memcached/Memcached-tutorial.html" target="_blank" rel="noopener">《Memcached 教程》</a></li>
-<li><a href="https://blog.csdn.net/chenleixing/article/details/47035453" target="_blank" rel="noopener">《深入理解Memcached原理》</a><ul>
+<li><p><a href="http://www.runoob.com/Memcached/Memcached-tutorial.html" target="_blank" rel="noopener">《Memcached 教程》</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/chenleixing/article/details/47035453" target="_blank" rel="noopener">《深入理解Memcached原理》</a></p>
+<ul>
 <li>采用多路复用技术提高并发性。</li>
 <li>slab分配算法： memcached给Slab分配内存空间，默认是1MB。分配给Slab之后 把slab的切分成大小相同的chunk，Chunk是用于缓存记录的内存空间，Chunk 的大小默认按照1.25倍的速度递增。好处是不会频繁申请内存，提高IO效率，坏处是会有一定的内存浪费。</li>
 </ul>
 </li>
-<li><a href="https://www.jianshu.com/p/36e5cd400580" target="_blank" rel="noopener">《Memcached软件工作原理》</a></li>
+<li><p><a href="https://www.jianshu.com/p/36e5cd400580" target="_blank" rel="noopener">《Memcached软件工作原理》</a></p>
+</li>
 <li><p><a href="http://zhihuzeye.com/archives/2361" target="_blank" rel="noopener">《Memcache技术分享：介绍、使用、存储、算法、优化、命中率》</a></p>
 </li>
 <li><p><a href="https://blog.csdn.net/liu251890347/article/details/37690045" target="_blank" rel="noopener">《memcache 中 add 、 set 、replace 的区别》</a></p>
@@ -1646,12 +1661,14 @@
 <li>区别在于当key存在还是不存在时，返回值是true和false的。</li>
 </ul>
 </li>
-<li><p><a href="https://pan.baidu.com/s/1qX00Lti?errno=0&amp;errmsg=Auth%20Login%20Sucess&amp;&amp;bduss=&amp;ssnerror=0&amp;traceid=" target="_blank" rel="noopener"><strong>《memcached全面剖析》</strong></a></p>
+<li><p><a href="https://pan.baidu.com/s/1qX00Lti?errno=0&errmsg=Auth%20Login%20Sucess&&bduss=&ssnerror=0&traceid=" target="_blank" rel="noopener"><strong>《memcached全面剖析》</strong></a></p>
 </li>
 </ul>
 <h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><ul>
-<li><a href="http://www.runoob.com/redis/redis-tutorial.html" target="_blank" rel="noopener">《Redis 教程》</a></li>
-<li><a href="https://blog.csdn.net/wcf373722432/article/details/78678504" target="_blank" rel="noopener">《redis底层原理》</a><ul>
+<li><p><a href="http://www.runoob.com/redis/redis-tutorial.html" target="_blank" rel="noopener">《Redis 教程》</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/wcf373722432/article/details/78678504" target="_blank" rel="noopener">《redis底层原理》</a></p>
+<ul>
 <li>使用 ziplist 存储链表，ziplist是一种压缩链表，它的好处是更能节省内存空间，因为它所存储的内容都是在连续的内存区域当中的。</li>
 <li>使用 skiplist(跳跃表)来存储有序集合对象、查找上先从高Level查起、时间复杂度和红黑树相当，实现容易，无锁、并发性好。</li>
 </ul>
@@ -1714,7 +1731,7 @@
 <h3 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h3><p>Java实现，推拉模式都是支持，吞吐量逊于Kafka。可以保证消息顺序。</p>
 <ul>
 <li><a href="https://www.jianshu.com/p/824066d70da8" target="_blank" rel="noopener">《RocketMQ 实战之快速入门》</a></li>
-<li><a href="http://www.iocoder.cn/categories/RocketMQ/?vip&amp;architect-awesome" target="_blank" rel="noopener">《RocketMQ 源码解析》</a></li>
+<li><a href="http://www.iocoder.cn/categories/RocketMQ/?vip&architect-awesome" target="_blank" rel="noopener">《RocketMQ 源码解析》</a></li>
 </ul>
 <h3 id="ActiveMQ"><a href="#ActiveMQ" class="headerlink" title="ActiveMQ"></a>ActiveMQ</h3><p>纯Java实现，兼容JMS，可以内嵌于Java应用中。</p>
 <ul>
@@ -1741,8 +1758,10 @@
 </li>
 <li><p><a href="https://www.cnblogs.com/drift-ice/p/3817269.html" target="_blank" rel="noopener">《Quartz使用总结》</a></p>
 </li>
-<li><a href="https://blog.csdn.net/wenniuwuren/article/details/42082981/" target="_blank" rel="noopener">《Quartz源码解析 —- 触发器按时启动原理》</a></li>
-<li><a href="https://www.jianshu.com/p/bab8e4e32952" target="_blank" rel="noopener">《quartz原理揭秘和源码解读》</a><ul>
+<li><p><a href="https://blog.csdn.net/wenniuwuren/article/details/42082981/" target="_blank" rel="noopener">《Quartz源码解析 —- 触发器按时启动原理》</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/bab8e4e32952" target="_blank" rel="noopener">《quartz原理揭秘和源码解读》</a></p>
+<ul>
 <li>定时调度在 QuartzSchedulerThread 代码中，while()无限循环，每次循环取出时间将到的trigger，触发对应的job，直到调度器线程被关闭。</li>
 </ul>
 </li>
@@ -1758,8 +1777,10 @@
 <li>Quartz集群中，独立的Quartz节点并不与另一其的节点或是管理节点通信，而是通过相同的数据库表来感知到另一Quartz应用的 </li>
 </ul>
 </li>
-<li><a href="http://www.iocoder.cn/categories/Elastic-Job-Lite/?vip&amp;architect-awesome" target="_blank" rel="noopener">《Elastic-Job-Lite 源码解析》</a></li>
-<li><a href="http://www.iocoder.cn/categories/Elastic-Job-Cloud/?vip&amp;architect-awesome" target="_blank" rel="noopener">《Elastic-Job-Cloud 源码解析》</a></li>
+<li><p><a href="http://www.iocoder.cn/categories/Elastic-Job-Lite/?vip&architect-awesome" target="_blank" rel="noopener">《Elastic-Job-Lite 源码解析》</a></p>
+</li>
+<li><p><a href="http://www.iocoder.cn/categories/Elastic-Job-Cloud/?vip&architect-awesome" target="_blank" rel="noopener">《Elastic-Job-Cloud 源码解析》</a></p>
+</li>
 </ul>
 <h2 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h2><ul>
 <li><p><a href="https://blog.csdn.net/top_code/article/details/54615853" target="_blank" rel="noopener">《从零开始实现RPC框架 - RPC原理及实现》</a></p>
@@ -1774,7 +1795,8 @@
 <li><a href="http://dubbo.apache.org/" target="_blank" rel="noopener">官方网站</a></li>
 <li><a href="https://www.cnblogs.com/steven520213/p/7606598.html" target="_blank" rel="noopener">dubbo实现原理简单介绍</a></li>
 </ul>
-<p><strong> SPI </strong><br>TODO</p>
+<p>** SPI **
+TODO</p>
 <h3 id="Thrift"><a href="#Thrift" class="headerlink" title="Thrift"></a>Thrift</h3><ul>
 <li><a href="http://thrift.apache.org/" target="_blank" rel="noopener">官方网站</a></li>
 <li><a href="https://blog.csdn.net/kesonyk/article/details/50924489" target="_blank" rel="noopener">《Thrift RPC详解》</a><ul>
@@ -1814,13 +1836,16 @@
 </ul>
 <h2 id="API-网关"><a href="#API-网关" class="headerlink" title="API 网关"></a>API 网关</h2><p>主要职责：请求转发、安全认证、协议转换、容灾。</p>
 <ul>
-<li><a href="http://yunlzheng.github.io/2017/03/14/the-things-about-api-gateway/" target="_blank" rel="noopener">《API网关那些儿》</a></li>
+<li><p><a href="http://yunlzheng.github.io/2017/03/14/the-things-about-api-gateway/" target="_blank" rel="noopener">《API网关那些儿》</a></p>
+</li>
 <li><p><a href="http://www.infoq.com/cn/news/2016/07/API-background-architecture-floo" target="_blank" rel="noopener">《谈API网关的背景、架构以及落地方案》</a></p>
 </li>
 <li><p><a href="https://blog.csdn.net/zhanglh046/article/details/78651993" target="_blank" rel="noopener">《使用Zuul构建API Gateway》</a></p>
 </li>
-<li><a href="http://www.iocoder.cn/categories/Spring-Cloud-Gateway/?vip&amp;architect-awesome" target="_blank" rel="noopener">《Spring Cloud Gateway 源码解析》</a></li>
-<li><a href="https://mp.weixin.qq.com/s/LIq2CiXJQmmjBC0yvYLY5A" target="_blank" rel="noopener">《HTTP API网关选择之一Kong介绍》</a></li>
+<li><p><a href="http://www.iocoder.cn/categories/Spring-Cloud-Gateway/?vip&architect-awesome" target="_blank" rel="noopener">《Spring Cloud Gateway 源码解析》</a></p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/s/LIq2CiXJQmmjBC0yvYLY5A" target="_blank" rel="noopener">《HTTP API网关选择之一Kong介绍》</a></p>
+</li>
 </ul>
 <h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><h3 id="OSI-七层协议"><a href="#OSI-七层协议" class="headerlink" title="OSI 七层协议"></a>OSI 七层协议</h3><ul>
 <li><a href="https://www.cnblogs.com/Robin-YB/p/6668762.html" target="_blank" rel="noopener">《OSI七层协议模型、TCP/IP四层模型学习笔记》</a></li>
@@ -1911,10 +1936,10 @@
 <li><a href="https://www.cnblogs.com/happyday56/p/4268249.html" target="_blank" rel="noopener">《Hessian原理分析》</a><br>Binary-RPC;不仅仅是序列化</li>
 </ul>
 <h3 id="Protobuf"><a href="#Protobuf" class="headerlink" title="Protobuf"></a>Protobuf</h3><ul>
-<li><a href="https://blog.csdn.net/antgan/article/details/52103966" target="_blank" rel="noopener">《Protobuf协议的Java应用例子》</a><br>Goolge出品、占用空间和效率完胜其他序列化类库，如Hessian；需要编写  .proto 文件。</li>
+<li><p><a href="https://blog.csdn.net/antgan/article/details/52103966" target="_blank" rel="noopener">《Protobuf协议的Java应用例子》</a><br>Goolge出品、占用空间和效率完胜其他序列化类库，如Hessian；需要编写  .proto 文件。</p>
+</li>
 <li><p><a href="https://worktile.com/tech/share/prototol-buffers" target="_blank" rel="noopener">《Protocol Buffers序列化协议及应用》</a></p>
-<pre><code>* 关于协议的解释；缺点：可读性差;
-</code></pre></li>
+<pre><code>* 关于协议的解释；缺点：可读性差;</code></pre></li>
 <li><p><a href="https://blog.csdn.net/eric520zenobia/article/details/53766571" target="_blank" rel="noopener">《简单的使用 protobuf 和 protostuff》</a></p>
 <ul>
 <li>protostuff 的好处是不用写 .proto 文件，Java 对象直接就可以序列化。</li>
@@ -1948,10 +1973,14 @@
 </li>
 <li><p><a href="https://www.cnblogs.com/zhouyusheng/p/8038224.html" target="_blank" rel="noopener">《MYSQL性能优化的最佳20+条经验》</a></p>
 </li>
-<li><a href="https://blog.csdn.net/when_less_is_more/article/details/70187459" target="_blank" rel="noopener">《SQL优化之道》</a></li>
-<li><a href="https://www.cnblogs.com/sivkun/p/7518540.html" target="_blank" rel="noopener">《mysql数据库死锁的产生原因及解决办法》</a></li>
-<li><a href="https://blog.csdn.net/monkey_d_feilong/article/details/52291556" target="_blank" rel="noopener">《导致索引失效的可能情况》</a></li>
-<li><a href="https://blog.csdn.net/zy_281870667/article/details/51604540" target="_blank" rel="noopener">《 MYSQL分页limit速度太慢优化方法》</a><ul>
+<li><p><a href="https://blog.csdn.net/when_less_is_more/article/details/70187459" target="_blank" rel="noopener">《SQL优化之道》</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/sivkun/p/7518540.html" target="_blank" rel="noopener">《mysql数据库死锁的产生原因及解决办法》</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/monkey_d_feilong/article/details/52291556" target="_blank" rel="noopener">《导致索引失效的可能情况》</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/zy_281870667/article/details/51604540" target="_blank" rel="noopener">《 MYSQL分页limit速度太慢优化方法》</a></p>
+<ul>
 <li>原则上就是缩小扫描范围。</li>
 </ul>
 </li>
@@ -2024,7 +2053,7 @@
 </ul>
 <h2 id="容量评估"><a href="#容量评估" class="headerlink" title="容量评估"></a>容量评估</h2><ul>
 <li><a href="https://blog.csdn.net/u012528360/article/details/70054156" target="_blank" rel="noopener">《联网性能与容量评估的方法论和典型案例》</a></li>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&amp;mid=2651959542&amp;idx=1&amp;sn=2494bbea9a855e0e1c3ccd6d2562a600&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">《互联网架构，如何进行容量设计？》</a><ul>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&mid=2651959542&idx=1&sn=2494bbea9a855e0e1c3ccd6d2562a600&scene=21#wechat_redirect" target="_blank" rel="noopener">《互联网架构，如何进行容量设计？》</a><ul>
 <li>评估总访问量、评估平均访问量QPS、评估高峰QPS、评估系统、单机极限QPS</li>
 </ul>
 </li>
@@ -2119,7 +2148,8 @@
 <li>TODO</li>
 </ol>
 <ul>
-<li><a href="https://zhidao.baidu.com/question/1988017976673661587.html" target="_blank" rel="noopener">《个人隐私包括哪些》</a></li>
+<li><p><a href="https://zhidao.baidu.com/question/1988017976673661587.html" target="_blank" rel="noopener">《个人隐私包括哪些》</a></p>
+</li>
 <li><p><a href="https://www.zhihu.com/question/20137108" target="_blank" rel="noopener">《在互联网上，隐私的范围包括哪些？》</a></p>
 </li>
 <li><p><a href="https://coderxing.gitbooks.io/architecture-evolution/di-san-pian-ff1a-bu-luo/642-shu-ju-jia-mi/6425-jia-mi-chang-jing-ff1a-yong-hu-mi-ma-bao-cun.html" target="_blank" rel="noopener">《用户密码保存》</a></p>
@@ -2149,10 +2179,12 @@
 <h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><ul>
 <li><p><a href="https://coderxing.gitbooks.io/architecture-evolution/di-san-pian-ff1a-bu-luo/642-shu-ju-jia-mi/6424-chang-yong-fei-dui-cheng-jia-mi-suan-fa.html" target="_blank" rel="noopener">《常见非对称加密算法》</a></p>
 <ul>
-<li>RSA、DSA、ECDSA(螺旋曲线加密算法)</li>
-<li>和 RSA 不同的是 DSA 仅能用于数字签名，不能进行数据加密解密，其安全性和RSA相当，但其性能要比RSA快。</li>
+<li><p>RSA、DSA、ECDSA(螺旋曲线加密算法)</p>
+</li>
+<li><p>和 RSA 不同的是 DSA 仅能用于数字签名，不能进行数据加密解密，其安全性和RSA相当，但其性能要比RSA快。</p>
+</li>
 <li><p>256位的ECC秘钥的安全性等同于3072位的RSA秘钥。</p>
-<p>  <a href="http://baijiahao.baidu.com/s?id=1578348858092033763&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">《区块链的加密技术》</a>    </p>
+<p>  <a href="http://baijiahao.baidu.com/s?id=1578348858092033763&wfr=spider&for=pc" target="_blank" rel="noopener">《区块链的加密技术》</a>    </p>
 </li>
 </ul>
 </li>
@@ -2290,8 +2322,10 @@
 </li>
 </ul>
 <h3 id="软件负载均衡"><a href="#软件负载均衡" class="headerlink" title="软件负载均衡"></a>软件负载均衡</h3><ul>
-<li><a href="https://www.cnblogs.com/tianzhiliang/articles/2317808.html" target="_blank" rel="noopener">《几种负载均衡算法》</a><br>  轮寻、权重、负载、最少连接、QoS</li>
-<li><a href="https://coderxing.gitbooks.io/architecture-evolution/di-san-pian-ff1a-bu-luo/611-dns-fang-shi.html" target="_blank" rel="noopener">《DNS负载均衡》</a><ul>
+<li><p><a href="https://www.cnblogs.com/tianzhiliang/articles/2317808.html" target="_blank" rel="noopener">《几种负载均衡算法》</a><br>  轮寻、权重、负载、最少连接、QoS</p>
+</li>
+<li><p><a href="https://coderxing.gitbooks.io/architecture-evolution/di-san-pian-ff1a-bu-luo/611-dns-fang-shi.html" target="_blank" rel="noopener">《DNS负载均衡》</a></p>
+<ul>
 <li>配置简单，更新速度慢。 </li>
 </ul>
 </li>
@@ -2342,7 +2376,8 @@
 </li>
 <li><p><a href="https://blog.csdn.net/zeb_perfect/article/details/54135506" target="_blank" rel="noopener">《缓存穿透，缓存击穿，缓存雪崩解决方案分析》</a></p>
 </li>
-<li><a href="https://blog.csdn.net/zeb_perfect/article/details/54135506" target="_blank" rel="noopener">《缓存击穿、失效以及热点key问题》</a> <ul>
+<li><p><a href="https://blog.csdn.net/zeb_perfect/article/details/54135506" target="_blank" rel="noopener">《缓存击穿、失效以及热点key问题》</a> </p>
+<ul>
 <li>主要策略：失效瞬间：单机使用锁；使用分布式锁；不过期；</li>
 <li>热点数据：热点数据单独存储；使用本地缓存；分成多个子key；</li>
 </ul>
@@ -2371,22 +2406,25 @@
 </li>
 </ul>
 <h3 id="容灾演练流程"><a href="#容灾演练流程" class="headerlink" title="容灾演练流程"></a>容灾演练流程</h3><ul>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&amp;mid=2650996320&amp;idx=1&amp;sn=0ed3be190bbee4a9277886ef88cbb2e5" target="_blank" rel="noopener">《依赖治理、灰度发布、故障演练，阿里电商故障演练系统的设计与实战经验》</a><ul>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&mid=2650996320&idx=1&sn=0ed3be190bbee4a9277886ef88cbb2e5" target="_blank" rel="noopener">《依赖治理、灰度发布、故障演练，阿里电商故障演练系统的设计与实战经验》</a><ul>
 <li>常见故障画像</li>
 <li>案例：预案有效性、预案有效性、故障复现、架构容灾测试、参数调优、参数调优、故障突袭、联合演练。</li>
 </ul>
 </li>
 </ul>
 <h3 id="平滑启动"><a href="#平滑启动" class="headerlink" title="平滑启动"></a>平滑启动</h3><ul>
-<li><p>平滑重启应用思路<br>1.端流量（如vip层）、2. flush 数据(如果有)、3, 重启应用</p>
-</li>
-<li><p><a href="https://blog.csdn.net/u011001084/article/details/73480432" target="_blank" rel="noopener">《JVM安全退出（如何优雅的关闭java服务）》</a><br>推荐推出方式：System.exit，Kill SIGTERM；不推荐 kill-9；用 Runtime.addShutdownHook 注册钩子。</p>
-</li>
+<li>平滑重启应用思路</li>
+</ul>
+<p>1.端流量（如vip层）、2. flush 数据(如果有)、3, 重启应用</p>
+<ul>
+<li><a href="https://blog.csdn.net/u011001084/article/details/73480432" target="_blank" rel="noopener">《JVM安全退出（如何优雅的关闭java服务）》</a><br>推荐推出方式：System.exit，Kill SIGTERM；不推荐 kill-9；用 Runtime.addShutdownHook 注册钩子。</li>
 <li><a href="http://ju.outofmemory.cn/entry/337235" target="_blank" rel="noopener">《常见Java应用如何优雅关闭》</a><br>Java、Srping、Dubbo 优雅关闭方式。</li>
 </ul>
 <h2 id="数据库扩展"><a href="#数据库扩展" class="headerlink" title="数据库扩展"></a>数据库扩展</h2><h3 id="读写分离模式"><a href="#读写分离模式" class="headerlink" title="读写分离模式"></a>读写分离模式</h3><ul>
-<li><a href="https://www.cnblogs.com/houdj/p/6563771.html" target="_blank" rel="noopener">《Mysql主从方案的实现》</a></li>
-<li><a href="https://www.cnblogs.com/edisonchou/p/4133148.html" target="_blank" rel="noopener">《搭建MySQL主从复制经典架构》</a></li>
+<li><p><a href="https://www.cnblogs.com/houdj/p/6563771.html" target="_blank" rel="noopener">《Mysql主从方案的实现》</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/edisonchou/p/4133148.html" target="_blank" rel="noopener">《搭建MySQL主从复制经典架构》</a></p>
+</li>
 <li><p><a href="https://blog.csdn.net/nimasike/article/details/48048341" target="_blank" rel="noopener">《Haproxy+多台MySQL从服务器(Slave) 实现负载均衡》</a></p>
 </li>
 <li><p><a href="https://www.cnblogs.com/zhangsubai/p/6801764.html" target="_blank" rel="noopener">《DRBD+Heartbeat+Mysql高可用读写分离架构》</a></p>
@@ -2415,7 +2453,8 @@
 </li>
 </ul>
 <h2 id="服务治理"><a href="#服务治理" class="headerlink" title="服务治理"></a>服务治理</h2><h3 id="服务注册与发现"><a href="#服务注册与发现" class="headerlink" title="服务注册与发现"></a>服务注册与发现</h3><ul>
-<li><a href="https://blog.csdn.net/jiaolongdy/article/details/51188798" target="_blank" rel="noopener">《永不失联！如何实现微服务架构中的服务发现？》</a><ul>
+<li><p><a href="https://blog.csdn.net/jiaolongdy/article/details/51188798" target="_blank" rel="noopener">《永不失联！如何实现微服务架构中的服务发现？》</a></p>
+<ul>
 <li>客户端服务发现模式：客户端直接查询注册表，同时自己负责负载均衡。Eureka 采用这种方式。</li>
 <li>服务器端服务发现模式：客户端通过负载均衡查询服务实例。</li>
 </ul>
@@ -2451,7 +2490,8 @@
 </li>
 </ul>
 <h3 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h3><ul>
-<li><a href="http://www.hollischuang.com/archives/1716" target="_blank" rel="noopener">《分布式锁的几种实现方式》</a><ul>
+<li><p><a href="http://www.hollischuang.com/archives/1716" target="_blank" rel="noopener">《分布式锁的几种实现方式》</a></p>
+<ul>
 <li>基于数据库的分布式锁：优点：操作简单、容易理解。缺点：存在单点问题、数据库性能够开销较大、不可重入；</li>
 <li>基于缓存的分布式锁：优点：非阻塞、性能好。缺点：操作不好容易造成锁无法释放的情况。</li>
 <li>Zookeeper 分布式锁：通过有序临时节点实现锁机制，自己对应的节点需要最小，则被认为是获得了锁。优点：集群可以透明解决单点问题，避免锁不被释放问题，同时锁可以重入。缺点：性能不如缓存方式，吞吐量会随着zk集群规模变大而下降。</li>
@@ -2635,7 +2675,8 @@
 </li>
 </ul>
 <h2 id="Service-Mesh"><a href="#Service-Mesh" class="headerlink" title="Service Mesh"></a>Service Mesh</h2><ul>
-<li><a href="https://time.geekbang.org/article/2355" target="_blank" rel="noopener">《什么是Service Mesh？》</a></li>
+<li><p><a href="https://time.geekbang.org/article/2355" target="_blank" rel="noopener">《什么是Service Mesh？》</a></p>
+</li>
 <li><p><a href="https://www.jianshu.com/p/e23e3e74538e" target="_blank" rel="noopener">《初识 Service Mesh》</a></p>
 </li>
 <li><p><a href="https://time.geekbang.org/article/2355" target="_blank" rel="noopener">《什么是Service Mesh？》</a></p>
@@ -2651,7 +2692,8 @@
 <h2 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h2><ul>
 <li><a href="https://github.com/alibaba/p3c" target="_blank" rel="noopener">《阿里巴巴Java开发手册》</a></li>
 </ul>
-<h2 id="代码-Review"><a href="#代码-Review" class="headerlink" title="代码 Review"></a>代码 Review</h2><p>制度还是制度!<br>另外，每个公司需要根据自己的需求和目标制定自己的 check list</p>
+<h2 id="代码-Review"><a href="#代码-Review" class="headerlink" title="代码 Review"></a>代码 Review</h2><p>制度还是制度!
+另外，每个公司需要根据自己的需求和目标制定自己的 check list</p>
 <ul>
 <li><p><a href="http://www.sohu.com/a/229745352_181657" target="_blank" rel="noopener">《为什么你做不好 Code Review？》</a></p>
 <ul>
@@ -2690,7 +2732,8 @@
 <ul>
 <li><p><a href="http://www.woshipm.com/pmd/406917.html" target="_blank" rel="noopener">《主流敏捷开发方法：极限编程XP》</a></p>
 <ul>
-<li>是一种指导开发人员的方法论。</li>
+<li><p>是一种指导开发人员的方法论。</p>
+</li>
 <li><p>4大价值：</p>
 <ul>
 <li>沟通：鼓励口头沟通，提高效率。</li>
@@ -2701,7 +2744,8 @@
 </li>
 <li><p>5个原则：快速反馈、简单性假设、逐步修改、提倡更改（小步快跑）、优质工作（保证质量的前提下保证小步快跑）。</p>
 </li>
-<li>5个工作：阶段性冲刺；冲刺计划会议；每日站立会议；冲刺后review；回顾会议。</li>
+<li><p>5个工作：阶段性冲刺；冲刺计划会议；每日站立会议；冲刺后review；回顾会议。</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -2781,19 +2825,26 @@
 </ul>
 <h2 id="综合门户、社区"><a href="#综合门户、社区" class="headerlink" title="综合门户、社区"></a>综合门户、社区</h2><p><strong>国内：</strong></p>
 <ul>
-<li><a href="http://csdn.net" target="_blank" rel="noopener">CSDN</a><br>   老牌技术社区、不必解释。</li>
-<li><a href="http://www.51cto.com/" target="_blank" rel="noopener">51cto.com</a></li>
-<li><a href="http://www.iteye.com/" target="_blank" rel="noopener">ITeye</a><ul>
+<li><p><a href="http://csdn.net" target="_blank" rel="noopener">CSDN</a><br>   老牌技术社区、不必解释。</p>
+</li>
+<li><p><a href="http://www.51cto.com/" target="_blank" rel="noopener">51cto.com</a></p>
+</li>
+<li><p><a href="http://www.iteye.com/" target="_blank" rel="noopener">ITeye</a></p>
+<ul>
 <li>偏 Java 方向 </li>
 </ul>
 </li>
-<li><a href="https://www.cnblogs.com" target="_blank" rel="noopener">博客园</a></li>
-<li><a href="http://www.tom.net/" target="_blank" rel="noopener">ChinaUnix</a><ul>
+<li><p><a href="https://www.cnblogs.com" target="_blank" rel="noopener">博客园</a></p>
+</li>
+<li><p><a href="http://www.tom.net/" target="_blank" rel="noopener">ChinaUnix</a></p>
+<ul>
 <li>偏 Linux 方向 </li>
 </ul>
 </li>
-<li><a href="https://www.oschina.net/" target="_blank" rel="noopener">开源中国社区</a></li>
-<li><a href="http://www.open-open.com/" target="_blank" rel="noopener">深度开源</a></li>
+<li><p><a href="https://www.oschina.net/" target="_blank" rel="noopener">开源中国社区</a></p>
+</li>
+<li><p><a href="http://www.open-open.com/" target="_blank" rel="noopener">深度开源</a></p>
+</li>
 <li><p><a href="http://www.jobbole.com/" target="_blank" rel="noopener">伯乐在线</a></p>
 <ul>
 <li>涵盖 IT职场、Web前端、后端、移动端、数据库等方面内容，偏技术端。</li>
@@ -2801,11 +2852,16 @@
 </li>
 <li><p><a href="http://www.itpub.net/" target="_blank" rel="noopener">ITPUB</a></p>
 </li>
-<li><a href="https://cloud.tencent.com/developer/column" target="_blank" rel="noopener">腾讯云— 云+社区</a></li>
-<li><a href="https://yq.aliyun.com/" target="_blank" rel="noopener">阿里云— 云栖社区</a></li>
-<li><a href="https://www.ibm.com/developerworks/cn/" target="_blank" rel="noopener">IBM DeveloperWorks</a></li>
-<li><a href="https://toutiao.io/" target="_blank" rel="noopener">开发者头条</a></li>
-<li><a href="http://www.linkedkeeper.com" target="_blank" rel="noopener">LinkedKeeper</a></li>
+<li><p><a href="https://cloud.tencent.com/developer/column" target="_blank" rel="noopener">腾讯云— 云+社区</a></p>
+</li>
+<li><p><a href="https://yq.aliyun.com/" target="_blank" rel="noopener">阿里云— 云栖社区</a></p>
+</li>
+<li><p><a href="https://www.ibm.com/developerworks/cn/" target="_blank" rel="noopener">IBM DeveloperWorks</a></p>
+</li>
+<li><p><a href="https://toutiao.io/" target="_blank" rel="noopener">开发者头条</a></p>
+</li>
+<li><p><a href="http://www.linkedkeeper.com" target="_blank" rel="noopener">LinkedKeeper</a></p>
+</li>
 </ul>
 <p><strong>国外：</strong></p>
 <ul>
@@ -2821,7 +2877,8 @@
 <li><a href="https://stackoverflow.com/" target="_blank" rel="noopener">stackoverflow</a></li>
 </ul>
 <h2 id="行业数据分析"><a href="#行业数据分析" class="headerlink" title="行业数据分析"></a>行业数据分析</h2><ul>
-<li><a href="http://report.iresearch.cn/" target="_blank" rel="noopener">艾瑞网</a></li>
+<li><p><a href="http://report.iresearch.cn/" target="_blank" rel="noopener">艾瑞网</a></p>
+</li>
 <li><p><a href="https://www.questmobile.com.cn" target="_blank" rel="noopener">QUEST MOBILE</a></p>
 </li>
 <li><p><a href="http://data.stats.gov.cn/" target="_blank" rel="noopener">国家数据</a></p>
@@ -2839,8 +2896,7 @@
 </li>
 <li><p>运维:</p>
 <pre><code>* [运维派](http://www.yunweipai.com/) 
-* [Abcdocker](https://www.abcdocker.com/)
-</code></pre></li>
+* [Abcdocker](https://www.abcdocker.com/)</code></pre></li>
 <li><p>Java:</p>
 <ul>
 <li><a href="http://www.importnew.com/" target="_blank" rel="noopener">ImportNew</a><ul>
@@ -2884,7 +2940,8 @@
 <li><a href="https://github.com/forezp/SpringCloudLearning" target="_blank" rel="noopener">《深入理解Spring Cloud与微服务构建》</a></li>
 </ul>
 <ul>
-<li><a href="http://techforum-img.cn-hangzhou.oss-pub.aliyun-inc.com/1523849261680/AliTech101_RD.pdf" target="_blank" rel="noopener">《阿里技术参考图册-研发篇》</a></li>
+<li><p><a href="http://techforum-img.cn-hangzhou.oss-pub.aliyun-inc.com/1523849261680/AliTech101_RD.pdf" target="_blank" rel="noopener">《阿里技术参考图册-研发篇》</a></p>
+</li>
 <li><p><a href="http://techforum-img.cn-hangzhou.oss-pub.aliyun-inc.com/1523848064814/AliTech101_Algorithms.pdf" target="_blank" rel="noopener">《阿里技术参考图册-算法篇》</a></p>
 </li>
 <li><p><a href="http://dpurl.cn/n/1lqcX" target="_blank" rel="noopener">《2018美团点评技术年货（合辑）》70M</a></p>
@@ -2898,13 +2955,20 @@
 <li>《阿里巴巴Java开发手册》<a href="https://union-click.jd.com/jdc?d=bVKwZQ" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=阿里巴巴Java开发手册" target="_blank" rel="noopener">淘宝</a></li>
 </ul>
 <h4 id="架构方面"><a href="#架构方面" class="headerlink" title="架构方面"></a>架构方面</h4><ul>
-<li>《软件架构师的12项修炼：技术技能篇》<a href="https://union-click.jd.com/jdc?d=gXvRd8" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=软件架构师的12项修炼：技术技能篇" target="_blank" rel="noopener">淘宝</a></li>
-<li>《架构之美》<a href="https://union-click.jd.com/jdc?d=xJit5I" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=架构之美" target="_blank" rel="noopener">淘宝</a></li>
-<li>《分布式服务架构》<a href="https://union-click.jd.com/jdc?d=JS5Od9" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=分布式服务架构" target="_blank" rel="noopener">淘宝</a></li>
-<li>《聊聊架构》 <a href="https://union-click.jd.com/jdc?d=FHooH4" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=聊聊架构" target="_blank" rel="noopener">淘宝</a></li>
-<li>《云原生应用架构实践》<a href="https://union-click.jd.com/jdc?d=orkJSj" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=云原生应用架构实践" target="_blank" rel="noopener">淘宝</a></li>
-<li>《亿级流量网站架构核心技术》<a href="https://union-click.jd.com/jdc?d=RnOSP5" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=亿级流量网站架构核心技术" target="_blank" rel="noopener">淘宝</a></li>
-<li>《淘宝技术这十年》<a href="https://union-click.jd.com/jdc?d=LwrDfD" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=淘宝技术这十年" target="_blank" rel="noopener">淘宝</a></li>
+<li><p>《软件架构师的12项修炼：技术技能篇》<a href="https://union-click.jd.com/jdc?d=gXvRd8" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=软件架构师的12项修炼：技术技能篇" target="_blank" rel="noopener">淘宝</a></p>
+</li>
+<li><p>《架构之美》<a href="https://union-click.jd.com/jdc?d=xJit5I" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=架构之美" target="_blank" rel="noopener">淘宝</a></p>
+</li>
+<li><p>《分布式服务架构》<a href="https://union-click.jd.com/jdc?d=JS5Od9" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=分布式服务架构" target="_blank" rel="noopener">淘宝</a></p>
+</li>
+<li><p>《聊聊架构》 <a href="https://union-click.jd.com/jdc?d=FHooH4" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=聊聊架构" target="_blank" rel="noopener">淘宝</a></p>
+</li>
+<li><p>《云原生应用架构实践》<a href="https://union-click.jd.com/jdc?d=orkJSj" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=云原生应用架构实践" target="_blank" rel="noopener">淘宝</a></p>
+</li>
+<li><p>《亿级流量网站架构核心技术》<a href="https://union-click.jd.com/jdc?d=RnOSP5" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=亿级流量网站架构核心技术" target="_blank" rel="noopener">淘宝</a></p>
+</li>
+<li><p>《淘宝技术这十年》<a href="https://union-click.jd.com/jdc?d=LwrDfD" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=淘宝技术这十年" target="_blank" rel="noopener">淘宝</a></p>
+</li>
 <li><p>《企业IT架构转型之道-中台战略思想与架构实战》 <a href="https://union-click.jd.com/jdc?d=89pAEm" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=企业IT架构转型之道" target="_blank" rel="noopener">淘宝</a></p>
 </li>
 <li><p>《高可用架构（第1卷）》<a href="https://item.jd.com/12195481.html" target="_blank" rel="noopener">京东</a> <a href="https://s.taobao.com/search?q=高可用架构" target="_blank" rel="noopener">淘宝</a></p>
@@ -2928,7 +2992,8 @@
 </ul>
 <h2 id="手册、文档、教程"><a href="#手册、文档、教程" class="headerlink" title="手册、文档、教程"></a>手册、文档、教程</h2><p><strong>国内：</strong></p>
 <ul>
-<li><a href="http://w3cschool.cn" target="_blank" rel="noopener">W3Cschool</a> </li>
+<li><p><a href="http://w3cschool.cn" target="_blank" rel="noopener">W3Cschool</a> </p>
+</li>
 <li><p><a href="http://www.runoob.com/" target="_blank" rel="noopener">Runoob.com</a></p>
 <ul>
 <li>HTML 、 CSS、XML、Java、Python、PHP、设计模式等入门手册。</li>
@@ -2939,11 +3004,13 @@
 <li>很多很多中文在线电子书，是一个全新的开源技术文档分享平台。</li>
 </ul>
 </li>
-<li><a href="http://gitbook.cn/" target="_blank" rel="noopener">gitbook.cn</a><ul>
+<li><p><a href="http://gitbook.cn/" target="_blank" rel="noopener">gitbook.cn</a></p>
+<ul>
 <li>付费电子书。 </li>
 </ul>
 </li>
-<li><a href="http://www.apachecn.org/" target="_blank" rel="noopener">ApacheCN</a><ul>
+<li><p><a href="http://www.apachecn.org/" target="_blank" rel="noopener">ApacheCN</a></p>
+<ul>
 <li>AI、大数据方面系列中文文档。</li>
 </ul>
 </li>
@@ -3011,7 +3078,7 @@
 </ul>
 <h2 id="综合云服务商"><a href="#综合云服务商" class="headerlink" title="综合云服务商"></a>综合云服务商</h2><ul>
 <li>阿里云</li>
-<li><a href="https://cloud.tencent.com/redirect.php?redirect=1012&amp;cps_key=c2665015d90871c0cb20fef91b7afc3c" target="_blank" rel="noopener">腾讯云</a></li>
+<li><a href="https://cloud.tencent.com/redirect.php?redirect=1012&cps_key=c2665015d90871c0cb20fef91b7afc3c" target="_blank" rel="noopener">腾讯云</a></li>
 <li>百度云</li>
 <li>新浪云</li>
 <li>金山云</li>

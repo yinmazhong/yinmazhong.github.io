@@ -401,6 +401,7 @@
 <li>|—work：存放jsp编译后产生的class文件；</li>
 </ul>
 <h4 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE web-app PUBLIC &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;</span><br><span class="line">        &quot;http://java.sun.com/dtd/web-app_2_4.dtd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;web-app&gt;</span><br><span class="line">    &lt;welcome-file-list&gt;</span><br><span class="line">        &lt;welcome-file&gt;index.html&lt;/welcome-file&gt;</span><br><span class="line">    &lt;/welcome-file-list&gt;</span><br><span class="line"></span><br><span class="line">    &lt;listener&gt;</span><br><span class="line">        &lt;listener-class&gt;spray.servlet.Initializer&lt;/listener-class&gt;</span><br><span class="line">    &lt;/listener&gt;</span><br><span class="line"></span><br><span class="line">    &lt;servlet&gt;</span><br><span class="line">        &lt;servlet-name&gt;SprayConnectorServlet&lt;/servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;spray.servlet.Servlet30ConnectorServlet&lt;/servlet-class&gt;</span><br><span class="line">        &lt;async-supported&gt;true&lt;/async-supported&gt;</span><br><span class="line">    &lt;/servlet&gt;</span><br><span class="line"></span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;SprayConnectorServlet&lt;/servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;/autotest/*&lt;/url-pattern&gt;</span><br><span class="line">    &lt;/servlet-mapping&gt;</span><br><span class="line">&lt;/web-app&gt;</span><br></pre></td></tr></table></figure>
+
 <h4 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h4><p>所有 servlet 都会直接或间接通过实现 javax.servlet.Servlet 接口的辅助类来实现该接口。Servlet 还可以使用容器提供的 API 公开容器服务。例如，servlet 可以从容器获得数据库连接来访问关系数据库。Servlet 通常用于实现 Web 应用程序逻辑。Servlet 可以获取和处理数据，然后将数据传递给 JSP 进行显示（例如，动态生成用户界面）。Servlet 还可用于频繁地处理通过基于 Web 形式提交的数据。</p>
 <h4 id="webApp的组成"><a href="#webApp的组成" class="headerlink" title="webApp的组成"></a>webApp的组成</h4><p>一个Web应用程序基本上由以下项目组成：</p>
 <pre><code>静态资源（静态资源(HTML，CSS，图片，声音等)）
@@ -424,8 +425,7 @@ Web app 默认主页的设置：访问URL如：localhost:8080/FirstServlet/
     &lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt;
 &lt;/welcome-file-list&gt;
 如果找不到以上的文件，则会尝试至JAR的/META-INF/resources中寻找已放置的资源页面。
-整个Web应用可以被封装为一个WAR文件，如FirstServlet.war，以便于部署至Web容器。
-</code></pre>
+整个Web应用可以被封装为一个WAR文件，如FirstServlet.war，以便于部署至Web容器。</code></pre>
       
     </div>
     
@@ -467,7 +467,7 @@ Web app 默认主页的设置：访问URL如：localhost:8080/FirstServlet/
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/04/Tensorflow4--javadeploy/" rel="prev" title="Tensorflow Model　java 部署">
+              <a href="/2018/12/04/Tensorflow5--seq2seq/" rel="prev" title="Tensorflow Model　java 部署">
                 Tensorflow Model　java 部署 <i class="fa fa-chevron-right"></i>
               </a>
             

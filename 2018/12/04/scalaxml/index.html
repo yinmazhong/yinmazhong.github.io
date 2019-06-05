@@ -390,6 +390,7 @@
 
       
         <h4 id="scala-加载并解析xml"><a href="#scala-加载并解析xml" class="headerlink" title="scala　加载并解析xml"></a>scala　加载并解析xml</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">val loadXML = xml.XML.loadFile(AutomatedTestingWebConfig.distributeInfoXML)</span><br><span class="line">//使用loadFile方法加载XML，得到的是一个一个scala.xml.Elem对象</span><br><span class="line">val version = (loadXML \\ &quot;autotest&quot; \ &quot;@version&quot;).text</span><br><span class="line">//属性值获取“@”符</span><br><span class="line">val hostSeqNode = (loadXML \ &quot;hosts&quot; \ &quot;host&quot;)</span><br><span class="line">//得到的是一个scala.xml.NodeSeq对象，可以在其上做一下转换操作</span><br><span class="line"></span><br><span class="line">def getAttrValue(node: Node)(attrName: String): String = &#123;</span><br><span class="line">      node.attributes.get(attrName) match &#123;</span><br><span class="line">        case Some(x) =&gt; x.text</span><br><span class="line">        case _ =&gt; &quot;&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    val hosts = &#123;</span><br><span class="line">      (loadXML \ &quot;hosts&quot; \ &quot;host&quot;).map(hostNode =&gt; &#123;</span><br><span class="line">        def getHostAttrValue(attrName: String) = getAttrValue(hostNode)(attrName)</span><br><span class="line">        Host(getHostAttrValue(&quot;name&quot;), getHostAttrValue(&quot;desc&quot;), getHostAttrValue(&quot;config&quot;))</span><br><span class="line">      &#125;).toList</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    val sqlScript = &#123;</span><br><span class="line">      (loadXML \ &quot;script&quot; \ &quot;sql&quot;).map(sqlNode =&gt; &#123;</span><br><span class="line">        def getSqlScriptAttrValue(attrName: String) = getAttrValue(sqlNode)(attrName)</span><br><span class="line">        val lines = sqlNode.nonEmptyChildren.filterNot(_.text.trim == &quot;&quot;).map(_.text).mkString(&quot;;&quot;)</span><br><span class="line">        val database = getSqlScriptAttrValue(&quot;database&quot;)</span><br><span class="line">        SqlScript(database, lines)</span><br><span class="line">      &#125;).toList</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">case class AutoTest(version: String, hosts: List[Host], sqlScript: List[SqlScript], shellScript: List[ShellScript])</span><br><span class="line"></span><br><span class="line">case class Host(name: String, desc: String, config: String)</span><br><span class="line"></span><br><span class="line">case class SqlScript(database: String, line: String)</span><br><span class="line"></span><br><span class="line">case class ShellScript(host: String, line: List[String])</span><br></pre></td></tr></table></figure>
+
 <p><a href="http://www.cnblogs.com/techyc/p/3631107.html" target="_blank" rel="noopener">参考</a></p>
 <h4 id="SCALA-XML-pattern-attrbute"><a href="#SCALA-XML-pattern-attrbute" class="headerlink" title="SCALA XML pattern attrbute"></a>SCALA XML pattern attrbute</h4><p><a href="http://www.codecommit.com/blog/scala/working-with-scalas-xml-support" target="_blank" rel="noopener">参考</a></p>
 <p>虽然这个guy炒鸡罗嗦，但是还是讲到我要的那句话：  Because Scala doesn’t support XML patterns with attributes.</p>
@@ -427,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/04/scalaTry/" rel="next" title="Scala Try">
-                <i class="fa fa-chevron-left"></i> Scala Try
+              <a href="/2018/12/04/scala笔记/" rel="next" title="scala 笔记">
+                <i class="fa fa-chevron-left"></i> scala 笔记
               </a>
             
           </div>
@@ -437,8 +438,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/04/scala implicit/" rel="prev" title="scala implict">
-                scala implict <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/04/scalaTry/" rel="prev" title="Scala Try">
+                Scala Try <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="第五章 SBT国内源配置 前几天执行：sbt update　失败 \主要是　project/plugins.sbt里的插件下载失败 \resolved xx failed,说找不到该插件 \试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，\所以严重怀疑是本机安装SBT有问题， \sudo apt-get remove sbt \然后,按照官网安装教程重">
+<meta name="description" content="第五章 SBT国内源配置 前几天执行：sbt update　失败 主要是　project/plugins.sbt里的插件下载失败 resolved xx failed,说找不到该插件 试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，所以严重怀疑是本机安装SBT有问题， sudo apt-get remove sbt 然后,按照官网安装教程重新安装sbt">
 <meta name="keywords" content="SBT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SBT增加国内镜像并生效">
 <meta property="og:url" content="http://yoursite.com/2018/12/04/SBT增加国内镜像并生效/index.html">
 <meta property="og:site_name" content="白帝圣剑">
-<meta property="og:description" content="第五章 SBT国内源配置 前几天执行：sbt update　失败 \主要是　project/plugins.sbt里的插件下载失败 \resolved xx failed,说找不到该插件 \试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，\所以严重怀疑是本机安装SBT有问题， \sudo apt-get remove sbt \然后,按照官网安装教程重">
+<meta property="og:description" content="第五章 SBT国内源配置 前几天执行：sbt update　失败 主要是　project/plugins.sbt里的插件下载失败 resolved xx failed,说找不到该插件 试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，所以严重怀疑是本机安装SBT有问题， sudo apt-get remove sbt 然后,按照官网安装教程重新安装sbt">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-12-04T07:22:57.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SBT增加国内镜像并生效">
-<meta name="twitter:description" content="第五章 SBT国内源配置 前几天执行：sbt update　失败 \主要是　project/plugins.sbt里的插件下载失败 \resolved xx failed,说找不到该插件 \试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，\所以严重怀疑是本机安装SBT有问题， \sudo apt-get remove sbt \然后,按照官网安装教程重">
+<meta name="twitter:description" content="第五章 SBT国内源配置 前几天执行：sbt update　失败 主要是　project/plugins.sbt里的插件下载失败 resolved xx failed,说找不到该插件 试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，所以严重怀疑是本机安装SBT有问题， sudo apt-get remove sbt 然后,按照官网安装教程重新安装sbt">
 
 
 
@@ -390,7 +390,9 @@
 
       
         <p><a href="http://www.jianshu.com/p/a867b2a7c3c8" target="_blank" rel="noopener">第五章 SBT国内源配置</a></p>
-<p>前几天<br>执行：<code>sbt update</code>　失败 \<br>主要是　project/plugins.sbt里的插件下载失败 \<br>resolved xx failed,说找不到该插件 \<br>试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，\<br>所以严重怀疑是本机安装SBT有问题， \<br><code>sudo apt-get remove sbt</code> \<br>然后,按照<a href="http://www.scala-sbt.org/0.13/docs/Installing-sbt-on-Linux.html" target="_blank" rel="noopener">官网安装教程</a>重新安装sbt,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">`echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.list</span><br><span class="line">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install sbt`</span><br></pre></td></tr></table></figure></p>
+<p>前几天<br>执行：<code>sbt update</code>　失败 <br>主要是　project/plugins.sbt里的插件下载失败 <br>resolved xx failed,说找不到该插件 <br>试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，<br>所以严重怀疑是本机安装SBT有问题， <br><code>sudo apt-get remove sbt</code> <br>然后,按照<a href="http://www.scala-sbt.org/0.13/docs/Installing-sbt-on-Linux.html" target="_blank" rel="noopener">官网安装教程</a>重新安装sbt,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">`echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.list</span><br><span class="line">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install sbt`</span><br></pre></td></tr></table></figure>
+
 <p>果然，之前的问题已解决了<br>（以上基于ubuntu16操作环境，其他开发环境类似）</p>
 
       

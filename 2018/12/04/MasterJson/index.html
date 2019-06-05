@@ -400,10 +400,12 @@
 </ol>
 <h3 id="Json-使用"><a href="#Json-使用" class="headerlink" title="Json 使用"></a>Json 使用</h3><p>scala常用　spray Json</p>
 <h4 id="依赖："><a href="#依赖：" class="headerlink" title="依赖："></a>依赖：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;com.typesafe.akka&quot; %% &quot;akka-http-spray-json&quot; % &quot;10.0.10&quot;,</span><br><span class="line">  &quot;io.spray&quot; % &quot;spray-json_2.11&quot; % &quot;1.3.4&quot;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>Json Array</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import spray.json._   //parseJson</span><br><span class="line">val kkkk =</span><br><span class="line">  &quot;&quot;&quot;</span><br><span class="line">    |[&#123;&quot;a&quot;: &quot;1&quot;&#125;, &#123;&quot;b&quot;: &quot;2&quot;&#125;]</span><br><span class="line">  &quot;&quot;&quot;.stripMargin.parseJson.asInstanceOf[JsArray]</span><br></pre></td></tr></table></figure>
+
 <h4 id="22"><a href="#22" class="headerlink" title="22+"></a>22+</h4><p><a href="https://github.com/xdotai/play-json-extensions" target="_blank" rel="noopener">play-json-extensions</a> 22+ field case class formatter and more for play-json</p>
 <p>大数据场景下case class 必备,是play-json 的升级版<br>跟spray-json也很像</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package data.creation</span><br><span class="line"></span><br><span class="line">import ai.x.play.json.Jsonx</span><br><span class="line">import common.HttpClientHelper</span><br><span class="line">import data.beans.LastInfo</span><br><span class="line">import play.api.libs.json.Json</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">  * Created by xxh on 18-7-30.</span><br><span class="line">  */</span><br><span class="line">object LastInfoHelper &#123;</span><br><span class="line">  implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo]</span><br><span class="line"></span><br><span class="line">  def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123;</span><br><span class="line">    val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;)</span><br><span class="line">    val lastJsonArray = Json.parse(lastArray)</span><br><span class="line">    val lastInfo = lastJsonArray(0).as[LastInfo]</span><br><span class="line">    lastInfo</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -436,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/04/Java任务调度/" rel="next" title="Java任务调度">
-                <i class="fa fa-chevron-left"></i> Java任务调度
+              <a href="/2018/12/04/Redis Learning/" rel="next" title="Redis Learning">
+                <i class="fa fa-chevron-left"></i> Redis Learning
               </a>
             
           </div>

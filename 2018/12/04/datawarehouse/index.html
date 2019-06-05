@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="理论数据仓库与联机分析处理技术 OLTP：联机事务处理 OLAP：联机分析处理 两者之间的差异使得传统的数据库技术不能同时满足两类数据的处理要求，数据仓库技术应运而生 数据仓库技术数据仓库是为了构建新的分析处理环境而出现的一种数据存储和组织技术    操作型数据 　分析型数据     表示业务处理的动态情况 表示业务处理的静态情况   在存取的瞬间是正确的 代表过去的数据   可更新，由录入人员或">
+<meta name="description" content="理论数据仓库与联机分析处理技术 OLTP：联机事务处理 OLAP：联机分析处理 两者之间的差异使得传统的数据库技术不能同时满足两类数据的处理要求，数据仓库技术应运而生 数据仓库技术数据仓库是为了构建新的分析处理环境而出现的一种数据存储和组织技术    操作型数据 分析型数据    表示业务处理的动态情况 表示业务处理的静态情况   在存取的瞬间是正确的 代表过去的数据   可更新，由录入人员或经过">
 <meta name="keywords" content="datawarehouse">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据仓库理论基础与实践">
 <meta property="og:url" content="http://yoursite.com/2018/12/04/datawarehouse/index.html">
 <meta property="og:site_name" content="白帝圣剑">
-<meta property="og:description" content="理论数据仓库与联机分析处理技术 OLTP：联机事务处理 OLAP：联机分析处理 两者之间的差异使得传统的数据库技术不能同时满足两类数据的处理要求，数据仓库技术应运而生 数据仓库技术数据仓库是为了构建新的分析处理环境而出现的一种数据存储和组织技术    操作型数据 　分析型数据     表示业务处理的动态情况 表示业务处理的静态情况   在存取的瞬间是正确的 代表过去的数据   可更新，由录入人员或">
+<meta property="og:description" content="理论数据仓库与联机分析处理技术 OLTP：联机事务处理 OLAP：联机分析处理 两者之间的差异使得传统的数据库技术不能同时满足两类数据的处理要求，数据仓库技术应运而生 数据仓库技术数据仓库是为了构建新的分析处理环境而出现的一种数据存储和组织技术    操作型数据 分析型数据    表示业务处理的动态情况 表示业务处理的静态情况   在存取的瞬间是正确的 代表过去的数据   可更新，由录入人员或经过">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-12-04T07:22:57.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据仓库理论基础与实践">
-<meta name="twitter:description" content="理论数据仓库与联机分析处理技术 OLTP：联机事务处理 OLAP：联机分析处理 两者之间的差异使得传统的数据库技术不能同时满足两类数据的处理要求，数据仓库技术应运而生 数据仓库技术数据仓库是为了构建新的分析处理环境而出现的一种数据存储和组织技术    操作型数据 　分析型数据     表示业务处理的动态情况 表示业务处理的静态情况   在存取的瞬间是正确的 代表过去的数据   可更新，由录入人员或">
+<meta name="twitter:description" content="理论数据仓库与联机分析处理技术 OLTP：联机事务处理 OLAP：联机分析处理 两者之间的差异使得传统的数据库技术不能同时满足两类数据的处理要求，数据仓库技术应运而生 数据仓库技术数据仓库是为了构建新的分析处理环境而出现的一种数据存储和组织技术    操作型数据 分析型数据    表示业务处理的动态情况 表示业务处理的静态情况   在存取的瞬间是正确的 代表过去的数据   可更新，由录入人员或经过">
 
 
 
@@ -398,11 +398,10 @@
 <thead>
 <tr>
 <th>操作型数据</th>
-<th>　分析型数据</th>
+<th>分析型数据</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>表示业务处理的动态情况</td>
 <td>表示业务处理的静态情况</td>
 </tr>
@@ -434,8 +433,7 @@
 <td>用户不必理解数据库，只是输入数据</td>
 <td>用户需要理解数据库，以从数据中得出有意义的结论</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>数据仓库的定义：数据仓库是一个用以更好地支持企业或组织决策分析处理的，面向主题的，集成的，不可更新的，随着时间不断变化的数据集合。数据仓库本质上和数据库一样，是长期存储在计算机内的，有组织，可共享的数据集合</p>
 <h4 id="数据仓库的基本特征"><a href="#数据仓库的基本特征" class="headerlink" title="数据仓库的基本特征"></a>数据仓库的基本特征</h4><ol>
 <li>数据仓库的数据是面向主题的；</li>
@@ -470,6 +468,7 @@
 <p>第二范式（2NF）和第三范式（3NF）的概念很容易混淆，区分它们的关键点在于，2NF：非主键列是否完全依赖于主键，还是依赖于主键的一部分；3NF：非主键列是直接依赖于主键，还是直接依赖于非主键列。</p>
 <h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>视图是从一个或几个基本表或视图中导出的表.他与基本表不同,是一个虚表,数据库只存放视图的定义,而不存放视图对应的数据,这些数据还存放在原来的基本表中,从这个角度讲,视图就像是一个窗口,透过视图就可以看到数据库中自己感兴趣的数据及其变化<br>视图一经定义,他就可以和基本表一样被查询\被删除,等等,但是视图的更新有限制</p>
 <h4 id="定义视图"><a href="#定义视图" class="headerlink" title="定义视图"></a>定义视图</h4><h5 id="建立视图"><a href="#建立视图" class="headerlink" title="建立视图"></a>建立视图</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create view &lt;视图名&gt; [(&lt;列名&gt;[,&lt;列名&gt;]...)]</span><br><span class="line">as &lt;子查询&gt;</span><br><span class="line">[with check option]</span><br></pre></td></tr></table></figure>
+
 <h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2>
       
     </div>
@@ -510,8 +509,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/04/ansible/" rel="prev" title="使用ansible自动部署集群环境">
-                使用ansible自动部署集群环境 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/04/build-tool/" rel="prev" title="build-tool">
+                build-tool <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -479,6 +479,7 @@
 </ul>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import akka.http.scaladsl.model.StatusCodes</span><br><span class="line"></span><br><span class="line">val staticResources =</span><br><span class="line">  (get &amp; pathPrefix(&quot;admin&quot;))&#123;</span><br><span class="line">    (pathEndOrSingleSlash &amp; redirectToTrailingSlashIfMissing(StatusCodes.TemporaryRedirect)) &#123;</span><br><span class="line">      getFromResource(&quot;admin/index.html&quot;)</span><br><span class="line">    &#125; ~ &#123;</span><br><span class="line">      getFromResourceDirectory(&quot;admin&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
 <p>就上面的代码而言，相对陌生的是<code>getFromResourceDirectory</code></p>
 <p>官方文档：</p>
 <blockquote>
@@ -492,9 +493,12 @@
 <p>  有关详细信息，请参阅getFromDirectory，它的工作方式相同，但是从文件系统而不是应用程序类路径获取文件。</p>
 <p>  请注意，不需要使用get包装此指令，因为此指令仅响应GET请求。</p>
 <h4 id="打包？"><a href="#打包？" class="headerlink" title="打包？"></a>打包？</h4><p>依然使用打包工具<code>sbt-native-packager</code></p>
-<p>plugins.sbt<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-native-packager&quot; % &quot;1.2.0&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>plugins.sbt</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-native-packager&quot; % &quot;1.2.0&quot;)</span><br></pre></td></tr></table></figure>
+
 <p>build.sbt</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import com.typesafe.sbt.packager.MappingsHelper.&#123;contentOf, directory&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">enablePlugins(JavaServerAppPackaging)</span><br><span class="line"></span><br><span class="line">mainClass in Compile := Some(&quot;com.qinglongmu.dataplatform.WebServer&quot;)</span><br><span class="line"></span><br><span class="line">mappings in Universal ++= &#123;</span><br><span class="line">  // optional example illustrating how to copy additional directory</span><br><span class="line">  directory(&quot;scripts&quot;) ++</span><br><span class="line">    // copy configuration files to config directory</span><br><span class="line">    contentOf(&quot;src/main/resources&quot;).toMap.mapValues(&quot;config/&quot; + _)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// add &apos;config&apos; directory first in the classpath of the start script,</span><br><span class="line">// an alternative is to set the config file locations via CLI parameters</span><br><span class="line">// when starting the application</span><br><span class="line">scriptClasspath := Seq(&quot;../config/&quot;) ++ scriptClasspath.value</span><br><span class="line"></span><br><span class="line">licenses := Seq((&quot;CC0&quot;, url(&quot;http://creativecommons.org/publicdomain/zero/1.0&quot;)))</span><br></pre></td></tr></table></figure>
+
 <p>这样可以直接修改config目录中的静态文件</p>
 
       

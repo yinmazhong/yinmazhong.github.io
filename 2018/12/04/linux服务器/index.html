@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="本地ubuntu网络不稳定这几天　命令行执行操作各种不爽，间歇性精神病，git ssh 都会犯病没有直接搜索到什么原因导致的，安装wirshark抓包看看 123sudo add-apt-repository ppa:wireshark-dev/stablesudo apt-get updatesudo apt-get install wireshark wireshark-gnome 定位是sh">
+<meta name="description" content="本地ubuntu网络不稳定这几天　命令行执行操作各种不爽，间歇性精神病，git ssh 都会犯病没有直接搜索到什么原因导致的，安装wirshark抓包看看 123sudo add-apt-repository ppa:wireshark-dev/stablesudo apt-get updatesudo apt-get install wireshark wireshark-gnome  定位是s">
 <meta name="keywords" content="linux,服务器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux服务器相关配置">
 <meta property="og:url" content="http://yoursite.com/2018/12/04/linux服务器/index.html">
 <meta property="og:site_name" content="白帝圣剑">
-<meta property="og:description" content="本地ubuntu网络不稳定这几天　命令行执行操作各种不爽，间歇性精神病，git ssh 都会犯病没有直接搜索到什么原因导致的，安装wirshark抓包看看 123sudo add-apt-repository ppa:wireshark-dev/stablesudo apt-get updatesudo apt-get install wireshark wireshark-gnome 定位是sh">
+<meta property="og:description" content="本地ubuntu网络不稳定这几天　命令行执行操作各种不爽，间歇性精神病，git ssh 都会犯病没有直接搜索到什么原因导致的，安装wirshark抓包看看 123sudo add-apt-repository ppa:wireshark-dev/stablesudo apt-get updatesudo apt-get install wireshark wireshark-gnome  定位是s">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-12-04T07:22:57.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux服务器相关配置">
-<meta name="twitter:description" content="本地ubuntu网络不稳定这几天　命令行执行操作各种不爽，间歇性精神病，git ssh 都会犯病没有直接搜索到什么原因导致的，安装wirshark抓包看看 123sudo add-apt-repository ppa:wireshark-dev/stablesudo apt-get updatesudo apt-get install wireshark wireshark-gnome 定位是sh">
+<meta name="twitter:description" content="本地ubuntu网络不稳定这几天　命令行执行操作各种不爽，间歇性精神病，git ssh 都会犯病没有直接搜索到什么原因导致的，安装wirshark抓包看看 123sudo add-apt-repository ppa:wireshark-dev/stablesudo apt-get updatesudo apt-get install wireshark wireshark-gnome  定位是s">
 
 
 
@@ -391,11 +391,14 @@
       
         <h4 id="本地ubuntu网络不稳定"><a href="#本地ubuntu网络不稳定" class="headerlink" title="本地ubuntu网络不稳定"></a>本地ubuntu网络不稳定</h4><p>这几天　命令行执行操作各种不爽，间歇性精神病，git ssh 都会犯病<br>没有直接搜索到什么原因导致的，<br>安装wirshark抓包看看</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:wireshark-dev/stable</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install wireshark wireshark-gnome</span><br></pre></td></tr></table></figure>
+
 <p>定位是shadowsocks代理的问题<br>想改一下环境变量env中http_proxy 等环境变量，尝试删掉，但是<br>有些环境变量是只读的，不能删除，wtfk<br>回头一想，改掉shadowsocks的本地代理接口好了<br><strong>1080 -&gt; 34177</strong></p>
 <p>ok,问题暂时解决<br>windows大法好</p>
 <p><a href="https://www.zhihu.com/question/20023544" target="_blank" rel="noopener">知乎问题</a></p>
 <h4 id="AWSEC2自动断开连接"><a href="#AWSEC2自动断开连接" class="headerlink" title="AWSEC2自动断开连接"></a>AWSEC2自动断开连接</h4><h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><p> ssh 连接aws ec2，若没有更改任何配置，ec2会在很短的时间内中断该ssh连接</p>
-<h5 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h5><p> 多方搜索，尝试（苦），最后更改以下配置解决问题<br>更改ec2服务端sshd配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/ssh/sshd_config</span><br></pre></td></tr></table></figure></p>
+<h5 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h5><p> 多方搜索，尝试（苦），最后更改以下配置解决问题<br>更改ec2服务端sshd配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
 <p> =&gt;<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ServerAliveInterval 60</span><br><span class="line">ServerAliveCountMax 10</span><br></pre></td></tr></table></figure></p>
 <p><a href="https://unix.stackexchange.com/questions/3026/what-options-serveraliveinterval-and-clientaliveinterval-in-sshd-config-exac" target="_blank" rel="noopener">参考</a></p>
 <h4 id="linux服务器重装java8"><a href="#linux服务器重装java8" class="headerlink" title="linux服务器重装java8"></a>linux服务器重装java8</h4><h5 id="问题：-1"><a href="#问题：-1" class="headerlink" title="问题："></a>问题：</h5><p>新开的云服务器默认安装的都是java7,我们的应用都是基于java8开发的</p>
@@ -409,6 +412,7 @@
 </li>
 <li><p>check</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ec2-user@ip-10-0-1-89 ~]$ java -version</span><br><span class="line">-bash: java: command not found</span><br><span class="line">[ec2-user@ip-10-0-1-89 ~]$ rpm -qa |grep java</span><br><span class="line">tzdata-java-2017b-1.69.amzn1.noarch</span><br><span class="line">javapackages-tools-0.9.1-1.5.amzn1.noarch</span><br></pre></td></tr></table></figure>
+
 <p>  res:<a href="http://www.cnblogs.com/zsxfbj/archive/2010/09/22/CentOS_Unstall_OpenJDK.html" target="_blank" rel="noopener">CentOS 卸载OpenJdk</a></p>
 </li>
 </ul>
@@ -416,13 +420,14 @@
 <li><p>install jdk8</p>
 <ul>
 <li>上传从甲骨文下载的java8　rpm安装包到服务器</li>
-<li><p>安装</p>
-<p>1.方法1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">   [ec2-user@ip-10-0-1-89 ~]$ java -version</span><br><span class="line">   -bash: java: command not found</span><br><span class="line">   [ec2-user@ip-10-0-1-89 ~]$ rpm -ivh</span><br><span class="line">   .bash_history            .bash_profile            jdk-8u152-linux-x64.rpm</span><br><span class="line">   .bash_logout             .bashrc                  .ssh/</span><br><span class="line">   [ec2-user@ip-10-0-1-89 ~]$ rpm -ivh jdk-8u152-linux-x64.rpm</span><br><span class="line">   error: can&apos;t create transaction lock on /var/lib/rpm/.rpm.lock (Permission denied)</span><br><span class="line">   [ec2-user@ip-10-0-1-89 ~]$ sudo rpm -ivh jdk-8u152-linux-x64.rpm</span><br><span class="line">   Preparing...                          ################################# [100%]</span><br><span class="line">   Updating / installing...</span><br><span class="line">   1:jdk1.8-2000:1.8.0_152-fcs        ################################# [100%]</span><br><span class="line">   Unpacking JAR files...</span><br><span class="line">tools.jar...</span><br><span class="line">plugin.jar...</span><br><span class="line">javaws.jar...</span><br><span class="line">deploy.jar...</span><br><span class="line">rt.jar...</span><br><span class="line">jsse.jar...</span><br><span class="line">charsets.jar...</span><br><span class="line">localedata.jar...</span><br><span class="line">   [ec2-user@ip-10-0-1-89 ~]$ java -version</span><br><span class="line">   java version &quot;1.8.0_152&quot;</span><br><span class="line">   Java(TM) SE Runtime Environment (build 1.8.0_152-b16)</span><br><span class="line">   Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)</span><br></pre></td></tr></table></figure>
-<p>2.方法2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install oracle-java8-installer</span><br><span class="line">[详细参见](https://www.cnblogs.com/a2211009/p/4265225.html)</span><br></pre></td></tr></table></figure>
-</li>
+<li>安装</li>
 </ul>
+<p>  1.方法1</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">   [ec2-user@ip-10-0-1-89 ~]$ java -version</span><br><span class="line">   -bash: java: command not found</span><br><span class="line">   [ec2-user@ip-10-0-1-89 ~]$ rpm -ivh</span><br><span class="line">   .bash_history            .bash_profile            jdk-8u152-linux-x64.rpm</span><br><span class="line">   .bash_logout             .bashrc                  .ssh/</span><br><span class="line">   [ec2-user@ip-10-0-1-89 ~]$ rpm -ivh jdk-8u152-linux-x64.rpm</span><br><span class="line">   error: can&apos;t create transaction lock on /var/lib/rpm/.rpm.lock (Permission denied)</span><br><span class="line">   [ec2-user@ip-10-0-1-89 ~]$ sudo rpm -ivh jdk-8u152-linux-x64.rpm</span><br><span class="line">   Preparing...                          ################################# [100%]</span><br><span class="line">   Updating / installing...</span><br><span class="line">   1:jdk1.8-2000:1.8.0_152-fcs        ################################# [100%]</span><br><span class="line">   Unpacking JAR files...</span><br><span class="line">tools.jar...</span><br><span class="line">plugin.jar...</span><br><span class="line">javaws.jar...</span><br><span class="line">deploy.jar...</span><br><span class="line">rt.jar...</span><br><span class="line">jsse.jar...</span><br><span class="line">charsets.jar...</span><br><span class="line">localedata.jar...</span><br><span class="line">   [ec2-user@ip-10-0-1-89 ~]$ java -version</span><br><span class="line">   java version &quot;1.8.0_152&quot;</span><br><span class="line">   Java(TM) SE Runtime Environment (build 1.8.0_152-b16)</span><br><span class="line">   Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<p>  2.方法2</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install oracle-java8-installer</span><br><span class="line">[详细参见](https://www.cnblogs.com/a2211009/p/4265225.html)</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 
@@ -457,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/04/ml-sklearn/" rel="next" title="scikit-learn">
-                <i class="fa fa-chevron-left"></i> scikit-learn
+              <a href="/2018/12/04/log4j踢平记/" rel="next" title="log4j踢平记">
+                <i class="fa fa-chevron-left"></i> log4j踢平记
               </a>
             
           </div>
@@ -467,8 +472,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/04/hive编程指南/" rel="prev" title="Hive 编程指南 笔记">
-                Hive 编程指南 笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/04/kafka/" rel="prev" title="kafka笔记">
+                kafka笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
