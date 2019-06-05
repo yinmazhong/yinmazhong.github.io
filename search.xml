@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[javaIO]]></title>
+    <url>%2F2019%2F06%2F04%2FjavaIO%2F</url>
+    <content type="text"><![CDATA[JAVA IO整体架构图]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[aTemp]]></title>
+    <url>%2F2019%2F06%2F03%2FaTemp%2F</url>
+    <content type="text"><![CDATA[我认为：到目前为止，作为居间方，乐有家的服务是不合格的 1.定金收据开错，这个问题还是我们业主检查出来的，这个错误能从诞生到呈现在我们面前，难道没有任何一个人把关负责？2.在对卖方业主没有任何知会的情况下擅自变更贷款银行，地点，事后才通知我们，可以看出根本不会尊重我们意见与感受3.做资金监管过程中，乐有家的经纪人、按揭员没有一个在场，重要事情靠电话沟通，您各位的时间是时间，我们的时间也是时间呀，况且我们也支付了服务费，不是吗？4.定金十五万，却要求开二十万的收据（收据错误暂且不表），签房产交易合同时，已经向买家开出五万定金收据，做资金监管当天，竟要求再开十五万收据给银行拍照用，加起来就是二十万，您各位可能觉得没什么，可五万块的风险却结结实实砸在我们脑袋上。5.依照《中华人民共和国合同法》《中华人民共和国城市房地产管理法》《城市房地产中介服务管理规定》，房地产中介机构是指依法设立、从事房地产经纪活动的中介服务机构，其主要目的为了促成房地产交易，向委托人提供房地产居间、代理等服务并收取佣金的行为。且不说付没付佣金，向各位咨询几个赎楼相关问题不过分吧？您要是知道呢，就确认好以后，给出【专业的，确定的答复】，您要是不知道，就直接回复【不知道】，我们也好自行花费时间精力，甚至金钱去寻找答案。6.在充分信任您各位的专业与诚意的情况下，6/3起了个大早，跑了趟罗湖，浪费了时间精力，什么都没干成；难道建行公积金中心是今天早上才改的这条规定？还是那句话，大家都很忙，谁的时间都是时间。 客观现实就是，这单交易到目前为止，已经漏洞百出，让人不得不质疑您各位的诚意，专业。 相关操作是否违反了相关法律法规请自省]]></content>
+      <categories>
+        <category>temp</category>
+      </categories>
+      <tags>
+        <tag>temp file</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[o21bigdata.md]]></title>
+    <url>%2F2019%2F05%2F28%2Fo21bigdata-md%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[skills]]></title>
     <url>%2F2019%2F05%2F27%2Fskills%2F</url>
-    <content type="text"><![CDATA[通过实践来复习，学习 分布式文件系统理论基础： 共享数据是分布式系统的基础，分布式文件系统是分布式系统，和分布式应用程序的基础 体系结构客户-服务器体系结构（Network File System）NFS每个文件服务器都提供其本地文件系统的一个标准化视图 基于集群的分布式文件系统服务与并行应用程序，一种著名的技术是部署文件带区划分技术，通过该技术可以将一个文件分布在多个服务器上另外一种是把文件系统作为一个整体进行分区并且简单的把不同的文件存储在不同的服务器上，而不是把单个单个文件划分到多个服务器上]]></content>
+    <content type="text"><![CDATA[通过实践来复习，学习 分布式文件系统理论基础： 共享数据是分布式系统的基础，分布式文件系统是分布式系统，和分布式应用程序的基础 体系结构客户-服务器体系结构（Network File System）NFS每个文件服务器都提供其本地文件系统的一个标准化视图 基于集群的分布式文件系统服务与并行应用程序，一种著名的技术是部署文件带区划分技术，通过该技术可以将一个文件分布在多个服务器上另外一种是把文件系统作为一个整体进行分区并且简单的把不同的文件存储在不同的服务器上，而不是把单个单个文件划分到多个服务器上 对称式体系结构进程文件系统进程是否应该是无状态的？ 通信RPC 命名同步一致性和复制容错性安全性]]></content>
       <tags>
         <tag>skills</tag>
       </tags>
@@ -12,17 +33,6 @@
     <title><![CDATA[imagetest]]></title>
     <url>%2F2019%2F05%2F27%2Fimagetest%2F</url>
     <content type="text"><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[aTemp]]></title>
-    <url>%2F2019%2F05%2F27%2FaTemp%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>temp</category>
-      </categories>
-      <tags>
-        <tag>temp file</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[操作系统]]></title>
@@ -210,18 +220,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
-    <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛):\ BWH1ZBPVK（6.00%）\ bandwagon官网购买vps,支持支付宝(alipay),\有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’\代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，\不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server\推荐blog \配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf:123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>Bandwagon</tag>
-        <tag>shadowsocks</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Amazon Redshift Learning]]></title>
     <url>%2F2018%2F12%2F04%2FAmazon%20Redshift%20Learning%2F</url>
     <content type="text"><![CDATA[overview 文档中有设计表、加载数据的最佳实践，从这里可以查看到redshift与其他数据库最主要的差别 它是一个企业级的关系数据库查询与管理系统 支持与多种应用程序客户端建立连接 表面上我们执行了一个简单ｑｕｅｒｙ,Redshift 在后台在多阶段中检索、比较、和计算大量的数据，最终产生结果，后台的操作对用户都是透明的 优点:高效存储和最优的查询性能 技术支撑：并行处理、列式数据存储和非常高效的具有针对性的数据压缩编码方案的组合 Amazon Redshift is based on PostgreSQL 8.0.2. postgresql vs mysql就基本的应用来讲，二者无差别，当然一定有sql方言方便的分别，记得注意]]></content>
@@ -235,16 +233,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Future&Promise]]></title>
-    <url>%2F2018%2F12%2F04%2FFuture%26promise%2F</url>
-    <content type="text"><![CDATA[Future和Promisescala 并发编程的两大利器：Future、Actor 顺序代码效率低这个例子很不错 What is Future scala.concurrent 包里的 Future[T] 是一个容器类型，代表一种返回值类型为 T 的计算。 计算可能会出错，也可能会超时； 从而，当一个 future 完成时，它可能会包含异常，而不是你期望的那个值。 Future 只能写一次： 当一个 future 完成后，它就不能再被改变了。 同时，Future 只提供了读取计算值的接口，写入计算值的任务交给了 Promise， 这样，API 层面上会有一个清晰的界限。 这篇文章里，我们主要关注前者，下一章会介绍 Promise 的使用。]]></content>
+    <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
+    <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛):\ BWH1ZBPVK（6.00%）\ bandwagon官网购买vps,支持支付宝(alipay),\有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’\代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，\不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server\推荐blog \配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf:123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
       <categories>
-        <category>服务器端 - 并发编程</category>
+        <category>工欲善其事，必先利其器</category>
       </categories>
       <tags>
-        <tag>scala</tag>
-        <tag>Future</tag>
-        <tag>Promise</tag>
+        <tag>Bandwagon</tag>
+        <tag>shadowsocks</tag>
       </tags>
   </entry>
   <entry>
@@ -272,9 +269,22 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hadoop 权威指南 3th Edition Part 1]]></title>
-    <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p1%2F</url>
-    <content type="text"><![CDATA[第一章 数据！数据！ 这个世界数据存量很大，数据增长的速度很快，数据的价值很大 数据存储于分析 现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据 硬盘故障解决：数据冗余备份(RAID,HDFS) 数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的 相较于其他系统的优势 用蛮力处理整个庞大数据集或数据集的一部分 关系型数据库管理系统 现象：寻址速率的提升远远不及传输速率的提升 B树这有在小量数据时有优势，数据量大时，更新整个B树要花大量时间 RDBMS与hadoop相互补充，hadoop适合批处理，而rdbms适合点查询更新 RDBMS被索引后，能够提供低延迟的查询和少量的数据更新，mapreduce适合一次写入，多次读取做数据分析 RDBMS适合持续更新的数据集 Table 1-1. RDBMS compared to MapReduce item|Traditional RDBMS |MapReduce —|—|— Data size| Gigabytes| Petabytes Access(数据存取)| Interactive and batch| Batch Updates| Read and write many times |Write once, read many times Structure| Static schema |Dynamic schema Integrity(完整性)| High |Low Scaling| Nonlinear |Linear 存储的数据不同：RDBMS:结构化数据，完整的且不含冗余hadoop:结构化、半结构化、非结构化数据 网格计算， mapreduce 尽量使得数据本地化 志愿计算： 志愿计算为计算所花的时间远远超过工作单元数据传输时间，也就是说志愿者贡献的是CPU周期，而不是网络带宽 Hadoop发展简史 o 好牛b哦 hadoop echosystem common 一系列组件和接口 avro 序列化系统 maoreduce 计算引擎 HDFS 分布式文件系统 hive 数据仓库，sql查询hdfs hbase 列存储数据仓库 zookeeper 分布式、可用性高的协调服务 sqoop:rdbms &lt;=&gt; hdfs oozie 调度作业 hadoop 发行版本 Table 1-2. Features supported by Hadoop release series Feature 1.x 0.22 2.x Secure authentication Yes No Yes Old configuration names Yes Deprecated Deprecated New configuration names No Yes Yes Old MapReduce API Yes Yes Yes New MapReduce API Yes (with somemissing libraries) Yes Yes MapReduce 1 runtime (Classic) Yes Yes No MapReduce 2 runtime (YARN) No No Yes HDFS federation No No Yes HDFS high-availability No No Yes 第二章气象数据处理 2.1 气象数据集首先要搞清楚数据格式 文本数据 每一行是一条记录 整个数据集有很多小文件组成 2.2 Unix 处理方式12345678910#!/usr/bin/env bashfor year in all/*doecho -ne `basename $year .gz`&quot;\t&quot;gunzip -c $year | \awk &apos;&#123; temp = substr($0, 88, 5) + 0;q = substr($0, 93, 1);if (temp !=9999 &amp;&amp; q ~ /[01459]/ &amp;&amp; temp &gt; max) max = temp &#125;END &#123; print max &#125;&apos;done 循环使用awk处理 单进程处理 2.3 hadoop处理方式map:1234567891011121314151617181920212223242526272829import java.io.IOException;importimportimportimportorg.apache.hadoop.io.IntWritable;org.apache.hadoop.io.LongWritable;org.apache.hadoop.io.Text;org.apache.hadoop.mapreduce.Mapper;public class MaxTemperatureMapperextends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;private static final int MISSING = 9999;@Overridepublic void map(LongWritable key, Text value, Context context)throws IOException, InterruptedException &#123;&#125;&#125;String line = value.toString();String year = line.substring(15, 19);int airTemperature;if (line.charAt(87) == &apos;+&apos;) &#123; // parseInt doesn&apos;t like leading plus signsairTemperature = Integer.parseInt(line.substring(88, 92));&#125; else &#123;airTemperature = Integer.parseInt(line.substring(87, 92));&#125;String quality = line.substring(92, 93);if (airTemperature != MISSING &amp;&amp; quality.matches(&quot;[01459]&quot;)) &#123;context.write(new Text(year), new IntWritable(airTemperature));&#125; reduce:1234567891011121314151617import java.io.IOException;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Reducer;public class MaxTemperatureReducerextends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;@Overridepublic void reduce(Text key, Iterable&lt;IntWritable&gt; values,Context context)throws IOException, InterruptedException &#123;&#125;&#125;int maxValue = Integer.MIN_VALUE;for (IntWritable value : values) &#123;maxValue = Math.max(maxValue, value.get());&#125;context.write(key, new IntWritable(maxValue)); main:123456789101112131415161718192021222324import org.apache.hadoop.fs.Path;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Job;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;public class MaxTemperature &#123;public static void main(String[] args) throws Exception &#123;if (args.length != 2) &#123;System.err.println(&quot;Usage: MaxTemperature &lt;input path&gt; &lt;output path&gt;&quot;);System.exit(-1);&#125;Job job = new Job();job.setJarByClass(MaxTemperature.class);job.setJobName(&quot;Max temperature&quot;);FileInputFormat.addInputPath(job, new Path(args[0]));FileOutputFormat.setOutputPath(job, new Path(args[1]));job.setMapperClass(MaxTemperatureMapper.class);job.setReducerClass(MaxTemperatureReducer.class);job.setOutputKeyClass(Text.class);job.setOutputValueClass(IntWritable.class);System.exit(job.waitForCompletion(true) ? 0 : 1);&#125;&#125; 2.4 横向扩展2.5 Hadoop Streaming]]></content>
+    <title><![CDATA[Future&Promise]]></title>
+    <url>%2F2018%2F12%2F04%2FFuture%26promise%2F</url>
+    <content type="text"><![CDATA[Future和Promisescala 并发编程的两大利器：Future、Actor 顺序代码效率低这个例子很不错 What is Future scala.concurrent 包里的 Future[T] 是一个容器类型，代表一种返回值类型为 T 的计算。 计算可能会出错，也可能会超时； 从而，当一个 future 完成时，它可能会包含异常，而不是你期望的那个值。 Future 只能写一次： 当一个 future 完成后，它就不能再被改变了。 同时，Future 只提供了读取计算值的接口，写入计算值的任务交给了 Promise， 这样，API 层面上会有一个清晰的界限。 这篇文章里，我们主要关注前者，下一章会介绍 Promise 的使用。]]></content>
+      <categories>
+        <category>服务器端 - 并发编程</category>
+      </categories>
+      <tags>
+        <tag>scala</tag>
+        <tag>Future</tag>
+        <tag>Promise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hadoop 权威指南 3th Edition Part 2]]></title>
+    <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p2%2F</url>
+    <content type="text"><![CDATA[第三章 Hadoop 分布式文件系统数据多了单台服务器的文件系统存不下了，就要将数据分区存储在多台服务器上，就需要分布式文件系统 3.1 HDFS设计,the design of hdfs设计目标： HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集群上 超大文件 流式数据访问 商用硬件 低延迟 大量小文件 多用户写入，任意修改文件 3.2 HDFS Concepts 概念blocks类似于磁盘的块，是最小的读写单位 与单一磁盘上的文件系统类似，HDFS上的文件也被划分为多个块大小的多个分块 hdfs 中小于块大小的文件不会占用整个块空间 fsck指令可以显示块信息 1hadoop fsck / -files -blocks namenode &amp; datanode管理者－工作者模式 一个namenode,多个datanode namenode 管理文件系统的命名空间，他维护者文件系统树及整棵树内所有的文件和目录，这些信息以两个文件的方式永久保存在本地磁盘上：命名空间镜像文件和编辑日志文件 每个文件中各个块所在的数据节点的信息 client作为代理通过于namenode和datanode交互来访问整个文件系统 datanode 存储、检索文件的块，并定期向namenode发送它们所存储的块的列表 namenode的容错很重要， 备份文件 辅助namenode 联邦HDFSnamenode横向扩展 HDFS高可用性HA 命令行接口hadoop fs -help hadoop文件系统hadoop 有一个抽象的文件系统概念，hdfs只是其中的一个实现。java抽象类org.apache.hadoop.fs.FileSystem定义了一个文件系统接口， 基于该抽象类的几个具体实现： java接口FileSystem类]]></content>
       <categories>
         <category>数据存储处理 - hadoop</category>
       </categories>
@@ -283,9 +293,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hadoop 权威指南 3th Edition Part 2]]></title>
-    <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p2%2F</url>
-    <content type="text"><![CDATA[第三章 Hadoop 分布式文件系统数据多了单台服务器的文件系统存不下了，就要将数据分区存储在多台服务器上，就需要分布式文件系统 3.1 HDFS设计,the design of hdfs设计目标： HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集群上 超大文件 流式数据访问 商用硬件 低延迟 大量小文件 多用户写入，任意修改文件 3.2 HDFS Concepts 概念blocks类似于磁盘的块，是最小的读写单位 与单一磁盘上的文件系统类似，HDFS上的文件也被划分为多个块大小的多个分块 hdfs 中小于块大小的文件不会占用整个块空间 fsck指令可以显示块信息 1hadoop fsck / -files -blocks namenode &amp; datanode管理者－工作者模式 一个namenode,多个datanode namenode 管理文件系统的命名空间，他维护者文件系统树及整棵树内所有的文件和目录，这些信息以两个文件的方式永久保存在本地磁盘上：命名空间镜像文件和编辑日志文件 每个文件中各个块所在的数据节点的信息 client作为代理通过于namenode和datanode交互来访问整个文件系统 datanode 存储、检索文件的块，并定期向namenode发送它们所存储的块的列表 namenode的容错很重要， 备份文件 辅助namenode 联邦HDFSnamenode横向扩展 HDFS高可用性HA 命令行接口hadoop fs -help hadoop文件系统hadoop 有一个抽象的文件系统概念，hdfs只是其中的一个实现。java抽象类org.apache.hadoop.fs.FileSystem定义了一个文件系统接口， 基于该抽象类的几个具体实现： java接口FileSystem类]]></content>
+    <title><![CDATA[Hadoop 权威指南 3th Edition Part 1]]></title>
+    <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p1%2F</url>
+    <content type="text"><![CDATA[第一章 数据！数据！ 这个世界数据存量很大，数据增长的速度很快，数据的价值很大 数据存储于分析 现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据 硬盘故障解决：数据冗余备份(RAID,HDFS) 数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的 相较于其他系统的优势 用蛮力处理整个庞大数据集或数据集的一部分 关系型数据库管理系统 现象：寻址速率的提升远远不及传输速率的提升 B树这有在小量数据时有优势，数据量大时，更新整个B树要花大量时间 RDBMS与hadoop相互补充，hadoop适合批处理，而rdbms适合点查询更新 RDBMS被索引后，能够提供低延迟的查询和少量的数据更新，mapreduce适合一次写入，多次读取做数据分析 RDBMS适合持续更新的数据集 Table 1-1. RDBMS compared to MapReduce item|Traditional RDBMS |MapReduce —|—|— Data size| Gigabytes| Petabytes Access(数据存取)| Interactive and batch| Batch Updates| Read and write many times |Write once, read many times Structure| Static schema |Dynamic schema Integrity(完整性)| High |Low Scaling| Nonlinear |Linear 存储的数据不同：RDBMS:结构化数据，完整的且不含冗余hadoop:结构化、半结构化、非结构化数据 网格计算， mapreduce 尽量使得数据本地化 志愿计算： 志愿计算为计算所花的时间远远超过工作单元数据传输时间，也就是说志愿者贡献的是CPU周期，而不是网络带宽 Hadoop发展简史 o 好牛b哦 hadoop echosystem common 一系列组件和接口 avro 序列化系统 maoreduce 计算引擎 HDFS 分布式文件系统 hive 数据仓库，sql查询hdfs hbase 列存储数据仓库 zookeeper 分布式、可用性高的协调服务 sqoop:rdbms &lt;=&gt; hdfs oozie 调度作业 hadoop 发行版本 Table 1-2. Features supported by Hadoop release series Feature 1.x 0.22 2.x Secure authentication Yes No Yes Old configuration names Yes Deprecated Deprecated New configuration names No Yes Yes Old MapReduce API Yes Yes Yes New MapReduce API Yes (with somemissing libraries) Yes Yes MapReduce 1 runtime (Classic) Yes Yes No MapReduce 2 runtime (YARN) No No Yes HDFS federation No No Yes HDFS high-availability No No Yes 第二章气象数据处理 2.1 气象数据集首先要搞清楚数据格式 文本数据 每一行是一条记录 整个数据集有很多小文件组成 2.2 Unix 处理方式12345678910#!/usr/bin/env bashfor year in all/*doecho -ne `basename $year .gz`&quot;\t&quot;gunzip -c $year | \awk &apos;&#123; temp = substr($0, 88, 5) + 0;q = substr($0, 93, 1);if (temp !=9999 &amp;&amp; q ~ /[01459]/ &amp;&amp; temp &gt; max) max = temp &#125;END &#123; print max &#125;&apos;done 循环使用awk处理 单进程处理 2.3 hadoop处理方式map:1234567891011121314151617181920212223242526272829import java.io.IOException;importimportimportimportorg.apache.hadoop.io.IntWritable;org.apache.hadoop.io.LongWritable;org.apache.hadoop.io.Text;org.apache.hadoop.mapreduce.Mapper;public class MaxTemperatureMapperextends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;private static final int MISSING = 9999;@Overridepublic void map(LongWritable key, Text value, Context context)throws IOException, InterruptedException &#123;&#125;&#125;String line = value.toString();String year = line.substring(15, 19);int airTemperature;if (line.charAt(87) == &apos;+&apos;) &#123; // parseInt doesn&apos;t like leading plus signsairTemperature = Integer.parseInt(line.substring(88, 92));&#125; else &#123;airTemperature = Integer.parseInt(line.substring(87, 92));&#125;String quality = line.substring(92, 93);if (airTemperature != MISSING &amp;&amp; quality.matches(&quot;[01459]&quot;)) &#123;context.write(new Text(year), new IntWritable(airTemperature));&#125; reduce:1234567891011121314151617import java.io.IOException;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Reducer;public class MaxTemperatureReducerextends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;@Overridepublic void reduce(Text key, Iterable&lt;IntWritable&gt; values,Context context)throws IOException, InterruptedException &#123;&#125;&#125;int maxValue = Integer.MIN_VALUE;for (IntWritable value : values) &#123;maxValue = Math.max(maxValue, value.get());&#125;context.write(key, new IntWritable(maxValue)); main:123456789101112131415161718192021222324import org.apache.hadoop.fs.Path;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Job;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;public class MaxTemperature &#123;public static void main(String[] args) throws Exception &#123;if (args.length != 2) &#123;System.err.println(&quot;Usage: MaxTemperature &lt;input path&gt; &lt;output path&gt;&quot;);System.exit(-1);&#125;Job job = new Job();job.setJarByClass(MaxTemperature.class);job.setJobName(&quot;Max temperature&quot;);FileInputFormat.addInputPath(job, new Path(args[0]));FileOutputFormat.setOutputPath(job, new Path(args[1]));job.setMapperClass(MaxTemperatureMapper.class);job.setReducerClass(MaxTemperatureReducer.class);job.setOutputKeyClass(Text.class);job.setOutputValueClass(IntWritable.class);System.exit(job.waitForCompletion(true) ? 0 : 1);&#125;&#125; 2.4 横向扩展2.5 Hadoop Streaming]]></content>
       <categories>
         <category>数据存储处理 - hadoop</category>
       </categories>
@@ -318,18 +328,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[使用Http小记]]></title>
-    <url>%2F2018%2F12%2F04%2FHttp%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[Http调试工具Postman使用 Postman Postman测试接口之JSON结构化数据提交 Postman使用详解 JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging dataJSON is text,written with JavaScript object notationJSONw3school Http learning这篇博客总结的不错Http协议，超文本传输协议（HyperText Transfer P rotocol）客户端请求消息格式： 服务器端响应消息格式： 平常主要用到的请求方法只有：GET和POSTGET 方法：请求指定的页面信息，并返回实体主体 GET 请求可被缓存 GET 请求保留在浏览器历史记录中 GET 请求可被收藏为书签 GET 请求不应在处理敏感数据时使用 GET 请求有长度限制 GET 请求只应当用于取回数据POST 方法：向指定的资源提交表单或者文件，数据包含在请求体中，POST请求会导致新资源的建立或者原有资源的更改。 POST 请求不会被缓存 POST 请求不会保留在浏览器历史记录中 POST 不能被收藏为书签 POST 请求对数据长度没有要求HTTP 方法：GET 对比 POST四种POST请求 RESTful架构理解RESTful架构 REST: resource representation state transfer]]></content>
-      <categories>
-        <category>服务器端 - web开发</category>
-      </categories>
-      <tags>
-        <tag>webapp</tag>
-        <tag>http</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Intellij IDEA 快捷键整理]]></title>
     <url>%2F2018%2F12%2F04%2FIntellij%20IDEA%20%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86%2F</url>
     <content type="text"><![CDATA[【常规】 Ctrl+Shift + Enter，语句完成 “！”，否定完成，输入表达式时按 “！”键 Ctrl+E，最近的文件 Ctrl+Shift+E，最近更改的文件 Shift+Click，可以关闭文件 Ctrl+[ OR ]，可以跑到大括号的开头与结尾 Ctrl+F12，可以显示当前文件的结构 Ctrl+F7，可以查询当前元素在当前文件中的引用，然后按 F3 可以选择 Ctrl+N，可以快速打开类 Ctrl+Shift+N，可以快速打开文件 Alt+Q，可以看到当前方法的声明 Ctrl+P，可以显示参数信息 Ctrl+Shift+Insert，可以选择剪贴板内容并插入 Alt+Insert，可以生成构造器/Getter/Setter等 Ctrl+Alt+V，可以引入变量。例如：new String(); 自动导入变量定义 Ctrl+Alt+T，可以把代码包在一个块内，例如：try/catch Ctrl+Enter，导入包，自动修正 Ctrl+Alt+L，格式化代码 Ctrl+Alt+I，将选中的代码进行自动缩进编排，这个功能在编辑 JSP 文件时也可以工作 Ctrl+Alt+O，优化导入的类和包 Ctrl+R，替换文本 Ctrl+F，查找文本 Ctrl+Shift+Space，自动补全代码 Ctrl+空格，代码提示（与系统输入法快捷键冲突） Ctrl+Shift+Alt+N，查找类中的方法或变量 Alt+Shift+C，最近的更改 Alt+Shift+Up/Down，上/下移一行 Shift+F6，重构 - 重命名 Ctrl+X，删除行 Ctrl+D，复制行 Ctrl+/或Ctrl+Shift+/，注释（//或者/**/） Ctrl+J，自动代码（例如：serr） Ctrl+Alt+J，用动态模板环绕 Ctrl+H，显示类结构图（类的继承层次） Ctrl+Q，显示注释文档 Alt+F1，查找代码所在位置 Alt+1，快速打开或隐藏工程面板 Ctrl+Alt+left/right，返回至上次浏览的位置 Alt+left/right，切换代码视图 Alt+Up/Down，在方法间快速移动定位 Ctrl+Shift+Up/Down，向上/下移动语句 F2 或 Shift+F2，高亮错误或警告快速定位 Tab，代码标签输入完成后，按 Tab，生成代码 Ctrl+Shift+F7，高亮显示所有该文本，按 Esc 高亮消失 Alt+F3，逐个往下查找相同文本，并高亮显示 Ctrl+Up/Down，光标中转到第一行或最后一行下 Ctrl+B/Ctrl+Click，快速打开光标处的类或方法（跳转到定义处） Ctrl+Alt+B，跳转到方法实现处 Ctrl+Shift+Backspace，跳转到上次编辑的地方 Ctrl+O，重写方法 Ctrl+Alt+Space，类名自动完成 Ctrl+Alt+Up/Down，快速跳转搜索结果 Ctrl+Shift+J，整合两行 Alt+F8，计算变量值 Ctrl+Shift+V，可以将最近使用的剪贴板内容选择插入到文本 Ctrl+Alt+Shift+V，简单粘贴 Shift+Esc，不仅可以把焦点移到编辑器上，而且还可以隐藏当前（或最后活动的）工具窗口 F12，把焦点从编辑器移到最近使用的工具窗口 Shift+F1，要打开编辑器光标字符处使用的类或者方法 Java 文档的浏览器 Ctrl+W，可以选择单词继而语句继而行继而函数 Ctrl+Shift+W，取消选择光标所在词 Alt+F7，查找整个工程中使用地某一个类、方法或者变量的位置 Ctrl+I，实现方法 Ctrl+Shift+U，大小写转化 Ctrl+Y，删除当前行 Shift+Enter，向下插入新行 psvm/sout，main/System.out.println(); Ctrl+J，查看更多 Ctrl+Shift+F，全局查找 Ctrl+F，查找/Shift+F3，向上查找/F3，向下查找 Ctrl+Shift+S，高级搜索 Ctrl+U，转到父类 Ctrl+Alt+S，打开设置对话框 Alt+Shift+Inert，开启/关闭列选择模式 Ctrl+Alt+Shift+S，打开当前项目/模块属性 Ctrl+G，定位行 Alt+Home，跳转到导航栏 Ctrl+Enter，上插一行 Ctrl+Backspace，按单词删除 Ctrl+&quot;+/-&quot;，当前方法展开、折叠 Ctrl+Shift+&quot;+/-&quot;，全部展开、折叠 【调试部分、编译】 Ctrl+F2，停止 Alt+Shift+F9，选择 Debug Alt+Shift+F10，选择 Run Ctrl+Shift+F9，编译 Ctrl+Shift+F10，运行 Ctrl+Shift+F8，查看断点 F8，步过 F7，步入 Shift+F7，智能步入 Shift+F8，步出 Alt+Shift+F8，强制步过 Alt+Shift+F7，强制步入 Alt+F9，运行至光标处 Ctrl+Alt+F9，强制运行至光标处 F9，恢复程序 Alt+F10，定位到断点 Ctrl+F8，切换行断点 Ctrl+F9，生成项目 Alt+1，项目 Alt+2，收藏 Alt+6，TODO Alt+7，结构 Ctrl+Shift+C，复制路径 Ctrl+Alt+Shift+C，复制引用，必须选择类名 Ctrl+Alt+Y，同步 Ctrl+~，快速切换方案（界面外观、代码风格、快捷键映射等菜单） Shift+F12，还原默认布局 Ctrl+Shift+F12，隐藏/恢复所有窗口 Ctrl+F4，关闭 Ctrl+Shift+F4，关闭活动选项卡 Ctrl+Tab，转到下一个拆分器 Ctrl+Shift+Tab，转到上一个拆分器 【重构】 Ctrl+Alt+Shift+T，弹出重构菜单 Shift+F6，重命名 F6，移动 F5，复制 Alt+Delete，安全删除 Ctrl+Alt+N，内联 【查找】 Ctrl+F，查找 Ctrl+R，替换 F3，查找下一个 Shift+F3，查找上一个 Ctrl+Shift+F，在路径中查找 Ctrl+Shift+R，在路径中替换 Ctrl+Shift+S，搜索结构 Ctrl+Shift+M，替换结构 Alt+F7，查找用法 Ctrl+Alt+F7，显示用法 Ctrl+F7，在文件中查找用法 Ctrl+Shift+F7，在文件中高亮显示用法 【VCS】 Alt+~，VCS 操作菜单 Ctrl+K，提交更改 Ctrl+T，更新项目 Ctrl+Alt+Shift+D，显示变化]]></content>
@@ -339,6 +337,18 @@
       <tags>
         <tag>IDEA</tag>
         <tag>IDE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用Http小记]]></title>
+    <url>%2F2018%2F12%2F04%2FHttp%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[Http调试工具Postman使用 Postman Postman测试接口之JSON结构化数据提交 Postman使用详解 JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging dataJSON is text,written with JavaScript object notationJSONw3school Http learning这篇博客总结的不错Http协议，超文本传输协议（HyperText Transfer P rotocol）客户端请求消息格式： 服务器端响应消息格式： 平常主要用到的请求方法只有：GET和POSTGET 方法：请求指定的页面信息，并返回实体主体 GET 请求可被缓存 GET 请求保留在浏览器历史记录中 GET 请求可被收藏为书签 GET 请求不应在处理敏感数据时使用 GET 请求有长度限制 GET 请求只应当用于取回数据POST 方法：向指定的资源提交表单或者文件，数据包含在请求体中，POST请求会导致新资源的建立或者原有资源的更改。 POST 请求不会被缓存 POST 请求不会保留在浏览器历史记录中 POST 不能被收藏为书签 POST 请求对数据长度没有要求HTTP 方法：GET 对比 POST四种POST请求 RESTful架构理解RESTful架构 REST: resource representation state transfer]]></content>
+      <categories>
+        <category>服务器端 - web开发</category>
+      </categories>
+      <tags>
+        <tag>webapp</tag>
+        <tag>http</tag>
       </tags>
   </entry>
   <entry>
@@ -367,18 +377,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Java任务调度]]></title>
-    <url>%2F2018%2F12%2F04%2FJava%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%2F</url>
-    <content type="text"><![CDATA[Java.util.Timer 在Java中有一个任务处理类java.util.Timer，非常方便于处理由时间触发的事件任务，只需建立一个继承java.util.TimerTask的子类，重载父类的run()方法实现具体的任务，然后调用Timer的public void schedule(TimerTask task, long delay, long period)方法实现任务的调度。 但是这种方法只能实现简单的任务调度，不能满足任务调度时间比较复杂的需求。比如希望系统在每周的工作日的8：00时向系统用户给出一个提示，这种方法实现起来就困难了，还有更为复杂的任务调度时间要求。12345678910111213141516171819202122232425262728293031package scheduler;import java.util.Timer;import java.util.TimerTask;/** * Created by xhh on 2017/2/4. */public class TimerTest extends TimerTask &#123; private String jobName = &quot;&quot;; public TimerTest(String jobName) &#123; super(); this.jobName = jobName; &#125; @Override public void run() &#123; System.out.println(&quot;executing: &quot; + jobName); &#125; public static void main(String[] args)&#123; Timer timer = new Timer(); long delay1 = 1 * 1000; long period1 = 1000; timer.schedule(new TimerTest(&quot;job1&quot;),delay1,period1); long delay2 = 2 * 1000; long period2 = 2000; timer.schedule(new TimerTest(&quot;job2&quot;),delay2,period2); &#125;&#125; Timer源码解析 Quartz OpenSymphony 的Quartz提供了一个比较完美的任务调度解决方案。 Quartz 是个开源的作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。 Quartz有两个基本的概念：作业和调度器。作业是能够调度的可执行任务，触发器提供了对作业的调度。 1、作业 2、调度器]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>任务调度</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Java笔记]]></title>
     <url>%2F2018%2F12%2F04%2FJava%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[设计模式单例模式java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍三种： 懒汉式单例、 饿汉式单例、 登记式单例。单例模式有以下特点： 单例类只能有一个实例。单例类必须自己创建自己的唯一实例。 单例类必须给所有其他对象提供这一实例。 单例模式确保某个类只有一个实例，而且自行实例化并向整个系统提供这个实例。 在计算机系统中，线程池、缓存、日志对象、对话框、打印机、显卡的驱动程序对象常被设计成单例。这些应用都或多或少具有资源管理器的功能。每台计算机可以有若干个打印机，但只能有一个Printer Spooler，以避免两个打印作业同时输出到打印机中。每台计算机可以有若干通信端口，系统应当集中管理这些通信端口，以避免一个通信端口同时被两个请求同时调用。总之，选择单例模式就是为了避免不一致状态，避免政出多头。123456789101112131415161718192021222324252627282930懒汉模式：public class SingletonTest &#123; public static void main(String[] args)&#123; System.out.println(&quot;Singleton1.1:&quot;+Singleton1.getInstance()); System.out.println(&quot;Singleton1.2:&quot;+Singleton1.getInstance()); System.out.println(&quot;Singleton2.1:&quot;+Singleton2.getInstance()); System.out.println(&quot;Singleton2.2:&quot;+Singleton2.getInstance()); System.out.println(&quot;ton1:&quot;+new ton()); System.out.println(&quot;ton2:&quot;+new ton()); &#125;&#125;//懒汉模式：第一次是使用的时候实例化自己class Singleton1&#123; private static Singleton1 singleton1 = null; public static Singleton1 getInstance()&#123; if (singleton1 == null)&#123; singleton1 = new Singleton1(); &#125; return singleton1; &#125;&#125;//饱汉模式class Singleton2&#123; private static final Singleton2 singleton2 = new Singleton2(); public static Singleton2 getInstance()&#123; return singleton2; &#125;&#125; Java service domain dao 分层思路 鼓励使用service domain dao 分层设计理念； 第一：dao层操作表单，不涉及复杂逻辑，主要是表的增删改查操作，完全按照domain的要求来查询数据； 第二：domain层考虑业务逻辑，例如过滤条件，放行或者返回，以及数据的处理，为调用dao层做好准备，一个domain可以调用一个或者一组相关的dao层 第三：service 层调用一个或者一组domain层，主要是展现需要开放出去的接口，其中并不是所有的domain层都要在service层展现， 此外，主要接口需要对接受的参数要尽量的扩大化，也就是说可以容纳各种类型的参数的接入（object），然后再service 层做好转换，以备domain层使用。 正确的设计应该是，一个领域活动会聚合对应一个或一组DAO ，来完成一个领域活动。而一个服务可能包含两个领域活动， 比如一个转账的业务，对应两个领域活动。两个帐户的金额分别发生变化，需要操作一组领域活动，而每个活动需要操作很多表（调用多个DAO ）。 使用 接口方式可以实现系统之间的松耦合：一般定义： IUserService UserService IUserDomain UserDomain IUserDao UserSqlDao UserHbaseDao 使用接口可以有不同的实现类 ,不需要改代码，可以通过配置更改不同的实现类 Q:I need to learn the difference between the type of methods (in term of business logic) that should be inside the Domain, DAO and Service layers objects. For example, if I am building a small web application to create, edit and delete customers data, as far as I understand inside Domain layer object I should add methods that Get/Set Customers object properties, for example (getName, getDOB, setAddress, setPhone...etc). Now what I am trying to learn is what methods shall I put in DAO and Service layers objects. Thanks in advance for your time and efforts. A:Speaking generally (not Hibernate or Spring specific): The DAO layer contains queries and updates to save your domain layer into your datastore (usually a relational DB but doesn&apos;t have to be). Use interfaces to abstract your DAO away from the actual datastore. It doesn&apos;t happen often, but sometimes you want to change datastores (or use mocks to test your logic), and interfaces make that easier. This would have methods like &quot;save&quot;, &quot;getById&quot;, etc. The Service layer typically contains your business logic and orchestrates the interaction between the domain layer and the DAOs. It would have whatever methods make sense for your particular domain, like &quot;verifyBalance&quot;, or &quot;calculateTotalMileage&quot;. String使用String类中的compareTo（）方法比较。如：s1.compareTo(s2)但是这个方法有个缺点,就是要求两个参与比较的字符串的形式及长度必须相同才能够正确比较,否则,比较结果是错的 Java中设置classpath、path、JAVA_HOME的作用:Java中设置classpath、path、JAVA_HOME的作用]]></content>
@@ -399,6 +397,18 @@
       </categories>
       <tags>
         <tag>Json</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java任务调度]]></title>
+    <url>%2F2018%2F12%2F04%2FJava%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[Java.util.Timer 在Java中有一个任务处理类java.util.Timer，非常方便于处理由时间触发的事件任务，只需建立一个继承java.util.TimerTask的子类，重载父类的run()方法实现具体的任务，然后调用Timer的public void schedule(TimerTask task, long delay, long period)方法实现任务的调度。 但是这种方法只能实现简单的任务调度，不能满足任务调度时间比较复杂的需求。比如希望系统在每周的工作日的8：00时向系统用户给出一个提示，这种方法实现起来就困难了，还有更为复杂的任务调度时间要求。12345678910111213141516171819202122232425262728293031package scheduler;import java.util.Timer;import java.util.TimerTask;/** * Created by xhh on 2017/2/4. */public class TimerTest extends TimerTask &#123; private String jobName = &quot;&quot;; public TimerTest(String jobName) &#123; super(); this.jobName = jobName; &#125; @Override public void run() &#123; System.out.println(&quot;executing: &quot; + jobName); &#125; public static void main(String[] args)&#123; Timer timer = new Timer(); long delay1 = 1 * 1000; long period1 = 1000; timer.schedule(new TimerTest(&quot;job1&quot;),delay1,period1); long delay2 = 2 * 1000; long period2 = 2000; timer.schedule(new TimerTest(&quot;job2&quot;),delay2,period2); &#125;&#125; Timer源码解析 Quartz OpenSymphony 的Quartz提供了一个比较完美的任务调度解决方案。 Quartz 是个开源的作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。 Quartz有两个基本的概念：作业和调度器。作业是能够调度的可执行任务，触发器提供了对作业的调度。 1、作业 2、调度器]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>任务调度</tag>
       </tags>
   </entry>
   <entry>
@@ -461,19 +471,6 @@
   </entry>
   <entry>
     <title><![CDATA[Tensorflow Model java 部署]]></title>
-    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
-    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
-      <categories>
-        <category>机器学习、深度学习 - tensorflow</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>tensorflow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Tensorflow Model java 部署]]></title>
     <url>%2F2018%2F12%2F04%2FTensorflow5--seq2seq%2F</url>
     <content type="text"><![CDATA[IntroductionSeq2Seq模型在机器翻译、语音识别、文本摘要等领域取得了巨大的成功 以神经机器翻译(NMT)为例介绍 使用最新的 decoder / attention wrapper API，TensorFlow 1.2 data iterator 在构建模型时加入了我们最成功的经验 为构建最强大的 NMT 模型，我们提供了许多 tips 和 tricks，并复制了Google的 NMT系统 Basic神经机器翻译的相关背景 | Background on Neural Machine Translation 传统的 phrase-based 翻译系统的工作原理是把源句子分成几块，然后一个短语一个短语的翻译，但是翻译结果的流畅度较差，并且不符合人类的翻译方式， 我们人类会读取完整的句子，理解它的意思，然后进行翻译。NMT 模型正是在模仿这个机制！ NMT模型使用encoder读取源句子，然后编码得到一个“有意义”的 vector，即一串能代表源句子意思的数字。然后 decoder 将这个 vector 解码得到翻译，就想图1展示的那样。这就是所谓的 encoder-decoder 结构 本教程将以单向的多层（multi-layer） RNN 为例，其使用 LSTM 作为 RNN 单元 Traning - How to build our first NMT system实战 - 训练一个 NMT 模型 Hands-on - Let’s train an NMT model12345678910111213python -m nmt.nmt \ --src=vi --tgt=en \ --vocab_prefix=/home/xxh/data/nmt_data_2/vocab \ --train_prefix=/home/xxh/data/nmt_data_2/train \ --dev_prefix=/home/xxh/data/nmt_data_2/tst2012 \ --test_prefix=/home/xxh/data/nmt_data_2/tst2013 \ --out_dir=/home/xxh/data/nmt_model \ --num_train_steps=12000 \ --steps_per_stats=100 \ --num_layers=2 \ --num_units=128 \ --dropout=0.2 \ --metrics=bleu python -m nmt.nmt \ –src=vi –tgt=en \ –vocab_prefix=/home/xxh/data/my_nmt_data/train \ –train_prefix=/home/xxh/data/my_nmt_data/train \ –dev_prefix=/home/xxh/data/my_nmt_data/tst2012 \ –test_prefix=/home/xxh/data/my_nmt_data/tst2012 \ –out_dir=/home/xxh/data/my_nmt_model \ –num_train_steps=12000 \ –steps_per_stats=100 \ –num_layers=2 \ –num_units=128 \ –dropout=0.2 \ –metrics=bleu 12 python -m nmt.nmt \ –out_dir=/home/xxh/data/nmt_model \ –inference_input_file=/home/xxh/data/nmt_data_2/my.vi \ –inference_output_file=/home/xxh/data/nmt_attention_model/output_infer`]]></content>
       <categories>
@@ -487,14 +484,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Ubuntu16.04/18LS小记]]></title>
-    <url>%2F2018%2F12%2F04%2FUbuntu16.04LS%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[使用ubuntu有段时间了，有些问题解决了没记录，有时间找回来 在这里将使用过程中遇到值得记录的Ｍａｒｋ下来 卸载软件由于software总是打不开，所以选择用apt-get卸载//列出所有已安装的软件包dpkg --list结果ii xserver-common 2:1.18.3-1ub all common files used by various X se ii xserver-xorg 1:7.7+13ubun amd64 X.Org X server . . . ii xz-utils 5.1.1alpha+2 amd64 XZ-format compression utilities ii yelp 3.18.1-1ubun amd64 Help browser for GNOME ii yelp-xsl 3.18.1-1 all XSL stylesheets for the yelp help ii youdao-dict 1.1.0-0~ubun amd64 Youdao Dict for Linux ii zenity 3.18.1.1-1ub amd64 Display graphical dialog boxes fr//按照软件包名字卸载sudo apt-get --purge remove youdao-dict其中–purge 是指连软件的配置文件一块删除参考 重新安装软件包：sudo dpkg -i xxxsudo dpkg -i youdao-dict.deb 双系统－ubuntu连不上网办公室电脑安装了双系统，自带win10,自行安装ubuntu,有次重启电脑后，应该是去登录了win10，重新登录ubuntu发现连接不上网络，windows 一切正常，试了N种方法均无效，最后找到问题是 网卡驱动问题应该是win 系统更新了网卡驱动，而ubuntu 系统无法识别，解决办法：卸载新版本的网卡驱动，安装旧版本的网卡驱动 /home/xxh/package/r8168-8.044.021sh autorun.sh 可悲的是，每次重启都要重重重重新执行该脚本，还好只是执行下一个脚本没时间，也没兴趣去查深层次的原因了，暂时先这样啊，主要是一般不会关机 因各种原因，出于提高开发效率的考虑，将开发环境迁移到Ubuntu操作系统上来，果然碰到了高睿之前遇到的Ubuntu系统与PC自带显卡驱动不兼容问题，睿总帮忙解决，感谢 显卡驱动问题 使用的联想扬天电脑有点奇葩，与安装的UBUNTU16兼容性不好，\ray给出了经验,安装最新的英伟达显卡驱动 安装JAVA - 安装了官方版java. 连接EC2 - 使用terminal直接连接ec2(sudo ssh -i ~/aws/xuxianhong.pem ec2-user@ec2-52-197-178-250.ap-northeast-1.compute.amazonaws.com) 其中公钥是ec2 description写明了的，用户名是ec2-user. ubuntu18 - 笔记本电脑合盖不休眠拿张某的笔记本做测试服务器，但是这个本合盖即锁屏，试了很多方法（界面配置等等）没能解决，下面这个方法好使Ubuntu16.04 笔记本合上盖子时不进入休眠]]></content>
+    <title><![CDATA[Tensorflow Model java 部署]]></title>
+    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
+    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
       <categories>
-        <category>工欲善其事，必先利其器</category>
+        <category>机器学习、深度学习 - tensorflow</category>
       </categories>
       <tags>
-        <tag>Ubuntu</tag>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>tensorflow</tag>
       </tags>
   </entry>
   <entry>
@@ -510,14 +509,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[使用ansible自动部署集群环境]]></title>
-    <url>%2F2018%2F12%2F04%2Fansible%2F</url>
-    <content type="text"><![CDATA[what Working in IT, you’re likely doing the same tasks over and over. What if you could solve problems once and then automate your solutions going forward? Ansible is here to help.类似的组件还有： puppetsaltstackchef install官方文档上有多种安装方法，包括apt-get、yum,我这里用的是github方式1git clone git://github.com/ansible/ansible.git --recursive 官网上的描述特详细，也特别好使，安装时建议直接看最新的文档ansible freshman get startinventory服务器清单，配置文件 动态InventorypatternsAd-Hoc Commands即使执行的命令，跟playbooks一起，构成ansible的强大战力 playbooksplaybooks 介绍playbooks 是ansible的配置，部署，编排语言 他们可以被描述为一个需要希望远程主机执行命令的方案，或者一组程序运行的命令集合 ps:难道类似存储过程？ 简单来说,playbooks 是一种简单的配置管理系统与多机器部署系统的基础.与现有的其他系统有不同之处,且非常适合于复杂应用的部署. playbook 实例Playbooks的格式是YAML playbook 由一个或多个 ‘plays’ 组成.它的内容是一个以 ‘plays’ 为元素的列表. 在 play 之中,一组机器被映射为定义好的角色.在 ansible 中,play 的内容,被称为 tasks,即任务.在基本层次的应用中,一个任务是一个对 ansible 模块的调用,这在前面章节学习过. ‘plays’ 好似音符,playbook 好似由 ‘plays’ 构成的曲谱,通过 playbook,可以编排步骤进行多机器的部署,比如在 webservers 组的所有机器上运行一定的步骤, 然后在 database server 组运行一些步骤,最后回到 webservers 组,再运行一些步骤,诸如此类. 123456789101112131415161718---- hosts: webservers vars: http_port: 80 max_clients: 200 remote_user: root tasks: - name: ensure apache is at the latest version yum: pkg=httpd state=latest - name: write the apache config file template: src=/srv/httpd.j2 dest=/etc/httpd.conf notify: - restart apache - name: ensure apache is running service: name=httpd state=started handlers: - name: restart apache service: name=httpd state=restarted play 基础：… Playbook角色(Roles) 和Include语句variables配置用 条件选择循环最佳实践ansible 有提供aws相关的模块，可以直接使用ansible tower注册 -&gt; 发下载链接到邮箱 -&gt; 下载 -&gt; 安装 error 不支持ubuntu18.04error 266701ERROR! Unexpected Exception, this is probably a bug: &apos;module&apos; object has no attribute &apos;SSL_ST_INIT&apos; resolved:1sudo pip2 install -U pyOpenSSL 安装了一个小时，在办公主机上，ec2上安装都不成功，各种b问题，同时发现其使用的组件过于繁杂还是自己写吧 ansible-galaxy 上面有很多好用的role sudo 不好使 -&gt; 修改配置文件中的sudo-user remote-user,然后执行的时候+ –become 已经先不在使用ansible,优先直接使用bootstrap.ssh 完成相关操作 后面该操作使用akka remote封装]]></content>
+    <title><![CDATA[Ubuntu16.04/18LS小记]]></title>
+    <url>%2F2018%2F12%2F04%2FUbuntu16.04LS%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[使用ubuntu有段时间了，有些问题解决了没记录，有时间找回来 在这里将使用过程中遇到值得记录的Ｍａｒｋ下来 卸载软件由于software总是打不开，所以选择用apt-get卸载//列出所有已安装的软件包dpkg --list结果ii xserver-common 2:1.18.3-1ub all common files used by various X se ii xserver-xorg 1:7.7+13ubun amd64 X.Org X server . . . ii xz-utils 5.1.1alpha+2 amd64 XZ-format compression utilities ii yelp 3.18.1-1ubun amd64 Help browser for GNOME ii yelp-xsl 3.18.1-1 all XSL stylesheets for the yelp help ii youdao-dict 1.1.0-0~ubun amd64 Youdao Dict for Linux ii zenity 3.18.1.1-1ub amd64 Display graphical dialog boxes fr//按照软件包名字卸载sudo apt-get --purge remove youdao-dict其中–purge 是指连软件的配置文件一块删除参考 重新安装软件包：sudo dpkg -i xxxsudo dpkg -i youdao-dict.deb 双系统－ubuntu连不上网办公室电脑安装了双系统，自带win10,自行安装ubuntu,有次重启电脑后，应该是去登录了win10，重新登录ubuntu发现连接不上网络，windows 一切正常，试了N种方法均无效，最后找到问题是 网卡驱动问题应该是win 系统更新了网卡驱动，而ubuntu 系统无法识别，解决办法：卸载新版本的网卡驱动，安装旧版本的网卡驱动 /home/xxh/package/r8168-8.044.021sh autorun.sh 可悲的是，每次重启都要重重重重新执行该脚本，还好只是执行下一个脚本没时间，也没兴趣去查深层次的原因了，暂时先这样啊，主要是一般不会关机 因各种原因，出于提高开发效率的考虑，将开发环境迁移到Ubuntu操作系统上来，果然碰到了高睿之前遇到的Ubuntu系统与PC自带显卡驱动不兼容问题，睿总帮忙解决，感谢 显卡驱动问题 使用的联想扬天电脑有点奇葩，与安装的UBUNTU16兼容性不好，\ray给出了经验,安装最新的英伟达显卡驱动 安装JAVA - 安装了官方版java. 连接EC2 - 使用terminal直接连接ec2(sudo ssh -i ~/aws/xuxianhong.pem ec2-user@ec2-52-197-178-250.ap-northeast-1.compute.amazonaws.com) 其中公钥是ec2 description写明了的，用户名是ec2-user. ubuntu18 - 笔记本电脑合盖不休眠拿张某的笔记本做测试服务器，但是这个本合盖即锁屏，试了很多方法（界面配置等等）没能解决，下面这个方法好使Ubuntu16.04 笔记本合上盖子时不进入休眠]]></content>
       <categories>
-        <category>服务器端</category>
+        <category>工欲善其事，必先利其器</category>
       </categories>
       <tags>
-        <tag>ansible</tag>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -532,14 +531,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[build-tool]]></title>
-    <url>%2F2018%2F12%2F04%2Fbuild-tool%2F</url>
-    <content type="text"><![CDATA[构建工具总结对比： 旧时代的Java世界，构建工具等同于两个词Ant和Maven Ant源自Make，同JUnit一样，它也是一个航班产物（参见《Ant权威指南》序）。不过，Make的基础注定了它的起点不高，所有一切都要手工打造。我还依稀记得曾几何时，每每开始一个项目都要重新复制一份Ant脚本，修修改改。Maven给了人们新的希望，目录结构的约定、依赖管理、IDE集成，那时看来，几近完美。是的，几近，还差了那么一点点。就是那么一点点，却是致命伤。 只要一个项目进行一段时间，一个必然遇到的问题就是，编写新的自动化脚本。因为每个项目都有自己的特定需求，标准做法必然是无法满足的。扩展Maven对任何新手都是一件头疼的事，我们要学会编写插件，要搞清楚生命周期，这时，突然会唤起一丝丝对于ANT的怀念，虽然它做简单事不容易，但做复杂事却也没这么困难。 如果那些日子，我们不得不忍受Ant和Maven的不完美，那现在，是时候抛弃它们了。 新时代Java构建有两个很好的候选：Gradle和Buildr。 在我看来，它们真正比Maven更强大的地方，编写自己的任务更加容易。更值得兴奋的一点是，我们终于可以抛弃冗长的XML，选择一种更优雅的程序设计语言来写代码了，这几乎意味着你可以做到想做的一切。 Buildr是Apache出品的构建工具，它以Ruby作为构建脚本。《软件开发地基》讨论软件项目应该具备一些基础构建项，就是以Buildr为基础的。有兴趣的话，可以参考一下。这里就不再赘述。顺便说一下，那篇文章里的内容，除了某些写法现在需要做一些微调，大部分内容依然是适用于大多数Java项目。 Gradle现在是整个Java社区的构建新宠，它采用Groovy作为自己的构建语言。如果你知道，Groovy是一门诞生自JVM平台的语言，这就决定了它要比其它移植到JVM上的语言能更好的适应JVM平台，它可以采用更符合Java世界的方式无缝地整合Java既有的程序库，而不必像移植语言那样削足适履。 初涉Gradle，最让人吃惊的一点莫过于它详尽的文档，涵盖了Gradle使用的方方面面，这是许多开源软件项目无法媲美，即便早在它的1.0版本尚未发布之时。当然，能做到这一点是因为它背后有一个公司在支撑：GradleWare，这意味着如果你需要商业支持，也是可以的。 Gradle 1.0尚未发布之，它就捧回2010年的Spring大奖和入围了2011年的JAX大奖。如果你还需要更多的信心，作为Java开发人员，你不可能不知道Spring，那Spring转投Gradle怀抱，应该是对Gradle最有利的支持了。 说了这么多，程序员最喜欢看到的东西还是代码。 首先，请自行下载安装Gradle，然后，按照常见的Java项目布局把代码准备好（感谢Maven为我们给予我们约定），比如： src/main/java，源代码文件目录src/main/resources，资源文件目录src/test/java，测试代码目录下面是一个简单的Gradle构建脚本，将其存放于build.gradle apply plugin: ‘java’ repositories { mavenCentral()} dependencies { compile( ‘com.google.guava:guava:13.0.1’, ‘joda-time:joda-time:2.1’ ) testCompile( ‘junit:junit:4.10’, ‘org.mockito:mockito-all:1.9.0’ )}（build.gradle） 接下来的事情就很简单了，在命令行里键入 gradle build 如果一切正常，我们应该会看到构建成功的字样，然后，到build/lib，你就看到自己构建出来的JAR文件了。当然，这只是一个简单得不能再简单的例子，如果需要了解更多，Gradle那详尽的文档便是最好的去处。 著作权归作者所有，转载需联系作者以获得授权，引用需注明出处。作者ID:s8达克斯链接:https://www.applysquare.com/topic-cn/SlxE26k3q/ gradlegradle install开发主机使用ubuntu16,按照官网文档上的manually方法安装，测试可用 kafka源码编译的时候执行 1gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 sbtmaven]]></content>
+    <title><![CDATA[使用ansible自动部署集群环境]]></title>
+    <url>%2F2018%2F12%2F04%2Fansible%2F</url>
+    <content type="text"><![CDATA[what Working in IT, you’re likely doing the same tasks over and over. What if you could solve problems once and then automate your solutions going forward? Ansible is here to help.类似的组件还有： puppetsaltstackchef install官方文档上有多种安装方法，包括apt-get、yum,我这里用的是github方式1git clone git://github.com/ansible/ansible.git --recursive 官网上的描述特详细，也特别好使，安装时建议直接看最新的文档ansible freshman get startinventory服务器清单，配置文件 动态InventorypatternsAd-Hoc Commands即使执行的命令，跟playbooks一起，构成ansible的强大战力 playbooksplaybooks 介绍playbooks 是ansible的配置，部署，编排语言 他们可以被描述为一个需要希望远程主机执行命令的方案，或者一组程序运行的命令集合 ps:难道类似存储过程？ 简单来说,playbooks 是一种简单的配置管理系统与多机器部署系统的基础.与现有的其他系统有不同之处,且非常适合于复杂应用的部署. playbook 实例Playbooks的格式是YAML playbook 由一个或多个 ‘plays’ 组成.它的内容是一个以 ‘plays’ 为元素的列表. 在 play 之中,一组机器被映射为定义好的角色.在 ansible 中,play 的内容,被称为 tasks,即任务.在基本层次的应用中,一个任务是一个对 ansible 模块的调用,这在前面章节学习过. ‘plays’ 好似音符,playbook 好似由 ‘plays’ 构成的曲谱,通过 playbook,可以编排步骤进行多机器的部署,比如在 webservers 组的所有机器上运行一定的步骤, 然后在 database server 组运行一些步骤,最后回到 webservers 组,再运行一些步骤,诸如此类. 123456789101112131415161718---- hosts: webservers vars: http_port: 80 max_clients: 200 remote_user: root tasks: - name: ensure apache is at the latest version yum: pkg=httpd state=latest - name: write the apache config file template: src=/srv/httpd.j2 dest=/etc/httpd.conf notify: - restart apache - name: ensure apache is running service: name=httpd state=started handlers: - name: restart apache service: name=httpd state=restarted play 基础：… Playbook角色(Roles) 和Include语句variables配置用 条件选择循环最佳实践ansible 有提供aws相关的模块，可以直接使用ansible tower注册 -&gt; 发下载链接到邮箱 -&gt; 下载 -&gt; 安装 error 不支持ubuntu18.04error 266701ERROR! Unexpected Exception, this is probably a bug: &apos;module&apos; object has no attribute &apos;SSL_ST_INIT&apos; resolved:1sudo pip2 install -U pyOpenSSL 安装了一个小时，在办公主机上，ec2上安装都不成功，各种b问题，同时发现其使用的组件过于繁杂还是自己写吧 ansible-galaxy 上面有很多好用的role sudo 不好使 -&gt; 修改配置文件中的sudo-user remote-user,然后执行的时候+ –become 已经先不在使用ansible,优先直接使用bootstrap.ssh 完成相关操作 后面该操作使用akka remote封装]]></content>
       <categories>
-        <category>build tool</category>
+        <category>服务器端</category>
       </categories>
       <tags>
-        <tag>build tool</tag>
+        <tag>ansible</tag>
       </tags>
   </entry>
   <entry>
@@ -566,6 +565,28 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[build-tool]]></title>
+    <url>%2F2018%2F12%2F04%2Fbuild-tool%2F</url>
+    <content type="text"><![CDATA[构建工具总结对比： 旧时代的Java世界，构建工具等同于两个词Ant和Maven Ant源自Make，同JUnit一样，它也是一个航班产物（参见《Ant权威指南》序）。不过，Make的基础注定了它的起点不高，所有一切都要手工打造。我还依稀记得曾几何时，每每开始一个项目都要重新复制一份Ant脚本，修修改改。Maven给了人们新的希望，目录结构的约定、依赖管理、IDE集成，那时看来，几近完美。是的，几近，还差了那么一点点。就是那么一点点，却是致命伤。 只要一个项目进行一段时间，一个必然遇到的问题就是，编写新的自动化脚本。因为每个项目都有自己的特定需求，标准做法必然是无法满足的。扩展Maven对任何新手都是一件头疼的事，我们要学会编写插件，要搞清楚生命周期，这时，突然会唤起一丝丝对于ANT的怀念，虽然它做简单事不容易，但做复杂事却也没这么困难。 如果那些日子，我们不得不忍受Ant和Maven的不完美，那现在，是时候抛弃它们了。 新时代Java构建有两个很好的候选：Gradle和Buildr。 在我看来，它们真正比Maven更强大的地方，编写自己的任务更加容易。更值得兴奋的一点是，我们终于可以抛弃冗长的XML，选择一种更优雅的程序设计语言来写代码了，这几乎意味着你可以做到想做的一切。 Buildr是Apache出品的构建工具，它以Ruby作为构建脚本。《软件开发地基》讨论软件项目应该具备一些基础构建项，就是以Buildr为基础的。有兴趣的话，可以参考一下。这里就不再赘述。顺便说一下，那篇文章里的内容，除了某些写法现在需要做一些微调，大部分内容依然是适用于大多数Java项目。 Gradle现在是整个Java社区的构建新宠，它采用Groovy作为自己的构建语言。如果你知道，Groovy是一门诞生自JVM平台的语言，这就决定了它要比其它移植到JVM上的语言能更好的适应JVM平台，它可以采用更符合Java世界的方式无缝地整合Java既有的程序库，而不必像移植语言那样削足适履。 初涉Gradle，最让人吃惊的一点莫过于它详尽的文档，涵盖了Gradle使用的方方面面，这是许多开源软件项目无法媲美，即便早在它的1.0版本尚未发布之时。当然，能做到这一点是因为它背后有一个公司在支撑：GradleWare，这意味着如果你需要商业支持，也是可以的。 Gradle 1.0尚未发布之，它就捧回2010年的Spring大奖和入围了2011年的JAX大奖。如果你还需要更多的信心，作为Java开发人员，你不可能不知道Spring，那Spring转投Gradle怀抱，应该是对Gradle最有利的支持了。 说了这么多，程序员最喜欢看到的东西还是代码。 首先，请自行下载安装Gradle，然后，按照常见的Java项目布局把代码准备好（感谢Maven为我们给予我们约定），比如： src/main/java，源代码文件目录src/main/resources，资源文件目录src/test/java，测试代码目录下面是一个简单的Gradle构建脚本，将其存放于build.gradle apply plugin: ‘java’ repositories { mavenCentral()} dependencies { compile( ‘com.google.guava:guava:13.0.1’, ‘joda-time:joda-time:2.1’ ) testCompile( ‘junit:junit:4.10’, ‘org.mockito:mockito-all:1.9.0’ )}（build.gradle） 接下来的事情就很简单了，在命令行里键入 gradle build 如果一切正常，我们应该会看到构建成功的字样，然后，到build/lib，你就看到自己构建出来的JAR文件了。当然，这只是一个简单得不能再简单的例子，如果需要了解更多，Gradle那详尽的文档便是最好的去处。 著作权归作者所有，转载需联系作者以获得授权，引用需注明出处。作者ID:s8达克斯链接:https://www.applysquare.com/topic-cn/SlxE26k3q/ gradlegradle install开发主机使用ubuntu16,按照官网文档上的manually方法安装，测试可用 kafka源码编译的时候执行 1gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 sbtmaven]]></content>
+      <categories>
+        <category>build tool</category>
+      </categories>
+      <tags>
+        <tag>build tool</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[github访问卡、慢、不稳定]]></title>
+    <url>%2F2018%2F12%2F04%2Fgithub%E5%8D%A1%E6%85%A2%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考 blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts 但是更新了dns，效果很明显，速度杠杠的 2017/12/05 迅速被打脸，一点都不好使 \很奇怪，办公室机器google-chrome很卡，firefox好很多]]></content>
+      <categories>
+        <category>工欲善其事，必先利其器</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hadoop 笔记]]></title>
     <url>%2F2018%2F12%2F04%2Fhadoop%2F</url>
     <content type="text"><![CDATA[Map reduce job getting stuck at map 0% reduce 0%一般是没有资源导致卡住，比如查看yarn中active node是否为0 ，内存配置不足，cpu配置之类的 但也有可能是map加载输入的时间较长导致Map reduce job getting stuck at map 0% reduce 0% ? 比较详细的mapreduce job 日志 哪里找得到Hadoop 2.6 日志文件和MapReduce的log文件研究心得]]></content>
@@ -577,17 +598,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hive 编程指南 笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fhive%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%2F</url>
-    <content type="text"><![CDATA[《hive 编程指南》 第一章与mr接口相比，sql简单易用 第二章hive 安装 hive笔记安装 hive内部是什么 lib 其中的每个jar都实现了hive的特定功能 bin 执行各种hive服务的可执行文件 conf 配置文件 hive 命令cli变量和属性hivevar/hiveconf/system/env .hivec文件第三章 数据类型和文件格式支持关系型数据库中绝大多数基本数据类型，还支持三种集合数据类型 要考虑这些数据类型是如何正在文本文件中表示的，还要考虑文本存储中为了解决各种性能问题以及其他问题有哪些替代方案 基本数据类型 string 字符串无长度限制 timestamp 可以使整数、浮点数、字符串 binary 字节数组 数值比较时，数据类型在 double float int tinyint smallint bigint 间自动向上转换 字符串转化： cast(s as int) 集合数据类型 struct map array 缺点是不符合三大范式，第一范式都不符合 数据冗余，在大数据情况下，按数据集封装的话可以通过减少寻址次数来提供查询的速度，而如果根据外键关系关联的话则需要磁盘间的寻址操作，这样会有非常高的性能消耗 文本文件数据编码文本文件在字段间、集合数据类型中的分隔符 读时模式传统数据库是写时模式(schema on write)hive是读时模式(schema on read) hive在读时会尽可能的规避问题，这样的功能很强大，也会导致问题被掩盖 第四章 hiveql 定义]]></content>
-      <categories>
-        <category>database</category>
-      </categories>
-      <tags>
-        <tag>database,hive</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[kafka笔记]]></title>
     <url>%2F2018%2F12%2F04%2Fkafka%2F</url>
     <content type="text"><![CDATA[introduction三个主要能力 publist and subscribe 类似于管道 容错的存储数据 即时处理数据处理 两大应用场景： 构建可靠的应用与系统间Streaming data 管道 构建Streaming 程序来传输或react数据流 Kafka is generally used for two broad classes of applications: Building real-time streaming data pipelines that reliably get data between systems or applications Building real-time streaming applications that transform or react to the streams of data First a few concepts: Kafka is run as a cluster on one or more servers that can span multiple datacenters. The Kafka cluster stores streams of records in categories called topics. Each record consists of a key, a value, and a timestamp. 四个主要API producer api cunsumer api streams api connector api kafka源码 git clone gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 阶段性可执行后，结果为BUILG FAILD 搜索后有人表示：有多个scala 版本，导致这样的错误 尝试执行 1./gradlew -PscalaVersion=2.11.11 clean core:test 依然build failed 这次是1Could not find org.jacoco.agent.jar 《Apache Kafka 源码剖析》上说的源码编译步骤不好使，转参考下面的方法Getting started with contributing to Apache Kafka (Part 1): Build and run Kafka from source code棒棒哒 123&gt; cd kafka&gt; gradle&gt; ./gradlew jar importa kafka project run zookeeper 修改server.properties中的zk配置 run kafka cp conf/log4j.properties 到 core/src/main/resources/log4j.properties Run -&gt; Kafka 报错 没有创建日志文件的权限 原来日志文件呢中默认的日志存放位置是/ 添加配置 kafka.logs.dir=~/data/kafka-source-logs 修复 修改log4j.rootLogger=TRACE, stdout 打印出更多信息 server.propertiessocket 缓冲区 socketsocket的英文原义是“孔”或“插座”。作为4BDS UNIX的进程通信机制，取后一种意思。通常也称作”套接字”，用于描述IP地址和端口，是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。 在Internet上的主机一般运行了多个服务软件，同时提供几种服务。每种服务都打开一个Socket，并绑定到一个端口上，不同的端口对应于不同的服务。Socket正如其英文原意那样，象一个多孔插座。一台主机犹如布满各种插座的房间，每个插座有一个编号，有的插座提供220伏交流电， 有的提供110伏交流电，有的则提供有线电视节目。 客户软件将插头插到不同编号的插座，就可以得到不同的服务。 进程send数据时，实际上是先写入了socket缓冲区，接受类似，进程去read 接受缓冲区内的数据而不是直接拿到。 日志保留策略 １．一定时间之前的数据可删除２．日志存储文件所剩空间小于一定大小时可删除最早的数据 producer API 从某集群消费，然后生产到其他集群中，数据量是千万级别，但是速度很慢， 装个kafka monitor 看下 系统监控资料：《systems performance》 1234567891011121314151617181920212223# kafka start bash#!/bin/bashkafka_home=/home/xxh/wkspc/kafka/kafka_2.11-2.0.0kafka_start_sh=$kafka_home/bin/kafka-server-start.shkafkaconf0=$kafka_home/config/server.propertieskafkaconf1=$kafka_home/config/server-1.propertieskafkaconf2=$kafka_home/config/server-2.propertieskafkalog0=$kafka_home/logs/nohup.logkafkalog1=$kafka_home/logs/nohup_1.logkafkalog2=$kafka_home/logs/nohup_2.lognohup $kafka_start_sh $kafkaconf0 &gt; $kafkalog0 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf1 &gt; $kafkalog1 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf2 &gt; $kafkalog2 2&gt;&amp;1 &amp;jps# close use ./bin/kafka-server-stop.sh kafka 跑了几个例子，但是并没有讲的很清晰 还是要学一下，java8的函数式特性 不得不承认，越来越多的接口会重新用java写 挑战者： Pulsar kafka Stream]]></content>
@@ -596,6 +606,17 @@
       </categories>
       <tags>
         <tag>kafka</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hive 编程指南 笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fhive%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%2F</url>
+    <content type="text"><![CDATA[《hive 编程指南》 第一章与mr接口相比，sql简单易用 第二章hive 安装 hive笔记安装 hive内部是什么 lib 其中的每个jar都实现了hive的特定功能 bin 执行各种hive服务的可执行文件 conf 配置文件 hive 命令cli变量和属性hivevar/hiveconf/system/env .hivec文件第三章 数据类型和文件格式支持关系型数据库中绝大多数基本数据类型，还支持三种集合数据类型 要考虑这些数据类型是如何正在文本文件中表示的，还要考虑文本存储中为了解决各种性能问题以及其他问题有哪些替代方案 基本数据类型 string 字符串无长度限制 timestamp 可以使整数、浮点数、字符串 binary 字节数组 数值比较时，数据类型在 double float int tinyint smallint bigint 间自动向上转换 字符串转化： cast(s as int) 集合数据类型 struct map array 缺点是不符合三大范式，第一范式都不符合 数据冗余，在大数据情况下，按数据集封装的话可以通过减少寻址次数来提供查询的速度，而如果根据外键关系关联的话则需要磁盘间的寻址操作，这样会有非常高的性能消耗 文本文件数据编码文本文件在字段间、集合数据类型中的分隔符 读时模式传统数据库是写时模式(schema on write)hive是读时模式(schema on read) hive在读时会尽可能的规避问题，这样的功能很强大，也会导致问题被掩盖 第四章 hiveql 定义]]></content>
+      <categories>
+        <category>database</category>
+      </categories>
+      <tags>
+        <tag>database,hive</tag>
       </tags>
   </entry>
   <entry>
@@ -611,19 +632,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[log4j踢平记]]></title>
-    <url>%2F2018%2F12%2F04%2Flog4j%E8%B8%A2%E5%B9%B3%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[错误： log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$). 错误原因：我猜是依赖自带的log4j之间冲突了 解决： stackoverflow Just to get you going you have two simple approaches you can take. First one is to just add this line to your main method:BasicConfigurator.configure();Second approach is to add this standard log4j.properties (taken from the above mentioned guide) file to your classpath: Set root logger level to DEBUG and its only appender to A1.log4j.rootLogger=DEBUG, A1 A1 is set to be a ConsoleAppender.log4j.appender.A1=org.apache.log4j.ConsoleAppender A1 uses PatternLayout.log4j.appender.A1.layout=org.apache.log4j.PatternLayoutlog4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n The first one 好使]]></content>
-      <categories>
-        <category>服务器端 - 日志</category>
-      </categories>
-      <tags>
-        <tag>log</tag>
-        <tag>log4j</tag>
-        <tag>日志</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[scikit-learn]]></title>
     <url>%2F2018%2F12%2F04%2Fml-sklearn%2F</url>
     <content type="text"><![CDATA[Scikit-learn 安装之前安装了anaconda3，其中已经打包安装好了scikit-learn Scikit-learn 使用]]></content>
@@ -634,6 +642,19 @@
         <tag>机器学习</tag>
         <tag>ml</tag>
         <tag>scikit-learn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[log4j踢平记]]></title>
+    <url>%2F2018%2F12%2F04%2Flog4j%E8%B8%A2%E5%B9%B3%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[错误： log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$). 错误原因：我猜是依赖自带的log4j之间冲突了 解决： stackoverflow Just to get you going you have two simple approaches you can take. First one is to just add this line to your main method:BasicConfigurator.configure();Second approach is to add this standard log4j.properties (taken from the above mentioned guide) file to your classpath: Set root logger level to DEBUG and its only appender to A1.log4j.rootLogger=DEBUG, A1 A1 is set to be a ConsoleAppender.log4j.appender.A1=org.apache.log4j.ConsoleAppender A1 uses PatternLayout.log4j.appender.A1.layout=org.apache.log4j.PatternLayoutlog4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n The first one 好使]]></content>
+      <categories>
+        <category>服务器端 - 日志</category>
+      </categories>
+      <tags>
+        <tag>log</tag>
+        <tag>log4j</tag>
+        <tag>日志</tag>
       </tags>
   </entry>
   <entry>
@@ -683,17 +704,6 @@
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[github访问卡、慢、不稳定]]></title>
-    <url>%2F2018%2F12%2F04%2Fgithub%E5%8D%A1%E6%85%A2%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考 blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts 但是更新了dns，效果很明显，速度杠杠的 2017/12/05 迅速被打脸，一点都不好使 \很奇怪，办公室机器google-chrome很卡，firefox好很多]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -817,6 +827,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[tensorflow2--基本用法]]></title>
+    <url>%2F2018%2F12%2F04%2Ftensorflow2--%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[Tensorflow 基本使用Tf使用要点 使用图(graph)表示计算任务 在会话(session)－上下文(context)中执行图 使用tensor表示数据 通过变量(Variable)维护状态 使用feed和fetch可以为任意的操作（arbitrary operation）赋值或者从中获取数据 综述TensorFlow 是一个编程系统, 使用图来表示计算任务. 图中的节点被称之为 op (operation 的缩写). 一个 op 获得 0 个或多个 Tensor, 执行计算, 产生 0 个或多个 Tensor. 每个 Tensor 是一个类型化的多维数组. 例如, 你可以将一小组图像集表示为一个四维浮点数数组, 这四个维度分别是 [batch, height, width, channels]. 一个 TensorFlow 图描述了计算的过程. 为了进行计算, 图必须在 会话 里被启动. 会话 将图的 op 分发到诸如 CPU 或 GPU 之类的 设备 上, 同时提供执行 op 的方法. 这些方法执行后, 将产生的 tensor 返回. 在 Python 语言中, 返回的 tensor 是 numpy ndarray 对象; 在 C 和 C++ 语言中, 返回的 tensor 是 tensorflow::Tensor 实例. 计算图TensorFlow 程序通常被组织成一个构建阶段和一个执行阶段. 在构建阶段, op 的执行步骤 被描述成一个图. 在执行阶段, 使用会话执行执行图中的 op. 例如, 通常在构建阶段创建一个图来表示和训练神经网络, 然后在执行阶段反复执行图中的训练 op. TensorFlow 支持 C, C++, Python 编程语言. 目前, TensorFlow 的 Python 库更加易用, 它提供了大量的辅助函数来简化构建图的工作, 这些函数尚未被 C 和 C++ 库支持. 三种语言的会话库 (session libraries) 是一致的. 构建图构建图的第一步, 是创建源 op (source op). 源 op 不需要任何输入, 例如 常量 (Constant). 源 op 的输出被传递给其它 op 做运算. Python 库中, op 构造器的返回值代表被构造出的 op 的输出, 这些返回值可以传递给其它 op 构造器作为输入. TensorFlow Python 库有一个默认图 (default graph), op 构造器可以为其增加节点. 这个默认图对 许多程序来说已经足够用了. 阅读 Graph 类 文档 来了解如何管理多个图. 不再摘抄了，发现没有多余的字符中文文档 在一个会话中启动图交互式使用]]></content>
+      <categories>
+        <category>机器学习、深度学习 - tensorflow</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[SSH深入]]></title>
     <url>%2F2018%2F12%2F04%2Fssh%E6%B7%B1%E5%85%A5%2F</url>
     <content type="text"><![CDATA[SSH(Secure Shell)Secure Shell（安全外壳协议，简称SSH）是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。 SSH通过在网络中创建安全隧道来实现SSH客户端与服务器之间的连接[2]。虽然任何网络服务都可以通过SSH实现安全传输，SSH最常见的用途是远程登录系统，人们通常利用SSH来传输命令行界面和远程执行命令 在设计上，SSH是Telnet和非安全shell的替代品。Telnet和Berkeley rlogin、rsh、rexec等协议采用明文传输，使用不可靠的密码，容易遭到监听、嗅探和中间人攻击[4]。SSH旨在保证非安全网络环境（例如互联网）中信息加密完整可靠。 建立连接SSH以非对称加密实现身份验证[2]。身份验证有多种途径， 其中一种方法是使用自动生成的公钥-私钥对来简单地加密网络连接，随后使用密码认证进行登录；此时密钥是自动生成 另一种方法是人工生成一对公钥和私钥，通过生成的密钥进行认证，这样就可以在不输入密码的情况下登录。任何人都可以自行生成密钥。公钥需要放在待访问的计算机之中，而对应的私钥需要由用户自行保管。认证过程基于生成出来的私钥，但整个认证过程中私钥本身不会传输到网络中。 使用 登录远程主机执行命令 SSH也支持隧道协议、端口映射和X11连接。借助SFTP或SCP协议还可以传输文件 秘钥管理在类Unix系统中，已许可登录的公钥通常保存在用户 /home 目录的 ~/.ssh/authorized_keys 文件中[9]，该文件只由SSH使用。当远程机器持有公钥，而本地持有对应私钥时，登录过程不再需要手动输入密码。另外为了额外的安全性，私钥本身也能用密码保护。私钥会保存在固定位置，也可以通过命令行参数指定（例如ssh命令的“-i”选项）。ssh-keygen是生成密钥的工具之一。SSH也支持基于密码的身份验证，此时密钥是自动生成的。若客户端和服务端从未进行过身份验证，SSH未记录服务器端所使用的密钥，那么攻击者可以模仿服务器端请求并获取密码，即中间人攻击。但是密码认证可以禁用，而且SSH客户端在发现新密钥或未知服务器时会向用户发出警告。 所以aws ec2提供的秘钥就是一对秘钥对中的私钥，ec2主机中保存有公钥，通过-i指定私钥去匹配公钥，完成登录验证，也可以将自己机器的公钥放到ec2的~/.ssh/authorized_keys 文件中，实现自己机器与ec2的免密登录，因为登录时默认会拿本地的私钥去匹配目标主机的~/.ssh/authorized_keys文件中的公钥]]></content>
@@ -842,16 +865,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[tensorflow2--基本用法]]></title>
-    <url>%2F2018%2F12%2F04%2Ftensorflow2--%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[Tensorflow 基本使用Tf使用要点 使用图(graph)表示计算任务 在会话(session)－上下文(context)中执行图 使用tensor表示数据 通过变量(Variable)维护状态 使用feed和fetch可以为任意的操作（arbitrary operation）赋值或者从中获取数据 综述TensorFlow 是一个编程系统, 使用图来表示计算任务. 图中的节点被称之为 op (operation 的缩写). 一个 op 获得 0 个或多个 Tensor, 执行计算, 产生 0 个或多个 Tensor. 每个 Tensor 是一个类型化的多维数组. 例如, 你可以将一小组图像集表示为一个四维浮点数数组, 这四个维度分别是 [batch, height, width, channels]. 一个 TensorFlow 图描述了计算的过程. 为了进行计算, 图必须在 会话 里被启动. 会话 将图的 op 分发到诸如 CPU 或 GPU 之类的 设备 上, 同时提供执行 op 的方法. 这些方法执行后, 将产生的 tensor 返回. 在 Python 语言中, 返回的 tensor 是 numpy ndarray 对象; 在 C 和 C++ 语言中, 返回的 tensor 是 tensorflow::Tensor 实例. 计算图TensorFlow 程序通常被组织成一个构建阶段和一个执行阶段. 在构建阶段, op 的执行步骤 被描述成一个图. 在执行阶段, 使用会话执行执行图中的 op. 例如, 通常在构建阶段创建一个图来表示和训练神经网络, 然后在执行阶段反复执行图中的训练 op. TensorFlow 支持 C, C++, Python 编程语言. 目前, TensorFlow 的 Python 库更加易用, 它提供了大量的辅助函数来简化构建图的工作, 这些函数尚未被 C 和 C++ 库支持. 三种语言的会话库 (session libraries) 是一致的. 构建图构建图的第一步, 是创建源 op (source op). 源 op 不需要任何输入, 例如 常量 (Constant). 源 op 的输出被传递给其它 op 做运算. Python 库中, op 构造器的返回值代表被构造出的 op 的输出, 这些返回值可以传递给其它 op 构造器作为输入. TensorFlow Python 库有一个默认图 (default graph), op 构造器可以为其增加节点. 这个默认图对 许多程序来说已经足够用了. 阅读 Graph 类 文档 来了解如何管理多个图. 不再摘抄了，发现没有多余的字符中文文档 在一个会话中启动图交互式使用]]></content>
+    <title><![CDATA[jep使用]]></title>
+    <url>%2F2018%2F12%2F04%2Fusingjep%2F</url>
+    <content type="text"><![CDATA[jep 简介whatJep: (Java Embeded Python) Jep takes a different route and embeds CPython in Java using JNI. Long story short, if you need to include CPython modules (such as numpy) Jep is the way to go. 要想使用cPython 模块，用jep加载就对了 whypython 在机器学习界大火。项目内机器学习算法工程师也是用python,lightgbm,tensorflow来开发模型，但是部署模型最好还是用java、scala 顺便说一下业界部署模型的方式： 全程python python 部署模型，提供rest接口，供外部调用，这样数据清洗类的操作可以通过java实现 Jython,JyNI 不能很好的支持基于c的python模块 jep 使用看上去好吊的样子，让我们来用一下试试效果怎么样 https://github.com/ninia/jep 2017年诞生，一直在开发中，很活跃 正片开始： jep wiki pip 安装 jep安装没有报错，但是安装完成后，java 新建Jep()对象时报错，找不到jep1234567891011121314151617181920Exception in thread &quot;main&quot; java.lang.UnsatisfiedLinkError: no jep in java.library.path at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1867) at java.lang.Runtime.loadLibrary0(Runtime.java:870) at java.lang.System.loadLibrary(System.java:1122) at jep.MainInterpreter.initialize(MainInterpreter.java:121) at jep.MainInterpreter.getMainInterpreter(MainInterpreter.java:97) at jep.Jep.&lt;init&gt;(Jep.java:232) at jep.Jep.&lt;init&gt;(Jep.java:228) at jep.Jep.&lt;init&gt;(Jep.java:140) at JepTest.JepDemo$.delayedEndpoint$JepTest$JepDemo$1(JepDemo.scala:27) at JepTest.JepDemo$delayedInit$body.apply(JepDemo.scala:9) at scala.Function0$class.apply$mcV$sp(Function0.scala:34) at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:12) at scala.App$$anonfun$main$1.apply(App.scala:76) at scala.App$$anonfun$main$1.apply(App.scala:76) at scala.collection.immutable.List.foreach(List.scala:392) at scala.collection.generic.TraversableForwarder$class.foreach(TraversableForwarder.scala:35) at scala.App$class.main(App.scala:76) at JepTest.JepDemo$.main(JepDemo.scala:9) at JepTest.JepDemo.main(JepDemo.scala) 碰到这个问题的还真是不少，S.O.上类似的问题提示: 没有设置好 LD_LIBRARY_PATH变量 或者是没有设置好 1-Djava.library.path=/usr/local/lib/python2.7/dist-packages/jep/ github jep也有这样的issueBut提到的方法都不好使，只好去看看源码 看setup.py源码： cmdclass={ &#39;setup_java&#39;: setup_java, &#39;build_java&#39;: build_java, &#39;javadoc&#39;: javadoc, &#39;build_jar&#39;: build_jar, &#39;build&#39;: jep_build, &#39;build_ext&#39; : build_ext, &#39;build_scripts&#39;: build_scripts, &#39;install_lib&#39;: jep_install, &#39;clean&#39;: really_clean, &#39;test&#39;: test, }, 所以执行 python3 setup.py install_lib 才对， 执行打印如下： numpy include found at /home/xxh/anaconda3/lib/python3.6/site-packages/numpy/core/include running install_lib running build_py running build_ext ln -sf jep.cpython-36m-x86_64-linux-gnu.so /home/xxh/anaconda3/lib/python3.6/site-packages/jep/libjep.so 如此，如此将libjep.so文件生成后再设置相应的环境变量在idea的run-Edit Configurations中的VM中填入：1-Djava.library.path=/home/xxh/anaconda3/lib/python3.6/site-packages/jep/ 也可以设置环境变量(划掉，不好使)： 1export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xxh/anaconda3/lib/python3.6/site-packages/jep/ 通过scala调用的python文件中，引用了不在环境变量中的其他python模块时会报错试用中，未完待续。。。版本一直在更新中，所以商用的话要小心]]></content>
       <categories>
-        <category>机器学习、深度学习 - tensorflow</category>
+        <category>编程语言 - scala</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>tensorflow</tag>
+        <tag>scala</tag>
+        <tag>python</tag>
+        <tag>jep</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -867,18 +891,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[人人都是产品经理--note]]></title>
-    <url>%2F2018%2F12%2F04%2F%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86-note%2F</url>
-    <content type="text"><![CDATA[第一章 写给新手为什么要做产品经理因为世界等我们去改变，创造好的产品，改善坏的产品 我们到底是不是产品经理产品是什么产品是用来解决某个问题的东西，准确的说产品就是要同时解决用户的问题和公司的问题 因为作为产品经理要在用户目标和公司的商业目标之间寻找平衡 产品经理出现源于宝洁 产品经理的出现是为了适应公司发展的需要。随着企业越来越大,产品越来越多,越来越复杂,原来按职能划分部门的组织结构已经无法适应,所以出现了产品管理的矩阵型组织,而此时产品经理的主要职责是规划产品的生命周期 他们真的是在招产品经理吗它更多地侧重产品本身“从无到有”、“从有到优”的过程,更多地涉及了“产品规划、数据分析、用户研究、需求分析、功能设计、项目管理、敏捷方法”等内容,而不是如传统的产品经理那样,去做已经有了产品之后需要做的诸如管理产品、推广和营销产品的事情 产品经理概念进化 行业形态不同:成熟行业VS.新兴行业。 而互联网、软件行业是新兴行业,新兴市场,三天一小变,五天一大变,产品本身在不断取得突破,用户看什么都是新的,所以产品需要推陈出新,尽力先入为主,占领用户,主导用户习惯,这就导致了产品工作的重头戏在前期,从无到有,从有到优,偏重研发类创新。因此,互联网、软件行业的产品经理更重视产品功能本身的规划,需要“对市场发展趋势有敏锐的洞察力和创新意识及良好的分析、研判能力”,要能不断改进产品,要“深入了解业务,挖掘用户的多种需求,不断推出有竞争力的产品”,“制定所负责产品线的发展蓝图和实施路线图”。 实物VS虚拟物 - 生命周期不同：几年VS几个月 软件和互联网产品更推崇敏捷开发，虽然互联网、软件的项目更加不可控,但项目过程本身看起来并没有传统行业那么复杂,更接近“艺术”而不是“技术”,要依靠丰富的经验,于是产品经理也经常兼顾项目管理,这样自己可以在项目完成度和产品质量之间做平衡,对产品无疑也是一件好事。所以我们在招聘广告中看到公司要求产品经理“发起产品研发项目”,“组织资源实施产品,对其效益负责”。 赢利模式不同,单一卖产品赚钱VS多元赢利。 用户心态不同:花钱买VS.免费用。 互联网、软件产品更重视用户体验,相应的,出现了很多产品经理会涉及的工作内容,如交互设计、视觉设计、文案设计等 非典型产品经理有时高科技企业会采取类似的做法,让产品经理专心处理产品在工程和技术方面的问题,而把大部分营销决定交给另外的职能单位来负责。在这种情况下,产品经理可能会变成产品技术/应用方面的专家,他最主要的工作就是支援、协助销售人员,至于了解市场和从市场了解产品利益等工作,则另有他人代劳 不管整天只是写文档、做Demo,还是成了没钱没权的项目经理;或是求完销售求工程师,最后只能欺负客服,到处不招人待见……前辈们似乎也认可——人人都是产品经理,非典型成了多数,也就变成典型。 一线员工眼中的管理管理的能力,其实就是“在资源不足的情况下把事情做成”的能力,这里的资源在产品经理的工作中通常表现为以下几种形式。 第一,信息不足以决策。时间有限,能力有限,每次决策前不可能掌握所有信息,做决定时总是很头疼,我估计是“拍脑袋”拍得太多的原因。 第二,时间不足以安排周密的计划。总是接到3个月、1个月,甚至1个礼拜完成某项目的命令,每次都让我们张大嘴巴说不出话来,应承下来后如何计划?不过一次又一次的实践表明,办法总比困难多。 第三,人员不足以支持工作强度和难度。不但时间不足,人员也不足,就算数量足,能力够不够?能力够了,团队士气高不高?哪个公司不加班,又有多少公司有加班工资?但还得完成任务,难不难?难! 第四,资金不足以自由调配。俗话说钱要花在刀刃上,买机器要钱,招人要钱,产品推广要钱,而花这些钱的前提是公司还得赚钱,每一分钱都恨不得掰成两半用。 我真的想做,怎么入行用户会去想怎么用这个产品,才能带给自己更大的好处,产生更大的效用;而产品经理则习惯于绕过表象,从背后看问题的本质,思考怎么设计这个产品才能更好地平衡用户目标与商业目标 找到自己的位置几个可能的入行切入点你是做开发的,那就经常要参与需求评审,不妨比别人多用点功,每次都预先了解需求,多多思考,然后在评审会上对需求提出自己的合理建议,时间长了大家都会觉得你很有想法,做产品也许不错。关于职位,可以从“需求分析师”切入,这有些像系统分析的工作,比如业务逻辑、流程图,都是你已经很熟悉的,可以在这个过程中慢慢培养商业的感觉,重点体会某个产品功能是为了满足商业上的什么需求而做的。 一个产品经理的-1到3岁]]></content>
-      <categories>
-        <category>项目管理</category>
-      </categories>
-      <tags>
-        <tag>需求分析</tag>
-        <tag>产品</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[git使用]]></title>
     <url>%2F2018%2F12%2F04%2F%E4%BD%BF%E7%94%A8git%2F</url>
     <content type="text"><![CDATA[git 不熟悉但是这种工具性的东西，就得边用边学 两个项目合并方法不一定最快，能用 project a12git checkout -b &apos;newbranch&apos;git push origin newbranch project b12345678910111213141516git init//copy .gitignoregit add .git commit -m &apos;b&apos;git remote add origin git@***.gitgit pull origin sparks3git statusgit add .git commit -m &apos;sfs&apos;git push origin master]]></content>
@@ -890,17 +902,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[jep使用]]></title>
-    <url>%2F2018%2F12%2F04%2Fusingjep%2F</url>
-    <content type="text"><![CDATA[jep 简介whatJep: (Java Embeded Python) Jep takes a different route and embeds CPython in Java using JNI. Long story short, if you need to include CPython modules (such as numpy) Jep is the way to go. 要想使用cPython 模块，用jep加载就对了 whypython 在机器学习界大火。项目内机器学习算法工程师也是用python,lightgbm,tensorflow来开发模型，但是部署模型最好还是用java、scala 顺便说一下业界部署模型的方式： 全程python python 部署模型，提供rest接口，供外部调用，这样数据清洗类的操作可以通过java实现 Jython,JyNI 不能很好的支持基于c的python模块 jep 使用看上去好吊的样子，让我们来用一下试试效果怎么样 https://github.com/ninia/jep 2017年诞生，一直在开发中，很活跃 正片开始： jep wiki pip 安装 jep安装没有报错，但是安装完成后，java 新建Jep()对象时报错，找不到jep1234567891011121314151617181920Exception in thread &quot;main&quot; java.lang.UnsatisfiedLinkError: no jep in java.library.path at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1867) at java.lang.Runtime.loadLibrary0(Runtime.java:870) at java.lang.System.loadLibrary(System.java:1122) at jep.MainInterpreter.initialize(MainInterpreter.java:121) at jep.MainInterpreter.getMainInterpreter(MainInterpreter.java:97) at jep.Jep.&lt;init&gt;(Jep.java:232) at jep.Jep.&lt;init&gt;(Jep.java:228) at jep.Jep.&lt;init&gt;(Jep.java:140) at JepTest.JepDemo$.delayedEndpoint$JepTest$JepDemo$1(JepDemo.scala:27) at JepTest.JepDemo$delayedInit$body.apply(JepDemo.scala:9) at scala.Function0$class.apply$mcV$sp(Function0.scala:34) at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:12) at scala.App$$anonfun$main$1.apply(App.scala:76) at scala.App$$anonfun$main$1.apply(App.scala:76) at scala.collection.immutable.List.foreach(List.scala:392) at scala.collection.generic.TraversableForwarder$class.foreach(TraversableForwarder.scala:35) at scala.App$class.main(App.scala:76) at JepTest.JepDemo$.main(JepDemo.scala:9) at JepTest.JepDemo.main(JepDemo.scala) 碰到这个问题的还真是不少，S.O.上类似的问题提示: 没有设置好 LD_LIBRARY_PATH变量 或者是没有设置好 1-Djava.library.path=/usr/local/lib/python2.7/dist-packages/jep/ github jep也有这样的issueBut提到的方法都不好使，只好去看看源码 看setup.py源码： cmdclass={ &#39;setup_java&#39;: setup_java, &#39;build_java&#39;: build_java, &#39;javadoc&#39;: javadoc, &#39;build_jar&#39;: build_jar, &#39;build&#39;: jep_build, &#39;build_ext&#39; : build_ext, &#39;build_scripts&#39;: build_scripts, &#39;install_lib&#39;: jep_install, &#39;clean&#39;: really_clean, &#39;test&#39;: test, }, 所以执行 python3 setup.py install_lib 才对， 执行打印如下： numpy include found at /home/xxh/anaconda3/lib/python3.6/site-packages/numpy/core/include running install_lib running build_py running build_ext ln -sf jep.cpython-36m-x86_64-linux-gnu.so /home/xxh/anaconda3/lib/python3.6/site-packages/jep/libjep.so 如此，如此将libjep.so文件生成后再设置相应的环境变量在idea的run-Edit Configurations中的VM中填入：1-Djava.library.path=/home/xxh/anaconda3/lib/python3.6/site-packages/jep/ 也可以设置环境变量(划掉，不好使)： 1export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xxh/anaconda3/lib/python3.6/site-packages/jep/ 通过scala调用的python文件中，引用了不在环境变量中的其他python模块时会报错试用中，未完待续。。。版本一直在更新中，所以商用的话要小心]]></content>
+    <title><![CDATA[人人都是产品经理--note]]></title>
+    <url>%2F2018%2F12%2F04%2F%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86-note%2F</url>
+    <content type="text"><![CDATA[第一章 写给新手为什么要做产品经理因为世界等我们去改变，创造好的产品，改善坏的产品 我们到底是不是产品经理产品是什么产品是用来解决某个问题的东西，准确的说产品就是要同时解决用户的问题和公司的问题 因为作为产品经理要在用户目标和公司的商业目标之间寻找平衡 产品经理出现源于宝洁 产品经理的出现是为了适应公司发展的需要。随着企业越来越大,产品越来越多,越来越复杂,原来按职能划分部门的组织结构已经无法适应,所以出现了产品管理的矩阵型组织,而此时产品经理的主要职责是规划产品的生命周期 他们真的是在招产品经理吗它更多地侧重产品本身“从无到有”、“从有到优”的过程,更多地涉及了“产品规划、数据分析、用户研究、需求分析、功能设计、项目管理、敏捷方法”等内容,而不是如传统的产品经理那样,去做已经有了产品之后需要做的诸如管理产品、推广和营销产品的事情 产品经理概念进化 行业形态不同:成熟行业VS.新兴行业。 而互联网、软件行业是新兴行业,新兴市场,三天一小变,五天一大变,产品本身在不断取得突破,用户看什么都是新的,所以产品需要推陈出新,尽力先入为主,占领用户,主导用户习惯,这就导致了产品工作的重头戏在前期,从无到有,从有到优,偏重研发类创新。因此,互联网、软件行业的产品经理更重视产品功能本身的规划,需要“对市场发展趋势有敏锐的洞察力和创新意识及良好的分析、研判能力”,要能不断改进产品,要“深入了解业务,挖掘用户的多种需求,不断推出有竞争力的产品”,“制定所负责产品线的发展蓝图和实施路线图”。 实物VS虚拟物 - 生命周期不同：几年VS几个月 软件和互联网产品更推崇敏捷开发，虽然互联网、软件的项目更加不可控,但项目过程本身看起来并没有传统行业那么复杂,更接近“艺术”而不是“技术”,要依靠丰富的经验,于是产品经理也经常兼顾项目管理,这样自己可以在项目完成度和产品质量之间做平衡,对产品无疑也是一件好事。所以我们在招聘广告中看到公司要求产品经理“发起产品研发项目”,“组织资源实施产品,对其效益负责”。 赢利模式不同,单一卖产品赚钱VS多元赢利。 用户心态不同:花钱买VS.免费用。 互联网、软件产品更重视用户体验,相应的,出现了很多产品经理会涉及的工作内容,如交互设计、视觉设计、文案设计等 非典型产品经理有时高科技企业会采取类似的做法,让产品经理专心处理产品在工程和技术方面的问题,而把大部分营销决定交给另外的职能单位来负责。在这种情况下,产品经理可能会变成产品技术/应用方面的专家,他最主要的工作就是支援、协助销售人员,至于了解市场和从市场了解产品利益等工作,则另有他人代劳 不管整天只是写文档、做Demo,还是成了没钱没权的项目经理;或是求完销售求工程师,最后只能欺负客服,到处不招人待见……前辈们似乎也认可——人人都是产品经理,非典型成了多数,也就变成典型。 一线员工眼中的管理管理的能力,其实就是“在资源不足的情况下把事情做成”的能力,这里的资源在产品经理的工作中通常表现为以下几种形式。 第一,信息不足以决策。时间有限,能力有限,每次决策前不可能掌握所有信息,做决定时总是很头疼,我估计是“拍脑袋”拍得太多的原因。 第二,时间不足以安排周密的计划。总是接到3个月、1个月,甚至1个礼拜完成某项目的命令,每次都让我们张大嘴巴说不出话来,应承下来后如何计划?不过一次又一次的实践表明,办法总比困难多。 第三,人员不足以支持工作强度和难度。不但时间不足,人员也不足,就算数量足,能力够不够?能力够了,团队士气高不高?哪个公司不加班,又有多少公司有加班工资?但还得完成任务,难不难?难! 第四,资金不足以自由调配。俗话说钱要花在刀刃上,买机器要钱,招人要钱,产品推广要钱,而花这些钱的前提是公司还得赚钱,每一分钱都恨不得掰成两半用。 我真的想做,怎么入行用户会去想怎么用这个产品,才能带给自己更大的好处,产生更大的效用;而产品经理则习惯于绕过表象,从背后看问题的本质,思考怎么设计这个产品才能更好地平衡用户目标与商业目标 找到自己的位置几个可能的入行切入点你是做开发的,那就经常要参与需求评审,不妨比别人多用点功,每次都预先了解需求,多多思考,然后在评审会上对需求提出自己的合理建议,时间长了大家都会觉得你很有想法,做产品也许不错。关于职位,可以从“需求分析师”切入,这有些像系统分析的工作,比如业务逻辑、流程图,都是你已经很熟悉的,可以在这个过程中慢慢培养商业的感觉,重点体会某个产品功能是为了满足商业上的什么需求而做的。 一个产品经理的-1到3岁]]></content>
       <categories>
-        <category>编程语言 - scala</category>
+        <category>项目管理</category>
       </categories>
       <tags>
-        <tag>scala</tag>
-        <tag>python</tag>
-        <tag>jep</tag>
-        <tag>java</tag>
+        <tag>需求分析</tag>
+        <tag>产品</tag>
       </tags>
   </entry>
   <entry>
@@ -942,6 +952,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[并发-java 编程思想]]></title>
+    <url>%2F2018%2F12%2F04%2F%E5%B9%B6%E5%8F%91-java%2F</url>
+    <content type="text"><![CDATA[并发并发介绍，想要真正编写一些复杂的程序钱，应该学一些专门介绍并发的书籍 并发的多面性使用并发时需要解决的问题有多个，而实现并发的方式也有多种，并且两者之间没有明显的映射关系 并发解决的问题大体上可以分为速度和设计可管理性两种 更快的执行并发通常是提高运行在单处理器上的程序性能直觉上思考在单核心上顺序运行程序应该是最高效的，因为没有上下文切换的代价 但是世界上有讨厌的 阻塞 单处理器系统中性能提高的常见实例就是事件驱动编程 操作进程进程是运行在它自己的地址空间内的自包容的程序 而java所使用的并发系统会共享诸如内存和IO这样的资源,java操作的是代码代表的进程生成的一系列线程 java 可能并没有函数式编程语言适合并发 改进代码设计基本的线程机制并发编程将程序划分为多个分离的独立运行的任务，通过多线程机制，这些独立任务中的每一个都将由执行线程来驱动。线程的调度由操作系统负责 代码 定义任务通过Runnable接口定义任务 Thread class将Runnable对象转变为工作按任务的传统方式是把它提交给一个Thread构造器 executor非常常见的情况是，单个Executor被用来穿件和管理系统所有的任务 在任何线程池中，现有线程在可能的情况下，都会被自动复用 从任务中产生返回值使用Callable接口，而不是Runnable,Callable接口返回一个泛型的Future,可以使用get()方法等待结果返回 休眠sleep 优先级优先调度优先级比较高的线程 书上的例子在我的电脑上不好使 让步如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程带哦度机制一个暗示：我的工作已经做得差不多了，可以让别的线程使用CPU了 这个暗示就是使用yield()方法来作出 不能依赖yield,实际上，yield经常被滥用 后台线程所谓后台(daemon)线程,是指在程序运行的时候在后台提供的一种通用服务的线程， 这种线程并不属于程序中不可或缺的部分后台线程退出时，会杀死进程中所有与的后台线程。]]></content>
+      <categories>
+        <category>并发</category>
+      </categories>
+      <tags>
+        <tag>并发，java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[序列化与反序列化]]></title>
     <url>%2F2018%2F12%2F04%2F%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%2F</url>
     <content type="text"><![CDATA[调用服务，避免不了序列化 rest+jsonjson真是操蛋，特别是不同的语言，不同的json库间转换，很痛苦,所以需要思考还有没有其他的序列化方式 最好用的scala中的json工具： play-json-extensions +22 field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125;]]></content>
@@ -954,14 +975,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[并发-java 编程思想]]></title>
-    <url>%2F2018%2F12%2F04%2F%E5%B9%B6%E5%8F%91-java%2F</url>
-    <content type="text"><![CDATA[并发并发介绍，想要真正编写一些复杂的程序钱，应该学一些专门介绍并发的书籍 并发的多面性使用并发时需要解决的问题有多个，而实现并发的方式也有多种，并且两者之间没有明显的映射关系 并发解决的问题大体上可以分为速度和设计可管理性两种 更快的执行并发通常是提高运行在单处理器上的程序性能直觉上思考在单核心上顺序运行程序应该是最高效的，因为没有上下文切换的代价 但是世界上有讨厌的 阻塞 单处理器系统中性能提高的常见实例就是事件驱动编程 操作进程进程是运行在它自己的地址空间内的自包容的程序 而java所使用的并发系统会共享诸如内存和IO这样的资源,java操作的是代码代表的进程生成的一系列线程 java 可能并没有函数式编程语言适合并发 改进代码设计基本的线程机制并发编程将程序划分为多个分离的独立运行的任务，通过多线程机制，这些独立任务中的每一个都将由执行线程来驱动。线程的调度由操作系统负责 代码 定义任务通过Runnable接口定义任务 Thread class将Runnable对象转变为工作按任务的传统方式是把它提交给一个Thread构造器 executor非常常见的情况是，单个Executor被用来穿件和管理系统所有的任务 在任何线程池中，现有线程在可能的情况下，都会被自动复用 从任务中产生返回值使用Callable接口，而不是Runnable,Callable接口返回一个泛型的Future,可以使用get()方法等待结果返回 休眠sleep 优先级优先调度优先级比较高的线程 书上的例子在我的电脑上不好使 让步如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程带哦度机制一个暗示：我的工作已经做得差不多了，可以让别的线程使用CPU了 这个暗示就是使用yield()方法来作出 不能依赖yield,实际上，yield经常被滥用 后台线程所谓后台(daemon)线程,是指在程序运行的时候在后台提供的一种通用服务的线程， 这种线程并不属于程序中不可或缺的部分后台线程退出时，会杀死进程中所有与的后台线程。]]></content>
+    <title><![CDATA[微服务]]></title>
+    <url>%2F2018%2F12%2F04%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%2F</url>
+    <content type="text"><![CDATA[感悟：项目中使用了微服务架构，相对于单体的应用，整个项目被拆成另外N个小应用，分散在各个服务器上，好处是，项目中的各个部分互不影响(接口不变的情况下)，\缺点是，应用过于分散，难以管理、 所以有必要了解一下别人家的微服务架构是怎么设计的 大家都知道，基于单体（Monolith）和微服务（Microservice）架构的争论已经存在多年，正如我们对胖客户端、瘦客户端孰好孰坏的争论一样，有必然的历史演化，也有各自的优缺点。\架构师们总是在考虑，我们是要一个中心化、全能多才的单体，还是百花齐放、各自为政的微服务群体，各种基于成本、交互、部署等等的讨论应该不会停下脚步。\这里，我们不做过多的深入探讨和介绍，而本文正是这些讨论中的一个很好的例子，供大家思考。 随着系统变得越来越大，最终会达到一个临界点，作为一个单体（monolith）它变得难以管理。每一行代码的添加，都会让系统变得更加难以理解、变更和重用。\虽然微服务（microservice）试图解决这些问题，但也带来了额外的复杂性以及集成的成本。 一个经过优化的微服务架构案例 优势: 模块较小，低耦合，提高开发人员开发效率 容易理解和测试每个服务 容易定位问题和解决故障,减少了关联故障 难点： 微服务的模块间需要n多契约，文档，需要时间来维护接口和文档 devops显得很重要 API gateway :lagom]]></content>
       <categories>
-        <category>并发</category>
+        <category>服务器端</category>
       </categories>
       <tags>
-        <tag>并发，java</tag>
+        <tag>微服务</tag>
       </tags>
   </entry>
   <entry>
@@ -977,14 +998,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[微服务]]></title>
-    <url>%2F2018%2F12%2F04%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%2F</url>
-    <content type="text"><![CDATA[感悟：项目中使用了微服务架构，相对于单体的应用，整个项目被拆成另外N个小应用，分散在各个服务器上，好处是，项目中的各个部分互不影响(接口不变的情况下)，\缺点是，应用过于分散，难以管理、 所以有必要了解一下别人家的微服务架构是怎么设计的 大家都知道，基于单体（Monolith）和微服务（Microservice）架构的争论已经存在多年，正如我们对胖客户端、瘦客户端孰好孰坏的争论一样，有必然的历史演化，也有各自的优缺点。\架构师们总是在考虑，我们是要一个中心化、全能多才的单体，还是百花齐放、各自为政的微服务群体，各种基于成本、交互、部署等等的讨论应该不会停下脚步。\这里，我们不做过多的深入探讨和介绍，而本文正是这些讨论中的一个很好的例子，供大家思考。 随着系统变得越来越大，最终会达到一个临界点，作为一个单体（monolith）它变得难以管理。每一行代码的添加，都会让系统变得更加难以理解、变更和重用。\虽然微服务（microservice）试图解决这些问题，但也带来了额外的复杂性以及集成的成本。 一个经过优化的微服务架构案例 优势: 模块较小，低耦合，提高开发人员开发效率 容易理解和测试每个服务 容易定位问题和解决故障,减少了关联故障 难点： 微服务的模块间需要n多契约，文档，需要时间来维护接口和文档 devops显得很重要 API gateway :lagom]]></content>
+    <title><![CDATA[攒技能]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%94%92%E6%8A%80%E8%83%BD%2F</url>
+    <content type="text"><![CDATA[抬头看天 低头走路分类 项目管理编程语言数据结构服务器端前端数据可视化数据存储处理分布式计算数据分析机器学习、深度学习工欲善其事，必先利其器误入歧途书签数据采集瞎说]]></content>
       <categories>
-        <category>服务器端</category>
+        <category>书签</category>
       </categories>
       <tags>
-        <tag>微服务</tag>
+        <tag>技能树</tag>
       </tags>
   </entry>
   <entry>
@@ -1007,6 +1028,18 @@
       </categories>
       <tags>
         <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[初识机器学习]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A01%2F</url>
+    <content type="text"><![CDATA[神经网络神经网络是一种数学模型，是存在于计算机的神经系统，由大量的神经元相连接并进行计算，在外界信息的基础上，改变内部的结构，常用来对输入和输出间复杂的关系进行建模。 神经网络由大量的节点和之间的联系构成，负责传递信息和加工信息，神经元也可以通过训练而被强化。 rel 生物神经网络现代科学还不能完全解释生物学习，记忆的过程，也就无从解释生物神经元建立相互关系的过程 人工神经网络目的：虽然不知道生物神经网络的内部原理，但是想人工模仿出一个有相同功能的神经网络 首先, 替代掉生物神经网络的, 就是已经成体系的人工神经网络. 所有神经元之间的连接都是固定不可更换的, 这也就是说, 在人工神经网络里, 没有凭空产生新联结这回事. 人工神经网络典型的一种学习方式就是, 我已经知道吃到糖果时, 手会如何动, 但是我想让神经网络学着帮我做这件动动手的事情. 所以我预先准备好非常多吃糖的学习数据, 然后将这些数据一次次放入这套人工神经网络系统中, 糖的信号会通过这套系统传递到手. 然后通过对比这次信号传递后, 手的动作是不是”讨糖”动作, 来修改人工神经网络当中的神经元强度. 这种修改在专业术语中叫做”误差反向传递”, 也可以看作是再一次将传过来的信号传回去, 看看这个负责传递信号神经元对于”讨糖”的动作到底有没有贡献, 让它好好反思与改正, 争取下次做出更好的贡献. 这样看来, 人工神经网络和生物神经网络的确不是一回事. 二者间的区别 人工神经网络靠的是正向和反向传播来更新神经元, 从而形成一个好的神经系统, 本质上, 这是一个能让计算机处理和优化的数学模型. 而生物神经网络是通过刺激, 产生新的联结, 让信号能够通过新的联结传递而形成反馈. 虽然现在的计算机技术越来越高超, 不过我们身体里的神经系统经过了数千万年的进化, 还是独一无二的, 迄今为止, 再复杂, 再庞大的人工神经网络系统也不能替代我们的小脑袋. 我们应该感到自豪, 也应该珍惜上天的这份礼物. 梯度下降optimization(优化问题)机器学习是一种优化问题的方法手段准确的说是梯度下降中的一员optimization: Newton’s method(牛顿法) Least Squares method( 最小二乘法) Gradient Descent(梯度下降法) 误差方程误差方程用来计算预测出来的和我们实际中值有多大差别，在预测数值的问题中，我们常用平方差来代替 cost = (predicted - real)^2 = (Wx-y)^2 优化初始值：(W-0)^2 梯度线躺平的点，其W参数为最优解 ##### 全局最优and局部最优 神经网络黑盒我们 把输入进行数字化，特征化，放入神经网络黑盒中，黑盒中进行了一系列的特征转化，最终得到我们的输出]]></content>
+      <categories>
+        <category>机器学习、深度学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
       </tags>
   </entry>
   <entry>
@@ -1033,15 +1066,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[初识机器学习]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A01%2F</url>
-    <content type="text"><![CDATA[神经网络神经网络是一种数学模型，是存在于计算机的神经系统，由大量的神经元相连接并进行计算，在外界信息的基础上，改变内部的结构，常用来对输入和输出间复杂的关系进行建模。 神经网络由大量的节点和之间的联系构成，负责传递信息和加工信息，神经元也可以通过训练而被强化。 rel 生物神经网络现代科学还不能完全解释生物学习，记忆的过程，也就无从解释生物神经元建立相互关系的过程 人工神经网络目的：虽然不知道生物神经网络的内部原理，但是想人工模仿出一个有相同功能的神经网络 首先, 替代掉生物神经网络的, 就是已经成体系的人工神经网络. 所有神经元之间的连接都是固定不可更换的, 这也就是说, 在人工神经网络里, 没有凭空产生新联结这回事. 人工神经网络典型的一种学习方式就是, 我已经知道吃到糖果时, 手会如何动, 但是我想让神经网络学着帮我做这件动动手的事情. 所以我预先准备好非常多吃糖的学习数据, 然后将这些数据一次次放入这套人工神经网络系统中, 糖的信号会通过这套系统传递到手. 然后通过对比这次信号传递后, 手的动作是不是”讨糖”动作, 来修改人工神经网络当中的神经元强度. 这种修改在专业术语中叫做”误差反向传递”, 也可以看作是再一次将传过来的信号传回去, 看看这个负责传递信号神经元对于”讨糖”的动作到底有没有贡献, 让它好好反思与改正, 争取下次做出更好的贡献. 这样看来, 人工神经网络和生物神经网络的确不是一回事. 二者间的区别 人工神经网络靠的是正向和反向传播来更新神经元, 从而形成一个好的神经系统, 本质上, 这是一个能让计算机处理和优化的数学模型. 而生物神经网络是通过刺激, 产生新的联结, 让信号能够通过新的联结传递而形成反馈. 虽然现在的计算机技术越来越高超, 不过我们身体里的神经系统经过了数千万年的进化, 还是独一无二的, 迄今为止, 再复杂, 再庞大的人工神经网络系统也不能替代我们的小脑袋. 我们应该感到自豪, 也应该珍惜上天的这份礼物. 梯度下降optimization(优化问题)机器学习是一种优化问题的方法手段准确的说是梯度下降中的一员optimization: Newton’s method(牛顿法) Least Squares method( 最小二乘法) Gradient Descent(梯度下降法) 误差方程误差方程用来计算预测出来的和我们实际中值有多大差别，在预测数值的问题中，我们常用平方差来代替 cost = (predicted - real)^2 = (Wx-y)^2 优化初始值：(W-0)^2 梯度线躺平的点，其W参数为最优解 ##### 全局最优and局部最优 神经网络黑盒我们 把输入进行数字化，特征化，放入神经网络黑盒中，黑盒中进行了一系列的特征转化，最终得到我们的输出]]></content>
+    <title><![CDATA[用Linux shell收集应用日志文件]]></title>
+    <url>%2F2018%2F12%2F04%2F%E7%94%A8shell%E6%94%B6%E9%9B%86%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现设计： 从一台服务器上收集数据（ftp get） 从多台服务器上收集（循环 ftp get） 定时从多台机器上按照一定规则收集（定时器） 思路1：读配置文件，去指定服务器的指定目录下载文件 1234567891011121314151617181920212223242526272829303132#!/bin/bash#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径basedir=$(cd $(dirname $0); pwd)cd $basedirconfigFile=$basedir/ftphost.confhomedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)grep -i -E -w &quot;ftp|sftp&quot; $configFile | awk -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &#123; protocol=$1 ip=$2 port=$3 user=$4 password=$5 ftp -n&lt;&lt;FTPDopen $ipuser $user $passwordbinarypassivelcd $hdirpromptif [[ ! -d $fdir ]];then mkdir $fdirficd $fdirput $2closequitFTPD 更新1234567891011121314151617181920212223242526272829303132333435363738394041424344#! /bin/bash#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径basedir=$(cd $(dirname $0); pwd)echo $basedircd $basedirconfigFile=$basedir/ftphost.confftpscriptfile=$basedir/ftpscript.shhomedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)echo &quot;homedir: &quot;$homedirecho &quot;ftphomedir&quot; $ftphomedirecho &quot;#ftp远程获取需要的文件&quot; &gt;&gt;$ftpscriptfilegrep -i -E -w &quot;ftp|sftp&quot; $configFile | awk -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &apos;&#123; # protocol=$1 # ip=$2 # port=$3 # user=$4 # password=$5 print &quot;ftp -n&lt;&lt;FTPD&quot; print &quot;open &quot;ip print &quot;user &quot; user &quot; &quot; password print &quot;binary&quot; print &quot;passive&quot; print &quot;cd &quot; fdir &#125;&apos; &gt;&gt;$ftpscriptfile echo &quot;prompt&quot; &gt;&gt;$ftpscriptfile echo &quot;if [[ ! -d \$3 ]];then&quot; &gt;&gt;$ftpscriptfile echo &quot; mkdir \$3&quot; &gt;&gt;$ftpscriptfile echo &quot;fi &quot; &gt;&gt;$ftpscriptfile echo &quot;cd \$3&quot; &gt;&gt;$ftpscriptfile echo &quot;if [[ ! -d \$4 ]];then&quot; &gt;&gt;$ftpscriptfile echo &quot; mkdir \$4&quot; &gt;&gt;$ftpscriptfile echo &quot;fi &quot; &gt;&gt;$ftpscriptfile echo &quot;cd \$4&quot; &gt;&gt;$ftpscriptfile echo &quot;lcd \$1&quot; &gt;&gt;$ftpscriptfile echo &quot;put \$2&quot; &gt;&gt;$ftpscriptfile echo &quot;close&quot; &gt;&gt;$ftpscriptfile echo &quot;quit&quot; &gt;&gt;$ftpscriptfile echo &quot;FTPD&quot; &gt;&gt;$ftpscriptfile 12345678910111213141516171819202122232425262728293031 1 filterAndGet() 2 &#123; 3 srcfile=$1 4 key=$2 5 value=$3 6 tgtfile=$4 7 shift 4 8 if [[ $# -gt 0 ]];then 9 ids=$*10 else11 ids=012 fi1314 awk -F &quot;,&quot; &apos;BEGIN &#123;15 split(&apos;&quot;\&quot;$ids&quot;\&quot;&apos;, indexs,&quot; &quot;)16 &#125;&#123;17 if($&apos;$key&apos;==&quot;&apos;$value&apos;&quot;) &#123;18 for (i=1;i&lt;=length(indexs);i++)&#123;19 if(indexs[i]==9)&#123;20 system(&quot;\\echo -n $(\\date -d \&quot;2000-01-01 +&quot; $indexs[i] &quot; seconds\&quot; +\&quot;%Y-%m-%d %H:%M:%S\&quot;)&quot;)21 printf(&quot;.%03d,&quot;,$28)22 &#125;23 else24 printf(&quot;%s,&quot;,$indexs[i])25 &#125;26 printf(&quot;\n&quot;);27 &#125;28 &#125;&apos; $srcfile &gt;&gt; $tgtfile29 &#125;filterAndGet $1 39 0 $2/a_$&#123;day&#125;.csv 9 14 15 52 2 3 5 10 11 53 54 55 56 57 58 59 88 16 6 7 8 21 35 34 23 86 17 19 20 思路2：配置文件中配置多个IP，循环去取文件 思路3：增加文件过滤规则，定时器规则]]></content>
       <categories>
-        <category>机器学习、深度学习</category>
+        <category>数据采集 - 日志收集</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
+        <tag>shell</tag>
+        <tag>日志</tag>
       </tags>
   </entry>
   <entry>
@@ -1058,18 +1091,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[用Linux shell收集应用日志文件]]></title>
-    <url>%2F2018%2F12%2F04%2F%E7%94%A8shell%E6%94%B6%E9%9B%86%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现设计： 从一台服务器上收集数据（ftp get） 从多台服务器上收集（循环 ftp get） 定时从多台机器上按照一定规则收集（定时器） 思路1：读配置文件，去指定服务器的指定目录下载文件 1234567891011121314151617181920212223242526272829303132#!/bin/bash#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径basedir=$(cd $(dirname $0); pwd)cd $basedirconfigFile=$basedir/ftphost.confhomedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)grep -i -E -w &quot;ftp|sftp&quot; $configFile | awk -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &#123; protocol=$1 ip=$2 port=$3 user=$4 password=$5 ftp -n&lt;&lt;FTPDopen $ipuser $user $passwordbinarypassivelcd $hdirpromptif [[ ! -d $fdir ]];then mkdir $fdirficd $fdirput $2closequitFTPD 更新1234567891011121314151617181920212223242526272829303132333435363738394041424344#! /bin/bash#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径basedir=$(cd $(dirname $0); pwd)echo $basedircd $basedirconfigFile=$basedir/ftphost.confftpscriptfile=$basedir/ftpscript.shhomedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)echo &quot;homedir: &quot;$homedirecho &quot;ftphomedir&quot; $ftphomedirecho &quot;#ftp远程获取需要的文件&quot; &gt;&gt;$ftpscriptfilegrep -i -E -w &quot;ftp|sftp&quot; $configFile | awk -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &apos;&#123; # protocol=$1 # ip=$2 # port=$3 # user=$4 # password=$5 print &quot;ftp -n&lt;&lt;FTPD&quot; print &quot;open &quot;ip print &quot;user &quot; user &quot; &quot; password print &quot;binary&quot; print &quot;passive&quot; print &quot;cd &quot; fdir &#125;&apos; &gt;&gt;$ftpscriptfile echo &quot;prompt&quot; &gt;&gt;$ftpscriptfile echo &quot;if [[ ! -d \$3 ]];then&quot; &gt;&gt;$ftpscriptfile echo &quot; mkdir \$3&quot; &gt;&gt;$ftpscriptfile echo &quot;fi &quot; &gt;&gt;$ftpscriptfile echo &quot;cd \$3&quot; &gt;&gt;$ftpscriptfile echo &quot;if [[ ! -d \$4 ]];then&quot; &gt;&gt;$ftpscriptfile echo &quot; mkdir \$4&quot; &gt;&gt;$ftpscriptfile echo &quot;fi &quot; &gt;&gt;$ftpscriptfile echo &quot;cd \$4&quot; &gt;&gt;$ftpscriptfile echo &quot;lcd \$1&quot; &gt;&gt;$ftpscriptfile echo &quot;put \$2&quot; &gt;&gt;$ftpscriptfile echo &quot;close&quot; &gt;&gt;$ftpscriptfile echo &quot;quit&quot; &gt;&gt;$ftpscriptfile echo &quot;FTPD&quot; &gt;&gt;$ftpscriptfile 12345678910111213141516171819202122232425262728293031 1 filterAndGet() 2 &#123; 3 srcfile=$1 4 key=$2 5 value=$3 6 tgtfile=$4 7 shift 4 8 if [[ $# -gt 0 ]];then 9 ids=$*10 else11 ids=012 fi1314 awk -F &quot;,&quot; &apos;BEGIN &#123;15 split(&apos;&quot;\&quot;$ids&quot;\&quot;&apos;, indexs,&quot; &quot;)16 &#125;&#123;17 if($&apos;$key&apos;==&quot;&apos;$value&apos;&quot;) &#123;18 for (i=1;i&lt;=length(indexs);i++)&#123;19 if(indexs[i]==9)&#123;20 system(&quot;\\echo -n $(\\date -d \&quot;2000-01-01 +&quot; $indexs[i] &quot; seconds\&quot; +\&quot;%Y-%m-%d %H:%M:%S\&quot;)&quot;)21 printf(&quot;.%03d,&quot;,$28)22 &#125;23 else24 printf(&quot;%s,&quot;,$indexs[i])25 &#125;26 printf(&quot;\n&quot;);27 &#125;28 &#125;&apos; $srcfile &gt;&gt; $tgtfile29 &#125;filterAndGet $1 39 0 $2/a_$&#123;day&#125;.csv 9 14 15 52 2 3 5 10 11 53 54 55 56 57 58 59 88 16 6 7 8 21 35 34 23 86 17 19 20 思路2：配置文件中配置多个IP，循环去取文件 思路3：增加文件过滤规则，定时器规则]]></content>
-      <categories>
-        <category>数据采集 - 日志收集</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-        <tag>日志</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[始终－程序员的自我修养]]></title>
     <url>%2F2018%2F12%2F04%2F%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A7%8B%E7%BB%88%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB%2F</url>
     <content type="text"><![CDATA[原文 计算机发展史计算机三大件：中央处理器cpu、内存、IO控制芯片 计算机硬件的房展很大程度上归功于CPU技术的更新，CPU核心频率的不多提升 北桥芯片：用来协调CPU内存显卡之间的高速内存交换（内存的频率远远低于CPU的频率） 不过连接在北桥上的设备还是速度一级棒的，相对于键盘、硬盘来讲，所以CPU不会直接带这些低俗设备玩，把这些设备交给南桥来管理，然后通过内部总线来沟通 i7后，cpu将北桥集成在内 操作系统 计算机科学领域的任何问题，都可以通过增加一个间接的中间层来解决 操作系统就是有很多任务要交给计算机去做的多个用户用户与计算机硬件间的中间层 操作系统经历了，多道程序、分时系统、多任务系统 在多任务系统中，操作系统接管了所有硬件资源并持有对硬件控制的最高权限。在操作系统中执行的程序，都以进程的方式运行在更低的权限中。所有的硬件资源，由操作系统根据进程的优先级以及进程的运行状况进行统一的调配。 进程与线程操作系统是以进程为单位去分配空间和执行的 每个线程有自己独立的栈，同时多个线程共享进程空间中的数据 线程安全竞争如果有多个线程尝试对同一份数据进行写入操作，那么最终结果可能回事不可预期的 原子性单条指令是原子性的，是不可被打断的，但是单条指令能力有限，我们只能通过同步和锁机制实现多条指令的原子性 同步与锁 在这里，同步是一种规则，而锁则是实现这种规则的具体方法。 所谓同步，指的是多线程程序里，多个线程不得同时对某一共享变量进行访问。锁是实现同步的一种具体方案——准确地说，这是一种非常强的方案。锁有多种形式，最符合直觉的锁是所谓的互斥量（Mutex）。具体来说，线程在访问某个共享变量的时候，必须先获取锁；如果获取不到锁，那么就必须等待（或者进行其他操作，总之不许访问这个变量）；在结束对这个变量的访问之后，持有锁的线程应当释放。 值得一提的是，所作为一种同步手段，是非常强的。但是，这种强，仅限于逻辑层面。在实际情况中，编译器优化、CPU 动态调度，都有可能打破锁对于同步的保护。这时候，这些优化就变成了过度优化。 过度优化对线程安全的破坏线程安全不好控制，所以基于actor的akka必火]]></content>
@@ -1081,17 +1102,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[算法]]></title>
-    <url>%2F2018%2F12%2F04%2F%E7%AE%97%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[《算法》基础在计算机科学领域,我们用算法这个词来描述一种有现的解决问题的方法。算法是计算机科学的基础,是这个领域研究的核心。 #### 基础编程模型 我们学习算法的方法是用 Java 编程语言编写的程序来实现算法。这样做是出于以下原因: 程序是对算法精确、优雅和完全的描述; 可以通过运行程序来学习算法的各种性质; 可以在应用程序中直接使用这些算法。相比用自然语言描述算法,这些是重要而巨大的优势。 java 程序的基本结构]]></content>
-      <categories>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据仓库清洗规则]]></title>
     <url>%2F2018%2F12%2F04%2F%E8%84%9A%E5%9E%8B%E6%95%B0%E6%8D%AE%E3%80%81%E6%A5%A6%E5%9E%8B%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%96%B9%E6%A1%88%E7%A8%BF%2F</url>
     <content type="text"><![CDATA[脚型数据、楦数据清洗方案稿背景脚型数据、楦数据均以入库（待确认） 需要对数据做最基本，根据具体业务需要的数据清洗 ## 前提 数据仓库中的脚数据、楦数据的数据一致性校验完成 ## 清洗规则 明确数据的业务范围明确数据的语义两个表各字段的意义 数据中存在的错误界定及处理方法表级别错误主要包括数据记录不合理的重复、数据记录的缺失。 依赖数据入库操作时数据一致性校验的完成 #### 行级别错误 对于数据中存在的错误，处理的原则是尽最大可能去发现并修复，对于不能修复的错误，则需要给出警示。 对于行级错误的处理，从找出异常数据入手。 对于每个字段，发现异常数据可以通过以下（不限于）几种方式： 对于标量，如果离群则记为异常。 取值不在字典表范围内。 不符合数据的语义（在当前语义上无法解释）。 与其它字段的信息不一致。 异常数据处理流程： 首先判断是不是错误，如果不是错误，那我们只需要加以记录，这可以帮助我们更深入的认识数据； 如果是错误，试着去分析错误产生的原因，推测出正确值；如果能推测出正确值，那么推算出正确值。 如果不能推测出正确值，那么将其置为空值（空值至少不会提供错误的信息，其不良影响要弱于错误的信息所来带来的）。 对数据做规范化、统一化不规范、不统一的数据可能并不影响信息表达的准确性，却对数据分析和数据处理有很大的影响。 我们所要做的有两方面： 含义相同的字段，采用统一的规范的形式来表达。 目前主要包括：- 日期字段格式的统一，全部采用标准Unix时间戳表示。 对于同一字段，相同的信息，采用相同的表达。 主要针对字符型的字段。比如：北京、北京市、【北京】都是表达相同的含义，我们需要将其统一；男女与0,1,2的映射 ３． 空值处理、null值处理]]></content>
@@ -1100,6 +1110,17 @@
       </categories>
       <tags>
         <tag>datawarehouse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[算法]]></title>
+    <url>%2F2018%2F12%2F04%2F%E7%AE%97%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[《算法》基础在计算机科学领域,我们用算法这个词来描述一种有现的解决问题的方法。算法是计算机科学的基础,是这个领域研究的核心。 #### 基础编程模型 我们学习算法的方法是用 Java 编程语言编写的程序来实现算法。这样做是出于以下原因: 程序是对算法精确、优雅和完全的描述; 可以通过运行程序来学习算法的各种性质; 可以在应用程序中直接使用这些算法。相比用自然语言描述算法,这些是重要而巨大的优势。 java 程序的基本结构]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -1135,17 +1156,6 @@
       <tags>
         <tag>鸡汤</tag>
         <tag>每天</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[攒技能]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%94%92%E6%8A%80%E8%83%BD%2F</url>
-    <content type="text"><![CDATA[抬头看天 低头走路分类 项目管理编程语言数据结构服务器端前端数据可视化数据存储处理分布式计算数据分析机器学习、深度学习工欲善其事，必先利其器误入歧途书签数据采集瞎说]]></content>
-      <categories>
-        <category>书签</category>
-      </categories>
-      <tags>
-        <tag>技能树</tag>
       </tags>
   </entry>
   <entry>
