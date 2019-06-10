@@ -487,19 +487,6 @@
   </entry>
   <entry>
     <title><![CDATA[Tensorflow Model java 部署]]></title>
-    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
-    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
-      <categories>
-        <category>机器学习、深度学习 - tensorflow</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>tensorflow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Tensorflow Model java 部署]]></title>
     <url>%2F2018%2F12%2F04%2FTensorflow5--seq2seq%2F</url>
     <content type="text"><![CDATA[IntroductionSeq2Seq模型在机器翻译、语音识别、文本摘要等领域取得了巨大的成功 以神经机器翻译(NMT)为例介绍 使用最新的 decoder / attention wrapper API，TensorFlow 1.2 data iterator 在构建模型时加入了我们最成功的经验 为构建最强大的 NMT 模型，我们提供了许多 tips 和 tricks，并复制了Google的 NMT系统 Basic神经机器翻译的相关背景 | Background on Neural Machine Translation 传统的 phrase-based 翻译系统的工作原理是把源句子分成几块，然后一个短语一个短语的翻译，但是翻译结果的流畅度较差，并且不符合人类的翻译方式， 我们人类会读取完整的句子，理解它的意思，然后进行翻译。NMT 模型正是在模仿这个机制！ NMT模型使用encoder读取源句子，然后编码得到一个“有意义”的 vector，即一串能代表源句子意思的数字。然后 decoder 将这个 vector 解码得到翻译，就想图1展示的那样。这就是所谓的 encoder-decoder 结构 本教程将以单向的多层（multi-layer） RNN 为例，其使用 LSTM 作为 RNN 单元 Traning - How to build our first NMT system实战 - 训练一个 NMT 模型 Hands-on - Let’s train an NMT model12345678910111213python -m nmt.nmt \ --src=vi --tgt=en \ --vocab_prefix=/home/xxh/data/nmt_data_2/vocab \ --train_prefix=/home/xxh/data/nmt_data_2/train \ --dev_prefix=/home/xxh/data/nmt_data_2/tst2012 \ --test_prefix=/home/xxh/data/nmt_data_2/tst2013 \ --out_dir=/home/xxh/data/nmt_model \ --num_train_steps=12000 \ --steps_per_stats=100 \ --num_layers=2 \ --num_units=128 \ --dropout=0.2 \ --metrics=bleu python -m nmt.nmt –src=vi –tgt=en –vocab_prefix=/home/xxh/data/my_nmt_data/train –train_prefix=/home/xxh/data/my_nmt_data/train –dev_prefix=/home/xxh/data/my_nmt_data/tst2012 –test_prefix=/home/xxh/data/my_nmt_data/tst2012 –out_dir=/home/xxh/data/my_nmt_model –num_train_steps=12000 –steps_per_stats=100 –num_layers=2 –num_units=128 –dropout=0.2 –metrics=bleu 12 python -m nmt.nmt –out_dir=/home/xxh/data/nmt_model –inference_input_file=/home/xxh/data/nmt_data_2/my.vi –inference_output_file=/home/xxh/data/nmt_attention_model/output_infer]]></content>
       <categories>
@@ -510,6 +497,19 @@
         <tag>ml</tag>
         <tag>tensorflow</tag>
         <tag>seq2seq</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tensorflow Model java 部署]]></title>
+    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
+    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
+      <categories>
+        <category>机器学习、深度学习 - tensorflow</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>tensorflow</tag>
       </tags>
   </entry>
   <entry>
@@ -712,17 +712,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[python 笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fpython%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[python 笔记日常python使用笔记 python List 2 String How to convert list to string By using ‘’.join 12list1 = [&apos;1&apos;, &apos;2&apos;, &apos;3&apos;]str1 = &apos;&apos;.join(list1) Or if the list is of integers, convert the elements before joining them. 12list1 = [1, 2, 3]str1 = &apos;&apos;.join(str(e) for e in list1) python 写文件1234567file = &quot;/home/xxh/data/footlastlist&quot;+time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime()) f= open(file,&quot;w+&quot;) try: f.write(&apos;&apos;.join(str(e) for e in footlastlist)) finally: f.close() file文件open后一定记得close(还有一种写法with) open的参数w+可以自动创建不存在的文件，前提是，设置的file路径为绝对路径]]></content>
-      <categories>
-        <category>编程语言 - python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[sbt package VS sbt assembly VS sbt dist]]></title>
     <url>%2F2018%2F12%2F04%2FsbtpackageVSsbtassembly%2F</url>
     <content type="text"><![CDATA[sbt打包： sbt package sbt assembly sbt dist 1. sbt package在sbt Doc的[运行]章节有明确的介绍：Running package 将 src/main/resources 下的文件和 src/main/scala 以及 src/main/java 中编译出来的 class 文件打包成一个 jar 文件。package Creates a jar file containing the files in src/main/resources and the classes compiled from src/main/scala and src/main/java. 使用：在项目根目录下执行： 1sbt package 运行结果会展示已经在target//下，所打成功的包 2. sbt assemblyhttps://github.com/sbt/sbt-assembly Deploy fat JARs. Restart processes. sbt-assembly is a sbt plugin originally ported from codahale’s assembly-sbt, which I’m guessing was inspired by Maven’s assembly plugin. The goal is simple: Create a fat JAR of your project with all of its dependencies. 相比于 sbt package,sbt assembly会将project的依赖都打包进来 使用：github项目下的README.md中有详细的使用方法，这里简要摘抄如下： 在project/plugin.sbt中添加如下项： 1addSbtPlugin(&quot;com.eed3si9n&quot; % &quot;sbt-assembly&quot; % &quot;0.14.6&quot;) 在build.sbt文件中设置： 1234//使用java jar 执行时的main类，(入口类)mainClass in assembly := Some(&quot;AwsSupportS3&quot;)//设置目标jar包的名字assemblyJarName in assembly := s&quot;my-api-hdfs1.1.0607.jar 打包，在根目录下执行： 1sbt assembly 同样会有包在target/***/目录下 3. sbt distsbt 墙裂推荐 github地址：https://github.com/sbt/sbt-native-packager sbt官方支持：https://www.scala-sbt.org/sbt-native-packager/ 宣言： “Code once, deploy anywhere” 官方也做了相近的使用说明，文档算是很不错了 这里mark下我的使用： 在project/plugin.sbt中添加如下项： 1addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-native-packager&quot; % &quot;1.1.5&quot;) 在build.sbt文件中设置： 1234567891011121314151617181920enablePlugins(JavaServerAppPackaging)//main class 配置，同上mainClass in Compile := Some(&quot;***.aip.ml.platform.rest.WebServer&quot;)//外部配置文件路径，project代码src/main/resources中的配置文件自动生成一份放在配置的路径下，如要更改配置文件，仅更改外部的即可mappings in Universal ++= &#123; // optional example illustrating how to copy additional directory directory(&quot;scripts&quot;) ++ // copy configuration files to config directory contentOf(&quot;src/main/resources&quot;).toMap.mapValues(&quot;config/&quot; + _)&#125;// add &apos;config&apos; directory first in the classpath of the start script,// an alternative is to set the config file locations via CLI parameters// when starting the applicationscriptClasspath := Seq(&quot;../config/&quot;) ++ scriptClasspath.valuelicenses := Seq((&quot;CC0&quot;, url(&quot;http://creativecommons.org/publicdomain/zero/1.0&quot;))) 打包，在根目录下执行： 1sbt dist 以上工具在打包前，最好先执行： 1sbt clean update 确保project没有问题]]></content>
@@ -737,14 +726,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Scala Try]]></title>
-    <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
-    <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
+    <title><![CDATA[python 笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fpython%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[python 笔记日常python使用笔记 python List 2 String How to convert list to string By using ‘’.join 12list1 = [&apos;1&apos;, &apos;2&apos;, &apos;3&apos;]str1 = &apos;&apos;.join(list1) Or if the list is of integers, convert the elements before joining them. 12list1 = [1, 2, 3]str1 = &apos;&apos;.join(str(e) for e in list1) python 写文件1234567file = &quot;/home/xxh/data/footlastlist&quot;+time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime()) f= open(file,&quot;w+&quot;) try: f.write(&apos;&apos;.join(str(e) for e in footlastlist)) finally: f.close() file文件open后一定记得close(还有一种写法with) open的参数w+可以自动创建不存在的文件，前提是，设置的file路径为绝对路径]]></content>
       <categories>
-        <category>编程语言 - s cala</category>
+        <category>编程语言 - python</category>
       </categories>
       <tags>
-        <tag>Scala</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -768,6 +757,17 @@
       <tags>
         <tag>scala</tag>
         <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Scala Try]]></title>
+    <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
+    <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
+      <categories>
+        <category>编程语言 - s cala</category>
+      </categories>
+      <tags>
+        <tag>Scala</tag>
       </tags>
   </entry>
   <entry>
@@ -806,6 +806,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[sql笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
+      <categories>
+        <category>数据存储处理 - database</category>
+      </categories>
+      <tags>
+        <tag>database</tag>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Spark的3个API:RDDs/DataFrames/DataSets]]></title>
     <url>%2F2018%2F12%2F04%2Fspark%E7%9A%84%E4%B8%89%E4%B8%AAAPI%2F</url>
     <content type="text"><![CDATA[且谈Apache Spark的API三剑客：RDD、DataFrame和Dataset]]></content>
@@ -817,18 +829,6 @@
         <tag>Spark</tag>
         <tag>DataFrame</tag>
         <tag>DataSet</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[sql笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
-      <categories>
-        <category>数据存储处理 - database</category>
-      </categories>
-      <tags>
-        <tag>database</tag>
-        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -1003,17 +1003,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[攒技能]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%94%92%E6%8A%80%E8%83%BD%2F</url>
-    <content type="text"><![CDATA[抬头看天 低头走路分类 项目管理编程语言数据结构服务器端前端数据可视化数据存储处理分布式计算数据分析机器学习、深度学习工欲善其事，必先利其器误入歧途书签数据采集瞎说]]></content>
-      <categories>
-        <category>书签</category>
-      </categories>
-      <tags>
-        <tag>技能树</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[敏捷开发流程]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[定义敏捷不是指某一种具体的方法论、过程或框架，而是一组价值观和原则。符合敏捷价值观和原则的开发方法包括：极限编程（XP），Scrum，精益软件开发（Lean Software Development），动态系统开发方法（DSDM），特征驱动开发（Feature Driver Development），水晶开发（Crystal Clear）等等。所有这些方法都具有以下共同特征： 迭代式开发 ，整个开发周期分为几个迭代周期 - 增量交付 每个迭代周期结束后逐步交付使用，而不是整个开发过程结束的时候一次性交付使用 - 开发团队和用户反馈推动产品开发 持续集成 开发团队自我管理 敏捷实战 需求评审 Story划分 人员划分 方案设计 方案评审 任务拆分 开发 端到端测试 压力测试＋集成测试 关于需求分析： 一部分是项目总体需求分析时确定的，另一部分是随着项目的发展，新增的业务需求 关于方案设计：在项目需求评审会议后，划分了story、确定了人员分配后，根据项目的总体框架进行的方案设计 主要分 1 概述 41.1 目的 41.2 术语、定义和略缩词 41.3 参考资料 42 业务逻辑 43 主题表设计 74 性能设计 95 平滑升级 然后做方案评审 团队内部任务拆分 开发 测试 压力测试 和 集成测试]]></content>
@@ -1022,6 +1011,17 @@
       </categories>
       <tags>
         <tag>敏捷开发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[攒技能]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%94%92%E6%8A%80%E8%83%BD%2F</url>
+    <content type="text"><![CDATA[抬头看天 低头走路分类 项目管理编程语言数据结构服务器端前端数据可视化数据存储处理分布式计算数据分析机器学习、深度学习工欲善其事，必先利其器误入歧途书签数据采集瞎说]]></content>
+      <categories>
+        <category>书签</category>
+      </categories>
+      <tags>
+        <tag>技能树</tag>
       </tags>
   </entry>
   <entry>
@@ -1047,18 +1047,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[日志打印规范]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E8%A7%84%E8%8C%83%2F</url>
-    <content type="text"><![CDATA[背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过 日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情 未完待续…]]></content>
-      <categories>
-        <category>服务器端 - 日志</category>
-      </categories>
-      <tags>
-        <tag>log</tag>
-        <tag>日志</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[初识机器学习]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A01%2F</url>
     <content type="text"><![CDATA[神经网络神经网络是一种数学模型，是存在于计算机的神经系统，由大量的神经元相连接并进行计算，在外界信息的基础上，改变内部的结构，常用来对输入和输出间复杂的关系进行建模。 神经网络由大量的节点和之间的联系构成，负责传递信息和加工信息，神经元也可以通过训练而被强化。 rel 生物神经网络现代科学还不能完全解释生物学习，记忆的过程，也就无从解释生物神经元建立相互关系的过程 人工神经网络目的：虽然不知道生物神经网络的内部原理，但是想人工模仿出一个有相同功能的神经网络 首先, 替代掉生物神经网络的, 就是已经成体系的人工神经网络. 所有神经元之间的连接都是固定不可更换的, 这也就是说, 在人工神经网络里, 没有凭空产生新联结这回事. 人工神经网络典型的一种学习方式就是, 我已经知道吃到糖果时, 手会如何动, 但是我想让神经网络学着帮我做这件动动手的事情. 所以我预先准备好非常多吃糖的学习数据, 然后将这些数据一次次放入这套人工神经网络系统中, 糖的信号会通过这套系统传递到手. 然后通过对比这次信号传递后, 手的动作是不是”讨糖”动作, 来修改人工神经网络当中的神经元强度. 这种修改在专业术语中叫做”误差反向传递”, 也可以看作是再一次将传过来的信号传回去, 看看这个负责传递信号神经元对于”讨糖”的动作到底有没有贡献, 让它好好反思与改正, 争取下次做出更好的贡献. 这样看来, 人工神经网络和生物神经网络的确不是一回事. 二者间的区别 人工神经网络靠的是正向和反向传播来更新神经元, 从而形成一个好的神经系统, 本质上, 这是一个能让计算机处理和优化的数学模型. 而生物神经网络是通过刺激, 产生新的联结, 让信号能够通过新的联结传递而形成反馈. 虽然现在的计算机技术越来越高超, 不过我们身体里的神经系统经过了数千万年的进化, 还是独一无二的, 迄今为止, 再复杂, 再庞大的人工神经网络系统也不能替代我们的小脑袋. 我们应该感到自豪, 也应该珍惜上天的这份礼物. 梯度下降optimization(优化问题)机器学习是一种优化问题的方法手段准确的说是梯度下降中的一员optimization: Newton’s method(牛顿法) Least Squares method( 最小二乘法) Gradient Descent(梯度下降法) 误差方程误差方程用来计算预测出来的和我们实际中值有多大差别，在预测数值的问题中，我们常用平方差来代替 cost = (predicted - real)^2 = (Wx-y)^2 优化初始值：(W-0)^2 梯度线躺平的点，其W参数为最优解 ##### 全局最优and局部最优 神经网络黑盒我们 把输入进行数字化，特征化，放入神经网络黑盒中，黑盒中进行了一系列的特征转化，最终得到我们的输出]]></content>
@@ -1068,6 +1056,18 @@
       <tags>
         <tag>机器学习</tag>
         <tag>ml</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[日志打印规范]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E8%A7%84%E8%8C%83%2F</url>
+    <content type="text"><![CDATA[背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过 日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情 未完待续…]]></content>
+      <categories>
+        <category>服务器端 - 日志</category>
+      </categories>
+      <tags>
+        <tag>log</tag>
+        <tag>日志</tag>
       </tags>
   </entry>
   <entry>
