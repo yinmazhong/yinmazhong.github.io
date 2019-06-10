@@ -356,18 +356,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Java8笔记]]></title>
-    <url>%2F2018%2F12%2F04%2FJava8%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>编程语言 - java</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Intellij IDEA 快捷键整理]]></title>
     <url>%2F2018%2F12%2F04%2FIntellij%20IDEA%20%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86%2F</url>
     <content type="text"><![CDATA[【常规】 Ctrl+Shift + Enter，语句完成 “！”，否定完成，输入表达式时按 “！”键 Ctrl+E，最近的文件 Ctrl+Shift+E，最近更改的文件 Shift+Click，可以关闭文件 Ctrl+[ OR ]，可以跑到大括号的开头与结尾 Ctrl+F12，可以显示当前文件的结构 Ctrl+F7，可以查询当前元素在当前文件中的引用，然后按 F3 可以选择 Ctrl+N，可以快速打开类 Ctrl+Shift+N，可以快速打开文件 Alt+Q，可以看到当前方法的声明 Ctrl+P，可以显示参数信息 Ctrl+Shift+Insert，可以选择剪贴板内容并插入 Alt+Insert，可以生成构造器/Getter/Setter等 Ctrl+Alt+V，可以引入变量。例如：new String(); 自动导入变量定义 Ctrl+Alt+T，可以把代码包在一个块内，例如：try/catch Ctrl+Enter，导入包，自动修正 Ctrl+Alt+L，格式化代码 Ctrl+Alt+I，将选中的代码进行自动缩进编排，这个功能在编辑 JSP 文件时也可以工作 Ctrl+Alt+O，优化导入的类和包 Ctrl+R，替换文本 Ctrl+F，查找文本 Ctrl+Shift+Space，自动补全代码 Ctrl+空格，代码提示（与系统输入法快捷键冲突） Ctrl+Shift+Alt+N，查找类中的方法或变量 Alt+Shift+C，最近的更改 Alt+Shift+Up/Down，上/下移一行 Shift+F6，重构 - 重命名 Ctrl+X，删除行 Ctrl+D，复制行 Ctrl+/或Ctrl+Shift+/，注释（//或者/**/） Ctrl+J，自动代码（例如：serr） Ctrl+Alt+J，用动态模板环绕 Ctrl+H，显示类结构图（类的继承层次） Ctrl+Q，显示注释文档 Alt+F1，查找代码所在位置 Alt+1，快速打开或隐藏工程面板 Ctrl+Alt+left/right，返回至上次浏览的位置 Alt+left/right，切换代码视图 Alt+Up/Down，在方法间快速移动定位 Ctrl+Shift+Up/Down，向上/下移动语句 F2 或 Shift+F2，高亮错误或警告快速定位 Tab，代码标签输入完成后，按 Tab，生成代码 Ctrl+Shift+F7，高亮显示所有该文本，按 Esc 高亮消失 Alt+F3，逐个往下查找相同文本，并高亮显示 Ctrl+Up/Down，光标中转到第一行或最后一行下 Ctrl+B/Ctrl+Click，快速打开光标处的类或方法（跳转到定义处） Ctrl+Alt+B，跳转到方法实现处 Ctrl+Shift+Backspace，跳转到上次编辑的地方 Ctrl+O，重写方法 Ctrl+Alt+Space，类名自动完成 Ctrl+Alt+Up/Down，快速跳转搜索结果 Ctrl+Shift+J，整合两行 Alt+F8，计算变量值 Ctrl+Shift+V，可以将最近使用的剪贴板内容选择插入到文本 Ctrl+Alt+Shift+V，简单粘贴 Shift+Esc，不仅可以把焦点移到编辑器上，而且还可以隐藏当前（或最后活动的）工具窗口 F12，把焦点从编辑器移到最近使用的工具窗口 Shift+F1，要打开编辑器光标字符处使用的类或者方法 Java 文档的浏览器 Ctrl+W，可以选择单词继而语句继而行继而函数 Ctrl+Shift+W，取消选择光标所在词 Alt+F7，查找整个工程中使用地某一个类、方法或者变量的位置 Ctrl+I，实现方法 Ctrl+Shift+U，大小写转化 Ctrl+Y，删除当前行 Shift+Enter，向下插入新行 psvm/sout，main/System.out.println(); Ctrl+J，查看更多 Ctrl+Shift+F，全局查找 Ctrl+F，查找/Shift+F3，向上查找/F3，向下查找 Ctrl+Shift+S，高级搜索 Ctrl+U，转到父类 Ctrl+Alt+S，打开设置对话框 Alt+Shift+Inert，开启/关闭列选择模式 Ctrl+Alt+Shift+S，打开当前项目/模块属性 Ctrl+G，定位行 Alt+Home，跳转到导航栏 Ctrl+Enter，上插一行 Ctrl+Backspace，按单词删除 Ctrl+&quot;+/-&quot;，当前方法展开、折叠 Ctrl+Shift+&quot;+/-&quot;，全部展开、折叠【调试部分、编译】 Ctrl+F2，停止 Alt+Shift+F9，选择 Debug Alt+Shift+F10，选择 Run Ctrl+Shift+F9，编译 Ctrl+Shift+F10，运行 Ctrl+Shift+F8，查看断点 F8，步过 F7，步入 Shift+F7，智能步入 Shift+F8，步出 Alt+Shift+F8，强制步过 Alt+Shift+F7，强制步入 Alt+F9，运行至光标处 Ctrl+Alt+F9，强制运行至光标处 F9，恢复程序 Alt+F10，定位到断点 Ctrl+F8，切换行断点 Ctrl+F9，生成项目 Alt+1，项目 Alt+2，收藏 Alt+6，TODO Alt+7，结构 Ctrl+Shift+C，复制路径 Ctrl+Alt+Shift+C，复制引用，必须选择类名 Ctrl+Alt+Y，同步 Ctrl+~，快速切换方案（界面外观、代码风格、快捷键映射等菜单） Shift+F12，还原默认布局 Ctrl+Shift+F12，隐藏/恢复所有窗口 Ctrl+F4，关闭 Ctrl+Shift+F4，关闭活动选项卡 Ctrl+Tab，转到下一个拆分器 Ctrl+Shift+Tab，转到上一个拆分器【重构】 Ctrl+Alt+Shift+T，弹出重构菜单 Shift+F6，重命名 F6，移动 F5，复制 Alt+Delete，安全删除 Ctrl+Alt+N，内联【查找】 Ctrl+F，查找 Ctrl+R，替换 F3，查找下一个 Shift+F3，查找上一个 Ctrl+Shift+F，在路径中查找 Ctrl+Shift+R，在路径中替换 Ctrl+Shift+S，搜索结构 Ctrl+Shift+M，替换结构 Alt+F7，查找用法 Ctrl+Alt+F7，显示用法 Ctrl+F7，在文件中查找用法 Ctrl+Shift+F7，在文件中高亮显示用法【VCS】 Alt+~，VCS 操作菜单 Ctrl+K，提交更改 Ctrl+T，更新项目 Ctrl+Alt+Shift+D，显示变化]]></content>
@@ -377,6 +365,18 @@
       <tags>
         <tag>IDEA</tag>
         <tag>IDE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java8笔记]]></title>
+    <url>%2F2018%2F12%2F04%2FJava8%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>编程语言 - java</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -737,17 +737,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[scala implict]]></title>
-    <url>%2F2018%2F12%2F04%2Fscala%20implicit%2F</url>
-    <content type="text"><![CDATA[why 应用中自己写的代码和调用的第三方函数库有着一个基本的区别：也就是你可以任意修改和扩展自己写的代码，而一般来说在没有源码的情况下很难扩展第三方函数库，只能利用函数库提供什么就是什么。 在Scala中解决这个问题是使用隐含类型变换和隐时参数。它们可以使调用函数库变得更加方便，并避免一些繁琐和显而易见的细节。 how在scala中 implicit 类隐式调用函数可以转换调用方法的对象，比如但编译器看到X .method，而类型 X 没有定义 method（包括基类)方法，那么编译器就查找作用域内定义的从 X 到其它对象的类型转换，比如 Y，而类型Y定义了 method 方法，编译器就首先使用隐含类型转换把 X 转换成 Y，然后调用 Y 的 method。 implicit 方法 一旦编译器看到了X,但是需要Y,就会检查从X到Y的隐式转换函数 12345678910scala&gt; implicit def double2Int(d:Double) = d.toIntwarning: there were 1 feature warning(s); re-run with -feature for detailsdouble2Int: (d: Double)Intscala&gt; implicit def double2Int(d:Double):Int = d.toIntwarning: there were 1 feature warning(s); re-run with -feature for detailsdouble2Int: (d: Double)Intscala&gt; val i:Int = 3.5i: Int = 3 implicit 参数当我们在定义方法时，可以把最后一个参数列表标记为implicit，表示该组参数是隐式参数。一个方法只会有一个隐式参数列表，置于方法的最后一个参数列表。如果方法有多个隐式参数，只需一个implicit修饰即可。 当调用包含隐式参数的方法是，如果当前上下文中有合适的隐式值，则编译器会自动为改组参数填充合适的值。如果没有编译器会抛出异常。当然，标记为隐式参数的我们也可以手动为该参数添加默认值 隐式操作规则 标记规则:标记为implict才可用 作用域：插入的隐式转换必须以单一标识符的形式处于操作域中 无歧义原则：隐式转换唯有不存在其他可插入转换的前提下才能插入 单一调用原则：只会尝试一个隐式操作 显示操作先行规则：若编写的代码类型检查无误，则不会尝试任何隐式操作，编译器不会改变已经可以正常工作的代码 命名隐式转换隐式转换可以任意命名,隐式转换 引用 与名字无关，编译器主要检察输入输出类型 开闭原则规定，软件中的对象对扩展应该是开放的，对于修改应该是关闭的]]></content>
-      <categories>
-        <category>编程语言 - scala</category>
-      </categories>
-      <tags>
-        <tag>scala</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Scala Try]]></title>
     <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
     <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
@@ -756,6 +745,17 @@
       </categories>
       <tags>
         <tag>Scala</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[scala implict]]></title>
+    <url>%2F2018%2F12%2F04%2Fscala%20implicit%2F</url>
+    <content type="text"><![CDATA[why 应用中自己写的代码和调用的第三方函数库有着一个基本的区别：也就是你可以任意修改和扩展自己写的代码，而一般来说在没有源码的情况下很难扩展第三方函数库，只能利用函数库提供什么就是什么。 在Scala中解决这个问题是使用隐含类型变换和隐时参数。它们可以使调用函数库变得更加方便，并避免一些繁琐和显而易见的细节。 how在scala中 implicit 类隐式调用函数可以转换调用方法的对象，比如但编译器看到X .method，而类型 X 没有定义 method（包括基类)方法，那么编译器就查找作用域内定义的从 X 到其它对象的类型转换，比如 Y，而类型Y定义了 method 方法，编译器就首先使用隐含类型转换把 X 转换成 Y，然后调用 Y 的 method。 implicit 方法 一旦编译器看到了X,但是需要Y,就会检查从X到Y的隐式转换函数 12345678910scala&gt; implicit def double2Int(d:Double) = d.toIntwarning: there were 1 feature warning(s); re-run with -feature for detailsdouble2Int: (d: Double)Intscala&gt; implicit def double2Int(d:Double):Int = d.toIntwarning: there were 1 feature warning(s); re-run with -feature for detailsdouble2Int: (d: Double)Intscala&gt; val i:Int = 3.5i: Int = 3 implicit 参数当我们在定义方法时，可以把最后一个参数列表标记为implicit，表示该组参数是隐式参数。一个方法只会有一个隐式参数列表，置于方法的最后一个参数列表。如果方法有多个隐式参数，只需一个implicit修饰即可。 当调用包含隐式参数的方法是，如果当前上下文中有合适的隐式值，则编译器会自动为改组参数填充合适的值。如果没有编译器会抛出异常。当然，标记为隐式参数的我们也可以手动为该参数添加默认值 隐式操作规则 标记规则:标记为implict才可用 作用域：插入的隐式转换必须以单一标识符的形式处于操作域中 无歧义原则：隐式转换唯有不存在其他可插入转换的前提下才能插入 单一调用原则：只会尝试一个隐式操作 显示操作先行规则：若编写的代码类型检查无误，则不会尝试任何隐式操作，编译器不会改变已经可以正常工作的代码 命名隐式转换隐式转换可以任意命名,隐式转换 引用 与名字无关，编译器主要检察输入输出类型 开闭原则规定，软件中的对象对扩展应该是开放的，对于修改应该是关闭的]]></content>
+      <categories>
+        <category>编程语言 - scala</category>
+      </categories>
+      <tags>
+        <tag>scala</tag>
       </tags>
   </entry>
   <entry>
@@ -806,18 +806,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[sql笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
-      <categories>
-        <category>数据存储处理 - database</category>
-      </categories>
-      <tags>
-        <tag>database</tag>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Spark的3个API:RDDs/DataFrames/DataSets]]></title>
     <url>%2F2018%2F12%2F04%2Fspark%E7%9A%84%E4%B8%89%E4%B8%AAAPI%2F</url>
     <content type="text"><![CDATA[且谈Apache Spark的API三剑客：RDD、DataFrame和Dataset]]></content>
@@ -829,6 +817,18 @@
         <tag>Spark</tag>
         <tag>DataFrame</tag>
         <tag>DataSet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sql笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
+      <categories>
+        <category>数据存储处理 - database</category>
+      </categories>
+      <tags>
+        <tag>database</tag>
+        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -868,6 +868,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[tensorflow3--mnist]]></title>
+    <url>%2F2018%2F12%2F04%2Ftensorflow3--mnist%2F</url>
+    <content type="text"><![CDATA[mnist教程Mnist是tf圈的hello world mnist_softmax.py源码soft_max回归介绍： Softmax回归模型，该模型是logistic回归模型在多分类问题上的推广，在多分类问题中，类标签 \textstyle y 可以取两个以上的值。Softmax回归模型对于诸如MNIST手写数字分类等问题是很有用的，该问题的目的是辨识10个不同的单个数字。Softmax回归是有监督的，不过后面也会介绍它与深度学习/无监督学习方法的结合。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116# Copyright 2015 The TensorFlow Authors. All Rights Reserved.## Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);# you may not use this file except in compliance with the License.# You may obtain a copy of the License at## http://www.apache.org/licenses/LICENSE-2.0## Unless required by applicable law or agreed to in writing, software# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.# See the License for the specific language governing permissions and# limitations under the License.# ==============================================================================&quot;&quot;&quot;A very simple MNIST classifier.See extensive documentation athttps://www.tensorflow.org/get_started/mnist/beginners&quot;&quot;&quot;#Python的每个新版本都会增加一些新的功能，或者对原来的功能作一些改动。Python提供了__future__模块，把下一个新版本的特性导入到当前版本，于是我们就可以在当前版本中测试一些新版本的特性。from __future__ import absolute_importfrom __future__ import divisionfrom __future__ import print_functionimport argparseimport sys#使用tf提供的input_data函数来导入数据from tensorflow.examples.tutorials.mnist import input_dataimport tensorflow as tf#函数声明FLAGS = Nonedef main(_): # Import data mnist = input_data.read_data_sets(FLAGS.data_dir) # Create the model # 占位 &quot;&quot;&quot; 这里的x和y并不是特定的值，相反，他们都只是一个占位符，可以在TensorFlow运行某一计算时根据该占位符输入具体的值。 输入图片x是一个2维的浮点数张量。这里，分配给它的shape为[None, 784]，其中784是一张展平的MNIST图片的维度。None表示其值大小不定，在这里作为第一个维度值，用以指代batch的大小，意即x的数量不定。输出类别值y_也是一个2维张量，其中每一行为一个10维的one-hot向量,用于代表对应某一MNIST图片的类别。 虽然placeholder的shape参数是可选的，但有了它，TensorFlow能够自动捕捉因数据维度不一致导致的错误。 我们现在为模型定义权重W和偏置b。可以将它们当作额外的输入量，但是TensorFlow有一个更好的处理方式：变量。 一个变量代表着TensorFlow计算图中的一个值，能够在计算过程中使用，甚至进行修改。在机器学习的应用过程中，模型参数一般用Variable来表示。 &quot;&quot;&quot; x = tf.placeholder(tf.float32, [None, 784]) W = tf.Variable(tf.zeros([784, 10])) b = tf.Variable(tf.zeros([10])) #现在我们可以实现我们的回归模型了。这只需要一行！我们把向量化后的图片x和权重矩阵W相乘，加上偏置b，然后计算每个分类的softmax概率值 y = tf.matmul(x, W) + b # Define loss and optimizer # y_ = tf.placeholder(tf.float32, [None]) y_ = tf.placeholder(tf.int64, [None]) # The raw formulation of cross-entropy, # # tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(tf.nn.softmax(y)), # reduction_indices=[1])) # # can be numerically unstable. # # So here we use tf.losses.sparse_softmax_cross_entropy on the raw # outputs of &apos;y&apos;, and then average across the batch. #可以很容易的为训练过程指定最小化误差用的损失函数，我们的损失函数是目标类别和预测类别之间的交叉熵。 cross_entropy = tf.losses.sparse_softmax_cross_entropy(labels=y_, logits=y) #我们已经定义好模型和训练用的损失函数，那么用TensorFlow进行训练就很简单了。因为TensorFlow知道整个计算图，它可以使用自动微分法找到对于各个变量的损失的梯度值。TensorFlow有大量内置的优化算法 这个例子中，我们用最速下降法让交叉熵下降，步长为0.5. train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy) #新建session sess = tf.InteractiveSession() #变量初始化 tf.global_variables_initializer().run() # Train # 循环训练1000次，每次都是取下100份数据作为输入，运行train_step for _ in range(1000): batch_xs, batch_ys = mnist.train.next_batch(100) sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;) # Test trained model # 首先让我们找出那些预测正确的标签。tf.argmax 是一个非常有用的函数，它能给出某个tensor对象在某一维上的其数据最大值所在的索引值。 由于标签向量是由0,1组成，因此最大值1所在的索引位置就是类别标签，比如tf.argmax(y,1)返回的是模型对于任一输入x预测到的标签值， 而 tf.argmax(y_,1) 代表正确的标签，我们可以用 tf.equal 来检测我们的预测是否真实标签匹配(索引位置一样表示匹配)。 这里返回一个布尔数组。为了计算我们分类的准确率，我们将布尔值转换为浮点数来代表对、错，然后取平均值。例如：[True, False, True, True]变为[1,0,1,1]，计算出平均值为0.75。 correct_prediction = tf.equal(tf.argmax(y, 1), y_) accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32)) print(sess.run( accuracy, feed_dict=&#123; x: mnist.test.images, y_: mnist.test.labels &#125;)) # SAVE THE MODEL # 保存model builder = tf.saved_model.builder.SavedModelBuilder(&quot;/tmp/mnist/model/1620&quot;) builder.add_meta_graph_and_variables( sess, [tf.saved_model.tag_constants.SERVING] ) builder.save()if __name__ == &apos;__main__&apos;: parser = argparse.ArgumentParser() parser.add_argument( &apos;--data_dir&apos;, type=str, default=&apos;/tmp/tensorflow/mnist/input_data&apos;, help=&apos;Directory for storing input data&apos;) FLAGS, unparsed = parser.parse_known_args() tf.app.run(main=main, argv=[sys.argv[0]] + unparsed) 卷积神经网络//Todo]]></content>
+      <categories>
+        <category>机器学习、深度学习 - tensorflow</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[jep使用]]></title>
     <url>%2F2018%2F12%2F04%2Fusingjep%2F</url>
     <content type="text"><![CDATA[jep 简介whatJep: (Java Embeded Python) Jep takes a different route and embeds CPython in Java using JNI. Long story short, if you need to include CPython modules (such as numpy) Jep is the way to go. 要想使用cPython 模块，用jep加载就对了 whypython 在机器学习界大火。项目内机器学习算法工程师也是用python,lightgbm,tensorflow来开发模型，但是部署模型最好还是用java、scala 顺便说一下业界部署模型的方式： 全程python python 部署模型，提供rest接口，供外部调用，这样数据清洗类的操作可以通过java实现 Jython,JyNI 不能很好的支持基于c的python模块 jep 使用看上去好吊的样子，让我们来用一下试试效果怎么样 https://github.com/ninia/jep 2017年诞生，一直在开发中，很活跃 正片开始： jep wiki pip 安装 jep安装没有报错，但是安装完成后，java 新建Jep()对象时报错，找不到jep1234567891011121314151617181920Exception in thread &quot;main&quot; java.lang.UnsatisfiedLinkError: no jep in java.library.path at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1867) at java.lang.Runtime.loadLibrary0(Runtime.java:870) at java.lang.System.loadLibrary(System.java:1122) at jep.MainInterpreter.initialize(MainInterpreter.java:121) at jep.MainInterpreter.getMainInterpreter(MainInterpreter.java:97) at jep.Jep.&lt;init&gt;(Jep.java:232) at jep.Jep.&lt;init&gt;(Jep.java:228) at jep.Jep.&lt;init&gt;(Jep.java:140) at JepTest.JepDemo$.delayedEndpoint$JepTest$JepDemo$1(JepDemo.scala:27) at JepTest.JepDemo$delayedInit$body.apply(JepDemo.scala:9) at scala.Function0$class.apply$mcV$sp(Function0.scala:34) at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:12) at scala.App$$anonfun$main$1.apply(App.scala:76) at scala.App$$anonfun$main$1.apply(App.scala:76) at scala.collection.immutable.List.foreach(List.scala:392) at scala.collection.generic.TraversableForwarder$class.foreach(TraversableForwarder.scala:35) at scala.App$class.main(App.scala:76) at JepTest.JepDemo$.main(JepDemo.scala:9) at JepTest.JepDemo.main(JepDemo.scala) 碰到这个问题的还真是不少，S.O.上类似的问题提示: 没有设置好 LD_LIBRARY_PATH变量 或者是没有设置好 1-Djava.library.path=/usr/local/lib/python2.7/dist-packages/jep/ github jep也有这样的issueBut提到的方法都不好使，只好去看看源码 看setup.py源码： cmdclass={ &#39;setup_java&#39;: setup_java, &#39;build_java&#39;: build_java, &#39;javadoc&#39;: javadoc, &#39;build_jar&#39;: build_jar, &#39;build&#39;: jep_build, &#39;build_ext&#39; : build_ext, &#39;build_scripts&#39;: build_scripts, &#39;install_lib&#39;: jep_install, &#39;clean&#39;: really_clean, &#39;test&#39;: test, }, 所以执行 python3 setup.py install_lib 才对， 执行打印如下： numpy include found at /home/xxh/anaconda3/lib/python3.6/site-packages/numpy/core/include running install_lib running build_py running build_ext ln -sf jep.cpython-36m-x86_64-linux-gnu.so /home/xxh/anaconda3/lib/python3.6/site-packages/jep/libjep.so 如此，如此将libjep.so文件生成后再设置相应的环境变量在idea的run-Edit Configurations中的VM中填入： 1-Djava.library.path=/home/xxh/anaconda3/lib/python3.6/site-packages/jep/ 也可以设置环境变量(划掉，不好使)： 1export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xxh/anaconda3/lib/python3.6/site-packages/jep/ 通过scala调用的python文件中，引用了不在环境变量中的其他python模块时会报错试用中，未完待续。。。版本一直在更新中，所以商用的话要小心]]></content>
@@ -879,19 +892,6 @@
         <tag>python</tag>
         <tag>jep</tag>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[tensorflow3--mnist]]></title>
-    <url>%2F2018%2F12%2F04%2Ftensorflow3--mnist%2F</url>
-    <content type="text"><![CDATA[mnist教程Mnist是tf圈的hello world mnist_softmax.py源码soft_max回归介绍： Softmax回归模型，该模型是logistic回归模型在多分类问题上的推广，在多分类问题中，类标签 \textstyle y 可以取两个以上的值。Softmax回归模型对于诸如MNIST手写数字分类等问题是很有用的，该问题的目的是辨识10个不同的单个数字。Softmax回归是有监督的，不过后面也会介绍它与深度学习/无监督学习方法的结合。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116# Copyright 2015 The TensorFlow Authors. All Rights Reserved.## Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);# you may not use this file except in compliance with the License.# You may obtain a copy of the License at## http://www.apache.org/licenses/LICENSE-2.0## Unless required by applicable law or agreed to in writing, software# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.# See the License for the specific language governing permissions and# limitations under the License.# ==============================================================================&quot;&quot;&quot;A very simple MNIST classifier.See extensive documentation athttps://www.tensorflow.org/get_started/mnist/beginners&quot;&quot;&quot;#Python的每个新版本都会增加一些新的功能，或者对原来的功能作一些改动。Python提供了__future__模块，把下一个新版本的特性导入到当前版本，于是我们就可以在当前版本中测试一些新版本的特性。from __future__ import absolute_importfrom __future__ import divisionfrom __future__ import print_functionimport argparseimport sys#使用tf提供的input_data函数来导入数据from tensorflow.examples.tutorials.mnist import input_dataimport tensorflow as tf#函数声明FLAGS = Nonedef main(_): # Import data mnist = input_data.read_data_sets(FLAGS.data_dir) # Create the model # 占位 &quot;&quot;&quot; 这里的x和y并不是特定的值，相反，他们都只是一个占位符，可以在TensorFlow运行某一计算时根据该占位符输入具体的值。 输入图片x是一个2维的浮点数张量。这里，分配给它的shape为[None, 784]，其中784是一张展平的MNIST图片的维度。None表示其值大小不定，在这里作为第一个维度值，用以指代batch的大小，意即x的数量不定。输出类别值y_也是一个2维张量，其中每一行为一个10维的one-hot向量,用于代表对应某一MNIST图片的类别。 虽然placeholder的shape参数是可选的，但有了它，TensorFlow能够自动捕捉因数据维度不一致导致的错误。 我们现在为模型定义权重W和偏置b。可以将它们当作额外的输入量，但是TensorFlow有一个更好的处理方式：变量。 一个变量代表着TensorFlow计算图中的一个值，能够在计算过程中使用，甚至进行修改。在机器学习的应用过程中，模型参数一般用Variable来表示。 &quot;&quot;&quot; x = tf.placeholder(tf.float32, [None, 784]) W = tf.Variable(tf.zeros([784, 10])) b = tf.Variable(tf.zeros([10])) #现在我们可以实现我们的回归模型了。这只需要一行！我们把向量化后的图片x和权重矩阵W相乘，加上偏置b，然后计算每个分类的softmax概率值 y = tf.matmul(x, W) + b # Define loss and optimizer # y_ = tf.placeholder(tf.float32, [None]) y_ = tf.placeholder(tf.int64, [None]) # The raw formulation of cross-entropy, # # tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(tf.nn.softmax(y)), # reduction_indices=[1])) # # can be numerically unstable. # # So here we use tf.losses.sparse_softmax_cross_entropy on the raw # outputs of &apos;y&apos;, and then average across the batch. #可以很容易的为训练过程指定最小化误差用的损失函数，我们的损失函数是目标类别和预测类别之间的交叉熵。 cross_entropy = tf.losses.sparse_softmax_cross_entropy(labels=y_, logits=y) #我们已经定义好模型和训练用的损失函数，那么用TensorFlow进行训练就很简单了。因为TensorFlow知道整个计算图，它可以使用自动微分法找到对于各个变量的损失的梯度值。TensorFlow有大量内置的优化算法 这个例子中，我们用最速下降法让交叉熵下降，步长为0.5. train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy) #新建session sess = tf.InteractiveSession() #变量初始化 tf.global_variables_initializer().run() # Train # 循环训练1000次，每次都是取下100份数据作为输入，运行train_step for _ in range(1000): batch_xs, batch_ys = mnist.train.next_batch(100) sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;) # Test trained model # 首先让我们找出那些预测正确的标签。tf.argmax 是一个非常有用的函数，它能给出某个tensor对象在某一维上的其数据最大值所在的索引值。 由于标签向量是由0,1组成，因此最大值1所在的索引位置就是类别标签，比如tf.argmax(y,1)返回的是模型对于任一输入x预测到的标签值， 而 tf.argmax(y_,1) 代表正确的标签，我们可以用 tf.equal 来检测我们的预测是否真实标签匹配(索引位置一样表示匹配)。 这里返回一个布尔数组。为了计算我们分类的准确率，我们将布尔值转换为浮点数来代表对、错，然后取平均值。例如：[True, False, True, True]变为[1,0,1,1]，计算出平均值为0.75。 correct_prediction = tf.equal(tf.argmax(y, 1), y_) accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32)) print(sess.run( accuracy, feed_dict=&#123; x: mnist.test.images, y_: mnist.test.labels &#125;)) # SAVE THE MODEL # 保存model builder = tf.saved_model.builder.SavedModelBuilder(&quot;/tmp/mnist/model/1620&quot;) builder.add_meta_graph_and_variables( sess, [tf.saved_model.tag_constants.SERVING] ) builder.save()if __name__ == &apos;__main__&apos;: parser = argparse.ArgumentParser() parser.add_argument( &apos;--data_dir&apos;, type=str, default=&apos;/tmp/tensorflow/mnist/input_data&apos;, help=&apos;Directory for storing input data&apos;) FLAGS, unparsed = parser.parse_known_args() tf.app.run(main=main, argv=[sys.argv[0]] + unparsed) 卷积神经网络//Todo]]></content>
-      <categories>
-        <category>机器学习、深度学习 - tensorflow</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>tensorflow</tag>
       </tags>
   </entry>
   <entry>
@@ -919,17 +919,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[关于单元测试]]></title>
-    <url>%2F2018%2F12%2F04%2F%E5%85%B3%E4%BA%8E%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[单元测试Java单元测试入门 简介介绍单元测试是先mock一些正常边界异常条件来对接口进行操作，并且期望接口返回什么内容，最后接口实现了之后再重新测试一遍。TDD：Test-Driven Development，测试驱动开发模式——旨在强调在开发功能代码之前，先编写测试代码。开发未动，测试先行。 为什么我们要进行单元测试：最后才修改一个 bug 的代价是在 bug 产生时修改它的代价的10倍。——《快速软件开发》测试任何可能的错误。单元测试不是用来证明您是对的，而是为了证明您没有错。单元测试是编写测试代码，用来检测特定的、明确的、细颗粒的功能。单元测试并不一定保证程序功能是正确的，更不保证整体业务是准备的。单元测试不仅仅用来保证当前代码的正确性，更重要的是用来保证代码修复、改进或重构之后的正确性。 单元测试 定义与特点 单元测试（unit testing）：是指对软件中的最小可测试单元进行检查和验证。 这个定义有点抽象，这里举几个单元测试的特性，大家感受一下：一般是一个函数配几个单元测试、单元测试不应该依赖外部系统、单元测试运行速度很快、单元测试不应该造成测试环境的脏数据、单元测试可以重复运行。 优点 单元测试使得我们可以放心修改、重构业务代码，而不用担心修改某处代码后带来的副作用。 单元测试可以帮助我们反思模块划分的合理性，如果一个单元测试写得逻辑非常复杂、或者说一个函数复杂到无法写单测，那就说明模块的抽象有问题。 单元测试使得系统具备更好的可维护性、具备更好的可读性；对于团队的新人来说，阅读系统代码可以从单元测试入手，一点点开始后熟悉系统的逻辑。 本文要解决的痛点 单测何时写？如果你的团队在坚持TDD的风格，那就是在编码之前写；如果没有，也不建议在全部业务代码编写完成之后再开始补单元测试。单元测试比较（最）合适的时机是：一块业务逻辑写完后，跟着写几个单元测试验证下。单测怎么写？分层单测：数据库操作层、中间件依赖层、业务逻辑层，各自的单元测试各自写，互相不要有依赖。单测运行太慢？dao层测试，使用H2进行测试，做独立的BaseH2Test、独立的test-h2-applicationContext.xml，只对dao的测试service层测试，依赖mockito框架，使用@RunWith(MockitoJUnitRunner.class)注解，就无需加载其他spring bean，具体用法对于依赖外部的中间件（例如redis、diamond、mq），在处理单测的时候要注意分开加载和测试，尤其是与dao的测试分开 作者：杜琪链接：https://www.jianshu.com/p/a8e17afd8c90來源：简书简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。 使用场景什么是单元测试，在什么场景下使用单元测试合适单元测试到底是什么]]></content>
-      <categories>
-        <category>测试</category>
-      </categories>
-      <tags>
-        <tag>单元测试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[git使用]]></title>
     <url>%2F2018%2F12%2F04%2F%E4%BD%BF%E7%94%A8git%2F</url>
     <content type="text"><![CDATA[git 不熟悉但是这种工具性的东西，就得边用边学 两个项目合并方法不一定最快，能用 project a 12git checkout -b &apos;newbranch&apos;git push origin newbranch project b 12345678910111213141516git init//copy .gitignoregit add .git commit -m &apos;b&apos;git remote add origin git@***.gitgit pull origin sparks3git statusgit add .git commit -m &apos;sfs&apos;git push origin master]]></content>
@@ -938,6 +927,17 @@
       </categories>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[关于单元测试]]></title>
+    <url>%2F2018%2F12%2F04%2F%E5%85%B3%E4%BA%8E%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[单元测试Java单元测试入门 简介介绍单元测试是先mock一些正常边界异常条件来对接口进行操作，并且期望接口返回什么内容，最后接口实现了之后再重新测试一遍。TDD：Test-Driven Development，测试驱动开发模式——旨在强调在开发功能代码之前，先编写测试代码。开发未动，测试先行。 为什么我们要进行单元测试：最后才修改一个 bug 的代价是在 bug 产生时修改它的代价的10倍。——《快速软件开发》测试任何可能的错误。单元测试不是用来证明您是对的，而是为了证明您没有错。单元测试是编写测试代码，用来检测特定的、明确的、细颗粒的功能。单元测试并不一定保证程序功能是正确的，更不保证整体业务是准备的。单元测试不仅仅用来保证当前代码的正确性，更重要的是用来保证代码修复、改进或重构之后的正确性。 单元测试 定义与特点 单元测试（unit testing）：是指对软件中的最小可测试单元进行检查和验证。 这个定义有点抽象，这里举几个单元测试的特性，大家感受一下：一般是一个函数配几个单元测试、单元测试不应该依赖外部系统、单元测试运行速度很快、单元测试不应该造成测试环境的脏数据、单元测试可以重复运行。 优点 单元测试使得我们可以放心修改、重构业务代码，而不用担心修改某处代码后带来的副作用。 单元测试可以帮助我们反思模块划分的合理性，如果一个单元测试写得逻辑非常复杂、或者说一个函数复杂到无法写单测，那就说明模块的抽象有问题。 单元测试使得系统具备更好的可维护性、具备更好的可读性；对于团队的新人来说，阅读系统代码可以从单元测试入手，一点点开始后熟悉系统的逻辑。 本文要解决的痛点 单测何时写？如果你的团队在坚持TDD的风格，那就是在编码之前写；如果没有，也不建议在全部业务代码编写完成之后再开始补单元测试。单元测试比较（最）合适的时机是：一块业务逻辑写完后，跟着写几个单元测试验证下。单测怎么写？分层单测：数据库操作层、中间件依赖层、业务逻辑层，各自的单元测试各自写，互相不要有依赖。单测运行太慢？dao层测试，使用H2进行测试，做独立的BaseH2Test、独立的test-h2-applicationContext.xml，只对dao的测试service层测试，依赖mockito框架，使用@RunWith(MockitoJUnitRunner.class)注解，就无需加载其他spring bean，具体用法对于依赖外部的中间件（例如redis、diamond、mq），在处理单测的时候要注意分开加载和测试，尤其是与dao的测试分开 作者：杜琪链接：https://www.jianshu.com/p/a8e17afd8c90來源：简书简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。 使用场景什么是单元测试，在什么场景下使用单元测试合适单元测试到底是什么]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>单元测试</tag>
       </tags>
   </entry>
   <entry>
@@ -952,6 +952,19 @@
         <tag>python</tag>
         <tag>数据处理</tag>
         <tag>numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在spark中使用S3]]></title>
+    <url>%2F2018%2F12%2F04%2F%E5%9C%A8spark%E4%B8%AD%E4%BD%BF%E7%94%A8S3%2F</url>
+    <content type="text"><![CDATA[感受：aws S3 远远没有aws官方吹嘘的那么好用，特别是对hadoop的兼容，简直让人吐血，客观原因：在emr中使用S3 都折腾了好久，现在有个半成品吧，还是花钱买的aws官方支持 build.sbt ××hadoop-aws包与hadoop版本兼容及其敏感×× 1234567891011121314151617181920212223242526272829303132333435name := &quot;my-api-hdfs&quot;version := &quot;1.1.provided&quot;scalaVersion := &quot;2.11.8&quot;dependencyOverrides += &quot;com.fasterxml.jackson.core&quot; % &quot;jackson-core&quot; % &quot;2.7.8&quot;dependencyOverrides += &quot;com.fasterxml.jackson.core&quot; % &quot;jackson-databind&quot; % &quot;2.7.8&quot;dependencyOverrides += &quot;com.fasterxml.jackson.core&quot; % &quot;jackson-annotations&quot; % &quot;2.7.8&quot;dependencyOverrides += &quot;com.fasterxml.jackson.module&quot; %% &quot;jackson-module-scala&quot; % &quot;2.7.8&quot;dependencyOverrides += &quot;com.fasterxml.jackson.module&quot; % &quot;jackson-module-paranamer&quot; % &quot;2.7.8&quot;libraryDependencies += &quot;org.apache.hadoop&quot; % &quot;hadoop-client&quot; % &quot;3.1.0&quot; % &quot;provided&quot;// https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-awslibraryDependencies += &quot;org.apache.hadoop&quot; % &quot;hadoop-aws&quot; % &quot;3.1.0&quot; % &quot;provided&quot;// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3libraryDependencies += &quot;com.amazonaws&quot; % &quot;aws-java-sdk-s3&quot; % &quot;1.11.338&quot; % &quot;provided&quot;// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-corelibraryDependencies += &quot;com.amazonaws&quot; % &quot;aws-java-sdk-core&quot; % &quot;1.11.338&quot; % &quot;provided&quot;// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-kmslibraryDependencies += &quot;com.amazonaws&quot; % &quot;aws-java-sdk-kms&quot; % &quot;1.11.338&quot; % &quot;provided&quot;// https://mvnrepository.com/artifact/org.apache.spark/spark-corelibraryDependencies += &quot;org.apache.spark&quot; %% &quot;spark-core&quot; % &quot;2.3.0&quot; % &quot;provided&quot;libraryDependencies += &quot;cn.**.aip&quot; %% &quot;cn-***-aip-common-databases&quot; % &quot;1.0.13&quot;mainClass in assembly := Some(&quot;AwsSupportS3&quot;)assemblyJarName in assembly := s&quot;my-api-hdfs1.1.0607.jar&quot; s3连接： scala版： 12345678910111213141516object SparkS3 &#123; def main(args: Array[String]): Unit = &#123; val conf = new SparkConf().setAppName(s&quot;sparkS3&quot;).setMaster(&quot;yarn&quot;) val spark = new SparkContext(conf) spark.hadoopConfiguration.set(&quot;fs.s3n.impl&quot;, &quot;com.amazon.ws.emr.hadoop.fs.EmrFileSystem&quot;) spark.hadoopConfiguration.set(&quot;fs.s3n.endpoint&quot;, &quot;s3.cn-north-1.amazonaws.com.cn&quot;) spark.hadoopConfiguration.set(&quot;fs.s3n.awsAccessKeyId&quot;, &quot;××××××××&quot;) spark.hadoopConfiguration.set(&quot;fs.s3n.secret.key&quot;, &quot;××××××××××××HM5&quot;) //读 val testweet = spark.textFile(&quot;s3n://×××××-test-×××/testweet.json&quot;) //写 testweet.saveAsTextFile(s&quot;s3n://xuxianhong-test-data/data/$&#123;DateUtil.currentDate&#125;&quot;) spark.stop() &#125;&#125; java版(还是很感谢aws的支持)： 123456789101112131415161718192021222324252627282930public class AwsSupportS3 &#123; public static void main(String args[])&#123; new AwsSupportS3().awsCodeS3(); &#125; public void awsCodeS3()&#123; AmazonS3 s3client = new AmazonS3Client(new DefaultAWSCredentialsProviderChain()); //Map&lt;String, EC2MetadataUtils.IAMSecurityCredential&gt; credentialMap = EC2MetadataUtils.getIAMSecurityCredentials(); Region region = Region.getRegion(Regions.CN_NORTH_1); s3client.setRegion(region); SparkConf sparkConf = new SparkConf().setAppName(&quot;test app&quot;).setMaster(&quot;yarn&quot;); JavaSparkContext jsc = new JavaSparkContext(sparkConf); jsc.hadoopConfiguration().set(&quot;fs.s3n.impl&quot;,&quot;com.amazon.ws.emr.hadoop.fs.EmrFileSystem&quot;); jsc.hadoopConfiguration().set(&quot;fs.s3n.endpoint&quot;, &quot;s3.cn-north-1.amazonaws.com.cn&quot;); jsc.hadoopConfiguration().set(&quot;fs.s3n.awsAccessKeyId&quot;, &quot;××××&quot;); jsc.hadoopConfiguration().set(&quot;fs.s3n.awsSecretAccessKey&quot;, &quot;×××××××××/×××/××&quot;); JavaRDD&lt;String&gt; resource = jsc.textFile(&quot;s3n://××××-××-data/××/ham.txt&quot;); resource.cache(); String date = DateUtil.currentDate(); resource.saveAsTextFile(&quot;s3n://×××××-×××××-data/data/&quot;+date); List&lt;String&gt; list = resource.collect(); System.out.println(&quot;---------------------&quot;+resource.count()); //System.out.println(list.toString()); jsc.close(); &#125;&#125; 有别的使用再补充]]></content>
+      <categories>
+        <category>数据存储处理 - spark</category>
+      </categories>
+      <tags>
+        <tag>spark</tag>
+        <tag>S3</tag>
+        <tag>aws</tag>
       </tags>
   </entry>
   <entry>
@@ -978,19 +991,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[在spark中使用S3]]></title>
-    <url>%2F2018%2F12%2F04%2F%E5%9C%A8spark%E4%B8%AD%E4%BD%BF%E7%94%A8S3%2F</url>
-    <content type="text"><![CDATA[感受：aws S3 远远没有aws官方吹嘘的那么好用，特别是对hadoop的兼容，简直让人吐血，客观原因：在emr中使用S3 都折腾了好久，现在有个半成品吧，还是花钱买的aws官方支持 build.sbt ××hadoop-aws包与hadoop版本兼容及其敏感×× 1234567891011121314151617181920212223242526272829303132333435name := &quot;my-api-hdfs&quot;version := &quot;1.1.provided&quot;scalaVersion := &quot;2.11.8&quot;dependencyOverrides += &quot;com.fasterxml.jackson.core&quot; % &quot;jackson-core&quot; % &quot;2.7.8&quot;dependencyOverrides += &quot;com.fasterxml.jackson.core&quot; % &quot;jackson-databind&quot; % &quot;2.7.8&quot;dependencyOverrides += &quot;com.fasterxml.jackson.core&quot; % &quot;jackson-annotations&quot; % &quot;2.7.8&quot;dependencyOverrides += &quot;com.fasterxml.jackson.module&quot; %% &quot;jackson-module-scala&quot; % &quot;2.7.8&quot;dependencyOverrides += &quot;com.fasterxml.jackson.module&quot; % &quot;jackson-module-paranamer&quot; % &quot;2.7.8&quot;libraryDependencies += &quot;org.apache.hadoop&quot; % &quot;hadoop-client&quot; % &quot;3.1.0&quot; % &quot;provided&quot;// https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-awslibraryDependencies += &quot;org.apache.hadoop&quot; % &quot;hadoop-aws&quot; % &quot;3.1.0&quot; % &quot;provided&quot;// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3libraryDependencies += &quot;com.amazonaws&quot; % &quot;aws-java-sdk-s3&quot; % &quot;1.11.338&quot; % &quot;provided&quot;// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-corelibraryDependencies += &quot;com.amazonaws&quot; % &quot;aws-java-sdk-core&quot; % &quot;1.11.338&quot; % &quot;provided&quot;// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-kmslibraryDependencies += &quot;com.amazonaws&quot; % &quot;aws-java-sdk-kms&quot; % &quot;1.11.338&quot; % &quot;provided&quot;// https://mvnrepository.com/artifact/org.apache.spark/spark-corelibraryDependencies += &quot;org.apache.spark&quot; %% &quot;spark-core&quot; % &quot;2.3.0&quot; % &quot;provided&quot;libraryDependencies += &quot;cn.**.aip&quot; %% &quot;cn-***-aip-common-databases&quot; % &quot;1.0.13&quot;mainClass in assembly := Some(&quot;AwsSupportS3&quot;)assemblyJarName in assembly := s&quot;my-api-hdfs1.1.0607.jar&quot; s3连接： scala版： 12345678910111213141516object SparkS3 &#123; def main(args: Array[String]): Unit = &#123; val conf = new SparkConf().setAppName(s&quot;sparkS3&quot;).setMaster(&quot;yarn&quot;) val spark = new SparkContext(conf) spark.hadoopConfiguration.set(&quot;fs.s3n.impl&quot;, &quot;com.amazon.ws.emr.hadoop.fs.EmrFileSystem&quot;) spark.hadoopConfiguration.set(&quot;fs.s3n.endpoint&quot;, &quot;s3.cn-north-1.amazonaws.com.cn&quot;) spark.hadoopConfiguration.set(&quot;fs.s3n.awsAccessKeyId&quot;, &quot;××××××××&quot;) spark.hadoopConfiguration.set(&quot;fs.s3n.secret.key&quot;, &quot;××××××××××××HM5&quot;) //读 val testweet = spark.textFile(&quot;s3n://×××××-test-×××/testweet.json&quot;) //写 testweet.saveAsTextFile(s&quot;s3n://xuxianhong-test-data/data/$&#123;DateUtil.currentDate&#125;&quot;) spark.stop() &#125;&#125; java版(还是很感谢aws的支持)： 123456789101112131415161718192021222324252627282930public class AwsSupportS3 &#123; public static void main(String args[])&#123; new AwsSupportS3().awsCodeS3(); &#125; public void awsCodeS3()&#123; AmazonS3 s3client = new AmazonS3Client(new DefaultAWSCredentialsProviderChain()); //Map&lt;String, EC2MetadataUtils.IAMSecurityCredential&gt; credentialMap = EC2MetadataUtils.getIAMSecurityCredentials(); Region region = Region.getRegion(Regions.CN_NORTH_1); s3client.setRegion(region); SparkConf sparkConf = new SparkConf().setAppName(&quot;test app&quot;).setMaster(&quot;yarn&quot;); JavaSparkContext jsc = new JavaSparkContext(sparkConf); jsc.hadoopConfiguration().set(&quot;fs.s3n.impl&quot;,&quot;com.amazon.ws.emr.hadoop.fs.EmrFileSystem&quot;); jsc.hadoopConfiguration().set(&quot;fs.s3n.endpoint&quot;, &quot;s3.cn-north-1.amazonaws.com.cn&quot;); jsc.hadoopConfiguration().set(&quot;fs.s3n.awsAccessKeyId&quot;, &quot;××××&quot;); jsc.hadoopConfiguration().set(&quot;fs.s3n.awsSecretAccessKey&quot;, &quot;×××××××××/×××/××&quot;); JavaRDD&lt;String&gt; resource = jsc.textFile(&quot;s3n://××××-××-data/××/ham.txt&quot;); resource.cache(); String date = DateUtil.currentDate(); resource.saveAsTextFile(&quot;s3n://×××××-×××××-data/data/&quot;+date); List&lt;String&gt; list = resource.collect(); System.out.println(&quot;---------------------&quot;+resource.count()); //System.out.println(list.toString()); jsc.close(); &#125;&#125; 有别的使用再补充]]></content>
-      <categories>
-        <category>数据存储处理 - spark</category>
-      </categories>
-      <tags>
-        <tag>spark</tag>
-        <tag>S3</tag>
-        <tag>aws</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[掌握HttpResponse]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%8E%8C%E6%8F%A1HttpResponse%2F</url>
     <content type="text"><![CDATA[HTTP请求报文和HTTP响应报文 http 报文是面向文本的，报文中的每一个字段都是一些ASCII码串，各个字段的长度是不确定的。分两种，请求报文和响应报文。 请求报文//ToDo 响应报文http响应由四部分组成，分别是： 状态行、消息报头、空行、 响应正文格式: //[] 状态行格式如下： HTTP-Version Status-Code Reason-Phrase CRLF 其中，HTTP-Version表示服务器HTTP协议的版本；Status-Code表示服务器发回的响应状态代码；Reason-Phrase表示状态代码的文本描述。状态代码由三位数字组成，第一个数字定义了响应的类别，且有五种可能取值。 1xx：指示信息–表示请求已接收，继续处理。2xx：成功–表示请求已被成功接收、理解、接受。3xx：重定向–要完成请求必须进行更进一步的操作。4xx：客户端错误–请求有语法错误或请求无法实现。5xx：服务器端错误–服务器未能实现合法的请求。常见状态代码、状态描述的说明如下。 200 OK：客户端请求成功。400 Bad Request：客户端请求有语法错误，不能被服务器所理解。401 Unauthorized：请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用。403 Forbidden：服务器收到请求，但是拒绝提供服务。404 Not Found：请求资源不存在，举个例子：输入了错误的URL。500 Internal Server Error：服务器发生不可预期的错误。503 Server Unavailable：服务器当前不能处理客户端的请求，一段时间后可能恢复正常，举个例子：HTTP/1.1 200 OK（CRLF）。]]></content>
@@ -1000,6 +1000,17 @@
       <tags>
         <tag>webapp</tag>
         <tag>HttpResponse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[攒技能]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%94%92%E6%8A%80%E8%83%BD%2F</url>
+    <content type="text"><![CDATA[抬头看天 低头走路分类 项目管理编程语言数据结构服务器端前端数据可视化数据存储处理分布式计算数据分析机器学习、深度学习工欲善其事，必先利其器误入歧途书签数据采集瞎说]]></content>
+      <categories>
+        <category>书签</category>
+      </categories>
+      <tags>
+        <tag>技能树</tag>
       </tags>
   </entry>
   <entry>
@@ -1022,17 +1033,6 @@
       </categories>
       <tags>
         <tag>数据分析</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[攒技能]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%94%92%E6%8A%80%E8%83%BD%2F</url>
-    <content type="text"><![CDATA[抬头看天 低头走路分类 项目管理编程语言数据结构服务器端前端数据可视化数据存储处理分布式计算数据分析机器学习、深度学习工欲善其事，必先利其器误入歧途书签数据采集瞎说]]></content>
-      <categories>
-        <category>书签</category>
-      </categories>
-      <tags>
-        <tag>技能树</tag>
       </tags>
   </entry>
   <entry>
