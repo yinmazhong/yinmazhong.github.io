@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[并发-Java]]></title>
+    <url>%2F2019%2F06%2F10%2F%E5%B9%B6%E5%8F%91-Java%2F</url>
+    <content type="text"><![CDATA[&lt;Java 编程思想&gt;-并发并发介绍，想要真正编写一些复杂的程序钱，应该学一些专门介绍并发的书籍 并发的多面性使用并发时需要解决的问题有多个，而实现并发的方式也有多种，并且两者之间没有明显的映射关系 并发解决的问题大体上可以分为速度和设计可管理性两种 更快的执行并发通常是提高运行在单处理器上的程序性能直觉上思考在单核心上顺序运行程序应该是最高效的，因为没有上下文切换的代价 但是世界上有讨厌的 阻塞 单处理器系统中性能提高的常见实例就是事件驱动编程 操作进程进程是运行在它自己的地址空间内的自包容的程序 而java所使用的并发系统会共享诸如内存和IO这样的资源,java操作的是代码代表的进程生成的一系列线程 java 可能并没有函数式编程语言适合并发 改进代码设计基本的线程机制并发编程将程序划分为多个分离的独立运行的任务，通过多线程机制，这些独立任务中的每一个都将由执行线程来驱动。线程的调度由操作系统负责 代码 定义任务通过Runnable接口定义任务 Thread class将Runnable对象转变为工作按任务的传统方式是把它提交给一个Thread构造器 executor非常常见的情况是，单个Executor被用来穿件和管理系统所有的任务 在任何线程池中，现有线程在可能的情况下，都会被自动复用 从任务中产生返回值使用Callable接口，而不是Runnable,Callable接口返回一个泛型的Future,可以使用get()方法等待结果返回 休眠sleep 优先级优先调度优先级比较高的线程 书上的例子在我的电脑上不好使 让步如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程带哦度机制一个暗示：我的工作已经做得差不多了，可以让别的线程使用CPU了 这个暗示就是使用yield()方法来作出 不能依赖yield,实际上，yield经常被滥用 后台线程所谓后台(daemon)线程,是指在程序运行的时候在后台提供的一种通用服务的线程， 这种线程并不属于程序中不可或缺的部分后台线程退出时，会杀死进程中所有与的后台线程。 《Java 并发编程实战》极客时间-王老师笔记： Java 并发编程很重要，并且属于高阶编程能力，但是不得不学；很难学，但这个思路去学没那么难老师很牛逼，但十五年了并发编程还没有完全掌握，以前主要靠单核处理器的性能提升来提高程序执行效率，但现在单核cpu的性能提升遇到瓶颈，但互联网需要高并发，同时中间件，数据库的并发难以满足要求，必须全民并发编程 并发编程三个核心问题：分工，同步，互斥 人最难得的能力就是坚持， 毅力强者为王 要称王吗兄弟？ 怎么办？跳出来，看全景并发编程领域可以抽象成三大问题：分工、同步和互斥 分工最佳的方式就是和现实世界做类比，例如生产者消费者模式 同步一个线程执行完了一个任务，如何通知执行后续任务的线程开工 当某个条件不满足时，线程需要等待，当某个条件满足时，线程需要被唤醒执行 解决协作问题的核心技术是管程，管程是解决并发问题的万能钥匙 互斥分工、同步主要强调性能，互斥保证的是正确性，，用专业术语叫“线程安全” 并发程序里，当多个线程同时访问同一个共享变量时，结果是不确定的，不确定就是不对的 导致不确定的是： 可见性问题 有序性问题 原子性问题 所谓互斥，指的是同一时刻，只允许一个线程访问共享变量 钻进去，看本质 这个专栏更多地谈及问题背后的本质，问题的起源，同时站在理论，模型的角度讲解java并发]]></content>
+      <categories>
+        <category>并发</category>
+      </categories>
+      <tags>
+        <tag>并发，java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[并发-java 编程思想]]></title>
+    <url>%2F2019%2F06%2F10%2F%E5%B9%B6%E5%8F%91-java%2F</url>
+    <content type="text"><![CDATA[&lt;Java 编程思想&gt;-并发并发介绍，想要真正编写一些复杂的程序钱，应该学一些专门介绍并发的书籍 并发的多面性使用并发时需要解决的问题有多个，而实现并发的方式也有多种，并且两者之间没有明显的映射关系 并发解决的问题大体上可以分为速度和设计可管理性两种 更快的执行并发通常是提高运行在单处理器上的程序性能直觉上思考在单核心上顺序运行程序应该是最高效的，因为没有上下文切换的代价 但是世界上有讨厌的 阻塞 单处理器系统中性能提高的常见实例就是事件驱动编程 操作进程进程是运行在它自己的地址空间内的自包容的程序 而java所使用的并发系统会共享诸如内存和IO这样的资源,java操作的是代码代表的进程生成的一系列线程 java 可能并没有函数式编程语言适合并发 改进代码设计基本的线程机制并发编程将程序划分为多个分离的独立运行的任务，通过多线程机制，这些独立任务中的每一个都将由执行线程来驱动。线程的调度由操作系统负责 代码 定义任务通过Runnable接口定义任务 Thread class将Runnable对象转变为工作按任务的传统方式是把它提交给一个Thread构造器 executor非常常见的情况是，单个Executor被用来穿件和管理系统所有的任务 在任何线程池中，现有线程在可能的情况下，都会被自动复用 从任务中产生返回值使用Callable接口，而不是Runnable,Callable接口返回一个泛型的Future,可以使用get()方法等待结果返回 休眠sleep 优先级优先调度优先级比较高的线程 书上的例子在我的电脑上不好使 让步如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程带哦度机制一个暗示：我的工作已经做得差不多了，可以让别的线程使用CPU了 这个暗示就是使用yield()方法来作出 不能依赖yield,实际上，yield经常被滥用 后台线程所谓后台(daemon)线程,是指在程序运行的时候在后台提供的一种通用服务的线程， 这种线程并不属于程序中不可或缺的部分后台线程退出时，会杀死进程中所有与的后台线程。]]></content>
+      <categories>
+        <category>并发</category>
+      </categories>
+      <tags>
+        <tag>并发，java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[javaIO]]></title>
     <url>%2F2019%2F06%2F04%2FjavaIO%2F</url>
-    <content type="text"><![CDATA[JAVA IO整体架构图]]></content>
+    <content type="text"><![CDATA[JAVA IO整体架构图 未完待续]]></content>
   </entry>
   <entry>
     <title><![CDATA[aTemp]]></title>
@@ -233,18 +255,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
-    <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛): BWH1ZBPVK（6.00%） bandwagon官网购买vps,支持支付宝(alipay),有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server推荐blog 配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务 1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf: 123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>Bandwagon</tag>
-        <tag>shadowsocks</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[DIY Cluster]]></title>
     <url>%2F2018%2F12%2F04%2FDIY-cluster%2F</url>
     <content type="text"><![CDATA[需求单机应用分布式执行 akka cluster单台机器也可用dispatcher提高机器利用率,这是后话，先按照要求做出一个集群来 desc不同于actor点对点的交互，而是有独特的 akka cluster机制 集群定义： 维基百科上的定义是 “计算机集群由一系列间接或直接连接的计算机组成,这些计算机共同完成工作,从很多角度上来说,可以将这些计算机看作是单个系统。具体到本章中对于集群的定义,我们可以认为一个集群就是一组 机器(也可能是虚拟机),我们将这些机器称作节点(node)或是成员(member),同一个组中的所有节点遵循某个协议。 巨型单体服务vs微服务Martin Fowler的观点： 1. 当团队较小，开发的应用程序也比较小的时候，建议使用单体应用，随着应用程序变大，团队内的开发人员变多时，可以试着查分单体为微服务。 2. 当查分单体应用时，如果没有在开发单体时的经验，很可能把错误的部分拆分出去 一旦有了些在生产环境中运行系统的经验和数据,要把哪个部分分离出来才能够在 新增功能时带来性能和团队开发速度的好处就会比较清楚了。开始部署微服务之后,我 们就可以用一种非平衡的方式对负载更高的服务进行扩展,给应用程序中使用更多的部 分分配更大的服务器集群。 集群定义集群就是一组可以相互通信的服务器必须的两个条件： 失败发现 以及使得集群中的所有成员最终能够提供一致的视图(什么意思) 失败检测节点基于能否获得其他节点的响应来确定节点是否可用 akka中，每个节点仅仅检测附近的节点，以节省网络开销，提高效率 通过gossip协议达到最终一致思考一下失败检测的处理,集群中的每个节点和它的邻居节点互相交换已知的状态。接着,这些邻居节点再将已知的状态传递给它们的“邻居”,以此往复,直到某个节点的已知状态传递给了集群中的所有成员。节点会仔细计算并得到集群中其他成员的状态 CAPC一致性 A可用性 p分区容错性 CAP理论的妥协分布式系统只能选择满足其中两个 使用Akka Cluster 构建系统Akka Cluster 基于 Akka Remoting,解决了实际应用中的高可用性等问题 场景比较简单，可以直接使用Akka Remoting 来构建系统的alpha版本官网上提供了akka-samples-remote-scala的例子，先学习一下 通读第一遍 看了下look up 的例子，真是不错，看来以后研究开源框架，还是要直接上官网看文档 原始人：ssh太原始了，慎重 研究了devops工具，听人劝，使用ansible更可贵的是ansible包含了对aws的支持]]></content>
@@ -256,16 +266,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Future&Promise]]></title>
-    <url>%2F2018%2F12%2F04%2FFuture%26promise%2F</url>
-    <content type="text"><![CDATA[Future和Promisescala 并发编程的两大利器：Future、Actor 顺序代码效率低这个例子很不错 What is Future scala.concurrent 包里的 Future[T] 是一个容器类型，代表一种返回值类型为 T 的计算。 计算可能会出错，也可能会超时； 从而，当一个 future 完成时，它可能会包含异常，而不是你期望的那个值。 Future 只能写一次： 当一个 future 完成后，它就不能再被改变了。 同时，Future 只提供了读取计算值的接口，写入计算值的任务交给了 Promise， 这样，API 层面上会有一个清晰的界限。 这篇文章里，我们主要关注前者，下一章会介绍 Promise 的使用。]]></content>
+    <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
+    <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛): BWH1ZBPVK（6.00%） bandwagon官网购买vps,支持支付宝(alipay),有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server推荐blog 配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务 1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf: 123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
       <categories>
-        <category>服务器端 - 并发编程</category>
+        <category>工欲善其事，必先利其器</category>
       </categories>
       <tags>
-        <tag>scala</tag>
-        <tag>Future</tag>
-        <tag>Promise</tag>
+        <tag>Bandwagon</tag>
+        <tag>shadowsocks</tag>
       </tags>
   </entry>
   <entry>
@@ -279,6 +288,19 @@
         <tag>database</tag>
         <tag>H2</tag>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Future&Promise]]></title>
+    <url>%2F2018%2F12%2F04%2FFuture%26promise%2F</url>
+    <content type="text"><![CDATA[Future和Promisescala 并发编程的两大利器：Future、Actor 顺序代码效率低这个例子很不错 What is Future scala.concurrent 包里的 Future[T] 是一个容器类型，代表一种返回值类型为 T 的计算。 计算可能会出错，也可能会超时； 从而，当一个 future 完成时，它可能会包含异常，而不是你期望的那个值。 Future 只能写一次： 当一个 future 完成后，它就不能再被改变了。 同时，Future 只提供了读取计算值的接口，写入计算值的任务交给了 Promise， 这样，API 层面上会有一个清晰的界限。 这篇文章里，我们主要关注前者，下一章会介绍 Promise 的使用。]]></content>
+      <categories>
+        <category>服务器端 - 并发编程</category>
+      </categories>
+      <tags>
+        <tag>scala</tag>
+        <tag>Future</tag>
+        <tag>Promise</tag>
       </tags>
   </entry>
   <entry>
@@ -412,14 +434,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Redis Learning]]></title>
-    <url>%2F2018%2F12%2F04%2FRedis%20Learning%2F</url>
-    <content type="text"><![CDATA[应用场景：redis 适用于小而热的数据 Redis应用场景 Redis作者谈Redis应用场景我们在应用redis的场景是 缓存将收到的post报文缓存下，然后批量插入redshift github上的scala版redis client官方推荐了好几款开源的scala 版客户端，都不知道选哪个比较好了，应该迅速读一遍scala 并发编程 Redis is an open source(BSD Licensed),in-memory data structure store,used as a database,cache,and message broker.It supports data structures such as strings,hashes,lists,sets,sorted sets with range queries,bitmaps,hyperloglogs and geospatial indexes with radius queries.build-in: replication Lua scripting LRU eviction transaction different levels of on-disk persistence provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster. You can run atomic operations on these types, like appending to a string; incrementing the value in a hash; pushing an element to a list; computing set intersection, union and difference; or getting the member with highest ranking in a sorted set. in-memory dataset: In order to achieve its outstanding performance, Redis works with an in-memory dataset. Depending on your use case, you can persist it either by dumping the dataset to disk every once in a while, or by appending each command to a log. Persistence can be optionally disabled, if you just need a feature-rich, networked, in-memory cache. no-blocking replication: Redis also supports trivial-to-setup master-slave asynchronous replication, with very fast non-blocking first synchronization, auto-reconnection with partial resynchronization on net split. transcation数据库事务彻底搞懂事务 6379-为何Redis选择它作为默认端口号？redis 使用服务器端／客户端架构的数据库架构通过client去连接redis服务端 我们可以通过redis-cli去连接redis数据库，这是学习测试redis最好的方法，这时redis-cli就是一个client 之前连接关系型数据库一般都是通过JDBC的方式连接的，这个redis是怎么连接上去的我暂时还没有搞清楚，官方推荐了很多类似与sdk的工具库，使用这些库可以很方便的连接redis， redis 持久化有两种方式做持久化，其一是RDB，定期备份数据库的状态；其二是AOF，记录数据库的相关命令优先使用AOF方式 使用list来存储数据，LPUSH mylist “1”// BRPOP mylist 0 取出最先放入的元素，每分钟生成一个key,同步数据只处理之前的key里面的数据做一个事务，保证该元素处理的原子性因为BRPOP 只能取出最后一个元素，所以应该使用BPOPLPUSH 散列算法(Hash Algorithm),又称哈希算法，杂凑算法，是从任意文件中创造小的数字[指纹]的方法。散列算法是一种以较短的信息来保证文件唯一性标志，这种标志与文件的每一个字节都相关，而且难以找到逆向规律。因此，当原有文件发生改变时，其标志值也会发生改变，从而告诉文件使用者当前文件已经不是你所需求的文件。 先举个例子。我们每个活在世上的人，为了能够参与各种社会活动，都需要一个用于识别自己的标志。也许你觉得名字或是身份证就足以代表你这个人，但是这种代表性非常脆弱，因为重名的人很多，身份证也可以伪造。最可靠的办法是把一个人的所有基因序列记录下来用来代表这个人，但显然，这样做并不实际。而指纹看上去是一种不错的选择，虽然一些专业组织仍然可以模拟某个人的指纹，但这种代价实在太高了。 而对于在互联网世界里传送的文件来说，如何标志一个文件的身份同样重要。比如说我们下载一个文件，文件的下载过程中会经过很多网络服务器、路由器的中转，如何保证这个文件就是我们所需要的呢？我们不可能去一一检测这个文件的每个字节，也不能简单地利用文件名、文件大小这些极容易伪装的信息，这时候，我们就需要一种指纹一样的标志来检查文件的可靠性，这种指纹就是我们现在所用的Hash算法(也叫散列算法)。 参考：Hash算法总结]]></content>
+    <title><![CDATA[Shell笔记]]></title>
+    <url>%2F2018%2F12%2F04%2FShell%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[awk将数据put到hdfs,然后用hive组织的过程中，发现数据混乱，从某行开始全是NULL 将一行数据copy到idea中,按照逗号分割后，发现只有223(理论上是226)，用awk的NF处理文件，每行也是 226列 —&gt; 于是，使用awk 的 $17 打印开始乱的列，果然找到问题， 用navicat导出的数据，默认有一个‘N*’符号 ，这个符号可以用notepad++来识别并替换掉ps: 该工具导出的数据另一个坑是：不管什么类型的数据，导出来都是到这双引号，往hive中导入时，有数值型的就尿了 所有后来直接用了sqoop 这里用到了awk ,觉得这个工具还是很强大的 123awk -F &apos;,&apos; &apos;&#123;print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0 &quot;,分隔符:&quot; OFS&#125;&apos; xxx.csvawk -F &apos;,&apos; &apos;&#123;if(NF&lt;226)print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0&#125;&apos; ./xxx.csv awk -F &apos;,&apos; -v OFS=&quot;+++&quot; &apos;&#123;print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0&#125;&apos; ./xxx.csv awk 是一个强大的文本分析工具，相对与grep的查找，sed的编辑，awk在对其数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。linux awk命令详解awk分隔符awk ‘{pattern + action}’ {filenames} chkconfig 命令chkconfig命令主要用来更新（启动或停止）和查询系统服务的运行级信息。 谨记chkconfig不是立即自动禁止或激活一个服务，它只是简单的改变了符号连接。12345[root@fa ~]# chkconfig --list NetworkManagerNetworkManager 0:off 1:off 2:on 3:on 4:on 5:on 6:off[root@fa ~]# chkconfig NetworkManager off[root@fa ~]# chkconfig --list NetworkManagerNetworkManager 0:off 1:off 2:off 3:off 4:off 5:off 6:off 参考 curl get问题例如 url 为 http://mywebsite.com/index.PHP?a=1&amp;b=2&amp;c=3 web形式下访问url地址，使用$_GET是可以获取到所有的参数 然而在Linux下 curl http://mywebsite.com/index.php?a=1&amp;b=2&amp;c=3 $_GET只能获取到参数a 由于url中有&amp;，其他参数获取不到，在linux系统中&amp; 会使进程系统后台运行 必须对&amp;进行下转义才能$_GET获取到所有参数 curl http://mywebsite.com/index.php?a=1\&amp;b=2\&amp;c=3shell 时间 date 获取12[root48@vmaxverserver Qimingxing4AutoTestCoverageRate]$ date +%F-%T2016-10-20-10:20:41 参考 cron 表达式参考 等于/不等于/大于/小于 -eq //等于 -ne //不等于 -gt //大于 -lt //小于 ge //大于等于 le //小于等于 修改hostname:/etc/hosts 和 /etc/sysconfig/network 两个文件 升级中脚本：12345678910111213#!/bin/shscriptPath=$1sh /home/upgrade/shutdown.shcd $scriptPathfor i in *updating.shdohostName=echo $i|cut -d _ -f 1runAt=echo $i|cut -d _ -f 2|cut -d . -f 1sh /home/upgrade/upgrade.sh $hostName $runAt $scriptPath/$idonesh /home/upgrade/startup.sh linux grep命令//todo shell编程 for in 循环&amp; 后台执行scp 回显写入log：1234echo &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;ssh \$scpuser@\$sybaseip mkdir -p \$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;scp \$configFile \$scpuser@\$sybaseip:\$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;ssh \$scpuser@\$sybaseip chmod 777 -R \$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;exit&quot; &gt;&gt; $output 参考自 ————-_—————————————2015/8/31—————————_——————– 备份文件：123456789101112basedir=$(pwd) # 获取当前目录的绝对路径，并赋值给 basedirbakpath=/home/bak_netnumenif [ &quot;$bakpath&quot; ]; then #判断某个目录是否存在，（[] 内 左右空格不能少） rm -rf $bakpathfids=$(ls $basedir | grep -E &apos;vmax-app|vmax-data&apos;) #ls 某个目录，并用&quot;grep -E&quot; 查找 包含&quot;vamx-app&quot;或者&quot;vmax-data&quot;的项for s in $&#123;ds[@]&#125; #for 每一项，do ... do mkdir -p $bakpath/$s cp -r $s/database $bakpath/$s done shell dirname basename123456789101112131415161718[root@hadoopname ~]# clear[root@hadoopname ~]# lltotal 136-rw-------. 1 root root 2696 Jun 24 04:41 anaconda-ks.cfgdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Desktopdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Documentsdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Downloads-rwxr-xr-x. 1 root root 32 Dec 6 13:20 first-rw-r--r--. 1 root root 39935 Dec 5 17:38 i.log-rw-r--r--. 1 root root 39935 Jun 24 04:40 install.log-rw-r--r--. 1 root root 10175 Jun 24 04:38 install.log.syslogdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Musicdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Picturesdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Publicdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Templatesdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Videos[root@hadoopname ~]# pwd/root dirname: 取一个文件的存储路径，分两种情况 仅仅是个文件名的 12[root@hadoopname ~]# dirname first. 带绝对路径 123[root@hadoopname ~]# dirname /root/first/root[root@hadoopname ~]# basename:取一个文件的文件名想要去掉后缀名的话 要将 后缀名 做为参数加在后面 12345[root@hadoopname ~]# basename i.logi.log[root@hadoopname ~]# basename i.log logi.[root@hadoopname ~]#]]></content>
       <categories>
-        <category>数据存储处理 - database</category>
+        <category>服务器端 - shell</category>
       </categories>
       <tags>
-        <tag>Redis</tag>
+        <tag>笔记</tag>
+        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -434,15 +457,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Shell笔记]]></title>
-    <url>%2F2018%2F12%2F04%2FShell%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[awk将数据put到hdfs,然后用hive组织的过程中，发现数据混乱，从某行开始全是NULL 将一行数据copy到idea中,按照逗号分割后，发现只有223(理论上是226)，用awk的NF处理文件，每行也是 226列 —&gt; 于是，使用awk 的 $17 打印开始乱的列，果然找到问题， 用navicat导出的数据，默认有一个‘N*’符号 ，这个符号可以用notepad++来识别并替换掉ps: 该工具导出的数据另一个坑是：不管什么类型的数据，导出来都是到这双引号，往hive中导入时，有数值型的就尿了 所有后来直接用了sqoop 这里用到了awk ,觉得这个工具还是很强大的 123awk -F &apos;,&apos; &apos;&#123;print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0 &quot;,分隔符:&quot; OFS&#125;&apos; xxx.csvawk -F &apos;,&apos; &apos;&#123;if(NF&lt;226)print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0&#125;&apos; ./xxx.csv awk -F &apos;,&apos; -v OFS=&quot;+++&quot; &apos;&#123;print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0&#125;&apos; ./xxx.csv awk 是一个强大的文本分析工具，相对与grep的查找，sed的编辑，awk在对其数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。linux awk命令详解awk分隔符awk ‘{pattern + action}’ {filenames} chkconfig 命令chkconfig命令主要用来更新（启动或停止）和查询系统服务的运行级信息。 谨记chkconfig不是立即自动禁止或激活一个服务，它只是简单的改变了符号连接。12345[root@fa ~]# chkconfig --list NetworkManagerNetworkManager 0:off 1:off 2:on 3:on 4:on 5:on 6:off[root@fa ~]# chkconfig NetworkManager off[root@fa ~]# chkconfig --list NetworkManagerNetworkManager 0:off 1:off 2:off 3:off 4:off 5:off 6:off 参考 curl get问题例如 url 为 http://mywebsite.com/index.PHP?a=1&amp;b=2&amp;c=3 web形式下访问url地址，使用$_GET是可以获取到所有的参数 然而在Linux下 curl http://mywebsite.com/index.php?a=1&amp;b=2&amp;c=3 $_GET只能获取到参数a 由于url中有&amp;，其他参数获取不到，在linux系统中&amp; 会使进程系统后台运行 必须对&amp;进行下转义才能$_GET获取到所有参数 curl http://mywebsite.com/index.php?a=1\&amp;b=2\&amp;c=3shell 时间 date 获取12[root48@vmaxverserver Qimingxing4AutoTestCoverageRate]$ date +%F-%T2016-10-20-10:20:41 参考 cron 表达式参考 等于/不等于/大于/小于 -eq //等于 -ne //不等于 -gt //大于 -lt //小于 ge //大于等于 le //小于等于 修改hostname:/etc/hosts 和 /etc/sysconfig/network 两个文件 升级中脚本：12345678910111213#!/bin/shscriptPath=$1sh /home/upgrade/shutdown.shcd $scriptPathfor i in *updating.shdohostName=echo $i|cut -d _ -f 1runAt=echo $i|cut -d _ -f 2|cut -d . -f 1sh /home/upgrade/upgrade.sh $hostName $runAt $scriptPath/$idonesh /home/upgrade/startup.sh linux grep命令//todo shell编程 for in 循环&amp; 后台执行scp 回显写入log：1234echo &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;ssh \$scpuser@\$sybaseip mkdir -p \$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;scp \$configFile \$scpuser@\$sybaseip:\$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;ssh \$scpuser@\$sybaseip chmod 777 -R \$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;exit&quot; &gt;&gt; $output 参考自 ————-_—————————————2015/8/31—————————_——————– 备份文件：123456789101112basedir=$(pwd) # 获取当前目录的绝对路径，并赋值给 basedirbakpath=/home/bak_netnumenif [ &quot;$bakpath&quot; ]; then #判断某个目录是否存在，（[] 内 左右空格不能少） rm -rf $bakpathfids=$(ls $basedir | grep -E &apos;vmax-app|vmax-data&apos;) #ls 某个目录，并用&quot;grep -E&quot; 查找 包含&quot;vamx-app&quot;或者&quot;vmax-data&quot;的项for s in $&#123;ds[@]&#125; #for 每一项，do ... do mkdir -p $bakpath/$s cp -r $s/database $bakpath/$s done shell dirname basename123456789101112131415161718[root@hadoopname ~]# clear[root@hadoopname ~]# lltotal 136-rw-------. 1 root root 2696 Jun 24 04:41 anaconda-ks.cfgdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Desktopdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Documentsdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Downloads-rwxr-xr-x. 1 root root 32 Dec 6 13:20 first-rw-r--r--. 1 root root 39935 Dec 5 17:38 i.log-rw-r--r--. 1 root root 39935 Jun 24 04:40 install.log-rw-r--r--. 1 root root 10175 Jun 24 04:38 install.log.syslogdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Musicdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Picturesdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Publicdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Templatesdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Videos[root@hadoopname ~]# pwd/root dirname: 取一个文件的存储路径，分两种情况 仅仅是个文件名的 12[root@hadoopname ~]# dirname first. 带绝对路径 123[root@hadoopname ~]# dirname /root/first/root[root@hadoopname ~]# basename:取一个文件的文件名想要去掉后缀名的话 要将 后缀名 做为参数加在后面 12345[root@hadoopname ~]# basename i.logi.log[root@hadoopname ~]# basename i.log logi.[root@hadoopname ~]#]]></content>
+    <title><![CDATA[Redis Learning]]></title>
+    <url>%2F2018%2F12%2F04%2FRedis%20Learning%2F</url>
+    <content type="text"><![CDATA[应用场景：redis 适用于小而热的数据 Redis应用场景 Redis作者谈Redis应用场景我们在应用redis的场景是 缓存将收到的post报文缓存下，然后批量插入redshift github上的scala版redis client官方推荐了好几款开源的scala 版客户端，都不知道选哪个比较好了，应该迅速读一遍scala 并发编程 Redis is an open source(BSD Licensed),in-memory data structure store,used as a database,cache,and message broker.It supports data structures such as strings,hashes,lists,sets,sorted sets with range queries,bitmaps,hyperloglogs and geospatial indexes with radius queries.build-in: replication Lua scripting LRU eviction transaction different levels of on-disk persistence provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster. You can run atomic operations on these types, like appending to a string; incrementing the value in a hash; pushing an element to a list; computing set intersection, union and difference; or getting the member with highest ranking in a sorted set. in-memory dataset: In order to achieve its outstanding performance, Redis works with an in-memory dataset. Depending on your use case, you can persist it either by dumping the dataset to disk every once in a while, or by appending each command to a log. Persistence can be optionally disabled, if you just need a feature-rich, networked, in-memory cache. no-blocking replication: Redis also supports trivial-to-setup master-slave asynchronous replication, with very fast non-blocking first synchronization, auto-reconnection with partial resynchronization on net split. transcation数据库事务彻底搞懂事务 6379-为何Redis选择它作为默认端口号？redis 使用服务器端／客户端架构的数据库架构通过client去连接redis服务端 我们可以通过redis-cli去连接redis数据库，这是学习测试redis最好的方法，这时redis-cli就是一个client 之前连接关系型数据库一般都是通过JDBC的方式连接的，这个redis是怎么连接上去的我暂时还没有搞清楚，官方推荐了很多类似与sdk的工具库，使用这些库可以很方便的连接redis， redis 持久化有两种方式做持久化，其一是RDB，定期备份数据库的状态；其二是AOF，记录数据库的相关命令优先使用AOF方式 使用list来存储数据，LPUSH mylist “1”// BRPOP mylist 0 取出最先放入的元素，每分钟生成一个key,同步数据只处理之前的key里面的数据做一个事务，保证该元素处理的原子性因为BRPOP 只能取出最后一个元素，所以应该使用BPOPLPUSH 散列算法(Hash Algorithm),又称哈希算法，杂凑算法，是从任意文件中创造小的数字[指纹]的方法。散列算法是一种以较短的信息来保证文件唯一性标志，这种标志与文件的每一个字节都相关，而且难以找到逆向规律。因此，当原有文件发生改变时，其标志值也会发生改变，从而告诉文件使用者当前文件已经不是你所需求的文件。 先举个例子。我们每个活在世上的人，为了能够参与各种社会活动，都需要一个用于识别自己的标志。也许你觉得名字或是身份证就足以代表你这个人，但是这种代表性非常脆弱，因为重名的人很多，身份证也可以伪造。最可靠的办法是把一个人的所有基因序列记录下来用来代表这个人，但显然，这样做并不实际。而指纹看上去是一种不错的选择，虽然一些专业组织仍然可以模拟某个人的指纹，但这种代价实在太高了。 而对于在互联网世界里传送的文件来说，如何标志一个文件的身份同样重要。比如说我们下载一个文件，文件的下载过程中会经过很多网络服务器、路由器的中转，如何保证这个文件就是我们所需要的呢？我们不可能去一一检测这个文件的每个字节，也不能简单地利用文件名、文件大小这些极容易伪装的信息，这时候，我们就需要一种指纹一样的标志来检查文件的可靠性，这种指纹就是我们现在所用的Hash算法(也叫散列算法)。 参考：Hash算法总结]]></content>
       <categories>
-        <category>服务器端 - shell</category>
+        <category>数据存储处理 - database</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
-        <tag>shell</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -471,6 +493,19 @@
   </entry>
   <entry>
     <title><![CDATA[Tensorflow Model java 部署]]></title>
+    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
+    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
+      <categories>
+        <category>机器学习、深度学习 - tensorflow</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tensorflow Model java 部署]]></title>
     <url>%2F2018%2F12%2F04%2FTensorflow5--seq2seq%2F</url>
     <content type="text"><![CDATA[IntroductionSeq2Seq模型在机器翻译、语音识别、文本摘要等领域取得了巨大的成功 以神经机器翻译(NMT)为例介绍 使用最新的 decoder / attention wrapper API，TensorFlow 1.2 data iterator 在构建模型时加入了我们最成功的经验 为构建最强大的 NMT 模型，我们提供了许多 tips 和 tricks，并复制了Google的 NMT系统 Basic神经机器翻译的相关背景 | Background on Neural Machine Translation 传统的 phrase-based 翻译系统的工作原理是把源句子分成几块，然后一个短语一个短语的翻译，但是翻译结果的流畅度较差，并且不符合人类的翻译方式， 我们人类会读取完整的句子，理解它的意思，然后进行翻译。NMT 模型正是在模仿这个机制！ NMT模型使用encoder读取源句子，然后编码得到一个“有意义”的 vector，即一串能代表源句子意思的数字。然后 decoder 将这个 vector 解码得到翻译，就想图1展示的那样。这就是所谓的 encoder-decoder 结构 本教程将以单向的多层（multi-layer） RNN 为例，其使用 LSTM 作为 RNN 单元 Traning - How to build our first NMT system实战 - 训练一个 NMT 模型 Hands-on - Let’s train an NMT model12345678910111213python -m nmt.nmt \ --src=vi --tgt=en \ --vocab_prefix=/home/xxh/data/nmt_data_2/vocab \ --train_prefix=/home/xxh/data/nmt_data_2/train \ --dev_prefix=/home/xxh/data/nmt_data_2/tst2012 \ --test_prefix=/home/xxh/data/nmt_data_2/tst2013 \ --out_dir=/home/xxh/data/nmt_model \ --num_train_steps=12000 \ --steps_per_stats=100 \ --num_layers=2 \ --num_units=128 \ --dropout=0.2 \ --metrics=bleu python -m nmt.nmt –src=vi –tgt=en –vocab_prefix=/home/xxh/data/my_nmt_data/train –train_prefix=/home/xxh/data/my_nmt_data/train –dev_prefix=/home/xxh/data/my_nmt_data/tst2012 –test_prefix=/home/xxh/data/my_nmt_data/tst2012 –out_dir=/home/xxh/data/my_nmt_model –num_train_steps=12000 –steps_per_stats=100 –num_layers=2 –num_units=128 –dropout=0.2 –metrics=bleu 12 python -m nmt.nmt –out_dir=/home/xxh/data/nmt_model –inference_input_file=/home/xxh/data/nmt_data_2/my.vi –inference_output_file=/home/xxh/data/nmt_attention_model/output_infer]]></content>
       <categories>
@@ -484,16 +519,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Tensorflow Model java 部署]]></title>
-    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
-    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
+    <title><![CDATA[Ubuntu16.04/18LS小记]]></title>
+    <url>%2F2018%2F12%2F04%2FUbuntu16.04LS%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[使用ubuntu有段时间了，有些问题解决了没记录，有时间找回来 在这里将使用过程中遇到值得记录的Ｍａｒｋ下来 卸载软件由于software总是打不开，所以选择用apt-get卸载//列出所有已安装的软件包dpkg --list结果ii xserver-common 2:1.18.3-1ub all common files used by various X se ii xserver-xorg 1:7.7+13ubun amd64 X.Org X server . . . ii xz-utils 5.1.1alpha+2 amd64 XZ-format compression utilities ii yelp 3.18.1-1ubun amd64 Help browser for GNOME ii yelp-xsl 3.18.1-1 all XSL stylesheets for the yelp help ii youdao-dict 1.1.0-0~ubun amd64 Youdao Dict for Linux ii zenity 3.18.1.1-1ub amd64 Display graphical dialog boxes fr//按照软件包名字卸载sudo apt-get --purge remove youdao-dict其中–purge 是指连软件的配置文件一块删除参考 重新安装软件包：sudo dpkg -i xxxsudo dpkg -i youdao-dict.deb 双系统－ubuntu连不上网办公室电脑安装了双系统，自带win10,自行安装ubuntu,有次重启电脑后，应该是去登录了win10，重新登录ubuntu发现连接不上网络，windows 一切正常，试了N种方法均无效，最后找到问题是 网卡驱动问题应该是win 系统更新了网卡驱动，而ubuntu 系统无法识别，解决办法：卸载新版本的网卡驱动，安装旧版本的网卡驱动 /home/xxh/package/r8168-8.044.021sh autorun.sh 可悲的是，每次重启都要重重重重新执行该脚本，还好只是执行下一个脚本没时间，也没兴趣去查深层次的原因了，暂时先这样啊，主要是一般不会关机 因各种原因，出于提高开发效率的考虑，将开发环境迁移到Ubuntu操作系统上来，果然碰到了高睿之前遇到的Ubuntu系统与PC自带显卡驱动不兼容问题，睿总帮忙解决，感谢 显卡驱动问题 使用的联想扬天电脑有点奇葩，与安装的UBUNTU16兼容性不好，ray给出了经验,安装最新的英伟达显卡驱动 安装JAVA - 安装了官方版java. 连接EC2 - 使用terminal直接连接ec2(sudo ssh -i ~/aws/xuxianhong.pem ec2-user@ec2-52-197-178-250.ap-northeast-1.compute.amazonaws.com) 其中公钥是ec2 description写明了的，用户名是ec2-user. ubuntu18 - 笔记本电脑合盖不休眠拿张某的笔记本做测试服务器，但是这个本合盖即锁屏，试了很多方法（界面配置等等）没能解决，下面这个方法好使Ubuntu16.04 笔记本合上盖子时不进入休眠]]></content>
       <categories>
-        <category>机器学习、深度学习 - tensorflow</category>
+        <category>工欲善其事，必先利其器</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>tensorflow</tag>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -506,17 +539,6 @@
       <tags>
         <tag>笔记</tag>
         <tag>Tomcat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Ubuntu16.04/18LS小记]]></title>
-    <url>%2F2018%2F12%2F04%2FUbuntu16.04LS%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[使用ubuntu有段时间了，有些问题解决了没记录，有时间找回来 在这里将使用过程中遇到值得记录的Ｍａｒｋ下来 卸载软件由于software总是打不开，所以选择用apt-get卸载//列出所有已安装的软件包dpkg --list结果ii xserver-common 2:1.18.3-1ub all common files used by various X se ii xserver-xorg 1:7.7+13ubun amd64 X.Org X server . . . ii xz-utils 5.1.1alpha+2 amd64 XZ-format compression utilities ii yelp 3.18.1-1ubun amd64 Help browser for GNOME ii yelp-xsl 3.18.1-1 all XSL stylesheets for the yelp help ii youdao-dict 1.1.0-0~ubun amd64 Youdao Dict for Linux ii zenity 3.18.1.1-1ub amd64 Display graphical dialog boxes fr//按照软件包名字卸载sudo apt-get --purge remove youdao-dict其中–purge 是指连软件的配置文件一块删除参考 重新安装软件包：sudo dpkg -i xxxsudo dpkg -i youdao-dict.deb 双系统－ubuntu连不上网办公室电脑安装了双系统，自带win10,自行安装ubuntu,有次重启电脑后，应该是去登录了win10，重新登录ubuntu发现连接不上网络，windows 一切正常，试了N种方法均无效，最后找到问题是 网卡驱动问题应该是win 系统更新了网卡驱动，而ubuntu 系统无法识别，解决办法：卸载新版本的网卡驱动，安装旧版本的网卡驱动 /home/xxh/package/r8168-8.044.021sh autorun.sh 可悲的是，每次重启都要重重重重新执行该脚本，还好只是执行下一个脚本没时间，也没兴趣去查深层次的原因了，暂时先这样啊，主要是一般不会关机 因各种原因，出于提高开发效率的考虑，将开发环境迁移到Ubuntu操作系统上来，果然碰到了高睿之前遇到的Ubuntu系统与PC自带显卡驱动不兼容问题，睿总帮忙解决，感谢 显卡驱动问题 使用的联想扬天电脑有点奇葩，与安装的UBUNTU16兼容性不好，ray给出了经验,安装最新的英伟达显卡驱动 安装JAVA - 安装了官方版java. 连接EC2 - 使用terminal直接连接ec2(sudo ssh -i ~/aws/xuxianhong.pem ec2-user@ec2-52-197-178-250.ap-northeast-1.compute.amazonaws.com) 其中公钥是ec2 description写明了的，用户名是ec2-user. ubuntu18 - 笔记本电脑合盖不休眠拿张某的笔记本做测试服务器，但是这个本合盖即锁屏，试了很多方法（界面配置等等）没能解决，下面这个方法好使Ubuntu16.04 笔记本合上盖子时不进入休眠]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -620,18 +642,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[linux服务器相关配置]]></title>
-    <url>%2F2018%2F12%2F04%2Flinux%E6%9C%8D%E5%8A%A1%E5%99%A8%2F</url>
-    <content type="text"><![CDATA[本地ubuntu网络不稳定这几天 命令行执行操作各种不爽，间歇性精神病，git ssh 都会犯病没有直接搜索到什么原因导致的，安装wirshark抓包看看 123sudo add-apt-repository ppa:wireshark-dev/stablesudo apt-get updatesudo apt-get install wireshark wireshark-gnome 定位是shadowsocks代理的问题想改一下环境变量env中http_proxy 等环境变量，尝试删掉，但是有些环境变量是只读的，不能删除，wtfk回头一想，改掉shadowsocks的本地代理接口好了1080 -&gt; 34177 ok,问题暂时解决windows大法好 知乎问题 AWSEC2自动断开连接问题： ssh 连接aws ec2，若没有更改任何配置，ec2会在很短的时间内中断该ssh连接 解决 多方搜索，尝试（苦），最后更改以下配置解决问题更改ec2服务端sshd配置文件： 1/etc/ssh/sshd_config =&gt; 12ServerAliveInterval 60ServerAliveCountMax 10 参考 linux服务器重装java8问题：新开的云服务器默认安装的都是java7,我们的应用都是基于java8开发的 重装java8步骤： 找出现在装好的jdk1.7 rpm -qa | grep java 1234[ec2-user@ip-10-0-1-89 ~]$ rpm -qa |grep javajava-1.7.0-openjdk-1.7.0.151-2.6.11.0.74.amzn1.x86_64tzdata-java-2017b-1.69.amzn1.noarchjavapackages-tools-0.9.1-1.5.amzn1.noarch remove jdk1.7 yum -y remove java-1.7.0-openjdk-1.7.0.151-2.6.11.0.74.amzn1.x86_64 check 12345[ec2-user@ip-10-0-1-89 ~]$ java -version-bash: java: command not found[ec2-user@ip-10-0-1-89 ~]$ rpm -qa |grep javatzdata-java-2017b-1.69.amzn1.noarchjavapackages-tools-0.9.1-1.5.amzn1.noarch res:CentOS 卸载OpenJdk install jdk8 上传从甲骨文下载的java8 rpm安装包到服务器 安装 1.方法1 123456789101112131415161718192021222324 [ec2-user@ip-10-0-1-89 ~]$ java -version -bash: java: command not found [ec2-user@ip-10-0-1-89 ~]$ rpm -ivh .bash_history .bash_profile jdk-8u152-linux-x64.rpm .bash_logout .bashrc .ssh/ [ec2-user@ip-10-0-1-89 ~]$ rpm -ivh jdk-8u152-linux-x64.rpm error: can&apos;t create transaction lock on /var/lib/rpm/.rpm.lock (Permission denied) [ec2-user@ip-10-0-1-89 ~]$ sudo rpm -ivh jdk-8u152-linux-x64.rpm Preparing... ################################# [100%] Updating / installing... 1:jdk1.8-2000:1.8.0_152-fcs ################################# [100%] Unpacking JAR files...tools.jar...plugin.jar...javaws.jar...deploy.jar...rt.jar...jsse.jar...charsets.jar...localedata.jar... [ec2-user@ip-10-0-1-89 ~]$ java -version java version &quot;1.8.0_152&quot; Java(TM) SE Runtime Environment (build 1.8.0_152-b16) Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode) 2.方法2 12sudo apt-get install oracle-java8-installer[详细参见](https://www.cnblogs.com/a2211009/p/4265225.html)]]></content>
-      <categories>
-        <category>服务器端 - 环境</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[log4j踢平记]]></title>
     <url>%2F2018%2F12%2F04%2Flog4j%E8%B8%A2%E5%B9%B3%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[错误：** log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$). ** 错误原因：我猜是依赖自带的log4j之间冲突了 解决： stackoverflow Just to get you going you have two simple approaches you can take. First one is to just add this line to your main method:BasicConfigurator.configure();Second approach is to add this standard log4j.properties (taken from the above mentioned guide) file to your classpath: Set root logger level to DEBUG and its only appender to A1.log4j.rootLogger=DEBUG, A1 A1 is set to be a ConsoleAppender.log4j.appender.A1=org.apache.log4j.ConsoleAppender A1 uses PatternLayout.log4j.appender.A1.layout=org.apache.log4j.PatternLayoutlog4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n The first one 好使]]></content>
@@ -696,17 +706,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[python 笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fpython%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[python 笔记日常python使用笔记 python List 2 String How to convert list to string By using ‘’.join 12list1 = [&apos;1&apos;, &apos;2&apos;, &apos;3&apos;]str1 = &apos;&apos;.join(list1) Or if the list is of integers, convert the elements before joining them. 12list1 = [1, 2, 3]str1 = &apos;&apos;.join(str(e) for e in list1) python 写文件1234567file = &quot;/home/xxh/data/footlastlist&quot;+time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime()) f= open(file,&quot;w+&quot;) try: f.write(&apos;&apos;.join(str(e) for e in footlastlist)) finally: f.close() file文件open后一定记得close(还有一种写法with) open的参数w+可以自动创建不存在的文件，前提是，设置的file路径为绝对路径]]></content>
-      <categories>
-        <category>编程语言 - python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[sbt package VS sbt assembly VS sbt dist]]></title>
     <url>%2F2018%2F12%2F04%2FsbtpackageVSsbtassembly%2F</url>
     <content type="text"><![CDATA[sbt打包： sbt package sbt assembly sbt dist 1. sbt package在sbt Doc的[运行]章节有明确的介绍：Running package 将 src/main/resources 下的文件和 src/main/scala 以及 src/main/java 中编译出来的 class 文件打包成一个 jar 文件。package Creates a jar file containing the files in src/main/resources and the classes compiled from src/main/scala and src/main/java. 使用：在项目根目录下执行： 1sbt package 运行结果会展示已经在target//下，所打成功的包 2. sbt assemblyhttps://github.com/sbt/sbt-assembly Deploy fat JARs. Restart processes. sbt-assembly is a sbt plugin originally ported from codahale’s assembly-sbt, which I’m guessing was inspired by Maven’s assembly plugin. The goal is simple: Create a fat JAR of your project with all of its dependencies. 相比于 sbt package,sbt assembly会将project的依赖都打包进来 使用：github项目下的README.md中有详细的使用方法，这里简要摘抄如下： 在project/plugin.sbt中添加如下项： 1addSbtPlugin(&quot;com.eed3si9n&quot; % &quot;sbt-assembly&quot; % &quot;0.14.6&quot;) 在build.sbt文件中设置： 1234//使用java jar 执行时的main类，(入口类)mainClass in assembly := Some(&quot;AwsSupportS3&quot;)//设置目标jar包的名字assemblyJarName in assembly := s&quot;my-api-hdfs1.1.0607.jar 打包，在根目录下执行： 1sbt assembly 同样会有包在target/***/目录下 3. sbt distsbt 墙裂推荐 github地址：https://github.com/sbt/sbt-native-packager sbt官方支持：https://www.scala-sbt.org/sbt-native-packager/ 宣言： “Code once, deploy anywhere” 官方也做了相近的使用说明，文档算是很不错了 这里mark下我的使用： 在project/plugin.sbt中添加如下项： 1addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-native-packager&quot; % &quot;1.1.5&quot;) 在build.sbt文件中设置： 1234567891011121314151617181920enablePlugins(JavaServerAppPackaging)//main class 配置，同上mainClass in Compile := Some(&quot;***.aip.ml.platform.rest.WebServer&quot;)//外部配置文件路径，project代码src/main/resources中的配置文件自动生成一份放在配置的路径下，如要更改配置文件，仅更改外部的即可mappings in Universal ++= &#123; // optional example illustrating how to copy additional directory directory(&quot;scripts&quot;) ++ // copy configuration files to config directory contentOf(&quot;src/main/resources&quot;).toMap.mapValues(&quot;config/&quot; + _)&#125;// add &apos;config&apos; directory first in the classpath of the start script,// an alternative is to set the config file locations via CLI parameters// when starting the applicationscriptClasspath := Seq(&quot;../config/&quot;) ++ scriptClasspath.valuelicenses := Seq((&quot;CC0&quot;, url(&quot;http://creativecommons.org/publicdomain/zero/1.0&quot;))) 打包，在根目录下执行： 1sbt dist 以上工具在打包前，最好先执行： 1sbt clean update 确保project没有问题]]></content>
@@ -721,6 +720,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[python 笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fpython%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[python 笔记日常python使用笔记 python List 2 String How to convert list to string By using ‘’.join 12list1 = [&apos;1&apos;, &apos;2&apos;, &apos;3&apos;]str1 = &apos;&apos;.join(list1) Or if the list is of integers, convert the elements before joining them. 12list1 = [1, 2, 3]str1 = &apos;&apos;.join(str(e) for e in list1) python 写文件1234567file = &quot;/home/xxh/data/footlastlist&quot;+time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime()) f= open(file,&quot;w+&quot;) try: f.write(&apos;&apos;.join(str(e) for e in footlastlist)) finally: f.close() file文件open后一定记得close(还有一种写法with) open的参数w+可以自动创建不存在的文件，前提是，设置的file路径为绝对路径]]></content>
+      <categories>
+        <category>编程语言 - python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[scala implict]]></title>
     <url>%2F2018%2F12%2F04%2Fscala%20implicit%2F</url>
     <content type="text"><![CDATA[why 应用中自己写的代码和调用的第三方函数库有着一个基本的区别：也就是你可以任意修改和扩展自己写的代码，而一般来说在没有源码的情况下很难扩展第三方函数库，只能利用函数库提供什么就是什么。 在Scala中解决这个问题是使用隐含类型变换和隐时参数。它们可以使调用函数库变得更加方便，并避免一些繁琐和显而易见的细节。 how在scala中 implicit 类隐式调用函数可以转换调用方法的对象，比如但编译器看到X .method，而类型 X 没有定义 method（包括基类)方法，那么编译器就查找作用域内定义的从 X 到其它对象的类型转换，比如 Y，而类型Y定义了 method 方法，编译器就首先使用隐含类型转换把 X 转换成 Y，然后调用 Y 的 method。 implicit 方法 一旦编译器看到了X,但是需要Y,就会检查从X到Y的隐式转换函数 12345678910scala&gt; implicit def double2Int(d:Double) = d.toIntwarning: there were 1 feature warning(s); re-run with -feature for detailsdouble2Int: (d: Double)Intscala&gt; implicit def double2Int(d:Double):Int = d.toIntwarning: there were 1 feature warning(s); re-run with -feature for detailsdouble2Int: (d: Double)Intscala&gt; val i:Int = 3.5i: Int = 3 implicit 参数当我们在定义方法时，可以把最后一个参数列表标记为implicit，表示该组参数是隐式参数。一个方法只会有一个隐式参数列表，置于方法的最后一个参数列表。如果方法有多个隐式参数，只需一个implicit修饰即可。 当调用包含隐式参数的方法是，如果当前上下文中有合适的隐式值，则编译器会自动为改组参数填充合适的值。如果没有编译器会抛出异常。当然，标记为隐式参数的我们也可以手动为该参数添加默认值 隐式操作规则 标记规则:标记为implict才可用 作用域：插入的隐式转换必须以单一标识符的形式处于操作域中 无歧义原则：隐式转换唯有不存在其他可插入转换的前提下才能插入 单一调用原则：只会尝试一个隐式操作 显示操作先行规则：若编写的代码类型检查无误，则不会尝试任何隐式操作，编译器不会改变已经可以正常工作的代码 命名隐式转换隐式转换可以任意命名,隐式转换 引用 与名字无关，编译器主要检察输入输出类型 开闭原则规定，软件中的对象对扩展应该是开放的，对于修改应该是关闭的]]></content>
@@ -729,17 +739,6 @@
       </categories>
       <tags>
         <tag>scala</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Scala Try]]></title>
-    <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
-    <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
-      <categories>
-        <category>编程语言 - s cala</category>
-      </categories>
-      <tags>
-        <tag>Scala</tag>
       </tags>
   </entry>
   <entry>
@@ -755,6 +754,29 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Scala Try]]></title>
+    <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
+    <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
+      <categories>
+        <category>编程语言 - s cala</category>
+      </categories>
+      <tags>
+        <tag>Scala</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linux服务器相关配置]]></title>
+    <url>%2F2018%2F12%2F04%2Flinux%E6%9C%8D%E5%8A%A1%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[本地ubuntu网络不稳定这几天 命令行执行操作各种不爽，间歇性精神病，git ssh 都会犯病没有直接搜索到什么原因导致的，安装wirshark抓包看看 123sudo add-apt-repository ppa:wireshark-dev/stablesudo apt-get updatesudo apt-get install wireshark wireshark-gnome 定位是shadowsocks代理的问题想改一下环境变量env中http_proxy 等环境变量，尝试删掉，但是有些环境变量是只读的，不能删除，wtfk回头一想，改掉shadowsocks的本地代理接口好了1080 -&gt; 34177 ok,问题暂时解决windows大法好 知乎问题 AWSEC2自动断开连接问题： ssh 连接aws ec2，若没有更改任何配置，ec2会在很短的时间内中断该ssh连接 解决 多方搜索，尝试（苦），最后更改以下配置解决问题更改ec2服务端sshd配置文件： 1/etc/ssh/sshd_config =&gt; 12ServerAliveInterval 60ServerAliveCountMax 10 参考 linux服务器重装java8问题：新开的云服务器默认安装的都是java7,我们的应用都是基于java8开发的 重装java8步骤： 找出现在装好的jdk1.7 rpm -qa | grep java 1234[ec2-user@ip-10-0-1-89 ~]$ rpm -qa |grep javajava-1.7.0-openjdk-1.7.0.151-2.6.11.0.74.amzn1.x86_64tzdata-java-2017b-1.69.amzn1.noarchjavapackages-tools-0.9.1-1.5.amzn1.noarch remove jdk1.7 yum -y remove java-1.7.0-openjdk-1.7.0.151-2.6.11.0.74.amzn1.x86_64 check 12345[ec2-user@ip-10-0-1-89 ~]$ java -version-bash: java: command not found[ec2-user@ip-10-0-1-89 ~]$ rpm -qa |grep javatzdata-java-2017b-1.69.amzn1.noarchjavapackages-tools-0.9.1-1.5.amzn1.noarch res:CentOS 卸载OpenJdk install jdk8 上传从甲骨文下载的java8 rpm安装包到服务器 安装 1.方法1 123456789101112131415161718192021222324 [ec2-user@ip-10-0-1-89 ~]$ java -version -bash: java: command not found [ec2-user@ip-10-0-1-89 ~]$ rpm -ivh .bash_history .bash_profile jdk-8u152-linux-x64.rpm .bash_logout .bashrc .ssh/ [ec2-user@ip-10-0-1-89 ~]$ rpm -ivh jdk-8u152-linux-x64.rpm error: can&apos;t create transaction lock on /var/lib/rpm/.rpm.lock (Permission denied) [ec2-user@ip-10-0-1-89 ~]$ sudo rpm -ivh jdk-8u152-linux-x64.rpm Preparing... ################################# [100%] Updating / installing... 1:jdk1.8-2000:1.8.0_152-fcs ################################# [100%] Unpacking JAR files...tools.jar...plugin.jar...javaws.jar...deploy.jar...rt.jar...jsse.jar...charsets.jar...localedata.jar... [ec2-user@ip-10-0-1-89 ~]$ java -version java version &quot;1.8.0_152&quot; Java(TM) SE Runtime Environment (build 1.8.0_152-b16) Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode) 2.方法2 12sudo apt-get install oracle-java8-installer[详细参见](https://www.cnblogs.com/a2211009/p/4265225.html)]]></content>
+      <categories>
+        <category>服务器端 - 环境</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[scala 笔记]]></title>
     <url>%2F2018%2F12%2F04%2Fscala%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[TomCat使用：Tomcat笔记 安装配置环境变量JAVA_HOME; 解压下载的tomcat压缩包； netstat -an 查看端口占用情况； 修改server.xml; 双击startup.bat 启动； scala List类的高阶方法 forall: xs forall p以列表xs和论断p为参数，如果列表所有元素满足p则返回true; 与之相对应的 exists: xs exists pxs 中只要有一个值满足p就返回true。 scala List类 TO String 方法 mkString(哈哈，当年这个都要记一下) 简单的单元测试 12345678910object TestGroupDao extends App&#123; new GroupDao().updateGroup(GroupInfo(3456,&quot;centrum&quot;))&#125;object MainTestGroupDao&#123; def main (args: Array[String]) &#123; val groupDao = new GroupDao println(&quot;groupDao: &quot; + groupDao) &#125;&#125; case class 实例 =&gt; List RE123456789101112131415161718192021productIterator.toListscala&gt; case class aaa(i:Int,j:Int)defined class aaascala&gt; val q = aaa(1,2)q: aaa = aaa(1,2)scala&gt; q.toList&lt;console&gt;:11: error: value toList is not a member of aaa q.toList ^scala&gt; q.toStringres1: String = aaa(1,2)scala&gt; q.productIterator.toListres2: List[Any] = List(1, 2)scala&gt; q.productIterator.toList.mkString(&quot;&apos;&quot;)res3: String = 1&apos;2 case class 实例 转 Map （使用反射）RE123456789101112131415def updateUser(userInfo: UserInfo): Boolean = &#123; //val userInfoFieldName = userInfo.getClass.getDeclaredFields.map(_.getName) val userInfoFieldValueMap = (Map[String, Any]() /: userInfo.getClass.getDeclaredFields) &#123; (a, f) =&gt; f.setAccessible(true) a + (f.getName -&gt; f.get(userInfo)) &#125; val updateUserSqlset = if(userInfo.password == &quot;&quot;) userInfoFieldValueMap.keys.map(a =&gt; &#123;if (a != &quot;password&quot;) a + &quot;=&apos;&quot; + userInfoFieldValueMap(a)&#125;).mkString(&quot;&apos;,&quot;) else userInfoFieldValueMap.keys.map(a =&gt; a + &quot;=&apos;&quot; + userInfoFieldValueMap(a)).mkString(&quot;&apos;,&quot;) val updateUserSqlWhere = &quot;userId = &apos;&quot; + userInfoFieldValueMap(&quot;userId&quot;) + &quot;&apos;&quot; val updateUserSql = s&quot;&quot;&quot; |update userinfo set $updateUserSqlset where $updateUserSqlWhere &quot;&quot;&quot;.stripMargin Sql(updateUserSql).execute &#125; List 列表模式 列表还可以使用模式匹配做拆分，这时列表模式需逐一匹配要拆分的列表表达式 两种形式： 1. List(...) 对列表所有的元素做匹配 1234567scala&gt; val fruit = List(&quot;Apple&quot;,&quot;Orange&quot;,&quot;pears&quot;)fruit: List[String] = List(Apple, Orange, pears)scala&gt; val List(a,b,c) = fruita: String = Appleb: String = Orangec: String = pears 2. :: 操作符 和 Nil 常量组成的模式逐位拆分列表 123456789101112scala&gt; val fruit = List(&quot;Apple&quot;,&quot;Orange&quot;,&quot;pears&quot;)fruit: List[String] = List(Apple, Orange, pears)scala&gt; val List(a,b,c) = fruita: String = Appleb: String = Orangec: String = pearsscala&gt; val a:: b :: rest = fruita: String = Appleb: String = Orangerest: List[String] = List(pears) 在不知道列表长度为多少时，最好使用后一种插入排序算法1. 陪练写法： 1234567def isort(xs: List[Int]): List[Int] = if(xs.isEmpty) Nil else insert(xs.head,isort(xs.tail))def insert(x: Int, xs: List[Int]): List[Int] = if(xs.isEmpty || x &lt;= xs.head) x :: xs else xs.head :: insert(x,xs.tail) 2. // 使用模式匹配拆分列表的方法 123456789def isort(xs: List[Int]) = xs match &#123; case List() =&gt; List() case x :: xs1 =&gt; insert(x,isort(xs1))&#125;def insert(x: Int, xs: List[Int]) = xs match &#123; case List() =&gt; List(x) case y :: ys =&gt; if(x &lt;= y) x :: xs else y :: insert(x,ys)&#125;http://hongjiang.info/scala/Scala 强大的集合数据操作示例//todoscala sort 排序123xmlFileList.map((xml.XML.loadFile(_))).map(parseXML(_)).filter((_.version.compareTo(currentVersion) &gt; 0)).map(a =&gt; (a.version, a)).&lt;strong&gt;sortWith((a,b) =&gt; (a._1).compareTo(b._1) &lt; 0)&lt;/strong&gt;.toMap 如何排序 scala 读写文件//todo scala 变长参数、ListgetFootInfoByUUID(l: _*) getFootInfoByUUID()是一个接受变长参数的方法l中的数据通过语法 _* 转换并传入函数中 scala伴生对象伴生对象可以调用伴生类中的方法，但是反过来不行 scala sbt read file from resources1234val is = getClass.getClassLoader.getResourceAsStream(&quot;remote_app.conf&quot;)val source = scala.io.Source.fromInputStream(is).getLines().map(_.split(&quot;\t&quot;).toList).toList//.foreach(as =&gt; println(as.length))[How to get load file under resources folder in scala sbt](https://stackoverflow.com/questions/40724082/how-to-get-load-file-under-resources-folder-in-scala-sbt) scala 反射如果要用反射的话，需要额外添加依赖 1libraryDependencies += &quot;org.scala-lang&quot; % &quot;scala-reflect&quot; % &quot;2.11.11&quot; scala Jsonplay-json-extensions +22 field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125; case object vs case class vs object vs classcase class \ case object 都有pattern match 、序列化 、toString 、 equal、方法的好处加持只是 object 还是一个单例对象，不能有构造参数，如果是一个不可变的单里对象用在模式匹配中时可用 new trait不能通过new 关键字去新建一个对象，只能新建一个extends这个trait的匿名类， 123456789101112131415161718192021trait MyTrait&#123;val a = 1val b = 2&#125;//----------------val anonClassMixingInTrait = new Mytrait&#123; def aFunctionInMyClass = &quot;111&quot;&#125;//is the equivalent of:class MyClass extends MyTrait&#123; def aFunctionInMyClass = &quot;111&quot;&#125;val anonClassMixingInTrait = new MyClass 区别是 前者只能在定义该匿名类的时候初始化它，因为他既没有名字，也没有构造函数 12345678910111213141516val t = new MyTrait &#123; val t1 = ... //some expression val t2 = ... //some expression&#125;is the same asval t = new AnyRef with MyTrait &#123; val t1 = ... //some expression val t2 = ... //some expression&#125;is the same asval t = new Object with MyTrait &#123; val t1 = ... //some expression val t2 = ... //some expression&#125; type关键字在scala 字符串中转义一个美元(dollar)$符号加倍 12scala&gt; val a = s&quot;$$a&quot;a: String = $a]]></content>
@@ -763,6 +785,18 @@
       </categories>
       <tags>
         <tag>scala</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spark填坑记]]></title>
+    <url>%2F2018%2F12%2F04%2Fspark%E5%A1%AB%E5%9D%91%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[使用spark streaming报错ERROR DFSClient: Failed to close inode xxxxtopic太多造成的，有待进一步了解 需要给checkpoint的目录打时间戳 spark集群环境主机日志文件太多问题： spark集群环境主机日志文件太多，超出了ext3文件系统一级子目录的个数默认为31998(个)，准确地说是32000个，导致集群不正常 解决： 手动情况日志文件， 更改配置： 修改配置文件：/home/mr/spark/conf/spark-defaults.conf使 123spark.worker.cleanup.enabled=true,spark.worker.cleanup.appDataTtl = 259200(3*24*3600), #worker App保存三天 然后重启spark服务和sparkSQL服务。]]></content>
+      <categories>
+        <category>数据存储处理 - spark</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>spark</tag>
       </tags>
   </entry>
   <entry>
@@ -778,15 +812,27 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[spark填坑记]]></title>
-    <url>%2F2018%2F12%2F04%2Fspark%E5%A1%AB%E5%9D%91%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[使用spark streaming报错ERROR DFSClient: Failed to close inode xxxxtopic太多造成的，有待进一步了解 需要给checkpoint的目录打时间戳 spark集群环境主机日志文件太多问题： spark集群环境主机日志文件太多，超出了ext3文件系统一级子目录的个数默认为31998(个)，准确地说是32000个，导致集群不正常 解决： 手动情况日志文件， 更改配置： 修改配置文件：/home/mr/spark/conf/spark-defaults.conf使 123spark.worker.cleanup.enabled=true,spark.worker.cleanup.appDataTtl = 259200(3*24*3600), #worker App保存三天 然后重启spark服务和sparkSQL服务。]]></content>
+    <title><![CDATA[sql笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
       <categories>
-        <category>数据存储处理 - spark</category>
+        <category>数据存储处理 - database</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
-        <tag>spark</tag>
+        <tag>database</tag>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SSH深入]]></title>
+    <url>%2F2018%2F12%2F04%2Fssh%E6%B7%B1%E5%85%A5%2F</url>
+    <content type="text"><![CDATA[SSH(Secure Shell)Secure Shell（安全外壳协议，简称SSH）是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。 SSH通过在网络中创建安全隧道来实现SSH客户端与服务器之间的连接[2]。虽然任何网络服务都可以通过SSH实现安全传输，SSH最常见的用途是远程登录系统，人们通常利用SSH来传输命令行界面和远程执行命令 在设计上，SSH是Telnet和非安全shell的替代品。Telnet和Berkeley rlogin、rsh、rexec等协议采用明文传输，使用不可靠的密码，容易遭到监听、嗅探和中间人攻击[4]。SSH旨在保证非安全网络环境（例如互联网）中信息加密完整可靠。 建立连接SSH以非对称加密实现身份验证[2]。身份验证有多种途径， 其中一种方法是使用自动生成的公钥-私钥对来简单地加密网络连接，随后使用密码认证进行登录；此时密钥是自动生成 另一种方法是人工生成一对公钥和私钥，通过生成的密钥进行认证，这样就可以在不输入密码的情况下登录。任何人都可以自行生成密钥。公钥需要放在待访问的计算机之中，而对应的私钥需要由用户自行保管。认证过程基于生成出来的私钥，但整个认证过程中私钥本身不会传输到网络中。 使用 登录远程主机执行命令 SSH也支持隧道协议、端口映射和X11连接。借助SFTP或SCP协议还可以传输文件 秘钥管理在类Unix系统中，已许可登录的公钥通常保存在用户 /home 目录的 ~/.ssh/authorized_keys 文件中[9]，该文件只由SSH使用。当远程机器持有公钥，而本地持有对应私钥时，登录过程不再需要手动输入密码。另外为了额外的安全性，私钥本身也能用密码保护。私钥会保存在固定位置，也可以通过命令行参数指定（例如ssh命令的“-i”选项）。ssh-keygen是生成密钥的工具之一。SSH也支持基于密码的身份验证，此时密钥是自动生成的。若客户端和服务端从未进行过身份验证，SSH未记录服务器端所使用的密钥，那么攻击者可以模仿服务器端请求并获取密码，即中间人攻击。但是密码认证可以禁用，而且SSH客户端在发现新密钥或未知服务器时会向用户发出警告。 所以aws ec2提供的秘钥就是一对秘钥对中的私钥，ec2主机中保存有公钥，通过-i指定私钥去匹配公钥，完成登录验证，也可以将自己机器的公钥放到ec2的/.ssh/authorized_keys 文件中，实现自己机器与ec2的免密登录，因为登录时默认会拿本地的私钥去匹配目标主机的/.ssh/authorized_keys文件中的公钥]]></content>
+      <categories>
+        <category>服务器端 - shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+        <tag>ssh</tag>
       </tags>
   </entry>
   <entry>
@@ -804,18 +850,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[sql笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
-      <categories>
-        <category>数据存储处理 - database</category>
-      </categories>
-      <tags>
-        <tag>database</tag>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[sqoop使用]]></title>
     <url>%2F2018%2F12%2F04%2Fsqoop%2F</url>
     <content type="text"><![CDATA[installsqoop install &amp;&amp; test 版本1.4.7的安装文档没有找到，使用1.99.7的文档装了半天 官网下载：sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz 解压 复制template配置文件并修改配置文件 123456789101112131415161718# Set Hadoop-specific environment variables here.#Set path to where bin/hadoop is available#export HADOOP_COMMON_HOME=export HADOOP_COMMON_HOME=/home/xxh/wkspc/hadoop/hadoop-2.7.7#Set path to where hadoop-*-core.jar is availableexport HADOOP_MAPRED_HOME=/home/xxh/wkspc/hadoop/hadoop-2.7.7#set the path to where bin/hbase is availableexport HBASE_HOME=/home/xxh/wkspc/hbase/hbase-2.1.0#Set the path to where bin/hive is availableexport HIVE_HOME=/home/xxh/wkspc/hive/apache-hive-1.2.2-bin#Set the path for where zookeper config dir isexport ZOOCFGDIR=/home/xxh/wkspc/zookeeper/zookeeper0/conf 测试 1234567891011121314151617181920212223242526sqoop list-databases --connect jdbc:mysql://localhost:3306 --username root --password admin123sqoop import \--connect jdbc:mysql://localhost:3306/mysql \--username root \--password admin123 \--table user \--target-dir /sqoop/data_1 \--delete-target-dir \--num-mappers 1 \--fields-terminated-by &quot;\t&quot;# mysql on other computersqoop import \--connect jdbc:mysql://172.17.60.59:3306/mysql \--username root \--password Admin@321 \--table user \--target-dir /sqoop/data_user_59 \--delete-target-dir \--num-mappers 1 \--fields-terminated-by &quot;\t&quot; 数据库导入Sqoop 通mr作业从数据库中导入一个表，这个作业从表中抽取一行行记录，然后将记录写入HDFS 在导入开始之前，Sqoop使用jdbc 检查表，检索出表中所有的列、列的数据类型。这些sql数据类型被映射到java数据类型 导入控制重点在保证数据一致性 sqoop 后台实际上是运行了mr,用yarn 提交管理的 调试的时候发现提交完任务长时间不能执行，很可能是资源不足，也有可能是数据库权限问题先杀掉，同步本地的数据库试试 123# 8088 查下 app id,然后yarn application -kill application_1540448968752_0003 sqoop 同步json数据报错 12345678910111213141516171819Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: org/json/JSONObject at org.apache.sqoop.util.SqoopJsonUtil.getJsonStringforMap(SqoopJsonUtil.java:43) at org.apache.sqoop.SqoopOptions.writeProperties(SqoopOptions.java:785) at org.apache.sqoop.metastore.hsqldb.HsqldbJobStorage.createInternal(HsqldbJobStorage.java:399) at org.apache.sqoop.metastore.hsqldb.HsqldbJobStorage.create(HsqldbJobStorage.java:379) at org.apache.sqoop.tool.JobTool.createJob(JobTool.java:181) at org.apache.sqoop.tool.JobTool.run(JobTool.java:294) at org.apache.sqoop.Sqoop.run(Sqoop.java:147) at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:70) at org.apache.sqoop.Sqoop.runSqoop(Sqoop.java:183) at org.apache.sqoop.Sqoop.runTool(Sqoop.java:234) at org.apache.sqoop.Sqoop.runTool(Sqoop.java:243) at org.apache.sqoop.Sqoop.main(Sqoop.java:252)Caused by: java.lang.ClassNotFoundException: org.json.JSONObject at java.net.URLClassLoader.findClass(URLClassLoader.java:381) at java.lang.ClassLoader.loadClass(ClassLoader.java:424) at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349) at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ... 12 more solve: 1234567By spending some more time reading blogs:I found solution as below:downloaded java-json.jar file from location http://www.java2s.com/Code/Jar/j/Downloadjavajsonjar.htmstored this jar file at location /usr/lib/sqoop/lib/java-json.jar Sqoop import exception java.lang.NoClassDefFoundError: org/json/JSONObject name node is in safe mode solve: 1hdfs dfsadmin -safemode leave name node is in safe mode sqoop 任务 一直僵尸在ACCEPED状态，不动 搜，跟着改了很多配置，最后看到日志中有[warn] error*,报错某某项配置的目录可用空间超过总空间百分之九十，导致伪分布式模式下唯一一个node不能用于是更改了其默认配置，并更改其yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage -&gt; 98.58088 UI上 Active nodes显示为1 最终的配置： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#yarn-site.xml&lt;configuration&gt;&lt;!-- Site specific YARN configuration properties --&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt; &lt;value&gt;mapreduce_shuffle&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.resource.memory-mb&lt;/name&gt; &lt;value&gt;4096&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.scheduler.minimum-allocation-mb&lt;/name&gt; &lt;value&gt;512&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.resource.cpu-vcores&lt;/name&gt; &lt;value&gt;4&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.vmem-pmem-ratio&lt;/name&gt; &lt;value&gt;2.1&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.local-dirs&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/yarnlocaldir&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.log-dirs&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/yarnlogdir&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage&lt;/name&gt; &lt;value&gt;98.5&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt;# hdfs-site.xmldatanode的dfs.datanode.data.dir 不配置的话，会默认使用/tmp目录，我的系统装在小小的额固态上，左右基本没有空间剩余了，于是改到T级别的机械硬盘上了&lt;configuration&gt; &lt;property&gt; &lt;name&gt;dfs.replication&lt;/name&gt; &lt;value&gt;1&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/namenode-namespace&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/datanodespace&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt; 参考：MapReduce jobs get stuck in Accepted state redshift 表 同步到 hive 一次性同步，整体迁移 123456789101112./bin/sqoop job --delete customer_order./bin/sqoop job --create customer_order \-- import \--connect jdbc:redshift://north-1.redshift.amazonaws.com.cn:59/prod \--driver com.amazon.redshift.jdbc42.Driver \--username boot_last \--table XXX.XXXX \--target-dir /hive/warehouse/XXXX/XXXX \--fields-terminated-by &apos;,&apos; \--lines-terminated-by &apos;\n&apos; \--hive-drop-import-delims \-m 1 没有顺序的数值列，所以无法切分，通过一个map任务来同步，也就是指定 -m 1? 也是不是没办法，比如讲某列进行hash,然后根据hash值来分片同步，使用sqoop同步时hash 就要自定义函数参考sqoop 同步所有列，所以指定了 table 后，不配置column的意思就是同步所有列 redshift jdbc Driver 记得添加 ，从maven上下载最新的jar,放到sqoop home的lib 中? sqoop 直接同步成hive 表]]></content>
@@ -824,18 +858,6 @@
       </categories>
       <tags>
         <tag>sqoop</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[SSH深入]]></title>
-    <url>%2F2018%2F12%2F04%2Fssh%E6%B7%B1%E5%85%A5%2F</url>
-    <content type="text"><![CDATA[SSH(Secure Shell)Secure Shell（安全外壳协议，简称SSH）是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。 SSH通过在网络中创建安全隧道来实现SSH客户端与服务器之间的连接[2]。虽然任何网络服务都可以通过SSH实现安全传输，SSH最常见的用途是远程登录系统，人们通常利用SSH来传输命令行界面和远程执行命令 在设计上，SSH是Telnet和非安全shell的替代品。Telnet和Berkeley rlogin、rsh、rexec等协议采用明文传输，使用不可靠的密码，容易遭到监听、嗅探和中间人攻击[4]。SSH旨在保证非安全网络环境（例如互联网）中信息加密完整可靠。 建立连接SSH以非对称加密实现身份验证[2]。身份验证有多种途径， 其中一种方法是使用自动生成的公钥-私钥对来简单地加密网络连接，随后使用密码认证进行登录；此时密钥是自动生成 另一种方法是人工生成一对公钥和私钥，通过生成的密钥进行认证，这样就可以在不输入密码的情况下登录。任何人都可以自行生成密钥。公钥需要放在待访问的计算机之中，而对应的私钥需要由用户自行保管。认证过程基于生成出来的私钥，但整个认证过程中私钥本身不会传输到网络中。 使用 登录远程主机执行命令 SSH也支持隧道协议、端口映射和X11连接。借助SFTP或SCP协议还可以传输文件 秘钥管理在类Unix系统中，已许可登录的公钥通常保存在用户 /home 目录的 ~/.ssh/authorized_keys 文件中[9]，该文件只由SSH使用。当远程机器持有公钥，而本地持有对应私钥时，登录过程不再需要手动输入密码。另外为了额外的安全性，私钥本身也能用密码保护。私钥会保存在固定位置，也可以通过命令行参数指定（例如ssh命令的“-i”选项）。ssh-keygen是生成密钥的工具之一。SSH也支持基于密码的身份验证，此时密钥是自动生成的。若客户端和服务端从未进行过身份验证，SSH未记录服务器端所使用的密钥，那么攻击者可以模仿服务器端请求并获取密码，即中间人攻击。但是密码认证可以禁用，而且SSH客户端在发现新密钥或未知服务器时会向用户发出警告。 所以aws ec2提供的秘钥就是一对秘钥对中的私钥，ec2主机中保存有公钥，通过-i指定私钥去匹配公钥，完成登录验证，也可以将自己机器的公钥放到ec2的/.ssh/authorized_keys 文件中，实现自己机器与ec2的免密登录，因为登录时默认会拿本地的私钥去匹配目标主机的/.ssh/authorized_keys文件中的公钥]]></content>
-      <categories>
-        <category>服务器端 - shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-        <tag>ssh</tag>
       </tags>
   </entry>
   <entry>
@@ -865,20 +887,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[jep使用]]></title>
-    <url>%2F2018%2F12%2F04%2Fusingjep%2F</url>
-    <content type="text"><![CDATA[jep 简介whatJep: (Java Embeded Python) Jep takes a different route and embeds CPython in Java using JNI. Long story short, if you need to include CPython modules (such as numpy) Jep is the way to go. 要想使用cPython 模块，用jep加载就对了 whypython 在机器学习界大火。项目内机器学习算法工程师也是用python,lightgbm,tensorflow来开发模型，但是部署模型最好还是用java、scala 顺便说一下业界部署模型的方式： 全程python python 部署模型，提供rest接口，供外部调用，这样数据清洗类的操作可以通过java实现 Jython,JyNI 不能很好的支持基于c的python模块 jep 使用看上去好吊的样子，让我们来用一下试试效果怎么样 https://github.com/ninia/jep 2017年诞生，一直在开发中，很活跃 正片开始： jep wiki pip 安装 jep安装没有报错，但是安装完成后，java 新建Jep()对象时报错，找不到jep1234567891011121314151617181920Exception in thread &quot;main&quot; java.lang.UnsatisfiedLinkError: no jep in java.library.path at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1867) at java.lang.Runtime.loadLibrary0(Runtime.java:870) at java.lang.System.loadLibrary(System.java:1122) at jep.MainInterpreter.initialize(MainInterpreter.java:121) at jep.MainInterpreter.getMainInterpreter(MainInterpreter.java:97) at jep.Jep.&lt;init&gt;(Jep.java:232) at jep.Jep.&lt;init&gt;(Jep.java:228) at jep.Jep.&lt;init&gt;(Jep.java:140) at JepTest.JepDemo$.delayedEndpoint$JepTest$JepDemo$1(JepDemo.scala:27) at JepTest.JepDemo$delayedInit$body.apply(JepDemo.scala:9) at scala.Function0$class.apply$mcV$sp(Function0.scala:34) at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:12) at scala.App$$anonfun$main$1.apply(App.scala:76) at scala.App$$anonfun$main$1.apply(App.scala:76) at scala.collection.immutable.List.foreach(List.scala:392) at scala.collection.generic.TraversableForwarder$class.foreach(TraversableForwarder.scala:35) at scala.App$class.main(App.scala:76) at JepTest.JepDemo$.main(JepDemo.scala:9) at JepTest.JepDemo.main(JepDemo.scala) 碰到这个问题的还真是不少，S.O.上类似的问题提示: 没有设置好 LD_LIBRARY_PATH变量 或者是没有设置好 1-Djava.library.path=/usr/local/lib/python2.7/dist-packages/jep/ github jep也有这样的issueBut提到的方法都不好使，只好去看看源码 看setup.py源码： cmdclass={ &#39;setup_java&#39;: setup_java, &#39;build_java&#39;: build_java, &#39;javadoc&#39;: javadoc, &#39;build_jar&#39;: build_jar, &#39;build&#39;: jep_build, &#39;build_ext&#39; : build_ext, &#39;build_scripts&#39;: build_scripts, &#39;install_lib&#39;: jep_install, &#39;clean&#39;: really_clean, &#39;test&#39;: test, }, 所以执行 python3 setup.py install_lib 才对， 执行打印如下： numpy include found at /home/xxh/anaconda3/lib/python3.6/site-packages/numpy/core/include running install_lib running build_py running build_ext ln -sf jep.cpython-36m-x86_64-linux-gnu.so /home/xxh/anaconda3/lib/python3.6/site-packages/jep/libjep.so 如此，如此将libjep.so文件生成后再设置相应的环境变量在idea的run-Edit Configurations中的VM中填入： 1-Djava.library.path=/home/xxh/anaconda3/lib/python3.6/site-packages/jep/ 也可以设置环境变量(划掉，不好使)： 1export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xxh/anaconda3/lib/python3.6/site-packages/jep/ 通过scala调用的python文件中，引用了不在环境变量中的其他python模块时会报错试用中，未完待续。。。版本一直在更新中，所以商用的话要小心]]></content>
-      <categories>
-        <category>编程语言 - scala</category>
-      </categories>
-      <tags>
-        <tag>scala</tag>
-        <tag>python</tag>
-        <tag>jep</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[了解Docker]]></title>
     <url>%2F2018%2F12%2F04%2F%E4%BA%86%E8%A7%A3Docker%2F</url>
     <content type="text"><![CDATA[Docker What is Docker?我的理解： 在操作系统上新增的一层抽象 解决的痛点：同一台服务器上多应用间的依赖冲突问题 优势：很多，比如将多个应用部署在同一个云主机上，该云主机弹性扩展，这样能够节约不少成本 目前的项目暂时用不到docker 教程]]></content>
@@ -903,14 +911,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[git使用]]></title>
-    <url>%2F2018%2F12%2F04%2F%E4%BD%BF%E7%94%A8git%2F</url>
-    <content type="text"><![CDATA[git 不熟悉但是这种工具性的东西，就得边用边学 两个项目合并方法不一定最快，能用 project a 12git checkout -b &apos;newbranch&apos;git push origin newbranch project b 12345678910111213141516git init//copy .gitignoregit add .git commit -m &apos;b&apos;git remote add origin git@***.gitgit pull origin sparks3git statusgit add .git commit -m &apos;sfs&apos;git push origin master]]></content>
+    <title><![CDATA[jep使用]]></title>
+    <url>%2F2018%2F12%2F04%2Fusingjep%2F</url>
+    <content type="text"><![CDATA[jep 简介whatJep: (Java Embeded Python) Jep takes a different route and embeds CPython in Java using JNI. Long story short, if you need to include CPython modules (such as numpy) Jep is the way to go. 要想使用cPython 模块，用jep加载就对了 whypython 在机器学习界大火。项目内机器学习算法工程师也是用python,lightgbm,tensorflow来开发模型，但是部署模型最好还是用java、scala 顺便说一下业界部署模型的方式： 全程python python 部署模型，提供rest接口，供外部调用，这样数据清洗类的操作可以通过java实现 Jython,JyNI 不能很好的支持基于c的python模块 jep 使用看上去好吊的样子，让我们来用一下试试效果怎么样 https://github.com/ninia/jep 2017年诞生，一直在开发中，很活跃 正片开始： jep wiki pip 安装 jep安装没有报错，但是安装完成后，java 新建Jep()对象时报错，找不到jep1234567891011121314151617181920Exception in thread &quot;main&quot; java.lang.UnsatisfiedLinkError: no jep in java.library.path at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1867) at java.lang.Runtime.loadLibrary0(Runtime.java:870) at java.lang.System.loadLibrary(System.java:1122) at jep.MainInterpreter.initialize(MainInterpreter.java:121) at jep.MainInterpreter.getMainInterpreter(MainInterpreter.java:97) at jep.Jep.&lt;init&gt;(Jep.java:232) at jep.Jep.&lt;init&gt;(Jep.java:228) at jep.Jep.&lt;init&gt;(Jep.java:140) at JepTest.JepDemo$.delayedEndpoint$JepTest$JepDemo$1(JepDemo.scala:27) at JepTest.JepDemo$delayedInit$body.apply(JepDemo.scala:9) at scala.Function0$class.apply$mcV$sp(Function0.scala:34) at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:12) at scala.App$$anonfun$main$1.apply(App.scala:76) at scala.App$$anonfun$main$1.apply(App.scala:76) at scala.collection.immutable.List.foreach(List.scala:392) at scala.collection.generic.TraversableForwarder$class.foreach(TraversableForwarder.scala:35) at scala.App$class.main(App.scala:76) at JepTest.JepDemo$.main(JepDemo.scala:9) at JepTest.JepDemo.main(JepDemo.scala) 碰到这个问题的还真是不少，S.O.上类似的问题提示: 没有设置好 LD_LIBRARY_PATH变量 或者是没有设置好 1-Djava.library.path=/usr/local/lib/python2.7/dist-packages/jep/ github jep也有这样的issueBut提到的方法都不好使，只好去看看源码 看setup.py源码： cmdclass={ &#39;setup_java&#39;: setup_java, &#39;build_java&#39;: build_java, &#39;javadoc&#39;: javadoc, &#39;build_jar&#39;: build_jar, &#39;build&#39;: jep_build, &#39;build_ext&#39; : build_ext, &#39;build_scripts&#39;: build_scripts, &#39;install_lib&#39;: jep_install, &#39;clean&#39;: really_clean, &#39;test&#39;: test, }, 所以执行 python3 setup.py install_lib 才对， 执行打印如下： numpy include found at /home/xxh/anaconda3/lib/python3.6/site-packages/numpy/core/include running install_lib running build_py running build_ext ln -sf jep.cpython-36m-x86_64-linux-gnu.so /home/xxh/anaconda3/lib/python3.6/site-packages/jep/libjep.so 如此，如此将libjep.so文件生成后再设置相应的环境变量在idea的run-Edit Configurations中的VM中填入： 1-Djava.library.path=/home/xxh/anaconda3/lib/python3.6/site-packages/jep/ 也可以设置环境变量(划掉，不好使)： 1export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xxh/anaconda3/lib/python3.6/site-packages/jep/ 通过scala调用的python文件中，引用了不在环境变量中的其他python模块时会报错试用中，未完待续。。。版本一直在更新中，所以商用的话要小心]]></content>
       <categories>
-        <category>工欲善其事，必先利其器</category>
+        <category>编程语言 - scala</category>
       </categories>
       <tags>
-        <tag>git</tag>
+        <tag>scala</tag>
+        <tag>python</tag>
+        <tag>jep</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -922,6 +933,17 @@
       </categories>
       <tags>
         <tag>单元测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[git使用]]></title>
+    <url>%2F2018%2F12%2F04%2F%E4%BD%BF%E7%94%A8git%2F</url>
+    <content type="text"><![CDATA[git 不熟悉但是这种工具性的东西，就得边用边学 两个项目合并方法不一定最快，能用 project a 12git checkout -b &apos;newbranch&apos;git push origin newbranch project b 12345678910111213141516git init//copy .gitignoregit add .git commit -m &apos;b&apos;git remote add origin git@***.gitgit pull origin sparks3git statusgit add .git commit -m &apos;sfs&apos;git push origin master]]></content>
+      <categories>
+        <category>工欲善其事，必先利其器</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -949,17 +971,6 @@
         <tag>spark</tag>
         <tag>S3</tag>
         <tag>aws</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[并发-java 编程思想]]></title>
-    <url>%2F2018%2F12%2F04%2F%E5%B9%B6%E5%8F%91-java%2F</url>
-    <content type="text"><![CDATA[并发并发介绍，想要真正编写一些复杂的程序钱，应该学一些专门介绍并发的书籍 并发的多面性使用并发时需要解决的问题有多个，而实现并发的方式也有多种，并且两者之间没有明显的映射关系 并发解决的问题大体上可以分为速度和设计可管理性两种 更快的执行并发通常是提高运行在单处理器上的程序性能直觉上思考在单核心上顺序运行程序应该是最高效的，因为没有上下文切换的代价 但是世界上有讨厌的 阻塞 单处理器系统中性能提高的常见实例就是事件驱动编程 操作进程进程是运行在它自己的地址空间内的自包容的程序 而java所使用的并发系统会共享诸如内存和IO这样的资源,java操作的是代码代表的进程生成的一系列线程 java 可能并没有函数式编程语言适合并发 改进代码设计基本的线程机制并发编程将程序划分为多个分离的独立运行的任务，通过多线程机制，这些独立任务中的每一个都将由执行线程来驱动。线程的调度由操作系统负责 代码 定义任务通过Runnable接口定义任务 Thread class将Runnable对象转变为工作按任务的传统方式是把它提交给一个Thread构造器 executor非常常见的情况是，单个Executor被用来穿件和管理系统所有的任务 在任何线程池中，现有线程在可能的情况下，都会被自动复用 从任务中产生返回值使用Callable接口，而不是Runnable,Callable接口返回一个泛型的Future,可以使用get()方法等待结果返回 休眠sleep 优先级优先调度优先级比较高的线程 书上的例子在我的电脑上不好使 让步如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程带哦度机制一个暗示：我的工作已经做得差不多了，可以让别的线程使用CPU了 这个暗示就是使用yield()方法来作出 不能依赖yield,实际上，yield经常被滥用 后台线程所谓后台(daemon)线程,是指在程序运行的时候在后台提供的一种通用服务的线程， 这种线程并不属于程序中不可或缺的部分后台线程退出时，会杀死进程中所有与的后台线程。]]></content>
-      <categories>
-        <category>并发</category>
-      </categories>
-      <tags>
-        <tag>并发，java</tag>
       </tags>
   </entry>
   <entry>
@@ -1009,17 +1020,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[敏捷开发流程]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%2F</url>
-    <content type="text"><![CDATA[定义敏捷不是指某一种具体的方法论、过程或框架，而是一组价值观和原则。符合敏捷价值观和原则的开发方法包括：极限编程（XP），Scrum，精益软件开发（Lean Software Development），动态系统开发方法（DSDM），特征驱动开发（Feature Driver Development），水晶开发（Crystal Clear）等等。所有这些方法都具有以下共同特征： 迭代式开发 ，整个开发周期分为几个迭代周期 - 增量交付 每个迭代周期结束后逐步交付使用，而不是整个开发过程结束的时候一次性交付使用 - 开发团队和用户反馈推动产品开发 持续集成 开发团队自我管理 敏捷实战 需求评审 Story划分 人员划分 方案设计 方案评审 任务拆分 开发 端到端测试 压力测试＋集成测试 关于需求分析： 一部分是项目总体需求分析时确定的，另一部分是随着项目的发展，新增的业务需求 关于方案设计：在项目需求评审会议后，划分了story、确定了人员分配后，根据项目的总体框架进行的方案设计 主要分 1 概述 41.1 目的 41.2 术语、定义和略缩词 41.3 参考资料 42 业务逻辑 43 主题表设计 74 性能设计 95 平滑升级 然后做方案评审 团队内部任务拆分 开发 测试 压力测试 和 集成测试]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>敏捷开发</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据分析]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%2F</url>
     <content type="text"><![CDATA[数据分析基础线性代数微积分]]></content>
@@ -1028,6 +1028,17 @@
       </categories>
       <tags>
         <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[敏捷开发流程]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[定义敏捷不是指某一种具体的方法论、过程或框架，而是一组价值观和原则。符合敏捷价值观和原则的开发方法包括：极限编程（XP），Scrum，精益软件开发（Lean Software Development），动态系统开发方法（DSDM），特征驱动开发（Feature Driver Development），水晶开发（Crystal Clear）等等。所有这些方法都具有以下共同特征： 迭代式开发 ，整个开发周期分为几个迭代周期 - 增量交付 每个迭代周期结束后逐步交付使用，而不是整个开发过程结束的时候一次性交付使用 - 开发团队和用户反馈推动产品开发 持续集成 开发团队自我管理 敏捷实战 需求评审 Story划分 人员划分 方案设计 方案评审 任务拆分 开发 端到端测试 压力测试＋集成测试 关于需求分析： 一部分是项目总体需求分析时确定的，另一部分是随着项目的发展，新增的业务需求 关于方案设计：在项目需求评审会议后，划分了story、确定了人员分配后，根据项目的总体框架进行的方案设计 主要分 1 概述 41.1 目的 41.2 术语、定义和略缩词 41.3 参考资料 42 业务逻辑 43 主题表设计 74 性能设计 95 平滑升级 然后做方案评审 团队内部任务拆分 开发 测试 压力测试 和 集成测试]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>敏捷开发</tag>
       </tags>
   </entry>
   <entry>
