@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[并发-java-1]]></title>
+    <url>%2F2019%2F06%2F11%2F%E5%B9%B6%E5%8F%91-java-1%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>并发</category>
+      </categories>
+      <tags>
+        <tag>并发，java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[并发-Java]]></title>
     <url>%2F2019%2F06%2F10%2F%E5%B9%B6%E5%8F%91-Java%2F</url>
-    <content type="text"><![CDATA[&lt;Java 编程思想&gt;-并发并发介绍，想要真正编写一些复杂的程序钱，应该学一些专门介绍并发的书籍 并发的多面性使用并发时需要解决的问题有多个，而实现并发的方式也有多种，并且两者之间没有明显的映射关系 并发解决的问题大体上可以分为速度和设计可管理性两种 更快的执行并发通常是提高运行在单处理器上的程序性能直觉上思考在单核心上顺序运行程序应该是最高效的，因为没有上下文切换的代价 但是世界上有讨厌的 阻塞 单处理器系统中性能提高的常见实例就是事件驱动编程 操作进程进程是运行在它自己的地址空间内的自包容的程序 而java所使用的并发系统会共享诸如内存和IO这样的资源,java操作的是代码代表的进程生成的一系列线程 java 可能并没有函数式编程语言适合并发 改进代码设计基本的线程机制并发编程将程序划分为多个分离的独立运行的任务，通过多线程机制，这些独立任务中的每一个都将由执行线程来驱动。线程的调度由操作系统负责 代码 定义任务通过Runnable接口定义任务 Thread class将Runnable对象转变为工作按任务的传统方式是把它提交给一个Thread构造器 executor非常常见的情况是，单个Executor被用来穿件和管理系统所有的任务 在任何线程池中，现有线程在可能的情况下，都会被自动复用 从任务中产生返回值使用Callable接口，而不是Runnable,Callable接口返回一个泛型的Future,可以使用get()方法等待结果返回 休眠sleep 优先级优先调度优先级比较高的线程 书上的例子在我的电脑上不好使 让步如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程带哦度机制一个暗示：我的工作已经做得差不多了，可以让别的线程使用CPU了 这个暗示就是使用yield()方法来作出 不能依赖yield,实际上，yield经常被滥用 后台线程所谓后台(daemon)线程,是指在程序运行的时候在后台提供的一种通用服务的线程， 这种线程并不属于程序中不可或缺的部分后台线程退出时，会杀死进程中所有与的后台线程。 《Java 并发编程实战》极客时间-王老师笔记： Java 并发编程很重要，并且属于高阶编程能力，但是不得不学；很难学，但按照这个思路去学没那么难老师很牛逼，但十五年了并发编程还没有完全掌握，以前主要靠单核处理器的性能提升来提高程序执行效率，但现在单核cpu的性能提升遇到瓶颈，但互联网需要高并发，同时中间件，数据库的并发难以满足要求，必须全民并发编程 并发编程三个核心问题：分工，同步，互斥 人最难得的能力就是坚持， 毅力强者为王 要称王吗兄弟？ 怎么办？跳出来，看全景并发编程领域可以抽象成三大问题：分工、同步和互斥 分工最佳的方式就是和现实世界做类比，例如生产者消费者模式 同步一个线程执行完了一个任务，如何通知执行后续任务的线程开工 当某个条件不满足时，线程需要等待，当某个条件满足时，线程需要被唤醒执行 解决协作问题的核心技术是管程，管程是解决并发问题的万能钥匙 互斥分工、同步主要强调性能，互斥保证的是正确性，，用专业术语叫“线程安全” 并发程序里，当多个线程同时访问同一个共享变量时，结果是不确定的，不确定就是不对的 导致不确定的是： 可见性问题 有序性问题 原子性问题 所谓互斥，指的是同一时刻，只允许一个线程访问共享变量 钻进去，看本质 我认为工程上的解决方案，一定要有理论做基础 我们需要更多地谈及问题背后的本质，问题的起源，同时站在理论，模型的角度讲解java并发 总之 分工、同步和互斥的全景图，是我对并发问题的个人总结，不一定正确，但是可以帮助我快速建立解决并发问题的思路，梳理并发编程的知识，加深认识。我将其分享给你，希望对你也有用。 对于某个具体的技术，我建议你探索它背后的理论本质，理论的应用面更宽，一项优秀的理论往往在多个语言中都有体现，在多个不同领域都有应用。所以探求理论本质，既能加深对技术本身的理解，也能拓展知识深度和广度，这是个一举多得的方法。这方面，希望我们一起探讨，共同进步。 并发编程bug的源头：可见性、原子性、有序性cpu、内存、I\O 三个小伙伴渐行渐远，但还是必须给他三硬凑一块，因为没有更好的办法 有一个核心矛盾一直存在，就是这三者的速度差异。CPU 和内存的速度差异可以形象地描述为：CPU 是天上一天，内存是地上一年（假设 CPU 执行一条普通指令需要一天，那么 CPU 读写内存得等待一年的时间）。内存和 I/O 设备的速度差异就更大了，内存是天上一天，I/O 设备是地上十年。 CPU 增加了缓存,以均衡与内存的速度差异 操作系统增加了进程、线程，以分时复用CPU，进而均衡CPU与ＩＯ设备的速度差异 编译程序优化指令执行次序，使得缓存能够得到更加合理地利用 为协调三者之间的速度差异，增加北桥和南桥，北桥已经集成到cpu中 缓存导致的可见性问题单核时代： 多核时代： 线程切换带来的原子性问题高级语言中的一条语句往往需要多条cpu指令完成 举例 count += 1 执行时转换成的三条ＣＰＵ指令 首先把变量count从内存加载到cpu的寄存器 之后，在寄存器中执行+1操作 最后，将结果写入内存 而操作系统做任务切换，可以发生在任何一条cpu指令执行完时， 我们把一个或多个操作在cpu执行的过程中不被中断的特性称为原子性 ＣＰＵ能够保证的原子操作是ＣＰＵ指令级别的，而不是高级语言的操作符 编译优化带来的有序性问题在java领域一个经典的案例就是利用双重检查创建单例对象 123456789101112public class Singleton &#123; static Singleton instance; static Singleton getInstance()&#123; if (instance == null) &#123; synchronized(Singleton.class) &#123; if (instance == null) instance = new Singleton(); &#125; &#125; return instance; &#125;&#125; 问题出在哪里呢？出在 new 操作上，我们以为的 new 操作应该是： 分配一块内存 M； 在内存 M 上初始化 Singleton 对象； 然后 M 的地址赋值给 instance 变量。 但是实际上优化后的执行路径却是这样的： 分配一块内存 M； 将 M 的地址赋值给 instance 变量； 最后在内存 M 上初始化 Singleton 对象。 总结起来只要我们能够深刻理解可见性，原子性，有序性在并发场景下的原理，很多并发ｂｕｇ都是可以理解，可以诊断的 在介绍可见性、原子性、有序性的时候，特意提到缓存导致的可见性问题，线程切换带来的原子性问题，编译优化带来的有序性问题 Java 内存模型：看JAVA如何解决可见性和有序性问题什么是java 内存模型cpu 缓存 －&gt; 可见性问题 编译优化 -&gt; 有序性问题 那么解决这两个问题最直接的问题就是禁用缓存和编译优化，综合性能，只能按需禁用缓存和编译优化 java 内存模式是很复杂的规范，站在程序员的视角来看：java 内存模型规范了jvm如何提供按需禁用缓存和编译优化的方法 具体来说，这些方法包括 volatile、synchronized、final三个关键字 六项Happens-Before规则 Happens-Before规则12345678910111213class VolatileExample &#123; int x = 0; volatile boolean v = false; public void writer() &#123; x = 42; v = true; &#125; public void reader() &#123; if (v == true) &#123; // 这里 x 会是多少呢？ &#125; &#125;&#125; 前面一个操作的结果对后面的操作是可见的 程序的顺序性规则 volatile 变量规则对一个volatile变量的写操作，Happens-before 于后续对这个变量的读操作 传递性 4.管程中锁的规则对一个锁的解锁Happens-Before于对这个锁的加锁 线程的start()原则 线程的join()原则 别忘了还有个finalfinal 修饰变量时，初衷时告诉编译器：这个变量生而不变，可以可劲儿优化]]></content>
+    <content type="text"><![CDATA[&lt;Java 编程思想&gt;-并发并发介绍，想要真正编写一些复杂的程序钱，应该学一些专门介绍并发的书籍 并发的多面性使用并发时需要解决的问题有多个，而实现并发的方式也有多种，并且两者之间没有明显的映射关系 并发解决的问题大体上可以分为速度和设计可管理性两种 更快的执行并发通常是提高运行在单处理器上的程序性能直觉上思考在单核心上顺序运行程序应该是最高效的，因为没有上下文切换的代价 但是世界上有讨厌的 阻塞 单处理器系统中性能提高的常见实例就是事件驱动编程 操作进程进程是运行在它自己的地址空间内的自包容的程序 而java所使用的并发系统会共享诸如内存和IO这样的资源,java操作的是代码代表的进程生成的一系列线程 java 可能并没有函数式编程语言适合并发 改进代码设计基本的线程机制并发编程将程序划分为多个分离的独立运行的任务，通过多线程机制，这些独立任务中的每一个都将由执行线程来驱动。线程的调度由操作系统负责 代码 定义任务通过Runnable接口定义任务 Thread class将Runnable对象转变为工作按任务的传统方式是把它提交给一个Thread构造器 executor非常常见的情况是，单个Executor被用来穿件和管理系统所有的任务 在任何线程池中，现有线程在可能的情况下，都会被自动复用 从任务中产生返回值使用Callable接口，而不是Runnable,Callable接口返回一个泛型的Future,可以使用get()方法等待结果返回 休眠sleep 优先级优先调度优先级比较高的线程 书上的例子在我的电脑上不好使 让步如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程带哦度机制一个暗示：我的工作已经做得差不多了，可以让别的线程使用CPU了 这个暗示就是使用yield()方法来作出 不能依赖yield,实际上，yield经常被滥用 后台线程所谓后台(daemon)线程,是指在程序运行的时候在后台提供的一种通用服务的线程， 这种线程并不属于程序中不可或缺的部分后台线程退出时，会杀死进程中所有与的后台线程。 《Java 并发编程实战》极客时间-王老师笔记： Java 并发编程很重要，并且属于高阶编程能力，但是不得不学；很难学，但按照这个思路去学没那么难老师很牛逼，但十五年了并发编程还没有完全掌握，以前主要靠单核处理器的性能提升来提高程序执行效率，但现在单核cpu的性能提升遇到瓶颈，但互联网需要高并发，同时中间件，数据库的并发难以满足要求，必须全民并发编程 并发编程三个核心问题：分工，同步，互斥 人最难得的能力就是坚持， 毅力强者为王 要称王吗兄弟？ 怎么办？跳出来，看全景并发编程领域可以抽象成三大问题：分工、同步和互斥 分工最佳的方式就是和现实世界做类比，例如生产者消费者模式 同步一个线程执行完了一个任务，如何通知执行后续任务的线程开工 当某个条件不满足时，线程需要等待，当某个条件满足时，线程需要被唤醒执行 解决协作问题的核心技术是管程，管程是解决并发问题的万能钥匙 互斥分工、同步主要强调性能，互斥保证的是正确性，，用专业术语叫“线程安全” 并发程序里，当多个线程同时访问同一个共享变量时，结果是不确定的，不确定就是不对的 导致不确定的是： 可见性问题 有序性问题 原子性问题 所谓互斥，指的是同一时刻，只允许一个线程访问共享变量 钻进去，看本质 我认为工程上的解决方案，一定要有理论做基础 我们需要更多地谈及问题背后的本质，问题的起源，同时站在理论，模型的角度讲解java并发 总之 分工、同步和互斥的全景图，是我对并发问题的个人总结，不一定正确，但是可以帮助我快速建立解决并发问题的思路，梳理并发编程的知识，加深认识。 对于某个具体的技术，我建议你探索它背后的理论本质，理论的应用面更宽，一项优秀的理论往往在多个语言中都有体现，在多个不同领域都有应用。所以探求理论本质，既能加深对技术本身的理解，也能拓展知识深度和广度，这是个一举多得的方法。 并发编程bug的源头：可见性、原子性、有序性cpu、内存、I\O 三个小伙伴渐行渐远，但还是必须给他仨硬凑一块，因为没有更好的办法，还没有谁突破冯-诺依曼体系 有一个核心矛盾一直存在，就是这三者的速度差异。CPU 和内存的速度差异可以形象地描述为：CPU 是天上一天，内存是地上一年（假设 CPU 执行一条普通指令需要一天，那么 CPU 读写内存得等待一年的时间）。内存和 I/O 设备的速度差异就更大了，内存是天上一天，I/O 设备是地上十年。 CPU 增加了缓存,以均衡与内存的速度差异 操作系统增加了进程、线程，以分时复用CPU，进而均衡CPU与ＩＯ设备的速度差异 编译程序优化指令执行次序，使得缓存能够得到更加合理地利用 为协调三者之间的速度差异，增加北桥和南桥，北桥已经集成到cpu中 缓存导致的可见性问题单核时代： 多核时代： 线程切换带来的原子性问题高级语言中的一条语句往往需要多条cpu指令完成 举例 count += 1 执行时转换成的三条ＣＰＵ指令 首先把变量count从内存加载到cpu的寄存器 之后，在寄存器中执行+1操作 最后，将结果写入内存 而操作系统做任务切换，可以发生在任何一条cpu指令执行完时， 我们把一个或多个操作在cpu执行的过程中不被中断的特性称为原子性 ＣＰＵ能够保证的原子操作是ＣＰＵ指令级别的，而不是高级语言的操作符 编译优化带来的有序性问题在java领域一个经典的案例就是利用双重检查创建单例对象 123456789101112public class Singleton &#123; static Singleton instance; static Singleton getInstance()&#123; if (instance == null) &#123; synchronized(Singleton.class) &#123; if (instance == null) instance = new Singleton(); &#125; &#125; return instance; &#125;&#125; 问题出在哪里呢？出在 new 操作上，我们以为的 new 操作应该是： 分配一块内存 M； 在内存 M 上初始化 Singleton 对象； 然后 M 的地址赋值给 instance 变量。 但是实际上优化后的执行路径却是这样的： 分配一块内存 M； 将 M 的地址赋值给 instance 变量； 最后在内存 M 上初始化 Singleton 对象。 总结起来只要我们能够深刻理解可见性，原子性，有序性在并发场景下的原理，很多并发ｂｕｇ都是可以理解，可以诊断的 在介绍可见性、原子性、有序性的时候，特意提到缓存导致的可见性问题，线程切换带来的原子性问题，编译优化带来的有序性问题 Java 内存模型：看JAVA如何解决可见性和有序性问题什么是java 内存模型cpu 缓存 －&gt; 可见性问题 编译优化 -&gt; 有序性问题 那么解决这两个问题最直接的问题就是禁用缓存和编译优化，综合性能，只能按需禁用缓存和编译优化 java 内存模式是很复杂的规范，站在程序员的视角来看：java 内存模型规范了jvm如何提供按需禁用缓存和编译优化的方法 具体来说，这些方法包括 volatile、synchronized、final三个关键字 六项Happens-Before规则 Happens-Before规则12345678910111213class VolatileExample &#123; int x = 0; volatile boolean v = false; public void writer() &#123; x = 42; v = true; &#125; public void reader() &#123; if (v == true) &#123; // 这里 x 会是多少呢？ &#125; &#125;&#125; 前面一个操作的结果对后面的操作是可见的 程序的顺序性规则 volatile 变量规则对一个volatile变量的写操作，Happens-before 于后续对这个变量的读操作 传递性 4.管程中锁的规则对一个锁的解锁Happens-Before于对这个锁的加锁 线程的start()原则 线程的join()原则 别忘了还有个finalfinal 修饰变量时，初衷时告诉编译器：这个变量生而不变，可以可劲儿优化 互斥锁破坏原子性的罪魁祸首是线程切换 同一时刻只有一个线程执行，我们称之为互斥 简易锁模型 改进后的锁模型 java提供的锁技术：synchronizedJava 编译器会在 synchronized修饰的方法或代码块前后自动加上lock()和unlock() 在没有明确指明锁的情况下： 在修饰静态方法时，锁定的是当前类;在修饰非静态方法时，锁定的是当前对象 用 synchronized 解决 count+=1 问题123456789class SafeCalc &#123; long value = 0L; synchronized long get() &#123; return value; &#125; synchronized void addOne() &#123; value += 1; &#125;&#125; 锁和受保护资源的关系受保护资源和锁之间的关联关系是 N:1 的关系 重点来了，受保护的多个资源间是否存在关联关系呢银行多账户转账问题 保护没有关联关系的多个资源12345678910111213141516171819202122232425262728293031323334353637383940class Account &#123; // 锁：保护账户余额 private final Object balLock = new Object(); // 账户余额 private Integer balance; // 锁：保护账户密码 private final Object pwLock = new Object(); // 账户密码 private String password; // 取款 void withdraw(Integer amt) &#123; synchronized(balLock) &#123; if (this.balance &gt; amt)&#123; this.balance -= amt; &#125; &#125; &#125; // 查看余额 Integer getBalance() &#123; synchronized(balLock) &#123; return balance; &#125; &#125; // 更改密码 void updatePassword(String pw)&#123; synchronized(pwLock) &#123; this.password = pw; &#125; &#125; // 查看密码 String getPassword() &#123; synchronized(pwLock) &#123; return password; &#125; &#125;&#125; 可以用一把互斥锁来保护多个资源，例如可以统统用this 作为锁，但是用一把锁会导致所有的方法调用变成串行，而我们用两把锁，各管各的，那么取款和修改密码就可以并行了 用不同的锁对受保护资源进行精细化管理，能够提升性能。这种锁称为细粒度锁 保护有关联关系的多个资源两个账户间转账 1234567891011class Account &#123; private int balance; // 转账 void transfer( Account target, int amt)&#123; if (this.balance &gt; amt) &#123; this.balance -= amt; target.balance += amt; &#125; &#125;&#125; 假如简单加锁－&gt; 1234567891011class Account &#123; private int balance; // 转账 synchronized void transfer( Account target, int amt)&#123; if (this.balance &gt; amt) &#123; this.balance -= amt; target.balance += amt; &#125; &#125;&#125; 那么就是想要拿A账户的锁去控制B账户的成员变量 下面我们具体分析一下，假设有 A、B、C 三个账户，余额都是 200 元，我们用两个线程分别执行两个转账操作：账户 A 转给账户 B 100 元，账户 B 转给账户 C 100 元，最后我们期望的结果应该是账户 A 的余额是 100 元，账户 B 的余额是 200 元， 账户 C 的余额是 300 元。 我们假设线程 1 执行账户 A 转账户 B 的操作，线程 2 执行账户 B 转账户 C 的操作。这两个线程分别在两颗 CPU 上同时执行，那它们是互斥的吗？我们期望是，但实际上并不是。因为线程 1 锁定的是账户 A 的实例（A.this），而线程 2 锁定的是账户 B 的实例（B.this），所以这两个线程可以同时进入临界区 transfer()。同时进入临界区的结果是什么呢？线程 1 和线程 2 都会读到账户 B 的余额为 200，导致最终账户 B 的余额可能是 300（线程 1 后于线程 2 写 B.balance，线程 2 写的 B.balance 值被线程 1 覆盖），可能是 100（线程 1 先于线程 2 写 B.balance，线程 1 写的 B.balance 值被线程 2 覆盖），就是不可能是 200。 使用锁的正确姿势多个账户公用一把锁 12345678910111213141516171819class Account &#123; private Object lock； private int balance; private Account(); // 创建 Account 时传入同一个 lock 对象 public Account(Object lock) &#123; this.lock = lock; &#125; // 转账 void transfer(Account target, int amt)&#123; // 此处检查所有对象共享的锁 synchronized(lock) &#123; if (this.balance &gt; amt) &#123; this.balance -= amt; target.balance += amt; &#125; &#125; &#125;&#125; 哈哈，假如在不同工程间转账，需要来回传锁来创建对象？几个线程不在一个虚拟机执行，做不到吧？ 还有更独的办法，统统用Account类来锁，也就是Account.class作为共享的锁，那么满世界的转账都是串行的了 123456789101112class Account &#123; private int balance; // 转账 void transfer(Account target, int amt)&#123; synchronized(Account.class) &#123; if (this.balance &gt; amt) &#123; this.balance -= amt; target.balance += amt; &#125; &#125; &#125;&#125; 很明显这不是使用锁的正确姿势 阶段性总结下当使用互斥锁来保护多个资源时，假如这几个资源间不存在任何关联，那么每个资源用一把独立的锁（细粒度锁）就好了但是，当多个资源存在关联关系时，需要一把粒度大到能够覆盖几个关联资源的锁来控制局面，极端情况就是全世界都串行了 原子性的本质是什么？操作的中间状态对外不可见解决原子性问题，是要保证中间状态对外不可见 之前那个全世界串行转账的肯定不行， 还是用两个细粒度锁比较好 于是 12345678910111213141516class Account &#123; private int balance; // 转账 void transfer(Account target, int amt)&#123; // 锁定转出账户 synchronized(this) &#123; // 锁定转入账户 synchronized(target) &#123; if (this.balance &gt; amt) &#123; this.balance -= amt; target.balance += amt; &#125; &#125; &#125; &#125;&#125; 其实用两把锁就实现了，转出账本一把，转入账本另一把。在 transfer() 方法内部，我们首先尝试锁定转出账户 this（先把转出账本拿到手），然后尝试锁定转入账户 target（再把转入账本拿到手），只有当两者都成功时，才执行转账操作。这个逻辑可以图形化为下图这个样子。 那么死锁来了使用细粒度锁可以提高并行度，，是性能提升的一个重要手段 代价是可能导致死锁 死锁： 一组互相竞争资源的线程因互相等待，导致“永久”阻塞的现象 那么怎么预防死锁呢？ 什么情况下才能发生死锁呢？ Coffman: 四点全部同时发生才能死锁 互斥，共享资源X Y 只能被一个线程同时占用时才能进行下去 占有且等待，线程T1已经获取共享资源X,在等待Y时，不释放Ｘ; 不可抢占，其他线程不能强行抢占线程T1已占有的资源 循环等待，T1等T2占有的资源，T2等T1占有的资源 那么怎么才能预防死锁呢，只要破坏上述四点中的一点即可预防死锁 一次性申请所有资源，不用等待 申请不到资源时，将自身持有的资源全部释放 按照ID,按照大小号线性申请资源 2.不再等待，一次性申请所有资源还是转账 对应到编程领域，“同时申请”这个操作是一个临界区，我们也需要一个角色（Java 里面的类）来管理这个临界区，我们就把这个角色定为 Allocator。它有两个重要功能，分别是：同时申请资源 apply() 和同时释放资源 free()。账户 Account 类里面持有一个 Allocator 的单例（必须是单例，只能由一个人来分配资源）。当账户 Account 在执行转账操作的时候，首先向 Allocator 同时申请转出账户和转入账户这两个资源，成功后再锁定这两个资源；当转账操作执行完，释放锁之后，我们需通知 Allocator 同时释放转出账户和转入账户这两个资源。具体的代码实现如下 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748class Allocator &#123; private List&lt;Object&gt; als = new ArrayList&lt;&gt;(); // 一次性申请所有资源 synchronized boolean apply( Object from, Object to)&#123; if(als.contains(from) || als.contains(to))&#123; return false; &#125; else &#123; als.add(from); als.add(to); &#125; return true; &#125; // 归还资源 synchronized void free( Object from, Object to)&#123; als.remove(from); als.remove(to); &#125;&#125;class Account &#123; // actr 应该为单例 private Allocator actr; private int balance; // 转账 void transfer(Account target, int amt)&#123; // 一次性申请转出账户和转入账户，直到成功 while(!actr.apply(this, target)) ； try&#123; // 锁定转出账户 synchronized(this)&#123; // 锁定转入账户 synchronized(target)&#123; if (this.balance &gt; amt)&#123; this.balance -= amt; target.balance += amt; &#125; &#125; &#125; &#125; finally &#123; actr.free(this, target) &#125; &#125;&#125; 3 破坏不可抢占，申请不到新的时，释放全部旧的java 做不到，synchronized申请资源不成功时，会将使线程进入阻塞状态 4.破坏循环等待，按大小号线性申请增加字段id,申请互斥资源时，按照id大小来申请 1234567891011121314151617181920212223class Account &#123; private int id; private int balance; // 转账 void transfer(Account target, int amt)&#123; Account left = this ① Account right = target; ② if (this.id &gt; target.id) &#123; ③ left = target; ④ right = this; ⑤ &#125; ⑥ // 锁定序号小的账户 synchronized(left)&#123; // 锁定序号大的账户 synchronized(right)&#123; if (this.balance &gt; amt)&#123; this.balance -= amt; target.balance += amt; &#125; &#125; &#125; &#125;&#125; 阶段性总结：破坏等待，一次性申请全部资源这个姿势，明显就是将两个锁又封装了一层，我觉得跟之前在Accout类构造参数中执行lock，是一样的，之前的用一把大锁lock所有转账的两个Accout,这个是这个两个Account用一个管理员Allocator,细粒度锁由其管理，严重增加了复杂度，没感觉是个好姿势总之比用Accout.Class 这种锁住整个类，导致全局串行的好]]></content>
       <categories>
         <category>并发</category>
       </categories>
@@ -30,7 +41,7 @@
   <entry>
     <title><![CDATA[o21bigdata.md]]></title>
     <url>%2F2019%2F05%2F28%2Fo21bigdata-md%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[0编程技术的核心价值就是把现实世界的业务操作搬到计算机上来，通过计算机软件和网络进行业务和数据处理]]></content>
   </entry>
   <entry>
     <title><![CDATA[skills]]></title>
@@ -482,6 +493,19 @@
   </entry>
   <entry>
     <title><![CDATA[Tensorflow Model java 部署]]></title>
+    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
+    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
+      <categories>
+        <category>机器学习、深度学习 - tensorflow</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tensorflow Model java 部署]]></title>
     <url>%2F2018%2F12%2F04%2FTensorflow5--seq2seq%2F</url>
     <content type="text"><![CDATA[IntroductionSeq2Seq模型在机器翻译、语音识别、文本摘要等领域取得了巨大的成功 以神经机器翻译(NMT)为例介绍 使用最新的 decoder / attention wrapper API，TensorFlow 1.2 data iterator 在构建模型时加入了我们最成功的经验 为构建最强大的 NMT 模型，我们提供了许多 tips 和 tricks，并复制了Google的 NMT系统 Basic神经机器翻译的相关背景 | Background on Neural Machine Translation 传统的 phrase-based 翻译系统的工作原理是把源句子分成几块，然后一个短语一个短语的翻译，但是翻译结果的流畅度较差，并且不符合人类的翻译方式， 我们人类会读取完整的句子，理解它的意思，然后进行翻译。NMT 模型正是在模仿这个机制！ NMT模型使用encoder读取源句子，然后编码得到一个“有意义”的 vector，即一串能代表源句子意思的数字。然后 decoder 将这个 vector 解码得到翻译，就想图1展示的那样。这就是所谓的 encoder-decoder 结构 本教程将以单向的多层（multi-layer） RNN 为例，其使用 LSTM 作为 RNN 单元 Traning - How to build our first NMT system实战 - 训练一个 NMT 模型 Hands-on - Let’s train an NMT model12345678910111213python -m nmt.nmt \ --src=vi --tgt=en \ --vocab_prefix=/home/xxh/data/nmt_data_2/vocab \ --train_prefix=/home/xxh/data/nmt_data_2/train \ --dev_prefix=/home/xxh/data/nmt_data_2/tst2012 \ --test_prefix=/home/xxh/data/nmt_data_2/tst2013 \ --out_dir=/home/xxh/data/nmt_model \ --num_train_steps=12000 \ --steps_per_stats=100 \ --num_layers=2 \ --num_units=128 \ --dropout=0.2 \ --metrics=bleu python -m nmt.nmt –src=vi –tgt=en –vocab_prefix=/home/xxh/data/my_nmt_data/train –train_prefix=/home/xxh/data/my_nmt_data/train –dev_prefix=/home/xxh/data/my_nmt_data/tst2012 –test_prefix=/home/xxh/data/my_nmt_data/tst2012 –out_dir=/home/xxh/data/my_nmt_model –num_train_steps=12000 –steps_per_stats=100 –num_layers=2 –num_units=128 –dropout=0.2 –metrics=bleu 12 python -m nmt.nmt –out_dir=/home/xxh/data/nmt_model –inference_input_file=/home/xxh/data/nmt_data_2/my.vi –inference_output_file=/home/xxh/data/nmt_attention_model/output_infer]]></content>
       <categories>
@@ -492,19 +516,6 @@
         <tag>ml</tag>
         <tag>tensorflow</tag>
         <tag>seq2seq</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Tensorflow Model java 部署]]></title>
-    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
-    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
-      <categories>
-        <category>机器学习、深度学习 - tensorflow</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>tensorflow</tag>
       </tags>
   </entry>
   <entry>
@@ -707,6 +718,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[python 笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fpython%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[python 笔记日常python使用笔记 python List 2 String How to convert list to string By using ‘’.join 12list1 = [&apos;1&apos;, &apos;2&apos;, &apos;3&apos;]str1 = &apos;&apos;.join(list1) Or if the list is of integers, convert the elements before joining them. 12list1 = [1, 2, 3]str1 = &apos;&apos;.join(str(e) for e in list1) python 写文件1234567file = &quot;/home/xxh/data/footlastlist&quot;+time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime()) f= open(file,&quot;w+&quot;) try: f.write(&apos;&apos;.join(str(e) for e in footlastlist)) finally: f.close() file文件open后一定记得close(还有一种写法with) open的参数w+可以自动创建不存在的文件，前提是，设置的file路径为绝对路径]]></content>
+      <categories>
+        <category>编程语言 - python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[sbt package VS sbt assembly VS sbt dist]]></title>
     <url>%2F2018%2F12%2F04%2FsbtpackageVSsbtassembly%2F</url>
     <content type="text"><![CDATA[sbt打包： sbt package sbt assembly sbt dist 1. sbt package在sbt Doc的[运行]章节有明确的介绍：Running package 将 src/main/resources 下的文件和 src/main/scala 以及 src/main/java 中编译出来的 class 文件打包成一个 jar 文件。package Creates a jar file containing the files in src/main/resources and the classes compiled from src/main/scala and src/main/java. 使用：在项目根目录下执行： 1sbt package 运行结果会展示已经在target//下，所打成功的包 2. sbt assemblyhttps://github.com/sbt/sbt-assembly Deploy fat JARs. Restart processes. sbt-assembly is a sbt plugin originally ported from codahale’s assembly-sbt, which I’m guessing was inspired by Maven’s assembly plugin. The goal is simple: Create a fat JAR of your project with all of its dependencies. 相比于 sbt package,sbt assembly会将project的依赖都打包进来 使用：github项目下的README.md中有详细的使用方法，这里简要摘抄如下： 在project/plugin.sbt中添加如下项： 1addSbtPlugin(&quot;com.eed3si9n&quot; % &quot;sbt-assembly&quot; % &quot;0.14.6&quot;) 在build.sbt文件中设置： 1234//使用java jar 执行时的main类，(入口类)mainClass in assembly := Some(&quot;AwsSupportS3&quot;)//设置目标jar包的名字assemblyJarName in assembly := s&quot;my-api-hdfs1.1.0607.jar 打包，在根目录下执行： 1sbt assembly 同样会有包在target/***/目录下 3. sbt distsbt 墙裂推荐 github地址：https://github.com/sbt/sbt-native-packager sbt官方支持：https://www.scala-sbt.org/sbt-native-packager/ 宣言： “Code once, deploy anywhere” 官方也做了相近的使用说明，文档算是很不错了 这里mark下我的使用： 在project/plugin.sbt中添加如下项： 1addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-native-packager&quot; % &quot;1.1.5&quot;) 在build.sbt文件中设置： 1234567891011121314151617181920enablePlugins(JavaServerAppPackaging)//main class 配置，同上mainClass in Compile := Some(&quot;***.aip.ml.platform.rest.WebServer&quot;)//外部配置文件路径，project代码src/main/resources中的配置文件自动生成一份放在配置的路径下，如要更改配置文件，仅更改外部的即可mappings in Universal ++= &#123; // optional example illustrating how to copy additional directory directory(&quot;scripts&quot;) ++ // copy configuration files to config directory contentOf(&quot;src/main/resources&quot;).toMap.mapValues(&quot;config/&quot; + _)&#125;// add &apos;config&apos; directory first in the classpath of the start script,// an alternative is to set the config file locations via CLI parameters// when starting the applicationscriptClasspath := Seq(&quot;../config/&quot;) ++ scriptClasspath.valuelicenses := Seq((&quot;CC0&quot;, url(&quot;http://creativecommons.org/publicdomain/zero/1.0&quot;))) 打包，在根目录下执行： 1sbt dist 以上工具在打包前，最好先执行： 1sbt clean update 确保project没有问题]]></content>
@@ -721,17 +743,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[python 笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fpython%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[python 笔记日常python使用笔记 python List 2 String How to convert list to string By using ‘’.join 12list1 = [&apos;1&apos;, &apos;2&apos;, &apos;3&apos;]str1 = &apos;&apos;.join(list1) Or if the list is of integers, convert the elements before joining them. 12list1 = [1, 2, 3]str1 = &apos;&apos;.join(str(e) for e in list1) python 写文件1234567file = &quot;/home/xxh/data/footlastlist&quot;+time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime()) f= open(file,&quot;w+&quot;) try: f.write(&apos;&apos;.join(str(e) for e in footlastlist)) finally: f.close() file文件open后一定记得close(还有一种写法with) open的参数w+可以自动创建不存在的文件，前提是，设置的file路径为绝对路径]]></content>
-      <categories>
-        <category>编程语言 - python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[scala implict]]></title>
     <url>%2F2018%2F12%2F04%2Fscala%20implicit%2F</url>
     <content type="text"><![CDATA[why 应用中自己写的代码和调用的第三方函数库有着一个基本的区别：也就是你可以任意修改和扩展自己写的代码，而一般来说在没有源码的情况下很难扩展第三方函数库，只能利用函数库提供什么就是什么。 在Scala中解决这个问题是使用隐含类型变换和隐时参数。它们可以使调用函数库变得更加方便，并避免一些繁琐和显而易见的细节。 how在scala中 implicit 类隐式调用函数可以转换调用方法的对象，比如但编译器看到X .method，而类型 X 没有定义 method（包括基类)方法，那么编译器就查找作用域内定义的从 X 到其它对象的类型转换，比如 Y，而类型Y定义了 method 方法，编译器就首先使用隐含类型转换把 X 转换成 Y，然后调用 Y 的 method。 implicit 方法 一旦编译器看到了X,但是需要Y,就会检查从X到Y的隐式转换函数 12345678910scala&gt; implicit def double2Int(d:Double) = d.toIntwarning: there were 1 feature warning(s); re-run with -feature for detailsdouble2Int: (d: Double)Intscala&gt; implicit def double2Int(d:Double):Int = d.toIntwarning: there were 1 feature warning(s); re-run with -feature for detailsdouble2Int: (d: Double)Intscala&gt; val i:Int = 3.5i: Int = 3 implicit 参数当我们在定义方法时，可以把最后一个参数列表标记为implicit，表示该组参数是隐式参数。一个方法只会有一个隐式参数列表，置于方法的最后一个参数列表。如果方法有多个隐式参数，只需一个implicit修饰即可。 当调用包含隐式参数的方法是，如果当前上下文中有合适的隐式值，则编译器会自动为改组参数填充合适的值。如果没有编译器会抛出异常。当然，标记为隐式参数的我们也可以手动为该参数添加默认值 隐式操作规则 标记规则:标记为implict才可用 作用域：插入的隐式转换必须以单一标识符的形式处于操作域中 无歧义原则：隐式转换唯有不存在其他可插入转换的前提下才能插入 单一调用原则：只会尝试一个隐式操作 显示操作先行规则：若编写的代码类型检查无误，则不会尝试任何隐式操作，编译器不会改变已经可以正常工作的代码 命名隐式转换隐式转换可以任意命名,隐式转换 引用 与名字无关，编译器主要检察输入输出类型 开闭原则规定，软件中的对象对扩展应该是开放的，对于修改应该是关闭的]]></content>
@@ -740,6 +751,17 @@
       </categories>
       <tags>
         <tag>scala</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Scala Try]]></title>
+    <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
+    <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
+      <categories>
+        <category>编程语言 - s cala</category>
+      </categories>
+      <tags>
+        <tag>Scala</tag>
       </tags>
   </entry>
   <entry>
@@ -752,17 +774,6 @@
       <tags>
         <tag>scala</tag>
         <tag>XML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Scala Try]]></title>
-    <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
-    <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
-      <categories>
-        <category>编程语言 - s cala</category>
-      </categories>
-      <tags>
-        <tag>Scala</tag>
       </tags>
   </entry>
   <entry>
@@ -801,18 +812,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[sql笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
-      <categories>
-        <category>数据存储处理 - database</category>
-      </categories>
-      <tags>
-        <tag>database</tag>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Spark的3个API:RDDs/DataFrames/DataSets]]></title>
     <url>%2F2018%2F12%2F04%2Fspark%E7%9A%84%E4%B8%89%E4%B8%AAAPI%2F</url>
     <content type="text"><![CDATA[且谈Apache Spark的API三剑客：RDD、DataFrame和Dataset]]></content>
@@ -824,6 +823,18 @@
         <tag>Spark</tag>
         <tag>DataFrame</tag>
         <tag>DataSet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sql笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
+      <categories>
+        <category>数据存储处理 - database</category>
+      </categories>
+      <tags>
+        <tag>database</tag>
+        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -890,18 +901,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[了解Docker]]></title>
-    <url>%2F2018%2F12%2F04%2F%E4%BA%86%E8%A7%A3Docker%2F</url>
-    <content type="text"><![CDATA[Docker What is Docker?我的理解： 在操作系统上新增的一层抽象 解决的痛点：同一台服务器上多应用间的依赖冲突问题 优势：很多，比如将多个应用部署在同一个云主机上，该云主机弹性扩展，这样能够节约不少成本 目前的项目暂时用不到docker 教程]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>微服务</tag>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[人人都是产品经理--note]]></title>
     <url>%2F2018%2F12%2F04%2F%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86-note%2F</url>
     <content type="text"><![CDATA[第一章 写给新手为什么要做产品经理因为世界等我们去改变，创造好的产品，改善坏的产品 我们到底是不是产品经理产品是什么产品是用来解决某个问题的东西，准确的说产品就是要同时解决用户的问题和公司的问题 因为作为产品经理要在用户目标和公司的商业目标之间寻找平衡 产品经理出现源于宝洁 产品经理的出现是为了适应公司发展的需要。随着企业越来越大,产品越来越多,越来越复杂,原来按职能划分部门的组织结构已经无法适应,所以出现了产品管理的矩阵型组织,而此时产品经理的主要职责是规划产品的生命周期 他们真的是在招产品经理吗它更多地侧重产品本身“从无到有”、“从有到优”的过程,更多地涉及了“产品规划、数据分析、用户研究、需求分析、功能设计、项目管理、敏捷方法”等内容,而不是如传统的产品经理那样,去做已经有了产品之后需要做的诸如管理产品、推广和营销产品的事情 产品经理概念进化 行业形态不同:成熟行业VS.新兴行业。 而互联网、软件行业是新兴行业,新兴市场,三天一小变,五天一大变,产品本身在不断取得突破,用户看什么都是新的,所以产品需要推陈出新,尽力先入为主,占领用户,主导用户习惯,这就导致了产品工作的重头戏在前期,从无到有,从有到优,偏重研发类创新。因此,互联网、软件行业的产品经理更重视产品功能本身的规划,需要“对市场发展趋势有敏锐的洞察力和创新意识及良好的分析、研判能力”,要能不断改进产品,要“深入了解业务,挖掘用户的多种需求,不断推出有竞争力的产品”,“制定所负责产品线的发展蓝图和实施路线图”。 实物VS虚拟物 - 生命周期不同：几年VS几个月 软件和互联网产品更推崇敏捷开发，虽然互联网、软件的项目更加不可控,但项目过程本身看起来并没有传统行业那么复杂,更接近“艺术”而不是“技术”,要依靠丰富的经验,于是产品经理也经常兼顾项目管理,这样自己可以在项目完成度和产品质量之间做平衡,对产品无疑也是一件好事。所以我们在招聘广告中看到公司要求产品经理“发起产品研发项目”,“组织资源实施产品,对其效益负责”。 赢利模式不同,单一卖产品赚钱VS多元赢利。 用户心态不同:花钱买VS.免费用。 互联网、软件产品更重视用户体验,相应的,出现了很多产品经理会涉及的工作内容,如交互设计、视觉设计、文案设计等 非典型产品经理有时高科技企业会采取类似的做法,让产品经理专心处理产品在工程和技术方面的问题,而把大部分营销决定交给另外的职能单位来负责。在这种情况下,产品经理可能会变成产品技术/应用方面的专家,他最主要的工作就是支援、协助销售人员,至于了解市场和从市场了解产品利益等工作,则另有他人代劳 不管整天只是写文档、做Demo,还是成了没钱没权的项目经理;或是求完销售求工程师,最后只能欺负客服,到处不招人待见……前辈们似乎也认可——人人都是产品经理,非典型成了多数,也就变成典型。 一线员工眼中的管理管理的能力,其实就是“在资源不足的情况下把事情做成”的能力,这里的资源在产品经理的工作中通常表现为以下几种形式。 第一,信息不足以决策。时间有限,能力有限,每次决策前不可能掌握所有信息,做决定时总是很头疼,我估计是“拍脑袋”拍得太多的原因。 第二,时间不足以安排周密的计划。总是接到3个月、1个月,甚至1个礼拜完成某项目的命令,每次都让我们张大嘴巴说不出话来,应承下来后如何计划?不过一次又一次的实践表明,办法总比困难多。 第三,人员不足以支持工作强度和难度。不但时间不足,人员也不足,就算数量足,能力够不够?能力够了,团队士气高不高?哪个公司不加班,又有多少公司有加班工资?但还得完成任务,难不难?难! 第四,资金不足以自由调配。俗话说钱要花在刀刃上,买机器要钱,招人要钱,产品推广要钱,而花这些钱的前提是公司还得赚钱,每一分钱都恨不得掰成两半用。 我真的想做,怎么入行用户会去想怎么用这个产品,才能带给自己更大的好处,产生更大的效用;而产品经理则习惯于绕过表象,从背后看问题的本质,思考怎么设计这个产品才能更好地平衡用户目标与商业目标 找到自己的位置几个可能的入行切入点你是做开发的,那就经常要参与需求评审,不妨比别人多用点功,每次都预先了解需求,多多思考,然后在评审会上对需求提出自己的合理建议,时间长了大家都会觉得你很有想法,做产品也许不错。关于职位,可以从“需求分析师”切入,这有些像系统分析的工作,比如业务逻辑、流程图,都是你已经很熟悉的,可以在这个过程中慢慢培养商业的感觉,重点体会某个产品功能是为了满足商业上的什么需求而做的。 一个产品经理的-1到3岁]]></content>
@@ -911,6 +910,18 @@
       <tags>
         <tag>需求分析</tag>
         <tag>产品</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[了解Docker]]></title>
+    <url>%2F2018%2F12%2F04%2F%E4%BA%86%E8%A7%A3Docker%2F</url>
+    <content type="text"><![CDATA[Docker What is Docker?我的理解： 在操作系统上新增的一层抽象 解决的痛点：同一台服务器上多应用间的依赖冲突问题 优势：很多，比如将多个应用部署在同一个云主机上，该云主机弹性扩展，这样能够节约不少成本 目前的项目暂时用不到docker 教程]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>微服务</tag>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -998,17 +1009,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[敏捷开发流程]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%2F</url>
-    <content type="text"><![CDATA[定义敏捷不是指某一种具体的方法论、过程或框架，而是一组价值观和原则。符合敏捷价值观和原则的开发方法包括：极限编程（XP），Scrum，精益软件开发（Lean Software Development），动态系统开发方法（DSDM），特征驱动开发（Feature Driver Development），水晶开发（Crystal Clear）等等。所有这些方法都具有以下共同特征： 迭代式开发 ，整个开发周期分为几个迭代周期 - 增量交付 每个迭代周期结束后逐步交付使用，而不是整个开发过程结束的时候一次性交付使用 - 开发团队和用户反馈推动产品开发 持续集成 开发团队自我管理 敏捷实战 需求评审 Story划分 人员划分 方案设计 方案评审 任务拆分 开发 端到端测试 压力测试＋集成测试 关于需求分析： 一部分是项目总体需求分析时确定的，另一部分是随着项目的发展，新增的业务需求 关于方案设计：在项目需求评审会议后，划分了story、确定了人员分配后，根据项目的总体框架进行的方案设计 主要分 1 概述 41.1 目的 41.2 术语、定义和略缩词 41.3 参考资料 42 业务逻辑 43 主题表设计 74 性能设计 95 平滑升级 然后做方案评审 团队内部任务拆分 开发 测试 压力测试 和 集成测试]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>敏捷开发</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[攒技能]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%94%92%E6%8A%80%E8%83%BD%2F</url>
     <content type="text"><![CDATA[抬头看天 低头走路分类 项目管理编程语言数据结构服务器端前端数据可视化数据存储处理分布式计算数据分析机器学习、深度学习工欲善其事，必先利其器误入歧途书签数据采集瞎说]]></content>
@@ -1017,6 +1017,17 @@
       </categories>
       <tags>
         <tag>技能树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[敏捷开发流程]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[定义敏捷不是指某一种具体的方法论、过程或框架，而是一组价值观和原则。符合敏捷价值观和原则的开发方法包括：极限编程（XP），Scrum，精益软件开发（Lean Software Development），动态系统开发方法（DSDM），特征驱动开发（Feature Driver Development），水晶开发（Crystal Clear）等等。所有这些方法都具有以下共同特征： 迭代式开发 ，整个开发周期分为几个迭代周期 - 增量交付 每个迭代周期结束后逐步交付使用，而不是整个开发过程结束的时候一次性交付使用 - 开发团队和用户反馈推动产品开发 持续集成 开发团队自我管理 敏捷实战 需求评审 Story划分 人员划分 方案设计 方案评审 任务拆分 开发 端到端测试 压力测试＋集成测试 关于需求分析： 一部分是项目总体需求分析时确定的，另一部分是随着项目的发展，新增的业务需求 关于方案设计：在项目需求评审会议后，划分了story、确定了人员分配后，根据项目的总体框架进行的方案设计 主要分 1 概述 41.1 目的 41.2 术语、定义和略缩词 41.3 参考资料 42 业务逻辑 43 主题表设计 74 性能设计 95 平滑升级 然后做方案评审 团队内部任务拆分 开发 测试 压力测试 和 集成测试]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>敏捷开发</tag>
       </tags>
   </entry>
   <entry>
@@ -1042,18 +1053,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[初识机器学习]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A01%2F</url>
-    <content type="text"><![CDATA[神经网络神经网络是一种数学模型，是存在于计算机的神经系统，由大量的神经元相连接并进行计算，在外界信息的基础上，改变内部的结构，常用来对输入和输出间复杂的关系进行建模。 神经网络由大量的节点和之间的联系构成，负责传递信息和加工信息，神经元也可以通过训练而被强化。 rel 生物神经网络现代科学还不能完全解释生物学习，记忆的过程，也就无从解释生物神经元建立相互关系的过程 人工神经网络目的：虽然不知道生物神经网络的内部原理，但是想人工模仿出一个有相同功能的神经网络 首先, 替代掉生物神经网络的, 就是已经成体系的人工神经网络. 所有神经元之间的连接都是固定不可更换的, 这也就是说, 在人工神经网络里, 没有凭空产生新联结这回事. 人工神经网络典型的一种学习方式就是, 我已经知道吃到糖果时, 手会如何动, 但是我想让神经网络学着帮我做这件动动手的事情. 所以我预先准备好非常多吃糖的学习数据, 然后将这些数据一次次放入这套人工神经网络系统中, 糖的信号会通过这套系统传递到手. 然后通过对比这次信号传递后, 手的动作是不是”讨糖”动作, 来修改人工神经网络当中的神经元强度. 这种修改在专业术语中叫做”误差反向传递”, 也可以看作是再一次将传过来的信号传回去, 看看这个负责传递信号神经元对于”讨糖”的动作到底有没有贡献, 让它好好反思与改正, 争取下次做出更好的贡献. 这样看来, 人工神经网络和生物神经网络的确不是一回事. 二者间的区别 人工神经网络靠的是正向和反向传播来更新神经元, 从而形成一个好的神经系统, 本质上, 这是一个能让计算机处理和优化的数学模型. 而生物神经网络是通过刺激, 产生新的联结, 让信号能够通过新的联结传递而形成反馈. 虽然现在的计算机技术越来越高超, 不过我们身体里的神经系统经过了数千万年的进化, 还是独一无二的, 迄今为止, 再复杂, 再庞大的人工神经网络系统也不能替代我们的小脑袋. 我们应该感到自豪, 也应该珍惜上天的这份礼物. 梯度下降optimization(优化问题)机器学习是一种优化问题的方法手段准确的说是梯度下降中的一员optimization: Newton’s method(牛顿法) Least Squares method( 最小二乘法) Gradient Descent(梯度下降法) 误差方程误差方程用来计算预测出来的和我们实际中值有多大差别，在预测数值的问题中，我们常用平方差来代替 cost = (predicted - real)^2 = (Wx-y)^2 优化初始值：(W-0)^2 梯度线躺平的点，其W参数为最优解 ##### 全局最优and局部最优 神经网络黑盒我们 把输入进行数字化，特征化，放入神经网络黑盒中，黑盒中进行了一系列的特征转化，最终得到我们的输出]]></content>
-      <categories>
-        <category>机器学习、深度学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[日志打印规范]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E8%A7%84%E8%8C%83%2F</url>
     <content type="text"><![CDATA[背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过 日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情 未完待续…]]></content>
@@ -1063,6 +1062,18 @@
       <tags>
         <tag>log</tag>
         <tag>日志</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[初识机器学习]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A01%2F</url>
+    <content type="text"><![CDATA[神经网络神经网络是一种数学模型，是存在于计算机的神经系统，由大量的神经元相连接并进行计算，在外界信息的基础上，改变内部的结构，常用来对输入和输出间复杂的关系进行建模。 神经网络由大量的节点和之间的联系构成，负责传递信息和加工信息，神经元也可以通过训练而被强化。 rel 生物神经网络现代科学还不能完全解释生物学习，记忆的过程，也就无从解释生物神经元建立相互关系的过程 人工神经网络目的：虽然不知道生物神经网络的内部原理，但是想人工模仿出一个有相同功能的神经网络 首先, 替代掉生物神经网络的, 就是已经成体系的人工神经网络. 所有神经元之间的连接都是固定不可更换的, 这也就是说, 在人工神经网络里, 没有凭空产生新联结这回事. 人工神经网络典型的一种学习方式就是, 我已经知道吃到糖果时, 手会如何动, 但是我想让神经网络学着帮我做这件动动手的事情. 所以我预先准备好非常多吃糖的学习数据, 然后将这些数据一次次放入这套人工神经网络系统中, 糖的信号会通过这套系统传递到手. 然后通过对比这次信号传递后, 手的动作是不是”讨糖”动作, 来修改人工神经网络当中的神经元强度. 这种修改在专业术语中叫做”误差反向传递”, 也可以看作是再一次将传过来的信号传回去, 看看这个负责传递信号神经元对于”讨糖”的动作到底有没有贡献, 让它好好反思与改正, 争取下次做出更好的贡献. 这样看来, 人工神经网络和生物神经网络的确不是一回事. 二者间的区别 人工神经网络靠的是正向和反向传播来更新神经元, 从而形成一个好的神经系统, 本质上, 这是一个能让计算机处理和优化的数学模型. 而生物神经网络是通过刺激, 产生新的联结, 让信号能够通过新的联结传递而形成反馈. 虽然现在的计算机技术越来越高超, 不过我们身体里的神经系统经过了数千万年的进化, 还是独一无二的, 迄今为止, 再复杂, 再庞大的人工神经网络系统也不能替代我们的小脑袋. 我们应该感到自豪, 也应该珍惜上天的这份礼物. 梯度下降optimization(优化问题)机器学习是一种优化问题的方法手段准确的说是梯度下降中的一员optimization: Newton’s method(牛顿法) Least Squares method( 最小二乘法) Gradient Descent(梯度下降法) 误差方程误差方程用来计算预测出来的和我们实际中值有多大差别，在预测数值的问题中，我们常用平方差来代替 cost = (predicted - real)^2 = (Wx-y)^2 优化初始值：(W-0)^2 梯度线躺平的点，其W参数为最优解 ##### 全局最优and局部最优 神经网络黑盒我们 把输入进行数字化，特征化，放入神经网络黑盒中，黑盒中进行了一系列的特征转化，最终得到我们的输出]]></content>
+      <categories>
+        <category>机器学习、深度学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
       </tags>
   </entry>
   <entry>
