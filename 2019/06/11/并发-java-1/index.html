@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="华夏第一剑">
+<meta name="description" content="《Java 并发编程实战》极客时间-王老师 第二部分安全性、活跃性、以及性能问题安全性问题什么是线程安全？ 程序（多个线程组成）按照我们期望的执行 那么理论上线程安全的程序需要避免出现原子性，可见性，有序性问题 并不是所有代码都会出现这样的问题，只有这样的情况：存在共享数据并且该数据会发生变化，通俗的讲就是有个多个线程会同时读写同一数据。 那么如果能够做到不共享数据或者数据状态不发生变化，不就能够">
 <meta name="keywords" content="并发，java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="并发-java-1">
 <meta property="og:url" content="http://yoursite.com/2019/06/11/并发-java-1/index.html">
 <meta property="og:site_name" content="白帝圣剑">
-<meta property="og:description" content="华夏第一剑">
+<meta property="og:description" content="《Java 并发编程实战》极客时间-王老师 第二部分安全性、活跃性、以及性能问题安全性问题什么是线程安全？ 程序（多个线程组成）按照我们期望的执行 那么理论上线程安全的程序需要避免出现原子性，可见性，有序性问题 并不是所有代码都会出现这样的问题，只有这样的情况：存在共享数据并且该数据会发生变化，通俗的讲就是有个多个线程会同时读写同一数据。 那么如果能够做到不共享数据或者数据状态不发生变化，不就能够">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-11T08:11:51.153Z">
+<meta property="og:updated_time" content="2019-06-11T10:29:01.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发-java-1">
-<meta name="twitter:description" content="华夏第一剑">
+<meta name="twitter:description" content="《Java 并发编程实战》极客时间-王老师 第二部分安全性、活跃性、以及性能问题安全性问题什么是线程安全？ 程序（多个线程组成）按照我们期望的执行 那么理论上线程安全的程序需要避免出现原子性，可见性，有序性问题 并不是所有代码都会出现这样的问题，只有这样的情况：存在共享数据并且该数据会发生变化，通俗的讲就是有个多个线程会同时读写同一数据。 那么如果能够做到不共享数据或者数据状态不发生变化，不就能够">
 
 
 
@@ -389,7 +389,33 @@
       
 
       
-        
+        <h2 id="《Java-并发编程实战》极客时间-王老师-第二部分"><a href="#《Java-并发编程实战》极客时间-王老师-第二部分" class="headerlink" title="《Java 并发编程实战》极客时间-王老师 第二部分"></a>《Java 并发编程实战》极客时间-王老师 第二部分</h2><h3 id="安全性、活跃性、以及性能问题"><a href="#安全性、活跃性、以及性能问题" class="headerlink" title="安全性、活跃性、以及性能问题"></a>安全性、活跃性、以及性能问题</h3><h4 id="安全性问题"><a href="#安全性问题" class="headerlink" title="安全性问题"></a>安全性问题</h4><p>什么是线程安全？</p>
+<p>程序（多个线程组成）按照我们期望的执行</p>
+<p>那么理论上线程安全的程序需要避免出现原子性，可见性，有序性问题</p>
+<p>并不是所有代码都会出现这样的问题，只有这样的情况：<br>存在共享数据并且该数据会发生变化，通俗的讲就是有个多个线程会同时读写同一数据。</p>
+<p>那么如果能够做到不共享数据或者数据状态不发生变化，不就能够保证线程的安全性了？<br>于是就有了线程本地存储、不变模式等来解决这个问题，</p>
+<p>但是，现实中，很多情况下，必须共享会发生变化的数据</p>
+<ul>
+<li>数据竞争：　Data Race</li>
+<li>竞态条件：　Race Condition 程序的执行结果依赖线程执行的顺序</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (状态变量 满足 执行条件) &#123;</span><br><span class="line">  执行操作</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>面对数据竞争和竞态条件这两个问题，如何保证线程安全呢？</p>
+<p>解：互斥</p>
+<p>实现互斥的方案很多：cpu提供了相关的互斥指令，操作系统，编程语言也会提供相关api<br>从逻辑上看，，我们可以统一归为：锁</p>
+<h4 id="活跃问题"><a href="#活跃问题" class="headerlink" title="活跃问题"></a>活跃问题</h4><p>除了死锁外，还有两种情况，分别是活锁和饥饿<br>活锁：等待一个随机时间<br>饥饿：公平的分配资源</p>
+<h4 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h4><p>S=1(1−p)+pn</p>
+<p>公式里的 n 可以理解为 CPU 的核数，p 可以理解为并行百分比，那（1-p）就是串行百分比了，也就是我们假设的 5%。我们再假设 CPU 的核数（也就是 n）无穷大，那加速比 S 的极限就是 20。也就是说，如果我们的串行率是 5%，那么我们无论采用什么技术，最高也就只能提高 20 倍的性能。</p>
+<p>所以使用锁的时候一定要关注对性能的影响。 那怎么才能避免锁带来的性能问题呢？这个问题很复杂，Java SDK 并发包里之所以有那么多东西，有很大一部分原因就是要提升在某个特定领域的性能。</p>
+<p>不过从方案层面，我们可以这样来解决这个问题。</p>
+<p>第一，既然使用锁会带来性能问题，那最好的方案自然就是使用无锁的算法和数据结构了。在这方面有很多相关的技术，例如线程本地存储 (Thread Local Storage, TLS)、写入时复制 (Copy-on-write)、乐观锁等；Java 并发包里面的原子类也是一种无锁的数据结构；Disruptor 则是一个无锁的内存队列，性能都非常好……</p>
+<p>第二，减少锁持有的时间。互斥锁本质上是将并行的程序串行化，所以要增加并行度，一定要减少持有锁的时间。这个方案具体的实现技术也有很多，例如使用细粒度的锁，一个典型的例子就是 Java 并发包里的 ConcurrentHashMap，它使用了所谓分段锁的技术（这个技术后面我们会详细介绍）；还可以使用读写锁，也就是读是无锁的，只有写的时候才会互斥。</p>
+<p>性能方面的度量指标有很多，我觉得有三个指标非常重要，就是：吞吐量、延迟和并发量。</p>
+<p>吞吐量：指的是单位时间内能处理的请求数量。吞吐量越高，说明性能越好。<br>延迟：指的是从发出请求到收到响应的时间。延迟越小，说明性能越好。<br>并发量：指的是能同时处理的请求数量，一般来说随着并发量的增加、延迟也会增加。所以延迟这个指标，一般都会是基于并发量来说的。例如并发量是 1000 的时候，延迟是 50 毫秒。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>并发编程是一个复杂的技术领域，微观上涉及到原子性问题、可见性问题和有序性问题，宏观则表现为安全性、活跃性以及性能问题。</p>
+<p>我们在设计并发程序的时候，主要是从宏观出发，也就是要重点关注它的安全性、活跃性以及性能。安全性方面要注意数据竞争和竞态条件，活跃性方面需要注意死锁、活锁、饥饿等问题，性能方面我们虽然介绍了两个方案，但是遇到具体问题，你还是要具体分析，根据特定的场景选择合适的数据结构和算法。</p>
+
       
     </div>
     
@@ -479,8 +505,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -540,6 +575,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《Java-并发编程实战》极客时间-王老师-第二部分"><span class="nav-number">1.</span> <span class="nav-text">《Java 并发编程实战》极客时间-王老师 第二部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安全性、活跃性、以及性能问题"><span class="nav-number">1.1.</span> <span class="nav-text">安全性、活跃性、以及性能问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安全性问题"><span class="nav-number">1.1.1.</span> <span class="nav-text">安全性问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#活跃问题"><span class="nav-number">1.1.2.</span> <span class="nav-text">活跃问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能问题"><span class="nav-number">1.1.3.</span> <span class="nav-text">性能问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
