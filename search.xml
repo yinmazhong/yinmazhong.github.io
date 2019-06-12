@@ -278,19 +278,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Future&Promise]]></title>
-    <url>%2F2018%2F12%2F04%2FFuture%26promise%2F</url>
-    <content type="text"><![CDATA[Future和Promisescala 并发编程的两大利器：Future、Actor 顺序代码效率低这个例子很不错 What is Future scala.concurrent 包里的 Future[T] 是一个容器类型，代表一种返回值类型为 T 的计算。 计算可能会出错，也可能会超时； 从而，当一个 future 完成时，它可能会包含异常，而不是你期望的那个值。 Future 只能写一次： 当一个 future 完成后，它就不能再被改变了。 同时，Future 只提供了读取计算值的接口，写入计算值的任务交给了 Promise， 这样，API 层面上会有一个清晰的界限。 这篇文章里，我们主要关注前者，下一章会介绍 Promise 的使用。]]></content>
-      <categories>
-        <category>服务器端 - 并发编程</category>
-      </categories>
-      <tags>
-        <tag>scala</tag>
-        <tag>Future</tag>
-        <tag>Promise</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[H2数据库笔记]]></title>
     <url>%2F2018%2F12%2F04%2FH2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[H2工具类： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &#123; private var server: Server = null; private var webServer: Server = null; def start(): Unit = &#123; try &#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;, &quot;&quot;, true, true) &#125; catch &#123; case e: Throwable =&gt; &#125; try &#123; server = Server.createTcpServer(&quot;-tcp&quot;, &quot;-tcpAllowOthers&quot;, &quot;-tcpPort&quot;, ProConfig.h2DatabaseTcpPort.toString).start() log.info(&quot;server status: &quot; + server.getStatus) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def startWebConsole(openBrowser: Boolean = false): Unit = &#123; try &#123; if (webServer == null) &#123; webServer = Server.createWebServer(&quot;-web&quot;, &quot;-webAllowOthers&quot;, &quot;-webPort&quot;, ProConfig.h2DatabaseWebPort.toString).start() &#125; log.info(&quot;webServerStatus&quot; + webServer.getStatus) if (openBrowser) Server.openBrowser(s&quot;http://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseWebPort&#125;&quot;) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def stop(): Unit = &#123; def shutdownServer(server: Server): Unit = &#123; try &#123; server match &#123; case s if s != null =&gt; s.stop() case _ =&gt; log.info(&quot;H2 server did not start&quot;) &#125; &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; shutdownServer(server) shutdownServer(webServer) try&#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;,&quot;&quot;,true,true) log.debug(&quot;serverStatus: &quot;+server.getStatus) &#125;catch &#123; case e:Throwable =&gt; log.error(e.getMessage,e) &#125; &#125;&#125;object H2Test extends App &#123; H2Database.start() Thread.sleep(10000) H2Database.stop()&#125; JDBC开启H2数据库后可按照JDBC 正常连接 CSVWRITE: 导出表成为 CSV 文件1CALL CSVWRITE(&apos;/home/xxhbak/FEATURECONF.csv&apos;, &apos;SELECT * FROM FEATURECONF&apos;); CSVREAD:向表导入CSV文件使用数据库读取CSV文件 CSVREAD使用: 1SELECT * FROM CSVREAD(&apos;test.csv&apos;); Another option is to use INSERT INTO … SELECT. 123CREATE TABLE TEST AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255)) AS SELECT * FROM CSVREAD(&apos;test.csv&apos;); Please note for performance reason, CSVREAD should not be used inside a join. Instead, import the data first (possibly into a temporary table), create the required indexes if necessary, and then query this table. 参考 示例，亲测 CALL CSVREAD(‘/home/xd/us.csv’, ‘SELECT * FROM us ‘);insert into us (SELECT * FROM CSVREAD(‘/home/xd/USERCASERESULT.csv’,NULL,’UTF-8’,’|’));]]></content>
@@ -301,6 +288,19 @@
         <tag>database</tag>
         <tag>H2</tag>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Future&Promise]]></title>
+    <url>%2F2018%2F12%2F04%2FFuture%26promise%2F</url>
+    <content type="text"><![CDATA[Future和Promisescala 并发编程的两大利器：Future、Actor 顺序代码效率低这个例子很不错 What is Future scala.concurrent 包里的 Future[T] 是一个容器类型，代表一种返回值类型为 T 的计算。 计算可能会出错，也可能会超时； 从而，当一个 future 完成时，它可能会包含异常，而不是你期望的那个值。 Future 只能写一次： 当一个 future 完成后，它就不能再被改变了。 同时，Future 只提供了读取计算值的接口，写入计算值的任务交给了 Promise， 这样，API 层面上会有一个清晰的界限。 这篇文章里，我们主要关注前者，下一章会介绍 Promise 的使用。]]></content>
+      <categories>
+        <category>服务器端 - 并发编程</category>
+      </categories>
+      <tags>
+        <tag>scala</tag>
+        <tag>Future</tag>
+        <tag>Promise</tag>
       </tags>
   </entry>
   <entry>
@@ -505,6 +505,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Tomcat笔记]]></title>
+    <url>%2F2018%2F12%2F04%2FTomcat%2F</url>
+    <content type="text"><![CDATA[TOMCAT目录结构Tomcat 作为一个Web服务器软件，监听指定的端口，处理相应的网络请求；支持Servlt; |—bin Tomcat：存放启动和关闭tomcat脚本； |—conf Tomcat：存放不同的配置文件（server.xml和web.xml）； |—doc：存放Tomcat文档； |—lib/japser/common：存放Tomcat运行需要的库文件（JARS）； |—logs：存放Tomcat执行时的LOG文件； |—src：存放Tomcat的源代码； |—webapps：Tomcat的主要Web发布目录（包括应用程序示例）； |—work：存放jsp编译后产生的class文件； web.xml12345678910111213141516171819202122232425&lt;?xml version=&quot;1.0&quot;?&gt;&lt;!DOCTYPE web-app PUBLIC &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot; &quot;http://java.sun.com/dtd/web-app_2_4.dtd&quot;&gt;&lt;web-app&gt; &lt;welcome-file-list&gt; &lt;welcome-file&gt;index.html&lt;/welcome-file&gt; &lt;/welcome-file-list&gt; &lt;listener&gt; &lt;listener-class&gt;spray.servlet.Initializer&lt;/listener-class&gt; &lt;/listener&gt; &lt;servlet&gt; &lt;servlet-name&gt;SprayConnectorServlet&lt;/servlet-name&gt; &lt;servlet-class&gt;spray.servlet.Servlet30ConnectorServlet&lt;/servlet-class&gt; &lt;async-supported&gt;true&lt;/async-supported&gt; &lt;/servlet&gt; &lt;servlet-mapping&gt; &lt;servlet-name&gt;SprayConnectorServlet&lt;/servlet-name&gt; &lt;url-pattern&gt;/autotest/*&lt;/url-pattern&gt; &lt;/servlet-mapping&gt;&lt;/web-app&gt; servlet所有 servlet 都会直接或间接通过实现 javax.servlet.Servlet 接口的辅助类来实现该接口。Servlet 还可以使用容器提供的 API 公开容器服务。例如，servlet 可以从容器获得数据库连接来访问关系数据库。Servlet 通常用于实现 Web 应用程序逻辑。Servlet 可以获取和处理数据，然后将数据传递给 JSP 进行显示（例如，动态生成用户界面）。Servlet 还可用于频繁地处理通过基于 Web 形式提交的数据。 webApp的组成一个Web应用程序基本上由以下项目组成： 静态资源（静态资源(HTML，CSS，图片，声音等)） servlet jsp 自定义类 工具类 部署描述文件（web.xml等) 、设置信息 Web应用程序目录结构必须符合规范。例如，如果一个应用程序的环境路径（Context path）是/HelloServlet，则所有的资源项目必须以/HelloServlet为根目录依规定结构摆放。基本上根目录中的资源可以直接下载，若index.html位于/HelloServlet下，则可以直接以/HelloServlet/index.html来取得。 Web应用程序存在一个特殊的/WEB-INF子目录，此目录中存在的资源不会被列入应用程序根目录中可直接访问的项。即，客户端（如Browser）不可以直接请求/WEB-INF中的资源(直接在网址上指明访问/WEB-INF)，否则就是404 Not Found的错误结果。/WEB-INF中的资源项目有着一定的名称与结构。 （1）/WEB-INF/web.xml 是部署描述文件 （2）/WEB-INF/classes 用来放置应用程序用到的自定义类(.class)，必须包括包(package)结构。 （3）/WEB-INF/lib 用来放置应用程序用到的JAR文件。 Web应用程序用到的JAR文件，其中可以放置Servlet、JSP、自定义类、工具类、部署描述文件等，应用程序的类载入器可以从JAR中载入对应的资源。 可以在JAR文件中的/META-INF/resources目录中放置静态资源或JSP等，例如若在/META-INF中放个index.html，若请求的URL中包括/HelloServlet/index.html,但实际上/HelloServlet根目录下不存在index.html，则会使用JAR中的/META-INF/resources/index.html。 如果要用到某个类，则Web应用程序会到/WEB-INF/classes中试着载入类，若无，再试着从/WEB-INF/lib的JAR文件中寻找类文件(若还没有找到，则会到容器实现本身存放类或JAR的目录中寻找，但位置视不同实现厂商而有所不同，以Tomcat为例，搜索的路径是Tomcat的安装目录下的lib目录)。 客户端不能直接请求/WEB-INF中的资源，但可以通过程序的控制，让程序来取得/WEB-INF中的资源，如使用ServletContext的getResource()与getResourceAsStream()，或是通过RequestDispatcher请求调派。 Web app 默认主页的设置：访问URL如：localhost:8080/FirstServlet/ &lt;welcome-file-list&gt; &lt;welcome-file&gt;index.html&lt;/welcome-file&gt; &lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt; &lt;/welcome-file-list&gt; 如果找不到以上的文件，则会尝试至JAR的/META-INF/resources中寻找已放置的资源页面。 整个Web应用可以被封装为一个WAR文件，如FirstServlet.war，以便于部署至Web容器。]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>Tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Tensorflow Model java 部署]]></title>
     <url>%2F2018%2F12%2F04%2FTensorflow5--seq2seq%2F</url>
     <content type="text"><![CDATA[IntroductionSeq2Seq模型在机器翻译、语音识别、文本摘要等领域取得了巨大的成功 以神经机器翻译(NMT)为例介绍 使用最新的 decoder / attention wrapper API，TensorFlow 1.2 data iterator 在构建模型时加入了我们最成功的经验 为构建最强大的 NMT 模型，我们提供了许多 tips 和 tricks，并复制了Google的 NMT系统 Basic神经机器翻译的相关背景 | Background on Neural Machine Translation 传统的 phrase-based 翻译系统的工作原理是把源句子分成几块，然后一个短语一个短语的翻译，但是翻译结果的流畅度较差，并且不符合人类的翻译方式， 我们人类会读取完整的句子，理解它的意思，然后进行翻译。NMT 模型正是在模仿这个机制！ NMT模型使用encoder读取源句子，然后编码得到一个“有意义”的 vector，即一串能代表源句子意思的数字。然后 decoder 将这个 vector 解码得到翻译，就想图1展示的那样。这就是所谓的 encoder-decoder 结构 本教程将以单向的多层（multi-layer） RNN 为例，其使用 LSTM 作为 RNN 单元 Traning - How to build our first NMT system实战 - 训练一个 NMT 模型 Hands-on - Let’s train an NMT model12345678910111213python -m nmt.nmt \ --src=vi --tgt=en \ --vocab_prefix=/home/xxh/data/nmt_data_2/vocab \ --train_prefix=/home/xxh/data/nmt_data_2/train \ --dev_prefix=/home/xxh/data/nmt_data_2/tst2012 \ --test_prefix=/home/xxh/data/nmt_data_2/tst2013 \ --out_dir=/home/xxh/data/nmt_model \ --num_train_steps=12000 \ --steps_per_stats=100 \ --num_layers=2 \ --num_units=128 \ --dropout=0.2 \ --metrics=bleu python -m nmt.nmt –src=vi –tgt=en –vocab_prefix=/home/xxh/data/my_nmt_data/train –train_prefix=/home/xxh/data/my_nmt_data/train –dev_prefix=/home/xxh/data/my_nmt_data/tst2012 –test_prefix=/home/xxh/data/my_nmt_data/tst2012 –out_dir=/home/xxh/data/my_nmt_model –num_train_steps=12000 –steps_per_stats=100 –num_layers=2 –num_units=128 –dropout=0.2 –metrics=bleu 12 python -m nmt.nmt –out_dir=/home/xxh/data/nmt_model –inference_input_file=/home/xxh/data/nmt_data_2/my.vi –inference_output_file=/home/xxh/data/nmt_attention_model/output_infer]]></content>
@@ -516,18 +528,6 @@
         <tag>ml</tag>
         <tag>tensorflow</tag>
         <tag>seq2seq</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Tomcat笔记]]></title>
-    <url>%2F2018%2F12%2F04%2FTomcat%2F</url>
-    <content type="text"><![CDATA[TOMCAT目录结构Tomcat 作为一个Web服务器软件，监听指定的端口，处理相应的网络请求；支持Servlt; |—bin Tomcat：存放启动和关闭tomcat脚本； |—conf Tomcat：存放不同的配置文件（server.xml和web.xml）； |—doc：存放Tomcat文档； |—lib/japser/common：存放Tomcat运行需要的库文件（JARS）； |—logs：存放Tomcat执行时的LOG文件； |—src：存放Tomcat的源代码； |—webapps：Tomcat的主要Web发布目录（包括应用程序示例）； |—work：存放jsp编译后产生的class文件； web.xml12345678910111213141516171819202122232425&lt;?xml version=&quot;1.0&quot;?&gt;&lt;!DOCTYPE web-app PUBLIC &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot; &quot;http://java.sun.com/dtd/web-app_2_4.dtd&quot;&gt;&lt;web-app&gt; &lt;welcome-file-list&gt; &lt;welcome-file&gt;index.html&lt;/welcome-file&gt; &lt;/welcome-file-list&gt; &lt;listener&gt; &lt;listener-class&gt;spray.servlet.Initializer&lt;/listener-class&gt; &lt;/listener&gt; &lt;servlet&gt; &lt;servlet-name&gt;SprayConnectorServlet&lt;/servlet-name&gt; &lt;servlet-class&gt;spray.servlet.Servlet30ConnectorServlet&lt;/servlet-class&gt; &lt;async-supported&gt;true&lt;/async-supported&gt; &lt;/servlet&gt; &lt;servlet-mapping&gt; &lt;servlet-name&gt;SprayConnectorServlet&lt;/servlet-name&gt; &lt;url-pattern&gt;/autotest/*&lt;/url-pattern&gt; &lt;/servlet-mapping&gt;&lt;/web-app&gt; servlet所有 servlet 都会直接或间接通过实现 javax.servlet.Servlet 接口的辅助类来实现该接口。Servlet 还可以使用容器提供的 API 公开容器服务。例如，servlet 可以从容器获得数据库连接来访问关系数据库。Servlet 通常用于实现 Web 应用程序逻辑。Servlet 可以获取和处理数据，然后将数据传递给 JSP 进行显示（例如，动态生成用户界面）。Servlet 还可用于频繁地处理通过基于 Web 形式提交的数据。 webApp的组成一个Web应用程序基本上由以下项目组成： 静态资源（静态资源(HTML，CSS，图片，声音等)） servlet jsp 自定义类 工具类 部署描述文件（web.xml等) 、设置信息 Web应用程序目录结构必须符合规范。例如，如果一个应用程序的环境路径（Context path）是/HelloServlet，则所有的资源项目必须以/HelloServlet为根目录依规定结构摆放。基本上根目录中的资源可以直接下载，若index.html位于/HelloServlet下，则可以直接以/HelloServlet/index.html来取得。 Web应用程序存在一个特殊的/WEB-INF子目录，此目录中存在的资源不会被列入应用程序根目录中可直接访问的项。即，客户端（如Browser）不可以直接请求/WEB-INF中的资源(直接在网址上指明访问/WEB-INF)，否则就是404 Not Found的错误结果。/WEB-INF中的资源项目有着一定的名称与结构。 （1）/WEB-INF/web.xml 是部署描述文件 （2）/WEB-INF/classes 用来放置应用程序用到的自定义类(.class)，必须包括包(package)结构。 （3）/WEB-INF/lib 用来放置应用程序用到的JAR文件。 Web应用程序用到的JAR文件，其中可以放置Servlet、JSP、自定义类、工具类、部署描述文件等，应用程序的类载入器可以从JAR中载入对应的资源。 可以在JAR文件中的/META-INF/resources目录中放置静态资源或JSP等，例如若在/META-INF中放个index.html，若请求的URL中包括/HelloServlet/index.html,但实际上/HelloServlet根目录下不存在index.html，则会使用JAR中的/META-INF/resources/index.html。 如果要用到某个类，则Web应用程序会到/WEB-INF/classes中试着载入类，若无，再试着从/WEB-INF/lib的JAR文件中寻找类文件(若还没有找到，则会到容器实现本身存放类或JAR的目录中寻找，但位置视不同实现厂商而有所不同，以Tomcat为例，搜索的路径是Tomcat的安装目录下的lib目录)。 客户端不能直接请求/WEB-INF中的资源，但可以通过程序的控制，让程序来取得/WEB-INF中的资源，如使用ServletContext的getResource()与getResourceAsStream()，或是通过RequestDispatcher请求调派。 Web app 默认主页的设置：访问URL如：localhost:8080/FirstServlet/ &lt;welcome-file-list&gt; &lt;welcome-file&gt;index.html&lt;/welcome-file&gt; &lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt; &lt;/welcome-file-list&gt; 如果找不到以上的文件，则会尝试至JAR的/META-INF/resources中寻找已放置的资源页面。 整个Web应用可以被封装为一个WAR文件，如FirstServlet.war，以便于部署至Web容器。]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>Tomcat</tag>
       </tags>
   </entry>
   <entry>
@@ -598,17 +598,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[github访问卡、慢、不稳定]]></title>
-    <url>%2F2018%2F12%2F04%2Fgithub%E5%8D%A1%E6%85%A2%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考 blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts 但是更新了dns，效果很明显，速度杠杠的 2017/12/05 迅速被打脸，一点都不好使 很奇怪，办公室机器google-chrome很卡，firefox好很多]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Hadoop 笔记]]></title>
     <url>%2F2018%2F12%2F04%2Fhadoop%2F</url>
     <content type="text"><![CDATA[Map reduce job getting stuck at map 0% reduce 0%一般是没有资源导致卡住，比如查看yarn中active node是否为0 ，内存配置不足，cpu配置之类的 但也有可能是map加载输入的时间较长导致Map reduce job getting stuck at map 0% reduce 0% ? 比较详细的mapreduce job 日志 哪里找得到Hadoop 2.6 日志文件和MapReduce的log文件研究心得]]></content>
@@ -617,6 +606,17 @@
       </categories>
       <tags>
         <tag>mapreduce,hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[github访问卡、慢、不稳定]]></title>
+    <url>%2F2018%2F12%2F04%2Fgithub%E5%8D%A1%E6%85%A2%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考 blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts 但是更新了dns，效果很明显，速度杠杠的 2017/12/05 迅速被打脸，一点都不好使 很奇怪，办公室机器google-chrome很卡，firefox好很多]]></content>
+      <categories>
+        <category>工欲善其事，必先利其器</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -754,17 +754,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Scala Try]]></title>
-    <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
-    <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
-      <categories>
-        <category>编程语言 - s cala</category>
-      </categories>
-      <tags>
-        <tag>Scala</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[scala操作XML]]></title>
     <url>%2F2018%2F12%2F04%2Fscalaxml%2F</url>
     <content type="text"><![CDATA[scala 加载并解析xml12345678910111213141516171819202122232425262728293031323334353637val loadXML = xml.XML.loadFile(AutomatedTestingWebConfig.distributeInfoXML)//使用loadFile方法加载XML，得到的是一个一个scala.xml.Elem对象val version = (loadXML \\ &quot;autotest&quot; \ &quot;@version&quot;).text//属性值获取“@”符val hostSeqNode = (loadXML \ &quot;hosts&quot; \ &quot;host&quot;)//得到的是一个scala.xml.NodeSeq对象，可以在其上做一下转换操作def getAttrValue(node: Node)(attrName: String): String = &#123; node.attributes.get(attrName) match &#123; case Some(x) =&gt; x.text case _ =&gt; &quot;&quot; &#125; &#125; val hosts = &#123; (loadXML \ &quot;hosts&quot; \ &quot;host&quot;).map(hostNode =&gt; &#123; def getHostAttrValue(attrName: String) = getAttrValue(hostNode)(attrName) Host(getHostAttrValue(&quot;name&quot;), getHostAttrValue(&quot;desc&quot;), getHostAttrValue(&quot;config&quot;)) &#125;).toList &#125; val sqlScript = &#123; (loadXML \ &quot;script&quot; \ &quot;sql&quot;).map(sqlNode =&gt; &#123; def getSqlScriptAttrValue(attrName: String) = getAttrValue(sqlNode)(attrName) val lines = sqlNode.nonEmptyChildren.filterNot(_.text.trim == &quot;&quot;).map(_.text).mkString(&quot;;&quot;) val database = getSqlScriptAttrValue(&quot;database&quot;) SqlScript(database, lines) &#125;).toList &#125;case class AutoTest(version: String, hosts: List[Host], sqlScript: List[SqlScript], shellScript: List[ShellScript])case class Host(name: String, desc: String, config: String)case class SqlScript(database: String, line: String)case class ShellScript(host: String, line: List[String]) 参考 SCALA XML pattern attrbute参考 虽然这个guy炒鸡罗嗦，但是还是讲到我要的那句话： Because Scala doesn’t support XML patterns with attributes. scala的模式匹配模式根本就不支持 属性 还是老老实实用XPath吧]]></content>
@@ -774,6 +763,17 @@
       <tags>
         <tag>scala</tag>
         <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Scala Try]]></title>
+    <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
+    <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
+      <categories>
+        <category>编程语言 - s cala</category>
+      </categories>
+      <tags>
+        <tag>Scala</tag>
       </tags>
   </entry>
   <entry>
@@ -812,6 +812,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[sql笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
+      <categories>
+        <category>数据存储处理 - database</category>
+      </categories>
+      <tags>
+        <tag>database</tag>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Spark的3个API:RDDs/DataFrames/DataSets]]></title>
     <url>%2F2018%2F12%2F04%2Fspark%E7%9A%84%E4%B8%89%E4%B8%AAAPI%2F</url>
     <content type="text"><![CDATA[且谈Apache Spark的API三剑客：RDD、DataFrame和Dataset]]></content>
@@ -823,18 +835,6 @@
         <tag>Spark</tag>
         <tag>DataFrame</tag>
         <tag>DataSet</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[sql笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
-      <categories>
-        <category>数据存储处理 - database</category>
-      </categories>
-      <tags>
-        <tag>database</tag>
-        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -901,18 +901,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[人人都是产品经理--note]]></title>
-    <url>%2F2018%2F12%2F04%2F%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86-note%2F</url>
-    <content type="text"><![CDATA[第一章 写给新手为什么要做产品经理因为世界等我们去改变，创造好的产品，改善坏的产品 我们到底是不是产品经理产品是什么产品是用来解决某个问题的东西，准确的说产品就是要同时解决用户的问题和公司的问题 因为作为产品经理要在用户目标和公司的商业目标之间寻找平衡 产品经理出现源于宝洁 产品经理的出现是为了适应公司发展的需要。随着企业越来越大,产品越来越多,越来越复杂,原来按职能划分部门的组织结构已经无法适应,所以出现了产品管理的矩阵型组织,而此时产品经理的主要职责是规划产品的生命周期 他们真的是在招产品经理吗它更多地侧重产品本身“从无到有”、“从有到优”的过程,更多地涉及了“产品规划、数据分析、用户研究、需求分析、功能设计、项目管理、敏捷方法”等内容,而不是如传统的产品经理那样,去做已经有了产品之后需要做的诸如管理产品、推广和营销产品的事情 产品经理概念进化 行业形态不同:成熟行业VS.新兴行业。 而互联网、软件行业是新兴行业,新兴市场,三天一小变,五天一大变,产品本身在不断取得突破,用户看什么都是新的,所以产品需要推陈出新,尽力先入为主,占领用户,主导用户习惯,这就导致了产品工作的重头戏在前期,从无到有,从有到优,偏重研发类创新。因此,互联网、软件行业的产品经理更重视产品功能本身的规划,需要“对市场发展趋势有敏锐的洞察力和创新意识及良好的分析、研判能力”,要能不断改进产品,要“深入了解业务,挖掘用户的多种需求,不断推出有竞争力的产品”,“制定所负责产品线的发展蓝图和实施路线图”。 实物VS虚拟物 - 生命周期不同：几年VS几个月 软件和互联网产品更推崇敏捷开发，虽然互联网、软件的项目更加不可控,但项目过程本身看起来并没有传统行业那么复杂,更接近“艺术”而不是“技术”,要依靠丰富的经验,于是产品经理也经常兼顾项目管理,这样自己可以在项目完成度和产品质量之间做平衡,对产品无疑也是一件好事。所以我们在招聘广告中看到公司要求产品经理“发起产品研发项目”,“组织资源实施产品,对其效益负责”。 赢利模式不同,单一卖产品赚钱VS多元赢利。 用户心态不同:花钱买VS.免费用。 互联网、软件产品更重视用户体验,相应的,出现了很多产品经理会涉及的工作内容,如交互设计、视觉设计、文案设计等 非典型产品经理有时高科技企业会采取类似的做法,让产品经理专心处理产品在工程和技术方面的问题,而把大部分营销决定交给另外的职能单位来负责。在这种情况下,产品经理可能会变成产品技术/应用方面的专家,他最主要的工作就是支援、协助销售人员,至于了解市场和从市场了解产品利益等工作,则另有他人代劳 不管整天只是写文档、做Demo,还是成了没钱没权的项目经理;或是求完销售求工程师,最后只能欺负客服,到处不招人待见……前辈们似乎也认可——人人都是产品经理,非典型成了多数,也就变成典型。 一线员工眼中的管理管理的能力,其实就是“在资源不足的情况下把事情做成”的能力,这里的资源在产品经理的工作中通常表现为以下几种形式。 第一,信息不足以决策。时间有限,能力有限,每次决策前不可能掌握所有信息,做决定时总是很头疼,我估计是“拍脑袋”拍得太多的原因。 第二,时间不足以安排周密的计划。总是接到3个月、1个月,甚至1个礼拜完成某项目的命令,每次都让我们张大嘴巴说不出话来,应承下来后如何计划?不过一次又一次的实践表明,办法总比困难多。 第三,人员不足以支持工作强度和难度。不但时间不足,人员也不足,就算数量足,能力够不够?能力够了,团队士气高不高?哪个公司不加班,又有多少公司有加班工资?但还得完成任务,难不难?难! 第四,资金不足以自由调配。俗话说钱要花在刀刃上,买机器要钱,招人要钱,产品推广要钱,而花这些钱的前提是公司还得赚钱,每一分钱都恨不得掰成两半用。 我真的想做,怎么入行用户会去想怎么用这个产品,才能带给自己更大的好处,产生更大的效用;而产品经理则习惯于绕过表象,从背后看问题的本质,思考怎么设计这个产品才能更好地平衡用户目标与商业目标 找到自己的位置几个可能的入行切入点你是做开发的,那就经常要参与需求评审,不妨比别人多用点功,每次都预先了解需求,多多思考,然后在评审会上对需求提出自己的合理建议,时间长了大家都会觉得你很有想法,做产品也许不错。关于职位,可以从“需求分析师”切入,这有些像系统分析的工作,比如业务逻辑、流程图,都是你已经很熟悉的,可以在这个过程中慢慢培养商业的感觉,重点体会某个产品功能是为了满足商业上的什么需求而做的。 一个产品经理的-1到3岁]]></content>
-      <categories>
-        <category>项目管理</category>
-      </categories>
-      <tags>
-        <tag>需求分析</tag>
-        <tag>产品</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[了解Docker]]></title>
     <url>%2F2018%2F12%2F04%2F%E4%BA%86%E8%A7%A3Docker%2F</url>
     <content type="text"><![CDATA[Docker What is Docker?我的理解： 在操作系统上新增的一层抽象 解决的痛点：同一台服务器上多应用间的依赖冲突问题 优势：很多，比如将多个应用部署在同一个云主机上，该云主机弹性扩展，这样能够节约不少成本 目前的项目暂时用不到docker 教程]]></content>
@@ -922,6 +910,18 @@
       <tags>
         <tag>微服务</tag>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[人人都是产品经理--note]]></title>
+    <url>%2F2018%2F12%2F04%2F%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86-note%2F</url>
+    <content type="text"><![CDATA[第一章 写给新手为什么要做产品经理因为世界等我们去改变，创造好的产品，改善坏的产品 我们到底是不是产品经理产品是什么产品是用来解决某个问题的东西，准确的说产品就是要同时解决用户的问题和公司的问题 因为作为产品经理要在用户目标和公司的商业目标之间寻找平衡 产品经理出现源于宝洁 产品经理的出现是为了适应公司发展的需要。随着企业越来越大,产品越来越多,越来越复杂,原来按职能划分部门的组织结构已经无法适应,所以出现了产品管理的矩阵型组织,而此时产品经理的主要职责是规划产品的生命周期 他们真的是在招产品经理吗它更多地侧重产品本身“从无到有”、“从有到优”的过程,更多地涉及了“产品规划、数据分析、用户研究、需求分析、功能设计、项目管理、敏捷方法”等内容,而不是如传统的产品经理那样,去做已经有了产品之后需要做的诸如管理产品、推广和营销产品的事情 产品经理概念进化 行业形态不同:成熟行业VS.新兴行业。 而互联网、软件行业是新兴行业,新兴市场,三天一小变,五天一大变,产品本身在不断取得突破,用户看什么都是新的,所以产品需要推陈出新,尽力先入为主,占领用户,主导用户习惯,这就导致了产品工作的重头戏在前期,从无到有,从有到优,偏重研发类创新。因此,互联网、软件行业的产品经理更重视产品功能本身的规划,需要“对市场发展趋势有敏锐的洞察力和创新意识及良好的分析、研判能力”,要能不断改进产品,要“深入了解业务,挖掘用户的多种需求,不断推出有竞争力的产品”,“制定所负责产品线的发展蓝图和实施路线图”。 实物VS虚拟物 - 生命周期不同：几年VS几个月 软件和互联网产品更推崇敏捷开发，虽然互联网、软件的项目更加不可控,但项目过程本身看起来并没有传统行业那么复杂,更接近“艺术”而不是“技术”,要依靠丰富的经验,于是产品经理也经常兼顾项目管理,这样自己可以在项目完成度和产品质量之间做平衡,对产品无疑也是一件好事。所以我们在招聘广告中看到公司要求产品经理“发起产品研发项目”,“组织资源实施产品,对其效益负责”。 赢利模式不同,单一卖产品赚钱VS多元赢利。 用户心态不同:花钱买VS.免费用。 互联网、软件产品更重视用户体验,相应的,出现了很多产品经理会涉及的工作内容,如交互设计、视觉设计、文案设计等 非典型产品经理有时高科技企业会采取类似的做法,让产品经理专心处理产品在工程和技术方面的问题,而把大部分营销决定交给另外的职能单位来负责。在这种情况下,产品经理可能会变成产品技术/应用方面的专家,他最主要的工作就是支援、协助销售人员,至于了解市场和从市场了解产品利益等工作,则另有他人代劳 不管整天只是写文档、做Demo,还是成了没钱没权的项目经理;或是求完销售求工程师,最后只能欺负客服,到处不招人待见……前辈们似乎也认可——人人都是产品经理,非典型成了多数,也就变成典型。 一线员工眼中的管理管理的能力,其实就是“在资源不足的情况下把事情做成”的能力,这里的资源在产品经理的工作中通常表现为以下几种形式。 第一,信息不足以决策。时间有限,能力有限,每次决策前不可能掌握所有信息,做决定时总是很头疼,我估计是“拍脑袋”拍得太多的原因。 第二,时间不足以安排周密的计划。总是接到3个月、1个月,甚至1个礼拜完成某项目的命令,每次都让我们张大嘴巴说不出话来,应承下来后如何计划?不过一次又一次的实践表明,办法总比困难多。 第三,人员不足以支持工作强度和难度。不但时间不足,人员也不足,就算数量足,能力够不够?能力够了,团队士气高不高?哪个公司不加班,又有多少公司有加班工资?但还得完成任务,难不难?难! 第四,资金不足以自由调配。俗话说钱要花在刀刃上,买机器要钱,招人要钱,产品推广要钱,而花这些钱的前提是公司还得赚钱,每一分钱都恨不得掰成两半用。 我真的想做,怎么入行用户会去想怎么用这个产品,才能带给自己更大的好处,产生更大的效用;而产品经理则习惯于绕过表象,从背后看问题的本质,思考怎么设计这个产品才能更好地平衡用户目标与商业目标 找到自己的位置几个可能的入行切入点你是做开发的,那就经常要参与需求评审,不妨比别人多用点功,每次都预先了解需求,多多思考,然后在评审会上对需求提出自己的合理建议,时间长了大家都会觉得你很有想法,做产品也许不错。关于职位,可以从“需求分析师”切入,这有些像系统分析的工作,比如业务逻辑、流程图,都是你已经很熟悉的,可以在这个过程中慢慢培养商业的感觉,重点体会某个产品功能是为了满足商业上的什么需求而做的。 一个产品经理的-1到3岁]]></content>
+      <categories>
+        <category>项目管理</category>
+      </categories>
+      <tags>
+        <tag>需求分析</tag>
+        <tag>产品</tag>
       </tags>
   </entry>
   <entry>
@@ -1124,17 +1124,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数据仓库清洗规则]]></title>
-    <url>%2F2018%2F12%2F04%2F%E8%84%9A%E5%9E%8B%E6%95%B0%E6%8D%AE%E3%80%81%E6%A5%A6%E5%9E%8B%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%96%B9%E6%A1%88%E7%A8%BF%2F</url>
-    <content type="text"><![CDATA[脚型数据、楦数据清洗方案稿背景脚型数据、楦数据均以入库（待确认） 需要对数据做最基本，根据具体业务需要的数据清洗 ## 前提 数据仓库中的脚数据、楦数据的数据一致性校验完成 ## 清洗规则 明确数据的业务范围明确数据的语义两个表各字段的意义 数据中存在的错误界定及处理方法表级别错误主要包括数据记录不合理的重复、数据记录的缺失。 依赖数据入库操作时数据一致性校验的完成 #### 行级别错误 对于数据中存在的错误，处理的原则是尽最大可能去发现并修复，对于不能修复的错误，则需要给出警示。 对于行级错误的处理，从找出异常数据入手。 对于每个字段，发现异常数据可以通过以下（不限于）几种方式： 对于标量，如果离群则记为异常。 取值不在字典表范围内。 不符合数据的语义（在当前语义上无法解释）。 与其它字段的信息不一致。 异常数据处理流程： 首先判断是不是错误，如果不是错误，那我们只需要加以记录，这可以帮助我们更深入的认识数据； 如果是错误，试着去分析错误产生的原因，推测出正确值；如果能推测出正确值，那么推算出正确值。 如果不能推测出正确值，那么将其置为空值（空值至少不会提供错误的信息，其不良影响要弱于错误的信息所来带来的）。 对数据做规范化、统一化不规范、不统一的数据可能并不影响信息表达的准确性，却对数据分析和数据处理有很大的影响。 我们所要做的有两方面： 含义相同的字段，采用统一的规范的形式来表达。 目前主要包括：- 日期字段格式的统一，全部采用标准Unix时间戳表示。 对于同一字段，相同的信息，采用相同的表达。 主要针对字符型的字段。比如：北京、北京市、【北京】都是表达相同的含义，我们需要将其统一；男女与0,1,2的映射 ３． 空值处理、null值处理]]></content>
-      <categories>
-        <category>datawarehouse</category>
-      </categories>
-      <tags>
-        <tag>datawarehouse</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[行话]]></title>
     <url>%2F2018%2F12%2F04%2F%E8%A1%8C%E8%AF%9D%2F</url>
     <content type="text"><![CDATA[胶水代码： 在传统的开发模式中，我们很容易陷入“胶水代码”的陷阱里。所谓的“胶水代码”，顾名思义，就是仅仅用来保持用户界面数据、状态同步的函数调用的集合体。这些函数调用扯不断，理还乱，并且使代码变的非常冗长、易出错、不易维护。 编程模型：当面对一个新问题时。通常的想法是通过分析，不断的转化和转换，得到本质相同的熟悉的、或抽象的简单的一个问题，这就是化归思想。把初始的问题或对象称为原型，把化归后的相对定向的模拟化或理想化的对象称为模型。 编程模型，简单的可以理解他就是模板，遇到相似的问题就可以方便的依模板解决，这样就简化了编程问题。不同的编程环境和不同的应用对象有不同的编程模型。原子操作：原子（atom）本意是“不能被进一步分割的最小粒子”，而原子操作（atomic operation）意为”不可被中断的一个或一系列操作” 。为什么我们需要MQ消息队列（MQ）是一种应用程序对应用程序的通信方法。应用程序通过写和检索出入列队的针对应用程序的数据（消息）来通信，而无需专用连接来链接它们。消息传递指的是程序之间通过在消息中发送数据进行通信，而不是通过直接调用彼此来通信，直接调用通常是用于诸如远程过程调用的技术。排队指的是应用程序通过队列来通信。队列的使用除去了接收和发送应用程序同时执行的要求为什么我们需要MQ 何为流如何理解编程语言中「流」（stream）的概念如何形象的理解计算机中“流”的概念？ 数据规整(munge/munging/wrangling)指的是将非结构化和散乱数据处理为结构化或整洁形式的整个过程]]></content>
@@ -1144,6 +1133,17 @@
       <tags>
         <tag>笔记</tag>
         <tag>概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据仓库清洗规则]]></title>
+    <url>%2F2018%2F12%2F04%2F%E8%84%9A%E5%9E%8B%E6%95%B0%E6%8D%AE%E3%80%81%E6%A5%A6%E5%9E%8B%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%96%B9%E6%A1%88%E7%A8%BF%2F</url>
+    <content type="text"><![CDATA[脚型数据、楦数据清洗方案稿背景脚型数据、楦数据均以入库（待确认） 需要对数据做最基本，根据具体业务需要的数据清洗 ## 前提 数据仓库中的脚数据、楦数据的数据一致性校验完成 ## 清洗规则 明确数据的业务范围明确数据的语义两个表各字段的意义 数据中存在的错误界定及处理方法表级别错误主要包括数据记录不合理的重复、数据记录的缺失。 依赖数据入库操作时数据一致性校验的完成 #### 行级别错误 对于数据中存在的错误，处理的原则是尽最大可能去发现并修复，对于不能修复的错误，则需要给出警示。 对于行级错误的处理，从找出异常数据入手。 对于每个字段，发现异常数据可以通过以下（不限于）几种方式： 对于标量，如果离群则记为异常。 取值不在字典表范围内。 不符合数据的语义（在当前语义上无法解释）。 与其它字段的信息不一致。 异常数据处理流程： 首先判断是不是错误，如果不是错误，那我们只需要加以记录，这可以帮助我们更深入的认识数据； 如果是错误，试着去分析错误产生的原因，推测出正确值；如果能推测出正确值，那么推算出正确值。 如果不能推测出正确值，那么将其置为空值（空值至少不会提供错误的信息，其不良影响要弱于错误的信息所来带来的）。 对数据做规范化、统一化不规范、不统一的数据可能并不影响信息表达的准确性，却对数据分析和数据处理有很大的影响。 我们所要做的有两方面： 含义相同的字段，采用统一的规范的形式来表达。 目前主要包括：- 日期字段格式的统一，全部采用标准Unix时间戳表示。 对于同一字段，相同的信息，采用相同的表达。 主要针对字符型的字段。比如：北京、北京市、【北京】都是表达相同的含义，我们需要将其统一；男女与0,1,2的映射 ３． 空值处理、null值处理]]></content>
+      <categories>
+        <category>datawarehouse</category>
+      </categories>
+      <tags>
+        <tag>datawarehouse</tag>
       </tags>
   </entry>
   <entry>
