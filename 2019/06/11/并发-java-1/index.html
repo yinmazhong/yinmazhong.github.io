@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="白帝圣剑">
 <meta property="og:description" content="《Java 并发编程实战》极客时间-王老师 第二部分安全性、活跃性、以及性能问题安全性问题什么是线程安全？ 程序（多个线程组成）按照我们期望的执行 那么理论上线程安全的程序需要避免出现原子性，可见性，有序性问题 并不是所有代码都会出现这样的问题，只有这样的情况：存在共享数据并且该数据会发生变化，通俗的讲就是有个多个线程会同时读写同一数据。 那么如果能够做到不共享数据或者数据状态不发生变化，不就能够">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-11T10:29:01.261Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/11/并发-java-1/%E5%B9%B6%E5%8F%91-java-1-%E7%AE%A1%E7%A8%8B.png">
+<meta property="og:updated_time" content="2019-06-17T10:53:00.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发-java-1">
 <meta name="twitter:description" content="《Java 并发编程实战》极客时间-王老师 第二部分安全性、活跃性、以及性能问题安全性问题什么是线程安全？ 程序（多个线程组成）按照我们期望的执行 那么理论上线程安全的程序需要避免出现原子性，可见性，有序性问题 并不是所有代码都会出现这样的问题，只有这样的情况：存在共享数据并且该数据会发生变化，通俗的讲就是有个多个线程会同时读写同一数据。 那么如果能够做到不共享数据或者数据状态不发生变化，不就能够">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/11/并发-java-1/%E5%B9%B6%E5%8F%91-java-1-%E7%AE%A1%E7%A8%8B.png">
 
 
 
@@ -415,6 +417,9 @@
 <p>吞吐量：指的是单位时间内能处理的请求数量。吞吐量越高，说明性能越好。<br>延迟：指的是从发出请求到收到响应的时间。延迟越小，说明性能越好。<br>并发量：指的是能同时处理的请求数量，一般来说随着并发量的增加、延迟也会增加。所以延迟这个指标，一般都会是基于并发量来说的。例如并发量是 1000 的时候，延迟是 50 毫秒。</p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>并发编程是一个复杂的技术领域，微观上涉及到原子性问题、可见性问题和有序性问题，宏观则表现为安全性、活跃性以及性能问题。</p>
 <p>我们在设计并发程序的时候，主要是从宏观出发，也就是要重点关注它的安全性、活跃性以及性能。安全性方面要注意数据竞争和竞态条件，活跃性方面需要注意死锁、活锁、饥饿等问题，性能方面我们虽然介绍了两个方案，但是遇到具体问题，你还是要具体分析，根据特定的场景选择合适的数据结构和算法。</p>
+<h3 id="管程"><a href="#管程" class="headerlink" title="管程"></a>管程</h3><h4 id="什么是管程"><a href="#什么是管程" class="headerlink" title="什么是管程"></a>什么是管程</h4><p>管程，指的是管理共享变量以及对共享变量的操作过程，让他们支持并发</p>
+<p><img src="%E5%B9%B6%E5%8F%91-java-1-%E7%AE%A1%E7%A8%8B.png" alt="管程.png"></p>
+<p>每个条件变量都对应有一个等待队列</p>
 
       
     </div>
@@ -454,6 +459,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/17/并发-java-2/" rel="prev" title="并发-java-2">
+                并发-java-2 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -530,7 +539,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">110</span>
+                  <span class="site-state-item-count">111</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -585,7 +594,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《Java-并发编程实战》极客时间-王老师-第二部分"><span class="nav-number">1.</span> <span class="nav-text">《Java 并发编程实战》极客时间-王老师 第二部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安全性、活跃性、以及性能问题"><span class="nav-number">1.1.</span> <span class="nav-text">安全性、活跃性、以及性能问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安全性问题"><span class="nav-number">1.1.1.</span> <span class="nav-text">安全性问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#活跃问题"><span class="nav-number">1.1.2.</span> <span class="nav-text">活跃问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能问题"><span class="nav-number">1.1.3.</span> <span class="nav-text">性能问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《Java-并发编程实战》极客时间-王老师-第二部分"><span class="nav-number">1.</span> <span class="nav-text">《Java 并发编程实战》极客时间-王老师 第二部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安全性、活跃性、以及性能问题"><span class="nav-number">1.1.</span> <span class="nav-text">安全性、活跃性、以及性能问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安全性问题"><span class="nav-number">1.1.1.</span> <span class="nav-text">安全性问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#活跃问题"><span class="nav-number">1.1.2.</span> <span class="nav-text">活跃问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能问题"><span class="nav-number">1.1.3.</span> <span class="nav-text">性能问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.1.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管程"><span class="nav-number">1.2.</span> <span class="nav-text">管程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是管程"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是管程</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

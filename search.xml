@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[并发-java-2]]></title>
+    <url>%2F2019%2F06%2F17%2F%E5%B9%B6%E5%8F%91-java-2%2F</url>
+    <content type="text"><![CDATA[《Java 并发编程实战》极客时间-王老师 第三部分Java 线程生命周期 初始状态：线程已经在被创建，编程语言级别的被创建，非操作系统级别的，因为还不允许被分配cpu。 可运行状态：可以被分配cpu 运行态：正拥有某cpu 休眠态：阻塞，放弃cpu使用权 终止态：执行完毕，或者出现异常进入终止态 Java 中将可运行态与运行态合并了，应为jvm无法调度cpu,但细化了休眠状态 分别是： NEW（初始化状态） RUNNABLE（可运行 / 运行状态） BLOCKED（阻塞状态） WAITING（无时限等待） TIMED_WAITING（有时限等待） TERMINATED（终止状态） 虽然阻塞态被细分成了仨，，但是从操作系统角度考虑，只要java线程处于这三种状态之一，那么这个线程就永远没有cpu使用权 创建多少线程才合适为什么要使用多线程？如何度量性能？创建多少线程合适？ 为什么要使用多线程？解： 提高性能 如何度量性能？延迟和吞吐量延迟指的是发出请求到收到响应这个过程的时间；延迟越短，意味着程序执行得越快，性能也越好。 吞吐量指的是单位时间内能处理请求的数量 分别是时间维度和空间维度 怎么办？降低延迟，提高吞吐量 优化算法 将硬件的性能发挥到极致 在并发编程领域，提升性能本质上就是提升硬件（I/O和CPU）的利用率 创建多少线程合适？ 对于 CPU 密集型的计算场景，理论上“线程的数量 =CPU 核数”就是最合适的。不过在工程上，线程的数量一般会设置为“CPU 核数 +1”，这样的话，当线程因为偶尔的内存页失效或其他原因导致阻塞时，这个额外的线程可以顶上，从而保证 CPU 的利用率。 对于 I/O 密集型计算场景，最佳的线程数是与程序中 CPU 计算和 I/O 操作的耗时比相关的，我们可以总结出这样一个公式：最佳线程数 =CPU 核数 * [ 1 +（I/O 耗时 / CPU 耗时）] 为什么局部变量是线程安全的？局部变量在方法内，局部方法调用是通过栈完成的，栈是线程私有的，所以局部变量是安全的]]></content>
+      <categories>
+        <category>并发</category>
+      </categories>
+      <tags>
+        <tag>并发，java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[并发-java-1]]></title>
     <url>%2F2019%2F06%2F11%2F%E5%B9%B6%E5%8F%91-java-1%2F</url>
-    <content type="text"><![CDATA[《Java 并发编程实战》极客时间-王老师 第二部分安全性、活跃性、以及性能问题安全性问题什么是线程安全？ 程序（多个线程组成）按照我们期望的执行 那么理论上线程安全的程序需要避免出现原子性，可见性，有序性问题 并不是所有代码都会出现这样的问题，只有这样的情况：存在共享数据并且该数据会发生变化，通俗的讲就是有个多个线程会同时读写同一数据。 那么如果能够做到不共享数据或者数据状态不发生变化，不就能够保证线程的安全性了？于是就有了线程本地存储、不变模式等来解决这个问题， 但是，现实中，很多情况下，必须共享会发生变化的数据 数据竞争： Data Race 竞态条件： Race Condition 程序的执行结果依赖线程执行的顺序 123if (状态变量 满足 执行条件) &#123; 执行操作&#125; 面对数据竞争和竞态条件这两个问题，如何保证线程安全呢？ 解：互斥 实现互斥的方案很多：cpu提供了相关的互斥指令，操作系统，编程语言也会提供相关api从逻辑上看，，我们可以统一归为：锁 活跃问题除了死锁外，还有两种情况，分别是活锁和饥饿活锁：等待一个随机时间饥饿：公平的分配资源 性能问题S=1(1−p)+pn 公式里的 n 可以理解为 CPU 的核数，p 可以理解为并行百分比，那（1-p）就是串行百分比了，也就是我们假设的 5%。我们再假设 CPU 的核数（也就是 n）无穷大，那加速比 S 的极限就是 20。也就是说，如果我们的串行率是 5%，那么我们无论采用什么技术，最高也就只能提高 20 倍的性能。 所以使用锁的时候一定要关注对性能的影响。 那怎么才能避免锁带来的性能问题呢？这个问题很复杂，Java SDK 并发包里之所以有那么多东西，有很大一部分原因就是要提升在某个特定领域的性能。 不过从方案层面，我们可以这样来解决这个问题。 第一，既然使用锁会带来性能问题，那最好的方案自然就是使用无锁的算法和数据结构了。在这方面有很多相关的技术，例如线程本地存储 (Thread Local Storage, TLS)、写入时复制 (Copy-on-write)、乐观锁等；Java 并发包里面的原子类也是一种无锁的数据结构；Disruptor 则是一个无锁的内存队列，性能都非常好…… 第二，减少锁持有的时间。互斥锁本质上是将并行的程序串行化，所以要增加并行度，一定要减少持有锁的时间。这个方案具体的实现技术也有很多，例如使用细粒度的锁，一个典型的例子就是 Java 并发包里的 ConcurrentHashMap，它使用了所谓分段锁的技术（这个技术后面我们会详细介绍）；还可以使用读写锁，也就是读是无锁的，只有写的时候才会互斥。 性能方面的度量指标有很多，我觉得有三个指标非常重要，就是：吞吐量、延迟和并发量。 吞吐量：指的是单位时间内能处理的请求数量。吞吐量越高，说明性能越好。延迟：指的是从发出请求到收到响应的时间。延迟越小，说明性能越好。并发量：指的是能同时处理的请求数量，一般来说随着并发量的增加、延迟也会增加。所以延迟这个指标，一般都会是基于并发量来说的。例如并发量是 1000 的时候，延迟是 50 毫秒。 总结并发编程是一个复杂的技术领域，微观上涉及到原子性问题、可见性问题和有序性问题，宏观则表现为安全性、活跃性以及性能问题。 我们在设计并发程序的时候，主要是从宏观出发，也就是要重点关注它的安全性、活跃性以及性能。安全性方面要注意数据竞争和竞态条件，活跃性方面需要注意死锁、活锁、饥饿等问题，性能方面我们虽然介绍了两个方案，但是遇到具体问题，你还是要具体分析，根据特定的场景选择合适的数据结构和算法。]]></content>
+    <content type="text"><![CDATA[《Java 并发编程实战》极客时间-王老师 第二部分安全性、活跃性、以及性能问题安全性问题什么是线程安全？ 程序（多个线程组成）按照我们期望的执行 那么理论上线程安全的程序需要避免出现原子性，可见性，有序性问题 并不是所有代码都会出现这样的问题，只有这样的情况：存在共享数据并且该数据会发生变化，通俗的讲就是有个多个线程会同时读写同一数据。 那么如果能够做到不共享数据或者数据状态不发生变化，不就能够保证线程的安全性了？于是就有了线程本地存储、不变模式等来解决这个问题， 但是，现实中，很多情况下，必须共享会发生变化的数据 数据竞争： Data Race 竞态条件： Race Condition 程序的执行结果依赖线程执行的顺序 123if (状态变量 满足 执行条件) &#123; 执行操作&#125; 面对数据竞争和竞态条件这两个问题，如何保证线程安全呢？ 解：互斥 实现互斥的方案很多：cpu提供了相关的互斥指令，操作系统，编程语言也会提供相关api从逻辑上看，，我们可以统一归为：锁 活跃问题除了死锁外，还有两种情况，分别是活锁和饥饿活锁：等待一个随机时间饥饿：公平的分配资源 性能问题S=1(1−p)+pn 公式里的 n 可以理解为 CPU 的核数，p 可以理解为并行百分比，那（1-p）就是串行百分比了，也就是我们假设的 5%。我们再假设 CPU 的核数（也就是 n）无穷大，那加速比 S 的极限就是 20。也就是说，如果我们的串行率是 5%，那么我们无论采用什么技术，最高也就只能提高 20 倍的性能。 所以使用锁的时候一定要关注对性能的影响。 那怎么才能避免锁带来的性能问题呢？这个问题很复杂，Java SDK 并发包里之所以有那么多东西，有很大一部分原因就是要提升在某个特定领域的性能。 不过从方案层面，我们可以这样来解决这个问题。 第一，既然使用锁会带来性能问题，那最好的方案自然就是使用无锁的算法和数据结构了。在这方面有很多相关的技术，例如线程本地存储 (Thread Local Storage, TLS)、写入时复制 (Copy-on-write)、乐观锁等；Java 并发包里面的原子类也是一种无锁的数据结构；Disruptor 则是一个无锁的内存队列，性能都非常好…… 第二，减少锁持有的时间。互斥锁本质上是将并行的程序串行化，所以要增加并行度，一定要减少持有锁的时间。这个方案具体的实现技术也有很多，例如使用细粒度的锁，一个典型的例子就是 Java 并发包里的 ConcurrentHashMap，它使用了所谓分段锁的技术（这个技术后面我们会详细介绍）；还可以使用读写锁，也就是读是无锁的，只有写的时候才会互斥。 性能方面的度量指标有很多，我觉得有三个指标非常重要，就是：吞吐量、延迟和并发量。 吞吐量：指的是单位时间内能处理的请求数量。吞吐量越高，说明性能越好。延迟：指的是从发出请求到收到响应的时间。延迟越小，说明性能越好。并发量：指的是能同时处理的请求数量，一般来说随着并发量的增加、延迟也会增加。所以延迟这个指标，一般都会是基于并发量来说的。例如并发量是 1000 的时候，延迟是 50 毫秒。 总结并发编程是一个复杂的技术领域，微观上涉及到原子性问题、可见性问题和有序性问题，宏观则表现为安全性、活跃性以及性能问题。 我们在设计并发程序的时候，主要是从宏观出发，也就是要重点关注它的安全性、活跃性以及性能。安全性方面要注意数据竞争和竞态条件，活跃性方面需要注意死锁、活锁、饥饿等问题，性能方面我们虽然介绍了两个方案，但是遇到具体问题，你还是要具体分析，根据特定的场景选择合适的数据结构和算法。 管程什么是管程管程，指的是管理共享变量以及对共享变量的操作过程，让他们支持并发 每个条件变量都对应有一个等待队列]]></content>
       <categories>
         <category>并发</category>
       </categories>
@@ -255,18 +266,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
-    <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛): BWH1ZBPVK（6.00%） bandwagon官网购买vps,支持支付宝(alipay),有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server推荐blog 配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务 1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf: 123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>Bandwagon</tag>
-        <tag>shadowsocks</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[DIY Cluster]]></title>
     <url>%2F2018%2F12%2F04%2FDIY-cluster%2F</url>
     <content type="text"><![CDATA[需求单机应用分布式执行 akka cluster单台机器也可用dispatcher提高机器利用率,这是后话，先按照要求做出一个集群来 desc不同于actor点对点的交互，而是有独特的 akka cluster机制 集群定义： 维基百科上的定义是 “计算机集群由一系列间接或直接连接的计算机组成,这些计算机共同完成工作,从很多角度上来说,可以将这些计算机看作是单个系统。具体到本章中对于集群的定义,我们可以认为一个集群就是一组 机器(也可能是虚拟机),我们将这些机器称作节点(node)或是成员(member),同一个组中的所有节点遵循某个协议。 巨型单体服务vs微服务Martin Fowler的观点： 1. 当团队较小，开发的应用程序也比较小的时候，建议使用单体应用，随着应用程序变大，团队内的开发人员变多时，可以试着查分单体为微服务。 2. 当查分单体应用时，如果没有在开发单体时的经验，很可能把错误的部分拆分出去 一旦有了些在生产环境中运行系统的经验和数据,要把哪个部分分离出来才能够在 新增功能时带来性能和团队开发速度的好处就会比较清楚了。开始部署微服务之后,我 们就可以用一种非平衡的方式对负载更高的服务进行扩展,给应用程序中使用更多的部 分分配更大的服务器集群。 集群定义集群就是一组可以相互通信的服务器必须的两个条件： 失败发现 以及使得集群中的所有成员最终能够提供一致的视图(什么意思) 失败检测节点基于能否获得其他节点的响应来确定节点是否可用 akka中，每个节点仅仅检测附近的节点，以节省网络开销，提高效率 通过gossip协议达到最终一致思考一下失败检测的处理,集群中的每个节点和它的邻居节点互相交换已知的状态。接着,这些邻居节点再将已知的状态传递给它们的“邻居”,以此往复,直到某个节点的已知状态传递给了集群中的所有成员。节点会仔细计算并得到集群中其他成员的状态 CAPC一致性 A可用性 p分区容错性 CAP理论的妥协分布式系统只能选择满足其中两个 使用Akka Cluster 构建系统Akka Cluster 基于 Akka Remoting,解决了实际应用中的高可用性等问题 场景比较简单，可以直接使用Akka Remoting 来构建系统的alpha版本官网上提供了akka-samples-remote-scala的例子，先学习一下 通读第一遍 看了下look up 的例子，真是不错，看来以后研究开源框架，还是要直接上官网看文档 原始人：ssh太原始了，慎重 研究了devops工具，听人劝，使用ansible更可贵的是ansible包含了对aws的支持]]></content>
@@ -278,16 +277,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[H2数据库笔记]]></title>
-    <url>%2F2018%2F12%2F04%2FH2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[H2工具类： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &#123; private var server: Server = null; private var webServer: Server = null; def start(): Unit = &#123; try &#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;, &quot;&quot;, true, true) &#125; catch &#123; case e: Throwable =&gt; &#125; try &#123; server = Server.createTcpServer(&quot;-tcp&quot;, &quot;-tcpAllowOthers&quot;, &quot;-tcpPort&quot;, ProConfig.h2DatabaseTcpPort.toString).start() log.info(&quot;server status: &quot; + server.getStatus) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def startWebConsole(openBrowser: Boolean = false): Unit = &#123; try &#123; if (webServer == null) &#123; webServer = Server.createWebServer(&quot;-web&quot;, &quot;-webAllowOthers&quot;, &quot;-webPort&quot;, ProConfig.h2DatabaseWebPort.toString).start() &#125; log.info(&quot;webServerStatus&quot; + webServer.getStatus) if (openBrowser) Server.openBrowser(s&quot;http://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseWebPort&#125;&quot;) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def stop(): Unit = &#123; def shutdownServer(server: Server): Unit = &#123; try &#123; server match &#123; case s if s != null =&gt; s.stop() case _ =&gt; log.info(&quot;H2 server did not start&quot;) &#125; &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; shutdownServer(server) shutdownServer(webServer) try&#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;,&quot;&quot;,true,true) log.debug(&quot;serverStatus: &quot;+server.getStatus) &#125;catch &#123; case e:Throwable =&gt; log.error(e.getMessage,e) &#125; &#125;&#125;object H2Test extends App &#123; H2Database.start() Thread.sleep(10000) H2Database.stop()&#125; JDBC开启H2数据库后可按照JDBC 正常连接 CSVWRITE: 导出表成为 CSV 文件1CALL CSVWRITE(&apos;/home/xxhbak/FEATURECONF.csv&apos;, &apos;SELECT * FROM FEATURECONF&apos;); CSVREAD:向表导入CSV文件使用数据库读取CSV文件 CSVREAD使用: 1SELECT * FROM CSVREAD(&apos;test.csv&apos;); Another option is to use INSERT INTO … SELECT. 123CREATE TABLE TEST AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255)) AS SELECT * FROM CSVREAD(&apos;test.csv&apos;); Please note for performance reason, CSVREAD should not be used inside a join. Instead, import the data first (possibly into a temporary table), create the required indexes if necessary, and then query this table. 参考 示例，亲测 CALL CSVREAD(‘/home/xd/us.csv’, ‘SELECT * FROM us ‘);insert into us (SELECT * FROM CSVREAD(‘/home/xd/USERCASERESULT.csv’,NULL,’UTF-8’,’|’));]]></content>
+    <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
+    <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛): BWH1ZBPVK（6.00%） bandwagon官网购买vps,支持支付宝(alipay),有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server推荐blog 配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务 1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf: 123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
       <categories>
-        <category>数据存储处理 - database</category>
+        <category>工欲善其事，必先利其器</category>
       </categories>
       <tags>
-        <tag>database</tag>
-        <tag>H2</tag>
-        <tag>笔记</tag>
+        <tag>Bandwagon</tag>
+        <tag>shadowsocks</tag>
       </tags>
   </entry>
   <entry>
@@ -301,6 +299,19 @@
         <tag>scala</tag>
         <tag>Future</tag>
         <tag>Promise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[H2数据库笔记]]></title>
+    <url>%2F2018%2F12%2F04%2FH2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[H2工具类： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &#123; private var server: Server = null; private var webServer: Server = null; def start(): Unit = &#123; try &#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;, &quot;&quot;, true, true) &#125; catch &#123; case e: Throwable =&gt; &#125; try &#123; server = Server.createTcpServer(&quot;-tcp&quot;, &quot;-tcpAllowOthers&quot;, &quot;-tcpPort&quot;, ProConfig.h2DatabaseTcpPort.toString).start() log.info(&quot;server status: &quot; + server.getStatus) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def startWebConsole(openBrowser: Boolean = false): Unit = &#123; try &#123; if (webServer == null) &#123; webServer = Server.createWebServer(&quot;-web&quot;, &quot;-webAllowOthers&quot;, &quot;-webPort&quot;, ProConfig.h2DatabaseWebPort.toString).start() &#125; log.info(&quot;webServerStatus&quot; + webServer.getStatus) if (openBrowser) Server.openBrowser(s&quot;http://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseWebPort&#125;&quot;) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def stop(): Unit = &#123; def shutdownServer(server: Server): Unit = &#123; try &#123; server match &#123; case s if s != null =&gt; s.stop() case _ =&gt; log.info(&quot;H2 server did not start&quot;) &#125; &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; shutdownServer(server) shutdownServer(webServer) try&#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;,&quot;&quot;,true,true) log.debug(&quot;serverStatus: &quot;+server.getStatus) &#125;catch &#123; case e:Throwable =&gt; log.error(e.getMessage,e) &#125; &#125;&#125;object H2Test extends App &#123; H2Database.start() Thread.sleep(10000) H2Database.stop()&#125; JDBC开启H2数据库后可按照JDBC 正常连接 CSVWRITE: 导出表成为 CSV 文件1CALL CSVWRITE(&apos;/home/xxhbak/FEATURECONF.csv&apos;, &apos;SELECT * FROM FEATURECONF&apos;); CSVREAD:向表导入CSV文件使用数据库读取CSV文件 CSVREAD使用: 1SELECT * FROM CSVREAD(&apos;test.csv&apos;); Another option is to use INSERT INTO … SELECT. 123CREATE TABLE TEST AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255)) AS SELECT * FROM CSVREAD(&apos;test.csv&apos;); Please note for performance reason, CSVREAD should not be used inside a join. Instead, import the data first (possibly into a temporary table), create the required indexes if necessary, and then query this table. 参考 示例，亲测 CALL CSVREAD(‘/home/xd/us.csv’, ‘SELECT * FROM us ‘);insert into us (SELECT * FROM CSVREAD(‘/home/xd/USERCASERESULT.csv’,NULL,’UTF-8’,’|’));]]></content>
+      <categories>
+        <category>数据存储处理 - database</category>
+      </categories>
+      <tags>
+        <tag>database</tag>
+        <tag>H2</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -434,6 +445,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[SBT增加国内镜像并生效]]></title>
+    <url>%2F2018%2F12%2F04%2FSBT%E5%A2%9E%E5%8A%A0%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%B9%B6%E7%94%9F%E6%95%88%2F</url>
+    <content type="text"><![CDATA[第五章 SBT国内源配置 前几天执行：sbt update 失败 主要是 project/plugins.sbt里的插件下载失败 resolved xx failed,说找不到该插件 试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，所以严重怀疑是本机安装SBT有问题， sudo apt-get remove sbt 然后,按照官网安装教程重新安装sbt, 1234`echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.listsudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823sudo apt-get updatesudo apt-get install sbt` 果然，之前的问题已解决了（以上基于ubuntu16操作环境，其他开发环境类似）]]></content>
+      <categories>
+        <category>项目管理 - sbt</category>
+      </categories>
+      <tags>
+        <tag>SBT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Redis Learning]]></title>
     <url>%2F2018%2F12%2F04%2FRedis%20Learning%2F</url>
     <content type="text"><![CDATA[应用场景：redis 适用于小而热的数据 Redis应用场景 Redis作者谈Redis应用场景我们在应用redis的场景是 缓存将收到的post报文缓存下，然后批量插入redshift github上的scala版redis client官方推荐了好几款开源的scala 版客户端，都不知道选哪个比较好了，应该迅速读一遍scala 并发编程 Redis is an open source(BSD Licensed),in-memory data structure store,used as a database,cache,and message broker.It supports data structures such as strings,hashes,lists,sets,sorted sets with range queries,bitmaps,hyperloglogs and geospatial indexes with radius queries.build-in: replication Lua scripting LRU eviction transaction different levels of on-disk persistence provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster. You can run atomic operations on these types, like appending to a string; incrementing the value in a hash; pushing an element to a list; computing set intersection, union and difference; or getting the member with highest ranking in a sorted set. in-memory dataset: In order to achieve its outstanding performance, Redis works with an in-memory dataset. Depending on your use case, you can persist it either by dumping the dataset to disk every once in a while, or by appending each command to a log. Persistence can be optionally disabled, if you just need a feature-rich, networked, in-memory cache. no-blocking replication: Redis also supports trivial-to-setup master-slave asynchronous replication, with very fast non-blocking first synchronization, auto-reconnection with partial resynchronization on net split. transcation数据库事务彻底搞懂事务 6379-为何Redis选择它作为默认端口号？redis 使用服务器端／客户端架构的数据库架构通过client去连接redis服务端 我们可以通过redis-cli去连接redis数据库，这是学习测试redis最好的方法，这时redis-cli就是一个client 之前连接关系型数据库一般都是通过JDBC的方式连接的，这个redis是怎么连接上去的我暂时还没有搞清楚，官方推荐了很多类似与sdk的工具库，使用这些库可以很方便的连接redis， redis 持久化有两种方式做持久化，其一是RDB，定期备份数据库的状态；其二是AOF，记录数据库的相关命令优先使用AOF方式 使用list来存储数据，LPUSH mylist “1”// BRPOP mylist 0 取出最先放入的元素，每分钟生成一个key,同步数据只处理之前的key里面的数据做一个事务，保证该元素处理的原子性因为BRPOP 只能取出最后一个元素，所以应该使用BPOPLPUSH 散列算法(Hash Algorithm),又称哈希算法，杂凑算法，是从任意文件中创造小的数字[指纹]的方法。散列算法是一种以较短的信息来保证文件唯一性标志，这种标志与文件的每一个字节都相关，而且难以找到逆向规律。因此，当原有文件发生改变时，其标志值也会发生改变，从而告诉文件使用者当前文件已经不是你所需求的文件。 先举个例子。我们每个活在世上的人，为了能够参与各种社会活动，都需要一个用于识别自己的标志。也许你觉得名字或是身份证就足以代表你这个人，但是这种代表性非常脆弱，因为重名的人很多，身份证也可以伪造。最可靠的办法是把一个人的所有基因序列记录下来用来代表这个人，但显然，这样做并不实际。而指纹看上去是一种不错的选择，虽然一些专业组织仍然可以模拟某个人的指纹，但这种代价实在太高了。 而对于在互联网世界里传送的文件来说，如何标志一个文件的身份同样重要。比如说我们下载一个文件，文件的下载过程中会经过很多网络服务器、路由器的中转，如何保证这个文件就是我们所需要的呢？我们不可能去一一检测这个文件的每个字节，也不能简单地利用文件名、文件大小这些极容易伪装的信息，这时候，我们就需要一种指纹一样的标志来检查文件的可靠性，这种指纹就是我们现在所用的Hash算法(也叫散列算法)。 参考：Hash算法总结]]></content>
@@ -445,14 +467,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[SBT增加国内镜像并生效]]></title>
-    <url>%2F2018%2F12%2F04%2FSBT%E5%A2%9E%E5%8A%A0%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%B9%B6%E7%94%9F%E6%95%88%2F</url>
-    <content type="text"><![CDATA[第五章 SBT国内源配置 前几天执行：sbt update 失败 主要是 project/plugins.sbt里的插件下载失败 resolved xx failed,说找不到该插件 试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，所以严重怀疑是本机安装SBT有问题， sudo apt-get remove sbt 然后,按照官网安装教程重新安装sbt, 1234`echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.listsudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823sudo apt-get updatesudo apt-get install sbt` 果然，之前的问题已解决了（以上基于ubuntu16操作环境，其他开发环境类似）]]></content>
+    <title><![CDATA[简单线性回归]]></title>
+    <url>%2F2018%2F12%2F04%2FSimpleLinearRegression%2F</url>
+    <content type="text"><![CDATA[简单线性回归WHAT简单线性回归模型是用于估计一个连续预测变量和一个连续回应变量的线性关系。回归方程或者是估计回归方程 y¯=b0+b1x y¯是回应变量的估计值 b0是回归线在y轴上的截距 b1是回归线的斜率 b0和b1b1称为回归系数 Simple linear regression(wiki) HOW怎样才能得到一个简单线性回归模型，也就是求得一个方程式 既有的数值处理库python的sk-learn、scala的breeze等sk-learn 例子： 123456789101112131415161718192021222324252627282930313233343536import pandas as pdfrom sklearn import linear_modelimport matplotlib.pyplot as pltdf = pd.read_csv(&apos;C:/Users/lenovo/Desktop/3VD_1.csv&apos;)&quot;&quot;&quot;# 建立线性回归模型&quot;&quot;&quot;regr = linear_model.LinearRegression()&quot;&quot;&quot;# 拟合&quot;&quot;&quot;regr.fit(df[&apos;basicsize&apos;].values.reshape(-1,1), df[&apos;footaround&apos;])a, b = regr.coef_, regr.intercept_print(a[0])feats =[&apos;footaround&apos;, &apos;footbackarcdistance54mm&apos;, &apos;footbackarcdistancemouth&apos;, &apos;footbackbodylength&apos;, &apos;footbackfacedistance&apos;, &apos;footbackgirth&apos;, &apos;footbasicwidth&apos;, &apos;footbitfingeroutsidewidth&apos;, &apos;footboatcurveheight&apos;, &apos;footbottomheartconcavity&apos;, &apos;footdegreerejection&apos;, &apos;footfifthtoeoutsidewidth&apos;, &apos;footfirstplantarjointheight&apos;, &apos;footfirsttoeinsidewidth&apos;, &apos;footforepalmconvexity&apos;, &apos;footfrontcross&apos;, &apos;footheadthickness&apos;, &apos;footheelbulgeheight&apos;, &apos;footheelheartconvexity&apos;, &apos;footheelheartwidth&apos;, &apos;footheelheight&apos;, &apos;footlandspot&apos;, &apos;footmetatarsalgirth&apos;, &apos;footmouthbackheight&apos;, &apos;footmouthlength&apos;, &apos;footmouthwidth&apos;, &apos;footpalmwidth&apos;, &apos;footpocketheelgirth&apos;, &apos;footshoelastcalculatelength&apos;, &apos;foottarsalboneheight&apos;, &apos;foottarsalgirth&apos;, &apos;footthumbinsidewidth&apos;, &apos;footwaistgirth&apos;, &apos;footwaistwidth&apos;, &apos;footwidth&apos;]para_lin = []for feat in feats: regr.fit(df[&apos;basicsize&apos;].values.reshape(-1,1), df[feat]) a, b = regr.coef_, regr.intercept_ para_lin.append((feat,a[0],b)) 使用公式 在统计学中，线性回归是利用称为线性回归方程的最小二乘函数对一个或多个自变量和因变量之间关系进行建模的一种回归分析。这种函数是一个或多个称为回归系数的模型参数的线性组合。一个带有一个自变量的线性回归方程代表一条直线。我们需要对线性回归结果进行统计分析。 通过定义和最小化一个成本函数，简单线性回归可以拟合一条直线。一般用最小二乘法（OLS)来计算系数。 线性回归的公式可以表示为 y=w0+w1x 截距 w0 斜率 w1 推导过程可参看wikipedia scala实现： 12345678910111213141516def simple_linear_regression(x: Vector[Int], y: Vector[Double]) = &#123; //initial sums val n = x.length.toFloat val sum_x = x.sum val sum_y = y.sum val sum_xy = (x, y).zipped.map(_ * _).sum val sum_xx = x.map(n =&gt; n * n).sum //formula for w0 val slope = (sum_xy - (sum_x * sum_y) / n) / (sum_xx - (sum_x * sum_x) / n) //formula for w1 val intercept = sum_y / n - slope * (sum_x / n) (slope,intercept) &#125; PS:以往查询数据库都是按行查询的，但是在这里是去数据中的两个维度来分别作为自变量和因变量，以求得简单线性回归模型，所以查询数据库数据时还是按列查询比较好 不然的话就要做n个Map,像这样： 123456789101112131415val is = getClass.getClassLoader.getResourceAsStream(&quot;origin-fat-last-data&quot;) val source = scala.io.Source.fromInputStream(is).getLines().map(_.split(&quot;\t&quot;).toList).toList val title = source.head val data = source.tail.filter(_.last == &quot;normal&quot;).toVector val mapData = data.map(_.zip(title).map(field=&gt; Map(field._2 -&gt; field._1)).reduce(_ ++ _)) val basicSizeVector = mapData.map(_.get(&quot;basicsize&quot;).get.toInt) val yMapDatas = mapData.map(_.filterNot(m =&gt; (&quot;shoes_size_specification&quot;,&quot;brand&quot;,&quot;shoelastbaseno&quot;,&quot;gender&quot;,&quot;headform&quot;,&quot;shoepadthicknessforefoot&quot;,&quot;shoepadthicknessheel&quot;,&quot;shoetype&quot;,&quot;footmouthgirth&quot;,&quot;footstruct&quot;).productIterator.contains(m._1))) .map(_.map(m =&gt; Map(m._1 -&gt; m._2.toDouble)).reduce(_ ++ _)) val yMapDataKeys =yMapDatas.head.map(_._1) val keyValues = yMapDataKeys.map(key =&gt; Map(key -&gt; yMapDatas.map(d=&gt; d.getOrElse(key,0.00d)))) def res = keyValues.map(kv =&gt;&#123; Map(kv.head._1 -&gt; simple_linear_regression(basicSizeVector,kv.head._2)) &#125;).reduce(_ ++ _)]]></content>
       <categories>
-        <category>项目管理 - sbt</category>
+        <category>数据分析</category>
       </categories>
       <tags>
-        <tag>SBT</tag>
+        <tag>数据分析</tag>
       </tags>
   </entry>
   <entry>
@@ -465,17 +487,6 @@
       <tags>
         <tag>笔记</tag>
         <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[简单线性回归]]></title>
-    <url>%2F2018%2F12%2F04%2FSimpleLinearRegression%2F</url>
-    <content type="text"><![CDATA[简单线性回归WHAT简单线性回归模型是用于估计一个连续预测变量和一个连续回应变量的线性关系。回归方程或者是估计回归方程 y¯=b0+b1x y¯是回应变量的估计值 b0是回归线在y轴上的截距 b1是回归线的斜率 b0和b1b1称为回归系数 Simple linear regression(wiki) HOW怎样才能得到一个简单线性回归模型，也就是求得一个方程式 既有的数值处理库python的sk-learn、scala的breeze等sk-learn 例子： 123456789101112131415161718192021222324252627282930313233343536import pandas as pdfrom sklearn import linear_modelimport matplotlib.pyplot as pltdf = pd.read_csv(&apos;C:/Users/lenovo/Desktop/3VD_1.csv&apos;)&quot;&quot;&quot;# 建立线性回归模型&quot;&quot;&quot;regr = linear_model.LinearRegression()&quot;&quot;&quot;# 拟合&quot;&quot;&quot;regr.fit(df[&apos;basicsize&apos;].values.reshape(-1,1), df[&apos;footaround&apos;])a, b = regr.coef_, regr.intercept_print(a[0])feats =[&apos;footaround&apos;, &apos;footbackarcdistance54mm&apos;, &apos;footbackarcdistancemouth&apos;, &apos;footbackbodylength&apos;, &apos;footbackfacedistance&apos;, &apos;footbackgirth&apos;, &apos;footbasicwidth&apos;, &apos;footbitfingeroutsidewidth&apos;, &apos;footboatcurveheight&apos;, &apos;footbottomheartconcavity&apos;, &apos;footdegreerejection&apos;, &apos;footfifthtoeoutsidewidth&apos;, &apos;footfirstplantarjointheight&apos;, &apos;footfirsttoeinsidewidth&apos;, &apos;footforepalmconvexity&apos;, &apos;footfrontcross&apos;, &apos;footheadthickness&apos;, &apos;footheelbulgeheight&apos;, &apos;footheelheartconvexity&apos;, &apos;footheelheartwidth&apos;, &apos;footheelheight&apos;, &apos;footlandspot&apos;, &apos;footmetatarsalgirth&apos;, &apos;footmouthbackheight&apos;, &apos;footmouthlength&apos;, &apos;footmouthwidth&apos;, &apos;footpalmwidth&apos;, &apos;footpocketheelgirth&apos;, &apos;footshoelastcalculatelength&apos;, &apos;foottarsalboneheight&apos;, &apos;foottarsalgirth&apos;, &apos;footthumbinsidewidth&apos;, &apos;footwaistgirth&apos;, &apos;footwaistwidth&apos;, &apos;footwidth&apos;]para_lin = []for feat in feats: regr.fit(df[&apos;basicsize&apos;].values.reshape(-1,1), df[feat]) a, b = regr.coef_, regr.intercept_ para_lin.append((feat,a[0],b)) 使用公式 在统计学中，线性回归是利用称为线性回归方程的最小二乘函数对一个或多个自变量和因变量之间关系进行建模的一种回归分析。这种函数是一个或多个称为回归系数的模型参数的线性组合。一个带有一个自变量的线性回归方程代表一条直线。我们需要对线性回归结果进行统计分析。 通过定义和最小化一个成本函数，简单线性回归可以拟合一条直线。一般用最小二乘法（OLS)来计算系数。 线性回归的公式可以表示为 y=w0+w1x 截距 w0 斜率 w1 推导过程可参看wikipedia scala实现： 12345678910111213141516def simple_linear_regression(x: Vector[Int], y: Vector[Double]) = &#123; //initial sums val n = x.length.toFloat val sum_x = x.sum val sum_y = y.sum val sum_xy = (x, y).zipped.map(_ * _).sum val sum_xx = x.map(n =&gt; n * n).sum //formula for w0 val slope = (sum_xy - (sum_x * sum_y) / n) / (sum_xx - (sum_x * sum_x) / n) //formula for w1 val intercept = sum_y / n - slope * (sum_x / n) (slope,intercept) &#125; PS:以往查询数据库都是按行查询的，但是在这里是去数据中的两个维度来分别作为自变量和因变量，以求得简单线性回归模型，所以查询数据库数据时还是按列查询比较好 不然的话就要做n个Map,像这样： 123456789101112131415val is = getClass.getClassLoader.getResourceAsStream(&quot;origin-fat-last-data&quot;) val source = scala.io.Source.fromInputStream(is).getLines().map(_.split(&quot;\t&quot;).toList).toList val title = source.head val data = source.tail.filter(_.last == &quot;normal&quot;).toVector val mapData = data.map(_.zip(title).map(field=&gt; Map(field._2 -&gt; field._1)).reduce(_ ++ _)) val basicSizeVector = mapData.map(_.get(&quot;basicsize&quot;).get.toInt) val yMapDatas = mapData.map(_.filterNot(m =&gt; (&quot;shoes_size_specification&quot;,&quot;brand&quot;,&quot;shoelastbaseno&quot;,&quot;gender&quot;,&quot;headform&quot;,&quot;shoepadthicknessforefoot&quot;,&quot;shoepadthicknessheel&quot;,&quot;shoetype&quot;,&quot;footmouthgirth&quot;,&quot;footstruct&quot;).productIterator.contains(m._1))) .map(_.map(m =&gt; Map(m._1 -&gt; m._2.toDouble)).reduce(_ ++ _)) val yMapDataKeys =yMapDatas.head.map(_._1) val keyValues = yMapDataKeys.map(key =&gt; Map(key -&gt; yMapDatas.map(d=&gt; d.getOrElse(key,0.00d)))) def res = keyValues.map(kv =&gt;&#123; Map(kv.head._1 -&gt; simple_linear_regression(basicSizeVector,kv.head._2)) &#125;).reduce(_ ++ _)]]></content>
-      <categories>
-        <category>数据分析</category>
-      </categories>
-      <tags>
-        <tag>数据分析</tag>
       </tags>
   </entry>
   <entry>
@@ -553,17 +564,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[breeze使用]]></title>
-    <url>%2F2018%2F12%2F04%2Fbreeze%2F</url>
-    <content type="text"><![CDATA[whatBreeze is a library for numerical processing, machine learning, and natural language processing. Its primary focus is on being generic, clean, and powerful without sacrificing (much) efficiency. Breeze is the merger of the ScalaNLP and Scalala projects, because one of the original maintainers is unable to continue development. howinstall快速安装用sbt在命令行中快速安装，体验一下 推荐的sbt依赖配置]]></content>
-      <categories>
-        <category>数据分析 - scala</category>
-      </categories>
-      <tags>
-        <tag>breeze</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[build-tool]]></title>
     <url>%2F2018%2F12%2F04%2Fbuild-tool%2F</url>
     <content type="text"><![CDATA[构建工具总结对比： 旧时代的Java世界，构建工具等同于两个词Ant和Maven Ant源自Make，同JUnit一样，它也是一个航班产物（参见《Ant权威指南》序）。不过，Make的基础注定了它的起点不高，所有一切都要手工打造。我还依稀记得曾几何时，每每开始一个项目都要重新复制一份Ant脚本，修修改改。Maven给了人们新的希望，目录结构的约定、依赖管理、IDE集成，那时看来，几近完美。是的，几近，还差了那么一点点。就是那么一点点，却是致命伤。 只要一个项目进行一段时间，一个必然遇到的问题就是，编写新的自动化脚本。因为每个项目都有自己的特定需求，标准做法必然是无法满足的。扩展Maven对任何新手都是一件头疼的事，我们要学会编写插件，要搞清楚生命周期，这时，突然会唤起一丝丝对于ANT的怀念，虽然它做简单事不容易，但做复杂事却也没这么困难。 如果那些日子，我们不得不忍受Ant和Maven的不完美，那现在，是时候抛弃它们了。 新时代Java构建有两个很好的候选：Gradle和Buildr。 在我看来，它们真正比Maven更强大的地方，编写自己的任务更加容易。更值得兴奋的一点是，我们终于可以抛弃冗长的XML，选择一种更优雅的程序设计语言来写代码了，这几乎意味着你可以做到想做的一切。 Buildr是Apache出品的构建工具，它以Ruby作为构建脚本。《软件开发地基》讨论软件项目应该具备一些基础构建项，就是以Buildr为基础的。有兴趣的话，可以参考一下。这里就不再赘述。顺便说一下，那篇文章里的内容，除了某些写法现在需要做一些微调，大部分内容依然是适用于大多数Java项目。 Gradle现在是整个Java社区的构建新宠，它采用Groovy作为自己的构建语言。如果你知道，Groovy是一门诞生自JVM平台的语言，这就决定了它要比其它移植到JVM上的语言能更好的适应JVM平台，它可以采用更符合Java世界的方式无缝地整合Java既有的程序库，而不必像移植语言那样削足适履。 初涉Gradle，最让人吃惊的一点莫过于它详尽的文档，涵盖了Gradle使用的方方面面，这是许多开源软件项目无法媲美，即便早在它的1.0版本尚未发布之时。当然，能做到这一点是因为它背后有一个公司在支撑：GradleWare，这意味着如果你需要商业支持，也是可以的。 Gradle 1.0尚未发布之，它就捧回2010年的Spring大奖和入围了2011年的JAX大奖。如果你还需要更多的信心，作为Java开发人员，你不可能不知道Spring，那Spring转投Gradle怀抱，应该是对Gradle最有利的支持了。 说了这么多，程序员最喜欢看到的东西还是代码。 首先，请自行下载安装Gradle，然后，按照常见的Java项目布局把代码准备好（感谢Maven为我们给予我们约定），比如： src/main/java，源代码文件目录src/main/resources，资源文件目录src/test/java，测试代码目录下面是一个简单的Gradle构建脚本，将其存放于build.gradle apply plugin: ‘java’ repositories { mavenCentral()} dependencies { compile( ‘com.google.guava:guava:13.0.1’, ‘joda-time:joda-time:2.1’ ) testCompile( ‘junit:junit:4.10’, ‘org.mockito:mockito-all:1.9.0’ )} （build.gradle） 接下来的事情就很简单了，在命令行里键入 gradle build 如果一切正常，我们应该会看到构建成功的字样，然后，到build/lib，你就看到自己构建出来的JAR文件了。当然，这只是一个简单得不能再简单的例子，如果需要了解更多，Gradle那详尽的文档便是最好的去处。 著作权归作者所有，转载需联系作者以获得授权，引用需注明出处。作者ID:s8达克斯链接:https://www.applysquare.com/topic-cn/SlxE26k3q/ gradlegradle install开发主机使用ubuntu16,按照官网文档上的manually方法安装，测试可用 kafka源码编译的时候执行 1gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 sbtmaven]]></content>
@@ -572,6 +572,17 @@
       </categories>
       <tags>
         <tag>build tool</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[breeze使用]]></title>
+    <url>%2F2018%2F12%2F04%2Fbreeze%2F</url>
+    <content type="text"><![CDATA[whatBreeze is a library for numerical processing, machine learning, and natural language processing. Its primary focus is on being generic, clean, and powerful without sacrificing (much) efficiency. Breeze is the merger of the ScalaNLP and Scalala projects, because one of the original maintainers is unable to continue development. howinstall快速安装用sbt在命令行中快速安装，体验一下 推荐的sbt依赖配置]]></content>
+      <categories>
+        <category>数据分析 - scala</category>
+      </categories>
+      <tags>
+        <tag>breeze</tag>
       </tags>
   </entry>
   <entry>
@@ -598,17 +609,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hadoop 笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fhadoop%2F</url>
-    <content type="text"><![CDATA[Map reduce job getting stuck at map 0% reduce 0%一般是没有资源导致卡住，比如查看yarn中active node是否为0 ，内存配置不足，cpu配置之类的 但也有可能是map加载输入的时间较长导致Map reduce job getting stuck at map 0% reduce 0% ? 比较详细的mapreduce job 日志 哪里找得到Hadoop 2.6 日志文件和MapReduce的log文件研究心得]]></content>
-      <categories>
-        <category>mapreduce</category>
-      </categories>
-      <tags>
-        <tag>mapreduce,hadoop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[github访问卡、慢、不稳定]]></title>
     <url>%2F2018%2F12%2F04%2Fgithub%E5%8D%A1%E6%85%A2%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考 blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts 但是更新了dns，效果很明显，速度杠杠的 2017/12/05 迅速被打脸，一点都不好使 很奇怪，办公室机器google-chrome很卡，firefox好很多]]></content>
@@ -617,6 +617,17 @@
       </categories>
       <tags>
         <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hadoop 笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fhadoop%2F</url>
+    <content type="text"><![CDATA[Map reduce job getting stuck at map 0% reduce 0%一般是没有资源导致卡住，比如查看yarn中active node是否为0 ，内存配置不足，cpu配置之类的 但也有可能是map加载输入的时间较长导致Map reduce job getting stuck at map 0% reduce 0% ? 比较详细的mapreduce job 日志 哪里找得到Hadoop 2.6 日志文件和MapReduce的log文件研究心得]]></content>
+      <categories>
+        <category>mapreduce</category>
+      </categories>
+      <tags>
+        <tag>mapreduce,hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -754,6 +765,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Scala Try]]></title>
+    <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
+    <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
+      <categories>
+        <category>编程语言 - s cala</category>
+      </categories>
+      <tags>
+        <tag>Scala</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[scala操作XML]]></title>
     <url>%2F2018%2F12%2F04%2Fscalaxml%2F</url>
     <content type="text"><![CDATA[scala 加载并解析xml12345678910111213141516171819202122232425262728293031323334353637val loadXML = xml.XML.loadFile(AutomatedTestingWebConfig.distributeInfoXML)//使用loadFile方法加载XML，得到的是一个一个scala.xml.Elem对象val version = (loadXML \\ &quot;autotest&quot; \ &quot;@version&quot;).text//属性值获取“@”符val hostSeqNode = (loadXML \ &quot;hosts&quot; \ &quot;host&quot;)//得到的是一个scala.xml.NodeSeq对象，可以在其上做一下转换操作def getAttrValue(node: Node)(attrName: String): String = &#123; node.attributes.get(attrName) match &#123; case Some(x) =&gt; x.text case _ =&gt; &quot;&quot; &#125; &#125; val hosts = &#123; (loadXML \ &quot;hosts&quot; \ &quot;host&quot;).map(hostNode =&gt; &#123; def getHostAttrValue(attrName: String) = getAttrValue(hostNode)(attrName) Host(getHostAttrValue(&quot;name&quot;), getHostAttrValue(&quot;desc&quot;), getHostAttrValue(&quot;config&quot;)) &#125;).toList &#125; val sqlScript = &#123; (loadXML \ &quot;script&quot; \ &quot;sql&quot;).map(sqlNode =&gt; &#123; def getSqlScriptAttrValue(attrName: String) = getAttrValue(sqlNode)(attrName) val lines = sqlNode.nonEmptyChildren.filterNot(_.text.trim == &quot;&quot;).map(_.text).mkString(&quot;;&quot;) val database = getSqlScriptAttrValue(&quot;database&quot;) SqlScript(database, lines) &#125;).toList &#125;case class AutoTest(version: String, hosts: List[Host], sqlScript: List[SqlScript], shellScript: List[ShellScript])case class Host(name: String, desc: String, config: String)case class SqlScript(database: String, line: String)case class ShellScript(host: String, line: List[String]) 参考 SCALA XML pattern attrbute参考 虽然这个guy炒鸡罗嗦，但是还是讲到我要的那句话： Because Scala doesn’t support XML patterns with attributes. scala的模式匹配模式根本就不支持 属性 还是老老实实用XPath吧]]></content>
@@ -763,17 +785,6 @@
       <tags>
         <tag>scala</tag>
         <tag>XML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Scala Try]]></title>
-    <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
-    <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
-      <categories>
-        <category>编程语言 - s cala</category>
-      </categories>
-      <tags>
-        <tag>Scala</tag>
       </tags>
   </entry>
   <entry>
@@ -812,18 +823,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[sql笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
-      <categories>
-        <category>数据存储处理 - database</category>
-      </categories>
-      <tags>
-        <tag>database</tag>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Spark的3个API:RDDs/DataFrames/DataSets]]></title>
     <url>%2F2018%2F12%2F04%2Fspark%E7%9A%84%E4%B8%89%E4%B8%AAAPI%2F</url>
     <content type="text"><![CDATA[且谈Apache Spark的API三剑客：RDD、DataFrame和Dataset]]></content>
@@ -835,6 +834,18 @@
         <tag>Spark</tag>
         <tag>DataFrame</tag>
         <tag>DataSet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sql笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
+      <categories>
+        <category>数据存储处理 - database</category>
+      </categories>
+      <tags>
+        <tag>database</tag>
+        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -1124,6 +1135,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[数据仓库清洗规则]]></title>
+    <url>%2F2018%2F12%2F04%2F%E8%84%9A%E5%9E%8B%E6%95%B0%E6%8D%AE%E3%80%81%E6%A5%A6%E5%9E%8B%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%96%B9%E6%A1%88%E7%A8%BF%2F</url>
+    <content type="text"><![CDATA[脚型数据、楦数据清洗方案稿背景脚型数据、楦数据均以入库（待确认） 需要对数据做最基本，根据具体业务需要的数据清洗 ## 前提 数据仓库中的脚数据、楦数据的数据一致性校验完成 ## 清洗规则 明确数据的业务范围明确数据的语义两个表各字段的意义 数据中存在的错误界定及处理方法表级别错误主要包括数据记录不合理的重复、数据记录的缺失。 依赖数据入库操作时数据一致性校验的完成 #### 行级别错误 对于数据中存在的错误，处理的原则是尽最大可能去发现并修复，对于不能修复的错误，则需要给出警示。 对于行级错误的处理，从找出异常数据入手。 对于每个字段，发现异常数据可以通过以下（不限于）几种方式： 对于标量，如果离群则记为异常。 取值不在字典表范围内。 不符合数据的语义（在当前语义上无法解释）。 与其它字段的信息不一致。 异常数据处理流程： 首先判断是不是错误，如果不是错误，那我们只需要加以记录，这可以帮助我们更深入的认识数据； 如果是错误，试着去分析错误产生的原因，推测出正确值；如果能推测出正确值，那么推算出正确值。 如果不能推测出正确值，那么将其置为空值（空值至少不会提供错误的信息，其不良影响要弱于错误的信息所来带来的）。 对数据做规范化、统一化不规范、不统一的数据可能并不影响信息表达的准确性，却对数据分析和数据处理有很大的影响。 我们所要做的有两方面： 含义相同的字段，采用统一的规范的形式来表达。 目前主要包括：- 日期字段格式的统一，全部采用标准Unix时间戳表示。 对于同一字段，相同的信息，采用相同的表达。 主要针对字符型的字段。比如：北京、北京市、【北京】都是表达相同的含义，我们需要将其统一；男女与0,1,2的映射 ３． 空值处理、null值处理]]></content>
+      <categories>
+        <category>datawarehouse</category>
+      </categories>
+      <tags>
+        <tag>datawarehouse</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[行话]]></title>
     <url>%2F2018%2F12%2F04%2F%E8%A1%8C%E8%AF%9D%2F</url>
     <content type="text"><![CDATA[胶水代码： 在传统的开发模式中，我们很容易陷入“胶水代码”的陷阱里。所谓的“胶水代码”，顾名思义，就是仅仅用来保持用户界面数据、状态同步的函数调用的集合体。这些函数调用扯不断，理还乱，并且使代码变的非常冗长、易出错、不易维护。 编程模型：当面对一个新问题时。通常的想法是通过分析，不断的转化和转换，得到本质相同的熟悉的、或抽象的简单的一个问题，这就是化归思想。把初始的问题或对象称为原型，把化归后的相对定向的模拟化或理想化的对象称为模型。 编程模型，简单的可以理解他就是模板，遇到相似的问题就可以方便的依模板解决，这样就简化了编程问题。不同的编程环境和不同的应用对象有不同的编程模型。原子操作：原子（atom）本意是“不能被进一步分割的最小粒子”，而原子操作（atomic operation）意为”不可被中断的一个或一系列操作” 。为什么我们需要MQ消息队列（MQ）是一种应用程序对应用程序的通信方法。应用程序通过写和检索出入列队的针对应用程序的数据（消息）来通信，而无需专用连接来链接它们。消息传递指的是程序之间通过在消息中发送数据进行通信，而不是通过直接调用彼此来通信，直接调用通常是用于诸如远程过程调用的技术。排队指的是应用程序通过队列来通信。队列的使用除去了接收和发送应用程序同时执行的要求为什么我们需要MQ 何为流如何理解编程语言中「流」（stream）的概念如何形象的理解计算机中“流”的概念？ 数据规整(munge/munging/wrangling)指的是将非结构化和散乱数据处理为结构化或整洁形式的整个过程]]></content>
@@ -1133,17 +1155,6 @@
       <tags>
         <tag>笔记</tag>
         <tag>概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[数据仓库清洗规则]]></title>
-    <url>%2F2018%2F12%2F04%2F%E8%84%9A%E5%9E%8B%E6%95%B0%E6%8D%AE%E3%80%81%E6%A5%A6%E5%9E%8B%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%96%B9%E6%A1%88%E7%A8%BF%2F</url>
-    <content type="text"><![CDATA[脚型数据、楦数据清洗方案稿背景脚型数据、楦数据均以入库（待确认） 需要对数据做最基本，根据具体业务需要的数据清洗 ## 前提 数据仓库中的脚数据、楦数据的数据一致性校验完成 ## 清洗规则 明确数据的业务范围明确数据的语义两个表各字段的意义 数据中存在的错误界定及处理方法表级别错误主要包括数据记录不合理的重复、数据记录的缺失。 依赖数据入库操作时数据一致性校验的完成 #### 行级别错误 对于数据中存在的错误，处理的原则是尽最大可能去发现并修复，对于不能修复的错误，则需要给出警示。 对于行级错误的处理，从找出异常数据入手。 对于每个字段，发现异常数据可以通过以下（不限于）几种方式： 对于标量，如果离群则记为异常。 取值不在字典表范围内。 不符合数据的语义（在当前语义上无法解释）。 与其它字段的信息不一致。 异常数据处理流程： 首先判断是不是错误，如果不是错误，那我们只需要加以记录，这可以帮助我们更深入的认识数据； 如果是错误，试着去分析错误产生的原因，推测出正确值；如果能推测出正确值，那么推算出正确值。 如果不能推测出正确值，那么将其置为空值（空值至少不会提供错误的信息，其不良影响要弱于错误的信息所来带来的）。 对数据做规范化、统一化不规范、不统一的数据可能并不影响信息表达的准确性，却对数据分析和数据处理有很大的影响。 我们所要做的有两方面： 含义相同的字段，采用统一的规范的形式来表达。 目前主要包括：- 日期字段格式的统一，全部采用标准Unix时间戳表示。 对于同一字段，相同的信息，采用相同的表达。 主要针对字符型的字段。比如：北京、北京市、【北京】都是表达相同的含义，我们需要将其统一；男女与0,1,2的映射 ３． 空值处理、null值处理]]></content>
-      <categories>
-        <category>datawarehouse</category>
-      </categories>
-      <tags>
-        <tag>datawarehouse</tag>
       </tags>
   </entry>
   <entry>
