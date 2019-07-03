@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/17/并发-java-2/%E5%B9%B6%E5%8F%91-java-2-%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/17/并发-java-2/%E5%B9%B6%E5%8F%91-java-2-Java%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
-<meta property="og:updated_time" content="2019-06-17T10:52:55.706Z">
+<meta property="og:updated_time" content="2019-06-28T06:15:20.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发-java-2">
 <meta name="twitter:description" content="《Java 并发编程实战》极客时间-王老师 第三部分Java 线程生命周期  初始状态：线程已经在被创建，编程语言级别的被创建，非操作系统级别的，因为还不允许被分配cpu。 可运行状态：可以被分配cpu 运行态：正拥有某cpu 休眠态：阻塞，放弃cpu使用权 终止态：执行完毕，或者出现异常进入终止态  Java　中将可运行态与运行态合并了，应为jvm无法调度cpu,但细化了休眠状态 分别是：  N">
@@ -233,6 +233,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            书单
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -363,6 +373,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/17/并发-java-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/17/并发-java-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -428,6 +448,16 @@
 <li>对于 I/O 密集型计算场景，最佳的线程数是与程序中 CPU 计算和 I/O 操作的耗时比相关的，我们可以总结出这样一个公式：最佳线程数 =CPU 核数 * [ 1 +（I/O 耗时 / CPU 耗时）]</li>
 </ul>
 <h4 id="为什么局部变量是线程安全的？"><a href="#为什么局部变量是线程安全的？" class="headerlink" title="为什么局部变量是线程安全的？"></a>为什么局部变量是线程安全的？</h4><p>局部变量在方法内，局部方法调用是通过栈完成的，栈是线程私有的，所以局部变量是安全的</p>
+<h3 id="面向对象的发编程模型-我觉得大多数情况下没有面向函数来的好"><a href="#面向对象的发编程模型-我觉得大多数情况下没有面向函数来的好" class="headerlink" title="面向对象的发编程模型(我觉得大多数情况下没有面向函数来的好)"></a>面向对象的发编程模型(我觉得大多数情况下没有面向函数来的好)</h3><h4 id="封装共享变量"><a href="#封装共享变量" class="headerlink" title="封装共享变量"></a>封装共享变量</h4><p>将共享变量作为对象属性封装在内部，对所有公共方法制定并发访问策略</p>
+<p>统计程序用到的计数器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Count&#123;</span><br><span class="line">  private long count;</span><br><span class="line"></span><br><span class="line">  synchronized long get()&#123;</span><br><span class="line">    return value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  synchronized long addOne()&#123;</span><br><span class="line">    return ++value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不会改变的尽量加final关键字修饰</p>
+<h4 id="识别共享变量间的约束条件"><a href="#识别共享变量间的约束条件" class="headerlink" title="识别共享变量间的约束条件"></a>识别共享变量间的约束条件</h4><p>约束条件决定了并发访问策略：库存，有上限和下限<br>下限要小于上限</p>
+<h4 id="制定并发访问策略"><a href="#制定并发访问策略" class="headerlink" title="制定并发访问策略"></a>制定并发访问策略</h4><p>1.避免共享<br>2.不变模式：actor模型<br>3.管程及其他同步工具</p>
+<p>－－－－－－－－－－－－－－－</p>
+<p>肺腑之言</p>
+<p>1.优先使用成熟的工具类，例如java sdk并法包中丰富的工具类<br>2.迫不得已时使用低级的同步原语<br>3.避免过早的优化，安全第一，且性能难以预估</p>
 
       
     </div>
@@ -494,6 +524,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
 
   
 
@@ -598,7 +638,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《Java-并发编程实战》极客时间-王老师-第三部分"><span class="nav-number">1.</span> <span class="nav-text">《Java 并发编程实战》极客时间-王老师 第三部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-线程"><span class="nav-number">1.1.</span> <span class="nav-text">Java 线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生命周期"><span class="nav-number">1.1.1.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建多少线程才合适"><span class="nav-number">1.1.2.</span> <span class="nav-text">创建多少线程才合适</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要使用多线程？"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">为什么要使用多线程？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何度量性能？延迟和吞吐量"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">如何度量性能？延迟和吞吐量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建多少线程合适？"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">创建多少线程合适？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么局部变量是线程安全的？"><span class="nav-number">1.1.3.</span> <span class="nav-text">为什么局部变量是线程安全的？</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#《Java-并发编程实战》极客时间-王老师-第三部分"><span class="nav-number">1.</span> <span class="nav-text">《Java 并发编程实战》极客时间-王老师 第三部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-线程"><span class="nav-number">1.1.</span> <span class="nav-text">Java 线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生命周期"><span class="nav-number">1.1.1.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建多少线程才合适"><span class="nav-number">1.1.2.</span> <span class="nav-text">创建多少线程才合适</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要使用多线程？"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">为什么要使用多线程？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何度量性能？延迟和吞吐量"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">如何度量性能？延迟和吞吐量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建多少线程合适？"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">创建多少线程合适？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么局部变量是线程安全的？"><span class="nav-number">1.1.3.</span> <span class="nav-text">为什么局部变量是线程安全的？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象的发编程模型-我觉得大多数情况下没有面向函数来的好"><span class="nav-number">1.2.</span> <span class="nav-text">面向对象的发编程模型(我觉得大多数情况下没有面向函数来的好)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#封装共享变量"><span class="nav-number">1.2.1.</span> <span class="nav-text">封装共享变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#识别共享变量间的约束条件"><span class="nav-number">1.2.2.</span> <span class="nav-text">识别共享变量间的约束条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#制定并发访问策略"><span class="nav-number">1.2.3.</span> <span class="nav-text">制定并发访问策略</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -771,6 +811,26 @@
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/06/17/并发-java-2/';
+          this.page.identifier = '2019/06/17/并发-java-2/';
+          this.page.title = '并发-java-2';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 
