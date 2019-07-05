@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Hadoop权威指南V3-p1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Bandwagon-shadowsocks-配置使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -334,7 +334,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/04/Hadoop权威指南V3-p1/" itemprop="url">Hadoop 权威指南 3th Edition Part 1</a></h1>
+                <a class="post-title-link" href="/2018/12/04/Bandwagon-shadowsocks-配置使用/" itemprop="url">Bandwagon shadowsocks 配置使用</a></h1>
         
 
         <div class="post-meta">
@@ -369,8 +369,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据存储处理-hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">数据存储处理 - hadoop</span>
+                  <a href="/categories/工欲善其事，必先利其器/" itemprop="url" rel="index">
+                    <span itemprop="name">工欲善其事，必先利其器</span>
                   </a>
                 </span>
 
@@ -387,8 +387,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/04/Hadoop权威指南V3-p1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/04/Hadoop权威指南V3-p1/" itemprop="commentCount"></span>
+                <a href="/2018/12/04/Bandwagon-shadowsocks-配置使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/04/Bandwagon-shadowsocks-配置使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -418,21 +418,12 @@
       
         
           
-          第一章
-数据！数据！
-
-这个世界数据存量很大，数据增长的速度很快，数据的价值很大
-
-数据存储于分析
-
-现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据
-
-硬盘故障解决：数据冗余备份(RAID,HDFS)
-数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成
+          好几个同事都来问我socks5怎么搭建的，现写下来
+bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛):   BWH1ZBPVK（6.00%） bandwagon官网购买vps,支持支付宝(alipay),有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/04/Hadoop权威指南V3-p1/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/Bandwagon-shadowsocks-配置使用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -647,7 +638,7 @@ HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Hbase使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/H2数据库笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -666,7 +657,7 @@ HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/04/Hbase使用/" itemprop="url">Hbase使用</a></h1>
+                <a class="post-title-link" href="/2018/12/04/H2数据库笔记/" itemprop="url">H2数据库笔记</a></h1>
         
 
         <div class="post-meta">
@@ -719,8 +710,8 @@ HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/04/Hbase使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/04/Hbase使用/" itemprop="commentCount"></span>
+                <a href="/2018/12/04/H2数据库笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/04/H2数据库笔记/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -750,24 +741,180 @@ HDFS 以流式数据访问模式来存储超大文件，运行于商用硬件集
       
         
           
-          简介HBase 应用场景及特点特点：
-
-海量数据存储
-关系型数据库：　列数不超过30 单表行数据量一般不会超过500万vshbase:上百亿行*上百万列
-
-
-
-
-准实时查询　百毫秒
-
-面向列
-
-
-面向列的存储和权限控制，列是可以动态增加的，并且列支持独立索引。这样在查询行中少数几个字段时，能大大减少
+          H2工具类：
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSuppo
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/04/Hbase使用/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/H2数据库笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Hadoop权威指南V3-p1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白帝圣剑">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/04/Hadoop权威指南V3-p1/" itemprop="url">Hadoop 权威指南 3th Edition Part 1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
+                2018-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据存储处理-hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">数据存储处理 - hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/04/Hadoop权威指南V3-p1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/04/Hadoop权威指南V3-p1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          第一章
+数据！数据！
+
+这个世界数据存量很大，数据增长的速度很快，数据的价值很大
+
+数据存储于分析
+
+现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据
+
+硬盘故障解决：数据冗余备份(RAID,HDFS)
+数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/04/Hadoop权威指南V3-p1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -965,168 +1112,6 @@ certificate证书是同事发给我的，是在aliyun上申请的，绑定了公
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Http小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白帝圣剑">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/04/Http小记/" itemprop="url">使用Http小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:25:26+08:00">
-                2018-12-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务器端-web开发/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器端 - web开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/04/Http小记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/04/Http小记/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Http调试工具Postman使用
-Postman Postman测试接口之JSON结构化数据提交
-Postman使用详解
-
-JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging dataJSON
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/04/Http小记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1177,7 +1162,7 @@ JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging d
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">111</span>
+                  <span class="site-state-item-count">113</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1199,7 +1184,7 @@ JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging d
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">117</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

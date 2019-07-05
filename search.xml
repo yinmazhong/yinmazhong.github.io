@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[07a]]></title>
+    <url>%2F2019%2F07%2F05%2F07a%2F</url>
+    <content type="text"><![CDATA[mvn package -&gt; pugin check error 未解决]]></content>
+      <tags>
+        <tag>日志</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[买房心得]]></title>
+    <url>%2F2019%2F07%2F04%2F%E4%B9%B0%E6%88%BF%E5%BF%83%E5%BE%97%2F</url>
+    <content type="text"><![CDATA[坐标深圳 南山南油 住宅 按揭 坪山中心区 公寓 按揭 惠州大亚湾 住宅 按揭 价格：市场透明，一分钱一分货，特别是交易比较热门的楼盘，区位；交易金额一般都是市场价格，亏赚都不会超过房子房子总价的2%,如果超了，那就是调研工作不到位，交易谈判太失败 价格相关因素 社区性质：大社区 or 大厦 or 独栋 楼盘新旧: 开放商拿地时间，建设完成入伙时间 学位：无需多言，后面可以罗列下周边学区房情况 物业管理：物业的管理思维是否先进，小区硬件设施状况 户型，朝向：萝卜白菜各有所爱 慎重时间节点银行业内水挺深，且受政策影响很大，存在多个不可控因素，万万小心 贷款审批时间长短 尾款放款时间 赎楼银行提前还款审批 三者皆无具体约定时限，而买房子交定金，首期款却有时间点，若同时进行，万万评估好风险 深圳银监局联系方式 深圳市银行业消费者权益保护促进会消费纠纷调解热线： 电话：0755-82084001 传真：0755-82084662 深圳银保监局银行保险消费者投诉维权热线： 12378（工作日9:00-17:00） 深圳银保监局信访咨询电话： 0755-88285915（工作日 8:30-11:30 13:30-17:00） 地址：深圳市福田区金田路4018号安联大厦A区31楼 邮编：518026]]></content>
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[并发-java-2]]></title>
     <url>%2F2019%2F06%2F17%2F%E5%B9%B6%E5%8F%91-java-2%2F</url>
     <content type="text"><![CDATA[《Java 并发编程实战》极客时间-王老师 第三部分Java 线程生命周期 初始状态：线程已经在被创建，编程语言级别的被创建，非操作系统级别的，因为还不允许被分配cpu。 可运行状态：可以被分配cpu 运行态：正拥有某cpu 休眠态：阻塞，放弃cpu使用权 终止态：执行完毕，或者出现异常进入终止态 Java 中将可运行态与运行态合并了，应为jvm无法调度cpu,但细化了休眠状态 分别是： NEW（初始化状态） RUNNABLE（可运行 / 运行状态） BLOCKED（阻塞状态） WAITING（无时限等待） TIMED_WAITING（有时限等待） TERMINATED（终止状态） 虽然阻塞态被细分成了仨，，但是从操作系统角度考虑，只要java线程处于这三种状态之一，那么这个线程就永远没有cpu使用权 创建多少线程才合适为什么要使用多线程？如何度量性能？创建多少线程合适？ 为什么要使用多线程？解： 提高性能 如何度量性能？延迟和吞吐量延迟指的是发出请求到收到响应这个过程的时间；延迟越短，意味着程序执行得越快，性能也越好。 吞吐量指的是单位时间内能处理请求的数量 分别是时间维度和空间维度 怎么办？降低延迟，提高吞吐量 优化算法 将硬件的性能发挥到极致 在并发编程领域，提升性能本质上就是提升硬件（I/O和CPU）的利用率 创建多少线程合适？ 对于 CPU 密集型的计算场景，理论上“线程的数量 =CPU 核数”就是最合适的。不过在工程上，线程的数量一般会设置为“CPU 核数 +1”，这样的话，当线程因为偶尔的内存页失效或其他原因导致阻塞时，这个额外的线程可以顶上，从而保证 CPU 的利用率。 对于 I/O 密集型计算场景，最佳的线程数是与程序中 CPU 计算和 I/O 操作的耗时比相关的，我们可以总结出这样一个公式：最佳线程数 =CPU 核数 * [ 1 +（I/O 耗时 / CPU 耗时）] 为什么局部变量是线程安全的？局部变量在方法内，局部方法调用是通过栈完成的，栈是线程私有的，所以局部变量是安全的 面向对象的发编程模型(我觉得大多数情况下没有面向函数来的好)封装共享变量将共享变量作为对象属性封装在内部，对所有公共方法制定并发访问策略 统计程序用到的计数器： 1234567891011public class Count&#123; private long count; synchronized long get()&#123; return value; &#125; synchronized long addOne()&#123; return ++value; &#125;&#125; 不会改变的尽量加final关键字修饰 识别共享变量间的约束条件约束条件决定了并发访问策略：库存，有上限和下限下限要小于上限 制定并发访问策略1.避免共享2.不变模式：actor模型3.管程及其他同步工具 －－－－－－－－－－－－－－－ 肺腑之言 1.优先使用成熟的工具类，例如java sdk并法包中丰富的工具类2.迫不得已时使用低级的同步原语3.避免过早的优化，安全第一，且性能难以预估]]></content>
@@ -266,18 +282,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
-    <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛): BWH1ZBPVK（6.00%） bandwagon官网购买vps,支持支付宝(alipay),有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server推荐blog 配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务 1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf: 123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>Bandwagon</tag>
-        <tag>shadowsocks</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[DIY Cluster]]></title>
     <url>%2F2018%2F12%2F04%2FDIY-cluster%2F</url>
     <content type="text"><![CDATA[需求单机应用分布式执行 akka cluster单台机器也可用dispatcher提高机器利用率,这是后话，先按照要求做出一个集群来 desc不同于actor点对点的交互，而是有独特的 akka cluster机制 集群定义： 维基百科上的定义是 “计算机集群由一系列间接或直接连接的计算机组成,这些计算机共同完成工作,从很多角度上来说,可以将这些计算机看作是单个系统。具体到本章中对于集群的定义,我们可以认为一个集群就是一组 机器(也可能是虚拟机),我们将这些机器称作节点(node)或是成员(member),同一个组中的所有节点遵循某个协议。 巨型单体服务vs微服务Martin Fowler的观点： 1. 当团队较小，开发的应用程序也比较小的时候，建议使用单体应用，随着应用程序变大，团队内的开发人员变多时，可以试着查分单体为微服务。 2. 当查分单体应用时，如果没有在开发单体时的经验，很可能把错误的部分拆分出去 一旦有了些在生产环境中运行系统的经验和数据,要把哪个部分分离出来才能够在 新增功能时带来性能和团队开发速度的好处就会比较清楚了。开始部署微服务之后,我 们就可以用一种非平衡的方式对负载更高的服务进行扩展,给应用程序中使用更多的部 分分配更大的服务器集群。 集群定义集群就是一组可以相互通信的服务器必须的两个条件： 失败发现 以及使得集群中的所有成员最终能够提供一致的视图(什么意思) 失败检测节点基于能否获得其他节点的响应来确定节点是否可用 akka中，每个节点仅仅检测附近的节点，以节省网络开销，提高效率 通过gossip协议达到最终一致思考一下失败检测的处理,集群中的每个节点和它的邻居节点互相交换已知的状态。接着,这些邻居节点再将已知的状态传递给它们的“邻居”,以此往复,直到某个节点的已知状态传递给了集群中的所有成员。节点会仔细计算并得到集群中其他成员的状态 CAPC一致性 A可用性 p分区容错性 CAP理论的妥协分布式系统只能选择满足其中两个 使用Akka Cluster 构建系统Akka Cluster 基于 Akka Remoting,解决了实际应用中的高可用性等问题 场景比较简单，可以直接使用Akka Remoting 来构建系统的alpha版本官网上提供了akka-samples-remote-scala的例子，先学习一下 通读第一遍 看了下look up 的例子，真是不错，看来以后研究开源框架，还是要直接上官网看文档 原始人：ssh太原始了，慎重 研究了devops工具，听人劝，使用ansible更可贵的是ansible包含了对aws的支持]]></content>
@@ -286,19 +290,6 @@
       </categories>
       <tags>
         <tag>cluster</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[H2数据库笔记]]></title>
-    <url>%2F2018%2F12%2F04%2FH2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[H2工具类： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &#123; private var server: Server = null; private var webServer: Server = null; def start(): Unit = &#123; try &#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;, &quot;&quot;, true, true) &#125; catch &#123; case e: Throwable =&gt; &#125; try &#123; server = Server.createTcpServer(&quot;-tcp&quot;, &quot;-tcpAllowOthers&quot;, &quot;-tcpPort&quot;, ProConfig.h2DatabaseTcpPort.toString).start() log.info(&quot;server status: &quot; + server.getStatus) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def startWebConsole(openBrowser: Boolean = false): Unit = &#123; try &#123; if (webServer == null) &#123; webServer = Server.createWebServer(&quot;-web&quot;, &quot;-webAllowOthers&quot;, &quot;-webPort&quot;, ProConfig.h2DatabaseWebPort.toString).start() &#125; log.info(&quot;webServerStatus&quot; + webServer.getStatus) if (openBrowser) Server.openBrowser(s&quot;http://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseWebPort&#125;&quot;) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def stop(): Unit = &#123; def shutdownServer(server: Server): Unit = &#123; try &#123; server match &#123; case s if s != null =&gt; s.stop() case _ =&gt; log.info(&quot;H2 server did not start&quot;) &#125; &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; shutdownServer(server) shutdownServer(webServer) try&#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;,&quot;&quot;,true,true) log.debug(&quot;serverStatus: &quot;+server.getStatus) &#125;catch &#123; case e:Throwable =&gt; log.error(e.getMessage,e) &#125; &#125;&#125;object H2Test extends App &#123; H2Database.start() Thread.sleep(10000) H2Database.stop()&#125; JDBC开启H2数据库后可按照JDBC 正常连接 CSVWRITE: 导出表成为 CSV 文件1CALL CSVWRITE(&apos;/home/xxhbak/FEATURECONF.csv&apos;, &apos;SELECT * FROM FEATURECONF&apos;); CSVREAD:向表导入CSV文件使用数据库读取CSV文件 CSVREAD使用: 1SELECT * FROM CSVREAD(&apos;test.csv&apos;); Another option is to use INSERT INTO … SELECT. 123CREATE TABLE TEST AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255)) AS SELECT * FROM CSVREAD(&apos;test.csv&apos;); Please note for performance reason, CSVREAD should not be used inside a join. Instead, import the data first (possibly into a temporary table), create the required indexes if necessary, and then query this table. 参考 示例，亲测 CALL CSVREAD(‘/home/xd/us.csv’, ‘SELECT * FROM us ‘);insert into us (SELECT * FROM CSVREAD(‘/home/xd/USERCASERESULT.csv’,NULL,’UTF-8’,’|’));]]></content>
-      <categories>
-        <category>数据存储处理 - database</category>
-      </categories>
-      <tags>
-        <tag>database</tag>
-        <tag>H2</tag>
-        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -315,14 +306,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hadoop 权威指南 3th Edition Part 1]]></title>
-    <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p1%2F</url>
-    <content type="text"><![CDATA[第一章 数据！数据！ 这个世界数据存量很大，数据增长的速度很快，数据的价值很大 数据存储于分析 现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据 硬盘故障解决：数据冗余备份(RAID,HDFS) 数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的 相较于其他系统的优势 用蛮力处理整个庞大数据集或数据集的一部分 关系型数据库管理系统 现象：寻址速率的提升远远不及传输速率的提升 B树这有在小量数据时有优势，数据量大时，更新整个B树要花大量时间 RDBMS与hadoop相互补充，hadoop适合批处理，而rdbms适合点查询更新 RDBMS被索引后，能够提供低延迟的查询和少量的数据更新，mapreduce适合一次写入，多次读取做数据分析 RDBMS适合持续更新的数据集 Table 1-1. RDBMS compared to MapReduce item Traditional RDBMS MapReduce Data size Gigabytes Petabytes Access(数据存取) Interactive and batch Batch Updates Read and write many times Write once, read many times Structure Static schema Dynamic schema Integrity(完整性) High Low Scaling Nonlinear Linear 存储的数据不同：RDBMS:结构化数据，完整的且不含冗余hadoop:结构化、半结构化、非结构化数据 网格计算， mapreduce 尽量使得数据本地化 志愿计算： 志愿计算为计算所花的时间远远超过工作单元数据传输时间，也就是说志愿者贡献的是CPU周期，而不是网络带宽 Hadoop发展简史 o 好牛b哦 hadoop echosystem common 一系列组件和接口 avro 序列化系统 maoreduce 计算引擎 HDFS 分布式文件系统 hive 数据仓库，sql查询hdfs hbase 列存储数据仓库 zookeeper 分布式、可用性高的协调服务 sqoop:rdbms &lt;=&gt; hdfs oozie 调度作业 hadoop 发行版本 Table 1-2. Features supported by Hadoop release series Feature 1.x 0.22 2.x Secure authentication Yes No Yes Old configuration names Yes Deprecated Deprecated New configuration names No Yes Yes Old MapReduce API Yes Yes Yes New MapReduce API Yes (with somemissing libraries) Yes Yes MapReduce 1 runtime (Classic) Yes Yes No MapReduce 2 runtime (YARN) No No Yes HDFS federation No No Yes HDFS high-availability No No Yes 第二章气象数据处理 2.1 气象数据集首先要搞清楚数据格式 文本数据 每一行是一条记录 整个数据集有很多小文件组成 2.2 Unix 处理方式12345678910#!/usr/bin/env bashfor year in all/*doecho -ne `basename $year .gz`&quot;\t&quot;gunzip -c $year | \awk &apos;&#123; temp = substr($0, 88, 5) + 0;q = substr($0, 93, 1);if (temp !=9999 &amp;&amp; q ~ /[01459]/ &amp;&amp; temp &gt; max) max = temp &#125;END &#123; print max &#125;&apos;done 循环使用awk处理 单进程处理 2.3 hadoop处理方式map: 1234567891011121314151617181920212223242526272829import java.io.IOException;importimportimportimportorg.apache.hadoop.io.IntWritable;org.apache.hadoop.io.LongWritable;org.apache.hadoop.io.Text;org.apache.hadoop.mapreduce.Mapper;public class MaxTemperatureMapperextends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;private static final int MISSING = 9999;@Overridepublic void map(LongWritable key, Text value, Context context)throws IOException, InterruptedException &#123;&#125;&#125;String line = value.toString();String year = line.substring(15, 19);int airTemperature;if (line.charAt(87) == &apos;+&apos;) &#123; // parseInt doesn&apos;t like leading plus signsairTemperature = Integer.parseInt(line.substring(88, 92));&#125; else &#123;airTemperature = Integer.parseInt(line.substring(87, 92));&#125;String quality = line.substring(92, 93);if (airTemperature != MISSING &amp;&amp; quality.matches(&quot;[01459]&quot;)) &#123;context.write(new Text(year), new IntWritable(airTemperature));&#125; reduce: 1234567891011121314151617import java.io.IOException;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Reducer;public class MaxTemperatureReducerextends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;@Overridepublic void reduce(Text key, Iterable&lt;IntWritable&gt; values,Context context)throws IOException, InterruptedException &#123;&#125;&#125;int maxValue = Integer.MIN_VALUE;for (IntWritable value : values) &#123;maxValue = Math.max(maxValue, value.get());&#125;context.write(key, new IntWritable(maxValue)); main: 123456789101112131415161718192021222324import org.apache.hadoop.fs.Path;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Job;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;public class MaxTemperature &#123;public static void main(String[] args) throws Exception &#123;if (args.length != 2) &#123;System.err.println(&quot;Usage: MaxTemperature &lt;input path&gt; &lt;output path&gt;&quot;);System.exit(-1);&#125;Job job = new Job();job.setJarByClass(MaxTemperature.class);job.setJobName(&quot;Max temperature&quot;);FileInputFormat.addInputPath(job, new Path(args[0]));FileOutputFormat.setOutputPath(job, new Path(args[1]));job.setMapperClass(MaxTemperatureMapper.class);job.setReducerClass(MaxTemperatureReducer.class);job.setOutputKeyClass(Text.class);job.setOutputValueClass(IntWritable.class);System.exit(job.waitForCompletion(true) ? 0 : 1);&#125;&#125; 2.4 横向扩展2.5 Hadoop Streaming]]></content>
+    <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
+    <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛): BWH1ZBPVK（6.00%） bandwagon官网购买vps,支持支付宝(alipay),有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server推荐blog 配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务 1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf: 123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
       <categories>
-        <category>数据存储处理 - hadoop</category>
+        <category>工欲善其事，必先利其器</category>
       </categories>
       <tags>
-        <tag>Hadoop</tag>
+        <tag>Bandwagon</tag>
+        <tag>shadowsocks</tag>
       </tags>
   </entry>
   <entry>
@@ -337,14 +329,27 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hbase使用]]></title>
-    <url>%2F2018%2F12%2F04%2FHbase%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[简介HBase 应用场景及特点特点： 海量数据存储 关系型数据库： 列数不超过30 单表行数据量一般不会超过500万vshbase:上百亿行*上百万列 准实时查询 百毫秒 面向列 面向列的存储和权限控制，列是可以动态增加的，并且列支持独立索引。这样在查询行中少数几个字段时，能大大减少读取的数据量 多版本 每一列的数据存储有多个Version 稀疏性：为空的列不占用存储空间，表可以设计的非常稀疏 扩展性： 底层依赖HDFS 高可靠性 高性能应用场景： 交通 金融 电商 电信 概念与定位数据模型Hbase表可以当成一个多维的Map Table一个表有多行 Row在HBase里，row是由row key和一个或多个列及其值组成。数据在被存储的时候，是按row key的字母排序存储的。因此，row key的设计是非常重要的。这样存储数据的目的就是为了让相关的行存储在相邻的位置。 Column（列）HBase的一列由列簇和列修饰符组成，他们通常由冒号（：）分隔。 Column Family(列簇)通常为了性能原因的考虑，列簇会把列和相应的值物理上联合在一起 每个列簇是一个存储属性的集合，例如它的值是否应该缓存在内存中，它的数据是如何压缩或它的row key是如何编码，以及其他。表中的每个行都有相同的列簇，但是一行也可能没有存储一个列簇里的任何数据。 Column Qualifier列修饰符被加到一个列簇，以提供对一个数据片段的索引。规定一个列簇为content，一个列修饰符可能是content:html，另外一个可能是content:pdf。尽管列簇是在创建表的时候固定了，但列修饰符是可变的，在行之间可能存在很大的不同。 Cell一个Cell是行，列簇和列修饰符的组合，并且包含一个值和时间戳，时间戳代表着值的版本。 Timestamp一个时间戳是連同值一起被写入的，是值版本的唯一标识，默认情况下，时间戳表示数据写入时RegionServer的时间，但是当你在写数据到Cell的时候，你可以指定一个不同的时间戳。 安装官网文档getstart写的通俗易懂 增加配置-&gt; conf/hbase-site.xml,以使用伪分布式 1234&lt;property&gt; &lt;name&gt;hbase.cluster.distributed&lt;/name&gt; &lt;value&gt;true&lt;/value&gt;&lt;/property&gt; 增加配置 -&gt; conf/hbase-env.sh，以使用独立安装的zk 1export HBASE_MANAGES_ZK=false 过程算是比较顺畅的]]></content>
+    <title><![CDATA[H2数据库笔记]]></title>
+    <url>%2F2018%2F12%2F04%2FH2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[H2工具类： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &#123; private var server: Server = null; private var webServer: Server = null; def start(): Unit = &#123; try &#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;, &quot;&quot;, true, true) &#125; catch &#123; case e: Throwable =&gt; &#125; try &#123; server = Server.createTcpServer(&quot;-tcp&quot;, &quot;-tcpAllowOthers&quot;, &quot;-tcpPort&quot;, ProConfig.h2DatabaseTcpPort.toString).start() log.info(&quot;server status: &quot; + server.getStatus) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def startWebConsole(openBrowser: Boolean = false): Unit = &#123; try &#123; if (webServer == null) &#123; webServer = Server.createWebServer(&quot;-web&quot;, &quot;-webAllowOthers&quot;, &quot;-webPort&quot;, ProConfig.h2DatabaseWebPort.toString).start() &#125; log.info(&quot;webServerStatus&quot; + webServer.getStatus) if (openBrowser) Server.openBrowser(s&quot;http://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseWebPort&#125;&quot;) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def stop(): Unit = &#123; def shutdownServer(server: Server): Unit = &#123; try &#123; server match &#123; case s if s != null =&gt; s.stop() case _ =&gt; log.info(&quot;H2 server did not start&quot;) &#125; &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; shutdownServer(server) shutdownServer(webServer) try&#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;,&quot;&quot;,true,true) log.debug(&quot;serverStatus: &quot;+server.getStatus) &#125;catch &#123; case e:Throwable =&gt; log.error(e.getMessage,e) &#125; &#125;&#125;object H2Test extends App &#123; H2Database.start() Thread.sleep(10000) H2Database.stop()&#125; JDBC开启H2数据库后可按照JDBC 正常连接 CSVWRITE: 导出表成为 CSV 文件1CALL CSVWRITE(&apos;/home/xxhbak/FEATURECONF.csv&apos;, &apos;SELECT * FROM FEATURECONF&apos;); CSVREAD:向表导入CSV文件使用数据库读取CSV文件 CSVREAD使用: 1SELECT * FROM CSVREAD(&apos;test.csv&apos;); Another option is to use INSERT INTO … SELECT. 123CREATE TABLE TEST AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255)) AS SELECT * FROM CSVREAD(&apos;test.csv&apos;); Please note for performance reason, CSVREAD should not be used inside a join. Instead, import the data first (possibly into a temporary table), create the required indexes if necessary, and then query this table. 参考 示例，亲测 CALL CSVREAD(‘/home/xd/us.csv’, ‘SELECT * FROM us ‘);insert into us (SELECT * FROM CSVREAD(‘/home/xd/USERCASERESULT.csv’,NULL,’UTF-8’,’|’));]]></content>
       <categories>
         <category>数据存储处理 - database</category>
       </categories>
       <tags>
-        <tag>Hbase</tag>
+        <tag>database</tag>
+        <tag>H2</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hadoop 权威指南 3th Edition Part 1]]></title>
+    <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p1%2F</url>
+    <content type="text"><![CDATA[第一章 数据！数据！ 这个世界数据存量很大，数据增长的速度很快，数据的价值很大 数据存储于分析 现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据 硬盘故障解决：数据冗余备份(RAID,HDFS) 数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的 相较于其他系统的优势 用蛮力处理整个庞大数据集或数据集的一部分 关系型数据库管理系统 现象：寻址速率的提升远远不及传输速率的提升 B树这有在小量数据时有优势，数据量大时，更新整个B树要花大量时间 RDBMS与hadoop相互补充，hadoop适合批处理，而rdbms适合点查询更新 RDBMS被索引后，能够提供低延迟的查询和少量的数据更新，mapreduce适合一次写入，多次读取做数据分析 RDBMS适合持续更新的数据集 Table 1-1. RDBMS compared to MapReduce item Traditional RDBMS MapReduce Data size Gigabytes Petabytes Access(数据存取) Interactive and batch Batch Updates Read and write many times Write once, read many times Structure Static schema Dynamic schema Integrity(完整性) High Low Scaling Nonlinear Linear 存储的数据不同：RDBMS:结构化数据，完整的且不含冗余hadoop:结构化、半结构化、非结构化数据 网格计算， mapreduce 尽量使得数据本地化 志愿计算： 志愿计算为计算所花的时间远远超过工作单元数据传输时间，也就是说志愿者贡献的是CPU周期，而不是网络带宽 Hadoop发展简史 o 好牛b哦 hadoop echosystem common 一系列组件和接口 avro 序列化系统 maoreduce 计算引擎 HDFS 分布式文件系统 hive 数据仓库，sql查询hdfs hbase 列存储数据仓库 zookeeper 分布式、可用性高的协调服务 sqoop:rdbms &lt;=&gt; hdfs oozie 调度作业 hadoop 发行版本 Table 1-2. Features supported by Hadoop release series Feature 1.x 0.22 2.x Secure authentication Yes No Yes Old configuration names Yes Deprecated Deprecated New configuration names No Yes Yes Old MapReduce API Yes Yes Yes New MapReduce API Yes (with somemissing libraries) Yes Yes MapReduce 1 runtime (Classic) Yes Yes No MapReduce 2 runtime (YARN) No No Yes HDFS federation No No Yes HDFS high-availability No No Yes 第二章气象数据处理 2.1 气象数据集首先要搞清楚数据格式 文本数据 每一行是一条记录 整个数据集有很多小文件组成 2.2 Unix 处理方式12345678910#!/usr/bin/env bashfor year in all/*doecho -ne `basename $year .gz`&quot;\t&quot;gunzip -c $year | \awk &apos;&#123; temp = substr($0, 88, 5) + 0;q = substr($0, 93, 1);if (temp !=9999 &amp;&amp; q ~ /[01459]/ &amp;&amp; temp &gt; max) max = temp &#125;END &#123; print max &#125;&apos;done 循环使用awk处理 单进程处理 2.3 hadoop处理方式map: 1234567891011121314151617181920212223242526272829import java.io.IOException;importimportimportimportorg.apache.hadoop.io.IntWritable;org.apache.hadoop.io.LongWritable;org.apache.hadoop.io.Text;org.apache.hadoop.mapreduce.Mapper;public class MaxTemperatureMapperextends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;private static final int MISSING = 9999;@Overridepublic void map(LongWritable key, Text value, Context context)throws IOException, InterruptedException &#123;&#125;&#125;String line = value.toString();String year = line.substring(15, 19);int airTemperature;if (line.charAt(87) == &apos;+&apos;) &#123; // parseInt doesn&apos;t like leading plus signsairTemperature = Integer.parseInt(line.substring(88, 92));&#125; else &#123;airTemperature = Integer.parseInt(line.substring(87, 92));&#125;String quality = line.substring(92, 93);if (airTemperature != MISSING &amp;&amp; quality.matches(&quot;[01459]&quot;)) &#123;context.write(new Text(year), new IntWritable(airTemperature));&#125; reduce: 1234567891011121314151617import java.io.IOException;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Reducer;public class MaxTemperatureReducerextends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;@Overridepublic void reduce(Text key, Iterable&lt;IntWritable&gt; values,Context context)throws IOException, InterruptedException &#123;&#125;&#125;int maxValue = Integer.MIN_VALUE;for (IntWritable value : values) &#123;maxValue = Math.max(maxValue, value.get());&#125;context.write(key, new IntWritable(maxValue)); main: 123456789101112131415161718192021222324import org.apache.hadoop.fs.Path;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Job;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;public class MaxTemperature &#123;public static void main(String[] args) throws Exception &#123;if (args.length != 2) &#123;System.err.println(&quot;Usage: MaxTemperature &lt;input path&gt; &lt;output path&gt;&quot;);System.exit(-1);&#125;Job job = new Job();job.setJarByClass(MaxTemperature.class);job.setJobName(&quot;Max temperature&quot;);FileInputFormat.addInputPath(job, new Path(args[0]));FileOutputFormat.setOutputPath(job, new Path(args[1]));job.setMapperClass(MaxTemperatureMapper.class);job.setReducerClass(MaxTemperatureReducer.class);job.setOutputKeyClass(Text.class);job.setOutputValueClass(IntWritable.class);System.exit(job.waitForCompletion(true) ? 0 : 1);&#125;&#125; 2.4 横向扩展2.5 Hadoop Streaming]]></content>
+      <categories>
+        <category>数据存储处理 - hadoop</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -361,15 +366,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[使用Http小记]]></title>
-    <url>%2F2018%2F12%2F04%2FHttp%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[Http调试工具Postman使用 Postman Postman测试接口之JSON结构化数据提交 Postman使用详解 JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging dataJSON is text,written with JavaScript object notationJSONw3school Http learning这篇博客总结的不错Http协议，超文本传输协议（HyperText Transfer P rotocol）客户端请求消息格式： 服务器端响应消息格式： 平常主要用到的请求方法只有：GET和POSTGET 方法：请求指定的页面信息，并返回实体主体 GET 请求可被缓存 GET 请求保留在浏览器历史记录中 GET 请求可被收藏为书签 GET 请求不应在处理敏感数据时使用 GET 请求有长度限制 GET 请求只应当用于取回数据POST 方法：向指定的资源提交表单或者文件，数据包含在请求体中，POST请求会导致新资源的建立或者原有资源的更改。 POST 请求不会被缓存 POST 请求不会保留在浏览器历史记录中 POST 不能被收藏为书签 POST 请求对数据长度没有要求HTTP 方法：GET 对比 POST四种POST请求 RESTful架构理解RESTful架构 REST: resource representation state transfer]]></content>
+    <title><![CDATA[Hbase使用]]></title>
+    <url>%2F2018%2F12%2F04%2FHbase%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[简介HBase 应用场景及特点特点： 海量数据存储 关系型数据库： 列数不超过30 单表行数据量一般不会超过500万vshbase:上百亿行*上百万列 准实时查询 百毫秒 面向列 面向列的存储和权限控制，列是可以动态增加的，并且列支持独立索引。这样在查询行中少数几个字段时，能大大减少读取的数据量 多版本 每一列的数据存储有多个Version 稀疏性：为空的列不占用存储空间，表可以设计的非常稀疏 扩展性： 底层依赖HDFS 高可靠性 高性能应用场景： 交通 金融 电商 电信 概念与定位数据模型Hbase表可以当成一个多维的Map Table一个表有多行 Row在HBase里，row是由row key和一个或多个列及其值组成。数据在被存储的时候，是按row key的字母排序存储的。因此，row key的设计是非常重要的。这样存储数据的目的就是为了让相关的行存储在相邻的位置。 Column（列）HBase的一列由列簇和列修饰符组成，他们通常由冒号（：）分隔。 Column Family(列簇)通常为了性能原因的考虑，列簇会把列和相应的值物理上联合在一起 每个列簇是一个存储属性的集合，例如它的值是否应该缓存在内存中，它的数据是如何压缩或它的row key是如何编码，以及其他。表中的每个行都有相同的列簇，但是一行也可能没有存储一个列簇里的任何数据。 Column Qualifier列修饰符被加到一个列簇，以提供对一个数据片段的索引。规定一个列簇为content，一个列修饰符可能是content:html，另外一个可能是content:pdf。尽管列簇是在创建表的时候固定了，但列修饰符是可变的，在行之间可能存在很大的不同。 Cell一个Cell是行，列簇和列修饰符的组合，并且包含一个值和时间戳，时间戳代表着值的版本。 Timestamp一个时间戳是連同值一起被写入的，是值版本的唯一标识，默认情况下，时间戳表示数据写入时RegionServer的时间，但是当你在写数据到Cell的时候，你可以指定一个不同的时间戳。 安装官网文档getstart写的通俗易懂 增加配置-&gt; conf/hbase-site.xml,以使用伪分布式 1234&lt;property&gt; &lt;name&gt;hbase.cluster.distributed&lt;/name&gt; &lt;value&gt;true&lt;/value&gt;&lt;/property&gt; 增加配置 -&gt; conf/hbase-env.sh，以使用独立安装的zk 1export HBASE_MANAGES_ZK=false 过程算是比较顺畅的]]></content>
       <categories>
-        <category>服务器端 - web开发</category>
+        <category>数据存储处理 - database</category>
       </categories>
       <tags>
-        <tag>webapp</tag>
-        <tag>http</tag>
+        <tag>Hbase</tag>
       </tags>
   </entry>
   <entry>
@@ -382,6 +386,18 @@
       <tags>
         <tag>IDEA</tag>
         <tag>IDE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用Http小记]]></title>
+    <url>%2F2018%2F12%2F04%2FHttp%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[Http调试工具Postman使用 Postman Postman测试接口之JSON结构化数据提交 Postman使用详解 JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging dataJSON is text,written with JavaScript object notationJSONw3school Http learning这篇博客总结的不错Http协议，超文本传输协议（HyperText Transfer P rotocol）客户端请求消息格式： 服务器端响应消息格式： 平常主要用到的请求方法只有：GET和POSTGET 方法：请求指定的页面信息，并返回实体主体 GET 请求可被缓存 GET 请求保留在浏览器历史记录中 GET 请求可被收藏为书签 GET 请求不应在处理敏感数据时使用 GET 请求有长度限制 GET 请求只应当用于取回数据POST 方法：向指定的资源提交表单或者文件，数据包含在请求体中，POST请求会导致新资源的建立或者原有资源的更改。 POST 请求不会被缓存 POST 请求不会保留在浏览器历史记录中 POST 不能被收藏为书签 POST 请求对数据长度没有要求HTTP 方法：GET 对比 POST四种POST请求 RESTful架构理解RESTful架构 REST: resource representation state transfer]]></content>
+      <categories>
+        <category>服务器端 - web开发</category>
+      </categories>
+      <tags>
+        <tag>webapp</tag>
+        <tag>http</tag>
       </tags>
   </entry>
   <entry>
@@ -422,6 +438,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Master Json]]></title>
+    <url>%2F2018%2F12%2F04%2FMasterJson%2F</url>
+    <content type="text"><![CDATA[Json 是什么类似于XML的标记性语言，在对象序列化，交换信息领域应用广泛 JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它使得人们很容易的进行阅读和编写。同时也方便了机器进行解析和生成 json简单说就是javascript中的对象和数组，所以这两种结构就是对象和数组两种结构，通过这两种结构可以表示各种复杂的结构 对象：对象在js中表示为“{}”括起来的内容，数据结构为 {key：value,key：value,…}的键值对的结构，在面向对象的语言中，key为对象的属性，value为对应的属性值，所以很容易理解，取值方法为 对象.key 获取属性值，这个属性值的类型可以是 数字、字符串、数组、对象几种。 数组：数组在js中是中括号“[]”括起来的内容，数据结构为 [“java”,”javascript”,”vb”,…]，取值方式和所有语言中一样，使用索引获取，字段值的类型可以是 数字、字符串、数组、对象几种。 Json 使用scala常用 spray Json 依赖：12&quot;com.typesafe.akka&quot; %% &quot;akka-http-spray-json&quot; % &quot;10.0.10&quot;, &quot;io.spray&quot; % &quot;spray-json_2.11&quot; % &quot;1.3.4&quot; Json Array 12345import spray.json._ //parseJsonval kkkk = &quot;&quot;&quot; |[&#123;&quot;a&quot;: &quot;1&quot;&#125;, &#123;&quot;b&quot;: &quot;2&quot;&#125;] &quot;&quot;&quot;.stripMargin.parseJson.asInstanceOf[JsArray] 22+play-json-extensions 22+ field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125;]]></content>
+      <categories>
+        <category>服务器端 - Json</category>
+      </categories>
+      <tags>
+        <tag>Json</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java笔记]]></title>
     <url>%2F2018%2F12%2F04%2FJava%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[设计模式单例模式java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍三种： 懒汉式单例、 饿汉式单例、 登记式单例。单例模式有以下特点： 单例类只能有一个实例。单例类必须自己创建自己的唯一实例。 单例类必须给所有其他对象提供这一实例。 单例模式确保某个类只有一个实例，而且自行实例化并向整个系统提供这个实例。 在计算机系统中，线程池、缓存、日志对象、对话框、打印机、显卡的驱动程序对象常被设计成单例。这些应用都或多或少具有资源管理器的功能。每台计算机可以有若干个打印机，但只能有一个Printer Spooler，以避免两个打印作业同时输出到打印机中。每台计算机可以有若干通信端口，系统应当集中管理这些通信端口，以避免一个通信端口同时被两个请求同时调用。总之，选择单例模式就是为了避免不一致状态，避免政出多头。 123456789101112131415161718192021222324252627282930懒汉模式：public class SingletonTest &#123; public static void main(String[] args)&#123; System.out.println(&quot;Singleton1.1:&quot;+Singleton1.getInstance()); System.out.println(&quot;Singleton1.2:&quot;+Singleton1.getInstance()); System.out.println(&quot;Singleton2.1:&quot;+Singleton2.getInstance()); System.out.println(&quot;Singleton2.2:&quot;+Singleton2.getInstance()); System.out.println(&quot;ton1:&quot;+new ton()); System.out.println(&quot;ton2:&quot;+new ton()); &#125;&#125;//懒汉模式：第一次是使用的时候实例化自己class Singleton1&#123; private static Singleton1 singleton1 = null; public static Singleton1 getInstance()&#123; if (singleton1 == null)&#123; singleton1 = new Singleton1(); &#125; return singleton1; &#125;&#125;//饱汉模式class Singleton2&#123; private static final Singleton2 singleton2 = new Singleton2(); public static Singleton2 getInstance()&#123; return singleton2; &#125;&#125; Java service domain dao 分层思路 鼓励使用service domain dao 分层设计理念； 第一：dao层操作表单，不涉及复杂逻辑，主要是表的增删改查操作，完全按照domain的要求来查询数据； 第二：domain层考虑业务逻辑，例如过滤条件，放行或者返回，以及数据的处理，为调用dao层做好准备，一个domain可以调用一个或者一组相关的dao层 第三：service 层调用一个或者一组domain层，主要是展现需要开放出去的接口，其中并不是所有的domain层都要在service层展现， 此外，主要接口需要对接受的参数要尽量的扩大化，也就是说可以容纳各种类型的参数的接入（object），然后再service 层做好转换，以备domain层使用。 正确的设计应该是，一个领域活动会聚合对应一个或一组DAO ，来完成一个领域活动。而一个服务可能包含两个领域活动， 比如一个转账的业务，对应两个领域活动。两个帐户的金额分别发生变化，需要操作一组领域活动，而每个活动需要操作很多表（调用多个DAO ）。 使用 接口方式可以实现系统之间的松耦合：一般定义： IUserService UserService IUserDomain UserDomain IUserDao UserSqlDao UserHbaseDao 使用接口可以有不同的实现类 ,不需要改代码，可以通过配置更改不同的实现类 Q:I need to learn the difference between the type of methods (in term of business logic) that should be inside the Domain, DAO and Service layers objects. For example, if I am building a small web application to create, edit and delete customers data, as far as I understand inside Domain layer object I should add methods that Get/Set Customers object properties, for example (getName, getDOB, setAddress, setPhone...etc). Now what I am trying to learn is what methods shall I put in DAO and Service layers objects. Thanks in advance for your time and efforts. A:Speaking generally (not Hibernate or Spring specific): The DAO layer contains queries and updates to save your domain layer into your datastore (usually a relational DB but doesn&apos;t have to be). Use interfaces to abstract your DAO away from the actual datastore. It doesn&apos;t happen often, but sometimes you want to change datastores (or use mocks to test your logic), and interfaces make that easier. This would have methods like &quot;save&quot;, &quot;getById&quot;, etc. The Service layer typically contains your business logic and orchestrates the interaction between the domain layer and the DAOs. It would have whatever methods make sense for your particular domain, like &quot;verifyBalance&quot;, or &quot;calculateTotalMileage&quot;.String使用String类中的compareTo（）方法比较。如：s1.compareTo(s2)但是这个方法有个缺点,就是要求两个参与比较的字符串的形式及长度必须相同才能够正确比较,否则,比较结果是错的 Java中设置classpath、path、JAVA_HOME的作用:Java中设置classpath、path、JAVA_HOME的作用]]></content>
@@ -431,17 +458,6 @@
       <tags>
         <tag>笔记</tag>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Master Json]]></title>
-    <url>%2F2018%2F12%2F04%2FMasterJson%2F</url>
-    <content type="text"><![CDATA[Json 是什么类似于XML的标记性语言，在对象序列化，交换信息领域应用广泛 JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它使得人们很容易的进行阅读和编写。同时也方便了机器进行解析和生成 json简单说就是javascript中的对象和数组，所以这两种结构就是对象和数组两种结构，通过这两种结构可以表示各种复杂的结构 对象：对象在js中表示为“{}”括起来的内容，数据结构为 {key：value,key：value,…}的键值对的结构，在面向对象的语言中，key为对象的属性，value为对应的属性值，所以很容易理解，取值方法为 对象.key 获取属性值，这个属性值的类型可以是 数字、字符串、数组、对象几种。 数组：数组在js中是中括号“[]”括起来的内容，数据结构为 [“java”,”javascript”,”vb”,…]，取值方式和所有语言中一样，使用索引获取，字段值的类型可以是 数字、字符串、数组、对象几种。 Json 使用scala常用 spray Json 依赖：12&quot;com.typesafe.akka&quot; %% &quot;akka-http-spray-json&quot; % &quot;10.0.10&quot;, &quot;io.spray&quot; % &quot;spray-json_2.11&quot; % &quot;1.3.4&quot; Json Array 12345import spray.json._ //parseJsonval kkkk = &quot;&quot;&quot; |[&#123;&quot;a&quot;: &quot;1&quot;&#125;, &#123;&quot;b&quot;: &quot;2&quot;&#125;] &quot;&quot;&quot;.stripMargin.parseJson.asInstanceOf[JsArray] 22+play-json-extensions 22+ field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125;]]></content>
-      <categories>
-        <category>服务器端 - Json</category>
-      </categories>
-      <tags>
-        <tag>Json</tag>
       </tags>
   </entry>
   <entry>
@@ -487,19 +503,6 @@
       </categories>
       <tags>
         <tag>数据分析</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Spark-API-RDD]]></title>
-    <url>%2F2018%2F12%2F04%2FSpark-RDD%2F</url>
-    <content type="text"><![CDATA[spark version: Spark2.3.0 Spark Core首先看一张图: Combine SQL, streaming, and complex analytics. Spark powers a stack of libraries including SQL and DataFrames, MLlib for machine learning, GraphX, and Spark Streaming. You can combine these libraries seamlessly in the same application. spark-core: RDDsprak-sql: DataFrame,DataSetspark-streaming:spark-MLib:spark-GraphX: SparkContext我们的Spark App 如何同spark cluster 建立连接，答案就是SparkContext? sparkSession VS sparkContext 每个JVM只能存在一个sparkcontext 1val sparkContext = new SparkContext(&quot;spark://localhost:7077&quot;,&quot;idea&quot;) 还可以先构建SparkConf对象，其中设置好要连接的集群等参数，然后作为构建SparkContext对象的参数之一 SparkConfRDD从数据层次上看：RDD是spark的灵魂 Spark在数据层面提供的主要抽象就是RDD(弹性分布式数据集)，分布在集群不同节点的不同分区中的元素的集合，可以在这个数据集上使用各种并行算法 RDD的生成方式有两种： hadoop file system,或者是hadoop-supported file system Driver 程序中的scala 集合，比如Array RDD除了是对分布式数据集的抽象外，还包含了该RDD的由来，即血缘关系图，当出现错误时，RDD可以血缘关系图恢复 两个共享变量： broadcast variables accumulators]]></content>
-      <categories>
-        <category>数据存储处理 - spark</category>
-      </categories>
-      <tags>
-        <tag>spark</tag>
-        <tag>RDD</tag>
-        <tag>spark-API</tag>
       </tags>
   </entry>
   <entry>
@@ -564,6 +567,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Spark-API-RDD]]></title>
+    <url>%2F2018%2F12%2F04%2FSpark-RDD%2F</url>
+    <content type="text"><![CDATA[spark version: Spark2.3.0 Spark Core首先看一张图: Combine SQL, streaming, and complex analytics. Spark powers a stack of libraries including SQL and DataFrames, MLlib for machine learning, GraphX, and Spark Streaming. You can combine these libraries seamlessly in the same application. spark-core: RDDsprak-sql: DataFrame,DataSetspark-streaming:spark-MLib:spark-GraphX: SparkContext我们的Spark App 如何同spark cluster 建立连接，答案就是SparkContext? sparkSession VS sparkContext 每个JVM只能存在一个sparkcontext 1val sparkContext = new SparkContext(&quot;spark://localhost:7077&quot;,&quot;idea&quot;) 还可以先构建SparkConf对象，其中设置好要连接的集群等参数，然后作为构建SparkContext对象的参数之一 SparkConfRDD从数据层次上看：RDD是spark的灵魂 Spark在数据层面提供的主要抽象就是RDD(弹性分布式数据集)，分布在集群不同节点的不同分区中的元素的集合，可以在这个数据集上使用各种并行算法 RDD的生成方式有两种： hadoop file system,或者是hadoop-supported file system Driver 程序中的scala 集合，比如Array RDD除了是对分布式数据集的抽象外，还包含了该RDD的由来，即血缘关系图，当出现错误时，RDD可以血缘关系图恢复 两个共享变量： broadcast variables accumulators]]></content>
+      <categories>
+        <category>数据存储处理 - spark</category>
+      </categories>
+      <tags>
+        <tag>spark</tag>
+        <tag>RDD</tag>
+        <tag>spark-API</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[breeze使用]]></title>
     <url>%2F2018%2F12%2F04%2Fbreeze%2F</url>
     <content type="text"><![CDATA[whatBreeze is a library for numerical processing, machine learning, and natural language processing. Its primary focus is on being generic, clean, and powerful without sacrificing (much) efficiency. Breeze is the merger of the ScalaNLP and Scalala projects, because one of the original maintainers is unable to continue development. howinstall快速安装用sbt在命令行中快速安装，体验一下 推荐的sbt依赖配置]]></content>
@@ -572,17 +588,6 @@
       </categories>
       <tags>
         <tag>breeze</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[数据仓库理论基础与实践]]></title>
-    <url>%2F2018%2F12%2F04%2Fdatawarehouse%2F</url>
-    <content type="text"><![CDATA[理论数据仓库与联机分析处理技术 OLTP：联机事务处理 OLAP：联机分析处理 两者之间的差异使得传统的数据库技术不能同时满足两类数据的处理要求，数据仓库技术应运而生 数据仓库技术数据仓库是为了构建新的分析处理环境而出现的一种数据存储和组织技术 操作型数据 分析型数据 表示业务处理的动态情况 表示业务处理的静态情况 在存取的瞬间是正确的 代表过去的数据 可更新，由录入人员或经过专门培训的输入事务而更新 不可更新，终端用户的访问权限常常是只读的 处理细节问题 受到更多关注的是结论性的数据，是综合的，或是提炼的 操作需求事先可知，系统可按预计的工作量进行优化 操作需求事先不知道，永远不知道下一步用户要做什么 有许多事务，每个事务影响数据的一小部分 有数目不多的一些查询，每个查询可访问大量数据 面向应用，支持日常操作 面向分析，支持管理需求 用户不必理解数据库，只是输入数据 用户需要理解数据库，以从数据中得出有意义的结论 数据仓库的定义：数据仓库是一个用以更好地支持企业或组织决策分析处理的，面向主题的，集成的，不可更新的，随着时间不断变化的数据集合。数据仓库本质上和数据库一样，是长期存储在计算机内的，有组织，可共享的数据集合 数据仓库的基本特征 数据仓库的数据是面向主题的； 数据仓库的数据是集成的; 数据仓库的数据是不可更新的; 数据仓库的数据是随时间不断变化的. 主题与面向主题在逻辑意义上，它对应企业中某一宏观分析领域所涉及的分析对象 主题域应该具有以下两个特点：独立性和完备性 各个主题应用相对应的主题表 数据仓库中的数据组织数据仓库中的数据分为多个级别：早期细节级、当前细节级、轻度综合级、高度综合级 数据仓库系统的体系结构数据仓库系统架构由数据仓库的后台工具，数据仓库服务器、OLAP服务器和前台工具组成 OLAP多维数据模型多维分析操作数据仓库基础知识 关系数据库概念三大范式三大范式参考如何理解关系数据库的第一第二第三范式范式是关系数据库理论的基础，也是我们在设计数据库结构过程中索要遵循的规则和指导方法，目前有8中范式， 但是通用的是三大范式(1NF\2NF\3NF) 1NF强调列的原子性，即列不能够再分成其他几列 2NF 首先是1NF,另外表必须要有主键，而是没有包含在主键中的列必须完全依赖于主键，而不是主键的一部分 考虑一个订单明细表：【OrderDetail】（OrderID，ProductID，UnitPrice，Discount，Quantity，ProductName）。因为我们知道在一个订单中可以订购多种产品，所以单单一个 OrderID 是不足以成为主键的，主键应该是（OrderID，ProductID）。显而易见 Discount（折扣），Quantity（数量）完全依赖（取决）于主键（OderID，ProductID），而 UnitPrice，ProductName 只依赖于 ProductID。所以 OrderDetail 表不符合 2NF。不符合 2NF 的设计容易产生冗余数据。可以把【OrderDetail】表拆分为【OrderDetail】（OrderID，ProductID，Discount，Quantity）和【Product】（ProductID，UnitPrice，ProductName）来消除原订单表中UnitPrice，ProductName多次重复的情况。 第二范式（2NF）要求实体的属性完全依赖于主关键字。所谓完全依赖是指不能存在仅依赖主关键字一部分的属性，如果存在，那么这个属性和主关键字的这一部分应该分离出来形成一个新的实体，新实体与原实体之间是一对多的关系。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。简而言之，第二范式就是在第一范式的基础上属性完全依赖于主键。 3NF 在1NF的基础上，任何非主属性不依赖于其他非主属性[在2NF基础上消除传递依赖 ] 第三范式（3NF）是第二范式（2NF）的一个子集，即满足第三范式（3NF）必须满足第二范式（2NF）。 首先是 2NF，另外非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。 考虑一个订单表【Order】（OrderID，OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity）主键是（OrderID）。 其中 OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity 等非主键列都完全依赖于主键（OrderID），所以符合 2NF。不过问题是 CustomerName，CustomerAddr，CustomerCity 直接依赖的是 CustomerID（非主键列），而不是直接依赖于主键，它是通过传递才依赖于主键，所以不符合 3NF。通过拆分【Order】为【Order】（OrderID，OrderDate，CustomerID）和【Customer】（CustomerID，CustomerName，CustomerAddr，CustomerCity）从而达到 3NF。 第二范式（2NF）和第三范式（3NF）的概念很容易混淆，区分它们的关键点在于，2NF：非主键列是否完全依赖于主键，还是依赖于主键的一部分；3NF：非主键列是直接依赖于主键，还是直接依赖于非主键列。 视图视图是从一个或几个基本表或视图中导出的表.他与基本表不同,是一个虚表,数据库只存放视图的定义,而不存放视图对应的数据,这些数据还存放在原来的基本表中,从这个角度讲,视图就像是一个窗口,透过视图就可以看到数据库中自己感兴趣的数据及其变化视图一经定义,他就可以和基本表一样被查询\被删除,等等,但是视图的更新有限制 定义视图建立视图123create view &lt;视图名&gt; [(&lt;列名&gt;[,&lt;列名&gt;]...)]as &lt;子查询&gt;[with check option] 实践]]></content>
-      <categories>
-        <category>datawarehouse</category>
-      </categories>
-      <tags>
-        <tag>datawarehouse</tag>
       </tags>
   </entry>
   <entry>
@@ -597,15 +602,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[ffmpeg]]></title>
-    <url>%2F2018%2F12%2F04%2Fffmpeg%2F</url>
-    <content type="text"><![CDATA[安装 ubuntu16:Linux下安装ffmpeg ubuntu18:系统自带，免安装 使用1./ffmpeg -threads 2 -y -r 1 -framerate 30 -i ~/data/fmpgtest/p/i%d.png -vf scale=853:480 ~/data/fmpgtest/output1.mp4]]></content>
+    <title><![CDATA[数据仓库理论基础与实践]]></title>
+    <url>%2F2018%2F12%2F04%2Fdatawarehouse%2F</url>
+    <content type="text"><![CDATA[理论数据仓库与联机分析处理技术 OLTP：联机事务处理 OLAP：联机分析处理 两者之间的差异使得传统的数据库技术不能同时满足两类数据的处理要求，数据仓库技术应运而生 数据仓库技术数据仓库是为了构建新的分析处理环境而出现的一种数据存储和组织技术 操作型数据 分析型数据 表示业务处理的动态情况 表示业务处理的静态情况 在存取的瞬间是正确的 代表过去的数据 可更新，由录入人员或经过专门培训的输入事务而更新 不可更新，终端用户的访问权限常常是只读的 处理细节问题 受到更多关注的是结论性的数据，是综合的，或是提炼的 操作需求事先可知，系统可按预计的工作量进行优化 操作需求事先不知道，永远不知道下一步用户要做什么 有许多事务，每个事务影响数据的一小部分 有数目不多的一些查询，每个查询可访问大量数据 面向应用，支持日常操作 面向分析，支持管理需求 用户不必理解数据库，只是输入数据 用户需要理解数据库，以从数据中得出有意义的结论 数据仓库的定义：数据仓库是一个用以更好地支持企业或组织决策分析处理的，面向主题的，集成的，不可更新的，随着时间不断变化的数据集合。数据仓库本质上和数据库一样，是长期存储在计算机内的，有组织，可共享的数据集合 数据仓库的基本特征 数据仓库的数据是面向主题的； 数据仓库的数据是集成的; 数据仓库的数据是不可更新的; 数据仓库的数据是随时间不断变化的. 主题与面向主题在逻辑意义上，它对应企业中某一宏观分析领域所涉及的分析对象 主题域应该具有以下两个特点：独立性和完备性 各个主题应用相对应的主题表 数据仓库中的数据组织数据仓库中的数据分为多个级别：早期细节级、当前细节级、轻度综合级、高度综合级 数据仓库系统的体系结构数据仓库系统架构由数据仓库的后台工具，数据仓库服务器、OLAP服务器和前台工具组成 OLAP多维数据模型多维分析操作数据仓库基础知识 关系数据库概念三大范式三大范式参考如何理解关系数据库的第一第二第三范式范式是关系数据库理论的基础，也是我们在设计数据库结构过程中索要遵循的规则和指导方法，目前有8中范式， 但是通用的是三大范式(1NF\2NF\3NF) 1NF强调列的原子性，即列不能够再分成其他几列 2NF 首先是1NF,另外表必须要有主键，而是没有包含在主键中的列必须完全依赖于主键，而不是主键的一部分 考虑一个订单明细表：【OrderDetail】（OrderID，ProductID，UnitPrice，Discount，Quantity，ProductName）。因为我们知道在一个订单中可以订购多种产品，所以单单一个 OrderID 是不足以成为主键的，主键应该是（OrderID，ProductID）。显而易见 Discount（折扣），Quantity（数量）完全依赖（取决）于主键（OderID，ProductID），而 UnitPrice，ProductName 只依赖于 ProductID。所以 OrderDetail 表不符合 2NF。不符合 2NF 的设计容易产生冗余数据。可以把【OrderDetail】表拆分为【OrderDetail】（OrderID，ProductID，Discount，Quantity）和【Product】（ProductID，UnitPrice，ProductName）来消除原订单表中UnitPrice，ProductName多次重复的情况。 第二范式（2NF）要求实体的属性完全依赖于主关键字。所谓完全依赖是指不能存在仅依赖主关键字一部分的属性，如果存在，那么这个属性和主关键字的这一部分应该分离出来形成一个新的实体，新实体与原实体之间是一对多的关系。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。简而言之，第二范式就是在第一范式的基础上属性完全依赖于主键。 3NF 在1NF的基础上，任何非主属性不依赖于其他非主属性[在2NF基础上消除传递依赖 ] 第三范式（3NF）是第二范式（2NF）的一个子集，即满足第三范式（3NF）必须满足第二范式（2NF）。 首先是 2NF，另外非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。 考虑一个订单表【Order】（OrderID，OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity）主键是（OrderID）。 其中 OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity 等非主键列都完全依赖于主键（OrderID），所以符合 2NF。不过问题是 CustomerName，CustomerAddr，CustomerCity 直接依赖的是 CustomerID（非主键列），而不是直接依赖于主键，它是通过传递才依赖于主键，所以不符合 3NF。通过拆分【Order】为【Order】（OrderID，OrderDate，CustomerID）和【Customer】（CustomerID，CustomerName，CustomerAddr，CustomerCity）从而达到 3NF。 第二范式（2NF）和第三范式（3NF）的概念很容易混淆，区分它们的关键点在于，2NF：非主键列是否完全依赖于主键，还是依赖于主键的一部分；3NF：非主键列是直接依赖于主键，还是直接依赖于非主键列。 视图视图是从一个或几个基本表或视图中导出的表.他与基本表不同,是一个虚表,数据库只存放视图的定义,而不存放视图对应的数据,这些数据还存放在原来的基本表中,从这个角度讲,视图就像是一个窗口,透过视图就可以看到数据库中自己感兴趣的数据及其变化视图一经定义,他就可以和基本表一样被查询\被删除,等等,但是视图的更新有限制 定义视图建立视图123create view &lt;视图名&gt; [(&lt;列名&gt;[,&lt;列名&gt;]...)]as &lt;子查询&gt;[with check option] 实践]]></content>
       <categories>
-        <category>误入歧途 - ffmpeg</category>
+        <category>datawarehouse</category>
       </categories>
       <tags>
-        <tag>ffmpeg</tag>
-        <tag>视频</tag>
+        <tag>datawarehouse</tag>
       </tags>
   </entry>
   <entry>
@@ -617,6 +621,18 @@
       </categories>
       <tags>
         <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ffmpeg]]></title>
+    <url>%2F2018%2F12%2F04%2Fffmpeg%2F</url>
+    <content type="text"><![CDATA[安装 ubuntu16:Linux下安装ffmpeg ubuntu18:系统自带，免安装 使用1./ffmpeg -threads 2 -y -r 1 -framerate 30 -i ~/data/fmpgtest/p/i%d.png -vf scale=853:480 ~/data/fmpgtest/output1.mp4]]></content>
+      <categories>
+        <category>误入歧途 - ffmpeg</category>
+      </categories>
+      <tags>
+        <tag>ffmpeg</tag>
+        <tag>视频</tag>
       </tags>
   </entry>
   <entry>
@@ -665,6 +681,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[log4j踢平记]]></title>
+    <url>%2F2018%2F12%2F04%2Flog4j%E8%B8%A2%E5%B9%B3%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[错误：** log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$). ** 错误原因：我猜是依赖自带的log4j之间冲突了 解决： stackoverflow Just to get you going you have two simple approaches you can take. First one is to just add this line to your main method:BasicConfigurator.configure();Second approach is to add this standard log4j.properties (taken from the above mentioned guide) file to your classpath: Set root logger level to DEBUG and its only appender to A1.log4j.rootLogger=DEBUG, A1 A1 is set to be a ConsoleAppender.log4j.appender.A1=org.apache.log4j.ConsoleAppender A1 uses PatternLayout.log4j.appender.A1.layout=org.apache.log4j.PatternLayoutlog4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n The first one 好使]]></content>
+      <categories>
+        <category>服务器端 - 日志</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
+        <tag>log</tag>
+        <tag>log4j</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[scikit-learn]]></title>
     <url>%2F2018%2F12%2F04%2Fml-sklearn%2F</url>
     <content type="text"><![CDATA[Scikit-learn 安装之前安装了anaconda3，其中已经打包安装好了scikit-learn Scikit-learn 使用]]></content>
@@ -675,19 +704,6 @@
         <tag>机器学习</tag>
         <tag>ml</tag>
         <tag>scikit-learn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[log4j踢平记]]></title>
-    <url>%2F2018%2F12%2F04%2Flog4j%E8%B8%A2%E5%B9%B3%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[错误：** log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$). ** 错误原因：我猜是依赖自带的log4j之间冲突了 解决： stackoverflow Just to get you going you have two simple approaches you can take. First one is to just add this line to your main method:BasicConfigurator.configure();Second approach is to add this standard log4j.properties (taken from the above mentioned guide) file to your classpath: Set root logger level to DEBUG and its only appender to A1.log4j.rootLogger=DEBUG, A1 A1 is set to be a ConsoleAppender.log4j.appender.A1=org.apache.log4j.ConsoleAppender A1 uses PatternLayout.log4j.appender.A1.layout=org.apache.log4j.PatternLayoutlog4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n The first one 好使]]></content>
-      <categories>
-        <category>服务器端 - 日志</category>
-      </categories>
-      <tags>
-        <tag>log</tag>
-        <tag>log4j</tag>
-        <tag>日志</tag>
       </tags>
   </entry>
   <entry>
@@ -705,17 +721,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[别人家的博客]]></title>
-    <url>%2F2018%2F12%2F04%2Fothers-blog%2F</url>
-    <content type="text"><![CDATA[[夏天的森林：https://home.cnblogs.com/u/sharpxiajun/feed/1.html [zhaorongcuncsdn:http://blog.csdn.net/zrc199021 [写点什么 关于scala 后端http://hongjiang.info/ [鸟窝 [stark_summer[树上月 [cwiki [http://blog.csdn.net/honglei915/article/details/37697655 [面向对象软件开发和过程(18摸) [美团技术团队 [陈先生 [哥不是小萝莉 [看懂UML [浅析hadoop 文件格式 [通过IDEA远程调试 [concurrnetHashMap 解析 [全科-不安分的码农 [linux shell [阿里JAVA [我的java问题排查工具单 [github王下月熊]]></content>
-      <categories>
-        <category>书签</category>
-      </categories>
-      <tags>
-        <tag>blog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[pandas]]></title>
     <url>%2F2018%2F12%2F04%2Fpandas%2F</url>
     <content type="text"><![CDATA[### 之前安装了anaconda3，其中已经打包安装好了scikit-learn Scikit-learn 使用]]></content>
@@ -729,14 +734,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[python 笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fpython%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[python 笔记日常python使用笔记 python List 2 String How to convert list to string By using ‘’.join 12list1 = [&apos;1&apos;, &apos;2&apos;, &apos;3&apos;]str1 = &apos;&apos;.join(list1) Or if the list is of integers, convert the elements before joining them. 12list1 = [1, 2, 3]str1 = &apos;&apos;.join(str(e) for e in list1) python 写文件1234567file = &quot;/home/xxh/data/footlastlist&quot;+time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime()) f= open(file,&quot;w+&quot;) try: f.write(&apos;&apos;.join(str(e) for e in footlastlist)) finally: f.close() file文件open后一定记得close(还有一种写法with) open的参数w+可以自动创建不存在的文件，前提是，设置的file路径为绝对路径]]></content>
+    <title><![CDATA[别人家的博客]]></title>
+    <url>%2F2018%2F12%2F04%2Fothers-blog%2F</url>
+    <content type="text"><![CDATA[[夏天的森林：https://home.cnblogs.com/u/sharpxiajun/feed/1.html [zhaorongcuncsdn:http://blog.csdn.net/zrc199021 [写点什么 关于scala 后端http://hongjiang.info/ [鸟窝 [stark_summer[树上月 [cwiki [http://blog.csdn.net/honglei915/article/details/37697655 [面向对象软件开发和过程(18摸) [美团技术团队 [陈先生 [哥不是小萝莉 [看懂UML [浅析hadoop 文件格式 [通过IDEA远程调试 [concurrnetHashMap 解析 [全科-不安分的码农 [linux shell [阿里JAVA [我的java问题排查工具单 [github王下月熊]]></content>
       <categories>
-        <category>编程语言 - python</category>
+        <category>书签</category>
       </categories>
       <tags>
-        <tag>python</tag>
+        <tag>blog</tag>
       </tags>
   </entry>
   <entry>
@@ -751,6 +756,17 @@
         <tag>package</tag>
         <tag>assembly</tag>
         <tag>dist</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[python 笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fpython%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[python 笔记日常python使用笔记 python List 2 String How to convert list to string By using ‘’.join 12list1 = [&apos;1&apos;, &apos;2&apos;, &apos;3&apos;]str1 = &apos;&apos;.join(list1) Or if the list is of integers, convert the elements before joining them. 12list1 = [1, 2, 3]str1 = &apos;&apos;.join(str(e) for e in list1) python 写文件1234567file = &quot;/home/xxh/data/footlastlist&quot;+time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime()) f= open(file,&quot;w+&quot;) try: f.write(&apos;&apos;.join(str(e) for e in footlastlist)) finally: f.close() file文件open后一定记得close(还有一种写法with) open的参数w+可以自动创建不存在的文件，前提是，设置的file路径为绝对路径]]></content>
+      <categories>
+        <category>编程语言 - python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -811,18 +827,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[spark填坑记]]></title>
-    <url>%2F2018%2F12%2F04%2Fspark%E5%A1%AB%E5%9D%91%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[使用spark streaming报错ERROR DFSClient: Failed to close inode xxxxtopic太多造成的，有待进一步了解 需要给checkpoint的目录打时间戳 spark集群环境主机日志文件太多问题： spark集群环境主机日志文件太多，超出了ext3文件系统一级子目录的个数默认为31998(个)，准确地说是32000个，导致集群不正常 解决： 手动情况日志文件， 更改配置： 修改配置文件：/home/mr/spark/conf/spark-defaults.conf使 123spark.worker.cleanup.enabled=true,spark.worker.cleanup.appDataTtl = 259200(3*24*3600), #worker App保存三天 然后重启spark服务和sparkSQL服务。]]></content>
-      <categories>
-        <category>数据存储处理 - spark</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>spark</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Spark的3个API:RDDs/DataFrames/DataSets]]></title>
     <url>%2F2018%2F12%2F04%2Fspark%E7%9A%84%E4%B8%89%E4%B8%AAAPI%2F</url>
     <content type="text"><![CDATA[且谈Apache Spark的API三剑客：RDD、DataFrame和Dataset]]></content>
@@ -834,6 +838,18 @@
         <tag>Spark</tag>
         <tag>DataFrame</tag>
         <tag>DataSet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spark填坑记]]></title>
+    <url>%2F2018%2F12%2F04%2Fspark%E5%A1%AB%E5%9D%91%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[使用spark streaming报错ERROR DFSClient: Failed to close inode xxxxtopic太多造成的，有待进一步了解 需要给checkpoint的目录打时间戳 spark集群环境主机日志文件太多问题： spark集群环境主机日志文件太多，超出了ext3文件系统一级子目录的个数默认为31998(个)，准确地说是32000个，导致集群不正常 解决： 手动情况日志文件， 更改配置： 修改配置文件：/home/mr/spark/conf/spark-defaults.conf使 123spark.worker.cleanup.enabled=true,spark.worker.cleanup.appDataTtl = 259200(3*24*3600), #worker App保存三天 然后重启spark服务和sparkSQL服务。]]></content>
+      <categories>
+        <category>数据存储处理 - spark</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>spark</tag>
       </tags>
   </entry>
   <entry>
@@ -912,6 +928,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[git使用]]></title>
+    <url>%2F2018%2F12%2F04%2F%E4%BD%BF%E7%94%A8git%2F</url>
+    <content type="text"><![CDATA[git 不熟悉但是这种工具性的东西，就得边用边学 两个项目合并方法不一定最快，能用 project a 12git checkout -b &apos;newbranch&apos;git push origin newbranch project b 12345678910111213141516git init//copy .gitignoregit add .git commit -m &apos;b&apos;git remote add origin git@***.gitgit pull origin sparks3git statusgit add .git commit -m &apos;sfs&apos;git push origin master]]></content>
+      <categories>
+        <category>工欲善其事，必先利其器</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[了解Docker]]></title>
     <url>%2F2018%2F12%2F04%2F%E4%BA%86%E8%A7%A3Docker%2F</url>
     <content type="text"><![CDATA[Docker What is Docker?我的理解： 在操作系统上新增的一层抽象 解决的痛点：同一台服务器上多应用间的依赖冲突问题 优势：很多，比如将多个应用部署在同一个云主机上，该云主机弹性扩展，这样能够节约不少成本 目前的项目暂时用不到docker 教程]]></content>
@@ -933,17 +960,6 @@
       <tags>
         <tag>需求分析</tag>
         <tag>产品</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[git使用]]></title>
-    <url>%2F2018%2F12%2F04%2F%E4%BD%BF%E7%94%A8git%2F</url>
-    <content type="text"><![CDATA[git 不熟悉但是这种工具性的东西，就得边用边学 两个项目合并方法不一定最快，能用 project a 12git checkout -b &apos;newbranch&apos;git push origin newbranch project b 12345678910111213141516git init//copy .gitignoregit add .git commit -m &apos;b&apos;git remote add origin git@***.gitgit pull origin sparks3git statusgit add .git commit -m &apos;sfs&apos;git push origin master]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -985,6 +1001,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[微服务]]></title>
+    <url>%2F2018%2F12%2F04%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%2F</url>
+    <content type="text"><![CDATA[感悟：项目中使用了微服务架构，相对于单体的应用，整个项目被拆成另外N个小应用，分散在各个服务器上，好处是，项目中的各个部分互不影响(接口不变的情况下)，缺点是，应用过于分散，难以管理、 所以有必要了解一下别人家的微服务架构是怎么设计的 大家都知道，基于单体（Monolith）和微服务（Microservice）架构的争论已经存在多年，正如我们对胖客户端、瘦客户端孰好孰坏的争论一样，有必然的历史演化，也有各自的优缺点。架构师们总是在考虑，我们是要一个中心化、全能多才的单体，还是百花齐放、各自为政的微服务群体，各种基于成本、交互、部署等等的讨论应该不会停下脚步。这里，我们不做过多的深入探讨和介绍，而本文正是这些讨论中的一个很好的例子，供大家思考。 随着系统变得越来越大，最终会达到一个临界点，作为一个单体（monolith）它变得难以管理。每一行代码的添加，都会让系统变得更加难以理解、变更和重用。虽然微服务（microservice）试图解决这些问题，但也带来了额外的复杂性以及集成的成本。 一个经过优化的微服务架构案例 优势: 模块较小，低耦合，提高开发人员开发效率 容易理解和测试每个服务 容易定位问题和解决故障,减少了关联故障 难点： 微服务的模块间需要n多契约，文档，需要时间来维护接口和文档 devops显得很重要 API gateway :lagom]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>微服务</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[序列化与反序列化]]></title>
     <url>%2F2018%2F12%2F04%2F%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%2F</url>
     <content type="text"><![CDATA[调用服务，避免不了序列化 rest+jsonjson真是操蛋，特别是不同的语言，不同的json库间转换，很痛苦,所以需要思考还有没有其他的序列化方式 最好用的scala中的json工具： play-json-extensions +22 field case class formatter and more for play-json 大数据场景下case class 必备,是play-json 的升级版跟spray-json也很像 1234567891011121314151617181920package data.creationimport ai.x.play.json.Jsonximport common.HttpClientHelperimport data.beans.LastInfoimport play.api.libs.json.Json/** * Created by xxh on 18-7-30. */object LastInfoHelper &#123; implicit lazy val lastInfoFormat = Jsonx.formatCaseClass[LastInfo] def getLastInfo(url:String,email:String,shoeLastBaseNo:String,basicsize:Int): LastInfo =&#123; val lastArray = new HttpClientHelper().post(url = url, postJsonObj = s&quot;&quot;&quot;&#123;&quot;email&quot;:&quot;$email&quot;,&quot;shoeLastBaseNo&quot;:&quot;$shoeLastBaseNo&quot;,&quot;basicsize&quot;:$basicsize&#125;&quot;&quot;&quot;) val lastJsonArray = Json.parse(lastArray) val lastInfo = lastJsonArray(0).as[LastInfo] lastInfo &#125;&#125;]]></content>
@@ -994,17 +1021,6 @@
       <tags>
         <tag>序列化</tag>
         <tag>json</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[微服务]]></title>
-    <url>%2F2018%2F12%2F04%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%2F</url>
-    <content type="text"><![CDATA[感悟：项目中使用了微服务架构，相对于单体的应用，整个项目被拆成另外N个小应用，分散在各个服务器上，好处是，项目中的各个部分互不影响(接口不变的情况下)，缺点是，应用过于分散，难以管理、 所以有必要了解一下别人家的微服务架构是怎么设计的 大家都知道，基于单体（Monolith）和微服务（Microservice）架构的争论已经存在多年，正如我们对胖客户端、瘦客户端孰好孰坏的争论一样，有必然的历史演化，也有各自的优缺点。架构师们总是在考虑，我们是要一个中心化、全能多才的单体，还是百花齐放、各自为政的微服务群体，各种基于成本、交互、部署等等的讨论应该不会停下脚步。这里，我们不做过多的深入探讨和介绍，而本文正是这些讨论中的一个很好的例子，供大家思考。 随着系统变得越来越大，最终会达到一个临界点，作为一个单体（monolith）它变得难以管理。每一行代码的添加，都会让系统变得更加难以理解、变更和重用。虽然微服务（microservice）试图解决这些问题，但也带来了额外的复杂性以及集成的成本。 一个经过优化的微服务架构案例 优势: 模块较小，低耦合，提高开发人员开发效率 容易理解和测试每个服务 容易定位问题和解决故障,减少了关联故障 难点： 微服务的模块间需要n多契约，文档，需要时间来维护接口和文档 devops显得很重要 API gateway :lagom]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>微服务</tag>
       </tags>
   </entry>
   <entry>
@@ -1031,14 +1047,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[敏捷开发流程]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%2F</url>
-    <content type="text"><![CDATA[定义敏捷不是指某一种具体的方法论、过程或框架，而是一组价值观和原则。符合敏捷价值观和原则的开发方法包括：极限编程（XP），Scrum，精益软件开发（Lean Software Development），动态系统开发方法（DSDM），特征驱动开发（Feature Driver Development），水晶开发（Crystal Clear）等等。所有这些方法都具有以下共同特征： 迭代式开发 ，整个开发周期分为几个迭代周期 - 增量交付 每个迭代周期结束后逐步交付使用，而不是整个开发过程结束的时候一次性交付使用 - 开发团队和用户反馈推动产品开发 持续集成 开发团队自我管理 敏捷实战 需求评审 Story划分 人员划分 方案设计 方案评审 任务拆分 开发 端到端测试 压力测试＋集成测试 关于需求分析： 一部分是项目总体需求分析时确定的，另一部分是随着项目的发展，新增的业务需求 关于方案设计：在项目需求评审会议后，划分了story、确定了人员分配后，根据项目的总体框架进行的方案设计 主要分 1 概述 41.1 目的 41.2 术语、定义和略缩词 41.3 参考资料 42 业务逻辑 43 主题表设计 74 性能设计 95 平滑升级 然后做方案评审 团队内部任务拆分 开发 测试 压力测试 和 集成测试]]></content>
+    <title><![CDATA[数据结构与算法]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[前言数据结构研究的问题包括数据在计算机中存储、组织、传递和转换的过程及方法，这些也是构成与支撑算法的基础。我们在编写计算机程序来解决应用问题时，最终都要归结并落实到这两个问题上 “程序 = 数据结构 + 算法” 算法及其复杂度计算机与算法算法定义所谓算法，就是在特定计算模型下，在信息处理过程中为了解决某一类问题而设计的一个指令序列。比如，对于“过直线上某一点作垂直线”这一问题，绳索及奴隶就构成了一个特定的计算模型，古埃及人基于这一模型所设计的算法一.1，就是在这一计算模型下解决这一问题的一个算法。 算法性能的分析与评价三个层次 合法性，语法正确，能够执行 不同算法的效率,设计和使用适宜的数据结构 软件工程，全局考虑 如果将借助计算机解决实际问题比作书法，那么在第一层次上就相当于学习点、横、竖、撇和捺等基本笔画，而第二层次则相当于学习如何将不同的笔画按照一定的间架结构组成有意义的不同汉字。然而这还远远不够，作为一幅完整的书法作品，还需要在汉字之间形成大小、粗细、疏密、浓淡、奇正及枯润等方面的搭配与呼应，也就是要讲求章法。在利用计算机解决实际问题的过程中，同样存在这样一个更高层次的问题：倘若软件的规模大到任何个人或少数人都不足以开发出来地步，而且在其生命期内软件也需要很多人的协作才能得以维护，则需要进一步考虑一些更为全局性的问题，这些问题都属于软件工程学的范畴， 时间复杂度及其度量T(n)称作算法的时间复杂度。 每一次基本操作都可以在常数时间内完成，因此如果根据算法所需执行的基本操作次数来表示 T(n)，就可以更加客观地反映算法的效率。 空间复杂度衡量算法性能的另一个重要方面，就是算法所需使用的存储空间量，即算法空间复杂度观察结论一.1 就渐进复杂度的意义而言，在任何一个算法的任何一次运行过程中，其实际占用的存储空间都不会多于其间执行的基本操作次数。 #### 算法复杂度及其分析 O(1)⎯⎯取非极端元素O(logn)⎯⎯进制转换O(n)⎯⎯数组求和O(n^2)⎯⎯起泡排序O(2^r)⎯⎯幂函数 计算模型可解性有效可解##### 下界 递归栈与队列栈栈是存放对象的一种特殊容器，在插入与删除对象时，这种结构遵循后进先出（Last-in-first-out，LIFO）的原则入栈（Push）和退栈（Pop）。 栈 ADT java.util.Stack push()、pop()、peek()（功能等价于 top()）、getSize()以及 empty()（功能等价于 isEmpty()）。在遇到空栈时，方法 pop()和 peek()都会报意外错 ExceptionStackEmpty。 实现 JVM中的栈]]></content>
       <categories>
-        <category>服务器端</category>
+        <category>数据结构</category>
       </categories>
       <tags>
-        <tag>敏捷开发</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -1053,17 +1069,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数据结构与算法]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[前言数据结构研究的问题包括数据在计算机中存储、组织、传递和转换的过程及方法，这些也是构成与支撑算法的基础。我们在编写计算机程序来解决应用问题时，最终都要归结并落实到这两个问题上 “程序 = 数据结构 + 算法” 算法及其复杂度计算机与算法算法定义所谓算法，就是在特定计算模型下，在信息处理过程中为了解决某一类问题而设计的一个指令序列。比如，对于“过直线上某一点作垂直线”这一问题，绳索及奴隶就构成了一个特定的计算模型，古埃及人基于这一模型所设计的算法一.1，就是在这一计算模型下解决这一问题的一个算法。 算法性能的分析与评价三个层次 合法性，语法正确，能够执行 不同算法的效率,设计和使用适宜的数据结构 软件工程，全局考虑 如果将借助计算机解决实际问题比作书法，那么在第一层次上就相当于学习点、横、竖、撇和捺等基本笔画，而第二层次则相当于学习如何将不同的笔画按照一定的间架结构组成有意义的不同汉字。然而这还远远不够，作为一幅完整的书法作品，还需要在汉字之间形成大小、粗细、疏密、浓淡、奇正及枯润等方面的搭配与呼应，也就是要讲求章法。在利用计算机解决实际问题的过程中，同样存在这样一个更高层次的问题：倘若软件的规模大到任何个人或少数人都不足以开发出来地步，而且在其生命期内软件也需要很多人的协作才能得以维护，则需要进一步考虑一些更为全局性的问题，这些问题都属于软件工程学的范畴， 时间复杂度及其度量T(n)称作算法的时间复杂度。 每一次基本操作都可以在常数时间内完成，因此如果根据算法所需执行的基本操作次数来表示 T(n)，就可以更加客观地反映算法的效率。 空间复杂度衡量算法性能的另一个重要方面，就是算法所需使用的存储空间量，即算法空间复杂度观察结论一.1 就渐进复杂度的意义而言，在任何一个算法的任何一次运行过程中，其实际占用的存储空间都不会多于其间执行的基本操作次数。 #### 算法复杂度及其分析 O(1)⎯⎯取非极端元素O(logn)⎯⎯进制转换O(n)⎯⎯数组求和O(n^2)⎯⎯起泡排序O(2^r)⎯⎯幂函数 计算模型可解性有效可解##### 下界 递归栈与队列栈栈是存放对象的一种特殊容器，在插入与删除对象时，这种结构遵循后进先出（Last-in-first-out，LIFO）的原则入栈（Push）和退栈（Pop）。 栈 ADT java.util.Stack push()、pop()、peek()（功能等价于 top()）、getSize()以及 empty()（功能等价于 isEmpty()）。在遇到空栈时，方法 pop()和 peek()都会报意外错 ExceptionStackEmpty。 实现 JVM中的栈]]></content>
-      <categories>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[日志打印规范]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E8%A7%84%E8%8C%83%2F</url>
     <content type="text"><![CDATA[背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过 日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情 未完待续…]]></content>
@@ -1071,8 +1076,19 @@
         <category>服务器端 - 日志</category>
       </categories>
       <tags>
-        <tag>log</tag>
         <tag>日志</tag>
+        <tag>log</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[敏捷开发流程]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[定义敏捷不是指某一种具体的方法论、过程或框架，而是一组价值观和原则。符合敏捷价值观和原则的开发方法包括：极限编程（XP），Scrum，精益软件开发（Lean Software Development），动态系统开发方法（DSDM），特征驱动开发（Feature Driver Development），水晶开发（Crystal Clear）等等。所有这些方法都具有以下共同特征： 迭代式开发 ，整个开发周期分为几个迭代周期 - 增量交付 每个迭代周期结束后逐步交付使用，而不是整个开发过程结束的时候一次性交付使用 - 开发团队和用户反馈推动产品开发 持续集成 开发团队自我管理 敏捷实战 需求评审 Story划分 人员划分 方案设计 方案评审 任务拆分 开发 端到端测试 压力测试＋集成测试 关于需求分析： 一部分是项目总体需求分析时确定的，另一部分是随着项目的发展，新增的业务需求 关于方案设计：在项目需求评审会议后，划分了story、确定了人员分配后，根据项目的总体框架进行的方案设计 主要分 1 概述 41.1 目的 41.2 术语、定义和略缩词 41.3 参考资料 42 业务逻辑 43 主题表设计 74 性能设计 95 平滑升级 然后做方案评审 团队内部任务拆分 开发 测试 压力测试 和 集成测试]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>敏捷开发</tag>
       </tags>
   </entry>
   <entry>
@@ -1108,8 +1124,8 @@
         <category>数据采集 - 日志收集</category>
       </categories>
       <tags>
-        <tag>shell</tag>
         <tag>日志</tag>
+        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1135,17 +1151,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数据仓库清洗规则]]></title>
-    <url>%2F2018%2F12%2F04%2F%E8%84%9A%E5%9E%8B%E6%95%B0%E6%8D%AE%E3%80%81%E6%A5%A6%E5%9E%8B%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%96%B9%E6%A1%88%E7%A8%BF%2F</url>
-    <content type="text"><![CDATA[脚型数据、楦数据清洗方案稿背景脚型数据、楦数据均以入库（待确认） 需要对数据做最基本，根据具体业务需要的数据清洗 ## 前提 数据仓库中的脚数据、楦数据的数据一致性校验完成 ## 清洗规则 明确数据的业务范围明确数据的语义两个表各字段的意义 数据中存在的错误界定及处理方法表级别错误主要包括数据记录不合理的重复、数据记录的缺失。 依赖数据入库操作时数据一致性校验的完成 #### 行级别错误 对于数据中存在的错误，处理的原则是尽最大可能去发现并修复，对于不能修复的错误，则需要给出警示。 对于行级错误的处理，从找出异常数据入手。 对于每个字段，发现异常数据可以通过以下（不限于）几种方式： 对于标量，如果离群则记为异常。 取值不在字典表范围内。 不符合数据的语义（在当前语义上无法解释）。 与其它字段的信息不一致。 异常数据处理流程： 首先判断是不是错误，如果不是错误，那我们只需要加以记录，这可以帮助我们更深入的认识数据； 如果是错误，试着去分析错误产生的原因，推测出正确值；如果能推测出正确值，那么推算出正确值。 如果不能推测出正确值，那么将其置为空值（空值至少不会提供错误的信息，其不良影响要弱于错误的信息所来带来的）。 对数据做规范化、统一化不规范、不统一的数据可能并不影响信息表达的准确性，却对数据分析和数据处理有很大的影响。 我们所要做的有两方面： 含义相同的字段，采用统一的规范的形式来表达。 目前主要包括：- 日期字段格式的统一，全部采用标准Unix时间戳表示。 对于同一字段，相同的信息，采用相同的表达。 主要针对字符型的字段。比如：北京、北京市、【北京】都是表达相同的含义，我们需要将其统一；男女与0,1,2的映射 ３． 空值处理、null值处理]]></content>
-      <categories>
-        <category>datawarehouse</category>
-      </categories>
-      <tags>
-        <tag>datawarehouse</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[行话]]></title>
     <url>%2F2018%2F12%2F04%2F%E8%A1%8C%E8%AF%9D%2F</url>
     <content type="text"><![CDATA[胶水代码： 在传统的开发模式中，我们很容易陷入“胶水代码”的陷阱里。所谓的“胶水代码”，顾名思义，就是仅仅用来保持用户界面数据、状态同步的函数调用的集合体。这些函数调用扯不断，理还乱，并且使代码变的非常冗长、易出错、不易维护。 编程模型：当面对一个新问题时。通常的想法是通过分析，不断的转化和转换，得到本质相同的熟悉的、或抽象的简单的一个问题，这就是化归思想。把初始的问题或对象称为原型，把化归后的相对定向的模拟化或理想化的对象称为模型。 编程模型，简单的可以理解他就是模板，遇到相似的问题就可以方便的依模板解决，这样就简化了编程问题。不同的编程环境和不同的应用对象有不同的编程模型。原子操作：原子（atom）本意是“不能被进一步分割的最小粒子”，而原子操作（atomic operation）意为”不可被中断的一个或一系列操作” 。为什么我们需要MQ消息队列（MQ）是一种应用程序对应用程序的通信方法。应用程序通过写和检索出入列队的针对应用程序的数据（消息）来通信，而无需专用连接来链接它们。消息传递指的是程序之间通过在消息中发送数据进行通信，而不是通过直接调用彼此来通信，直接调用通常是用于诸如远程过程调用的技术。排队指的是应用程序通过队列来通信。队列的使用除去了接收和发送应用程序同时执行的要求为什么我们需要MQ 何为流如何理解编程语言中「流」（stream）的概念如何形象的理解计算机中“流”的概念？ 数据规整(munge/munging/wrangling)指的是将非结构化和散乱数据处理为结构化或整洁形式的整个过程]]></content>
@@ -1166,6 +1171,17 @@
       </categories>
       <tags>
         <tag>跳板机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据仓库清洗规则]]></title>
+    <url>%2F2018%2F12%2F04%2F%E8%84%9A%E5%9E%8B%E6%95%B0%E6%8D%AE%E3%80%81%E6%A5%A6%E5%9E%8B%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%96%B9%E6%A1%88%E7%A8%BF%2F</url>
+    <content type="text"><![CDATA[脚型数据、楦数据清洗方案稿背景脚型数据、楦数据均以入库（待确认） 需要对数据做最基本，根据具体业务需要的数据清洗 ## 前提 数据仓库中的脚数据、楦数据的数据一致性校验完成 ## 清洗规则 明确数据的业务范围明确数据的语义两个表各字段的意义 数据中存在的错误界定及处理方法表级别错误主要包括数据记录不合理的重复、数据记录的缺失。 依赖数据入库操作时数据一致性校验的完成 #### 行级别错误 对于数据中存在的错误，处理的原则是尽最大可能去发现并修复，对于不能修复的错误，则需要给出警示。 对于行级错误的处理，从找出异常数据入手。 对于每个字段，发现异常数据可以通过以下（不限于）几种方式： 对于标量，如果离群则记为异常。 取值不在字典表范围内。 不符合数据的语义（在当前语义上无法解释）。 与其它字段的信息不一致。 异常数据处理流程： 首先判断是不是错误，如果不是错误，那我们只需要加以记录，这可以帮助我们更深入的认识数据； 如果是错误，试着去分析错误产生的原因，推测出正确值；如果能推测出正确值，那么推算出正确值。 如果不能推测出正确值，那么将其置为空值（空值至少不会提供错误的信息，其不良影响要弱于错误的信息所来带来的）。 对数据做规范化、统一化不规范、不统一的数据可能并不影响信息表达的准确性，却对数据分析和数据处理有很大的影响。 我们所要做的有两方面： 含义相同的字段，采用统一的规范的形式来表达。 目前主要包括：- 日期字段格式的统一，全部采用标准Unix时间戳表示。 对于同一字段，相同的信息，采用相同的表达。 主要针对字符型的字段。比如：北京、北京市、【北京】都是表达相同的含义，我们需要将其统一；男女与0,1,2的映射 ３． 空值处理、null值处理]]></content>
+      <categories>
+        <category>datawarehouse</category>
+      </categories>
+      <tags>
+        <tag>datawarehouse</tag>
       </tags>
   </entry>
   <entry>
