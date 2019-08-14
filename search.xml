@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[814]]></title>
+    <url>%2F2019%2F08%2F14%2F814%2F</url>
+    <content type="text"><![CDATA[? 设计模式－门面模式]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[8a]]></title>
+    <url>%2F2019%2F08%2F05%2F8a%2F</url>
+    <content type="text"><![CDATA[可充电的床头台灯 移动宽带安装 糯米香红茶 角落灯 货拉拉评价]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[database-connection-open-close]]></title>
     <url>%2F2019%2F07%2F26%2Fdatabase-connection-open-close%2F</url>
-    <content type="text"><![CDATA[database 的jdbc连接的打开关闭的时机是什么呢？每次使用都open,然后close?or open后多次使用？关闭的时机是什么呢？直观上思考，每次建立tcp连接要消耗高，短时间保持一个conn长连接，多次复用后关闭，这样做性能比较高 现在项目中使用一个数据库长连接完成所有sql执行，有时候会遇到数据库连接失败的问题，很可能是因为数据库长连接异常中断 关于connection关闭的时机 1public interface Connection extends Wrapper, AutoCloseable AutoCloseable探究java IO之AutoCloseable,Closeable和Flushable接口 jdk1.7新增，支持try-catch-resources语法 123456789101112131415161718package io;import java.io.BufferedReader;import java.io.File;import java.io.FileInputStream;import java.io.IOException;import java.io.InputStreamReader;public class InputStreamReaderTest &#123; public static void main(String[] args) &#123; try(BufferedReader reader = new BufferedReader(new InputStreamReader( new FileInputStream(new File(&quot;/home/fuhd/text&quot;)),&quot;UTF8&quot;),1024))&#123; System.out.println(reader.readLine()); //这里直接读一行 &#125;catch(IOException e)&#123; e.printStackTrace(); &#125; &#125;&#125; 说明Connection是支持try-catch-resources语法的 回来接着想，connection关闭的时机是什么呢]]></content>
+    <content type="text"><![CDATA[database 的jdbc连接的打开关闭的时机是什么呢？每次使用都open,然后close?oropen后多次使用？关闭的时机是什么呢？ 直观上思考，每次建立tcp连接要消耗高，短时间保持一个conn长连接，多次复用后关闭，这样做性能比较高 现在项目中使用一个数据库长连接完成所有sql执行，有时候会遇到数据库连接失败的问题，很可能是因为数据库长连接异常中断 关于connection关闭的时机 1public interface Connection extends Wrapper, AutoCloseable AutoCloseable探究java IO之AutoCloseable,Closeable和Flushable接口 jdk1.7新增，支持try-catch-resources语法 123456789101112131415161718package io;import java.io.BufferedReader;import java.io.File;import java.io.FileInputStream;import java.io.IOException;import java.io.InputStreamReader;public class InputStreamReaderTest &#123; public static void main(String[] args) &#123; try(BufferedReader reader = new BufferedReader(new InputStreamReader( new FileInputStream(new File(&quot;/home/fuhd/text&quot;)),&quot;UTF8&quot;),1024))&#123; System.out.println(reader.readLine()); //这里直接读一行 &#125;catch(IOException e)&#123; e.printStackTrace(); &#125; &#125;&#125; 说明Connection是支持try-catch-resources语法的 回来接着想，connection关闭的时机是什么呢]]></content>
   </entry>
   <entry>
     <title><![CDATA[RDBMS]]></title>
@@ -297,17 +307,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[DIY Cluster]]></title>
-    <url>%2F2018%2F12%2F04%2FDIY-cluster%2F</url>
-    <content type="text"><![CDATA[需求单机应用分布式执行 akka cluster单台机器也可用dispatcher提高机器利用率,这是后话，先按照要求做出一个集群来 desc不同于actor点对点的交互，而是有独特的 akka cluster机制 集群定义： 维基百科上的定义是 “计算机集群由一系列间接或直接连接的计算机组成,这些计算机共同完成工作,从很多角度上来说,可以将这些计算机看作是单个系统。具体到本章中对于集群的定义,我们可以认为一个集群就是一组 机器(也可能是虚拟机),我们将这些机器称作节点(node)或是成员(member),同一个组中的所有节点遵循某个协议。 巨型单体服务vs微服务Martin Fowler的观点： 1. 当团队较小，开发的应用程序也比较小的时候，建议使用单体应用，随着应用程序变大，团队内的开发人员变多时，可以试着查分单体为微服务。 2. 当查分单体应用时，如果没有在开发单体时的经验，很可能把错误的部分拆分出去 一旦有了些在生产环境中运行系统的经验和数据,要把哪个部分分离出来才能够在 新增功能时带来性能和团队开发速度的好处就会比较清楚了。开始部署微服务之后,我 们就可以用一种非平衡的方式对负载更高的服务进行扩展,给应用程序中使用更多的部 分分配更大的服务器集群。 集群定义集群就是一组可以相互通信的服务器必须的两个条件： 失败发现 以及使得集群中的所有成员最终能够提供一致的视图(什么意思) 失败检测节点基于能否获得其他节点的响应来确定节点是否可用 akka中，每个节点仅仅检测附近的节点，以节省网络开销，提高效率 通过gossip协议达到最终一致思考一下失败检测的处理,集群中的每个节点和它的邻居节点互相交换已知的状态。接着,这些邻居节点再将已知的状态传递给它们的“邻居”,以此往复,直到某个节点的已知状态传递给了集群中的所有成员。节点会仔细计算并得到集群中其他成员的状态 CAPC一致性 A可用性 p分区容错性 CAP理论的妥协分布式系统只能选择满足其中两个 使用Akka Cluster 构建系统Akka Cluster 基于 Akka Remoting,解决了实际应用中的高可用性等问题 场景比较简单，可以直接使用Akka Remoting 来构建系统的alpha版本官网上提供了akka-samples-remote-scala的例子，先学习一下 通读第一遍 看了下look up 的例子，真是不错，看来以后研究开源框架，还是要直接上官网看文档 原始人：ssh太原始了，慎重 研究了devops工具，听人劝，使用ansible更可贵的是ansible包含了对aws的支持]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>cluster</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
     <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛): BWH1ZBPVK（6.00%） bandwagon官网购买vps,支持支付宝(alipay),有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server推荐blog 配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务 1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf: 123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
@@ -317,6 +316,17 @@
       <tags>
         <tag>Bandwagon</tag>
         <tag>shadowsocks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[DIY Cluster]]></title>
+    <url>%2F2018%2F12%2F04%2FDIY-cluster%2F</url>
+    <content type="text"><![CDATA[需求单机应用分布式执行 akka cluster单台机器也可用dispatcher提高机器利用率,这是后话，先按照要求做出一个集群来 desc不同于actor点对点的交互，而是有独特的 akka cluster机制 集群定义： 维基百科上的定义是 “计算机集群由一系列间接或直接连接的计算机组成,这些计算机共同完成工作,从很多角度上来说,可以将这些计算机看作是单个系统。具体到本章中对于集群的定义,我们可以认为一个集群就是一组 机器(也可能是虚拟机),我们将这些机器称作节点(node)或是成员(member),同一个组中的所有节点遵循某个协议。 巨型单体服务vs微服务Martin Fowler的观点： 1. 当团队较小，开发的应用程序也比较小的时候，建议使用单体应用，随着应用程序变大，团队内的开发人员变多时，可以试着查分单体为微服务。 2. 当查分单体应用时，如果没有在开发单体时的经验，很可能把错误的部分拆分出去 一旦有了些在生产环境中运行系统的经验和数据,要把哪个部分分离出来才能够在 新增功能时带来性能和团队开发速度的好处就会比较清楚了。开始部署微服务之后,我 们就可以用一种非平衡的方式对负载更高的服务进行扩展,给应用程序中使用更多的部 分分配更大的服务器集群。 集群定义集群就是一组可以相互通信的服务器必须的两个条件： 失败发现 以及使得集群中的所有成员最终能够提供一致的视图(什么意思) 失败检测节点基于能否获得其他节点的响应来确定节点是否可用 akka中，每个节点仅仅检测附近的节点，以节省网络开销，提高效率 通过gossip协议达到最终一致思考一下失败检测的处理,集群中的每个节点和它的邻居节点互相交换已知的状态。接着,这些邻居节点再将已知的状态传递给它们的“邻居”,以此往复,直到某个节点的已知状态传递给了集群中的所有成员。节点会仔细计算并得到集群中其他成员的状态 CAPC一致性 A可用性 p分区容错性 CAP理论的妥协分布式系统只能选择满足其中两个 使用Akka Cluster 构建系统Akka Cluster 基于 Akka Remoting,解决了实际应用中的高可用性等问题 场景比较简单，可以直接使用Akka Remoting 来构建系统的alpha版本官网上提供了akka-samples-remote-scala的例子，先学习一下 通读第一遍 看了下look up 的例子，真是不错，看来以后研究开源框架，还是要直接上官网看文档 原始人：ssh太原始了，慎重 研究了devops工具，听人劝，使用ansible更可贵的是ansible包含了对aws的支持]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>cluster</tag>
       </tags>
   </entry>
   <entry>
@@ -330,19 +340,6 @@
         <tag>scala</tag>
         <tag>Future</tag>
         <tag>Promise</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[H2数据库笔记]]></title>
-    <url>%2F2018%2F12%2F04%2FH2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[H2工具类： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &#123; private var server: Server = null; private var webServer: Server = null; def start(): Unit = &#123; try &#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;, &quot;&quot;, true, true) &#125; catch &#123; case e: Throwable =&gt; &#125; try &#123; server = Server.createTcpServer(&quot;-tcp&quot;, &quot;-tcpAllowOthers&quot;, &quot;-tcpPort&quot;, ProConfig.h2DatabaseTcpPort.toString).start() log.info(&quot;server status: &quot; + server.getStatus) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def startWebConsole(openBrowser: Boolean = false): Unit = &#123; try &#123; if (webServer == null) &#123; webServer = Server.createWebServer(&quot;-web&quot;, &quot;-webAllowOthers&quot;, &quot;-webPort&quot;, ProConfig.h2DatabaseWebPort.toString).start() &#125; log.info(&quot;webServerStatus&quot; + webServer.getStatus) if (openBrowser) Server.openBrowser(s&quot;http://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseWebPort&#125;&quot;) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def stop(): Unit = &#123; def shutdownServer(server: Server): Unit = &#123; try &#123; server match &#123; case s if s != null =&gt; s.stop() case _ =&gt; log.info(&quot;H2 server did not start&quot;) &#125; &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; shutdownServer(server) shutdownServer(webServer) try&#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;,&quot;&quot;,true,true) log.debug(&quot;serverStatus: &quot;+server.getStatus) &#125;catch &#123; case e:Throwable =&gt; log.error(e.getMessage,e) &#125; &#125;&#125;object H2Test extends App &#123; H2Database.start() Thread.sleep(10000) H2Database.stop()&#125; JDBC开启H2数据库后可按照JDBC 正常连接 CSVWRITE: 导出表成为 CSV 文件1CALL CSVWRITE(&apos;/home/xxhbak/FEATURECONF.csv&apos;, &apos;SELECT * FROM FEATURECONF&apos;); CSVREAD:向表导入CSV文件使用数据库读取CSV文件 CSVREAD使用: 1SELECT * FROM CSVREAD(&apos;test.csv&apos;); Another option is to use INSERT INTO … SELECT. 123CREATE TABLE TEST AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255)) AS SELECT * FROM CSVREAD(&apos;test.csv&apos;); Please note for performance reason, CSVREAD should not be used inside a join. Instead, import the data first (possibly into a temporary table), create the required indexes if necessary, and then query this table. 参考 示例，亲测 CALL CSVREAD(‘/home/xd/us.csv’, ‘SELECT * FROM us ‘);insert into us (SELECT * FROM CSVREAD(‘/home/xd/USERCASERESULT.csv’,NULL,’UTF-8’,’|’));]]></content>
-      <categories>
-        <category>数据存储处理 - database</category>
-      </categories>
-      <tags>
-        <tag>database</tag>
-        <tag>H2</tag>
-        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -368,16 +365,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[https Certificate配置]]></title>
-    <url>%2F2018%2F12%2F04%2FHttps%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[用在aliyun上申请到的https Certificate配置到akka-http服务器上，并将应用部署到aws ec2上 certificate证书是同事发给我的，是在aliyun上申请的，绑定了公司的域名，只能运行在配置了公司域名（二级、三级、、、）的服务器上，也就是说不能本地调试，略麻烦 1-rw-rw-r-- 1 xxh xxh 4083 12月 6 17:22 214043592950638.zip unzip 后是两个文件，一个是.key文件即私钥文件，另一个是.pem文件即证书文件 12-rw-rw-r-- 1 xxh xxh 1675 6月 20 17:36 214043592950638.key-rw-rw-r-- 1 xxh xxh 3892 6月 20 17:36 214043592950638.pem 生成.pfx文件12openssl pkcs12 -export -out 214043592950638.pfx -inkey214043592950638.key -in 214043592950638.pem 这时会提示我们输入password输入密码并确认后便生成了下面的.pfx文件-rw-rw-r-- 1 xxh xxh 4437 12月 7 09:28 214043592950638.pfx pfx证书安装我用的是sbt构建app的，所以把pfx文件放入resources目录中 webserver编写： 12345678910111213141516171819202122232425262728293031323334353637383940object WebServer extends LogSupport&#123; implicit val system = ActorSystem() implicit val mat = ActorMaterializer() implicit val dispatcher = system.dispatcher def main(args: Array[String]): Unit = &#123; // Manual HTTPS configuration val password: Array[Char] = &quot;mima&quot;.toCharArray val ks: KeyStore = KeyStore.getInstance(&quot;PKCS12&quot;) val keystore: InputStream = getClass.getClassLoader.getResourceAsStream(&quot;214043592950638.pfx&quot;) require(keystore != null, &quot;Keystore required!&quot;) ks.load(keystore, password) val keyManagerFactory: KeyManagerFactory = KeyManagerFactory.getInstance(&quot;SunX509&quot;) keyManagerFactory.init(ks, password) val tmf: TrustManagerFactory = TrustManagerFactory.getInstance(&quot;SunX509&quot;) tmf.init(ks) val sslContext: SSLContext = SSLContext.getInstance(&quot;TLS&quot;) sslContext.init(keyManagerFactory.getKeyManagers, tmf.getTrustManagers, new SecureRandom) val https: HttpsConnectionContext = ConnectionContext.https(sslContext) val routes: Route = path(&quot;test&quot;)&#123; get &#123; logger.info(&quot;response hello&quot;) complete(&quot;Hello world!&quot;) &#125; &#125; // sets default context to HTTPS – all Http() bound servers for this ActorSystem will use HTTPS from now on Http().setDefaultServerHttpContext(https) Http().bindAndHandle(routes, &quot;0.0.0.0&quot;, 443, connectionContext = https) logger.info(&quot;WebServer start&quot;) &#125;&#125; test上文提到过，必须在绑定域名的服务器上才能使用该证书，所以上传到ec2服务器上测试，记得开启443的入站端口 ps:我不小心将routes 放到了Http()绑定之后，出现了空指针异常，调整routes位置后ok rel 知乎相关问题 阿里云服务器绑定https]]></content>
+    <title><![CDATA[H2数据库笔记]]></title>
+    <url>%2F2018%2F12%2F04%2FH2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[H2工具类： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &#123; private var server: Server = null; private var webServer: Server = null; def start(): Unit = &#123; try &#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;, &quot;&quot;, true, true) &#125; catch &#123; case e: Throwable =&gt; &#125; try &#123; server = Server.createTcpServer(&quot;-tcp&quot;, &quot;-tcpAllowOthers&quot;, &quot;-tcpPort&quot;, ProConfig.h2DatabaseTcpPort.toString).start() log.info(&quot;server status: &quot; + server.getStatus) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def startWebConsole(openBrowser: Boolean = false): Unit = &#123; try &#123; if (webServer == null) &#123; webServer = Server.createWebServer(&quot;-web&quot;, &quot;-webAllowOthers&quot;, &quot;-webPort&quot;, ProConfig.h2DatabaseWebPort.toString).start() &#125; log.info(&quot;webServerStatus&quot; + webServer.getStatus) if (openBrowser) Server.openBrowser(s&quot;http://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseWebPort&#125;&quot;) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def stop(): Unit = &#123; def shutdownServer(server: Server): Unit = &#123; try &#123; server match &#123; case s if s != null =&gt; s.stop() case _ =&gt; log.info(&quot;H2 server did not start&quot;) &#125; &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; shutdownServer(server) shutdownServer(webServer) try&#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;,&quot;&quot;,true,true) log.debug(&quot;serverStatus: &quot;+server.getStatus) &#125;catch &#123; case e:Throwable =&gt; log.error(e.getMessage,e) &#125; &#125;&#125;object H2Test extends App &#123; H2Database.start() Thread.sleep(10000) H2Database.stop()&#125; JDBC开启H2数据库后可按照JDBC 正常连接 CSVWRITE: 导出表成为 CSV 文件1CALL CSVWRITE(&apos;/home/xxhbak/FEATURECONF.csv&apos;, &apos;SELECT * FROM FEATURECONF&apos;); CSVREAD:向表导入CSV文件使用数据库读取CSV文件 CSVREAD使用: 1SELECT * FROM CSVREAD(&apos;test.csv&apos;); Another option is to use INSERT INTO … SELECT. 123CREATE TABLE TEST AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255)) AS SELECT * FROM CSVREAD(&apos;test.csv&apos;); Please note for performance reason, CSVREAD should not be used inside a join. Instead, import the data first (possibly into a temporary table), create the required indexes if necessary, and then query this table. 参考 示例，亲测 CALL CSVREAD(‘/home/xd/us.csv’, ‘SELECT * FROM us ‘);insert into us (SELECT * FROM CSVREAD(‘/home/xd/USERCASERESULT.csv’,NULL,’UTF-8’,’|’));]]></content>
       <categories>
-        <category>服务器端 - web开发</category>
+        <category>数据存储处理 - database</category>
       </categories>
       <tags>
-        <tag>https</tag>
-        <tag>Certificate配置</tag>
-        <tag>webapp</tag>
+        <tag>database</tag>
+        <tag>H2</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -389,6 +386,31 @@
       </categories>
       <tags>
         <tag>Hbase</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用Http小记]]></title>
+    <url>%2F2018%2F12%2F04%2FHttp%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[Http调试工具Postman使用 Postman Postman测试接口之JSON结构化数据提交 Postman使用详解 JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging dataJSON is text,written with JavaScript object notationJSONw3school Http learning这篇博客总结的不错Http协议，超文本传输协议（HyperText Transfer P rotocol）客户端请求消息格式： 服务器端响应消息格式： 平常主要用到的请求方法只有：GET和POSTGET 方法：请求指定的页面信息，并返回实体主体 GET 请求可被缓存 GET 请求保留在浏览器历史记录中 GET 请求可被收藏为书签 GET 请求不应在处理敏感数据时使用 GET 请求有长度限制 GET 请求只应当用于取回数据POST 方法：向指定的资源提交表单或者文件，数据包含在请求体中，POST请求会导致新资源的建立或者原有资源的更改。 POST 请求不会被缓存 POST 请求不会保留在浏览器历史记录中 POST 不能被收藏为书签 POST 请求对数据长度没有要求HTTP 方法：GET 对比 POST四种POST请求 RESTful架构理解RESTful架构 REST: resource representation state transfer]]></content>
+      <categories>
+        <category>服务器端 - web开发</category>
+      </categories>
+      <tags>
+        <tag>http</tag>
+        <tag>webapp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[https Certificate配置]]></title>
+    <url>%2F2018%2F12%2F04%2FHttps%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[用在aliyun上申请到的https Certificate配置到akka-http服务器上，并将应用部署到aws ec2上 certificate证书是同事发给我的，是在aliyun上申请的，绑定了公司的域名，只能运行在配置了公司域名（二级、三级、、、）的服务器上，也就是说不能本地调试，略麻烦 1-rw-rw-r-- 1 xxh xxh 4083 12月 6 17:22 214043592950638.zip unzip 后是两个文件，一个是.key文件即私钥文件，另一个是.pem文件即证书文件 12-rw-rw-r-- 1 xxh xxh 1675 6月 20 17:36 214043592950638.key-rw-rw-r-- 1 xxh xxh 3892 6月 20 17:36 214043592950638.pem 生成.pfx文件12openssl pkcs12 -export -out 214043592950638.pfx -inkey214043592950638.key -in 214043592950638.pem 这时会提示我们输入password输入密码并确认后便生成了下面的.pfx文件-rw-rw-r-- 1 xxh xxh 4437 12月 7 09:28 214043592950638.pfx pfx证书安装我用的是sbt构建app的，所以把pfx文件放入resources目录中 webserver编写： 12345678910111213141516171819202122232425262728293031323334353637383940object WebServer extends LogSupport&#123; implicit val system = ActorSystem() implicit val mat = ActorMaterializer() implicit val dispatcher = system.dispatcher def main(args: Array[String]): Unit = &#123; // Manual HTTPS configuration val password: Array[Char] = &quot;mima&quot;.toCharArray val ks: KeyStore = KeyStore.getInstance(&quot;PKCS12&quot;) val keystore: InputStream = getClass.getClassLoader.getResourceAsStream(&quot;214043592950638.pfx&quot;) require(keystore != null, &quot;Keystore required!&quot;) ks.load(keystore, password) val keyManagerFactory: KeyManagerFactory = KeyManagerFactory.getInstance(&quot;SunX509&quot;) keyManagerFactory.init(ks, password) val tmf: TrustManagerFactory = TrustManagerFactory.getInstance(&quot;SunX509&quot;) tmf.init(ks) val sslContext: SSLContext = SSLContext.getInstance(&quot;TLS&quot;) sslContext.init(keyManagerFactory.getKeyManagers, tmf.getTrustManagers, new SecureRandom) val https: HttpsConnectionContext = ConnectionContext.https(sslContext) val routes: Route = path(&quot;test&quot;)&#123; get &#123; logger.info(&quot;response hello&quot;) complete(&quot;Hello world!&quot;) &#125; &#125; // sets default context to HTTPS – all Http() bound servers for this ActorSystem will use HTTPS from now on Http().setDefaultServerHttpContext(https) Http().bindAndHandle(routes, &quot;0.0.0.0&quot;, 443, connectionContext = https) logger.info(&quot;WebServer start&quot;) &#125;&#125; test上文提到过，必须在绑定域名的服务器上才能使用该证书，所以上传到ec2服务器上测试，记得开启443的入站端口 ps:我不小心将routes 放到了Http()绑定之后，出现了空指针异常，调整routes位置后ok rel 知乎相关问题 阿里云服务器绑定https]]></content>
+      <categories>
+        <category>服务器端 - web开发</category>
+      </categories>
+      <tags>
+        <tag>webapp</tag>
+        <tag>https</tag>
+        <tag>Certificate配置</tag>
       </tags>
   </entry>
   <entry>
@@ -404,15 +426,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[使用Http小记]]></title>
-    <url>%2F2018%2F12%2F04%2FHttp%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[Http调试工具Postman使用 Postman Postman测试接口之JSON结构化数据提交 Postman使用详解 JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging dataJSON is text,written with JavaScript object notationJSONw3school Http learning这篇博客总结的不错Http协议，超文本传输协议（HyperText Transfer P rotocol）客户端请求消息格式： 服务器端响应消息格式： 平常主要用到的请求方法只有：GET和POSTGET 方法：请求指定的页面信息，并返回实体主体 GET 请求可被缓存 GET 请求保留在浏览器历史记录中 GET 请求可被收藏为书签 GET 请求不应在处理敏感数据时使用 GET 请求有长度限制 GET 请求只应当用于取回数据POST 方法：向指定的资源提交表单或者文件，数据包含在请求体中，POST请求会导致新资源的建立或者原有资源的更改。 POST 请求不会被缓存 POST 请求不会保留在浏览器历史记录中 POST 不能被收藏为书签 POST 请求对数据长度没有要求HTTP 方法：GET 对比 POST四种POST请求 RESTful架构理解RESTful架构 REST: resource representation state transfer]]></content>
+    <title><![CDATA[Intellij IDEA 快捷键整理]]></title>
+    <url>%2F2018%2F12%2F04%2FIntellij%20IDEA%20%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86%2F</url>
+    <content type="text"><![CDATA[【常规】 Ctrl+Shift + Enter，语句完成 “！”，否定完成，输入表达式时按 “！”键 Ctrl+E，最近的文件 Ctrl+Shift+E，最近更改的文件 Shift+Click，可以关闭文件 Ctrl+[ OR ]，可以跑到大括号的开头与结尾 Ctrl+F12，可以显示当前文件的结构 Ctrl+F7，可以查询当前元素在当前文件中的引用，然后按 F3 可以选择 Ctrl+N，可以快速打开类 Ctrl+Shift+N，可以快速打开文件 Alt+Q，可以看到当前方法的声明 Ctrl+P，可以显示参数信息 Ctrl+Shift+Insert，可以选择剪贴板内容并插入 Alt+Insert，可以生成构造器/Getter/Setter等 Ctrl+Alt+V，可以引入变量。例如：new String(); 自动导入变量定义 Ctrl+Alt+T，可以把代码包在一个块内，例如：try/catch Ctrl+Enter，导入包，自动修正 Ctrl+Alt+L，格式化代码 Ctrl+Alt+I，将选中的代码进行自动缩进编排，这个功能在编辑 JSP 文件时也可以工作 Ctrl+Alt+O，优化导入的类和包 Ctrl+R，替换文本 Ctrl+F，查找文本 Ctrl+Shift+Space，自动补全代码 Ctrl+空格，代码提示（与系统输入法快捷键冲突） Ctrl+Shift+Alt+N，查找类中的方法或变量 Alt+Shift+C，最近的更改 Alt+Shift+Up/Down，上/下移一行 Shift+F6，重构 - 重命名 Ctrl+X，删除行 Ctrl+D，复制行 Ctrl+/或Ctrl+Shift+/，注释（//或者/**/） Ctrl+J，自动代码（例如：serr） Ctrl+Alt+J，用动态模板环绕 Ctrl+H，显示类结构图（类的继承层次） Ctrl+Q，显示注释文档 Alt+F1，查找代码所在位置 Alt+1，快速打开或隐藏工程面板 Ctrl+Alt+left/right，返回至上次浏览的位置 Alt+left/right，切换代码视图 Alt+Up/Down，在方法间快速移动定位 Ctrl+Shift+Up/Down，向上/下移动语句 F2 或 Shift+F2，高亮错误或警告快速定位 Tab，代码标签输入完成后，按 Tab，生成代码 Ctrl+Shift+F7，高亮显示所有该文本，按 Esc 高亮消失 Alt+F3，逐个往下查找相同文本，并高亮显示 Ctrl+Up/Down，光标中转到第一行或最后一行下 Ctrl+B/Ctrl+Click，快速打开光标处的类或方法（跳转到定义处） Ctrl+Alt+B，跳转到方法实现处 Ctrl+Shift+Backspace，跳转到上次编辑的地方 Ctrl+O，重写方法 Ctrl+Alt+Space，类名自动完成 Ctrl+Alt+Up/Down，快速跳转搜索结果 Ctrl+Shift+J，整合两行 Alt+F8，计算变量值 Ctrl+Shift+V，可以将最近使用的剪贴板内容选择插入到文本 Ctrl+Alt+Shift+V，简单粘贴 Shift+Esc，不仅可以把焦点移到编辑器上，而且还可以隐藏当前（或最后活动的）工具窗口 F12，把焦点从编辑器移到最近使用的工具窗口 Shift+F1，要打开编辑器光标字符处使用的类或者方法 Java 文档的浏览器 Ctrl+W，可以选择单词继而语句继而行继而函数 Ctrl+Shift+W，取消选择光标所在词 Alt+F7，查找整个工程中使用地某一个类、方法或者变量的位置 Ctrl+I，实现方法 Ctrl+Shift+U，大小写转化 Ctrl+Y，删除当前行 Shift+Enter，向下插入新行 psvm/sout，main/System.out.println(); Ctrl+J，查看更多 Ctrl+Shift+F，全局查找 Ctrl+F，查找/Shift+F3，向上查找/F3，向下查找 Ctrl+Shift+S，高级搜索 Ctrl+U，转到父类 Ctrl+Alt+S，打开设置对话框 Alt+Shift+Inert，开启/关闭列选择模式 Ctrl+Alt+Shift+S，打开当前项目/模块属性 Ctrl+G，定位行 Alt+Home，跳转到导航栏 Ctrl+Enter，上插一行 Ctrl+Backspace，按单词删除 Ctrl+&quot;+/-&quot;，当前方法展开、折叠 Ctrl+Shift+&quot;+/-&quot;，全部展开、折叠【调试部分、编译】 Ctrl+F2，停止 Alt+Shift+F9，选择 Debug Alt+Shift+F10，选择 Run Ctrl+Shift+F9，编译 Ctrl+Shift+F10，运行 Ctrl+Shift+F8，查看断点 F8，步过 F7，步入 Shift+F7，智能步入 Shift+F8，步出 Alt+Shift+F8，强制步过 Alt+Shift+F7，强制步入 Alt+F9，运行至光标处 Ctrl+Alt+F9，强制运行至光标处 F9，恢复程序 Alt+F10，定位到断点 Ctrl+F8，切换行断点 Ctrl+F9，生成项目 Alt+1，项目 Alt+2，收藏 Alt+6，TODO Alt+7，结构 Ctrl+Shift+C，复制路径 Ctrl+Alt+Shift+C，复制引用，必须选择类名 Ctrl+Alt+Y，同步 Ctrl+~，快速切换方案（界面外观、代码风格、快捷键映射等菜单） Shift+F12，还原默认布局 Ctrl+Shift+F12，隐藏/恢复所有窗口 Ctrl+F4，关闭 Ctrl+Shift+F4，关闭活动选项卡 Ctrl+Tab，转到下一个拆分器 Ctrl+Shift+Tab，转到上一个拆分器【重构】 Ctrl+Alt+Shift+T，弹出重构菜单 Shift+F6，重命名 F6，移动 F5，复制 Alt+Delete，安全删除 Ctrl+Alt+N，内联【查找】 Ctrl+F，查找 Ctrl+R，替换 F3，查找下一个 Shift+F3，查找上一个 Ctrl+Shift+F，在路径中查找 Ctrl+Shift+R，在路径中替换 Ctrl+Shift+S，搜索结构 Ctrl+Shift+M，替换结构 Alt+F7，查找用法 Ctrl+Alt+F7，显示用法 Ctrl+F7，在文件中查找用法 Ctrl+Shift+F7，在文件中高亮显示用法【VCS】 Alt+~，VCS 操作菜单 Ctrl+K，提交更改 Ctrl+T，更新项目 Ctrl+Alt+Shift+D，显示变化]]></content>
       <categories>
-        <category>服务器端 - web开发</category>
+        <category>工欲善其事，必先利其器</category>
       </categories>
       <tags>
-        <tag>webapp</tag>
-        <tag>http</tag>
+        <tag>IDEA</tag>
+        <tag>IDE</tag>
       </tags>
   </entry>
   <entry>
@@ -441,15 +463,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Intellij IDEA 快捷键整理]]></title>
-    <url>%2F2018%2F12%2F04%2FIntellij%20IDEA%20%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86%2F</url>
-    <content type="text"><![CDATA[【常规】 Ctrl+Shift + Enter，语句完成 “！”，否定完成，输入表达式时按 “！”键 Ctrl+E，最近的文件 Ctrl+Shift+E，最近更改的文件 Shift+Click，可以关闭文件 Ctrl+[ OR ]，可以跑到大括号的开头与结尾 Ctrl+F12，可以显示当前文件的结构 Ctrl+F7，可以查询当前元素在当前文件中的引用，然后按 F3 可以选择 Ctrl+N，可以快速打开类 Ctrl+Shift+N，可以快速打开文件 Alt+Q，可以看到当前方法的声明 Ctrl+P，可以显示参数信息 Ctrl+Shift+Insert，可以选择剪贴板内容并插入 Alt+Insert，可以生成构造器/Getter/Setter等 Ctrl+Alt+V，可以引入变量。例如：new String(); 自动导入变量定义 Ctrl+Alt+T，可以把代码包在一个块内，例如：try/catch Ctrl+Enter，导入包，自动修正 Ctrl+Alt+L，格式化代码 Ctrl+Alt+I，将选中的代码进行自动缩进编排，这个功能在编辑 JSP 文件时也可以工作 Ctrl+Alt+O，优化导入的类和包 Ctrl+R，替换文本 Ctrl+F，查找文本 Ctrl+Shift+Space，自动补全代码 Ctrl+空格，代码提示（与系统输入法快捷键冲突） Ctrl+Shift+Alt+N，查找类中的方法或变量 Alt+Shift+C，最近的更改 Alt+Shift+Up/Down，上/下移一行 Shift+F6，重构 - 重命名 Ctrl+X，删除行 Ctrl+D，复制行 Ctrl+/或Ctrl+Shift+/，注释（//或者/**/） Ctrl+J，自动代码（例如：serr） Ctrl+Alt+J，用动态模板环绕 Ctrl+H，显示类结构图（类的继承层次） Ctrl+Q，显示注释文档 Alt+F1，查找代码所在位置 Alt+1，快速打开或隐藏工程面板 Ctrl+Alt+left/right，返回至上次浏览的位置 Alt+left/right，切换代码视图 Alt+Up/Down，在方法间快速移动定位 Ctrl+Shift+Up/Down，向上/下移动语句 F2 或 Shift+F2，高亮错误或警告快速定位 Tab，代码标签输入完成后，按 Tab，生成代码 Ctrl+Shift+F7，高亮显示所有该文本，按 Esc 高亮消失 Alt+F3，逐个往下查找相同文本，并高亮显示 Ctrl+Up/Down，光标中转到第一行或最后一行下 Ctrl+B/Ctrl+Click，快速打开光标处的类或方法（跳转到定义处） Ctrl+Alt+B，跳转到方法实现处 Ctrl+Shift+Backspace，跳转到上次编辑的地方 Ctrl+O，重写方法 Ctrl+Alt+Space，类名自动完成 Ctrl+Alt+Up/Down，快速跳转搜索结果 Ctrl+Shift+J，整合两行 Alt+F8，计算变量值 Ctrl+Shift+V，可以将最近使用的剪贴板内容选择插入到文本 Ctrl+Alt+Shift+V，简单粘贴 Shift+Esc，不仅可以把焦点移到编辑器上，而且还可以隐藏当前（或最后活动的）工具窗口 F12，把焦点从编辑器移到最近使用的工具窗口 Shift+F1，要打开编辑器光标字符处使用的类或者方法 Java 文档的浏览器 Ctrl+W，可以选择单词继而语句继而行继而函数 Ctrl+Shift+W，取消选择光标所在词 Alt+F7，查找整个工程中使用地某一个类、方法或者变量的位置 Ctrl+I，实现方法 Ctrl+Shift+U，大小写转化 Ctrl+Y，删除当前行 Shift+Enter，向下插入新行 psvm/sout，main/System.out.println(); Ctrl+J，查看更多 Ctrl+Shift+F，全局查找 Ctrl+F，查找/Shift+F3，向上查找/F3，向下查找 Ctrl+Shift+S，高级搜索 Ctrl+U，转到父类 Ctrl+Alt+S，打开设置对话框 Alt+Shift+Inert，开启/关闭列选择模式 Ctrl+Alt+Shift+S，打开当前项目/模块属性 Ctrl+G，定位行 Alt+Home，跳转到导航栏 Ctrl+Enter，上插一行 Ctrl+Backspace，按单词删除 Ctrl+&quot;+/-&quot;，当前方法展开、折叠 Ctrl+Shift+&quot;+/-&quot;，全部展开、折叠【调试部分、编译】 Ctrl+F2，停止 Alt+Shift+F9，选择 Debug Alt+Shift+F10，选择 Run Ctrl+Shift+F9，编译 Ctrl+Shift+F10，运行 Ctrl+Shift+F8，查看断点 F8，步过 F7，步入 Shift+F7，智能步入 Shift+F8，步出 Alt+Shift+F8，强制步过 Alt+Shift+F7，强制步入 Alt+F9，运行至光标处 Ctrl+Alt+F9，强制运行至光标处 F9，恢复程序 Alt+F10，定位到断点 Ctrl+F8，切换行断点 Ctrl+F9，生成项目 Alt+1，项目 Alt+2，收藏 Alt+6，TODO Alt+7，结构 Ctrl+Shift+C，复制路径 Ctrl+Alt+Shift+C，复制引用，必须选择类名 Ctrl+Alt+Y，同步 Ctrl+~，快速切换方案（界面外观、代码风格、快捷键映射等菜单） Shift+F12，还原默认布局 Ctrl+Shift+F12，隐藏/恢复所有窗口 Ctrl+F4，关闭 Ctrl+Shift+F4，关闭活动选项卡 Ctrl+Tab，转到下一个拆分器 Ctrl+Shift+Tab，转到上一个拆分器【重构】 Ctrl+Alt+Shift+T，弹出重构菜单 Shift+F6，重命名 F6，移动 F5，复制 Alt+Delete，安全删除 Ctrl+Alt+N，内联【查找】 Ctrl+F，查找 Ctrl+R，替换 F3，查找下一个 Shift+F3，查找上一个 Ctrl+Shift+F，在路径中查找 Ctrl+Shift+R，在路径中替换 Ctrl+Shift+S，搜索结构 Ctrl+Shift+M，替换结构 Alt+F7，查找用法 Ctrl+Alt+F7，显示用法 Ctrl+F7，在文件中查找用法 Ctrl+Shift+F7，在文件中高亮显示用法【VCS】 Alt+~，VCS 操作菜单 Ctrl+K，提交更改 Ctrl+T，更新项目 Ctrl+Alt+Shift+D，显示变化]]></content>
+    <title><![CDATA[Java笔记]]></title>
+    <url>%2F2018%2F12%2F04%2FJava%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[设计模式单例模式java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍三种： 懒汉式单例、 饿汉式单例、 登记式单例。单例模式有以下特点： 单例类只能有一个实例。单例类必须自己创建自己的唯一实例。 单例类必须给所有其他对象提供这一实例。 单例模式确保某个类只有一个实例，而且自行实例化并向整个系统提供这个实例。 在计算机系统中，线程池、缓存、日志对象、对话框、打印机、显卡的驱动程序对象常被设计成单例。这些应用都或多或少具有资源管理器的功能。每台计算机可以有若干个打印机，但只能有一个Printer Spooler，以避免两个打印作业同时输出到打印机中。每台计算机可以有若干通信端口，系统应当集中管理这些通信端口，以避免一个通信端口同时被两个请求同时调用。总之，选择单例模式就是为了避免不一致状态，避免政出多头。 123456789101112131415161718192021222324252627282930懒汉模式：public class SingletonTest &#123; public static void main(String[] args)&#123; System.out.println(&quot;Singleton1.1:&quot;+Singleton1.getInstance()); System.out.println(&quot;Singleton1.2:&quot;+Singleton1.getInstance()); System.out.println(&quot;Singleton2.1:&quot;+Singleton2.getInstance()); System.out.println(&quot;Singleton2.2:&quot;+Singleton2.getInstance()); System.out.println(&quot;ton1:&quot;+new ton()); System.out.println(&quot;ton2:&quot;+new ton()); &#125;&#125;//懒汉模式：第一次是使用的时候实例化自己class Singleton1&#123; private static Singleton1 singleton1 = null; public static Singleton1 getInstance()&#123; if (singleton1 == null)&#123; singleton1 = new Singleton1(); &#125; return singleton1; &#125;&#125;//饱汉模式class Singleton2&#123; private static final Singleton2 singleton2 = new Singleton2(); public static Singleton2 getInstance()&#123; return singleton2; &#125;&#125; Java service domain dao 分层思路 鼓励使用service domain dao 分层设计理念； 第一：dao层操作表单，不涉及复杂逻辑，主要是表的增删改查操作，完全按照domain的要求来查询数据； 第二：domain层考虑业务逻辑，例如过滤条件，放行或者返回，以及数据的处理，为调用dao层做好准备，一个domain可以调用一个或者一组相关的dao层 第三：service 层调用一个或者一组domain层，主要是展现需要开放出去的接口，其中并不是所有的domain层都要在service层展现， 此外，主要接口需要对接受的参数要尽量的扩大化，也就是说可以容纳各种类型的参数的接入（object），然后再service 层做好转换，以备domain层使用。 正确的设计应该是，一个领域活动会聚合对应一个或一组DAO ，来完成一个领域活动。而一个服务可能包含两个领域活动， 比如一个转账的业务，对应两个领域活动。两个帐户的金额分别发生变化，需要操作一组领域活动，而每个活动需要操作很多表（调用多个DAO ）。 使用 接口方式可以实现系统之间的松耦合：一般定义： IUserService UserService IUserDomain UserDomain IUserDao UserSqlDao UserHbaseDao 使用接口可以有不同的实现类 ,不需要改代码，可以通过配置更改不同的实现类 Q:I need to learn the difference between the type of methods (in term of business logic) that should be inside the Domain, DAO and Service layers objects. For example, if I am building a small web application to create, edit and delete customers data, as far as I understand inside Domain layer object I should add methods that Get/Set Customers object properties, for example (getName, getDOB, setAddress, setPhone...etc). Now what I am trying to learn is what methods shall I put in DAO and Service layers objects. Thanks in advance for your time and efforts. A:Speaking generally (not Hibernate or Spring specific): The DAO layer contains queries and updates to save your domain layer into your datastore (usually a relational DB but doesn&apos;t have to be). Use interfaces to abstract your DAO away from the actual datastore. It doesn&apos;t happen often, but sometimes you want to change datastores (or use mocks to test your logic), and interfaces make that easier. This would have methods like &quot;save&quot;, &quot;getById&quot;, etc. The Service layer typically contains your business logic and orchestrates the interaction between the domain layer and the DAOs. It would have whatever methods make sense for your particular domain, like &quot;verifyBalance&quot;, or &quot;calculateTotalMileage&quot;.String使用String类中的compareTo（）方法比较。如：s1.compareTo(s2)但是这个方法有个缺点,就是要求两个参与比较的字符串的形式及长度必须相同才能够正确比较,否则,比较结果是错的 Java中设置classpath、path、JAVA_HOME的作用:Java中设置classpath、path、JAVA_HOME的作用]]></content>
       <categories>
-        <category>工欲善其事，必先利其器</category>
+        <category>编程语言 - java</category>
       </categories>
       <tags>
-        <tag>IDEA</tag>
-        <tag>IDE</tag>
+        <tag>笔记</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -464,15 +486,26 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Java笔记]]></title>
-    <url>%2F2018%2F12%2F04%2FJava%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[设计模式单例模式java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍三种： 懒汉式单例、 饿汉式单例、 登记式单例。单例模式有以下特点： 单例类只能有一个实例。单例类必须自己创建自己的唯一实例。 单例类必须给所有其他对象提供这一实例。 单例模式确保某个类只有一个实例，而且自行实例化并向整个系统提供这个实例。 在计算机系统中，线程池、缓存、日志对象、对话框、打印机、显卡的驱动程序对象常被设计成单例。这些应用都或多或少具有资源管理器的功能。每台计算机可以有若干个打印机，但只能有一个Printer Spooler，以避免两个打印作业同时输出到打印机中。每台计算机可以有若干通信端口，系统应当集中管理这些通信端口，以避免一个通信端口同时被两个请求同时调用。总之，选择单例模式就是为了避免不一致状态，避免政出多头。 123456789101112131415161718192021222324252627282930懒汉模式：public class SingletonTest &#123; public static void main(String[] args)&#123; System.out.println(&quot;Singleton1.1:&quot;+Singleton1.getInstance()); System.out.println(&quot;Singleton1.2:&quot;+Singleton1.getInstance()); System.out.println(&quot;Singleton2.1:&quot;+Singleton2.getInstance()); System.out.println(&quot;Singleton2.2:&quot;+Singleton2.getInstance()); System.out.println(&quot;ton1:&quot;+new ton()); System.out.println(&quot;ton2:&quot;+new ton()); &#125;&#125;//懒汉模式：第一次是使用的时候实例化自己class Singleton1&#123; private static Singleton1 singleton1 = null; public static Singleton1 getInstance()&#123; if (singleton1 == null)&#123; singleton1 = new Singleton1(); &#125; return singleton1; &#125;&#125;//饱汉模式class Singleton2&#123; private static final Singleton2 singleton2 = new Singleton2(); public static Singleton2 getInstance()&#123; return singleton2; &#125;&#125; Java service domain dao 分层思路 鼓励使用service domain dao 分层设计理念； 第一：dao层操作表单，不涉及复杂逻辑，主要是表的增删改查操作，完全按照domain的要求来查询数据； 第二：domain层考虑业务逻辑，例如过滤条件，放行或者返回，以及数据的处理，为调用dao层做好准备，一个domain可以调用一个或者一组相关的dao层 第三：service 层调用一个或者一组domain层，主要是展现需要开放出去的接口，其中并不是所有的domain层都要在service层展现， 此外，主要接口需要对接受的参数要尽量的扩大化，也就是说可以容纳各种类型的参数的接入（object），然后再service 层做好转换，以备domain层使用。 正确的设计应该是，一个领域活动会聚合对应一个或一组DAO ，来完成一个领域活动。而一个服务可能包含两个领域活动， 比如一个转账的业务，对应两个领域活动。两个帐户的金额分别发生变化，需要操作一组领域活动，而每个活动需要操作很多表（调用多个DAO ）。 使用 接口方式可以实现系统之间的松耦合：一般定义： IUserService UserService IUserDomain UserDomain IUserDao UserSqlDao UserHbaseDao 使用接口可以有不同的实现类 ,不需要改代码，可以通过配置更改不同的实现类 Q:I need to learn the difference between the type of methods (in term of business logic) that should be inside the Domain, DAO and Service layers objects. For example, if I am building a small web application to create, edit and delete customers data, as far as I understand inside Domain layer object I should add methods that Get/Set Customers object properties, for example (getName, getDOB, setAddress, setPhone...etc). Now what I am trying to learn is what methods shall I put in DAO and Service layers objects. Thanks in advance for your time and efforts. A:Speaking generally (not Hibernate or Spring specific): The DAO layer contains queries and updates to save your domain layer into your datastore (usually a relational DB but doesn&apos;t have to be). Use interfaces to abstract your DAO away from the actual datastore. It doesn&apos;t happen often, but sometimes you want to change datastores (or use mocks to test your logic), and interfaces make that easier. This would have methods like &quot;save&quot;, &quot;getById&quot;, etc. The Service layer typically contains your business logic and orchestrates the interaction between the domain layer and the DAOs. It would have whatever methods make sense for your particular domain, like &quot;verifyBalance&quot;, or &quot;calculateTotalMileage&quot;.String使用String类中的compareTo（）方法比较。如：s1.compareTo(s2)但是这个方法有个缺点,就是要求两个参与比较的字符串的形式及长度必须相同才能够正确比较,否则,比较结果是错的 Java中设置classpath、path、JAVA_HOME的作用:Java中设置classpath、path、JAVA_HOME的作用]]></content>
+    <title><![CDATA[Redis Learning]]></title>
+    <url>%2F2018%2F12%2F04%2FRedis%20Learning%2F</url>
+    <content type="text"><![CDATA[应用场景：redis 适用于小而热的数据 Redis应用场景 Redis作者谈Redis应用场景我们在应用redis的场景是 缓存将收到的post报文缓存下，然后批量插入redshift github上的scala版redis client官方推荐了好几款开源的scala 版客户端，都不知道选哪个比较好了，应该迅速读一遍scala 并发编程 Redis is an open source(BSD Licensed),in-memory data structure store,used as a database,cache,and message broker.It supports data structures such as strings,hashes,lists,sets,sorted sets with range queries,bitmaps,hyperloglogs and geospatial indexes with radius queries.build-in: replication Lua scripting LRU eviction transaction different levels of on-disk persistence provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster. You can run atomic operations on these types, like appending to a string; incrementing the value in a hash; pushing an element to a list; computing set intersection, union and difference; or getting the member with highest ranking in a sorted set. in-memory dataset: In order to achieve its outstanding performance, Redis works with an in-memory dataset. Depending on your use case, you can persist it either by dumping the dataset to disk every once in a while, or by appending each command to a log. Persistence can be optionally disabled, if you just need a feature-rich, networked, in-memory cache. no-blocking replication: Redis also supports trivial-to-setup master-slave asynchronous replication, with very fast non-blocking first synchronization, auto-reconnection with partial resynchronization on net split. transcation数据库事务彻底搞懂事务 6379-为何Redis选择它作为默认端口号？redis 使用服务器端／客户端架构的数据库架构通过client去连接redis服务端 我们可以通过redis-cli去连接redis数据库，这是学习测试redis最好的方法，这时redis-cli就是一个client 之前连接关系型数据库一般都是通过JDBC的方式连接的，这个redis是怎么连接上去的我暂时还没有搞清楚，官方推荐了很多类似与sdk的工具库，使用这些库可以很方便的连接redis， redis 持久化有两种方式做持久化，其一是RDB，定期备份数据库的状态；其二是AOF，记录数据库的相关命令优先使用AOF方式 使用list来存储数据，LPUSH mylist “1”// BRPOP mylist 0 取出最先放入的元素，每分钟生成一个key,同步数据只处理之前的key里面的数据做一个事务，保证该元素处理的原子性因为BRPOP 只能取出最后一个元素，所以应该使用BPOPLPUSH 散列算法(Hash Algorithm),又称哈希算法，杂凑算法，是从任意文件中创造小的数字[指纹]的方法。散列算法是一种以较短的信息来保证文件唯一性标志，这种标志与文件的每一个字节都相关，而且难以找到逆向规律。因此，当原有文件发生改变时，其标志值也会发生改变，从而告诉文件使用者当前文件已经不是你所需求的文件。 先举个例子。我们每个活在世上的人，为了能够参与各种社会活动，都需要一个用于识别自己的标志。也许你觉得名字或是身份证就足以代表你这个人，但是这种代表性非常脆弱，因为重名的人很多，身份证也可以伪造。最可靠的办法是把一个人的所有基因序列记录下来用来代表这个人，但显然，这样做并不实际。而指纹看上去是一种不错的选择，虽然一些专业组织仍然可以模拟某个人的指纹，但这种代价实在太高了。 而对于在互联网世界里传送的文件来说，如何标志一个文件的身份同样重要。比如说我们下载一个文件，文件的下载过程中会经过很多网络服务器、路由器的中转，如何保证这个文件就是我们所需要的呢？我们不可能去一一检测这个文件的每个字节，也不能简单地利用文件名、文件大小这些极容易伪装的信息，这时候，我们就需要一种指纹一样的标志来检查文件的可靠性，这种指纹就是我们现在所用的Hash算法(也叫散列算法)。 参考：Hash算法总结]]></content>
       <categories>
-        <category>编程语言 - java</category>
+        <category>数据存储处理 - database</category>
+      </categories>
+      <tags>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Shell笔记]]></title>
+    <url>%2F2018%2F12%2F04%2FShell%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[awk将数据put到hdfs,然后用hive组织的过程中，发现数据混乱，从某行开始全是NULL 将一行数据copy到idea中,按照逗号分割后，发现只有223(理论上是226)，用awk的NF处理文件，每行也是 226列 —&gt; 于是，使用awk 的 $17 打印开始乱的列，果然找到问题， 用navicat导出的数据，默认有一个‘N*’符号 ，这个符号可以用notepad++来识别并替换掉ps: 该工具导出的数据另一个坑是：不管什么类型的数据，导出来都是到这双引号，往hive中导入时，有数值型的就尿了 所有后来直接用了sqoop 这里用到了awk ,觉得这个工具还是很强大的 123awk -F &apos;,&apos; &apos;&#123;print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0 &quot;,分隔符:&quot; OFS&#125;&apos; xxx.csvawk -F &apos;,&apos; &apos;&#123;if(NF&lt;226)print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0&#125;&apos; ./xxx.csv awk -F &apos;,&apos; -v OFS=&quot;+++&quot; &apos;&#123;print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0&#125;&apos; ./xxx.csv awk 是一个强大的文本分析工具，相对与grep的查找，sed的编辑，awk在对其数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。linux awk命令详解awk分隔符awk ‘{pattern + action}’ {filenames} chkconfig 命令chkconfig命令主要用来更新（启动或停止）和查询系统服务的运行级信息。 谨记chkconfig不是立即自动禁止或激活一个服务，它只是简单的改变了符号连接。12345[root@fa ~]# chkconfig --list NetworkManagerNetworkManager 0:off 1:off 2:on 3:on 4:on 5:on 6:off[root@fa ~]# chkconfig NetworkManager off[root@fa ~]# chkconfig --list NetworkManagerNetworkManager 0:off 1:off 2:off 3:off 4:off 5:off 6:off 参考 curl get问题例如 url 为 http://mywebsite.com/index.PHP?a=1&amp;b=2&amp;c=3 web形式下访问url地址，使用$_GET是可以获取到所有的参数 然而在Linux下 curl http://mywebsite.com/index.php?a=1&amp;b=2&amp;c=3 $_GET只能获取到参数a 由于url中有&amp;，其他参数获取不到，在linux系统中&amp; 会使进程系统后台运行 必须对&amp;进行下转义才能$_GET获取到所有参数 curl http://mywebsite.com/index.php?a=1\&amp;b=2\&amp;c=3shell 时间 date 获取12[root48@vmaxverserver Qimingxing4AutoTestCoverageRate]$ date +%F-%T2016-10-20-10:20:41 参考 cron 表达式参考 等于/不等于/大于/小于 -eq //等于 -ne //不等于 -gt //大于 -lt //小于 ge //大于等于 le //小于等于 修改hostname:/etc/hosts 和 /etc/sysconfig/network 两个文件 升级中脚本：12345678910111213#!/bin/shscriptPath=$1sh /home/upgrade/shutdown.shcd $scriptPathfor i in *updating.shdohostName=echo $i|cut -d _ -f 1runAt=echo $i|cut -d _ -f 2|cut -d . -f 1sh /home/upgrade/upgrade.sh $hostName $runAt $scriptPath/$idonesh /home/upgrade/startup.sh linux grep命令//todo shell编程 for in 循环&amp; 后台执行scp 回显写入log：1234echo &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;ssh \$scpuser@\$sybaseip mkdir -p \$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;scp \$configFile \$scpuser@\$sybaseip:\$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;ssh \$scpuser@\$sybaseip chmod 777 -R \$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;exit&quot; &gt;&gt; $output 参考自 ————-_—————————————2015/8/31—————————_——————– 备份文件：123456789101112basedir=$(pwd) # 获取当前目录的绝对路径，并赋值给 basedirbakpath=/home/bak_netnumenif [ &quot;$bakpath&quot; ]; then #判断某个目录是否存在，（[] 内 左右空格不能少） rm -rf $bakpathfids=$(ls $basedir | grep -E &apos;vmax-app|vmax-data&apos;) #ls 某个目录，并用&quot;grep -E&quot; 查找 包含&quot;vamx-app&quot;或者&quot;vmax-data&quot;的项for s in $&#123;ds[@]&#125; #for 每一项，do ... do mkdir -p $bakpath/$s cp -r $s/database $bakpath/$s done shell dirname basename123456789101112131415161718[root@hadoopname ~]# clear[root@hadoopname ~]# lltotal 136-rw-------. 1 root root 2696 Jun 24 04:41 anaconda-ks.cfgdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Desktopdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Documentsdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Downloads-rwxr-xr-x. 1 root root 32 Dec 6 13:20 first-rw-r--r--. 1 root root 39935 Dec 5 17:38 i.log-rw-r--r--. 1 root root 39935 Jun 24 04:40 install.log-rw-r--r--. 1 root root 10175 Jun 24 04:38 install.log.syslogdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Musicdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Picturesdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Publicdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Templatesdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Videos[root@hadoopname ~]# pwd/root dirname: 取一个文件的存储路径，分两种情况 仅仅是个文件名的 12[root@hadoopname ~]# dirname first. 带绝对路径 123[root@hadoopname ~]# dirname /root/first/root[root@hadoopname ~]# basename:取一个文件的文件名想要去掉后缀名的话 要将 后缀名 做为参数加在后面 12345[root@hadoopname ~]# basename i.logi.log[root@hadoopname ~]# basename i.log logi.[root@hadoopname ~]#]]></content>
+      <categories>
+        <category>服务器端 - shell</category>
       </categories>
       <tags>
         <tag>笔记</tag>
-        <tag>Java</tag>
+        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -498,17 +531,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Redis Learning]]></title>
-    <url>%2F2018%2F12%2F04%2FRedis%20Learning%2F</url>
-    <content type="text"><![CDATA[应用场景：redis 适用于小而热的数据 Redis应用场景 Redis作者谈Redis应用场景我们在应用redis的场景是 缓存将收到的post报文缓存下，然后批量插入redshift github上的scala版redis client官方推荐了好几款开源的scala 版客户端，都不知道选哪个比较好了，应该迅速读一遍scala 并发编程 Redis is an open source(BSD Licensed),in-memory data structure store,used as a database,cache,and message broker.It supports data structures such as strings,hashes,lists,sets,sorted sets with range queries,bitmaps,hyperloglogs and geospatial indexes with radius queries.build-in: replication Lua scripting LRU eviction transaction different levels of on-disk persistence provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster. You can run atomic operations on these types, like appending to a string; incrementing the value in a hash; pushing an element to a list; computing set intersection, union and difference; or getting the member with highest ranking in a sorted set. in-memory dataset: In order to achieve its outstanding performance, Redis works with an in-memory dataset. Depending on your use case, you can persist it either by dumping the dataset to disk every once in a while, or by appending each command to a log. Persistence can be optionally disabled, if you just need a feature-rich, networked, in-memory cache. no-blocking replication: Redis also supports trivial-to-setup master-slave asynchronous replication, with very fast non-blocking first synchronization, auto-reconnection with partial resynchronization on net split. transcation数据库事务彻底搞懂事务 6379-为何Redis选择它作为默认端口号？redis 使用服务器端／客户端架构的数据库架构通过client去连接redis服务端 我们可以通过redis-cli去连接redis数据库，这是学习测试redis最好的方法，这时redis-cli就是一个client 之前连接关系型数据库一般都是通过JDBC的方式连接的，这个redis是怎么连接上去的我暂时还没有搞清楚，官方推荐了很多类似与sdk的工具库，使用这些库可以很方便的连接redis， redis 持久化有两种方式做持久化，其一是RDB，定期备份数据库的状态；其二是AOF，记录数据库的相关命令优先使用AOF方式 使用list来存储数据，LPUSH mylist “1”// BRPOP mylist 0 取出最先放入的元素，每分钟生成一个key,同步数据只处理之前的key里面的数据做一个事务，保证该元素处理的原子性因为BRPOP 只能取出最后一个元素，所以应该使用BPOPLPUSH 散列算法(Hash Algorithm),又称哈希算法，杂凑算法，是从任意文件中创造小的数字[指纹]的方法。散列算法是一种以较短的信息来保证文件唯一性标志，这种标志与文件的每一个字节都相关，而且难以找到逆向规律。因此，当原有文件发生改变时，其标志值也会发生改变，从而告诉文件使用者当前文件已经不是你所需求的文件。 先举个例子。我们每个活在世上的人，为了能够参与各种社会活动，都需要一个用于识别自己的标志。也许你觉得名字或是身份证就足以代表你这个人，但是这种代表性非常脆弱，因为重名的人很多，身份证也可以伪造。最可靠的办法是把一个人的所有基因序列记录下来用来代表这个人，但显然，这样做并不实际。而指纹看上去是一种不错的选择，虽然一些专业组织仍然可以模拟某个人的指纹，但这种代价实在太高了。 而对于在互联网世界里传送的文件来说，如何标志一个文件的身份同样重要。比如说我们下载一个文件，文件的下载过程中会经过很多网络服务器、路由器的中转，如何保证这个文件就是我们所需要的呢？我们不可能去一一检测这个文件的每个字节，也不能简单地利用文件名、文件大小这些极容易伪装的信息，这时候，我们就需要一种指纹一样的标志来检查文件的可靠性，这种指纹就是我们现在所用的Hash算法(也叫散列算法)。 参考：Hash算法总结]]></content>
-      <categories>
-        <category>数据存储处理 - database</category>
-      </categories>
-      <tags>
-        <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Spark-API-RDD]]></title>
     <url>%2F2018%2F12%2F04%2FSpark-RDD%2F</url>
     <content type="text"><![CDATA[spark version: Spark2.3.0 Spark Core首先看一张图: Combine SQL, streaming, and complex analytics. Spark powers a stack of libraries including SQL and DataFrames, MLlib for machine learning, GraphX, and Spark Streaming. You can combine these libraries seamlessly in the same application. spark-core: RDDsprak-sql: DataFrame,DataSetspark-streaming:spark-MLib:spark-GraphX: SparkContext我们的Spark App 如何同spark cluster 建立连接，答案就是SparkContext? sparkSession VS sparkContext 每个JVM只能存在一个sparkcontext 1val sparkContext = new SparkContext(&quot;spark://localhost:7077&quot;,&quot;idea&quot;) 还可以先构建SparkConf对象，其中设置好要连接的集群等参数，然后作为构建SparkContext对象的参数之一 SparkConfRDD从数据层次上看：RDD是spark的灵魂 Spark在数据层面提供的主要抽象就是RDD(弹性分布式数据集)，分布在集群不同节点的不同分区中的元素的集合，可以在这个数据集上使用各种并行算法 RDD的生成方式有两种： hadoop file system,或者是hadoop-supported file system Driver 程序中的scala 集合，比如Array RDD除了是对分布式数据集的抽象外，还包含了该RDD的由来，即血缘关系图，当出现错误时，RDD可以血缘关系图恢复 两个共享变量： broadcast variables accumulators]]></content>
@@ -519,18 +541,6 @@
         <tag>spark</tag>
         <tag>RDD</tag>
         <tag>spark-API</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Shell笔记]]></title>
-    <url>%2F2018%2F12%2F04%2FShell%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[awk将数据put到hdfs,然后用hive组织的过程中，发现数据混乱，从某行开始全是NULL 将一行数据copy到idea中,按照逗号分割后，发现只有223(理论上是226)，用awk的NF处理文件，每行也是 226列 —&gt; 于是，使用awk 的 $17 打印开始乱的列，果然找到问题， 用navicat导出的数据，默认有一个‘N*’符号 ，这个符号可以用notepad++来识别并替换掉ps: 该工具导出的数据另一个坑是：不管什么类型的数据，导出来都是到这双引号，往hive中导入时，有数值型的就尿了 所有后来直接用了sqoop 这里用到了awk ,觉得这个工具还是很强大的 123awk -F &apos;,&apos; &apos;&#123;print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0 &quot;,分隔符:&quot; OFS&#125;&apos; xxx.csvawk -F &apos;,&apos; &apos;&#123;if(NF&lt;226)print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0&#125;&apos; ./xxx.csv awk -F &apos;,&apos; -v OFS=&quot;+++&quot; &apos;&#123;print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0&#125;&apos; ./xxx.csv awk 是一个强大的文本分析工具，相对与grep的查找，sed的编辑，awk在对其数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。linux awk命令详解awk分隔符awk ‘{pattern + action}’ {filenames} chkconfig 命令chkconfig命令主要用来更新（启动或停止）和查询系统服务的运行级信息。 谨记chkconfig不是立即自动禁止或激活一个服务，它只是简单的改变了符号连接。12345[root@fa ~]# chkconfig --list NetworkManagerNetworkManager 0:off 1:off 2:on 3:on 4:on 5:on 6:off[root@fa ~]# chkconfig NetworkManager off[root@fa ~]# chkconfig --list NetworkManagerNetworkManager 0:off 1:off 2:off 3:off 4:off 5:off 6:off 参考 curl get问题例如 url 为 http://mywebsite.com/index.PHP?a=1&amp;b=2&amp;c=3 web形式下访问url地址，使用$_GET是可以获取到所有的参数 然而在Linux下 curl http://mywebsite.com/index.php?a=1&amp;b=2&amp;c=3 $_GET只能获取到参数a 由于url中有&amp;，其他参数获取不到，在linux系统中&amp; 会使进程系统后台运行 必须对&amp;进行下转义才能$_GET获取到所有参数 curl http://mywebsite.com/index.php?a=1\&amp;b=2\&amp;c=3shell 时间 date 获取12[root48@vmaxverserver Qimingxing4AutoTestCoverageRate]$ date +%F-%T2016-10-20-10:20:41 参考 cron 表达式参考 等于/不等于/大于/小于 -eq //等于 -ne //不等于 -gt //大于 -lt //小于 ge //大于等于 le //小于等于 修改hostname:/etc/hosts 和 /etc/sysconfig/network 两个文件 升级中脚本：12345678910111213#!/bin/shscriptPath=$1sh /home/upgrade/shutdown.shcd $scriptPathfor i in *updating.shdohostName=echo $i|cut -d _ -f 1runAt=echo $i|cut -d _ -f 2|cut -d . -f 1sh /home/upgrade/upgrade.sh $hostName $runAt $scriptPath/$idonesh /home/upgrade/startup.sh linux grep命令//todo shell编程 for in 循环&amp; 后台执行scp 回显写入log：1234echo &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;ssh \$scpuser@\$sybaseip mkdir -p \$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;scp \$configFile \$scpuser@\$sybaseip:\$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;ssh \$scpuser@\$sybaseip chmod 777 -R \$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;exit&quot; &gt;&gt; $output 参考自 ————-_—————————————2015/8/31—————————_——————– 备份文件：123456789101112basedir=$(pwd) # 获取当前目录的绝对路径，并赋值给 basedirbakpath=/home/bak_netnumenif [ &quot;$bakpath&quot; ]; then #判断某个目录是否存在，（[] 内 左右空格不能少） rm -rf $bakpathfids=$(ls $basedir | grep -E &apos;vmax-app|vmax-data&apos;) #ls 某个目录，并用&quot;grep -E&quot; 查找 包含&quot;vamx-app&quot;或者&quot;vmax-data&quot;的项for s in $&#123;ds[@]&#125; #for 每一项，do ... do mkdir -p $bakpath/$s cp -r $s/database $bakpath/$s done shell dirname basename123456789101112131415161718[root@hadoopname ~]# clear[root@hadoopname ~]# lltotal 136-rw-------. 1 root root 2696 Jun 24 04:41 anaconda-ks.cfgdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Desktopdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Documentsdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Downloads-rwxr-xr-x. 1 root root 32 Dec 6 13:20 first-rw-r--r--. 1 root root 39935 Dec 5 17:38 i.log-rw-r--r--. 1 root root 39935 Jun 24 04:40 install.log-rw-r--r--. 1 root root 10175 Jun 24 04:38 install.log.syslogdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Musicdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Picturesdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Publicdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Templatesdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Videos[root@hadoopname ~]# pwd/root dirname: 取一个文件的存储路径，分两种情况 仅仅是个文件名的 12[root@hadoopname ~]# dirname first. 带绝对路径 123[root@hadoopname ~]# dirname /root/first/root[root@hadoopname ~]# basename:取一个文件的文件名想要去掉后缀名的话 要将 后缀名 做为参数加在后面 12345[root@hadoopname ~]# basename i.logi.log[root@hadoopname ~]# basename i.log logi.[root@hadoopname ~]#]]></content>
-      <categories>
-        <category>服务器端 - shell</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -628,17 +638,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[github访问卡、慢、不稳定]]></title>
-    <url>%2F2018%2F12%2F04%2Fgithub%E5%8D%A1%E6%85%A2%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考 blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts 但是更新了dns，效果很明显，速度杠杠的 2017/12/05 迅速被打脸，一点都不好使 很奇怪，办公室机器google-chrome很卡，firefox好很多]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[ffmpeg]]></title>
     <url>%2F2018%2F12%2F04%2Fffmpeg%2F</url>
     <content type="text"><![CDATA[安装 ubuntu16:Linux下安装ffmpeg ubuntu18:系统自带，免安装 使用1./ffmpeg -threads 2 -y -r 1 -framerate 30 -i ~/data/fmpgtest/p/i%d.png -vf scale=853:480 ~/data/fmpgtest/output1.mp4]]></content>
@@ -648,6 +647,17 @@
       <tags>
         <tag>ffmpeg</tag>
         <tag>视频</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[github访问卡、慢、不稳定]]></title>
+    <url>%2F2018%2F12%2F04%2Fgithub%E5%8D%A1%E6%85%A2%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考 blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts 但是更新了dns，效果很明显，速度杠杠的 2017/12/05 迅速被打脸，一点都不好使 很奇怪，办公室机器google-chrome很卡，firefox好很多]]></content>
+      <categories>
+        <category>工欲善其事，必先利其器</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -673,17 +683,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[kafka笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fkafka%2F</url>
-    <content type="text"><![CDATA[introduction三个主要能力 publist and subscribe 类似于管道 容错的存储数据 即时处理数据处理 两大应用场景： 构建可靠的应用与系统间Streaming data 管道 构建Streaming 程序来传输或react数据流 Kafka is generally used for two broad classes of applications: Building real-time streaming data pipelines that reliably get data between systems or applications Building real-time streaming applications that transform or react to the streams of data First a few concepts: Kafka is run as a cluster on one or more servers that can span multiple datacenters. The Kafka cluster stores streams of records in categories called topics. Each record consists of a key, a value, and a timestamp. 四个主要API producer api cunsumer api streams api connector api kafka源码 git clone gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 阶段性可执行后，结果为BUILG FAILD 搜索后有人表示：有多个scala 版本，导致这样的错误 尝试执行 1./gradlew -PscalaVersion=2.11.11 clean core:test 依然build failed 这次是 1Could not find org.jacoco.agent.jar 《Apache Kafka 源码剖析》上说的源码编译步骤不好使，转参考下面的方法Getting started with contributing to Apache Kafka (Part 1): Build and run Kafka from source code棒棒哒 123&gt; cd kafka&gt; gradle&gt; ./gradlew jar importa kafka project run zookeeper 修改server.properties中的zk配置 run kafka cp conf/log4j.properties 到 core/src/main/resources/log4j.properties Run -&gt; Kafka 报错 没有创建日志文件的权限 原来日志文件呢中默认的日志存放位置是/ 添加配置 kafka.logs.dir=~/data/kafka-source-logs 修复 修改log4j.rootLogger=TRACE, stdout 打印出更多信息 server.propertiessocket 缓冲区 socketsocket的英文原义是“孔”或“插座”。作为4BDS UNIX的进程通信机制，取后一种意思。通常也称作”套接字”，用于描述IP地址和端口，是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。 在Internet上的主机一般运行了多个服务软件，同时提供几种服务。每种服务都打开一个Socket，并绑定到一个端口上，不同的端口对应于不同的服务。Socket正如其英文原意那样，象一个多孔插座。一台主机犹如布满各种插座的房间，每个插座有一个编号，有的插座提供220伏交流电， 有的提供110伏交流电，有的则提供有线电视节目。 客户软件将插头插到不同编号的插座，就可以得到不同的服务。 进程send数据时，实际上是先写入了socket缓冲区，接受类似，进程去read 接受缓冲区内的数据而不是直接拿到。 日志保留策略 １．一定时间之前的数据可删除２．日志存储文件所剩空间小于一定大小时可删除最早的数据 producer API 从某集群消费，然后生产到其他集群中，数据量是千万级别，但是速度很慢， 装个kafka monitor 看下 系统监控资料：《systems performance》 1234567891011121314151617181920212223# kafka start bash#!/bin/bashkafka_home=/home/xxh/wkspc/kafka/kafka_2.11-2.0.0kafka_start_sh=$kafka_home/bin/kafka-server-start.shkafkaconf0=$kafka_home/config/server.propertieskafkaconf1=$kafka_home/config/server-1.propertieskafkaconf2=$kafka_home/config/server-2.propertieskafkalog0=$kafka_home/logs/nohup.logkafkalog1=$kafka_home/logs/nohup_1.logkafkalog2=$kafka_home/logs/nohup_2.lognohup $kafka_start_sh $kafkaconf0 &gt; $kafkalog0 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf1 &gt; $kafkalog1 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf2 &gt; $kafkalog2 2&gt;&amp;1 &amp;jps# close use ./bin/kafka-server-stop.sh kafka 跑了几个例子，但是并没有讲的很清晰 还是要学一下，java8的函数式特性 不得不承认，越来越多的接口会重新用java写 挑战者： Pulsar kafka Stream]]></content>
-      <categories>
-        <category>kafka</category>
-      </categories>
-      <tags>
-        <tag>kafka</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[linux服务器相关配置]]></title>
     <url>%2F2018%2F12%2F04%2Flinux%E6%9C%8D%E5%8A%A1%E5%99%A8%2F</url>
     <content type="text"><![CDATA[本地ubuntu网络不稳定这几天 命令行执行操作各种不爽，间歇性精神病，git ssh 都会犯病没有直接搜索到什么原因导致的，安装wirshark抓包看看 123sudo add-apt-repository ppa:wireshark-dev/stablesudo apt-get updatesudo apt-get install wireshark wireshark-gnome 定位是shadowsocks代理的问题想改一下环境变量env中http_proxy 等环境变量，尝试删掉，但是有些环境变量是只读的，不能删除，wtfk回头一想，改掉shadowsocks的本地代理接口好了1080 -&gt; 34177 ok,问题暂时解决windows大法好 知乎问题 AWSEC2自动断开连接问题： ssh 连接aws ec2，若没有更改任何配置，ec2会在很短的时间内中断该ssh连接 解决 多方搜索，尝试（苦），最后更改以下配置解决问题更改ec2服务端sshd配置文件： 1/etc/ssh/sshd_config =&gt; 12ServerAliveInterval 60ServerAliveCountMax 10 参考 linux服务器重装java8问题：新开的云服务器默认安装的都是java7,我们的应用都是基于java8开发的 重装java8步骤： 找出现在装好的jdk1.7 rpm -qa | grep java 1234[ec2-user@ip-10-0-1-89 ~]$ rpm -qa |grep javajava-1.7.0-openjdk-1.7.0.151-2.6.11.0.74.amzn1.x86_64tzdata-java-2017b-1.69.amzn1.noarchjavapackages-tools-0.9.1-1.5.amzn1.noarch remove jdk1.7 yum -y remove java-1.7.0-openjdk-1.7.0.151-2.6.11.0.74.amzn1.x86_64 check 12345[ec2-user@ip-10-0-1-89 ~]$ java -version-bash: java: command not found[ec2-user@ip-10-0-1-89 ~]$ rpm -qa |grep javatzdata-java-2017b-1.69.amzn1.noarchjavapackages-tools-0.9.1-1.5.amzn1.noarch res:CentOS 卸载OpenJdk install jdk8 上传从甲骨文下载的java8 rpm安装包到服务器 安装 1.方法1 123456789101112131415161718192021222324 [ec2-user@ip-10-0-1-89 ~]$ java -version -bash: java: command not found [ec2-user@ip-10-0-1-89 ~]$ rpm -ivh .bash_history .bash_profile jdk-8u152-linux-x64.rpm .bash_logout .bashrc .ssh/ [ec2-user@ip-10-0-1-89 ~]$ rpm -ivh jdk-8u152-linux-x64.rpm error: can&apos;t create transaction lock on /var/lib/rpm/.rpm.lock (Permission denied) [ec2-user@ip-10-0-1-89 ~]$ sudo rpm -ivh jdk-8u152-linux-x64.rpm Preparing... ################################# [100%] Updating / installing... 1:jdk1.8-2000:1.8.0_152-fcs ################################# [100%] Unpacking JAR files...tools.jar...plugin.jar...javaws.jar...deploy.jar...rt.jar...jsse.jar...charsets.jar...localedata.jar... [ec2-user@ip-10-0-1-89 ~]$ java -version java version &quot;1.8.0_152&quot; Java(TM) SE Runtime Environment (build 1.8.0_152-b16) Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode) 2.方法2 12sudo apt-get install oracle-java8-installer[详细参见](https://www.cnblogs.com/a2211009/p/4265225.html)]]></content>
@@ -693,6 +692,17 @@
       <tags>
         <tag>linux</tag>
         <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[kafka笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fkafka%2F</url>
+    <content type="text"><![CDATA[introduction三个主要能力 publist and subscribe 类似于管道 容错的存储数据 即时处理数据处理 两大应用场景： 构建可靠的应用与系统间Streaming data 管道 构建Streaming 程序来传输或react数据流 Kafka is generally used for two broad classes of applications: Building real-time streaming data pipelines that reliably get data between systems or applications Building real-time streaming applications that transform or react to the streams of data First a few concepts: Kafka is run as a cluster on one or more servers that can span multiple datacenters. The Kafka cluster stores streams of records in categories called topics. Each record consists of a key, a value, and a timestamp. 四个主要API producer api cunsumer api streams api connector api kafka源码 git clone gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 阶段性可执行后，结果为BUILG FAILD 搜索后有人表示：有多个scala 版本，导致这样的错误 尝试执行 1./gradlew -PscalaVersion=2.11.11 clean core:test 依然build failed 这次是 1Could not find org.jacoco.agent.jar 《Apache Kafka 源码剖析》上说的源码编译步骤不好使，转参考下面的方法Getting started with contributing to Apache Kafka (Part 1): Build and run Kafka from source code棒棒哒 123&gt; cd kafka&gt; gradle&gt; ./gradlew jar importa kafka project run zookeeper 修改server.properties中的zk配置 run kafka cp conf/log4j.properties 到 core/src/main/resources/log4j.properties Run -&gt; Kafka 报错 没有创建日志文件的权限 原来日志文件呢中默认的日志存放位置是/ 添加配置 kafka.logs.dir=~/data/kafka-source-logs 修复 修改log4j.rootLogger=TRACE, stdout 打印出更多信息 server.propertiessocket 缓冲区 socketsocket的英文原义是“孔”或“插座”。作为4BDS UNIX的进程通信机制，取后一种意思。通常也称作”套接字”，用于描述IP地址和端口，是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。 在Internet上的主机一般运行了多个服务软件，同时提供几种服务。每种服务都打开一个Socket，并绑定到一个端口上，不同的端口对应于不同的服务。Socket正如其英文原意那样，象一个多孔插座。一台主机犹如布满各种插座的房间，每个插座有一个编号，有的插座提供220伏交流电， 有的提供110伏交流电，有的则提供有线电视节目。 客户软件将插头插到不同编号的插座，就可以得到不同的服务。 进程send数据时，实际上是先写入了socket缓冲区，接受类似，进程去read 接受缓冲区内的数据而不是直接拿到。 日志保留策略 １．一定时间之前的数据可删除２．日志存储文件所剩空间小于一定大小时可删除最早的数据 producer API 从某集群消费，然后生产到其他集群中，数据量是千万级别，但是速度很慢， 装个kafka monitor 看下 系统监控资料：《systems performance》 1234567891011121314151617181920212223# kafka start bash#!/bin/bashkafka_home=/home/xxh/wkspc/kafka/kafka_2.11-2.0.0kafka_start_sh=$kafka_home/bin/kafka-server-start.shkafkaconf0=$kafka_home/config/server.propertieskafkaconf1=$kafka_home/config/server-1.propertieskafkaconf2=$kafka_home/config/server-2.propertieskafkalog0=$kafka_home/logs/nohup.logkafkalog1=$kafka_home/logs/nohup_1.logkafkalog2=$kafka_home/logs/nohup_2.lognohup $kafka_start_sh $kafkaconf0 &gt; $kafkalog0 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf1 &gt; $kafkalog1 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf2 &gt; $kafkalog2 2&gt;&amp;1 &amp;jps# close use ./bin/kafka-server-stop.sh kafka 跑了几个例子，但是并没有讲的很清晰 还是要学一下，java8的函数式特性 不得不承认，越来越多的接口会重新用java写 挑战者： Pulsar kafka Stream]]></content>
+      <categories>
+        <category>kafka</category>
+      </categories>
+      <tags>
+        <tag>kafka</tag>
       </tags>
   </entry>
   <entry>
@@ -868,17 +878,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[sqoop使用]]></title>
-    <url>%2F2018%2F12%2F04%2Fsqoop%2F</url>
-    <content type="text"><![CDATA[installsqoop install &amp;&amp; test 版本1.4.7的安装文档没有找到，使用1.99.7的文档装了半天 官网下载：sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz 解压 复制template配置文件并修改配置文件 123456789101112131415161718# Set Hadoop-specific environment variables here.#Set path to where bin/hadoop is available#export HADOOP_COMMON_HOME=export HADOOP_COMMON_HOME=/home/xxh/wkspc/hadoop/hadoop-2.7.7#Set path to where hadoop-*-core.jar is availableexport HADOOP_MAPRED_HOME=/home/xxh/wkspc/hadoop/hadoop-2.7.7#set the path to where bin/hbase is availableexport HBASE_HOME=/home/xxh/wkspc/hbase/hbase-2.1.0#Set the path to where bin/hive is availableexport HIVE_HOME=/home/xxh/wkspc/hive/apache-hive-1.2.2-bin#Set the path for where zookeper config dir isexport ZOOCFGDIR=/home/xxh/wkspc/zookeeper/zookeeper0/conf 测试 1234567891011121314151617181920212223242526sqoop list-databases --connect jdbc:mysql://localhost:3306 --username root --password admin123sqoop import \--connect jdbc:mysql://localhost:3306/mysql \--username root \--password admin123 \--table user \--target-dir /sqoop/data_1 \--delete-target-dir \--num-mappers 1 \--fields-terminated-by &quot;\t&quot;# mysql on other computersqoop import \--connect jdbc:mysql://172.17.60.59:3306/mysql \--username root \--password Admin@321 \--table user \--target-dir /sqoop/data_user_59 \--delete-target-dir \--num-mappers 1 \--fields-terminated-by &quot;\t&quot; 数据库导入Sqoop 通mr作业从数据库中导入一个表，这个作业从表中抽取一行行记录，然后将记录写入HDFS 在导入开始之前，Sqoop使用jdbc 检查表，检索出表中所有的列、列的数据类型。这些sql数据类型被映射到java数据类型 导入控制重点在保证数据一致性 sqoop 后台实际上是运行了mr,用yarn 提交管理的 调试的时候发现提交完任务长时间不能执行，很可能是资源不足，也有可能是数据库权限问题先杀掉，同步本地的数据库试试 123# 8088 查下 app id,然后yarn application -kill application_1540448968752_0003 sqoop 同步json数据报错 12345678910111213141516171819Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: org/json/JSONObject at org.apache.sqoop.util.SqoopJsonUtil.getJsonStringforMap(SqoopJsonUtil.java:43) at org.apache.sqoop.SqoopOptions.writeProperties(SqoopOptions.java:785) at org.apache.sqoop.metastore.hsqldb.HsqldbJobStorage.createInternal(HsqldbJobStorage.java:399) at org.apache.sqoop.metastore.hsqldb.HsqldbJobStorage.create(HsqldbJobStorage.java:379) at org.apache.sqoop.tool.JobTool.createJob(JobTool.java:181) at org.apache.sqoop.tool.JobTool.run(JobTool.java:294) at org.apache.sqoop.Sqoop.run(Sqoop.java:147) at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:70) at org.apache.sqoop.Sqoop.runSqoop(Sqoop.java:183) at org.apache.sqoop.Sqoop.runTool(Sqoop.java:234) at org.apache.sqoop.Sqoop.runTool(Sqoop.java:243) at org.apache.sqoop.Sqoop.main(Sqoop.java:252)Caused by: java.lang.ClassNotFoundException: org.json.JSONObject at java.net.URLClassLoader.findClass(URLClassLoader.java:381) at java.lang.ClassLoader.loadClass(ClassLoader.java:424) at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349) at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ... 12 more solve: 1234567By spending some more time reading blogs:I found solution as below:downloaded java-json.jar file from location http://www.java2s.com/Code/Jar/j/Downloadjavajsonjar.htmstored this jar file at location /usr/lib/sqoop/lib/java-json.jar Sqoop import exception java.lang.NoClassDefFoundError: org/json/JSONObject name node is in safe mode solve: 1hdfs dfsadmin -safemode leave name node is in safe mode sqoop 任务 一直僵尸在ACCEPED状态，不动 搜，跟着改了很多配置，最后看到日志中有[warn] error*,报错某某项配置的目录可用空间超过总空间百分之九十，导致伪分布式模式下唯一一个node不能用于是更改了其默认配置，并更改其yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage -&gt; 98.58088 UI上 Active nodes显示为1 最终的配置： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#yarn-site.xml&lt;configuration&gt;&lt;!-- Site specific YARN configuration properties --&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt; &lt;value&gt;mapreduce_shuffle&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.resource.memory-mb&lt;/name&gt; &lt;value&gt;4096&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.scheduler.minimum-allocation-mb&lt;/name&gt; &lt;value&gt;512&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.resource.cpu-vcores&lt;/name&gt; &lt;value&gt;4&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.vmem-pmem-ratio&lt;/name&gt; &lt;value&gt;2.1&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.local-dirs&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/yarnlocaldir&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.log-dirs&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/yarnlogdir&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage&lt;/name&gt; &lt;value&gt;98.5&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt;# hdfs-site.xmldatanode的dfs.datanode.data.dir 不配置的话，会默认使用/tmp目录，我的系统装在小小的额固态上，左右基本没有空间剩余了，于是改到T级别的机械硬盘上了&lt;configuration&gt; &lt;property&gt; &lt;name&gt;dfs.replication&lt;/name&gt; &lt;value&gt;1&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/namenode-namespace&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/datanodespace&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt; 参考：MapReduce jobs get stuck in Accepted state redshift 表 同步到 hive 一次性同步，整体迁移 123456789101112./bin/sqoop job --delete customer_order./bin/sqoop job --create customer_order \-- import \--connect jdbc:redshift://north-1.redshift.amazonaws.com.cn:59/prod \--driver com.amazon.redshift.jdbc42.Driver \--username boot_last \--table XXX.XXXX \--target-dir /hive/warehouse/XXXX/XXXX \--fields-terminated-by &apos;,&apos; \--lines-terminated-by &apos;\n&apos; \--hive-drop-import-delims \-m 1 没有顺序的数值列，所以无法切分，通过一个map任务来同步，也就是指定 -m 1? 也是不是没办法，比如讲某列进行hash,然后根据hash值来分片同步，使用sqoop同步时hash 就要自定义函数参考sqoop 同步所有列，所以指定了 table 后，不配置column的意思就是同步所有列 redshift jdbc Driver 记得添加 ，从maven上下载最新的jar,放到sqoop home的lib 中? sqoop 直接同步成hive 表]]></content>
-      <categories>
-        <category>sqoop</category>
-      </categories>
-      <tags>
-        <tag>sqoop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[sql笔记]]></title>
     <url>%2F2018%2F12%2F04%2Fsql%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[sql优化SQL查询的过程理解SQL查询的过程是进行SQL优化的理论依据 第一、单表查询：根据WHERE条件过滤表中的记录，形成中间表（这个中间表对用户是不可见的）；然后根据SELECT的选择列选择相应的列进行返回最终结果。 第二、两表连接查询：对两表求积（笛卡尔积）并用ON条件和连接类型进行过滤形成中间表；然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 笛卡尔（Descartes）乘积又叫直积。假设集合A=a,b，集合B=0,1,2，则两个集合的笛卡尔积为(a,0),(a,1),(a,2),(b,0),(b,1), (b,2)。 可以扩展到多个集合的情况。类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。 第三、多表连接查询：先对第一个和第二个表按照两表连接做查询，然后用查询结果和第三个表做连接查询，以此类推，直到所有的表都连接上为止，最终形成一个中间的结果表，然后根据WHERE条件过滤中间表的记录，并根据SELECT指定的列返回查询结果。 ON后面的条件（ON条件）和WHERE条件的区别： ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是： ON只进行连接操作，WHERE只过滤中间表的记录。 关键点：表连接查询是先将 几张表 做笛卡尔积 然后在做过滤 sql执行顺序（转侵删）sql不同于其他编程语言，代码并不是按照编码顺序来被处理的， 在sql语言中，第一个被处理的是FROM子句，SELECT子句第一个出现，却被最后一个处理； 每个步骤都会产生一个虚拟表，该虚拟表被用作下一个步骤的输入； 这些虚拟表对调用者不可用，只是最后一步生成的表才会返回给调用者。如果没有在查询中指定某一子句，将跳过相应的步骤 下面的各个逻辑步骤描述适用于SQL server2000 和 2005: FROM : 对from子句的前两个表执行笛卡尔积，生成虚拟表VT1; ON: 对VT1应用ON筛选，只有那些使为真的行才被插入VT2; OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。 WHERE：对VT3应用WHERE筛选器。只有使为true的行才被插入VT4. GROUP BY：按GROUP BY子句中的列列表对VT4中的行分组，生成VT5. CUBE|ROLLUP：把超组(Suppergroups)插入VT5,生成VT6. HAVING：对VT6应用HAVING筛选器。只有使为true的组才会被插入VT7. SELECT：处理SELECT列表，产生VT8. DISTINCT：将重复的行从VT8中移除，产生VT9. ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10). TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。 工作中遇到复杂的sql逻辑：复杂的sql语句也是最基本的sql语句连接而成，所以最重要的是先要理清思路和逻辑，弄清自己要查哪几张表，要用哪几个字 段，表之间如何关联，将这些弄清，然后由简单到复杂，从最基本的sql写起，通过找共同点，实现表关联等。 select后是自己需要的字段from后是自己需要查询的多张表或者自己子查询得出的结果集where后是条件 是对from后的结果集进行筛选 多张表关联 最重要的是找共同点 比如通过userid 第一种方式就是通过join管理 第二种方式就是通过where条件子句 比如几个表的userid相等来筛选结果集 在处理复杂的业务查询时，先从逻辑层面理清几张表之间的关系以及自己需要的字段和数据 然后逐步拆分 从最简单的局部sql出发 一步步迭代出复杂的sql语句 这可以看做是写复杂脚本的原则： 由简单到复杂 逐步迭代 得出结果 最重要的还是在工作实践中多加总结 主动接触sql 正确性验证： 正确理解需求，跟同事，产品沟通清楚； 小规模数据测试+多场景数据测试； 同事间代码走查，团队评审代码； QA把关。 表设计Varchar字段类型长度设计:关于数据库Varchar字段类型长度设计问题 规范化－数据库设计（三大范式）12345678910create table xxh.sample( prjnum int not null, prjname varchar(200), emynum int not null, emyname varchar(200), salcategory char(1), salpackage int, primary key(prjnum) ); ibm数据库设计 sql笔记sql union: 将两个sql查询的结果合并到一起group by &amp; having\如果只是执行一条语句，有没有GO都一样如果多条语句之间用GO分隔开就不一样了每个被GO分隔的语句都是一个单独的事务，一个语句执行失败不会影响其它语句执行。例如：首先同时执行下边的语句select * from sysobjects where id=aselect getdate()你会发现会报错，并且不会显示任何结果集而你再执行select * from sysobjects where id=agoselect getdate()go你会发现尽管同样会报错，但结果集中包含select getdate()的结果\ mysql-Every derived table must have its own alias关于这条报错信息，意思是指每个派生出来的表都必须有一个自己的别名。\ _mysql_exceptions.OperationalError: (1248, &apos;Every derived table must have its own alias&apos;)\ 如下两条select语句可以说明这个问题： select count(*) from (select * from A where uuid=&apos;123&apos;) ; // error\ select count(*) from (select * from A where uuid=&apos;123&apos;) as a ; // okCAST 函数CAST 函数用于将某种数据类型的表达式显式转换为另一种数据类型。CAST()函数的参数是一个表达式，它包括用AS 关键字分割的原值和目标数据类型。 12//CAST (expression AS data_type)cast(minute(clttime)/5 AS int) mysql极客时间课程－mysql实战45讲]]></content>
@@ -888,6 +887,17 @@
       <tags>
         <tag>database</tag>
         <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sqoop使用]]></title>
+    <url>%2F2018%2F12%2F04%2Fsqoop%2F</url>
+    <content type="text"><![CDATA[installsqoop install &amp;&amp; test 版本1.4.7的安装文档没有找到，使用1.99.7的文档装了半天 官网下载：sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz 解压 复制template配置文件并修改配置文件 123456789101112131415161718# Set Hadoop-specific environment variables here.#Set path to where bin/hadoop is available#export HADOOP_COMMON_HOME=export HADOOP_COMMON_HOME=/home/xxh/wkspc/hadoop/hadoop-2.7.7#Set path to where hadoop-*-core.jar is availableexport HADOOP_MAPRED_HOME=/home/xxh/wkspc/hadoop/hadoop-2.7.7#set the path to where bin/hbase is availableexport HBASE_HOME=/home/xxh/wkspc/hbase/hbase-2.1.0#Set the path to where bin/hive is availableexport HIVE_HOME=/home/xxh/wkspc/hive/apache-hive-1.2.2-bin#Set the path for where zookeper config dir isexport ZOOCFGDIR=/home/xxh/wkspc/zookeeper/zookeeper0/conf 测试 1234567891011121314151617181920212223242526sqoop list-databases --connect jdbc:mysql://localhost:3306 --username root --password admin123sqoop import \--connect jdbc:mysql://localhost:3306/mysql \--username root \--password admin123 \--table user \--target-dir /sqoop/data_1 \--delete-target-dir \--num-mappers 1 \--fields-terminated-by &quot;\t&quot;# mysql on other computersqoop import \--connect jdbc:mysql://172.17.60.59:3306/mysql \--username root \--password Admin@321 \--table user \--target-dir /sqoop/data_user_59 \--delete-target-dir \--num-mappers 1 \--fields-terminated-by &quot;\t&quot; 数据库导入Sqoop 通mr作业从数据库中导入一个表，这个作业从表中抽取一行行记录，然后将记录写入HDFS 在导入开始之前，Sqoop使用jdbc 检查表，检索出表中所有的列、列的数据类型。这些sql数据类型被映射到java数据类型 导入控制重点在保证数据一致性 sqoop 后台实际上是运行了mr,用yarn 提交管理的 调试的时候发现提交完任务长时间不能执行，很可能是资源不足，也有可能是数据库权限问题先杀掉，同步本地的数据库试试 123# 8088 查下 app id,然后yarn application -kill application_1540448968752_0003 sqoop 同步json数据报错 12345678910111213141516171819Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: org/json/JSONObject at org.apache.sqoop.util.SqoopJsonUtil.getJsonStringforMap(SqoopJsonUtil.java:43) at org.apache.sqoop.SqoopOptions.writeProperties(SqoopOptions.java:785) at org.apache.sqoop.metastore.hsqldb.HsqldbJobStorage.createInternal(HsqldbJobStorage.java:399) at org.apache.sqoop.metastore.hsqldb.HsqldbJobStorage.create(HsqldbJobStorage.java:379) at org.apache.sqoop.tool.JobTool.createJob(JobTool.java:181) at org.apache.sqoop.tool.JobTool.run(JobTool.java:294) at org.apache.sqoop.Sqoop.run(Sqoop.java:147) at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:70) at org.apache.sqoop.Sqoop.runSqoop(Sqoop.java:183) at org.apache.sqoop.Sqoop.runTool(Sqoop.java:234) at org.apache.sqoop.Sqoop.runTool(Sqoop.java:243) at org.apache.sqoop.Sqoop.main(Sqoop.java:252)Caused by: java.lang.ClassNotFoundException: org.json.JSONObject at java.net.URLClassLoader.findClass(URLClassLoader.java:381) at java.lang.ClassLoader.loadClass(ClassLoader.java:424) at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349) at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ... 12 more solve: 1234567By spending some more time reading blogs:I found solution as below:downloaded java-json.jar file from location http://www.java2s.com/Code/Jar/j/Downloadjavajsonjar.htmstored this jar file at location /usr/lib/sqoop/lib/java-json.jar Sqoop import exception java.lang.NoClassDefFoundError: org/json/JSONObject name node is in safe mode solve: 1hdfs dfsadmin -safemode leave name node is in safe mode sqoop 任务 一直僵尸在ACCEPED状态，不动 搜，跟着改了很多配置，最后看到日志中有[warn] error*,报错某某项配置的目录可用空间超过总空间百分之九十，导致伪分布式模式下唯一一个node不能用于是更改了其默认配置，并更改其yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage -&gt; 98.58088 UI上 Active nodes显示为1 最终的配置： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#yarn-site.xml&lt;configuration&gt;&lt;!-- Site specific YARN configuration properties --&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt; &lt;value&gt;mapreduce_shuffle&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.resource.memory-mb&lt;/name&gt; &lt;value&gt;4096&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.scheduler.minimum-allocation-mb&lt;/name&gt; &lt;value&gt;512&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.resource.cpu-vcores&lt;/name&gt; &lt;value&gt;4&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.vmem-pmem-ratio&lt;/name&gt; &lt;value&gt;2.1&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.local-dirs&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/yarnlocaldir&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.log-dirs&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/yarnlogdir&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage&lt;/name&gt; &lt;value&gt;98.5&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt;# hdfs-site.xmldatanode的dfs.datanode.data.dir 不配置的话，会默认使用/tmp目录，我的系统装在小小的额固态上，左右基本没有空间剩余了，于是改到T级别的机械硬盘上了&lt;configuration&gt; &lt;property&gt; &lt;name&gt;dfs.replication&lt;/name&gt; &lt;value&gt;1&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/namenode-namespace&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt; &lt;value&gt;/home/xxh/data/hadoop/datanodespace&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt; 参考：MapReduce jobs get stuck in Accepted state redshift 表 同步到 hive 一次性同步，整体迁移 123456789101112./bin/sqoop job --delete customer_order./bin/sqoop job --create customer_order \-- import \--connect jdbc:redshift://north-1.redshift.amazonaws.com.cn:59/prod \--driver com.amazon.redshift.jdbc42.Driver \--username boot_last \--table XXX.XXXX \--target-dir /hive/warehouse/XXXX/XXXX \--fields-terminated-by &apos;,&apos; \--lines-terminated-by &apos;\n&apos; \--hive-drop-import-delims \-m 1 没有顺序的数值列，所以无法切分，通过一个map任务来同步，也就是指定 -m 1? 也是不是没办法，比如讲某列进行hash,然后根据hash值来分片同步，使用sqoop同步时hash 就要自定义函数参考sqoop 同步所有列，所以指定了 table 后，不配置column的意思就是同步所有列 redshift jdbc Driver 记得添加 ，从maven上下载最新的jar,放到sqoop home的lib 中? sqoop 直接同步成hive 表]]></content>
+      <categories>
+        <category>sqoop</category>
+      </categories>
+      <tags>
+        <tag>sqoop</tag>
       </tags>
   </entry>
   <entry>
@@ -1051,6 +1061,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[敏捷开发流程]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[定义敏捷不是指某一种具体的方法论、过程或框架，而是一组价值观和原则。符合敏捷价值观和原则的开发方法包括：极限编程（XP），Scrum，精益软件开发（Lean Software Development），动态系统开发方法（DSDM），特征驱动开发（Feature Driver Development），水晶开发（Crystal Clear）等等。所有这些方法都具有以下共同特征： 迭代式开发 ，整个开发周期分为几个迭代周期 - 增量交付 每个迭代周期结束后逐步交付使用，而不是整个开发过程结束的时候一次性交付使用 - 开发团队和用户反馈推动产品开发 持续集成 开发团队自我管理 敏捷实战 需求评审 Story划分 人员划分 方案设计 方案评审 任务拆分 开发 端到端测试 压力测试＋集成测试 关于需求分析： 一部分是项目总体需求分析时确定的，另一部分是随着项目的发展，新增的业务需求 关于方案设计：在项目需求评审会议后，划分了story、确定了人员分配后，根据项目的总体框架进行的方案设计 主要分 1 概述 41.1 目的 41.2 术语、定义和略缩词 41.3 参考资料 42 业务逻辑 43 主题表设计 74 性能设计 95 平滑升级 然后做方案评审 团队内部任务拆分 开发 测试 压力测试 和 集成测试]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>敏捷开发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[攒技能]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%94%92%E6%8A%80%E8%83%BD%2F</url>
     <content type="text"><![CDATA[抬头看天 低头走路分类 项目管理编程语言数据结构服务器端前端数据可视化数据存储处理分布式计算数据分析机器学习、深度学习工欲善其事，必先利其器误入歧途书签数据采集瞎说]]></content>
@@ -1073,14 +1094,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[敏捷开发流程]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%2F</url>
-    <content type="text"><![CDATA[定义敏捷不是指某一种具体的方法论、过程或框架，而是一组价值观和原则。符合敏捷价值观和原则的开发方法包括：极限编程（XP），Scrum，精益软件开发（Lean Software Development），动态系统开发方法（DSDM），特征驱动开发（Feature Driver Development），水晶开发（Crystal Clear）等等。所有这些方法都具有以下共同特征： 迭代式开发 ，整个开发周期分为几个迭代周期 - 增量交付 每个迭代周期结束后逐步交付使用，而不是整个开发过程结束的时候一次性交付使用 - 开发团队和用户反馈推动产品开发 持续集成 开发团队自我管理 敏捷实战 需求评审 Story划分 人员划分 方案设计 方案评审 任务拆分 开发 端到端测试 压力测试＋集成测试 关于需求分析： 一部分是项目总体需求分析时确定的，另一部分是随着项目的发展，新增的业务需求 关于方案设计：在项目需求评审会议后，划分了story、确定了人员分配后，根据项目的总体框架进行的方案设计 主要分 1 概述 41.1 目的 41.2 术语、定义和略缩词 41.3 参考资料 42 业务逻辑 43 主题表设计 74 性能设计 95 平滑升级 然后做方案评审 团队内部任务拆分 开发 测试 压力测试 和 集成测试]]></content>
+    <title><![CDATA[日志打印规范]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E8%A7%84%E8%8C%83%2F</url>
+    <content type="text"><![CDATA[背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过 日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情 未完待续…]]></content>
       <categories>
-        <category>服务器端</category>
+        <category>服务器端 - 日志</category>
       </categories>
       <tags>
-        <tag>敏捷开发</tag>
+        <tag>日志</tag>
+        <tag>log</tag>
       </tags>
   </entry>
   <entry>
@@ -1095,18 +1117,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[日志打印规范]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E8%A7%84%E8%8C%83%2F</url>
-    <content type="text"><![CDATA[背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过 日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情 未完待续…]]></content>
-      <categories>
-        <category>服务器端 - 日志</category>
-      </categories>
-      <tags>
-        <tag>日志</tag>
-        <tag>log</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[初识机器学习]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A01%2F</url>
     <content type="text"><![CDATA[神经网络神经网络是一种数学模型，是存在于计算机的神经系统，由大量的神经元相连接并进行计算，在外界信息的基础上，改变内部的结构，常用来对输入和输出间复杂的关系进行建模。 神经网络由大量的节点和之间的联系构成，负责传递信息和加工信息，神经元也可以通过训练而被强化。 rel 生物神经网络现代科学还不能完全解释生物学习，记忆的过程，也就无从解释生物神经元建立相互关系的过程 人工神经网络目的：虽然不知道生物神经网络的内部原理，但是想人工模仿出一个有相同功能的神经网络 首先, 替代掉生物神经网络的, 就是已经成体系的人工神经网络. 所有神经元之间的连接都是固定不可更换的, 这也就是说, 在人工神经网络里, 没有凭空产生新联结这回事. 人工神经网络典型的一种学习方式就是, 我已经知道吃到糖果时, 手会如何动, 但是我想让神经网络学着帮我做这件动动手的事情. 所以我预先准备好非常多吃糖的学习数据, 然后将这些数据一次次放入这套人工神经网络系统中, 糖的信号会通过这套系统传递到手. 然后通过对比这次信号传递后, 手的动作是不是”讨糖”动作, 来修改人工神经网络当中的神经元强度. 这种修改在专业术语中叫做”误差反向传递”, 也可以看作是再一次将传过来的信号传回去, 看看这个负责传递信号神经元对于”讨糖”的动作到底有没有贡献, 让它好好反思与改正, 争取下次做出更好的贡献. 这样看来, 人工神经网络和生物神经网络的确不是一回事. 二者间的区别 人工神经网络靠的是正向和反向传播来更新神经元, 从而形成一个好的神经系统, 本质上, 这是一个能让计算机处理和优化的数学模型. 而生物神经网络是通过刺激, 产生新的联结, 让信号能够通过新的联结传递而形成反馈. 虽然现在的计算机技术越来越高超, 不过我们身体里的神经系统经过了数千万年的进化, 还是独一无二的, 迄今为止, 再复杂, 再庞大的人工神经网络系统也不能替代我们的小脑袋. 我们应该感到自豪, 也应该珍惜上天的这份礼物. 梯度下降optimization(优化问题)机器学习是一种优化问题的方法手段准确的说是梯度下降中的一员optimization: Newton’s method(牛顿法) Least Squares method( 最小二乘法) Gradient Descent(梯度下降法) 误差方程误差方程用来计算预测出来的和我们实际中值有多大差别，在预测数值的问题中，我们常用平方差来代替 cost = (predicted - real)^2 = (Wx-y)^2 优化初始值：(W-0)^2 梯度线躺平的点，其W参数为最优解 ##### 全局最优and局部最优 神经网络黑盒我们 把输入进行数字化，特征化，放入神经网络黑盒中，黑盒中进行了一系列的特征转化，最终得到我们的输出]]></content>
@@ -1116,6 +1126,18 @@
       <tags>
         <tag>机器学习</tag>
         <tag>ml</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[用Linux shell收集应用日志文件]]></title>
+    <url>%2F2018%2F12%2F04%2F%E7%94%A8shell%E6%94%B6%E9%9B%86%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现设计： 从一台服务器上收集数据（ftp get） 从多台服务器上收集（循环 ftp get） 定时从多台机器上按照一定规则收集（定时器） 思路1：读配置文件，去指定服务器的指定目录下载文件1234567891011121314151617181920212223242526272829303132#!/bin/bash#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径basedir=$(cd $(dirname $0); pwd)cd $basedirconfigFile=$basedir/ftphost.confhomedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)grep -i -E -w &quot;ftp|sftp&quot; $configFile | awk -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &#123; protocol=$1 ip=$2 port=$3 user=$4 password=$5 ftp -n&lt;&lt;FTPDopen $ipuser $user $passwordbinarypassivelcd $hdirpromptif [[ ! -d $fdir ]];then mkdir $fdirficd $fdirput $2closequitFTPD 更新1234567891011121314151617181920212223242526272829303132333435363738394041424344#! /bin/bash#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径basedir=$(cd $(dirname $0); pwd)echo $basedircd $basedirconfigFile=$basedir/ftphost.confftpscriptfile=$basedir/ftpscript.shhomedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)echo &quot;homedir: &quot;$homedirecho &quot;ftphomedir&quot; $ftphomedirecho &quot;#ftp远程获取需要的文件&quot; &gt;&gt;$ftpscriptfilegrep -i -E -w &quot;ftp|sftp&quot; $configFile | awk -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &apos;&#123; # protocol=$1 # ip=$2 # port=$3 # user=$4 # password=$5 print &quot;ftp -n&lt;&lt;FTPD&quot; print &quot;open &quot;ip print &quot;user &quot; user &quot; &quot; password print &quot;binary&quot; print &quot;passive&quot; print &quot;cd &quot; fdir &#125;&apos; &gt;&gt;$ftpscriptfile echo &quot;prompt&quot; &gt;&gt;$ftpscriptfile echo &quot;if [[ ! -d \$3 ]];then&quot; &gt;&gt;$ftpscriptfile echo &quot; mkdir \$3&quot; &gt;&gt;$ftpscriptfile echo &quot;fi &quot; &gt;&gt;$ftpscriptfile echo &quot;cd \$3&quot; &gt;&gt;$ftpscriptfile echo &quot;if [[ ! -d \$4 ]];then&quot; &gt;&gt;$ftpscriptfile echo &quot; mkdir \$4&quot; &gt;&gt;$ftpscriptfile echo &quot;fi &quot; &gt;&gt;$ftpscriptfile echo &quot;cd \$4&quot; &gt;&gt;$ftpscriptfile echo &quot;lcd \$1&quot; &gt;&gt;$ftpscriptfile echo &quot;put \$2&quot; &gt;&gt;$ftpscriptfile echo &quot;close&quot; &gt;&gt;$ftpscriptfile echo &quot;quit&quot; &gt;&gt;$ftpscriptfile echo &quot;FTPD&quot; &gt;&gt;$ftpscriptfile 12345678910111213141516171819202122232425262728293031 1 filterAndGet() 2 &#123; 3 srcfile=$1 4 key=$2 5 value=$3 6 tgtfile=$4 7 shift 4 8 if [[ $# -gt 0 ]];then 9 ids=$*10 else11 ids=012 fi1314 awk -F &quot;,&quot; &apos;BEGIN &#123;15 split(&apos;&quot;\&quot;$ids&quot;\&quot;&apos;, indexs,&quot; &quot;)16 &#125;&#123;17 if($&apos;$key&apos;==&quot;&apos;$value&apos;&quot;) &#123;18 for (i=1;i&lt;=length(indexs);i++)&#123;19 if(indexs[i]==9)&#123;20 system(&quot;\\echo -n $(\\date -d \&quot;2000-01-01 +&quot; $indexs[i] &quot; seconds\&quot; +\&quot;%Y-%m-%d %H:%M:%S\&quot;)&quot;)21 printf(&quot;.%03d,&quot;,$28)22 &#125;23 else24 printf(&quot;%s,&quot;,$indexs[i])25 &#125;26 printf(&quot;\n&quot;);27 &#125;28 &#125;&apos; $srcfile &gt;&gt; $tgtfile29 &#125;filterAndGet $1 39 0 $2/a_$&#123;day&#125;.csv 9 14 15 52 2 3 5 10 11 53 54 55 56 57 58 59 88 16 6 7 8 21 35 34 23 86 17 19 20 思路2：配置文件中配置多个IP，循环去取文件思路3：增加文件过滤规则，定时器规则]]></content>
+      <categories>
+        <category>数据采集 - 日志收集</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
+        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1132,18 +1154,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[用Linux shell收集应用日志文件]]></title>
-    <url>%2F2018%2F12%2F04%2F%E7%94%A8shell%E6%94%B6%E9%9B%86%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现设计： 从一台服务器上收集数据（ftp get） 从多台服务器上收集（循环 ftp get） 定时从多台机器上按照一定规则收集（定时器） 思路1：读配置文件，去指定服务器的指定目录下载文件1234567891011121314151617181920212223242526272829303132#!/bin/bash#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径basedir=$(cd $(dirname $0); pwd)cd $basedirconfigFile=$basedir/ftphost.confhomedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)grep -i -E -w &quot;ftp|sftp&quot; $configFile | awk -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &#123; protocol=$1 ip=$2 port=$3 user=$4 password=$5 ftp -n&lt;&lt;FTPDopen $ipuser $user $passwordbinarypassivelcd $hdirpromptif [[ ! -d $fdir ]];then mkdir $fdirficd $fdirput $2closequitFTPD 更新1234567891011121314151617181920212223242526272829303132333435363738394041424344#! /bin/bash#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径basedir=$(cd $(dirname $0); pwd)echo $basedircd $basedirconfigFile=$basedir/ftphost.confftpscriptfile=$basedir/ftpscript.shhomedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)echo &quot;homedir: &quot;$homedirecho &quot;ftphomedir&quot; $ftphomedirecho &quot;#ftp远程获取需要的文件&quot; &gt;&gt;$ftpscriptfilegrep -i -E -w &quot;ftp|sftp&quot; $configFile | awk -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &apos;&#123; # protocol=$1 # ip=$2 # port=$3 # user=$4 # password=$5 print &quot;ftp -n&lt;&lt;FTPD&quot; print &quot;open &quot;ip print &quot;user &quot; user &quot; &quot; password print &quot;binary&quot; print &quot;passive&quot; print &quot;cd &quot; fdir &#125;&apos; &gt;&gt;$ftpscriptfile echo &quot;prompt&quot; &gt;&gt;$ftpscriptfile echo &quot;if [[ ! -d \$3 ]];then&quot; &gt;&gt;$ftpscriptfile echo &quot; mkdir \$3&quot; &gt;&gt;$ftpscriptfile echo &quot;fi &quot; &gt;&gt;$ftpscriptfile echo &quot;cd \$3&quot; &gt;&gt;$ftpscriptfile echo &quot;if [[ ! -d \$4 ]];then&quot; &gt;&gt;$ftpscriptfile echo &quot; mkdir \$4&quot; &gt;&gt;$ftpscriptfile echo &quot;fi &quot; &gt;&gt;$ftpscriptfile echo &quot;cd \$4&quot; &gt;&gt;$ftpscriptfile echo &quot;lcd \$1&quot; &gt;&gt;$ftpscriptfile echo &quot;put \$2&quot; &gt;&gt;$ftpscriptfile echo &quot;close&quot; &gt;&gt;$ftpscriptfile echo &quot;quit&quot; &gt;&gt;$ftpscriptfile echo &quot;FTPD&quot; &gt;&gt;$ftpscriptfile 12345678910111213141516171819202122232425262728293031 1 filterAndGet() 2 &#123; 3 srcfile=$1 4 key=$2 5 value=$3 6 tgtfile=$4 7 shift 4 8 if [[ $# -gt 0 ]];then 9 ids=$*10 else11 ids=012 fi1314 awk -F &quot;,&quot; &apos;BEGIN &#123;15 split(&apos;&quot;\&quot;$ids&quot;\&quot;&apos;, indexs,&quot; &quot;)16 &#125;&#123;17 if($&apos;$key&apos;==&quot;&apos;$value&apos;&quot;) &#123;18 for (i=1;i&lt;=length(indexs);i++)&#123;19 if(indexs[i]==9)&#123;20 system(&quot;\\echo -n $(\\date -d \&quot;2000-01-01 +&quot; $indexs[i] &quot; seconds\&quot; +\&quot;%Y-%m-%d %H:%M:%S\&quot;)&quot;)21 printf(&quot;.%03d,&quot;,$28)22 &#125;23 else24 printf(&quot;%s,&quot;,$indexs[i])25 &#125;26 printf(&quot;\n&quot;);27 &#125;28 &#125;&apos; $srcfile &gt;&gt; $tgtfile29 &#125;filterAndGet $1 39 0 $2/a_$&#123;day&#125;.csv 9 14 15 52 2 3 5 10 11 53 54 55 56 57 58 59 88 16 6 7 8 21 35 34 23 86 17 19 20 思路2：配置文件中配置多个IP，循环去取文件思路3：增加文件过滤规则，定时器规则]]></content>
-      <categories>
-        <category>数据采集 - 日志收集</category>
-      </categories>
-      <tags>
-        <tag>日志</tag>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[始终－程序员的自我修养]]></title>
     <url>%2F2018%2F12%2F04%2F%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A7%8B%E7%BB%88%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB%2F</url>
     <content type="text"><![CDATA[原文 计算机发展史计算机三大件：中央处理器cpu、内存、IO控制芯片 计算机硬件的房展很大程度上归功于CPU技术的更新，CPU核心频率的不多提升 北桥芯片：用来协调CPU内存显卡之间的高速内存交换（内存的频率远远低于CPU的频率） 不过连接在北桥上的设备还是速度一级棒的，相对于键盘、硬盘来讲，所以CPU不会直接带这些低俗设备玩，把这些设备交给南桥来管理，然后通过内部总线来沟通 i7后，cpu将北桥集成在内 操作系统 计算机科学领域的任何问题，都可以通过增加一个间接的中间层来解决 操作系统就是有很多任务要交给计算机去做的多个用户用户与计算机硬件间的中间层 操作系统经历了，多道程序、分时系统、多任务系统 在多任务系统中，操作系统接管了所有硬件资源并持有对硬件控制的最高权限。在操作系统中执行的程序，都以进程的方式运行在更低的权限中。所有的硬件资源，由操作系统根据进程的优先级以及进程的运行状况进行统一的调配。 进程与线程操作系统是以进程为单位去分配空间和执行的 每个线程有自己独立的栈，同时多个线程共享进程空间中的数据 线程安全竞争如果有多个线程尝试对同一份数据进行写入操作，那么最终结果可能回事不可预期的 原子性单条指令是原子性的，是不可被打断的，但是单条指令能力有限，我们只能通过同步和锁机制实现多条指令的原子性 同步与锁 在这里，同步是一种规则，而锁则是实现这种规则的具体方法。 所谓同步，指的是多线程程序里，多个线程不得同时对某一共享变量进行访问。锁是实现同步的一种具体方案——准确地说，这是一种非常强的方案。锁有多种形式，最符合直觉的锁是所谓的互斥量（Mutex）。具体来说，线程在访问某个共享变量的时候，必须先获取锁；如果获取不到锁，那么就必须等待（或者进行其他操作，总之不许访问这个变量）；在结束对这个变量的访问之后，持有锁的线程应当释放。 值得一提的是，所作为一种同步手段，是非常强的。但是，这种强，仅限于逻辑层面。在实际情况中，编译器优化、CPU 动态调度，都有可能打破锁对于同步的保护。这时候，这些优化就变成了过度优化。 过度优化对线程安全的破坏线程安全不好控制，所以基于actor的akka必火]]></content>
@@ -1155,17 +1165,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[算法]]></title>
-    <url>%2F2018%2F12%2F04%2F%E7%AE%97%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[《算法》基础在计算机科学领域,我们用算法这个词来描述一种有现的解决问题的方法。算法是计算机科学的基础,是这个领域研究的核心。 #### 基础编程模型 我们学习算法的方法是用 Java 编程语言编写的程序来实现算法。这样做是出于以下原因: 程序是对算法精确、优雅和完全的描述; 可以通过运行程序来学习算法的各种性质; 可以在应用程序中直接使用这些算法。相比用自然语言描述算法,这些是重要而巨大的优势。 java 程序的基本结构]]></content>
-      <categories>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据仓库清洗规则]]></title>
     <url>%2F2018%2F12%2F04%2F%E8%84%9A%E5%9E%8B%E6%95%B0%E6%8D%AE%E3%80%81%E6%A5%A6%E5%9E%8B%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%96%B9%E6%A1%88%E7%A8%BF%2F</url>
     <content type="text"><![CDATA[脚型数据、楦数据清洗方案稿背景脚型数据、楦数据均以入库（待确认） 需要对数据做最基本，根据具体业务需要的数据清洗 ## 前提 数据仓库中的脚数据、楦数据的数据一致性校验完成 ## 清洗规则 明确数据的业务范围明确数据的语义两个表各字段的意义 数据中存在的错误界定及处理方法表级别错误主要包括数据记录不合理的重复、数据记录的缺失。 依赖数据入库操作时数据一致性校验的完成 #### 行级别错误 对于数据中存在的错误，处理的原则是尽最大可能去发现并修复，对于不能修复的错误，则需要给出警示。 对于行级错误的处理，从找出异常数据入手。 对于每个字段，发现异常数据可以通过以下（不限于）几种方式： 对于标量，如果离群则记为异常。 取值不在字典表范围内。 不符合数据的语义（在当前语义上无法解释）。 与其它字段的信息不一致。 异常数据处理流程： 首先判断是不是错误，如果不是错误，那我们只需要加以记录，这可以帮助我们更深入的认识数据； 如果是错误，试着去分析错误产生的原因，推测出正确值；如果能推测出正确值，那么推算出正确值。 如果不能推测出正确值，那么将其置为空值（空值至少不会提供错误的信息，其不良影响要弱于错误的信息所来带来的）。 对数据做规范化、统一化不规范、不统一的数据可能并不影响信息表达的准确性，却对数据分析和数据处理有很大的影响。 我们所要做的有两方面： 含义相同的字段，采用统一的规范的形式来表达。 目前主要包括：- 日期字段格式的统一，全部采用标准Unix时间戳表示。 对于同一字段，相同的信息，采用相同的表达。 主要针对字符型的字段。比如：北京、北京市、【北京】都是表达相同的含义，我们需要将其统一；男女与0,1,2的映射 ３． 空值处理、null值处理]]></content>
@@ -1174,6 +1173,17 @@
       </categories>
       <tags>
         <tag>datawarehouse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[算法]]></title>
+    <url>%2F2018%2F12%2F04%2F%E7%AE%97%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[《算法》基础在计算机科学领域,我们用算法这个词来描述一种有现的解决问题的方法。算法是计算机科学的基础,是这个领域研究的核心。 #### 基础编程模型 我们学习算法的方法是用 Java 编程语言编写的程序来实现算法。这样做是出于以下原因: 程序是对算法精确、优雅和完全的描述; 可以通过运行程序来学习算法的各种性质; 可以在应用程序中直接使用这些算法。相比用自然语言描述算法,这些是重要而巨大的优势。 java 程序的基本结构]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
