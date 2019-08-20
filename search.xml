@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[netty-learning]]></title>
+    <url>%2F2019%2F08%2F14%2Fnetty-learning%2F</url>
+    <content type="text"><![CDATA[新手读：《深入浅出netty》第一章描述了下java io 现状，做了对比，也就引出netty诞生的背景以及必要 但是从第二章开始就不知道说的写什么了，对新手太不友好 –&gt; 去netty 官网看看有没有 Get Started Netty.io Get StartedNetty IM]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[814]]></title>
     <url>%2F2019%2F08%2F14%2F814%2F</url>
-    <content type="text"><![CDATA[? 设计模式－门面模式]]></content>
+    <content type="text"><![CDATA[设计模式－门面模式 &lt;java与模式&gt; 客户端：病人 服务端：医院 门面模式：在病人与医院的各个科室间做导医台，病人只需要与导医台沟通即可]]></content>
   </entry>
   <entry>
     <title><![CDATA[8a]]></title>
@@ -77,7 +82,7 @@
   <entry>
     <title><![CDATA[javaIO]]></title>
     <url>%2F2019%2F06%2F04%2FjavaIO%2F</url>
-    <content type="text"><![CDATA[JAVA IO整体架构图 未完待续]]></content>
+    <content type="text"><![CDATA[JAVA IO(BIO)整体架构图 我们知道阻塞I/O在调用InputStream.read()方法时是阻塞的，它会一直等到数据到来时（或超时）才会返回；同样，在调用ServerSocket.accept()方法时，也会一直阻塞到有客户端连接才会返回，每个客户端连接过来后，服务端都会启动一个线程去处理该客户端的请求 缺点： 当客户端多时，会创建大量的处理线程。且每个线程都要占用栈空间和一些CPU时间 阻塞可能带来频繁的上下文切换，且大部分上下文切换可能是无意义的。 伪异步IO 在Java IO 的基础上加了任务队列和线程池由于线程池可以设置消息队列的大小和最大线程数,因此,它的资源占用是可控的,无论多少个客户端并发访问,都不会导致资源的耗尽和宕机。 JAVA NIOJava NIO是在jdk1.4开始使用的，它既可以说成“新I/O”，也可以说成非阻塞式I/O。下面是java NIO的工作原理： 由一个专门的线程来处理所有的 IO 事件，并负责分发。 事件驱动机制：事件到的时候触发，而不是同步的去监视事件。 线程通讯：线程之间通过 wait,notify 等方式通讯。保证每次上下文切换都是有意义的。减少无谓的线程切换。]]></content>
   </entry>
   <entry>
     <title><![CDATA[aTemp]]></title>
@@ -343,6 +348,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[H2数据库笔记]]></title>
+    <url>%2F2018%2F12%2F04%2FH2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[H2工具类： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &#123; private var server: Server = null; private var webServer: Server = null; def start(): Unit = &#123; try &#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;, &quot;&quot;, true, true) &#125; catch &#123; case e: Throwable =&gt; &#125; try &#123; server = Server.createTcpServer(&quot;-tcp&quot;, &quot;-tcpAllowOthers&quot;, &quot;-tcpPort&quot;, ProConfig.h2DatabaseTcpPort.toString).start() log.info(&quot;server status: &quot; + server.getStatus) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def startWebConsole(openBrowser: Boolean = false): Unit = &#123; try &#123; if (webServer == null) &#123; webServer = Server.createWebServer(&quot;-web&quot;, &quot;-webAllowOthers&quot;, &quot;-webPort&quot;, ProConfig.h2DatabaseWebPort.toString).start() &#125; log.info(&quot;webServerStatus&quot; + webServer.getStatus) if (openBrowser) Server.openBrowser(s&quot;http://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseWebPort&#125;&quot;) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def stop(): Unit = &#123; def shutdownServer(server: Server): Unit = &#123; try &#123; server match &#123; case s if s != null =&gt; s.stop() case _ =&gt; log.info(&quot;H2 server did not start&quot;) &#125; &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; shutdownServer(server) shutdownServer(webServer) try&#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;,&quot;&quot;,true,true) log.debug(&quot;serverStatus: &quot;+server.getStatus) &#125;catch &#123; case e:Throwable =&gt; log.error(e.getMessage,e) &#125; &#125;&#125;object H2Test extends App &#123; H2Database.start() Thread.sleep(10000) H2Database.stop()&#125; JDBC开启H2数据库后可按照JDBC 正常连接 CSVWRITE: 导出表成为 CSV 文件1CALL CSVWRITE(&apos;/home/xxhbak/FEATURECONF.csv&apos;, &apos;SELECT * FROM FEATURECONF&apos;); CSVREAD:向表导入CSV文件使用数据库读取CSV文件 CSVREAD使用: 1SELECT * FROM CSVREAD(&apos;test.csv&apos;); Another option is to use INSERT INTO … SELECT. 123CREATE TABLE TEST AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255)) AS SELECT * FROM CSVREAD(&apos;test.csv&apos;); Please note for performance reason, CSVREAD should not be used inside a join. Instead, import the data first (possibly into a temporary table), create the required indexes if necessary, and then query this table. 参考 示例，亲测 CALL CSVREAD(‘/home/xd/us.csv’, ‘SELECT * FROM us ‘);insert into us (SELECT * FROM CSVREAD(‘/home/xd/USERCASERESULT.csv’,NULL,’UTF-8’,’|’));]]></content>
+      <categories>
+        <category>数据存储处理 - database</category>
+      </categories>
+      <tags>
+        <tag>database</tag>
+        <tag>H2</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hadoop 权威指南 3th Edition Part 1]]></title>
     <url>%2F2018%2F12%2F04%2FHadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97V3-p1%2F</url>
     <content type="text"><![CDATA[第一章 数据！数据！ 这个世界数据存量很大，数据增长的速度很快，数据的价值很大 数据存储于分析 现有硬件存储容量上升，但是读写速率还是不够高，急需要并发从多个硬盘读取数据 硬盘故障解决：数据冗余备份(RAID,HDFS) 数据并发读取的正确性MapReduce编程模型将数据读写问题抽象转换成数据集的计算，并且是可靠的 相较于其他系统的优势 用蛮力处理整个庞大数据集或数据集的一部分 关系型数据库管理系统 现象：寻址速率的提升远远不及传输速率的提升 B树这有在小量数据时有优势，数据量大时，更新整个B树要花大量时间 RDBMS与hadoop相互补充，hadoop适合批处理，而rdbms适合点查询更新 RDBMS被索引后，能够提供低延迟的查询和少量的数据更新，mapreduce适合一次写入，多次读取做数据分析 RDBMS适合持续更新的数据集 Table 1-1. RDBMS compared to MapReduce item Traditional RDBMS MapReduce Data size Gigabytes Petabytes Access(数据存取) Interactive and batch Batch Updates Read and write many times Write once, read many times Structure Static schema Dynamic schema Integrity(完整性) High Low Scaling Nonlinear Linear 存储的数据不同：RDBMS:结构化数据，完整的且不含冗余hadoop:结构化、半结构化、非结构化数据 网格计算， mapreduce 尽量使得数据本地化 志愿计算： 志愿计算为计算所花的时间远远超过工作单元数据传输时间，也就是说志愿者贡献的是CPU周期，而不是网络带宽 Hadoop发展简史 o 好牛b哦 hadoop echosystem common 一系列组件和接口 avro 序列化系统 maoreduce 计算引擎 HDFS 分布式文件系统 hive 数据仓库，sql查询hdfs hbase 列存储数据仓库 zookeeper 分布式、可用性高的协调服务 sqoop:rdbms &lt;=&gt; hdfs oozie 调度作业 hadoop 发行版本 Table 1-2. Features supported by Hadoop release series Feature 1.x 0.22 2.x Secure authentication Yes No Yes Old configuration names Yes Deprecated Deprecated New configuration names No Yes Yes Old MapReduce API Yes Yes Yes New MapReduce API Yes (with somemissing libraries) Yes Yes MapReduce 1 runtime (Classic) Yes Yes No MapReduce 2 runtime (YARN) No No Yes HDFS federation No No Yes HDFS high-availability No No Yes 第二章气象数据处理 2.1 气象数据集首先要搞清楚数据格式 文本数据 每一行是一条记录 整个数据集有很多小文件组成 2.2 Unix 处理方式12345678910#!/usr/bin/env bashfor year in all/*doecho -ne `basename $year .gz`&quot;\t&quot;gunzip -c $year | \awk &apos;&#123; temp = substr($0, 88, 5) + 0;q = substr($0, 93, 1);if (temp !=9999 &amp;&amp; q ~ /[01459]/ &amp;&amp; temp &gt; max) max = temp &#125;END &#123; print max &#125;&apos;done 循环使用awk处理 单进程处理 2.3 hadoop处理方式map: 1234567891011121314151617181920212223242526272829import java.io.IOException;importimportimportimportorg.apache.hadoop.io.IntWritable;org.apache.hadoop.io.LongWritable;org.apache.hadoop.io.Text;org.apache.hadoop.mapreduce.Mapper;public class MaxTemperatureMapperextends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;private static final int MISSING = 9999;@Overridepublic void map(LongWritable key, Text value, Context context)throws IOException, InterruptedException &#123;&#125;&#125;String line = value.toString();String year = line.substring(15, 19);int airTemperature;if (line.charAt(87) == &apos;+&apos;) &#123; // parseInt doesn&apos;t like leading plus signsairTemperature = Integer.parseInt(line.substring(88, 92));&#125; else &#123;airTemperature = Integer.parseInt(line.substring(87, 92));&#125;String quality = line.substring(92, 93);if (airTemperature != MISSING &amp;&amp; quality.matches(&quot;[01459]&quot;)) &#123;context.write(new Text(year), new IntWritable(airTemperature));&#125; reduce: 1234567891011121314151617import java.io.IOException;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Reducer;public class MaxTemperatureReducerextends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;@Overridepublic void reduce(Text key, Iterable&lt;IntWritable&gt; values,Context context)throws IOException, InterruptedException &#123;&#125;&#125;int maxValue = Integer.MIN_VALUE;for (IntWritable value : values) &#123;maxValue = Math.max(maxValue, value.get());&#125;context.write(key, new IntWritable(maxValue)); main: 123456789101112131415161718192021222324import org.apache.hadoop.fs.Path;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Job;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;public class MaxTemperature &#123;public static void main(String[] args) throws Exception &#123;if (args.length != 2) &#123;System.err.println(&quot;Usage: MaxTemperature &lt;input path&gt; &lt;output path&gt;&quot;);System.exit(-1);&#125;Job job = new Job();job.setJarByClass(MaxTemperature.class);job.setJobName(&quot;Max temperature&quot;);FileInputFormat.addInputPath(job, new Path(args[0]));FileOutputFormat.setOutputPath(job, new Path(args[1]));job.setMapperClass(MaxTemperatureMapper.class);job.setReducerClass(MaxTemperatureReducer.class);job.setOutputKeyClass(Text.class);job.setOutputValueClass(IntWritable.class);System.exit(job.waitForCompletion(true) ? 0 : 1);&#125;&#125; 2.4 横向扩展2.5 Hadoop Streaming]]></content>
@@ -365,19 +383,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[H2数据库笔记]]></title>
-    <url>%2F2018%2F12%2F04%2FH2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[H2工具类： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859object H2Database extends LogSupport &#123; private var server: Server = null; private var webServer: Server = null; def start(): Unit = &#123; try &#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;, &quot;&quot;, true, true) &#125; catch &#123; case e: Throwable =&gt; &#125; try &#123; server = Server.createTcpServer(&quot;-tcp&quot;, &quot;-tcpAllowOthers&quot;, &quot;-tcpPort&quot;, ProConfig.h2DatabaseTcpPort.toString).start() log.info(&quot;server status: &quot; + server.getStatus) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def startWebConsole(openBrowser: Boolean = false): Unit = &#123; try &#123; if (webServer == null) &#123; webServer = Server.createWebServer(&quot;-web&quot;, &quot;-webAllowOthers&quot;, &quot;-webPort&quot;, ProConfig.h2DatabaseWebPort.toString).start() &#125; log.info(&quot;webServerStatus&quot; + webServer.getStatus) if (openBrowser) Server.openBrowser(s&quot;http://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseWebPort&#125;&quot;) &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; def stop(): Unit = &#123; def shutdownServer(server: Server): Unit = &#123; try &#123; server match &#123; case s if s != null =&gt; s.stop() case _ =&gt; log.info(&quot;H2 server did not start&quot;) &#125; &#125; catch &#123; case e: Throwable =&gt; log.error(e.getMessage, e) &#125; &#125; shutdownServer(server) shutdownServer(webServer) try&#123; Server.shutdownTcpServer(s&quot;tcp://$&#123;ProConfig.h2DatabaseHost&#125;:$&#123;ProConfig.h2DatabaseTcpPort&#125;&quot;,&quot;&quot;,true,true) log.debug(&quot;serverStatus: &quot;+server.getStatus) &#125;catch &#123; case e:Throwable =&gt; log.error(e.getMessage,e) &#125; &#125;&#125;object H2Test extends App &#123; H2Database.start() Thread.sleep(10000) H2Database.stop()&#125; JDBC开启H2数据库后可按照JDBC 正常连接 CSVWRITE: 导出表成为 CSV 文件1CALL CSVWRITE(&apos;/home/xxhbak/FEATURECONF.csv&apos;, &apos;SELECT * FROM FEATURECONF&apos;); CSVREAD:向表导入CSV文件使用数据库读取CSV文件 CSVREAD使用: 1SELECT * FROM CSVREAD(&apos;test.csv&apos;); Another option is to use INSERT INTO … SELECT. 123CREATE TABLE TEST AS SELECT * FROM CSVREAD(&apos;test.csv&apos;);CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255)) AS SELECT * FROM CSVREAD(&apos;test.csv&apos;); Please note for performance reason, CSVREAD should not be used inside a join. Instead, import the data first (possibly into a temporary table), create the required indexes if necessary, and then query this table. 参考 示例，亲测 CALL CSVREAD(‘/home/xd/us.csv’, ‘SELECT * FROM us ‘);insert into us (SELECT * FROM CSVREAD(‘/home/xd/USERCASERESULT.csv’,NULL,’UTF-8’,’|’));]]></content>
-      <categories>
-        <category>数据存储处理 - database</category>
-      </categories>
-      <tags>
-        <tag>database</tag>
-        <tag>H2</tag>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Hbase使用]]></title>
     <url>%2F2018%2F12%2F04%2FHbase%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[简介HBase 应用场景及特点特点： 海量数据存储 关系型数据库： 列数不超过30 单表行数据量一般不会超过500万vshbase:上百亿行*上百万列 准实时查询 百毫秒 面向列 面向列的存储和权限控制，列是可以动态增加的，并且列支持独立索引。这样在查询行中少数几个字段时，能大大减少读取的数据量 多版本 每一列的数据存储有多个Version 稀疏性：为空的列不占用存储空间，表可以设计的非常稀疏 扩展性： 底层依赖HDFS 高可靠性 高性能应用场景： 交通 金融 电商 电信 概念与定位数据模型Hbase表可以当成一个多维的Map Table一个表有多行 Row在HBase里，row是由row key和一个或多个列及其值组成。数据在被存储的时候，是按row key的字母排序存储的。因此，row key的设计是非常重要的。这样存储数据的目的就是为了让相关的行存储在相邻的位置。 Column（列）HBase的一列由列簇和列修饰符组成，他们通常由冒号（：）分隔。 Column Family(列簇)通常为了性能原因的考虑，列簇会把列和相应的值物理上联合在一起 每个列簇是一个存储属性的集合，例如它的值是否应该缓存在内存中，它的数据是如何压缩或它的row key是如何编码，以及其他。表中的每个行都有相同的列簇，但是一行也可能没有存储一个列簇里的任何数据。 Column Qualifier列修饰符被加到一个列簇，以提供对一个数据片段的索引。规定一个列簇为content，一个列修饰符可能是content:html，另外一个可能是content:pdf。尽管列簇是在创建表的时候固定了，但列修饰符是可变的，在行之间可能存在很大的不同。 Cell一个Cell是行，列簇和列修饰符的组合，并且包含一个值和时间戳，时间戳代表着值的版本。 Timestamp一个时间戳是連同值一起被写入的，是值版本的唯一标识，默认情况下，时间戳表示数据写入时RegionServer的时间，但是当你在写数据到Cell的时候，你可以指定一个不同的时间戳。 安装官网文档getstart写的通俗易懂 增加配置-&gt; conf/hbase-site.xml,以使用伪分布式 1234&lt;property&gt; &lt;name&gt;hbase.cluster.distributed&lt;/name&gt; &lt;value&gt;true&lt;/value&gt;&lt;/property&gt; 增加配置 -&gt; conf/hbase-env.sh，以使用独立安装的zk 1export HBASE_MANAGES_ZK=false 过程算是比较顺畅的]]></content>
@@ -389,18 +394,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[使用Http小记]]></title>
-    <url>%2F2018%2F12%2F04%2FHttp%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[Http调试工具Postman使用 Postman Postman测试接口之JSON结构化数据提交 Postman使用详解 JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging dataJSON is text,written with JavaScript object notationJSONw3school Http learning这篇博客总结的不错Http协议，超文本传输协议（HyperText Transfer P rotocol）客户端请求消息格式： 服务器端响应消息格式： 平常主要用到的请求方法只有：GET和POSTGET 方法：请求指定的页面信息，并返回实体主体 GET 请求可被缓存 GET 请求保留在浏览器历史记录中 GET 请求可被收藏为书签 GET 请求不应在处理敏感数据时使用 GET 请求有长度限制 GET 请求只应当用于取回数据POST 方法：向指定的资源提交表单或者文件，数据包含在请求体中，POST请求会导致新资源的建立或者原有资源的更改。 POST 请求不会被缓存 POST 请求不会保留在浏览器历史记录中 POST 不能被收藏为书签 POST 请求对数据长度没有要求HTTP 方法：GET 对比 POST四种POST请求 RESTful架构理解RESTful架构 REST: resource representation state transfer]]></content>
-      <categories>
-        <category>服务器端 - web开发</category>
-      </categories>
-      <tags>
-        <tag>http</tag>
-        <tag>webapp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[https Certificate配置]]></title>
     <url>%2F2018%2F12%2F04%2FHttps%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[用在aliyun上申请到的https Certificate配置到akka-http服务器上，并将应用部署到aws ec2上 certificate证书是同事发给我的，是在aliyun上申请的，绑定了公司的域名，只能运行在配置了公司域名（二级、三级、、、）的服务器上，也就是说不能本地调试，略麻烦 1-rw-rw-r-- 1 xxh xxh 4083 12月 6 17:22 214043592950638.zip unzip 后是两个文件，一个是.key文件即私钥文件，另一个是.pem文件即证书文件 12-rw-rw-r-- 1 xxh xxh 1675 6月 20 17:36 214043592950638.key-rw-rw-r-- 1 xxh xxh 3892 6月 20 17:36 214043592950638.pem 生成.pfx文件12openssl pkcs12 -export -out 214043592950638.pfx -inkey214043592950638.key -in 214043592950638.pem 这时会提示我们输入password输入密码并确认后便生成了下面的.pfx文件-rw-rw-r-- 1 xxh xxh 4437 12月 7 09:28 214043592950638.pfx pfx证书安装我用的是sbt构建app的，所以把pfx文件放入resources目录中 webserver编写： 12345678910111213141516171819202122232425262728293031323334353637383940object WebServer extends LogSupport&#123; implicit val system = ActorSystem() implicit val mat = ActorMaterializer() implicit val dispatcher = system.dispatcher def main(args: Array[String]): Unit = &#123; // Manual HTTPS configuration val password: Array[Char] = &quot;mima&quot;.toCharArray val ks: KeyStore = KeyStore.getInstance(&quot;PKCS12&quot;) val keystore: InputStream = getClass.getClassLoader.getResourceAsStream(&quot;214043592950638.pfx&quot;) require(keystore != null, &quot;Keystore required!&quot;) ks.load(keystore, password) val keyManagerFactory: KeyManagerFactory = KeyManagerFactory.getInstance(&quot;SunX509&quot;) keyManagerFactory.init(ks, password) val tmf: TrustManagerFactory = TrustManagerFactory.getInstance(&quot;SunX509&quot;) tmf.init(ks) val sslContext: SSLContext = SSLContext.getInstance(&quot;TLS&quot;) sslContext.init(keyManagerFactory.getKeyManagers, tmf.getTrustManagers, new SecureRandom) val https: HttpsConnectionContext = ConnectionContext.https(sslContext) val routes: Route = path(&quot;test&quot;)&#123; get &#123; logger.info(&quot;response hello&quot;) complete(&quot;Hello world!&quot;) &#125; &#125; // sets default context to HTTPS – all Http() bound servers for this ActorSystem will use HTTPS from now on Http().setDefaultServerHttpContext(https) Http().bindAndHandle(routes, &quot;0.0.0.0&quot;, 443, connectionContext = https) logger.info(&quot;WebServer start&quot;) &#125;&#125; test上文提到过，必须在绑定域名的服务器上才能使用该证书，所以上传到ec2服务器上测试，记得开启443的入站端口 ps:我不小心将routes 放到了Http()绑定之后，出现了空指针异常，调整routes位置后ok rel 知乎相关问题 阿里云服务器绑定https]]></content>
@@ -408,9 +401,21 @@
         <category>服务器端 - web开发</category>
       </categories>
       <tags>
-        <tag>webapp</tag>
         <tag>https</tag>
         <tag>Certificate配置</tag>
+        <tag>webapp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Intellij IDEA 快捷键整理]]></title>
+    <url>%2F2018%2F12%2F04%2FIntellij%20IDEA%20%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86%2F</url>
+    <content type="text"><![CDATA[【常规】 Ctrl+Shift + Enter，语句完成 “！”，否定完成，输入表达式时按 “！”键 Ctrl+E，最近的文件 Ctrl+Shift+E，最近更改的文件 Shift+Click，可以关闭文件 Ctrl+[ OR ]，可以跑到大括号的开头与结尾 Ctrl+F12，可以显示当前文件的结构 Ctrl+F7，可以查询当前元素在当前文件中的引用，然后按 F3 可以选择 Ctrl+N，可以快速打开类 Ctrl+Shift+N，可以快速打开文件 Alt+Q，可以看到当前方法的声明 Ctrl+P，可以显示参数信息 Ctrl+Shift+Insert，可以选择剪贴板内容并插入 Alt+Insert，可以生成构造器/Getter/Setter等 Ctrl+Alt+V，可以引入变量。例如：new String(); 自动导入变量定义 Ctrl+Alt+T，可以把代码包在一个块内，例如：try/catch Ctrl+Enter，导入包，自动修正 Ctrl+Alt+L，格式化代码 Ctrl+Alt+I，将选中的代码进行自动缩进编排，这个功能在编辑 JSP 文件时也可以工作 Ctrl+Alt+O，优化导入的类和包 Ctrl+R，替换文本 Ctrl+F，查找文本 Ctrl+Shift+Space，自动补全代码 Ctrl+空格，代码提示（与系统输入法快捷键冲突） Ctrl+Shift+Alt+N，查找类中的方法或变量 Alt+Shift+C，最近的更改 Alt+Shift+Up/Down，上/下移一行 Shift+F6，重构 - 重命名 Ctrl+X，删除行 Ctrl+D，复制行 Ctrl+/或Ctrl+Shift+/，注释（//或者/**/） Ctrl+J，自动代码（例如：serr） Ctrl+Alt+J，用动态模板环绕 Ctrl+H，显示类结构图（类的继承层次） Ctrl+Q，显示注释文档 Alt+F1，查找代码所在位置 Alt+1，快速打开或隐藏工程面板 Ctrl+Alt+left/right，返回至上次浏览的位置 Alt+left/right，切换代码视图 Alt+Up/Down，在方法间快速移动定位 Ctrl+Shift+Up/Down，向上/下移动语句 F2 或 Shift+F2，高亮错误或警告快速定位 Tab，代码标签输入完成后，按 Tab，生成代码 Ctrl+Shift+F7，高亮显示所有该文本，按 Esc 高亮消失 Alt+F3，逐个往下查找相同文本，并高亮显示 Ctrl+Up/Down，光标中转到第一行或最后一行下 Ctrl+B/Ctrl+Click，快速打开光标处的类或方法（跳转到定义处） Ctrl+Alt+B，跳转到方法实现处 Ctrl+Shift+Backspace，跳转到上次编辑的地方 Ctrl+O，重写方法 Ctrl+Alt+Space，类名自动完成 Ctrl+Alt+Up/Down，快速跳转搜索结果 Ctrl+Shift+J，整合两行 Alt+F8，计算变量值 Ctrl+Shift+V，可以将最近使用的剪贴板内容选择插入到文本 Ctrl+Alt+Shift+V，简单粘贴 Shift+Esc，不仅可以把焦点移到编辑器上，而且还可以隐藏当前（或最后活动的）工具窗口 F12，把焦点从编辑器移到最近使用的工具窗口 Shift+F1，要打开编辑器光标字符处使用的类或者方法 Java 文档的浏览器 Ctrl+W，可以选择单词继而语句继而行继而函数 Ctrl+Shift+W，取消选择光标所在词 Alt+F7，查找整个工程中使用地某一个类、方法或者变量的位置 Ctrl+I，实现方法 Ctrl+Shift+U，大小写转化 Ctrl+Y，删除当前行 Shift+Enter，向下插入新行 psvm/sout，main/System.out.println(); Ctrl+J，查看更多 Ctrl+Shift+F，全局查找 Ctrl+F，查找/Shift+F3，向上查找/F3，向下查找 Ctrl+Shift+S，高级搜索 Ctrl+U，转到父类 Ctrl+Alt+S，打开设置对话框 Alt+Shift+Inert，开启/关闭列选择模式 Ctrl+Alt+Shift+S，打开当前项目/模块属性 Ctrl+G，定位行 Alt+Home，跳转到导航栏 Ctrl+Enter，上插一行 Ctrl+Backspace，按单词删除 Ctrl+&quot;+/-&quot;，当前方法展开、折叠 Ctrl+Shift+&quot;+/-&quot;，全部展开、折叠【调试部分、编译】 Ctrl+F2，停止 Alt+Shift+F9，选择 Debug Alt+Shift+F10，选择 Run Ctrl+Shift+F9，编译 Ctrl+Shift+F10，运行 Ctrl+Shift+F8，查看断点 F8，步过 F7，步入 Shift+F7，智能步入 Shift+F8，步出 Alt+Shift+F8，强制步过 Alt+Shift+F7，强制步入 Alt+F9，运行至光标处 Ctrl+Alt+F9，强制运行至光标处 F9，恢复程序 Alt+F10，定位到断点 Ctrl+F8，切换行断点 Ctrl+F9，生成项目 Alt+1，项目 Alt+2，收藏 Alt+6，TODO Alt+7，结构 Ctrl+Shift+C，复制路径 Ctrl+Alt+Shift+C，复制引用，必须选择类名 Ctrl+Alt+Y，同步 Ctrl+~，快速切换方案（界面外观、代码风格、快捷键映射等菜单） Shift+F12，还原默认布局 Ctrl+Shift+F12，隐藏/恢复所有窗口 Ctrl+F4，关闭 Ctrl+Shift+F4，关闭活动选项卡 Ctrl+Tab，转到下一个拆分器 Ctrl+Shift+Tab，转到上一个拆分器【重构】 Ctrl+Alt+Shift+T，弹出重构菜单 Shift+F6，重命名 F6，移动 F5，复制 Alt+Delete，安全删除 Ctrl+Alt+N，内联【查找】 Ctrl+F，查找 Ctrl+R，替换 F3，查找下一个 Shift+F3，查找上一个 Ctrl+Shift+F，在路径中查找 Ctrl+Shift+R，在路径中替换 Ctrl+Shift+S，搜索结构 Ctrl+Shift+M，替换结构 Alt+F7，查找用法 Ctrl+Alt+F7，显示用法 Ctrl+F7，在文件中查找用法 Ctrl+Shift+F7，在文件中高亮显示用法【VCS】 Alt+~，VCS 操作菜单 Ctrl+K，提交更改 Ctrl+T，更新项目 Ctrl+Alt+Shift+D，显示变化]]></content>
+      <categories>
+        <category>工欲善其事，必先利其器</category>
+      </categories>
+      <tags>
+        <tag>IDEA</tag>
+        <tag>IDE</tag>
       </tags>
   </entry>
   <entry>
@@ -426,15 +431,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Intellij IDEA 快捷键整理]]></title>
-    <url>%2F2018%2F12%2F04%2FIntellij%20IDEA%20%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86%2F</url>
-    <content type="text"><![CDATA[【常规】 Ctrl+Shift + Enter，语句完成 “！”，否定完成，输入表达式时按 “！”键 Ctrl+E，最近的文件 Ctrl+Shift+E，最近更改的文件 Shift+Click，可以关闭文件 Ctrl+[ OR ]，可以跑到大括号的开头与结尾 Ctrl+F12，可以显示当前文件的结构 Ctrl+F7，可以查询当前元素在当前文件中的引用，然后按 F3 可以选择 Ctrl+N，可以快速打开类 Ctrl+Shift+N，可以快速打开文件 Alt+Q，可以看到当前方法的声明 Ctrl+P，可以显示参数信息 Ctrl+Shift+Insert，可以选择剪贴板内容并插入 Alt+Insert，可以生成构造器/Getter/Setter等 Ctrl+Alt+V，可以引入变量。例如：new String(); 自动导入变量定义 Ctrl+Alt+T，可以把代码包在一个块内，例如：try/catch Ctrl+Enter，导入包，自动修正 Ctrl+Alt+L，格式化代码 Ctrl+Alt+I，将选中的代码进行自动缩进编排，这个功能在编辑 JSP 文件时也可以工作 Ctrl+Alt+O，优化导入的类和包 Ctrl+R，替换文本 Ctrl+F，查找文本 Ctrl+Shift+Space，自动补全代码 Ctrl+空格，代码提示（与系统输入法快捷键冲突） Ctrl+Shift+Alt+N，查找类中的方法或变量 Alt+Shift+C，最近的更改 Alt+Shift+Up/Down，上/下移一行 Shift+F6，重构 - 重命名 Ctrl+X，删除行 Ctrl+D，复制行 Ctrl+/或Ctrl+Shift+/，注释（//或者/**/） Ctrl+J，自动代码（例如：serr） Ctrl+Alt+J，用动态模板环绕 Ctrl+H，显示类结构图（类的继承层次） Ctrl+Q，显示注释文档 Alt+F1，查找代码所在位置 Alt+1，快速打开或隐藏工程面板 Ctrl+Alt+left/right，返回至上次浏览的位置 Alt+left/right，切换代码视图 Alt+Up/Down，在方法间快速移动定位 Ctrl+Shift+Up/Down，向上/下移动语句 F2 或 Shift+F2，高亮错误或警告快速定位 Tab，代码标签输入完成后，按 Tab，生成代码 Ctrl+Shift+F7，高亮显示所有该文本，按 Esc 高亮消失 Alt+F3，逐个往下查找相同文本，并高亮显示 Ctrl+Up/Down，光标中转到第一行或最后一行下 Ctrl+B/Ctrl+Click，快速打开光标处的类或方法（跳转到定义处） Ctrl+Alt+B，跳转到方法实现处 Ctrl+Shift+Backspace，跳转到上次编辑的地方 Ctrl+O，重写方法 Ctrl+Alt+Space，类名自动完成 Ctrl+Alt+Up/Down，快速跳转搜索结果 Ctrl+Shift+J，整合两行 Alt+F8，计算变量值 Ctrl+Shift+V，可以将最近使用的剪贴板内容选择插入到文本 Ctrl+Alt+Shift+V，简单粘贴 Shift+Esc，不仅可以把焦点移到编辑器上，而且还可以隐藏当前（或最后活动的）工具窗口 F12，把焦点从编辑器移到最近使用的工具窗口 Shift+F1，要打开编辑器光标字符处使用的类或者方法 Java 文档的浏览器 Ctrl+W，可以选择单词继而语句继而行继而函数 Ctrl+Shift+W，取消选择光标所在词 Alt+F7，查找整个工程中使用地某一个类、方法或者变量的位置 Ctrl+I，实现方法 Ctrl+Shift+U，大小写转化 Ctrl+Y，删除当前行 Shift+Enter，向下插入新行 psvm/sout，main/System.out.println(); Ctrl+J，查看更多 Ctrl+Shift+F，全局查找 Ctrl+F，查找/Shift+F3，向上查找/F3，向下查找 Ctrl+Shift+S，高级搜索 Ctrl+U，转到父类 Ctrl+Alt+S，打开设置对话框 Alt+Shift+Inert，开启/关闭列选择模式 Ctrl+Alt+Shift+S，打开当前项目/模块属性 Ctrl+G，定位行 Alt+Home，跳转到导航栏 Ctrl+Enter，上插一行 Ctrl+Backspace，按单词删除 Ctrl+&quot;+/-&quot;，当前方法展开、折叠 Ctrl+Shift+&quot;+/-&quot;，全部展开、折叠【调试部分、编译】 Ctrl+F2，停止 Alt+Shift+F9，选择 Debug Alt+Shift+F10，选择 Run Ctrl+Shift+F9，编译 Ctrl+Shift+F10，运行 Ctrl+Shift+F8，查看断点 F8，步过 F7，步入 Shift+F7，智能步入 Shift+F8，步出 Alt+Shift+F8，强制步过 Alt+Shift+F7，强制步入 Alt+F9，运行至光标处 Ctrl+Alt+F9，强制运行至光标处 F9，恢复程序 Alt+F10，定位到断点 Ctrl+F8，切换行断点 Ctrl+F9，生成项目 Alt+1，项目 Alt+2，收藏 Alt+6，TODO Alt+7，结构 Ctrl+Shift+C，复制路径 Ctrl+Alt+Shift+C，复制引用，必须选择类名 Ctrl+Alt+Y，同步 Ctrl+~，快速切换方案（界面外观、代码风格、快捷键映射等菜单） Shift+F12，还原默认布局 Ctrl+Shift+F12，隐藏/恢复所有窗口 Ctrl+F4，关闭 Ctrl+Shift+F4，关闭活动选项卡 Ctrl+Tab，转到下一个拆分器 Ctrl+Shift+Tab，转到上一个拆分器【重构】 Ctrl+Alt+Shift+T，弹出重构菜单 Shift+F6，重命名 F6，移动 F5，复制 Alt+Delete，安全删除 Ctrl+Alt+N，内联【查找】 Ctrl+F，查找 Ctrl+R，替换 F3，查找下一个 Shift+F3，查找上一个 Ctrl+Shift+F，在路径中查找 Ctrl+Shift+R，在路径中替换 Ctrl+Shift+S，搜索结构 Ctrl+Shift+M，替换结构 Alt+F7，查找用法 Ctrl+Alt+F7，显示用法 Ctrl+F7，在文件中查找用法 Ctrl+Shift+F7，在文件中高亮显示用法【VCS】 Alt+~，VCS 操作菜单 Ctrl+K，提交更改 Ctrl+T，更新项目 Ctrl+Alt+Shift+D，显示变化]]></content>
+    <title><![CDATA[使用Http小记]]></title>
+    <url>%2F2018%2F12%2F04%2FHttp%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[Http调试工具Postman使用 Postman Postman测试接口之JSON结构化数据提交 Postman使用详解 JSONJSON:JavaScript Object NotationJSON is a syntax for storing and exchanging dataJSON is text,written with JavaScript object notationJSONw3school Http learning这篇博客总结的不错Http协议，超文本传输协议（HyperText Transfer P rotocol）客户端请求消息格式： 服务器端响应消息格式： 平常主要用到的请求方法只有：GET和POSTGET 方法：请求指定的页面信息，并返回实体主体 GET 请求可被缓存 GET 请求保留在浏览器历史记录中 GET 请求可被收藏为书签 GET 请求不应在处理敏感数据时使用 GET 请求有长度限制 GET 请求只应当用于取回数据POST 方法：向指定的资源提交表单或者文件，数据包含在请求体中，POST请求会导致新资源的建立或者原有资源的更改。 POST 请求不会被缓存 POST 请求不会保留在浏览器历史记录中 POST 不能被收藏为书签 POST 请求对数据长度没有要求HTTP 方法：GET 对比 POST四种POST请求 RESTful架构理解RESTful架构 REST: resource representation state transfer]]></content>
       <categories>
-        <category>工欲善其事，必先利其器</category>
+        <category>服务器端 - web开发</category>
       </categories>
       <tags>
-        <tag>IDEA</tag>
-        <tag>IDE</tag>
+        <tag>webapp</tag>
+        <tag>http</tag>
       </tags>
   </entry>
   <entry>
@@ -451,18 +456,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Java任务调度]]></title>
-    <url>%2F2018%2F12%2F04%2FJava%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%2F</url>
-    <content type="text"><![CDATA[Java.util.Timer 在Java中有一个任务处理类java.util.Timer，非常方便于处理由时间触发的事件任务，只需建立一个继承java.util.TimerTask的子类，重载父类的run()方法实现具体的任务，然后调用Timer的public void schedule(TimerTask task, long delay, long period)方法实现任务的调度。 但是这种方法只能实现简单的任务调度，不能满足任务调度时间比较复杂的需求。比如希望系统在每周的工作日的8：00时向系统用户给出一个提示，这种方法实现起来就困难了，还有更为复杂的任务调度时间要求。 12345678910111213141516171819202122232425262728293031package scheduler;import java.util.Timer;import java.util.TimerTask;/** * Created by xhh on 2017/2/4. */public class TimerTest extends TimerTask &#123; private String jobName = &quot;&quot;; public TimerTest(String jobName) &#123; super(); this.jobName = jobName; &#125; @Override public void run() &#123; System.out.println(&quot;executing: &quot; + jobName); &#125; public static void main(String[] args)&#123; Timer timer = new Timer(); long delay1 = 1 * 1000; long period1 = 1000; timer.schedule(new TimerTest(&quot;job1&quot;),delay1,period1); long delay2 = 2 * 1000; long period2 = 2000; timer.schedule(new TimerTest(&quot;job2&quot;),delay2,period2); &#125;&#125; Timer源码解析 Quartz OpenSymphony 的Quartz提供了一个比较完美的任务调度解决方案。 Quartz 是个开源的作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。 Quartz有两个基本的概念：作业和调度器。作业是能够调度的可执行任务，触发器提供了对作业的调度。 1、作业 2、调度器]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>任务调度</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Java笔记]]></title>
     <url>%2F2018%2F12%2F04%2FJava%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[设计模式单例模式java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍三种： 懒汉式单例、 饿汉式单例、 登记式单例。单例模式有以下特点： 单例类只能有一个实例。单例类必须自己创建自己的唯一实例。 单例类必须给所有其他对象提供这一实例。 单例模式确保某个类只有一个实例，而且自行实例化并向整个系统提供这个实例。 在计算机系统中，线程池、缓存、日志对象、对话框、打印机、显卡的驱动程序对象常被设计成单例。这些应用都或多或少具有资源管理器的功能。每台计算机可以有若干个打印机，但只能有一个Printer Spooler，以避免两个打印作业同时输出到打印机中。每台计算机可以有若干通信端口，系统应当集中管理这些通信端口，以避免一个通信端口同时被两个请求同时调用。总之，选择单例模式就是为了避免不一致状态，避免政出多头。 123456789101112131415161718192021222324252627282930懒汉模式：public class SingletonTest &#123; public static void main(String[] args)&#123; System.out.println(&quot;Singleton1.1:&quot;+Singleton1.getInstance()); System.out.println(&quot;Singleton1.2:&quot;+Singleton1.getInstance()); System.out.println(&quot;Singleton2.1:&quot;+Singleton2.getInstance()); System.out.println(&quot;Singleton2.2:&quot;+Singleton2.getInstance()); System.out.println(&quot;ton1:&quot;+new ton()); System.out.println(&quot;ton2:&quot;+new ton()); &#125;&#125;//懒汉模式：第一次是使用的时候实例化自己class Singleton1&#123; private static Singleton1 singleton1 = null; public static Singleton1 getInstance()&#123; if (singleton1 == null)&#123; singleton1 = new Singleton1(); &#125; return singleton1; &#125;&#125;//饱汉模式class Singleton2&#123; private static final Singleton2 singleton2 = new Singleton2(); public static Singleton2 getInstance()&#123; return singleton2; &#125;&#125; Java service domain dao 分层思路 鼓励使用service domain dao 分层设计理念； 第一：dao层操作表单，不涉及复杂逻辑，主要是表的增删改查操作，完全按照domain的要求来查询数据； 第二：domain层考虑业务逻辑，例如过滤条件，放行或者返回，以及数据的处理，为调用dao层做好准备，一个domain可以调用一个或者一组相关的dao层 第三：service 层调用一个或者一组domain层，主要是展现需要开放出去的接口，其中并不是所有的domain层都要在service层展现， 此外，主要接口需要对接受的参数要尽量的扩大化，也就是说可以容纳各种类型的参数的接入（object），然后再service 层做好转换，以备domain层使用。 正确的设计应该是，一个领域活动会聚合对应一个或一组DAO ，来完成一个领域活动。而一个服务可能包含两个领域活动， 比如一个转账的业务，对应两个领域活动。两个帐户的金额分别发生变化，需要操作一组领域活动，而每个活动需要操作很多表（调用多个DAO ）。 使用 接口方式可以实现系统之间的松耦合：一般定义： IUserService UserService IUserDomain UserDomain IUserDao UserSqlDao UserHbaseDao 使用接口可以有不同的实现类 ,不需要改代码，可以通过配置更改不同的实现类 Q:I need to learn the difference between the type of methods (in term of business logic) that should be inside the Domain, DAO and Service layers objects. For example, if I am building a small web application to create, edit and delete customers data, as far as I understand inside Domain layer object I should add methods that Get/Set Customers object properties, for example (getName, getDOB, setAddress, setPhone...etc). Now what I am trying to learn is what methods shall I put in DAO and Service layers objects. Thanks in advance for your time and efforts. A:Speaking generally (not Hibernate or Spring specific): The DAO layer contains queries and updates to save your domain layer into your datastore (usually a relational DB but doesn&apos;t have to be). Use interfaces to abstract your DAO away from the actual datastore. It doesn&apos;t happen often, but sometimes you want to change datastores (or use mocks to test your logic), and interfaces make that easier. This would have methods like &quot;save&quot;, &quot;getById&quot;, etc. The Service layer typically contains your business logic and orchestrates the interaction between the domain layer and the DAOs. It would have whatever methods make sense for your particular domain, like &quot;verifyBalance&quot;, or &quot;calculateTotalMileage&quot;.String使用String类中的compareTo（）方法比较。如：s1.compareTo(s2)但是这个方法有个缺点,就是要求两个参与比较的字符串的形式及长度必须相同才能够正确比较,否则,比较结果是错的 Java中设置classpath、path、JAVA_HOME的作用:Java中设置classpath、path、JAVA_HOME的作用]]></content>
@@ -472,6 +465,18 @@
       <tags>
         <tag>笔记</tag>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java任务调度]]></title>
+    <url>%2F2018%2F12%2F04%2FJava%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[Java.util.Timer 在Java中有一个任务处理类java.util.Timer，非常方便于处理由时间触发的事件任务，只需建立一个继承java.util.TimerTask的子类，重载父类的run()方法实现具体的任务，然后调用Timer的public void schedule(TimerTask task, long delay, long period)方法实现任务的调度。 但是这种方法只能实现简单的任务调度，不能满足任务调度时间比较复杂的需求。比如希望系统在每周的工作日的8：00时向系统用户给出一个提示，这种方法实现起来就困难了，还有更为复杂的任务调度时间要求。 12345678910111213141516171819202122232425262728293031package scheduler;import java.util.Timer;import java.util.TimerTask;/** * Created by xhh on 2017/2/4. */public class TimerTest extends TimerTask &#123; private String jobName = &quot;&quot;; public TimerTest(String jobName) &#123; super(); this.jobName = jobName; &#125; @Override public void run() &#123; System.out.println(&quot;executing: &quot; + jobName); &#125; public static void main(String[] args)&#123; Timer timer = new Timer(); long delay1 = 1 * 1000; long period1 = 1000; timer.schedule(new TimerTest(&quot;job1&quot;),delay1,period1); long delay2 = 2 * 1000; long period2 = 2000; timer.schedule(new TimerTest(&quot;job2&quot;),delay2,period2); &#125;&#125; Timer源码解析 Quartz OpenSymphony 的Quartz提供了一个比较完美的任务调度解决方案。 Quartz 是个开源的作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。 Quartz有两个基本的概念：作业和调度器。作业是能够调度的可执行任务，触发器提供了对作业的调度。 1、作业 2、调度器]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>任务调度</tag>
       </tags>
   </entry>
   <entry>
@@ -497,6 +502,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[SBT增加国内镜像并生效]]></title>
+    <url>%2F2018%2F12%2F04%2FSBT%E5%A2%9E%E5%8A%A0%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%B9%B6%E7%94%9F%E6%95%88%2F</url>
+    <content type="text"><![CDATA[第五章 SBT国内源配置 前几天执行：sbt update 失败 主要是 project/plugins.sbt里的插件下载失败 resolved xx failed,说找不到该插件 试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，所以严重怀疑是本机安装SBT有问题， sudo apt-get remove sbt 然后,按照官网安装教程重新安装sbt, 1234`echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.listsudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823sudo apt-get updatesudo apt-get install sbt` 果然，之前的问题已解决了（以上基于ubuntu16操作环境，其他开发环境类似）]]></content>
+      <categories>
+        <category>项目管理 - sbt</category>
+      </categories>
+      <tags>
+        <tag>SBT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Shell笔记]]></title>
     <url>%2F2018%2F12%2F04%2FShell%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[awk将数据put到hdfs,然后用hive组织的过程中，发现数据混乱，从某行开始全是NULL 将一行数据copy到idea中,按照逗号分割后，发现只有223(理论上是226)，用awk的NF处理文件，每行也是 226列 —&gt; 于是，使用awk 的 $17 打印开始乱的列，果然找到问题， 用navicat导出的数据，默认有一个‘N*’符号 ，这个符号可以用notepad++来识别并替换掉ps: 该工具导出的数据另一个坑是：不管什么类型的数据，导出来都是到这双引号，往hive中导入时，有数值型的就尿了 所有后来直接用了sqoop 这里用到了awk ,觉得这个工具还是很强大的 123awk -F &apos;,&apos; &apos;&#123;print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0 &quot;,分隔符:&quot; OFS&#125;&apos; xxx.csvawk -F &apos;,&apos; &apos;&#123;if(NF&lt;226)print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0&#125;&apos; ./xxx.csv awk -F &apos;,&apos; -v OFS=&quot;+++&quot; &apos;&#123;print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0&#125;&apos; ./xxx.csv awk 是一个强大的文本分析工具，相对与grep的查找，sed的编辑，awk在对其数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。linux awk命令详解awk分隔符awk ‘{pattern + action}’ {filenames} chkconfig 命令chkconfig命令主要用来更新（启动或停止）和查询系统服务的运行级信息。 谨记chkconfig不是立即自动禁止或激活一个服务，它只是简单的改变了符号连接。12345[root@fa ~]# chkconfig --list NetworkManagerNetworkManager 0:off 1:off 2:on 3:on 4:on 5:on 6:off[root@fa ~]# chkconfig NetworkManager off[root@fa ~]# chkconfig --list NetworkManagerNetworkManager 0:off 1:off 2:off 3:off 4:off 5:off 6:off 参考 curl get问题例如 url 为 http://mywebsite.com/index.PHP?a=1&amp;b=2&amp;c=3 web形式下访问url地址，使用$_GET是可以获取到所有的参数 然而在Linux下 curl http://mywebsite.com/index.php?a=1&amp;b=2&amp;c=3 $_GET只能获取到参数a 由于url中有&amp;，其他参数获取不到，在linux系统中&amp; 会使进程系统后台运行 必须对&amp;进行下转义才能$_GET获取到所有参数 curl http://mywebsite.com/index.php?a=1\&amp;b=2\&amp;c=3shell 时间 date 获取12[root48@vmaxverserver Qimingxing4AutoTestCoverageRate]$ date +%F-%T2016-10-20-10:20:41 参考 cron 表达式参考 等于/不等于/大于/小于 -eq //等于 -ne //不等于 -gt //大于 -lt //小于 ge //大于等于 le //小于等于 修改hostname:/etc/hosts 和 /etc/sysconfig/network 两个文件 升级中脚本：12345678910111213#!/bin/shscriptPath=$1sh /home/upgrade/shutdown.shcd $scriptPathfor i in *updating.shdohostName=echo $i|cut -d _ -f 1runAt=echo $i|cut -d _ -f 2|cut -d . -f 1sh /home/upgrade/upgrade.sh $hostName $runAt $scriptPath/$idonesh /home/upgrade/startup.sh linux grep命令//todo shell编程 for in 循环&amp; 后台执行scp 回显写入log：1234echo &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;ssh \$scpuser@\$sybaseip mkdir -p \$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;scp \$configFile \$scpuser@\$sybaseip:\$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;ssh \$scpuser@\$sybaseip chmod 777 -R \$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;exit&quot; &gt;&gt; $output 参考自 ————-_—————————————2015/8/31—————————_——————– 备份文件：123456789101112basedir=$(pwd) # 获取当前目录的绝对路径，并赋值给 basedirbakpath=/home/bak_netnumenif [ &quot;$bakpath&quot; ]; then #判断某个目录是否存在，（[] 内 左右空格不能少） rm -rf $bakpathfids=$(ls $basedir | grep -E &apos;vmax-app|vmax-data&apos;) #ls 某个目录，并用&quot;grep -E&quot; 查找 包含&quot;vamx-app&quot;或者&quot;vmax-data&quot;的项for s in $&#123;ds[@]&#125; #for 每一项，do ... do mkdir -p $bakpath/$s cp -r $s/database $bakpath/$s done shell dirname basename123456789101112131415161718[root@hadoopname ~]# clear[root@hadoopname ~]# lltotal 136-rw-------. 1 root root 2696 Jun 24 04:41 anaconda-ks.cfgdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Desktopdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Documentsdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Downloads-rwxr-xr-x. 1 root root 32 Dec 6 13:20 first-rw-r--r--. 1 root root 39935 Dec 5 17:38 i.log-rw-r--r--. 1 root root 39935 Jun 24 04:40 install.log-rw-r--r--. 1 root root 10175 Jun 24 04:38 install.log.syslogdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Musicdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Picturesdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Publicdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Templatesdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Videos[root@hadoopname ~]# pwd/root dirname: 取一个文件的存储路径，分两种情况 仅仅是个文件名的 12[root@hadoopname ~]# dirname first. 带绝对路径 123[root@hadoopname ~]# dirname /root/first/root[root@hadoopname ~]# basename:取一个文件的文件名想要去掉后缀名的话 要将 后缀名 做为参数加在后面 12345[root@hadoopname ~]# basename i.logi.log[root@hadoopname ~]# basename i.log logi.[root@hadoopname ~]#]]></content>
@@ -506,17 +522,6 @@
       <tags>
         <tag>笔记</tag>
         <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[SBT增加国内镜像并生效]]></title>
-    <url>%2F2018%2F12%2F04%2FSBT%E5%A2%9E%E5%8A%A0%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%B9%B6%E7%94%9F%E6%95%88%2F</url>
-    <content type="text"><![CDATA[第五章 SBT国内源配置 前几天执行：sbt update 失败 主要是 project/plugins.sbt里的插件下载失败 resolved xx failed,说找不到该插件 试了n多方法未果，今天发现用idea中的sbt插件可以正常获取到plugins.sbt中插件，所以严重怀疑是本机安装SBT有问题， sudo apt-get remove sbt 然后,按照官网安装教程重新安装sbt, 1234`echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.listsudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823sudo apt-get updatesudo apt-get install sbt` 果然，之前的问题已解决了（以上基于ubuntu16操作环境，其他开发环境类似）]]></content>
-      <categories>
-        <category>项目管理 - sbt</category>
-      </categories>
-      <tags>
-        <tag>SBT</tag>
       </tags>
   </entry>
   <entry>
@@ -545,19 +550,6 @@
   </entry>
   <entry>
     <title><![CDATA[Tensorflow Model java 部署]]></title>
-    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
-    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
-      <categories>
-        <category>机器学习、深度学习 - tensorflow</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>tensorflow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Tensorflow Model java 部署]]></title>
     <url>%2F2018%2F12%2F04%2FTensorflow5--seq2seq%2F</url>
     <content type="text"><![CDATA[IntroductionSeq2Seq模型在机器翻译、语音识别、文本摘要等领域取得了巨大的成功 以神经机器翻译(NMT)为例介绍 使用最新的 decoder / attention wrapper API，TensorFlow 1.2 data iterator 在构建模型时加入了我们最成功的经验 为构建最强大的 NMT 模型，我们提供了许多 tips 和 tricks，并复制了Google的 NMT系统 Basic神经机器翻译的相关背景 | Background on Neural Machine Translation 传统的 phrase-based 翻译系统的工作原理是把源句子分成几块，然后一个短语一个短语的翻译，但是翻译结果的流畅度较差，并且不符合人类的翻译方式， 我们人类会读取完整的句子，理解它的意思，然后进行翻译。NMT 模型正是在模仿这个机制！ NMT模型使用encoder读取源句子，然后编码得到一个“有意义”的 vector，即一串能代表源句子意思的数字。然后 decoder 将这个 vector 解码得到翻译，就想图1展示的那样。这就是所谓的 encoder-decoder 结构 本教程将以单向的多层（multi-layer） RNN 为例，其使用 LSTM 作为 RNN 单元 Traning - How to build our first NMT system实战 - 训练一个 NMT 模型 Hands-on - Let’s train an NMT model12345678910111213python -m nmt.nmt \ --src=vi --tgt=en \ --vocab_prefix=/home/xxh/data/nmt_data_2/vocab \ --train_prefix=/home/xxh/data/nmt_data_2/train \ --dev_prefix=/home/xxh/data/nmt_data_2/tst2012 \ --test_prefix=/home/xxh/data/nmt_data_2/tst2013 \ --out_dir=/home/xxh/data/nmt_model \ --num_train_steps=12000 \ --steps_per_stats=100 \ --num_layers=2 \ --num_units=128 \ --dropout=0.2 \ --metrics=bleu python -m nmt.nmt –src=vi –tgt=en –vocab_prefix=/home/xxh/data/my_nmt_data/train –train_prefix=/home/xxh/data/my_nmt_data/train –dev_prefix=/home/xxh/data/my_nmt_data/tst2012 –test_prefix=/home/xxh/data/my_nmt_data/tst2012 –out_dir=/home/xxh/data/my_nmt_model –num_train_steps=12000 –steps_per_stats=100 –num_layers=2 –num_units=128 –dropout=0.2 –metrics=bleu 12 python -m nmt.nmt –out_dir=/home/xxh/data/nmt_model –inference_input_file=/home/xxh/data/nmt_data_2/my.vi –inference_output_file=/home/xxh/data/nmt_attention_model/output_infer]]></content>
       <categories>
@@ -568,6 +560,19 @@
         <tag>ml</tag>
         <tag>tensorflow</tag>
         <tag>seq2seq</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tensorflow Model java 部署]]></title>
+    <url>%2F2018%2F12%2F04%2FTensorflow4--javadeploy%2F</url>
+    <content type="text"><![CDATA[Tensorflow Model java 部署tensorflow最好用的api非python莫属，也是分析师最喜欢使用的， 但是到了模型部署阶段，使用python部署上线的应用常常碰到性能瓶颈， 所以问题来了：用python训练好的模型，能不能用java重新加载并预测结果？我们使用mnist来试一下 Python 训练模型//todo: 注释 README.md Java 部署训练好的模型//todo: 注释 README.md]]></content>
+      <categories>
+        <category>机器学习、深度学习 - tensorflow</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>tensorflow</tag>
       </tags>
   </entry>
   <entry>
@@ -605,28 +610,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[breeze使用]]></title>
-    <url>%2F2018%2F12%2F04%2Fbreeze%2F</url>
-    <content type="text"><![CDATA[whatBreeze is a library for numerical processing, machine learning, and natural language processing. Its primary focus is on being generic, clean, and powerful without sacrificing (much) efficiency. Breeze is the merger of the ScalaNLP and Scalala projects, because one of the original maintainers is unable to continue development. howinstall快速安装用sbt在命令行中快速安装，体验一下 推荐的sbt依赖配置]]></content>
-      <categories>
-        <category>数据分析 - scala</category>
-      </categories>
-      <tags>
-        <tag>breeze</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[build-tool]]></title>
-    <url>%2F2018%2F12%2F04%2Fbuild-tool%2F</url>
-    <content type="text"><![CDATA[构建工具总结对比： 旧时代的Java世界，构建工具等同于两个词Ant和Maven Ant源自Make，同JUnit一样，它也是一个航班产物（参见《Ant权威指南》序）。不过，Make的基础注定了它的起点不高，所有一切都要手工打造。我还依稀记得曾几何时，每每开始一个项目都要重新复制一份Ant脚本，修修改改。Maven给了人们新的希望，目录结构的约定、依赖管理、IDE集成，那时看来，几近完美。是的，几近，还差了那么一点点。就是那么一点点，却是致命伤。 只要一个项目进行一段时间，一个必然遇到的问题就是，编写新的自动化脚本。因为每个项目都有自己的特定需求，标准做法必然是无法满足的。扩展Maven对任何新手都是一件头疼的事，我们要学会编写插件，要搞清楚生命周期，这时，突然会唤起一丝丝对于ANT的怀念，虽然它做简单事不容易，但做复杂事却也没这么困难。 如果那些日子，我们不得不忍受Ant和Maven的不完美，那现在，是时候抛弃它们了。 新时代Java构建有两个很好的候选：Gradle和Buildr。 在我看来，它们真正比Maven更强大的地方，编写自己的任务更加容易。更值得兴奋的一点是，我们终于可以抛弃冗长的XML，选择一种更优雅的程序设计语言来写代码了，这几乎意味着你可以做到想做的一切。 Buildr是Apache出品的构建工具，它以Ruby作为构建脚本。《软件开发地基》讨论软件项目应该具备一些基础构建项，就是以Buildr为基础的。有兴趣的话，可以参考一下。这里就不再赘述。顺便说一下，那篇文章里的内容，除了某些写法现在需要做一些微调，大部分内容依然是适用于大多数Java项目。 Gradle现在是整个Java社区的构建新宠，它采用Groovy作为自己的构建语言。如果你知道，Groovy是一门诞生自JVM平台的语言，这就决定了它要比其它移植到JVM上的语言能更好的适应JVM平台，它可以采用更符合Java世界的方式无缝地整合Java既有的程序库，而不必像移植语言那样削足适履。 初涉Gradle，最让人吃惊的一点莫过于它详尽的文档，涵盖了Gradle使用的方方面面，这是许多开源软件项目无法媲美，即便早在它的1.0版本尚未发布之时。当然，能做到这一点是因为它背后有一个公司在支撑：GradleWare，这意味着如果你需要商业支持，也是可以的。 Gradle 1.0尚未发布之，它就捧回2010年的Spring大奖和入围了2011年的JAX大奖。如果你还需要更多的信心，作为Java开发人员，你不可能不知道Spring，那Spring转投Gradle怀抱，应该是对Gradle最有利的支持了。 说了这么多，程序员最喜欢看到的东西还是代码。 首先，请自行下载安装Gradle，然后，按照常见的Java项目布局把代码准备好（感谢Maven为我们给予我们约定），比如： src/main/java，源代码文件目录src/main/resources，资源文件目录src/test/java，测试代码目录下面是一个简单的Gradle构建脚本，将其存放于build.gradle apply plugin: ‘java’ repositories { mavenCentral()} dependencies { compile( ‘com.google.guava:guava:13.0.1’, ‘joda-time:joda-time:2.1’ ) testCompile( ‘junit:junit:4.10’, ‘org.mockito:mockito-all:1.9.0’ )} （build.gradle） 接下来的事情就很简单了，在命令行里键入 gradle build 如果一切正常，我们应该会看到构建成功的字样，然后，到build/lib，你就看到自己构建出来的JAR文件了。当然，这只是一个简单得不能再简单的例子，如果需要了解更多，Gradle那详尽的文档便是最好的去处。 著作权归作者所有，转载需联系作者以获得授权，引用需注明出处。作者ID:s8达克斯链接:https://www.applysquare.com/topic-cn/SlxE26k3q/ gradlegradle install开发主机使用ubuntu16,按照官网文档上的manually方法安装，测试可用 kafka源码编译的时候执行 1gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 sbtmaven]]></content>
-      <categories>
-        <category>build tool</category>
-      </categories>
-      <tags>
-        <tag>build tool</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据仓库理论基础与实践]]></title>
     <url>%2F2018%2F12%2F04%2Fdatawarehouse%2F</url>
     <content type="text"><![CDATA[理论数据仓库与联机分析处理技术 OLTP：联机事务处理 OLAP：联机分析处理 两者之间的差异使得传统的数据库技术不能同时满足两类数据的处理要求，数据仓库技术应运而生 数据仓库技术数据仓库是为了构建新的分析处理环境而出现的一种数据存储和组织技术 操作型数据 分析型数据 表示业务处理的动态情况 表示业务处理的静态情况 在存取的瞬间是正确的 代表过去的数据 可更新，由录入人员或经过专门培训的输入事务而更新 不可更新，终端用户的访问权限常常是只读的 处理细节问题 受到更多关注的是结论性的数据，是综合的，或是提炼的 操作需求事先可知，系统可按预计的工作量进行优化 操作需求事先不知道，永远不知道下一步用户要做什么 有许多事务，每个事务影响数据的一小部分 有数目不多的一些查询，每个查询可访问大量数据 面向应用，支持日常操作 面向分析，支持管理需求 用户不必理解数据库，只是输入数据 用户需要理解数据库，以从数据中得出有意义的结论 数据仓库的定义：数据仓库是一个用以更好地支持企业或组织决策分析处理的，面向主题的，集成的，不可更新的，随着时间不断变化的数据集合。数据仓库本质上和数据库一样，是长期存储在计算机内的，有组织，可共享的数据集合 数据仓库的基本特征 数据仓库的数据是面向主题的； 数据仓库的数据是集成的; 数据仓库的数据是不可更新的; 数据仓库的数据是随时间不断变化的. 主题与面向主题在逻辑意义上，它对应企业中某一宏观分析领域所涉及的分析对象 主题域应该具有以下两个特点：独立性和完备性 各个主题应用相对应的主题表 数据仓库中的数据组织数据仓库中的数据分为多个级别：早期细节级、当前细节级、轻度综合级、高度综合级 数据仓库系统的体系结构数据仓库系统架构由数据仓库的后台工具，数据仓库服务器、OLAP服务器和前台工具组成 OLAP多维数据模型多维分析操作数据仓库基础知识 关系数据库概念三大范式三大范式参考如何理解关系数据库的第一第二第三范式范式是关系数据库理论的基础，也是我们在设计数据库结构过程中索要遵循的规则和指导方法，目前有8中范式， 但是通用的是三大范式(1NF\2NF\3NF) 1NF强调列的原子性，即列不能够再分成其他几列 2NF 首先是1NF,另外表必须要有主键，而是没有包含在主键中的列必须完全依赖于主键，而不是主键的一部分 考虑一个订单明细表：【OrderDetail】（OrderID，ProductID，UnitPrice，Discount，Quantity，ProductName）。因为我们知道在一个订单中可以订购多种产品，所以单单一个 OrderID 是不足以成为主键的，主键应该是（OrderID，ProductID）。显而易见 Discount（折扣），Quantity（数量）完全依赖（取决）于主键（OderID，ProductID），而 UnitPrice，ProductName 只依赖于 ProductID。所以 OrderDetail 表不符合 2NF。不符合 2NF 的设计容易产生冗余数据。可以把【OrderDetail】表拆分为【OrderDetail】（OrderID，ProductID，Discount，Quantity）和【Product】（ProductID，UnitPrice，ProductName）来消除原订单表中UnitPrice，ProductName多次重复的情况。 第二范式（2NF）要求实体的属性完全依赖于主关键字。所谓完全依赖是指不能存在仅依赖主关键字一部分的属性，如果存在，那么这个属性和主关键字的这一部分应该分离出来形成一个新的实体，新实体与原实体之间是一对多的关系。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。简而言之，第二范式就是在第一范式的基础上属性完全依赖于主键。 3NF 在1NF的基础上，任何非主属性不依赖于其他非主属性[在2NF基础上消除传递依赖 ] 第三范式（3NF）是第二范式（2NF）的一个子集，即满足第三范式（3NF）必须满足第二范式（2NF）。 首先是 2NF，另外非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。 考虑一个订单表【Order】（OrderID，OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity）主键是（OrderID）。 其中 OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity 等非主键列都完全依赖于主键（OrderID），所以符合 2NF。不过问题是 CustomerName，CustomerAddr，CustomerCity 直接依赖的是 CustomerID（非主键列），而不是直接依赖于主键，它是通过传递才依赖于主键，所以不符合 3NF。通过拆分【Order】为【Order】（OrderID，OrderDate，CustomerID）和【Customer】（CustomerID，CustomerName，CustomerAddr，CustomerCity）从而达到 3NF。 第二范式（2NF）和第三范式（3NF）的概念很容易混淆，区分它们的关键点在于，2NF：非主键列是否完全依赖于主键，还是依赖于主键的一部分；3NF：非主键列是直接依赖于主键，还是直接依赖于非主键列。 视图视图是从一个或几个基本表或视图中导出的表.他与基本表不同,是一个虚表,数据库只存放视图的定义,而不存放视图对应的数据,这些数据还存放在原来的基本表中,从这个角度讲,视图就像是一个窗口,透过视图就可以看到数据库中自己感兴趣的数据及其变化视图一经定义,他就可以和基本表一样被查询\被删除,等等,但是视图的更新有限制 定义视图建立视图123create view &lt;视图名&gt; [(&lt;列名&gt;[,&lt;列名&gt;]...)]as &lt;子查询&gt;[with check option] 实践]]></content>
@@ -635,6 +618,17 @@
       </categories>
       <tags>
         <tag>datawarehouse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[breeze使用]]></title>
+    <url>%2F2018%2F12%2F04%2Fbreeze%2F</url>
+    <content type="text"><![CDATA[whatBreeze is a library for numerical processing, machine learning, and natural language processing. Its primary focus is on being generic, clean, and powerful without sacrificing (much) efficiency. Breeze is the merger of the ScalaNLP and Scalala projects, because one of the original maintainers is unable to continue development. howinstall快速安装用sbt在命令行中快速安装，体验一下 推荐的sbt依赖配置]]></content>
+      <categories>
+        <category>数据分析 - scala</category>
+      </categories>
+      <tags>
+        <tag>breeze</tag>
       </tags>
   </entry>
   <entry>
@@ -650,17 +644,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[github访问卡、慢、不稳定]]></title>
-    <url>%2F2018%2F12%2F04%2Fgithub%E5%8D%A1%E6%85%A2%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考 blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts 但是更新了dns，效果很明显，速度杠杠的 2017/12/05 迅速被打脸，一点都不好使 很奇怪，办公室机器google-chrome很卡，firefox好很多]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Hadoop 笔记]]></title>
     <url>%2F2018%2F12%2F04%2Fhadoop%2F</url>
     <content type="text"><![CDATA[Map reduce job getting stuck at map 0% reduce 0%一般是没有资源导致卡住，比如查看yarn中active node是否为0 ，内存配置不足，cpu配置之类的 但也有可能是map加载输入的时间较长导致Map reduce job getting stuck at map 0% reduce 0% ? 比较详细的mapreduce job 日志 哪里找得到Hadoop 2.6 日志文件和MapReduce的log文件研究心得]]></content>
@@ -672,6 +655,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[github访问卡、慢、不稳定]]></title>
+    <url>%2F2018%2F12%2F04%2Fgithub%E5%8D%A1%E6%85%A2%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[震惊！访问云服务器慢、连不上去、github不能访问、慢,震惊，原来是需要更新dns \2017/12/04参考 blog中说需要添加修改hosts 文件，我F12后发现现在的github的ip有变化，就没添加hosts 但是更新了dns，效果很明显，速度杠杠的 2017/12/05 迅速被打脸，一点都不好使 很奇怪，办公室机器google-chrome很卡，firefox好很多]]></content>
+      <categories>
+        <category>工欲善其事，必先利其器</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hive 编程指南 笔记]]></title>
     <url>%2F2018%2F12%2F04%2Fhive%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%2F</url>
     <content type="text"><![CDATA[《hive 编程指南》 第一章与mr接口相比，sql简单易用 第二章hive 安装 hive笔记安装 hive内部是什么 lib 其中的每个jar都实现了hive的特定功能 bin 执行各种hive服务的可执行文件 conf 配置文件 hive 命令cli变量和属性hivevar/hiveconf/system/env .hivec文件第三章 数据类型和文件格式支持关系型数据库中绝大多数基本数据类型，还支持三种集合数据类型 要考虑这些数据类型是如何正在文本文件中表示的，还要考虑文本存储中为了解决各种性能问题以及其他问题有哪些替代方案 基本数据类型 string 字符串无长度限制 timestamp 可以使整数、浮点数、字符串 binary 字节数组 数值比较时，数据类型在 double float int tinyint smallint bigint 间自动向上转换 字符串转化： cast(s as int) 集合数据类型 struct map array 缺点是不符合三大范式，第一范式都不符合 数据冗余，在大数据情况下，按数据集封装的话可以通过减少寻址次数来提供查询的速度，而如果根据外键关系关联的话则需要磁盘间的寻址操作，这样会有非常高的性能消耗 文本文件数据编码文本文件在字段间、集合数据类型中的分隔符 读时模式传统数据库是写时模式(schema on write)hive是读时模式(schema on read) hive在读时会尽可能的规避问题，这样的功能很强大，也会导致问题被掩盖 第四章 hiveql 定义]]></content>
@@ -680,6 +674,17 @@
       </categories>
       <tags>
         <tag>database,hive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[kafka笔记]]></title>
+    <url>%2F2018%2F12%2F04%2Fkafka%2F</url>
+    <content type="text"><![CDATA[introduction三个主要能力 publist and subscribe 类似于管道 容错的存储数据 即时处理数据处理 两大应用场景： 构建可靠的应用与系统间Streaming data 管道 构建Streaming 程序来传输或react数据流 Kafka is generally used for two broad classes of applications: Building real-time streaming data pipelines that reliably get data between systems or applications Building real-time streaming applications that transform or react to the streams of data First a few concepts: Kafka is run as a cluster on one or more servers that can span multiple datacenters. The Kafka cluster stores streams of records in categories called topics. Each record consists of a key, a value, and a timestamp. 四个主要API producer api cunsumer api streams api connector api kafka源码 git clone gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 阶段性可执行后，结果为BUILG FAILD 搜索后有人表示：有多个scala 版本，导致这样的错误 尝试执行 1./gradlew -PscalaVersion=2.11.11 clean core:test 依然build failed 这次是 1Could not find org.jacoco.agent.jar 《Apache Kafka 源码剖析》上说的源码编译步骤不好使，转参考下面的方法Getting started with contributing to Apache Kafka (Part 1): Build and run Kafka from source code棒棒哒 123&gt; cd kafka&gt; gradle&gt; ./gradlew jar importa kafka project run zookeeper 修改server.properties中的zk配置 run kafka cp conf/log4j.properties 到 core/src/main/resources/log4j.properties Run -&gt; Kafka 报错 没有创建日志文件的权限 原来日志文件呢中默认的日志存放位置是/ 添加配置 kafka.logs.dir=~/data/kafka-source-logs 修复 修改log4j.rootLogger=TRACE, stdout 打印出更多信息 server.propertiessocket 缓冲区 socketsocket的英文原义是“孔”或“插座”。作为4BDS UNIX的进程通信机制，取后一种意思。通常也称作”套接字”，用于描述IP地址和端口，是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。 在Internet上的主机一般运行了多个服务软件，同时提供几种服务。每种服务都打开一个Socket，并绑定到一个端口上，不同的端口对应于不同的服务。Socket正如其英文原意那样，象一个多孔插座。一台主机犹如布满各种插座的房间，每个插座有一个编号，有的插座提供220伏交流电， 有的提供110伏交流电，有的则提供有线电视节目。 客户软件将插头插到不同编号的插座，就可以得到不同的服务。 进程send数据时，实际上是先写入了socket缓冲区，接受类似，进程去read 接受缓冲区内的数据而不是直接拿到。 日志保留策略 １．一定时间之前的数据可删除２．日志存储文件所剩空间小于一定大小时可删除最早的数据 producer API 从某集群消费，然后生产到其他集群中，数据量是千万级别，但是速度很慢， 装个kafka monitor 看下 系统监控资料：《systems performance》 1234567891011121314151617181920212223# kafka start bash#!/bin/bashkafka_home=/home/xxh/wkspc/kafka/kafka_2.11-2.0.0kafka_start_sh=$kafka_home/bin/kafka-server-start.shkafkaconf0=$kafka_home/config/server.propertieskafkaconf1=$kafka_home/config/server-1.propertieskafkaconf2=$kafka_home/config/server-2.propertieskafkalog0=$kafka_home/logs/nohup.logkafkalog1=$kafka_home/logs/nohup_1.logkafkalog2=$kafka_home/logs/nohup_2.lognohup $kafka_start_sh $kafkaconf0 &gt; $kafkalog0 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf1 &gt; $kafkalog1 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf2 &gt; $kafkalog2 2&gt;&amp;1 &amp;jps# close use ./bin/kafka-server-stop.sh kafka 跑了几个例子，但是并没有讲的很清晰 还是要学一下，java8的函数式特性 不得不承认，越来越多的接口会重新用java写 挑战者： Pulsar kafka Stream]]></content>
+      <categories>
+        <category>kafka</category>
+      </categories>
+      <tags>
+        <tag>kafka</tag>
       </tags>
   </entry>
   <entry>
@@ -695,17 +700,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[kafka笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fkafka%2F</url>
-    <content type="text"><![CDATA[introduction三个主要能力 publist and subscribe 类似于管道 容错的存储数据 即时处理数据处理 两大应用场景： 构建可靠的应用与系统间Streaming data 管道 构建Streaming 程序来传输或react数据流 Kafka is generally used for two broad classes of applications: Building real-time streaming data pipelines that reliably get data between systems or applications Building real-time streaming applications that transform or react to the streams of data First a few concepts: Kafka is run as a cluster on one or more servers that can span multiple datacenters. The Kafka cluster stores streams of records in categories called topics. Each record consists of a key, a value, and a timestamp. 四个主要API producer api cunsumer api streams api connector api kafka源码 git clone gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 阶段性可执行后，结果为BUILG FAILD 搜索后有人表示：有多个scala 版本，导致这样的错误 尝试执行 1./gradlew -PscalaVersion=2.11.11 clean core:test 依然build failed 这次是 1Could not find org.jacoco.agent.jar 《Apache Kafka 源码剖析》上说的源码编译步骤不好使，转参考下面的方法Getting started with contributing to Apache Kafka (Part 1): Build and run Kafka from source code棒棒哒 123&gt; cd kafka&gt; gradle&gt; ./gradlew jar importa kafka project run zookeeper 修改server.properties中的zk配置 run kafka cp conf/log4j.properties 到 core/src/main/resources/log4j.properties Run -&gt; Kafka 报错 没有创建日志文件的权限 原来日志文件呢中默认的日志存放位置是/ 添加配置 kafka.logs.dir=~/data/kafka-source-logs 修复 修改log4j.rootLogger=TRACE, stdout 打印出更多信息 server.propertiessocket 缓冲区 socketsocket的英文原义是“孔”或“插座”。作为4BDS UNIX的进程通信机制，取后一种意思。通常也称作”套接字”，用于描述IP地址和端口，是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。 在Internet上的主机一般运行了多个服务软件，同时提供几种服务。每种服务都打开一个Socket，并绑定到一个端口上，不同的端口对应于不同的服务。Socket正如其英文原意那样，象一个多孔插座。一台主机犹如布满各种插座的房间，每个插座有一个编号，有的插座提供220伏交流电， 有的提供110伏交流电，有的则提供有线电视节目。 客户软件将插头插到不同编号的插座，就可以得到不同的服务。 进程send数据时，实际上是先写入了socket缓冲区，接受类似，进程去read 接受缓冲区内的数据而不是直接拿到。 日志保留策略 １．一定时间之前的数据可删除２．日志存储文件所剩空间小于一定大小时可删除最早的数据 producer API 从某集群消费，然后生产到其他集群中，数据量是千万级别，但是速度很慢， 装个kafka monitor 看下 系统监控资料：《systems performance》 1234567891011121314151617181920212223# kafka start bash#!/bin/bashkafka_home=/home/xxh/wkspc/kafka/kafka_2.11-2.0.0kafka_start_sh=$kafka_home/bin/kafka-server-start.shkafkaconf0=$kafka_home/config/server.propertieskafkaconf1=$kafka_home/config/server-1.propertieskafkaconf2=$kafka_home/config/server-2.propertieskafkalog0=$kafka_home/logs/nohup.logkafkalog1=$kafka_home/logs/nohup_1.logkafkalog2=$kafka_home/logs/nohup_2.lognohup $kafka_start_sh $kafkaconf0 &gt; $kafkalog0 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf1 &gt; $kafkalog1 2&gt;&amp;1 &amp;nohup $kafka_start_sh $kafkaconf2 &gt; $kafkalog2 2&gt;&amp;1 &amp;jps# close use ./bin/kafka-server-stop.sh kafka 跑了几个例子，但是并没有讲的很清晰 还是要学一下，java8的函数式特性 不得不承认，越来越多的接口会重新用java写 挑战者： Pulsar kafka Stream]]></content>
-      <categories>
-        <category>kafka</category>
-      </categories>
-      <tags>
-        <tag>kafka</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[log4j踢平记]]></title>
     <url>%2F2018%2F12%2F04%2Flog4j%E8%B8%A2%E5%B9%B3%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[错误：** log4j:WARN No appenders could be found for logger (scala.runtime.Nothing$). ** 错误原因：我猜是依赖自带的log4j之间冲突了 解决： stackoverflow Just to get you going you have two simple approaches you can take. First one is to just add this line to your main method:BasicConfigurator.configure();Second approach is to add this standard log4j.properties (taken from the above mentioned guide) file to your classpath: Set root logger level to DEBUG and its only appender to A1.log4j.rootLogger=DEBUG, A1 A1 is set to be a ConsoleAppender.log4j.appender.A1=org.apache.log4j.ConsoleAppender A1 uses PatternLayout.log4j.appender.A1.layout=org.apache.log4j.PatternLayoutlog4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n The first one 好使]]></content>
@@ -716,6 +710,19 @@
         <tag>日志</tag>
         <tag>log</tag>
         <tag>log4j</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[scikit-learn]]></title>
+    <url>%2F2018%2F12%2F04%2Fml-sklearn%2F</url>
+    <content type="text"><![CDATA[Scikit-learn 安装之前安装了anaconda3，其中已经打包安装好了scikit-learn Scikit-learn 使用]]></content>
+      <categories>
+        <category>机器学习、深度学习 - scikit-learn</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>ml</tag>
+        <tag>scikit-learn</tag>
       </tags>
   </entry>
   <entry>
@@ -733,16 +740,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[scikit-learn]]></title>
-    <url>%2F2018%2F12%2F04%2Fml-sklearn%2F</url>
-    <content type="text"><![CDATA[Scikit-learn 安装之前安装了anaconda3，其中已经打包安装好了scikit-learn Scikit-learn 使用]]></content>
+    <title><![CDATA[pandas]]></title>
+    <url>%2F2018%2F12%2F04%2Fpandas%2F</url>
+    <content type="text"><![CDATA[### 之前安装了anaconda3，其中已经打包安装好了scikit-learn Scikit-learn 使用]]></content>
       <categories>
-        <category>机器学习、深度学习 - scikit-learn</category>
+        <category>数据分析 - pandas</category>
       </categories>
       <tags>
         <tag>机器学习</tag>
         <tag>ml</tag>
-        <tag>scikit-learn</tag>
+        <tag>pandas</tag>
       </tags>
   </entry>
   <entry>
@@ -754,19 +761,6 @@
       </categories>
       <tags>
         <tag>blog</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[pandas]]></title>
-    <url>%2F2018%2F12%2F04%2Fpandas%2F</url>
-    <content type="text"><![CDATA[### 之前安装了anaconda3，其中已经打包安装好了scikit-learn Scikit-learn 使用]]></content>
-      <categories>
-        <category>数据分析 - pandas</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>ml</tag>
-        <tag>pandas</tag>
       </tags>
   </entry>
   <entry>
@@ -814,6 +808,17 @@
       </categories>
       <tags>
         <tag>Scala</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[build-tool]]></title>
+    <url>%2F2018%2F12%2F04%2Fbuild-tool%2F</url>
+    <content type="text"><![CDATA[构建工具总结对比： 旧时代的Java世界，构建工具等同于两个词Ant和Maven Ant源自Make，同JUnit一样，它也是一个航班产物（参见《Ant权威指南》序）。不过，Make的基础注定了它的起点不高，所有一切都要手工打造。我还依稀记得曾几何时，每每开始一个项目都要重新复制一份Ant脚本，修修改改。Maven给了人们新的希望，目录结构的约定、依赖管理、IDE集成，那时看来，几近完美。是的，几近，还差了那么一点点。就是那么一点点，却是致命伤。 只要一个项目进行一段时间，一个必然遇到的问题就是，编写新的自动化脚本。因为每个项目都有自己的特定需求，标准做法必然是无法满足的。扩展Maven对任何新手都是一件头疼的事，我们要学会编写插件，要搞清楚生命周期，这时，突然会唤起一丝丝对于ANT的怀念，虽然它做简单事不容易，但做复杂事却也没这么困难。 如果那些日子，我们不得不忍受Ant和Maven的不完美，那现在，是时候抛弃它们了。 新时代Java构建有两个很好的候选：Gradle和Buildr。 在我看来，它们真正比Maven更强大的地方，编写自己的任务更加容易。更值得兴奋的一点是，我们终于可以抛弃冗长的XML，选择一种更优雅的程序设计语言来写代码了，这几乎意味着你可以做到想做的一切。 Buildr是Apache出品的构建工具，它以Ruby作为构建脚本。《软件开发地基》讨论软件项目应该具备一些基础构建项，就是以Buildr为基础的。有兴趣的话，可以参考一下。这里就不再赘述。顺便说一下，那篇文章里的内容，除了某些写法现在需要做一些微调，大部分内容依然是适用于大多数Java项目。 Gradle现在是整个Java社区的构建新宠，它采用Groovy作为自己的构建语言。如果你知道，Groovy是一门诞生自JVM平台的语言，这就决定了它要比其它移植到JVM上的语言能更好的适应JVM平台，它可以采用更符合Java世界的方式无缝地整合Java既有的程序库，而不必像移植语言那样削足适履。 初涉Gradle，最让人吃惊的一点莫过于它详尽的文档，涵盖了Gradle使用的方方面面，这是许多开源软件项目无法媲美，即便早在它的1.0版本尚未发布之时。当然，能做到这一点是因为它背后有一个公司在支撑：GradleWare，这意味着如果你需要商业支持，也是可以的。 Gradle 1.0尚未发布之，它就捧回2010年的Spring大奖和入围了2011年的JAX大奖。如果你还需要更多的信心，作为Java开发人员，你不可能不知道Spring，那Spring转投Gradle怀抱，应该是对Gradle最有利的支持了。 说了这么多，程序员最喜欢看到的东西还是代码。 首先，请自行下载安装Gradle，然后，按照常见的Java项目布局把代码准备好（感谢Maven为我们给予我们约定），比如： src/main/java，源代码文件目录src/main/resources，资源文件目录src/test/java，测试代码目录下面是一个简单的Gradle构建脚本，将其存放于build.gradle apply plugin: ‘java’ repositories { mavenCentral()} dependencies { compile( ‘com.google.guava:guava:13.0.1’, ‘joda-time:joda-time:2.1’ ) testCompile( ‘junit:junit:4.10’, ‘org.mockito:mockito-all:1.9.0’ )} （build.gradle） 接下来的事情就很简单了，在命令行里键入 gradle build 如果一切正常，我们应该会看到构建成功的字样，然后，到build/lib，你就看到自己构建出来的JAR文件了。当然，这只是一个简单得不能再简单的例子，如果需要了解更多，Gradle那详尽的文档便是最好的去处。 著作权归作者所有，转载需联系作者以获得授权，引用需注明出处。作者ID:s8达克斯链接:https://www.applysquare.com/topic-cn/SlxE26k3q/ gradlegradle install开发主机使用ubuntu16,按照官网文档上的manually方法安装，测试可用 kafka源码编译的时候执行 1gradle build 超时报错 debug: 12gradle build --debug 打印出比较详细的信息，也清晰的显示出问题所在 问题：安装过程中，安装脚本自动将系统配置的代理信息写入gradle的配置文件~/.gradle/gradle.properties;而我的shadowsocks配置的额https代理不能用，所以访问不了外网解决方法：删除配置文件中的代理信息 sbtmaven]]></content>
+      <categories>
+        <category>build tool</category>
+      </categories>
+      <tags>
+        <tag>build tool</tag>
       </tags>
   </entry>
   <entry>
@@ -953,18 +958,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[了解Docker]]></title>
-    <url>%2F2018%2F12%2F04%2F%E4%BA%86%E8%A7%A3Docker%2F</url>
-    <content type="text"><![CDATA[Docker What is Docker?我的理解： 在操作系统上新增的一层抽象 解决的痛点：同一台服务器上多应用间的依赖冲突问题 优势：很多，比如将多个应用部署在同一个云主机上，该云主机弹性扩展，这样能够节约不少成本 目前的项目暂时用不到docker 教程]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>微服务</tag>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[人人都是产品经理--note]]></title>
     <url>%2F2018%2F12%2F04%2F%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86-note%2F</url>
     <content type="text"><![CDATA[第一章 写给新手为什么要做产品经理因为世界等我们去改变，创造好的产品，改善坏的产品 我们到底是不是产品经理产品是什么产品是用来解决某个问题的东西，准确的说产品就是要同时解决用户的问题和公司的问题 因为作为产品经理要在用户目标和公司的商业目标之间寻找平衡 产品经理出现源于宝洁 产品经理的出现是为了适应公司发展的需要。随着企业越来越大,产品越来越多,越来越复杂,原来按职能划分部门的组织结构已经无法适应,所以出现了产品管理的矩阵型组织,而此时产品经理的主要职责是规划产品的生命周期 他们真的是在招产品经理吗它更多地侧重产品本身“从无到有”、“从有到优”的过程,更多地涉及了“产品规划、数据分析、用户研究、需求分析、功能设计、项目管理、敏捷方法”等内容,而不是如传统的产品经理那样,去做已经有了产品之后需要做的诸如管理产品、推广和营销产品的事情 产品经理概念进化 行业形态不同:成熟行业VS.新兴行业。 而互联网、软件行业是新兴行业,新兴市场,三天一小变,五天一大变,产品本身在不断取得突破,用户看什么都是新的,所以产品需要推陈出新,尽力先入为主,占领用户,主导用户习惯,这就导致了产品工作的重头戏在前期,从无到有,从有到优,偏重研发类创新。因此,互联网、软件行业的产品经理更重视产品功能本身的规划,需要“对市场发展趋势有敏锐的洞察力和创新意识及良好的分析、研判能力”,要能不断改进产品,要“深入了解业务,挖掘用户的多种需求,不断推出有竞争力的产品”,“制定所负责产品线的发展蓝图和实施路线图”。 实物VS虚拟物 - 生命周期不同：几年VS几个月 软件和互联网产品更推崇敏捷开发，虽然互联网、软件的项目更加不可控,但项目过程本身看起来并没有传统行业那么复杂,更接近“艺术”而不是“技术”,要依靠丰富的经验,于是产品经理也经常兼顾项目管理,这样自己可以在项目完成度和产品质量之间做平衡,对产品无疑也是一件好事。所以我们在招聘广告中看到公司要求产品经理“发起产品研发项目”,“组织资源实施产品,对其效益负责”。 赢利模式不同,单一卖产品赚钱VS多元赢利。 用户心态不同:花钱买VS.免费用。 互联网、软件产品更重视用户体验,相应的,出现了很多产品经理会涉及的工作内容,如交互设计、视觉设计、文案设计等 非典型产品经理有时高科技企业会采取类似的做法,让产品经理专心处理产品在工程和技术方面的问题,而把大部分营销决定交给另外的职能单位来负责。在这种情况下,产品经理可能会变成产品技术/应用方面的专家,他最主要的工作就是支援、协助销售人员,至于了解市场和从市场了解产品利益等工作,则另有他人代劳 不管整天只是写文档、做Demo,还是成了没钱没权的项目经理;或是求完销售求工程师,最后只能欺负客服,到处不招人待见……前辈们似乎也认可——人人都是产品经理,非典型成了多数,也就变成典型。 一线员工眼中的管理管理的能力,其实就是“在资源不足的情况下把事情做成”的能力,这里的资源在产品经理的工作中通常表现为以下几种形式。 第一,信息不足以决策。时间有限,能力有限,每次决策前不可能掌握所有信息,做决定时总是很头疼,我估计是“拍脑袋”拍得太多的原因。 第二,时间不足以安排周密的计划。总是接到3个月、1个月,甚至1个礼拜完成某项目的命令,每次都让我们张大嘴巴说不出话来,应承下来后如何计划?不过一次又一次的实践表明,办法总比困难多。 第三,人员不足以支持工作强度和难度。不但时间不足,人员也不足,就算数量足,能力够不够?能力够了,团队士气高不高?哪个公司不加班,又有多少公司有加班工资?但还得完成任务,难不难?难! 第四,资金不足以自由调配。俗话说钱要花在刀刃上,买机器要钱,招人要钱,产品推广要钱,而花这些钱的前提是公司还得赚钱,每一分钱都恨不得掰成两半用。 我真的想做,怎么入行用户会去想怎么用这个产品,才能带给自己更大的好处,产生更大的效用;而产品经理则习惯于绕过表象,从背后看问题的本质,思考怎么设计这个产品才能更好地平衡用户目标与商业目标 找到自己的位置几个可能的入行切入点你是做开发的,那就经常要参与需求评审,不妨比别人多用点功,每次都预先了解需求,多多思考,然后在评审会上对需求提出自己的合理建议,时间长了大家都会觉得你很有想法,做产品也许不错。关于职位,可以从“需求分析师”切入,这有些像系统分析的工作,比如业务逻辑、流程图,都是你已经很熟悉的,可以在这个过程中慢慢培养商业的感觉,重点体会某个产品功能是为了满足商业上的什么需求而做的。 一个产品经理的-1到3岁]]></content>
@@ -974,6 +967,18 @@
       <tags>
         <tag>需求分析</tag>
         <tag>产品</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[了解Docker]]></title>
+    <url>%2F2018%2F12%2F04%2F%E4%BA%86%E8%A7%A3Docker%2F</url>
+    <content type="text"><![CDATA[Docker What is Docker?我的理解： 在操作系统上新增的一层抽象 解决的痛点：同一台服务器上多应用间的依赖冲突问题 优势：很多，比如将多个应用部署在同一个云主机上，该云主机弹性扩展，这样能够节约不少成本 目前的项目暂时用不到docker 教程]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>微服务</tag>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -1038,17 +1043,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[微服务]]></title>
-    <url>%2F2018%2F12%2F04%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%2F</url>
-    <content type="text"><![CDATA[感悟：项目中使用了微服务架构，相对于单体的应用，整个项目被拆成另外N个小应用，分散在各个服务器上，好处是，项目中的各个部分互不影响(接口不变的情况下)，缺点是，应用过于分散，难以管理、 所以有必要了解一下别人家的微服务架构是怎么设计的 大家都知道，基于单体（Monolith）和微服务（Microservice）架构的争论已经存在多年，正如我们对胖客户端、瘦客户端孰好孰坏的争论一样，有必然的历史演化，也有各自的优缺点。架构师们总是在考虑，我们是要一个中心化、全能多才的单体，还是百花齐放、各自为政的微服务群体，各种基于成本、交互、部署等等的讨论应该不会停下脚步。这里，我们不做过多的深入探讨和介绍，而本文正是这些讨论中的一个很好的例子，供大家思考。 随着系统变得越来越大，最终会达到一个临界点，作为一个单体（monolith）它变得难以管理。每一行代码的添加，都会让系统变得更加难以理解、变更和重用。虽然微服务（microservice）试图解决这些问题，但也带来了额外的复杂性以及集成的成本。 一个经过优化的微服务架构案例 优势: 模块较小，低耦合，提高开发人员开发效率 容易理解和测试每个服务 容易定位问题和解决故障,减少了关联故障 难点： 微服务的模块间需要n多契约，文档，需要时间来维护接口和文档 devops显得很重要 API gateway :lagom]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>微服务</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[掌握HttpResponse]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%8E%8C%E6%8F%A1HttpResponse%2F</url>
     <content type="text"><![CDATA[HTTP请求报文和HTTP响应报文 http 报文是面向文本的，报文中的每一个字段都是一些ASCII码串，各个字段的长度是不确定的。分两种，请求报文和响应报文。 请求报文//ToDo 响应报文http响应由四部分组成，分别是： 状态行、消息报头、空行、 响应正文格式: //[] 状态行格式如下： HTTP-Version Status-Code Reason-Phrase CRLF 其中，HTTP-Version表示服务器HTTP协议的版本；Status-Code表示服务器发回的响应状态代码；Reason-Phrase表示状态代码的文本描述。状态代码由三位数字组成，第一个数字定义了响应的类别，且有五种可能取值。 1xx：指示信息–表示请求已接收，继续处理。2xx：成功–表示请求已被成功接收、理解、接受。3xx：重定向–要完成请求必须进行更进一步的操作。4xx：客户端错误–请求有语法错误或请求无法实现。5xx：服务器端错误–服务器未能实现合法的请求。常见状态代码、状态描述的说明如下。 200 OK：客户端请求成功。400 Bad Request：客户端请求有语法错误，不能被服务器所理解。401 Unauthorized：请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用。403 Forbidden：服务器收到请求，但是拒绝提供服务。404 Not Found：请求资源不存在，举个例子：输入了错误的URL。500 Internal Server Error：服务器发生不可预期的错误。503 Server Unavailable：服务器当前不能处理客户端的请求，一段时间后可能恢复正常，举个例子：HTTP/1.1 200 OK（CRLF）。]]></content>
@@ -1061,14 +1055,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[敏捷开发流程]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%2F</url>
-    <content type="text"><![CDATA[定义敏捷不是指某一种具体的方法论、过程或框架，而是一组价值观和原则。符合敏捷价值观和原则的开发方法包括：极限编程（XP），Scrum，精益软件开发（Lean Software Development），动态系统开发方法（DSDM），特征驱动开发（Feature Driver Development），水晶开发（Crystal Clear）等等。所有这些方法都具有以下共同特征： 迭代式开发 ，整个开发周期分为几个迭代周期 - 增量交付 每个迭代周期结束后逐步交付使用，而不是整个开发过程结束的时候一次性交付使用 - 开发团队和用户反馈推动产品开发 持续集成 开发团队自我管理 敏捷实战 需求评审 Story划分 人员划分 方案设计 方案评审 任务拆分 开发 端到端测试 压力测试＋集成测试 关于需求分析： 一部分是项目总体需求分析时确定的，另一部分是随着项目的发展，新增的业务需求 关于方案设计：在项目需求评审会议后，划分了story、确定了人员分配后，根据项目的总体框架进行的方案设计 主要分 1 概述 41.1 目的 41.2 术语、定义和略缩词 41.3 参考资料 42 业务逻辑 43 主题表设计 74 性能设计 95 平滑升级 然后做方案评审 团队内部任务拆分 开发 测试 压力测试 和 集成测试]]></content>
+    <title><![CDATA[微服务]]></title>
+    <url>%2F2018%2F12%2F04%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%2F</url>
+    <content type="text"><![CDATA[感悟：项目中使用了微服务架构，相对于单体的应用，整个项目被拆成另外N个小应用，分散在各个服务器上，好处是，项目中的各个部分互不影响(接口不变的情况下)，缺点是，应用过于分散，难以管理、 所以有必要了解一下别人家的微服务架构是怎么设计的 大家都知道，基于单体（Monolith）和微服务（Microservice）架构的争论已经存在多年，正如我们对胖客户端、瘦客户端孰好孰坏的争论一样，有必然的历史演化，也有各自的优缺点。架构师们总是在考虑，我们是要一个中心化、全能多才的单体，还是百花齐放、各自为政的微服务群体，各种基于成本、交互、部署等等的讨论应该不会停下脚步。这里，我们不做过多的深入探讨和介绍，而本文正是这些讨论中的一个很好的例子，供大家思考。 随着系统变得越来越大，最终会达到一个临界点，作为一个单体（monolith）它变得难以管理。每一行代码的添加，都会让系统变得更加难以理解、变更和重用。虽然微服务（microservice）试图解决这些问题，但也带来了额外的复杂性以及集成的成本。 一个经过优化的微服务架构案例 优势: 模块较小，低耦合，提高开发人员开发效率 容易理解和测试每个服务 容易定位问题和解决故障,减少了关联故障 难点： 微服务的模块间需要n多契约，文档，需要时间来维护接口和文档 devops显得很重要 API gateway :lagom]]></content>
       <categories>
         <category>服务器端</category>
       </categories>
       <tags>
-        <tag>敏捷开发</tag>
+        <tag>微服务</tag>
       </tags>
   </entry>
   <entry>
@@ -1083,6 +1077,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[敏捷开发流程]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[定义敏捷不是指某一种具体的方法论、过程或框架，而是一组价值观和原则。符合敏捷价值观和原则的开发方法包括：极限编程（XP），Scrum，精益软件开发（Lean Software Development），动态系统开发方法（DSDM），特征驱动开发（Feature Driver Development），水晶开发（Crystal Clear）等等。所有这些方法都具有以下共同特征： 迭代式开发 ，整个开发周期分为几个迭代周期 - 增量交付 每个迭代周期结束后逐步交付使用，而不是整个开发过程结束的时候一次性交付使用 - 开发团队和用户反馈推动产品开发 持续集成 开发团队自我管理 敏捷实战 需求评审 Story划分 人员划分 方案设计 方案评审 任务拆分 开发 端到端测试 压力测试＋集成测试 关于需求分析： 一部分是项目总体需求分析时确定的，另一部分是随着项目的发展，新增的业务需求 关于方案设计：在项目需求评审会议后，划分了story、确定了人员分配后，根据项目的总体框架进行的方案设计 主要分 1 概述 41.1 目的 41.2 术语、定义和略缩词 41.3 参考资料 42 业务逻辑 43 主题表设计 74 性能设计 95 平滑升级 然后做方案评审 团队内部任务拆分 开发 测试 压力测试 和 集成测试]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>敏捷开发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数据分析]]></title>
     <url>%2F2018%2F12%2F04%2F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%2F</url>
     <content type="text"><![CDATA[数据分析基础线性代数微积分]]></content>
@@ -1091,18 +1096,6 @@
       </categories>
       <tags>
         <tag>数据分析</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[日志打印规范]]></title>
-    <url>%2F2018%2F12%2F04%2F%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E8%A7%84%E8%8C%83%2F</url>
-    <content type="text"><![CDATA[背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过 日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情 未完待续…]]></content>
-      <categories>
-        <category>服务器端 - 日志</category>
-      </categories>
-      <tags>
-        <tag>日志</tag>
-        <tag>log</tag>
       </tags>
   </entry>
   <entry>
@@ -1129,15 +1122,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[用Linux shell收集应用日志文件]]></title>
-    <url>%2F2018%2F12%2F04%2F%E7%94%A8shell%E6%94%B6%E9%9B%86%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现设计： 从一台服务器上收集数据（ftp get） 从多台服务器上收集（循环 ftp get） 定时从多台机器上按照一定规则收集（定时器） 思路1：读配置文件，去指定服务器的指定目录下载文件1234567891011121314151617181920212223242526272829303132#!/bin/bash#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径basedir=$(cd $(dirname $0); pwd)cd $basedirconfigFile=$basedir/ftphost.confhomedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)grep -i -E -w &quot;ftp|sftp&quot; $configFile | awk -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &#123; protocol=$1 ip=$2 port=$3 user=$4 password=$5 ftp -n&lt;&lt;FTPDopen $ipuser $user $passwordbinarypassivelcd $hdirpromptif [[ ! -d $fdir ]];then mkdir $fdirficd $fdirput $2closequitFTPD 更新1234567891011121314151617181920212223242526272829303132333435363738394041424344#! /bin/bash#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径basedir=$(cd $(dirname $0); pwd)echo $basedircd $basedirconfigFile=$basedir/ftphost.confftpscriptfile=$basedir/ftpscript.shhomedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)echo &quot;homedir: &quot;$homedirecho &quot;ftphomedir&quot; $ftphomedirecho &quot;#ftp远程获取需要的文件&quot; &gt;&gt;$ftpscriptfilegrep -i -E -w &quot;ftp|sftp&quot; $configFile | awk -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &apos;&#123; # protocol=$1 # ip=$2 # port=$3 # user=$4 # password=$5 print &quot;ftp -n&lt;&lt;FTPD&quot; print &quot;open &quot;ip print &quot;user &quot; user &quot; &quot; password print &quot;binary&quot; print &quot;passive&quot; print &quot;cd &quot; fdir &#125;&apos; &gt;&gt;$ftpscriptfile echo &quot;prompt&quot; &gt;&gt;$ftpscriptfile echo &quot;if [[ ! -d \$3 ]];then&quot; &gt;&gt;$ftpscriptfile echo &quot; mkdir \$3&quot; &gt;&gt;$ftpscriptfile echo &quot;fi &quot; &gt;&gt;$ftpscriptfile echo &quot;cd \$3&quot; &gt;&gt;$ftpscriptfile echo &quot;if [[ ! -d \$4 ]];then&quot; &gt;&gt;$ftpscriptfile echo &quot; mkdir \$4&quot; &gt;&gt;$ftpscriptfile echo &quot;fi &quot; &gt;&gt;$ftpscriptfile echo &quot;cd \$4&quot; &gt;&gt;$ftpscriptfile echo &quot;lcd \$1&quot; &gt;&gt;$ftpscriptfile echo &quot;put \$2&quot; &gt;&gt;$ftpscriptfile echo &quot;close&quot; &gt;&gt;$ftpscriptfile echo &quot;quit&quot; &gt;&gt;$ftpscriptfile echo &quot;FTPD&quot; &gt;&gt;$ftpscriptfile 12345678910111213141516171819202122232425262728293031 1 filterAndGet() 2 &#123; 3 srcfile=$1 4 key=$2 5 value=$3 6 tgtfile=$4 7 shift 4 8 if [[ $# -gt 0 ]];then 9 ids=$*10 else11 ids=012 fi1314 awk -F &quot;,&quot; &apos;BEGIN &#123;15 split(&apos;&quot;\&quot;$ids&quot;\&quot;&apos;, indexs,&quot; &quot;)16 &#125;&#123;17 if($&apos;$key&apos;==&quot;&apos;$value&apos;&quot;) &#123;18 for (i=1;i&lt;=length(indexs);i++)&#123;19 if(indexs[i]==9)&#123;20 system(&quot;\\echo -n $(\\date -d \&quot;2000-01-01 +&quot; $indexs[i] &quot; seconds\&quot; +\&quot;%Y-%m-%d %H:%M:%S\&quot;)&quot;)21 printf(&quot;.%03d,&quot;,$28)22 &#125;23 else24 printf(&quot;%s,&quot;,$indexs[i])25 &#125;26 printf(&quot;\n&quot;);27 &#125;28 &#125;&apos; $srcfile &gt;&gt; $tgtfile29 &#125;filterAndGet $1 39 0 $2/a_$&#123;day&#125;.csv 9 14 15 52 2 3 5 10 11 53 54 55 56 57 58 59 88 16 6 7 8 21 35 34 23 86 17 19 20 思路2：配置文件中配置多个IP，循环去取文件思路3：增加文件过滤规则，定时器规则]]></content>
+    <title><![CDATA[日志打印规范]]></title>
+    <url>%2F2018%2F12%2F04%2F%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E8%A7%84%E8%8C%83%2F</url>
+    <content type="text"><![CDATA[背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过 日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情 未完待续…]]></content>
       <categories>
-        <category>数据采集 - 日志收集</category>
+        <category>服务器端 - 日志</category>
       </categories>
       <tags>
         <tag>日志</tag>
-        <tag>shell</tag>
+        <tag>log</tag>
       </tags>
   </entry>
   <entry>
@@ -1154,6 +1147,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[用Linux shell收集应用日志文件]]></title>
+    <url>%2F2018%2F12%2F04%2F%E7%94%A8shell%E6%94%B6%E9%9B%86%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现设计： 从一台服务器上收集数据（ftp get） 从多台服务器上收集（循环 ftp get） 定时从多台机器上按照一定规则收集（定时器） 思路1：读配置文件，去指定服务器的指定目录下载文件1234567891011121314151617181920212223242526272829303132#!/bin/bash#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径basedir=$(cd $(dirname $0); pwd)cd $basedirconfigFile=$basedir/ftphost.confhomedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)grep -i -E -w &quot;ftp|sftp&quot; $configFile | awk -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &#123; protocol=$1 ip=$2 port=$3 user=$4 password=$5 ftp -n&lt;&lt;FTPDopen $ipuser $user $passwordbinarypassivelcd $hdirpromptif [[ ! -d $fdir ]];then mkdir $fdirficd $fdirput $2closequitFTPD 更新1234567891011121314151617181920212223242526272829303132333435363738394041424344#! /bin/bash#dirname 获取当前文件的路径：全路径时为绝对路径 相对路径时 为相对路径，所有要用 pwd获取绝对路径basedir=$(cd $(dirname $0); pwd)echo $basedircd $basedirconfigFile=$basedir/ftphost.confftpscriptfile=$basedir/ftpscript.shhomedir=$(awk -F &apos;=&apos; &apos;/^homedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)ftphomedir=$(awk -F &apos;=&apos; &apos;/^ftphomedir/ &#123;print $2&#125;&apos; $configFile |sed &apos;s/ //g&apos;)echo &quot;homedir: &quot;$homedirecho &quot;ftphomedir&quot; $ftphomedirecho &quot;#ftp远程获取需要的文件&quot; &gt;&gt;$ftpscriptfilegrep -i -E -w &quot;ftp|sftp&quot; $configFile | awk -v hdir=$homedir -v fdir=$ftphomedir -F &quot;,&quot; &apos;&#123; # protocol=$1 # ip=$2 # port=$3 # user=$4 # password=$5 print &quot;ftp -n&lt;&lt;FTPD&quot; print &quot;open &quot;ip print &quot;user &quot; user &quot; &quot; password print &quot;binary&quot; print &quot;passive&quot; print &quot;cd &quot; fdir &#125;&apos; &gt;&gt;$ftpscriptfile echo &quot;prompt&quot; &gt;&gt;$ftpscriptfile echo &quot;if [[ ! -d \$3 ]];then&quot; &gt;&gt;$ftpscriptfile echo &quot; mkdir \$3&quot; &gt;&gt;$ftpscriptfile echo &quot;fi &quot; &gt;&gt;$ftpscriptfile echo &quot;cd \$3&quot; &gt;&gt;$ftpscriptfile echo &quot;if [[ ! -d \$4 ]];then&quot; &gt;&gt;$ftpscriptfile echo &quot; mkdir \$4&quot; &gt;&gt;$ftpscriptfile echo &quot;fi &quot; &gt;&gt;$ftpscriptfile echo &quot;cd \$4&quot; &gt;&gt;$ftpscriptfile echo &quot;lcd \$1&quot; &gt;&gt;$ftpscriptfile echo &quot;put \$2&quot; &gt;&gt;$ftpscriptfile echo &quot;close&quot; &gt;&gt;$ftpscriptfile echo &quot;quit&quot; &gt;&gt;$ftpscriptfile echo &quot;FTPD&quot; &gt;&gt;$ftpscriptfile 12345678910111213141516171819202122232425262728293031 1 filterAndGet() 2 &#123; 3 srcfile=$1 4 key=$2 5 value=$3 6 tgtfile=$4 7 shift 4 8 if [[ $# -gt 0 ]];then 9 ids=$*10 else11 ids=012 fi1314 awk -F &quot;,&quot; &apos;BEGIN &#123;15 split(&apos;&quot;\&quot;$ids&quot;\&quot;&apos;, indexs,&quot; &quot;)16 &#125;&#123;17 if($&apos;$key&apos;==&quot;&apos;$value&apos;&quot;) &#123;18 for (i=1;i&lt;=length(indexs);i++)&#123;19 if(indexs[i]==9)&#123;20 system(&quot;\\echo -n $(\\date -d \&quot;2000-01-01 +&quot; $indexs[i] &quot; seconds\&quot; +\&quot;%Y-%m-%d %H:%M:%S\&quot;)&quot;)21 printf(&quot;.%03d,&quot;,$28)22 &#125;23 else24 printf(&quot;%s,&quot;,$indexs[i])25 &#125;26 printf(&quot;\n&quot;);27 &#125;28 &#125;&apos; $srcfile &gt;&gt; $tgtfile29 &#125;filterAndGet $1 39 0 $2/a_$&#123;day&#125;.csv 9 14 15 52 2 3 5 10 11 53 54 55 56 57 58 59 88 16 6 7 8 21 35 34 23 86 17 19 20 思路2：配置文件中配置多个IP，循环去取文件思路3：增加文件过滤规则，定时器规则]]></content>
+      <categories>
+        <category>数据采集 - 日志收集</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[始终－程序员的自我修养]]></title>
     <url>%2F2018%2F12%2F04%2F%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A7%8B%E7%BB%88%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB%2F</url>
     <content type="text"><![CDATA[原文 计算机发展史计算机三大件：中央处理器cpu、内存、IO控制芯片 计算机硬件的房展很大程度上归功于CPU技术的更新，CPU核心频率的不多提升 北桥芯片：用来协调CPU内存显卡之间的高速内存交换（内存的频率远远低于CPU的频率） 不过连接在北桥上的设备还是速度一级棒的，相对于键盘、硬盘来讲，所以CPU不会直接带这些低俗设备玩，把这些设备交给南桥来管理，然后通过内部总线来沟通 i7后，cpu将北桥集成在内 操作系统 计算机科学领域的任何问题，都可以通过增加一个间接的中间层来解决 操作系统就是有很多任务要交给计算机去做的多个用户用户与计算机硬件间的中间层 操作系统经历了，多道程序、分时系统、多任务系统 在多任务系统中，操作系统接管了所有硬件资源并持有对硬件控制的最高权限。在操作系统中执行的程序，都以进程的方式运行在更低的权限中。所有的硬件资源，由操作系统根据进程的优先级以及进程的运行状况进行统一的调配。 进程与线程操作系统是以进程为单位去分配空间和执行的 每个线程有自己独立的栈，同时多个线程共享进程空间中的数据 线程安全竞争如果有多个线程尝试对同一份数据进行写入操作，那么最终结果可能回事不可预期的 原子性单条指令是原子性的，是不可被打断的，但是单条指令能力有限，我们只能通过同步和锁机制实现多条指令的原子性 同步与锁 在这里，同步是一种规则，而锁则是实现这种规则的具体方法。 所谓同步，指的是多线程程序里，多个线程不得同时对某一共享变量进行访问。锁是实现同步的一种具体方案——准确地说，这是一种非常强的方案。锁有多种形式，最符合直觉的锁是所谓的互斥量（Mutex）。具体来说，线程在访问某个共享变量的时候，必须先获取锁；如果获取不到锁，那么就必须等待（或者进行其他操作，总之不许访问这个变量）；在结束对这个变量的访问之后，持有锁的线程应当释放。 值得一提的是，所作为一种同步手段，是非常强的。但是，这种强，仅限于逻辑层面。在实际情况中，编译器优化、CPU 动态调度，都有可能打破锁对于同步的保护。这时候，这些优化就变成了过度优化。 过度优化对线程安全的破坏线程安全不好控制，所以基于actor的akka必火]]></content>
@@ -1165,17 +1170,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数据仓库清洗规则]]></title>
-    <url>%2F2018%2F12%2F04%2F%E8%84%9A%E5%9E%8B%E6%95%B0%E6%8D%AE%E3%80%81%E6%A5%A6%E5%9E%8B%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%96%B9%E6%A1%88%E7%A8%BF%2F</url>
-    <content type="text"><![CDATA[脚型数据、楦数据清洗方案稿背景脚型数据、楦数据均以入库（待确认） 需要对数据做最基本，根据具体业务需要的数据清洗 ## 前提 数据仓库中的脚数据、楦数据的数据一致性校验完成 ## 清洗规则 明确数据的业务范围明确数据的语义两个表各字段的意义 数据中存在的错误界定及处理方法表级别错误主要包括数据记录不合理的重复、数据记录的缺失。 依赖数据入库操作时数据一致性校验的完成 #### 行级别错误 对于数据中存在的错误，处理的原则是尽最大可能去发现并修复，对于不能修复的错误，则需要给出警示。 对于行级错误的处理，从找出异常数据入手。 对于每个字段，发现异常数据可以通过以下（不限于）几种方式： 对于标量，如果离群则记为异常。 取值不在字典表范围内。 不符合数据的语义（在当前语义上无法解释）。 与其它字段的信息不一致。 异常数据处理流程： 首先判断是不是错误，如果不是错误，那我们只需要加以记录，这可以帮助我们更深入的认识数据； 如果是错误，试着去分析错误产生的原因，推测出正确值；如果能推测出正确值，那么推算出正确值。 如果不能推测出正确值，那么将其置为空值（空值至少不会提供错误的信息，其不良影响要弱于错误的信息所来带来的）。 对数据做规范化、统一化不规范、不统一的数据可能并不影响信息表达的准确性，却对数据分析和数据处理有很大的影响。 我们所要做的有两方面： 含义相同的字段，采用统一的规范的形式来表达。 目前主要包括：- 日期字段格式的统一，全部采用标准Unix时间戳表示。 对于同一字段，相同的信息，采用相同的表达。 主要针对字符型的字段。比如：北京、北京市、【北京】都是表达相同的含义，我们需要将其统一；男女与0,1,2的映射 ３． 空值处理、null值处理]]></content>
-      <categories>
-        <category>datawarehouse</category>
-      </categories>
-      <tags>
-        <tag>datawarehouse</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[算法]]></title>
     <url>%2F2018%2F12%2F04%2F%E7%AE%97%E6%B3%95%2F</url>
     <content type="text"><![CDATA[《算法》基础在计算机科学领域,我们用算法这个词来描述一种有现的解决问题的方法。算法是计算机科学的基础,是这个领域研究的核心。 #### 基础编程模型 我们学习算法的方法是用 Java 编程语言编写的程序来实现算法。这样做是出于以下原因: 程序是对算法精确、优雅和完全的描述; 可以通过运行程序来学习算法的各种性质; 可以在应用程序中直接使用这些算法。相比用自然语言描述算法,这些是重要而巨大的优势。 java 程序的基本结构]]></content>
@@ -1184,6 +1178,17 @@
       </categories>
       <tags>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据仓库清洗规则]]></title>
+    <url>%2F2018%2F12%2F04%2F%E8%84%9A%E5%9E%8B%E6%95%B0%E6%8D%AE%E3%80%81%E6%A5%A6%E5%9E%8B%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%96%B9%E6%A1%88%E7%A8%BF%2F</url>
+    <content type="text"><![CDATA[脚型数据、楦数据清洗方案稿背景脚型数据、楦数据均以入库（待确认） 需要对数据做最基本，根据具体业务需要的数据清洗 ## 前提 数据仓库中的脚数据、楦数据的数据一致性校验完成 ## 清洗规则 明确数据的业务范围明确数据的语义两个表各字段的意义 数据中存在的错误界定及处理方法表级别错误主要包括数据记录不合理的重复、数据记录的缺失。 依赖数据入库操作时数据一致性校验的完成 #### 行级别错误 对于数据中存在的错误，处理的原则是尽最大可能去发现并修复，对于不能修复的错误，则需要给出警示。 对于行级错误的处理，从找出异常数据入手。 对于每个字段，发现异常数据可以通过以下（不限于）几种方式： 对于标量，如果离群则记为异常。 取值不在字典表范围内。 不符合数据的语义（在当前语义上无法解释）。 与其它字段的信息不一致。 异常数据处理流程： 首先判断是不是错误，如果不是错误，那我们只需要加以记录，这可以帮助我们更深入的认识数据； 如果是错误，试着去分析错误产生的原因，推测出正确值；如果能推测出正确值，那么推算出正确值。 如果不能推测出正确值，那么将其置为空值（空值至少不会提供错误的信息，其不良影响要弱于错误的信息所来带来的）。 对数据做规范化、统一化不规范、不统一的数据可能并不影响信息表达的准确性，却对数据分析和数据处理有很大的影响。 我们所要做的有两方面： 含义相同的字段，采用统一的规范的形式来表达。 目前主要包括：- 日期字段格式的统一，全部采用标准Unix时间戳表示。 对于同一字段，相同的信息，采用相同的表达。 主要针对字符型的字段。比如：北京、北京市、【北京】都是表达相同的含义，我们需要将其统一；男女与0,1,2的映射 ３． 空值处理、null值处理]]></content>
+      <categories>
+        <category>datawarehouse</category>
+      </categories>
+      <tags>
+        <tag>datawarehouse</tag>
       </tags>
   </entry>
   <entry>

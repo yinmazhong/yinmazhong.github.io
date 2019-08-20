@@ -79,19 +79,22 @@
 
 
 
-<meta name="description" content="JAVA IO整体架构图 未完待续">
+<meta name="description" content="JAVA IO(BIO)整体架构图  我们知道阻塞I/O在调用InputStream.read()方法时是阻塞的，它会一直等到数据到来时（或超时）才会返回；同样，在调用ServerSocket.accept()方法时，也会一直阻塞到有客户端连接才会返回，每个客户端连接过来后，服务端都会启动一个线程去处理该客户端的请求 缺点：  当客户端多时，会创建大量的处理线程。且每个线程都要占用栈空间和一些CP">
 <meta name="keywords" content="spark hadoop scala">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javaIO">
 <meta property="og:url" content="http://yoursite.com/2019/06/04/javaIO/index.html">
 <meta property="og:site_name" content="白帝圣剑">
-<meta property="og:description" content="JAVA IO整体架构图 未完待续">
+<meta property="og:description" content="JAVA IO(BIO)整体架构图  我们知道阻塞I/O在调用InputStream.read()方法时是阻塞的，它会一直等到数据到来时（或超时）才会返回；同样，在调用ServerSocket.accept()方法时，也会一直阻塞到有客户端连接才会返回，每个客户端连接过来后，服务端都会启动一个线程去处理该客户端的请求 缺点：  当客户端多时，会创建大量的处理线程。且每个线程都要占用栈空间和一些CP">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/04/javaIO/javaIO-javaio%E7%BB%93%E6%9E%84%E5%9B%BE.jpg">
-<meta property="og:updated_time" content="2019-06-05T06:32:13.985Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/javaIO/javaIO-BIO.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/javaIO/javaIO-%E4%BC%AA%E5%BC%82%E6%AD%A5IO.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/javaIO/javaIO-NIO.png">
+<meta property="og:updated_time" content="2019-08-20T08:38:14.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javaIO">
-<meta name="twitter:description" content="JAVA IO整体架构图 未完待续">
+<meta name="twitter:description" content="JAVA IO(BIO)整体架构图  我们知道阻塞I/O在调用InputStream.read()方法时是阻塞的，它会一直等到数据到来时（或超时）才会返回；同样，在调用ServerSocket.accept()方法时，也会一直阻塞到有客户端连接才会返回，每个客户端连接过来后，服务端都会启动一个线程去处理该客户端的请求 缺点：  当客户端多时，会创建大量的处理线程。且每个线程都要占用栈空间和一些CP">
 <meta name="twitter:image" content="http://yoursite.com/2019/06/04/javaIO/javaIO-javaio%E7%BB%93%E6%9E%84%E5%9B%BE.jpg">
 
 
@@ -399,8 +402,25 @@
       
 
       
-        <h2 id="JAVA-IO"><a href="#JAVA-IO" class="headerlink" title="JAVA IO"></a>JAVA IO</h2><h3 id="整体架构图"><a href="#整体架构图" class="headerlink" title="整体架构图"></a>整体架构图</h3><p><img src="javaIO-javaio%E7%BB%93%E6%9E%84%E5%9B%BE.jpg" alt="javaio结构图.jpg"></p>
-<p>未完待续</p>
+        <h2 id="JAVA-IO-BIO"><a href="#JAVA-IO-BIO" class="headerlink" title="JAVA IO(BIO)"></a>JAVA IO(BIO)</h2><h3 id="整体架构图"><a href="#整体架构图" class="headerlink" title="整体架构图"></a>整体架构图</h3><p><img src="javaIO-javaio%E7%BB%93%E6%9E%84%E5%9B%BE.jpg" alt="javaio结构图.jpg"></p>
+<p><img src="javaIO-BIO.png" alt="BIO.png"></p>
+<p>我们知道阻塞I/O在调用InputStream.read()方法时是阻塞的，它会一直等到数据到来时（或超时）才会返回；同样，在调用ServerSocket.accept()方法时，也会一直阻塞到有客户端连接才会返回，每个客户端连接过来后，服务端都会启动一个线程去处理该客户端的请求</p>
+<p>缺点：</p>
+<ol>
+<li><p>当客户端多时，会创建大量的处理线程。且每个线程都要占用栈空间和一些CPU时间</p>
+</li>
+<li><p>阻塞可能带来频繁的上下文切换，且大部分上下文切换可能是无意义的。</p>
+</li>
+</ol>
+<h2 id="伪异步IO"><a href="#伪异步IO" class="headerlink" title="伪异步IO"></a>伪异步IO</h2><p><img src="javaIO-%E4%BC%AA%E5%BC%82%E6%AD%A5IO.png" alt="伪异步IO.png"></p>
+<p>在Java IO 的基础上加了任务队列和线程池<br>由于线程池<br>可以设置消息队列的大小和最大线程数,因此,它的资源占用是可控的,无论多<br>少个客户端并发访问,都不会导致资源的耗尽和宕机。</p>
+<h2 id="JAVA-NIO"><a href="#JAVA-NIO" class="headerlink" title="JAVA NIO"></a>JAVA NIO</h2><p>Java NIO是在jdk1.4开始使用的，它既可以说成“新I/O”，也可以说成非阻塞式I/O。下面是java NIO的工作原理：</p>
+<ol>
+<li>由一个专门的线程来处理所有的 IO 事件，并负责分发。</li>
+<li>事件驱动机制：事件到的时候触发，而不是同步的去监视事件。</li>
+<li>线程通讯：线程之间通过 wait,notify 等方式通讯。保证每次上下文切换都是有意义的。减少无谓的线程切换。</li>
+</ol>
+<p><img src="javaIO-NIO.png" alt="NIO.png"></p>
 
       
     </div>
@@ -524,7 +544,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -579,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA-IO"><span class="nav-number">1.</span> <span class="nav-text">JAVA IO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整体架构图"><span class="nav-number">1.1.</span> <span class="nav-text">整体架构图</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA-IO-BIO"><span class="nav-number">1.</span> <span class="nav-text">JAVA IO(BIO)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整体架构图"><span class="nav-number">1.1.</span> <span class="nav-text">整体架构图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪异步IO"><span class="nav-number">2.</span> <span class="nav-text">伪异步IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA-NIO"><span class="nav-number">3.</span> <span class="nav-text">JAVA NIO</span></a></li></ol></div>
             
 
           </div>

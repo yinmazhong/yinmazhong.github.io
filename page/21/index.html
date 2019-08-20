@@ -636,7 +636,7 @@ rel
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/用shell收集日志文件/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/日志打印规范/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -655,7 +655,7 @@ rel
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/04/用shell收集日志文件/" itemprop="url">用Linux shell收集应用日志文件</a></h1>
+                <a class="post-title-link" href="/2018/12/04/日志打印规范/" itemprop="url">日志打印规范</a></h1>
         
 
         <div class="post-meta">
@@ -690,8 +690,8 @@ rel
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据采集-日志收集/" itemprop="url" rel="index">
-                    <span itemprop="name">数据采集 - 日志收集</span>
+                  <a href="/categories/服务器端-日志/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器端 - 日志</span>
                   </a>
                 </span>
 
@@ -708,8 +708,8 @@ rel
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/04/用shell收集日志文件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/04/用shell收集日志文件/" itemprop="commentCount"></span>
+                <a href="/2018/12/04/日志打印规范/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/04/日志打印规范/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -739,16 +739,14 @@ rel
       
         
           
-          场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现设计：
-从一台服务器上收集数据（ftp get）
-从多台服务器上收集（循环 ftp get）
-定时从多台机器上按照一定规则收集（定时器）
+          背景近期想要通过分析日志来查看应用的性能指标，才发现日志根本没有规范，真是罪过
+日志规范最佳日志实践（v2.0日志的优化是一件需要持续不断投入精力的事，需要不断从错误中学习，现在应用分析要求是在应用执行时间维度上给出分析指标：那么这次最初的日志规范就是时间、地点、人物(ID)、事情
+未完待续…
 
-思路1：读配置文件，去指定服务器的指定目录下
-          ...
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/04/用shell收集日志文件/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/日志打印规范/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -959,7 +957,7 @@ rel
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/程序员始终的自我修养/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/用shell收集日志文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xu">
@@ -978,7 +976,7 @@ rel
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/04/程序员始终的自我修养/" itemprop="url">始终－程序员的自我修养</a></h1>
+                <a class="post-title-link" href="/2018/12/04/用shell收集日志文件/" itemprop="url">用Linux shell收集应用日志文件</a></h1>
         
 
         <div class="post-meta">
@@ -1013,8 +1011,8 @@ rel
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机硬件、操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机硬件、操作系统</span>
+                  <a href="/categories/数据采集-日志收集/" itemprop="url" rel="index">
+                    <span itemprop="name">数据采集 - 日志收集</span>
                   </a>
                 </span>
 
@@ -1031,8 +1029,8 @@ rel
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/04/程序员始终的自我修养/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/04/程序员始终的自我修养/" itemprop="commentCount"></span>
+                <a href="/2018/12/04/用shell收集日志文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/04/用shell收集日志文件/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1062,15 +1060,16 @@ rel
       
         
           
-          原文
-计算机发展史计算机三大件：中央处理器cpu、内存、IO控制芯片
-计算机硬件的房展很大程度上归功于CPU技术的更新，CPU核心频率的不多提升
-北桥芯片：用来协调CPU内存显卡之间的高速内存交换（内存的频率远远低于CPU的频率）
-不过连接在北桥上的设备还是速度一级棒的，相对于键盘、硬盘来讲，所以C
+          场景：应用的日志文件存储在N台不同的服务器上，现在要统一收集到同一台机器上做分析，用Linux shell 脚本实现设计：
+从一台服务器上收集数据（ftp get）
+从多台服务器上收集（循环 ftp get）
+定时从多台机器上按照一定规则收集（定时器）
+
+思路1：读配置文件，去指定服务器的指定目录下
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/04/程序员始终的自我修养/#more" rel="contents">
+            <a class="btn" href="/2018/12/04/用shell收集日志文件/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1158,7 +1157,7 @@ rel
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
