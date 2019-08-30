@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="JAVA IO(BIO)整体架构图  我们知道阻塞I/O在调用InputStream.read()方法时是阻塞的，它会一直等到数据到来时（或超时）才会返回；同样，在调用ServerSocket.accept()方法时，也会一直阻塞到有客户端连接才会返回，每个客户端连接过来后，服务端都会启动一个线程去处理该客户端的请求 缺点：  当客户端多时，会创建大量的处理线程。且每个线程都要占用栈空间和一些CP">
+<meta name="description" content="优秀 JAVA IO(BIO)整体架构图  我们知道阻塞I/O在调用InputStream.read()方法时是阻塞的，它会一直等到数据到来时（或超时）才会返回；同样，在调用ServerSocket.accept()方法时，也会一直阻塞到有客户端连接才会返回，每个客户端连接过来后，服务端都会启动一个线程去处理该客户端的请求 缺点：  当客户端多时，会创建大量的处理线程。且每个线程都要占用栈空间和一">
 <meta name="keywords" content="spark hadoop scala">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javaIO">
 <meta property="og:url" content="http://yoursite.com/2019/06/04/javaIO/index.html">
 <meta property="og:site_name" content="白帝圣剑">
-<meta property="og:description" content="JAVA IO(BIO)整体架构图  我们知道阻塞I/O在调用InputStream.read()方法时是阻塞的，它会一直等到数据到来时（或超时）才会返回；同样，在调用ServerSocket.accept()方法时，也会一直阻塞到有客户端连接才会返回，每个客户端连接过来后，服务端都会启动一个线程去处理该客户端的请求 缺点：  当客户端多时，会创建大量的处理线程。且每个线程都要占用栈空间和一些CP">
+<meta property="og:description" content="优秀 JAVA IO(BIO)整体架构图  我们知道阻塞I/O在调用InputStream.read()方法时是阻塞的，它会一直等到数据到来时（或超时）才会返回；同样，在调用ServerSocket.accept()方法时，也会一直阻塞到有客户端连接才会返回，每个客户端连接过来后，服务端都会启动一个线程去处理该客户端的请求 缺点：  当客户端多时，会创建大量的处理线程。且每个线程都要占用栈空间和一">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/04/javaIO/javaIO-javaio%E7%BB%93%E6%9E%84%E5%9B%BE.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/06/04/javaIO/javaIO-BIO.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/04/javaIO/javaIO-%E4%BC%AA%E5%BC%82%E6%AD%A5IO.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/04/javaIO/javaIO-NIO.png">
-<meta property="og:updated_time" content="2019-08-20T08:38:14.118Z">
+<meta property="og:updated_time" content="2019-08-22T03:06:08.842Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javaIO">
-<meta name="twitter:description" content="JAVA IO(BIO)整体架构图  我们知道阻塞I/O在调用InputStream.read()方法时是阻塞的，它会一直等到数据到来时（或超时）才会返回；同样，在调用ServerSocket.accept()方法时，也会一直阻塞到有客户端连接才会返回，每个客户端连接过来后，服务端都会启动一个线程去处理该客户端的请求 缺点：  当客户端多时，会创建大量的处理线程。且每个线程都要占用栈空间和一些CP">
+<meta name="twitter:description" content="优秀 JAVA IO(BIO)整体架构图  我们知道阻塞I/O在调用InputStream.read()方法时是阻塞的，它会一直等到数据到来时（或超时）才会返回；同样，在调用ServerSocket.accept()方法时，也会一直阻塞到有客户端连接才会返回，每个客户端连接过来后，服务端都会启动一个线程去处理该客户端的请求 缺点：  当客户端多时，会创建大量的处理线程。且每个线程都要占用栈空间和一">
 <meta name="twitter:image" content="http://yoursite.com/2019/06/04/javaIO/javaIO-javaio%E7%BB%93%E6%9E%84%E5%9B%BE.jpg">
 
 
@@ -402,7 +402,8 @@
       
 
       
-        <h2 id="JAVA-IO-BIO"><a href="#JAVA-IO-BIO" class="headerlink" title="JAVA IO(BIO)"></a>JAVA IO(BIO)</h2><h3 id="整体架构图"><a href="#整体架构图" class="headerlink" title="整体架构图"></a>整体架构图</h3><p><img src="javaIO-javaio%E7%BB%93%E6%9E%84%E5%9B%BE.jpg" alt="javaio结构图.jpg"></p>
+        <p><a href="https://zhuanlan.zhihu.com/p/27204492" target="_blank" rel="noopener">优秀</a></p>
+<h2 id="JAVA-IO-BIO"><a href="#JAVA-IO-BIO" class="headerlink" title="JAVA IO(BIO)"></a>JAVA IO(BIO)</h2><h3 id="整体架构图"><a href="#整体架构图" class="headerlink" title="整体架构图"></a>整体架构图</h3><p><img src="javaIO-javaio%E7%BB%93%E6%9E%84%E5%9B%BE.jpg" alt="javaio结构图.jpg"></p>
 <p><img src="javaIO-BIO.png" alt="BIO.png"></p>
 <p>我们知道阻塞I/O在调用InputStream.read()方法时是阻塞的，它会一直等到数据到来时（或超时）才会返回；同样，在调用ServerSocket.accept()方法时，也会一直阻塞到有客户端连接才会返回，每个客户端连接过来后，服务端都会启动一个线程去处理该客户端的请求</p>
 <p>缺点：</p>
@@ -544,7 +545,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

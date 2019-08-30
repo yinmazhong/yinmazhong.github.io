@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="白帝圣剑">
 <meta property="og:description" content="database 的jdbc连接的打开关闭的时机是什么呢？每次使用都open,然后close?oropen后多次使用？关闭的时机是什么呢？  直观上思考，每次建立tcp连接要消耗高，短时间保持一个conn长连接，多次复用后关闭，这样做性能比较高 现在项目中使用一个数据库长连接完成所有sql执行，有时候会遇到数据库连接失败的问题，很可能是因为数据库长连接异常中断 关于connection关闭的时机">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-05T02:16:52.304Z">
+<meta property="og:updated_time" content="2019-08-21T02:05:38.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="database-connection-open-close">
 <meta name="twitter:description" content="database 的jdbc连接的打开关闭的时机是什么呢？每次使用都open,然后close?oropen后多次使用？关闭的时机是什么呢？  直观上思考，每次建立tcp连接要消耗高，短时间保持一个conn长连接，多次复用后关闭，这样做性能比较高 现在项目中使用一个数据库长连接完成所有sql执行，有时候会遇到数据库连接失败的问题，很可能是因为数据库长连接异常中断 关于connection关闭的时机">
@@ -410,7 +410,8 @@
 
 <p>说明Connection是支持try-catch-resources语法的</p>
 <hr>
-<h3 id="回来接着想，connection关闭的时机是什么呢"><a href="#回来接着想，connection关闭的时机是什么呢" class="headerlink" title="回来接着想，connection关闭的时机是什么呢"></a>回来接着想，connection关闭的时机是什么呢</h3>
+<h3 id="回来接着想，connection关闭的时机是什么呢"><a href="#回来接着想，connection关闭的时机是什么呢" class="headerlink" title="回来接着想，connection关闭的时机是什么呢"></a>回来接着想，connection关闭的时机是什么呢</h3><p>建议：随时打开，随时关闭</p>
+
       
     </div>
     
@@ -533,7 +534,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
