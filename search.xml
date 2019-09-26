@@ -16,7 +16,7 @@
   <entry>
     <title><![CDATA[scala-closure-闭包]]></title>
     <url>%2F2019%2F09%2F26%2Fscala-closure-%E9%97%AD%E5%8C%85%2F</url>
-    <content type="text"><![CDATA[https://www.zhihu.com/question/24084277 到底什么是闭包 推荐]]></content>
+    <content type="text"><![CDATA[https://www.zhihu.com/question/24084277 到底什么是闭包 推荐 设计闭包把一个执行中的动作和执行时的上下文相关数据，整个儿数据化。这就是闭包。]]></content>
   </entry>
   <entry>
     <title><![CDATA[youxiu]]></title>
