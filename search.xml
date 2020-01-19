@@ -352,18 +352,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
-    <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛): BWH1ZBPVK（6.00%） bandwagon官网购买vps,支持支付宝(alipay),有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server推荐blog 配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务 1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf: 123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
-      <categories>
-        <category>工欲善其事，必先利其器</category>
-      </categories>
-      <tags>
-        <tag>Bandwagon</tag>
-        <tag>shadowsocks</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Amazon Redshift Learning]]></title>
     <url>%2F2018%2F12%2F04%2FAmazon%20Redshift%20Learning%2F</url>
     <content type="text"><![CDATA[overview 文档中有设计表、加载数据的最佳实践，从这里可以查看到redshift与其他数据库最主要的差别 它是一个企业级的关系数据库查询与管理系统 支持与多种应用程序客户端建立连接 表面上我们执行了一个简单ｑｕｅｒｙ,Redshift 在后台在多阶段中检索、比较、和计算大量的数据，最终产生结果，后台的操作对用户都是透明的 优点:高效存储和最优的查询性能 技术支撑：并行处理、列式数据存储和非常高效的具有针对性的数据压缩编码方案的组合 Amazon Redshift is based on PostgreSQL 8.0.2. postgresql vs mysql就基本的应用来讲，二者无差别，当然一定有sql方言方便的分别，记得注意]]></content>
@@ -374,6 +362,18 @@
         <tag>Redshift</tag>
         <tag>Amazon</tag>
         <tag>database</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Bandwagon shadowsocks 配置使用]]></title>
+    <url>%2F2018%2F12%2F04%2FBandwagon-shadowsocks-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[好几个同事都来问我socks5怎么搭建的，现写下来 bandwagon vps 搬瓦工VPS优惠码(不知道有没有邀请码，让我也薅一根羊毛): BWH1ZBPVK（6.00%） bandwagon官网购买vps,支持支付宝(alipay),有人买的便宜的那一款网络状况堪忧，推荐购买’SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2’代理访问网页足够了 shadowsocks server 通过网页bash或者本地终端远程连接vps,按照shadowsocks doc安装过程中可能碰到python、pip问题，不同的vps、不同的os遇见的问题可能会不一样，google解决方法(真实的的世界就是如此) 启动shadowsocks server推荐blog 配置文件1234567891011vim /etc/shadowsocks/config.json&#123; &quot;server&quot;:&quot;::&quot;, &quot;server_port&quot;:8388, //自定义端口 &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;,//设置shadowsocks密码，client配置该密码 &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动服务 1ssserver -c /etc/shadowsocks/config.json 可以使用nohup &amp; 后台运行 shadowsocks clientshadowsocks 官网客户端下载配置，提供了各个平台的客户端 客户端启动：conf: 123456789&#123; &quot;server&quot;:&quot;112.11.11.11&quot;, //vps ip &quot;server_port&quot;:8032, // shadowsocks port &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:34196,// 设置本地端口 &quot;password&quot;:&quot;0juAtjMZVQ&quot;, //shadowsocks password &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot; //method 保持一致&#125; 1nohup /usr/bin/python /usr/bin/sslocal -c /etc/shadowsocks.json &amp; More info: Deployment]]></content>
+      <categories>
+        <category>工欲善其事，必先利其器</category>
+      </categories>
+      <tags>
+        <tag>Bandwagon</tag>
+        <tag>shadowsocks</tag>
       </tags>
   </entry>
   <entry>
@@ -566,6 +566,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[简单线性回归]]></title>
+    <url>%2F2018%2F12%2F04%2FSimpleLinearRegression%2F</url>
+    <content type="text"><![CDATA[简单线性回归WHAT简单线性回归模型是用于估计一个连续预测变量和一个连续回应变量的线性关系。回归方程或者是估计回归方程 y¯=b0+b1x y¯是回应变量的估计值 b0是回归线在y轴上的截距 b1是回归线的斜率 b0和b1b1称为回归系数 Simple linear regression(wiki) HOW怎样才能得到一个简单线性回归模型，也就是求得一个方程式 既有的数值处理库python的sk-learn、scala的breeze等sk-learn 例子： 123456789101112131415161718192021222324252627282930313233343536import pandas as pdfrom sklearn import linear_modelimport matplotlib.pyplot as pltdf = pd.read_csv(&apos;C:/Users/lenovo/Desktop/3VD_1.csv&apos;)&quot;&quot;&quot;# 建立线性回归模型&quot;&quot;&quot;regr = linear_model.LinearRegression()&quot;&quot;&quot;# 拟合&quot;&quot;&quot;regr.fit(df[&apos;basicsize&apos;].values.reshape(-1,1), df[&apos;footaround&apos;])a, b = regr.coef_, regr.intercept_print(a[0])feats =[&apos;footaround&apos;, &apos;footbackarcdistance54mm&apos;, &apos;footbackarcdistancemouth&apos;, &apos;footbackbodylength&apos;, &apos;footbackfacedistance&apos;, &apos;footbackgirth&apos;, &apos;footbasicwidth&apos;, &apos;footbitfingeroutsidewidth&apos;, &apos;footboatcurveheight&apos;, &apos;footbottomheartconcavity&apos;, &apos;footdegreerejection&apos;, &apos;footfifthtoeoutsidewidth&apos;, &apos;footfirstplantarjointheight&apos;, &apos;footfirsttoeinsidewidth&apos;, &apos;footforepalmconvexity&apos;, &apos;footfrontcross&apos;, &apos;footheadthickness&apos;, &apos;footheelbulgeheight&apos;, &apos;footheelheartconvexity&apos;, &apos;footheelheartwidth&apos;, &apos;footheelheight&apos;, &apos;footlandspot&apos;, &apos;footmetatarsalgirth&apos;, &apos;footmouthbackheight&apos;, &apos;footmouthlength&apos;, &apos;footmouthwidth&apos;, &apos;footpalmwidth&apos;, &apos;footpocketheelgirth&apos;, &apos;footshoelastcalculatelength&apos;, &apos;foottarsalboneheight&apos;, &apos;foottarsalgirth&apos;, &apos;footthumbinsidewidth&apos;, &apos;footwaistgirth&apos;, &apos;footwaistwidth&apos;, &apos;footwidth&apos;]para_lin = []for feat in feats: regr.fit(df[&apos;basicsize&apos;].values.reshape(-1,1), df[feat]) a, b = regr.coef_, regr.intercept_ para_lin.append((feat,a[0],b)) 使用公式 在统计学中，线性回归是利用称为线性回归方程的最小二乘函数对一个或多个自变量和因变量之间关系进行建模的一种回归分析。这种函数是一个或多个称为回归系数的模型参数的线性组合。一个带有一个自变量的线性回归方程代表一条直线。我们需要对线性回归结果进行统计分析。 通过定义和最小化一个成本函数，简单线性回归可以拟合一条直线。一般用最小二乘法（OLS)来计算系数。 线性回归的公式可以表示为 y=w0+w1x 截距 w0 斜率 w1 推导过程可参看wikipedia scala实现： 12345678910111213141516def simple_linear_regression(x: Vector[Int], y: Vector[Double]) = &#123; //initial sums val n = x.length.toFloat val sum_x = x.sum val sum_y = y.sum val sum_xy = (x, y).zipped.map(_ * _).sum val sum_xx = x.map(n =&gt; n * n).sum //formula for w0 val slope = (sum_xy - (sum_x * sum_y) / n) / (sum_xx - (sum_x * sum_x) / n) //formula for w1 val intercept = sum_y / n - slope * (sum_x / n) (slope,intercept) &#125; PS:以往查询数据库都是按行查询的，但是在这里是去数据中的两个维度来分别作为自变量和因变量，以求得简单线性回归模型，所以查询数据库数据时还是按列查询比较好 不然的话就要做n个Map,像这样： 123456789101112131415val is = getClass.getClassLoader.getResourceAsStream(&quot;origin-fat-last-data&quot;) val source = scala.io.Source.fromInputStream(is).getLines().map(_.split(&quot;\t&quot;).toList).toList val title = source.head val data = source.tail.filter(_.last == &quot;normal&quot;).toVector val mapData = data.map(_.zip(title).map(field=&gt; Map(field._2 -&gt; field._1)).reduce(_ ++ _)) val basicSizeVector = mapData.map(_.get(&quot;basicsize&quot;).get.toInt) val yMapDatas = mapData.map(_.filterNot(m =&gt; (&quot;shoes_size_specification&quot;,&quot;brand&quot;,&quot;shoelastbaseno&quot;,&quot;gender&quot;,&quot;headform&quot;,&quot;shoepadthicknessforefoot&quot;,&quot;shoepadthicknessheel&quot;,&quot;shoetype&quot;,&quot;footmouthgirth&quot;,&quot;footstruct&quot;).productIterator.contains(m._1))) .map(_.map(m =&gt; Map(m._1 -&gt; m._2.toDouble)).reduce(_ ++ _)) val yMapDataKeys =yMapDatas.head.map(_._1) val keyValues = yMapDataKeys.map(key =&gt; Map(key -&gt; yMapDatas.map(d=&gt; d.getOrElse(key,0.00d)))) def res = keyValues.map(kv =&gt;&#123; Map(kv.head._1 -&gt; simple_linear_regression(basicSizeVector,kv.head._2)) &#125;).reduce(_ ++ _)]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Shell笔记]]></title>
     <url>%2F2018%2F12%2F04%2FShell%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[awk将数据put到hdfs,然后用hive组织的过程中，发现数据混乱，从某行开始全是NULL 将一行数据copy到idea中,按照逗号分割后，发现只有223(理论上是226)，用awk的NF处理文件，每行也是 226列 —&gt; 于是，使用awk 的 $17 打印开始乱的列，果然找到问题， 用navicat导出的数据，默认有一个‘N*’符号 ，这个符号可以用notepad++来识别并替换掉ps: 该工具导出的数据另一个坑是：不管什么类型的数据，导出来都是到这双引号，往hive中导入时，有数值型的就尿了 所有后来直接用了sqoop 这里用到了awk ,觉得这个工具还是很强大的 123awk -F &apos;,&apos; &apos;&#123;print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0 &quot;,分隔符:&quot; OFS&#125;&apos; xxx.csvawk -F &apos;,&apos; &apos;&#123;if(NF&lt;226)print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0&#125;&apos; ./xxx.csv awk -F &apos;,&apos; -v OFS=&quot;+++&quot; &apos;&#123;print &quot;filename:&quot; FILENAME &quot;,linenumber:&quot; NR &quot;,columns:&quot; NF &quot;,linecontent:&quot;$0&#125;&apos; ./xxx.csv awk 是一个强大的文本分析工具，相对与grep的查找，sed的编辑，awk在对其数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。linux awk命令详解awk分隔符awk ‘{pattern + action}’ {filenames} chkconfig 命令chkconfig命令主要用来更新（启动或停止）和查询系统服务的运行级信息。 谨记chkconfig不是立即自动禁止或激活一个服务，它只是简单的改变了符号连接。12345[root@fa ~]# chkconfig --list NetworkManagerNetworkManager 0:off 1:off 2:on 3:on 4:on 5:on 6:off[root@fa ~]# chkconfig NetworkManager off[root@fa ~]# chkconfig --list NetworkManagerNetworkManager 0:off 1:off 2:off 3:off 4:off 5:off 6:off 参考 curl get问题例如 url 为 http://mywebsite.com/index.PHP?a=1&amp;b=2&amp;c=3 web形式下访问url地址，使用$_GET是可以获取到所有的参数 然而在Linux下 curl http://mywebsite.com/index.php?a=1&amp;b=2&amp;c=3 $_GET只能获取到参数a 由于url中有&amp;，其他参数获取不到，在linux系统中&amp; 会使进程系统后台运行 必须对&amp;进行下转义才能$_GET获取到所有参数 curl http://mywebsite.com/index.php?a=1\&amp;b=2\&amp;c=3shell 时间 date 获取12[root48@vmaxverserver Qimingxing4AutoTestCoverageRate]$ date +%F-%T2016-10-20-10:20:41 参考 cron 表达式参考 等于/不等于/大于/小于 -eq //等于 -ne //不等于 -gt //大于 -lt //小于 ge //大于等于 le //小于等于 修改hostname:/etc/hosts 和 /etc/sysconfig/network 两个文件 升级中脚本：12345678910111213#!/bin/shscriptPath=$1sh /home/upgrade/shutdown.shcd $scriptPathfor i in *updating.shdohostName=echo $i|cut -d _ -f 1runAt=echo $i|cut -d _ -f 2|cut -d . -f 1sh /home/upgrade/upgrade.sh $hostName $runAt $scriptPath/$idonesh /home/upgrade/startup.sh linux grep命令//todo shell编程 for in 循环&amp; 后台执行scp 回显写入log：1234echo &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;ssh \$scpuser@\$sybaseip mkdir -p \$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;scp \$configFile \$scpuser@\$sybaseip:\$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;script -a \$basedir/conf/scp_drs_ftpini.log -q -c \&quot;ssh \$scpuser@\$sybaseip chmod 777 -R \$scppath\&quot;&quot; &gt;&gt; $outputecho &quot;exit&quot; &gt;&gt; $output 参考自 ————-_—————————————2015/8/31—————————_——————– 备份文件：123456789101112basedir=$(pwd) # 获取当前目录的绝对路径，并赋值给 basedirbakpath=/home/bak_netnumenif [ &quot;$bakpath&quot; ]; then #判断某个目录是否存在，（[] 内 左右空格不能少） rm -rf $bakpathfids=$(ls $basedir | grep -E &apos;vmax-app|vmax-data&apos;) #ls 某个目录，并用&quot;grep -E&quot; 查找 包含&quot;vamx-app&quot;或者&quot;vmax-data&quot;的项for s in $&#123;ds[@]&#125; #for 每一项，do ... do mkdir -p $bakpath/$s cp -r $s/database $bakpath/$s done shell dirname basename123456789101112131415161718[root@hadoopname ~]# clear[root@hadoopname ~]# lltotal 136-rw-------. 1 root root 2696 Jun 24 04:41 anaconda-ks.cfgdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Desktopdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Documentsdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Downloads-rwxr-xr-x. 1 root root 32 Dec 6 13:20 first-rw-r--r--. 1 root root 39935 Dec 5 17:38 i.log-rw-r--r--. 1 root root 39935 Jun 24 04:40 install.log-rw-r--r--. 1 root root 10175 Jun 24 04:38 install.log.syslogdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Musicdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Picturesdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Publicdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Templatesdrwxr-xr-x. 2 root root 4096 Jun 24 06:13 Videos[root@hadoopname ~]# pwd/root dirname: 取一个文件的存储路径，分两种情况 仅仅是个文件名的 12[root@hadoopname ~]# dirname first. 带绝对路径 123[root@hadoopname ~]# dirname /root/first/root[root@hadoopname ~]# basename:取一个文件的文件名想要去掉后缀名的话 要将 后缀名 做为参数加在后面 12345[root@hadoopname ~]# basename i.logi.log[root@hadoopname ~]# basename i.log logi.[root@hadoopname ~]#]]></content>
@@ -575,17 +586,6 @@
       <tags>
         <tag>笔记</tag>
         <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[简单线性回归]]></title>
-    <url>%2F2018%2F12%2F04%2FSimpleLinearRegression%2F</url>
-    <content type="text"><![CDATA[简单线性回归WHAT简单线性回归模型是用于估计一个连续预测变量和一个连续回应变量的线性关系。回归方程或者是估计回归方程 y¯=b0+b1x y¯是回应变量的估计值 b0是回归线在y轴上的截距 b1是回归线的斜率 b0和b1b1称为回归系数 Simple linear regression(wiki) HOW怎样才能得到一个简单线性回归模型，也就是求得一个方程式 既有的数值处理库python的sk-learn、scala的breeze等sk-learn 例子： 123456789101112131415161718192021222324252627282930313233343536import pandas as pdfrom sklearn import linear_modelimport matplotlib.pyplot as pltdf = pd.read_csv(&apos;C:/Users/lenovo/Desktop/3VD_1.csv&apos;)&quot;&quot;&quot;# 建立线性回归模型&quot;&quot;&quot;regr = linear_model.LinearRegression()&quot;&quot;&quot;# 拟合&quot;&quot;&quot;regr.fit(df[&apos;basicsize&apos;].values.reshape(-1,1), df[&apos;footaround&apos;])a, b = regr.coef_, regr.intercept_print(a[0])feats =[&apos;footaround&apos;, &apos;footbackarcdistance54mm&apos;, &apos;footbackarcdistancemouth&apos;, &apos;footbackbodylength&apos;, &apos;footbackfacedistance&apos;, &apos;footbackgirth&apos;, &apos;footbasicwidth&apos;, &apos;footbitfingeroutsidewidth&apos;, &apos;footboatcurveheight&apos;, &apos;footbottomheartconcavity&apos;, &apos;footdegreerejection&apos;, &apos;footfifthtoeoutsidewidth&apos;, &apos;footfirstplantarjointheight&apos;, &apos;footfirsttoeinsidewidth&apos;, &apos;footforepalmconvexity&apos;, &apos;footfrontcross&apos;, &apos;footheadthickness&apos;, &apos;footheelbulgeheight&apos;, &apos;footheelheartconvexity&apos;, &apos;footheelheartwidth&apos;, &apos;footheelheight&apos;, &apos;footlandspot&apos;, &apos;footmetatarsalgirth&apos;, &apos;footmouthbackheight&apos;, &apos;footmouthlength&apos;, &apos;footmouthwidth&apos;, &apos;footpalmwidth&apos;, &apos;footpocketheelgirth&apos;, &apos;footshoelastcalculatelength&apos;, &apos;foottarsalboneheight&apos;, &apos;foottarsalgirth&apos;, &apos;footthumbinsidewidth&apos;, &apos;footwaistgirth&apos;, &apos;footwaistwidth&apos;, &apos;footwidth&apos;]para_lin = []for feat in feats: regr.fit(df[&apos;basicsize&apos;].values.reshape(-1,1), df[feat]) a, b = regr.coef_, regr.intercept_ para_lin.append((feat,a[0],b)) 使用公式 在统计学中，线性回归是利用称为线性回归方程的最小二乘函数对一个或多个自变量和因变量之间关系进行建模的一种回归分析。这种函数是一个或多个称为回归系数的模型参数的线性组合。一个带有一个自变量的线性回归方程代表一条直线。我们需要对线性回归结果进行统计分析。 通过定义和最小化一个成本函数，简单线性回归可以拟合一条直线。一般用最小二乘法（OLS)来计算系数。 线性回归的公式可以表示为 y=w0+w1x 截距 w0 斜率 w1 推导过程可参看wikipedia scala实现： 12345678910111213141516def simple_linear_regression(x: Vector[Int], y: Vector[Double]) = &#123; //initial sums val n = x.length.toFloat val sum_x = x.sum val sum_y = y.sum val sum_xy = (x, y).zipped.map(_ * _).sum val sum_xx = x.map(n =&gt; n * n).sum //formula for w0 val slope = (sum_xy - (sum_x * sum_y) / n) / (sum_xx - (sum_x * sum_x) / n) //formula for w1 val intercept = sum_y / n - slope * (sum_x / n) (slope,intercept) &#125; PS:以往查询数据库都是按行查询的，但是在这里是去数据中的两个维度来分别作为自变量和因变量，以求得简单线性回归模型，所以查询数据库数据时还是按列查询比较好 不然的话就要做n个Map,像这样： 123456789101112131415val is = getClass.getClassLoader.getResourceAsStream(&quot;origin-fat-last-data&quot;) val source = scala.io.Source.fromInputStream(is).getLines().map(_.split(&quot;\t&quot;).toList).toList val title = source.head val data = source.tail.filter(_.last == &quot;normal&quot;).toVector val mapData = data.map(_.zip(title).map(field=&gt; Map(field._2 -&gt; field._1)).reduce(_ ++ _)) val basicSizeVector = mapData.map(_.get(&quot;basicsize&quot;).get.toInt) val yMapDatas = mapData.map(_.filterNot(m =&gt; (&quot;shoes_size_specification&quot;,&quot;brand&quot;,&quot;shoelastbaseno&quot;,&quot;gender&quot;,&quot;headform&quot;,&quot;shoepadthicknessforefoot&quot;,&quot;shoepadthicknessheel&quot;,&quot;shoetype&quot;,&quot;footmouthgirth&quot;,&quot;footstruct&quot;).productIterator.contains(m._1))) .map(_.map(m =&gt; Map(m._1 -&gt; m._2.toDouble)).reduce(_ ++ _)) val yMapDataKeys =yMapDatas.head.map(_._1) val keyValues = yMapDataKeys.map(key =&gt; Map(key -&gt; yMapDatas.map(d=&gt; d.getOrElse(key,0.00d)))) def res = keyValues.map(kv =&gt;&#123; Map(kv.head._1 -&gt; simple_linear_regression(basicSizeVector,kv.head._2)) &#125;).reduce(_ ++ _)]]></content>
-      <categories>
-        <category>数据分析</category>
-      </categories>
-      <tags>
-        <tag>数据分析</tag>
       </tags>
   </entry>
   <entry>
@@ -639,17 +639,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[使用ansible自动部署集群环境]]></title>
-    <url>%2F2018%2F12%2F04%2Fansible%2F</url>
-    <content type="text"><![CDATA[what Working in IT, you’re likely doing the same tasks over and over. What if you could solve problems once and then automate your solutions going forward? Ansible is here to help.类似的组件还有： puppetsaltstackchef install官方文档上有多种安装方法，包括apt-get、yum,我这里用的是github方式 1git clone git://github.com/ansible/ansible.git --recursive 官网上的描述特详细，也特别好使，安装时建议直接看最新的文档ansible freshman get startinventory服务器清单，配置文件 动态InventorypatternsAd-Hoc Commands即使执行的命令，跟playbooks一起，构成ansible的强大战力 playbooksplaybooks 介绍playbooks 是ansible的配置，部署，编排语言 他们可以被描述为一个需要希望远程主机执行命令的方案，或者一组程序运行的命令集合 ps:难道类似存储过程？ 简单来说,playbooks 是一种简单的配置管理系统与多机器部署系统的基础.与现有的其他系统有不同之处,且非常适合于复杂应用的部署. playbook 实例Playbooks的格式是YAML playbook 由一个或多个 ‘plays’ 组成.它的内容是一个以 ‘plays’ 为元素的列表. 在 play 之中,一组机器被映射为定义好的角色.在 ansible 中,play 的内容,被称为 tasks,即任务.在基本层次的应用中,一个任务是一个对 ansible 模块的调用,这在前面章节学习过. ‘plays’ 好似音符,playbook 好似由 ‘plays’ 构成的曲谱,通过 playbook,可以编排步骤进行多机器的部署,比如在 webservers 组的所有机器上运行一定的步骤, 然后在 database server 组运行一些步骤,最后回到 webservers 组,再运行一些步骤,诸如此类. 123456789101112131415161718---- hosts: webservers vars: http_port: 80 max_clients: 200 remote_user: root tasks: - name: ensure apache is at the latest version yum: pkg=httpd state=latest - name: write the apache config file template: src=/srv/httpd.j2 dest=/etc/httpd.conf notify: - restart apache - name: ensure apache is running service: name=httpd state=started handlers: - name: restart apache service: name=httpd state=restarted play 基础：… Playbook角色(Roles) 和Include语句variables配置用 条件选择循环最佳实践ansible 有提供aws相关的模块，可以直接使用ansible tower注册 -&gt; 发下载链接到邮箱 -&gt; 下载 -&gt; 安装 error 不支持ubuntu18.04error 266701ERROR! Unexpected Exception, this is probably a bug: &apos;module&apos; object has no attribute &apos;SSL_ST_INIT&apos; resolved: 1sudo pip2 install -U pyOpenSSL 安装了一个小时，在办公主机上，ec2上安装都不成功，各种b问题，同时发现其使用的组件过于繁杂还是自己写吧 ansible-galaxy 上面有很多好用的role sudo 不好使 -&gt; 修改配置文件中的sudo-user remote-user,然后执行的时候+ –become 已经先不在使用ansible,优先直接使用bootstrap.ssh 完成相关操作 后面该操作使用akka remote封装]]></content>
-      <categories>
-        <category>服务器端</category>
-      </categories>
-      <tags>
-        <tag>ansible</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[breeze使用]]></title>
     <url>%2F2018%2F12%2F04%2Fbreeze%2F</url>
     <content type="text"><![CDATA[whatBreeze is a library for numerical processing, machine learning, and natural language processing. Its primary focus is on being generic, clean, and powerful without sacrificing (much) efficiency. Breeze is the merger of the ScalaNLP and Scalala projects, because one of the original maintainers is unable to continue development. howinstall快速安装用sbt在命令行中快速安装，体验一下 推荐的sbt依赖配置]]></content>
@@ -658,6 +647,17 @@
       </categories>
       <tags>
         <tag>breeze</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用ansible自动部署集群环境]]></title>
+    <url>%2F2018%2F12%2F04%2Fansible%2F</url>
+    <content type="text"><![CDATA[what Working in IT, you’re likely doing the same tasks over and over. What if you could solve problems once and then automate your solutions going forward? Ansible is here to help.类似的组件还有： puppetsaltstackchef install官方文档上有多种安装方法，包括apt-get、yum,我这里用的是github方式 1git clone git://github.com/ansible/ansible.git --recursive 官网上的描述特详细，也特别好使，安装时建议直接看最新的文档ansible freshman get startinventory服务器清单，配置文件 动态InventorypatternsAd-Hoc Commands即使执行的命令，跟playbooks一起，构成ansible的强大战力 playbooksplaybooks 介绍playbooks 是ansible的配置，部署，编排语言 他们可以被描述为一个需要希望远程主机执行命令的方案，或者一组程序运行的命令集合 ps:难道类似存储过程？ 简单来说,playbooks 是一种简单的配置管理系统与多机器部署系统的基础.与现有的其他系统有不同之处,且非常适合于复杂应用的部署. playbook 实例Playbooks的格式是YAML playbook 由一个或多个 ‘plays’ 组成.它的内容是一个以 ‘plays’ 为元素的列表. 在 play 之中,一组机器被映射为定义好的角色.在 ansible 中,play 的内容,被称为 tasks,即任务.在基本层次的应用中,一个任务是一个对 ansible 模块的调用,这在前面章节学习过. ‘plays’ 好似音符,playbook 好似由 ‘plays’ 构成的曲谱,通过 playbook,可以编排步骤进行多机器的部署,比如在 webservers 组的所有机器上运行一定的步骤, 然后在 database server 组运行一些步骤,最后回到 webservers 组,再运行一些步骤,诸如此类. 123456789101112131415161718---- hosts: webservers vars: http_port: 80 max_clients: 200 remote_user: root tasks: - name: ensure apache is at the latest version yum: pkg=httpd state=latest - name: write the apache config file template: src=/srv/httpd.j2 dest=/etc/httpd.conf notify: - restart apache - name: ensure apache is running service: name=httpd state=started handlers: - name: restart apache service: name=httpd state=restarted play 基础：… Playbook角色(Roles) 和Include语句variables配置用 条件选择循环最佳实践ansible 有提供aws相关的模块，可以直接使用ansible tower注册 -&gt; 发下载链接到邮箱 -&gt; 下载 -&gt; 安装 error 不支持ubuntu18.04error 266701ERROR! Unexpected Exception, this is probably a bug: &apos;module&apos; object has no attribute &apos;SSL_ST_INIT&apos; resolved: 1sudo pip2 install -U pyOpenSSL 安装了一个小时，在办公主机上，ec2上安装都不成功，各种b问题，同时发现其使用的组件过于繁杂还是自己写吧 ansible-galaxy 上面有很多好用的role sudo 不好使 -&gt; 修改配置文件中的sudo-user remote-user,然后执行的时候+ –become 已经先不在使用ansible,优先直接使用bootstrap.ssh 完成相关操作 后面该操作使用akka remote封装]]></content>
+      <categories>
+        <category>服务器端</category>
+      </categories>
+      <tags>
+        <tag>ansible</tag>
       </tags>
   </entry>
   <entry>
@@ -851,17 +851,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Scala Try]]></title>
-    <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
-    <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
-      <categories>
-        <category>编程语言 - s cala</category>
-      </categories>
-      <tags>
-        <tag>Scala</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[scala操作XML]]></title>
     <url>%2F2018%2F12%2F04%2Fscalaxml%2F</url>
     <content type="text"><![CDATA[scala 加载并解析xml12345678910111213141516171819202122232425262728293031323334353637val loadXML = xml.XML.loadFile(AutomatedTestingWebConfig.distributeInfoXML)//使用loadFile方法加载XML，得到的是一个一个scala.xml.Elem对象val version = (loadXML \\ &quot;autotest&quot; \ &quot;@version&quot;).text//属性值获取“@”符val hostSeqNode = (loadXML \ &quot;hosts&quot; \ &quot;host&quot;)//得到的是一个scala.xml.NodeSeq对象，可以在其上做一下转换操作def getAttrValue(node: Node)(attrName: String): String = &#123; node.attributes.get(attrName) match &#123; case Some(x) =&gt; x.text case _ =&gt; &quot;&quot; &#125; &#125; val hosts = &#123; (loadXML \ &quot;hosts&quot; \ &quot;host&quot;).map(hostNode =&gt; &#123; def getHostAttrValue(attrName: String) = getAttrValue(hostNode)(attrName) Host(getHostAttrValue(&quot;name&quot;), getHostAttrValue(&quot;desc&quot;), getHostAttrValue(&quot;config&quot;)) &#125;).toList &#125; val sqlScript = &#123; (loadXML \ &quot;script&quot; \ &quot;sql&quot;).map(sqlNode =&gt; &#123; def getSqlScriptAttrValue(attrName: String) = getAttrValue(sqlNode)(attrName) val lines = sqlNode.nonEmptyChildren.filterNot(_.text.trim == &quot;&quot;).map(_.text).mkString(&quot;;&quot;) val database = getSqlScriptAttrValue(&quot;database&quot;) SqlScript(database, lines) &#125;).toList &#125;case class AutoTest(version: String, hosts: List[Host], sqlScript: List[SqlScript], shellScript: List[ShellScript])case class Host(name: String, desc: String, config: String)case class SqlScript(database: String, line: String)case class ShellScript(host: String, line: List[String]) 参考 SCALA XML pattern attrbute参考 虽然这个guy炒鸡罗嗦，但是还是讲到我要的那句话： Because Scala doesn’t support XML patterns with attributes. scala的模式匹配模式根本就不支持 属性 还是老老实实用XPath吧]]></content>
@@ -871,6 +860,17 @@
       <tags>
         <tag>scala</tag>
         <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Scala Try]]></title>
+    <url>%2F2018%2F12%2F04%2FscalaTry%2F</url>
+    <content type="text"><![CDATA[Scala Try优雅的错误处理方式:Try 异常的抛出和捕获123456789101112131415161718192021222324252627package tryAndException/** * Created by xxh on 18-7-17. */object MasterTry &#123; case class Customer(age:Int) class Cigarettes case class UnderAgeException(message:String) extends Exception(message) def buyCigarettes(customer: Customer):Cigarettes = &#123; if (customer.age &lt;16) throw UnderAgeException(s&quot;Customer must be older than 16 but was $&#123;customer.age&#125;&quot;) else new Cigarettes &#125; val youngCustomer = Customer(15) try &#123; buyCigarettes(youngCustomer) &quot;Yo, here are your cancer sticks! Happy smokin&apos;!&quot; &#125; catch &#123; case UnderAgeException(msg) =&gt; msg &#125;&#125; 函数式的错误处理问题：对于高并发应用来说，这也是一个很差劲的解决方式，比如， 假设需要处理在其他线程执行的 actor 所引发的异常，显然你不能用捕获异常这种处理方式， 你可能会想到其他解决方案，例如去接收一个表示错误情况的消息。 解决： 一般来说，在 Scala 中，好的做法是通过从函数里返回一个合适的值来通知人们程序出错了。scala 使用一个特定的类型来表示可能会导致异常的计算，这个类型就是 Try Try 的语义Option[A] 是一个可能有值也可能没值的容器， Try[A] 则表示一种计算： 这种计算在成功的情况下，返回类型为 A 的值，在出错的情况下，返回 Throwable 。 这种可以容纳错误的容器可以很轻易的在并发执行的程序之间传递。 Try 有两个子类型 Success[A]:代表成功的计算 封装了Throwable的Falure[A]:代表了出错了的计算 使用12345import scala.util.Tryimport java.net.URLdef parseURL(url: String): Try[URL] = Try(new URL(url))val url = parseURL(Console.readLine(&quot;URL: &quot;)) getOrElse new URL(&quot;http://duckduckgo.com&quot;) 你可以调用 isSuccess 方法来检查一个 Try 是否成功，然后通过 get 方法获取它的值， 但是，这种方式的使用并不多见，因为你可以用 getOrElse 方法给 Try 提供一个默认值： gitbook未完待续。。。]]></content>
+      <categories>
+        <category>编程语言 - s cala</category>
+      </categories>
+      <tags>
+        <tag>Scala</tag>
       </tags>
   </entry>
   <entry>
